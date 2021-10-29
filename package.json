@@ -1,13 +1,9 @@
 {
-	"name": "testproject",
+	"name": "nybc",
 	"version": "1.0.0",
-	"description": "Test theme packages",
-	"main": "main.js",
+	"description": "",
+	"main": "index.js",
 	"scripts": {
-		"prod": "cross-env NODE_ENV=production webpack --mode production --progress",
-		"dev": "cross-env NODE_ENV=development webpack --watch --mode development --progress",
-		"clean": "rm -rf build/*",
-		"svg": "svgr -d src/js/icons src/icons",
 		"lint": "eslint site/web/app/themes/boilerplate-theme/src/index.js",
 		"lint-css": "eslint site/web/app/themes/boilerplate-theme/src/sass/*",
 		"lint-fix": "eslint --fix site/web/app/themes/boilerplate-theme/src/index.js"
