@@ -1,0 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+// Mixin to convert px to rem
+// usage: rem(14px) or rem(14)
+
+$html-font-size: 14px;
+
+@function stripUnit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function rem($pxValue) {
+  @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}

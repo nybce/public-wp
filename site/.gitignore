@@ -1,0 +1,25 @@
+# Application
+!web/app/mu-plugins/.gitkeep
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*
+!web/app/mu-plugins/bedrock-autoloader.php
+!web/app/mu-plugins/disallow-indexing.php
+!web/app/mu-plugins/register-theme-directory.php
+web/app/plugins/*
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+web/app/themes/boilerplate-theme/dist
+web/app/themes/boilerplate-theme/dist/*
+# WordPress
+web/wp
+web/.htaccess
+# Dotenv
+.env
+.env.*
+!.env.example
+# Composer
+/vendor
+# WP-CLI
+wp-cli.local.yml
+web/app/db.php
