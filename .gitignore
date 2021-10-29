@@ -168,5 +168,7 @@ sitemap.xml.gz
 /media
 db_dumps/
 site/uploads/
+node_modules/
+package-lock.json
 # End of https://www.gitignore.io/api/osx,linux,windows,wordpress,phpstorm+all
 

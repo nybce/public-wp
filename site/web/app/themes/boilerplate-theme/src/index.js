@@ -1,6 +1,9 @@
 import $ from 'jquery';
-import 'popper.js';
-
 import './sass/style.scss';
 
-('use strict');
+// ('use strict');
+(function () {
+	$(function () {
+		// console.log('Document Ready test');
+	});
+})($);
