@@ -1,0 +1,11 @@
+name: Continous Integration
+on:
+  pull_request:
+    branches: '**'
+jobs:
+  test_build:
+    runs-on: ubuntu-latest
+    steps:
+      - run:  echo "💡 The ${{ github.repository }} repository is now being fired up for testing."
+      - uses: actions/checkout@v2
+      - run: echo "Checkout Successful"
