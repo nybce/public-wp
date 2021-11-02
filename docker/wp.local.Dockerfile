@@ -71,12 +71,8 @@ RUN /tmp/composer-install.sh
 
 WORKDIR /site
 RUN apk add ansible
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-COPY ./.env/local.env /site/.env
-COPY ./.env/local.env /.env
-RUN mkdir /envs
-COPY ./.env/* /envs
-COPY .vaultpass /envs
 RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
 RUN ls -al
@@ -84,8 +80,11 @@ RUN mkdir /db_dumps
 RUN apk add openssh
 RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
 RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
-
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+COPY ./.env/local.env /site/.env
+COPY ./.env/local.env /.env
+RUN mkdir /envs
+COPY ./.env/* /envs
+COPY .vaultpass /envs
 
 # Update composer dependencies at runtime
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh

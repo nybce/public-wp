@@ -99,12 +99,8 @@ Config::define('DISALLOW_FILE_EDIT', true);
 Config::define('DISALLOW_FILE_MODS', true);
 // Limit the number of post revisions that Wordpress stores (true (default WP): store every revision)
 Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?: true);
-define( 'MULTISITE', true );
-define( 'SUBDOMAIN_INSTALL', true );
-define( 'DOMAIN_CURRENT_SITE',  env('WP_HOME'));
-define( 'PATH_CURRENT_SITE', '/' );
-define( 'SITE_ID_CURRENT_SITE', 1 );
-define( 'BLOG_ID_CURRENT_SITE', 1 );
+
+// application.php
 
 
 /**
