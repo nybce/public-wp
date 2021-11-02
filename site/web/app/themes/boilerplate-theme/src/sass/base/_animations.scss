@@ -1,16 +1,18 @@
 .animate-fade {
-  opacity: 0;
+  opacity: 0%;
   transition: transform 1s ease, opacity 1s ease;
   will-change: transform opacity;
 
   &-left {
     transform: translateX(50px);
+
     &.fade-in {
       transform: translateX(0);
     }
   }
 
   &-right {
+    
     transform: translateX(-50px);
     &.fade-in {
       transform: translateX(0);
@@ -33,6 +35,6 @@
   }
 
   &.fade-in {
-    opacity: 1;
+    opacity: 100%;
   }
 }
