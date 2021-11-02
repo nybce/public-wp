@@ -1,67 +1,34 @@
 {
-	"name": "nybc",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"lint": "eslint site/web/app/themes/boilerplate-theme/src/index.js",
-		"lint-css": "eslint site/web/app/themes/boilerplate-theme/src/sass/*",
-		"lint-fix": "eslint --fix site/web/app/themes/boilerplate-theme/src/index.js"
-	},
-	"keywords": [
-		"wordpress",
-		"themes"
-	],
-	"author": "Ali",
-	"license": "MIT",
-	"private": true,
-	"devDependencies": {
-		"@babel/core": "^7.11.1",
-		"@babel/preset-env": "^7.11.0",
-		"@babel/preset-react": "^7.10.4",
-		"@svgr/cli": "^5.4.0",
-		"@wordpress/base-styles": "^3.1.0",
-		"@wordpress/block-editor": "^5.0.0",
-		"@wordpress/blocks": "^6.23.0",
-		"@wordpress/components": "^11.0.0",
-		"@wordpress/compose": "^3.21.0",
-		"@wordpress/data": "^4.24.0",
-		"@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
-		"@wordpress/element": "^2.18.0",
-		"@wordpress/eslint-plugin": "^7.4.0",
-		"@wordpress/hooks": "^2.10.0",
-		"@wordpress/i18n": "^3.16.0",
-		"@wordpress/icons": "^2.7.0",
-		"@wordpress/server-side-render": "^1.18.0",
-		"babel-loader": "^8.1.0",
-		"clean-webpack-plugin": "^3.0.0",
-		"copy-webpack-plugin": "^6.0.3",
-		"cross-env": "^7.0.2",
-		"css-loader": "^4.2.1",
-		"cssnano": "^4.1.10",
-		"eslint": "^7.32.0",
-		"eslint-config-wordpress": "^2.0.0",
-		"eslint-loader": "^4.0.2",
-		"eslint-plugin-jsdoc": "^30.7.13",
-		"file-loader": "^6.0.0",
-		"lodash": "^4.17.21",
-		"mini-css-extract-plugin": "^0.9.0",
-		"node-sass": "^4.14.1",
-		"optimize-css-assets-webpack-plugin": "^5.0.3",
-		"sass-loader": "^9.0.3",
-		"sass-mq": "^5.0.1",
-		"style-loader": "^1.2.1",
-		"stylelint": "^13.13.1",
-		"stylelint-config-wordpress": "^17.0.0",
-		"stylelint-webpack-plugin": "^2.2.2",
-		"uglifyjs-webpack-plugin": "^2.2.0",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
-	},
-	"browserslist": [
-		"defaults"
-	],
-	"dependencies": {
-		"@taikonauten/linters-phpcs": "^1.3.0"
-	}
+  "name": "nybc-wordpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "stylelint": "^14.0.1",
+    "stylelint-config-standard": "^23.0.0",
+    "stylelint-config-standard-scss": "^2.0.1"
+  },
+  "scripts": {
+    "lint": "eslint site/web/app/themes/boilerplate-theme/src/index.js",
+    "lint-css": "stylelint site/web/app/themes/boilerplate-theme/src/sass/*",
+    "lint-fix": "eslint --fix site/web/app/themes/boilerplate-theme/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blenderbox/nybc-wordpress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blenderbox/nybc-wordpress/issues"
+  },
+  "homepage": "https://github.com/blenderbox/nybc-wordpress#readme"
 }
