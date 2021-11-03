@@ -15,13 +15,14 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-
+        
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
           fail_on_error: true
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
+          eslint_flags: 'eslint site/web/app/themes/boilerplate-theme/src/*'
 
       - name: Set up Node.js
         uses: actions/setup-node@v1

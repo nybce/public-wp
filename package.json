@@ -17,7 +17,7 @@
     "stylelint-config-standard-scss": "^2.0.1"
   },
   "scripts": {
-    "lint": "eslint site/web/app/themes/boilerplate-theme/src/index.js",
+    "lint": "eslint site/web/app/themes/boilerplate-theme/src/*",
     "lint-css": "stylelint site/web/app/themes/boilerplate-theme/src/sass/*",
     "lint-fix": "eslint --fix site/web/app/themes/boilerplate-theme/src/index.js"
   },
