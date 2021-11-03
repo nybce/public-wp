@@ -15,13 +15,13 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+      - name: StyleLint
+        uses: reviewdog/action-stylelint@v1
         with:
-          node-version: 14
-      - run: yarn install
-      - run: yarn lint-css
+          fail_on_error: true
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          stylelint_input: 'site/web/app/themes/boilerplate-theme/src/sass/*'
       
 
     
