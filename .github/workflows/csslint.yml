@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
+      - run: yarn install
       - name: StyleLint
         uses: reviewdog/action-stylelint@v1
         with:
