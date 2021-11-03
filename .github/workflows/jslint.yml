@@ -23,14 +23,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           eslint_flags: 'site/web/app/themes/boilerplate-theme/src/index.js'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - run: yarn install
-      
-      - run: yarn lint
       
 
     
