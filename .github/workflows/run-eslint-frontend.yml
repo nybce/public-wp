@@ -1,0 +1,19 @@
+---
+name: ESLint Frontend
+on: [pull_request]
+jobs:
+  run-linters-eslint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "repo"
+      - name: Reviewdog ESLint Frontend
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: true
+          level: info
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          workdir: './site/web/themes/enterprise-theme/'
+          eslint_flags: './*.js'
