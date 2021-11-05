@@ -24,7 +24,6 @@ jobs:
           fail_on_error: true
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          eslint_flags: 'site/web/app/themes/enterprise-theme/'
           workdir: 'site/web/app/themes/enterprise-theme'
       - run: cd site/web/app/themes/division-theme && npm install
       - name: divisionslint
