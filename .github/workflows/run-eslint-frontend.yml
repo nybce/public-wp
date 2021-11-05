@@ -15,5 +15,5 @@ jobs:
           level: info
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          workdir: 'site/web/themes/enterprise-theme/'
+          workdir: 'site/web/app/themes/enterprise-theme/'
           eslint_flags: './*.js'
