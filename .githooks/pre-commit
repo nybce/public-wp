@@ -35,54 +35,41 @@ else
         PASS=false
     fi
 
-    docker-compose run division-theme npm run stylelint
+    docker-compose run division-theme npm run lint-css
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
+        printf "\t\033[32mDivision Theme stylelint Passed!\033[0m\n"
     else
-        printf "\t\033[41mTHEME ESLint Failed!\033[0m\n"
+        printf "\t\033[41mDivision Theme stylelint Failed!\033[0m\n"
         THEME_STYLELINT_PASS=false
         PASS=false
     fi
     # Staged files exist. Run checks
     docker-compose run enterprise-theme npm run lint
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
+        printf "\t\033[32mDivision Theme ESLint Passed!\033[0m\n"
     else
-        printf "\t\033[41mTHEME ESLint Failed!\033[0m\n"
+        printf "\t\033[41mDivision Theme ESLint Failed!\033[0m\n"
         THEME_ESLINT_PASS=false
         PASS=false
     fi
 
-    docker-compose run enterprise-theme npm run stylelint
+    docker-compose run enterprise-theme npm run lint-css
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
+        printf "\t\033[32mEnterprise THEME StyleLint Passed!\033[0m\n"
     else
-        printf "\t\033[41mTHEME ESLint Failed!\033[0m\n"
+        printf "\t\033[41mEnterprise THEME StyleLint Failed!\033[0m\n"
         THEME_STYLELINT_PASS=false
         PASS=false
     fi
     docker-compose run wp composer run-script test /site/web/app/themes/enterprise-theme/
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
+        printf "\t\033[32mEnterprise THEME wpcs Passed!\033[0m\n"
     else
-        printf "\t\033[41mTHEME ESLint Failed!\033[0m\n"
-        THEME_ESLINT_PASS=false
+        printf "\t\033[4132mEnterprise wcps Failed!\033[0m\n"
+        APP_PHPLINT_PASS=false
         PASS=false
     fi
 
-fi
-
-if [[ "$STAGED_BACKEND_FILES" = "" ]]; then
-    printf "No backend changes. Skipping backend checks\n"
-else
-    npm --prefix=$BACKEND run lint
-    if [[ "$?" == 0 ]]; then
-      printf "\t\033[32mBackend ESLint Passed!\033[0m\n"
-    else
-      printf "\t\033[41mBackend ESLint Failed!\033[0m\n"
-      BACKEND_ESLINT_PASS=false
-      PASS=false
-    fi
 fi
 
 
@@ -93,8 +80,8 @@ if ! $PASS; then
   if ! $THEME_ESLINT_PASS; then
       printf "\n- THEME ESLINT failed\n"
   fi
-  if ! $BACKEND_ESLINT_PASS; then
-      printf "\n- Backend ESLINT failed\n"
+  if ! APP_PHPLINT_PASS; then
+      printf "\n- Wordpress Coding Standards failed\n"
   fi
   if ! $THEME_STYLELINT_PASS; then
       printf "\n- THEME STYLELINT failed\n"
