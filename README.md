@@ -28,11 +28,13 @@ The NYBC project is a wordpress multisite project.
 ### BBX
 - Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli
 - Setup the project with bbx: run `bbx init`
-
+  You will be able to find the vaultpass in 1password.
+-
 ### Docker
 - Build your docker containers -- run `docker-compose build`
-- Load a database. If no remote environments are available you can run `bash scripts/loadDb.sh seed.sql` for a baseline site.
-
+- Spin up your database -- run `docker-compose up -d db`
+- Load a database. If no remote environments are available you can run `bash scripts/loadSeedDb.sh seed.sql` for a baseline site.
+- Spin up the rest of the containers.
 
 ## Version Control
 - Develop is the source branch.

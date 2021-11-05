@@ -47,3 +47,7 @@ node_modules/
 # VS Code workspace #
 ######################
 *.code-workspace
+
+# Compiled Theme #
+######################
+dist/*
