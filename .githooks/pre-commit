@@ -61,11 +61,11 @@ else
         THEME_STYLELINT_PASS=false
         PASS=false
     fi
-    docker-compose run wp composer run-script test /site/web/app/themes/enterprise-theme/
+    docker-compose run wp composer run-script test /site/web/app/themes/
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mEnterprise THEME wpcs Passed!\033[0m\n"
+        printf "\t\033[32mTheme wpcs Passed!\033[0m\n"
     else
-        printf "\t\033[4132mEnterprise wcps Failed!\033[0m\n"
+        printf "\t\033[4132mTheme wcps Failed!\033[0m\n"
         APP_PHPLINT_PASS=false
         PASS=false
     fi
