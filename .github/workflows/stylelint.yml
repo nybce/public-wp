@@ -10,11 +10,10 @@ jobs:
         node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Reviewdog Stylelint Enterprise
+      - name: Stylelint Enterprise & Division
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          workdir: 'site/web/app/themes/enterprise-theme/'
       - name: Linting Enterprise scss
         run: npm install && npm run lint-css
         working-directory: 'site/web/app/themes/enterprise-theme/'
