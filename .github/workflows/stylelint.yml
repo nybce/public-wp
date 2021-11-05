@@ -22,7 +22,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           workdir: 'site/web/app/themes/enterprise-theme/'
-          stylelint_config: '.stylelintrc.json'
+          stylelint_config: '.stylelintrc'
           stylelint_input: '**/*.scss'
       - name: Reviewdog Stylelint Division
         uses: reviewdog/action-stylelint@v1
@@ -31,5 +31,5 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           workdir: 'site/web/app/themes/division-theme/'
-          stylelint_config: '.stylelintrc.json'
+          stylelint_config: '.stylelintrc'
           stylelint_input: '**/*.scss'
