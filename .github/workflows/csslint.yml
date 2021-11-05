@@ -5,7 +5,7 @@ on:
   # but only for the main branch
   pull_request:
     branches:
-      - '**'
+      - 'nope'
 
 jobs:
   run-linters:
