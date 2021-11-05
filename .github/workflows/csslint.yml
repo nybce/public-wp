@@ -1,0 +1,35 @@
+name: JS Lint
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - run: cd site/web/app/themes/enterprise-theme && npm install
+      - name: enterpriseeslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: true
+          node-version: 14.x
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'site/web/app/themes/enterprise-theme/'
+      - run: cd site/web/app/themes/division-theme && npm install
+      - name: divisionslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: true
+	  node-version: 14.x
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'site/web/app/themes/division-theme/'

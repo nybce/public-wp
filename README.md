@@ -31,7 +31,7 @@ The NYBC project is a wordpress multisite project.
 
 ### Docker
 - Build your docker containers -- run `docker-compose build`
-- Load a database.
+- Load a database. If no remote environments are available you can run `bash scripts/loadDb.sh seed.sql` for a baseline site.
 
 
 ## Version Control
