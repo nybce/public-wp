@@ -5,25 +5,14 @@ jobs:
   run-linters:
     name: Run Stylelint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ""
       - name: Reviewdog Stylelint Enterprise
-        uses: reviewdog/action-stylelint@v1
+        uses: actions/setup-node@v1
         with:
-          fail_on_error: true
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
+          node-version: ${{ matrix.node-version }}
           workdir: 'site/web/app/themes/enterprise-theme/'
-          stylelint_config: '.stylelintrc'
-          stylelint_input: '**/*.scss'
-      - name: Reviewdog Stylelint Division
-        uses: reviewdog/action-stylelint@v1
-        with:
-          fail_on_error: true
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          workdir: 'site/web/app/themes/division-theme/'
-          stylelint_config: '.stylelintrc'
-          stylelint_input: '**/*.scss'
+        run: npm lint-css
