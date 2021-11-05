@@ -1,13 +1,27 @@
-name: WPCS check
 
-on: pull_request
+
+name: PHP Code Sniffer
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    paths:
+      - 'src/**.php'
+      - '*.php'
 
 jobs:
   phpcs:
-    name: WPCS
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - run: pwd && ls -ltrh
-      - name: WPCS check
-        uses: 10up/wpcs-action@stable
+      - uses: actions/checkout@v1
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Detecting PHP Code Standards Violations
+        run: composer run-script phpcs
