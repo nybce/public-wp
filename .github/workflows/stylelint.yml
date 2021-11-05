@@ -16,5 +16,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           workdir: 'site/web/app/themes/enterprise-theme/'
       - name: Linting css
-        run: npm run lint-css
+        run: npm install && npm run lint-css
         working-directory: 'site/web/app/themes/enterprise-theme/'
