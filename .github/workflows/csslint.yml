@@ -31,6 +31,6 @@ jobs:
           fail_on_error: true
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          workdir: '../division-theme/'
+          workdir: 'site/web/app/themes/division-theme/'
           stylelint_config: '.stylelintrc.json'
           stylelint_input: '**/*.scss'
