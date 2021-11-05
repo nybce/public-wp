@@ -4,6 +4,12 @@ The NYBC project is a wordpress multisite project.
 
 # Local Development
 
+## Requirements
+Docker >= 17.09.0
+Python 3
+BBX
+Access to Github & 1password.
+
 ## Initial Setup
 
 ### System Configuration
@@ -24,6 +30,8 @@ The NYBC project is a wordpress multisite project.
 127.0.0.1 nybc-enterprise.local.org
 127.0.0.1	ribc.local.org
 ```
+
+3. In the project root run `cp .githooks/pre-commit .git/hooks/pre-commit`
 
 ### BBX
 - Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli
