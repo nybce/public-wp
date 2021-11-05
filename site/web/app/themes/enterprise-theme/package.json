@@ -8,9 +8,8 @@
     "build": "webpack --mode production --config ./webpack.prod.config.js",
     "lint": "eslint /theme/*.js",
     "lint-css": "stylelint ./**/*.scss",
-    "lint-css-fix": "stylelint /theme/**/*.scss --fix ",
-    "lint-fix": "eslint --fix /theme/*.js",
-    "lint:css": "wp-scripts lint-style"
+    "lint-css-fix": "stylelint /**/**/*.scss --fix ",
+    "lint-fix": "eslint --fix /**/*.js"
   },
   "keywords": [],
   "author": "tone4hook",
