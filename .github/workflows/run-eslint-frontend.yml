@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: "repo"
+          path: ""
       - name: Reviewdog ESLint Frontend
         uses: reviewdog/action-eslint@v1
         with:
