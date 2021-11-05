@@ -21,8 +21,8 @@ jobs:
           fail_on_error: true
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-        working-dir: ./site/web/app/themes/enterprise-theme
       - run: npm install
+        working-dir: ./site/web/app/themes/enterprise-theme
       - run: npm run lint-css
       - name: Check out Git repository
         uses: actions/checkout@v2
