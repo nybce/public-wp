@@ -24,9 +24,13 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
       - run: npm install
-      - run: npm run lint-css
-      - run: npm install
+      - run: npm run lint-css && pwd
+      - name: Reviewdog Stylelint
+        uses: reviewdog/action-stylelint@v1
         with:
-          node-version: 14.x
-        working-directory: ../division-theme
-      - run: pwd
+          fail_on_error: true
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          workdir: '../division-theme/'
+          stylelint_config: '.stylelintrc.json'
+          stylelint_input: '**/*.scss'
