@@ -1,5 +1,5 @@
+---
 name: Style Lint
-
 on:
   # Trigger the workflow on push or pull request,
   # but only for the main branch
@@ -10,9 +10,6 @@ jobs:
   run-linters:
     name: Run Stylelint
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./site/web/app/themes/enterprise-theme
     steps:
       - uses: actions/checkout@v2
       - name: Reviewdog Stylelint Enterprise
