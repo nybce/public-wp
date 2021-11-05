@@ -1,0 +1,22 @@
+---
+name: Style Lint
+on: [pull_request]
+jobs:
+  run-linters:
+    name: Run Stylelint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Stylelint Enterprise & Division
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Linting Enterprise scss
+        run: npm install && npm run lint-css
+        working-directory: 'site/web/app/themes/enterprise-theme/'
+      - name: Linting Division scss
+        run: npm install && npm run lint-css
+        working-directory: 'site/web/app/themes/division-theme/'

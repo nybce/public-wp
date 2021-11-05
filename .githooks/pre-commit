@@ -1,0 +1,94 @@
+#!/bin/bash
+set -o pipefail
+
+THEMES="$(git rev-parse --show-toplevel)/site/web/app/themes"
+MUPLUGINS="$(git rev-parse --show-toplevel)/site/web/app/mu-plugins"
+PLUGINS="$(git rev-parse --show-toplevel)/site/web/app/plugins"
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+STAGED_THEME_FILES=$(git diff --cached --name-only --diff-filter=ACM $THEMES)
+
+# Bail out if no staged changes
+if [[ "$STAGED_FILES" = "" ]]; then
+  exit 0
+fi
+
+THEME_ESLINT_PASS=true
+THEME_STYLELINT_PASS=true
+APP_PHPLINT_PASS=true
+# Check for eslint
+#if [[ ! -x "$ESLINT" ]]; then
+#  printf "\t\033[41mPlease install ESlint\033[0m (npm i --save-dev eslint)"
+#  exit 1
+#fi
+
+# THEME checks
+if [[ "$STAGED_THEME_FILES" = "" ]]; then
+    printf "No THEME changes. Skipping THEME checks\n"
+else
+    # Staged files exist. Run checks
+    docker-compose run division-theme npm run lint
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mTHEME ESLint Failed!\033[0m\n"
+        THEME_ESLINT_PASS=false
+        PASS=false
+    fi
+
+    docker-compose run division-theme npm run lint-css
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mDivision Theme stylelint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mDivision Theme stylelint Failed!\033[0m\n"
+        THEME_STYLELINT_PASS=false
+        PASS=false
+    fi
+    # Staged files exist. Run checks
+    docker-compose run enterprise-theme npm run lint
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mDivision Theme ESLint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mDivision Theme ESLint Failed!\033[0m\n"
+        THEME_ESLINT_PASS=false
+        PASS=false
+    fi
+
+    docker-compose run enterprise-theme npm run lint-css
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mEnterprise THEME StyleLint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mEnterprise THEME StyleLint Failed!\033[0m\n"
+        THEME_STYLELINT_PASS=false
+        PASS=false
+    fi
+    docker-compose run wp composer run-script test /site/web/app/themes/
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mTheme wpcs Passed!\033[0m\n"
+    else
+        printf "\t\033[4132mTheme wcps Failed!\033[0m\n"
+        APP_PHPLINT_PASS=false
+        PASS=false
+    fi
+
+fi
+
+
+
+# Summary
+if ! $PASS; then
+  printf "\n\n\033[41mCOMMIT FAILED:\033[0m\n"
+  if ! $THEME_ESLINT_PASS; then
+      printf "\n- THEME ESLINT failed\n"
+  fi
+  if ! APP_PHPLINT_PASS; then
+      printf "\n- Wordpress Coding Standards failed\n"
+  fi
+  if ! $THEME_STYLELINT_PASS; then
+      printf "\n- THEME STYLELINT failed\n"
+  fi
+  exit 1
+else
+  printf "\033[42mCOMMIT SUCCEEDED\033[0m\n"
+fi
+
+exit $?

@@ -7,37 +7,6 @@ RUN apk upgrade && \
   curl \
   mysql-client
 
-# Install PHP
-#RUN apk add --no-cache php7 \
-#  php7-apcu \
-#  php7-bcmath \
-#  php7-common \
-#  php7-ctype \
-#  php7-curl \
-#  php7-dev \
-#  php7-dom \
-#  php7-fpm \
-#  php7-gd \
-#  php7-iconv \
-#  php7-intl \
-#  php7-json \
-#  php7-mbstring \
-#  php7-mcrypt \
-#  php7-mysqli \
-#  php7-opcache \
-#  php7-openssl \
-#  php7-pdo \
-#  php7-pdo_mysql \
-#  php7-pear \
-#  php7-phar \
-#  php7-session \
-#  php7-simplexml \
-#  php7-tokenizer \
-#  php7-xml \
-#  php7-xmlreader \
-#  php7-xmlwriter \
-#  php7-xsl \
-#  php7-zlib
 
 # Install XDebug
 #RUN pecl config-set php_ini /etc/php7/php.ini
@@ -71,12 +40,8 @@ RUN /tmp/composer-install.sh
 
 WORKDIR /site
 RUN apk add ansible
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-COPY ./.env/local.env /site/.env
-COPY ./.env/local.env /.env
-RUN mkdir /envs
-COPY ./.env/* /envs
-COPY .vaultpass /envs
 RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
 RUN ls -al
@@ -84,8 +49,11 @@ RUN mkdir /db_dumps
 RUN apk add openssh
 RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
 RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
-
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+COPY ./.env/local.env /site/.env
+COPY ./.env/local.env /.env
+RUN mkdir /envs
+COPY ./.env/* /envs
+COPY .vaultpass /envs
 
 # Update composer dependencies at runtime
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh

@@ -1,0 +1,23 @@
+name: PHP Code Sniffer
+on:
+  pull_request:
+    paths:
+      - 'site/web/app/themes/**.php'
+      - '*.php'
+jobs:
+  phpcs:
+    defaults:
+      run:
+        working-directory: ./site
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Validate composer.json and composer.lock
+        run: composer update
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Detecting PHP Code Standards Violations
+        run: pwd && composer run-script test web/app/themes
