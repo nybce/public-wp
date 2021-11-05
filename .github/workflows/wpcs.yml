@@ -1,14 +1,9 @@
-
-
 name: PHP Code Sniffer
-
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
     paths:
-      - 'src/**.php'
+      - 'site/web/app/themes/**.php'
       - '*.php'
-
 jobs:
   phpcs:
 
