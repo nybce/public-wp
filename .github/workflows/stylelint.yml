@@ -1,15 +1,14 @@
-name: JS Lint
+name: Style Lint
 
 on:
   # Trigger the workflow on push or pull request,
   # but only for the main branch
   pull_request:
     branches:
-      - 'nope'
-
+      - '**'
 jobs:
   run-linters:
-    name: Run linters
+    name: Run Stylelint
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -25,7 +24,7 @@ jobs:
           workdir: 'site/web/app/themes/enterprise-theme/'
           stylelint_config: '.stylelintrc.json'
           stylelint_input: '**/*.scss'
-      - name: Reviewdog Stylelint
+      - name: Reviewdog Stylelint Division
         uses: reviewdog/action-stylelint@v1
         with:
           fail_on_error: true
