@@ -25,25 +25,8 @@ jobs:
           reporter: github-pr-review
       - run: npm install
       - run: npm run lint-css
-      - name: Check out Git repository
-        uses: actions/checkout@v2
+      - run: npm install
         with:
           node-version: 14.x
-      - run: cd site/web/app/themes/enterprise-theme && npm install
-      - name: enterpriseeslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          fail_on_error: true
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          workdir: 'site/web/app/themes/enterprise-theme'
-      - run: cd site/web/app/themes/division-theme && npm install
-      - name: divisionslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          fail_on_error: true
-          node-version: 14.x
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          eslint_flags: 'site/web/app/themes/division-theme/'
-          workdir: 'site/web/app/themes/division-theme'
+        working-directory: ../division-theme
+      - run: pwd
