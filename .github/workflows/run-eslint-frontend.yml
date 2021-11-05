@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: ""
-      - name: Reviewdog ESLint Frontend
+      - name: Reviewdog ESLint Enterprise
         uses: reviewdog/action-eslint@v1
         with:
           fail_on_error: true
@@ -16,4 +16,13 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           workdir: 'site/web/app/themes/enterprise-theme/'
+          eslint_flags: './*.js'
+      - name: Reviewdog ESLint Division
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: true
+          level: info
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          workdir: 'site/web/app/themes/division-theme/'
           eslint_flags: './*.js'

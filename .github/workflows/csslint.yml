@@ -16,15 +16,15 @@ jobs:
         working-directory: ./site/web/app/themes/enterprise-theme
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - name: Reviewdog Stylelint Enterprise
+        uses: reviewdog/action-stylelint@v1
         with:
-          node-version: '14.x'
           fail_on_error: true
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-      - run: npm install
-      - run: npm run lint-css && pwd
+          workdir: 'site/web/app/themes/enterprise-theme/'
+          stylelint_config: '.stylelintrc.json'
+          stylelint_input: '**/*.scss'
       - name: Reviewdog Stylelint
         uses: reviewdog/action-stylelint@v1
         with:
