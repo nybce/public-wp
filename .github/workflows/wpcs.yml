@@ -11,6 +11,3 @@ jobs:
       - run: pwd && ls -ltrh
       - name: WPCS check
         uses: 10up/wpcs-action@stable
-        with:
-          paths: 'site/web/app/themes' # Paths to check, space separated
-          use_local_config: 'true' # Use local config if available
