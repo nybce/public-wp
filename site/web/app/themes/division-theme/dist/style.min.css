@@ -1,0 +1,49 @@
+/**
+ * modules/fonts
+ * ---
+ * Declare fonts here
+ */
+/*
+@font-face {
+  font-family: "Font-Name";
+  src: url("fonts/font-name.eot");
+  src: url("fonts/font-name.eot?#iefix") format("embedded-opentype"),
+	url("fonts/font-name.woff") format("woff"),
+	url("fonts/font-name.ttf") format("truetype"),
+	url("fonts/font-name.svg#font-name") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+html,
+body {
+  width: 100%; }
+
+h1 {
+  font-size: 54px; }
+
+h2 {
+  font-size: 30px; }
+
+.animate-fade {
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+  will-change: transform opacity; }
+  .animate-fade-left {
+	transform: translateX(50px); }
+	.animate-fade-left.fade-in {
+	  transform: translateX(0); }
+  .animate-fade-right {
+	transform: translateX(-50px); }
+	.animate-fade-right.fade-in {
+	  transform: translateX(0); }
+  .animate-fade-up {
+	transform: translateY(50px); }
+	.animate-fade-up.fade-in {
+	  transform: translateY(0); }
+  .animate-fade-down {
+	transform: translateY(-50px); }
+	.animate-fade-down.fade-in {
+	  transform: translateY(0); }
+  .animate-fade.fade-in {
+	opacity: 1; }

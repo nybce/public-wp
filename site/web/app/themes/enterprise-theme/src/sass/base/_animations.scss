@@ -1,0 +1,41 @@
+.animate-fade {
+	opacity: 0;
+	transition: transform 1s ease, opacity 1s ease;
+	will-change: transform opacity;
+
+	&-left {
+		transform: translateX(50px);
+
+		&.fade-in {
+			transform: translateX(0);
+		}
+	}
+
+	&-right {
+		transform: translateX(-50px);
+
+		&.fade-in {
+			transform: translateX(0);
+		}
+	}
+
+	&-up {
+		transform: translateY(50px);
+
+		&.fade-in {
+			transform: translateY(0);
+		}
+	}
+
+	&-down {
+		transform: translateY(-50px);
+
+		&.fade-in {
+			transform: translateY(0);
+		}
+	}
+
+	&.fade-in {
+		opacity: 1;
+	}
+}

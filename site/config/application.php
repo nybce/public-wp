@@ -101,6 +101,18 @@ Config::define('DISALLOW_FILE_MODS', true);
 Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?: true);
 
 // application.php
+Config::define('WP_ALLOW_MULTISITE', true);
+Config::define( 'MULTISITE', true );
+Config::define( 'SUBDOMAIN_INSTALL', true );
+Config::define( 'DOMAIN_CURRENT_SITE', 'nybc-enterprise.local.org' );
+Config::define( 'PATH_CURRENT_SITE', '/' );
+Config::define( 'SITE_ID_CURRENT_SITE', 1 );
+Config::define( 'BLOG_ID_CURRENT_SITE', 1 );
+
+Config::define('ADMIN_COOKIE_PATH', '/');
+Config::define('COOKIE_DOMAIN', '');
+Config::define('COOKIEPATH', '');
+Config::define('SITECOOKIEPATH', '');
 
 
 /**

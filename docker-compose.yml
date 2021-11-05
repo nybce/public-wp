@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.4"
 
 services:
   # database service
@@ -47,20 +47,20 @@ services:
     depends_on:
       - db
     ports:
-      - "8080:8080"
+      - "80:8080"
     networks:
       - dbg-net
   # theme
-  theme:
+  enterprise-theme:
     build:
       dockerfile: docker/theme.local.Dockerfile
       context: "."
+      target: "enterprise-builder"
     # mounting local volume for hot-reload
     # TODO determine npm or yarn and remove one.
     volumes:
-      - ./site/web/app/themes/boilerplate-theme:/theme
       - /theme/node_modules
-      - /var/cache/yarn
+      - ./site/web/app/themes/enterprise-theme:/theme
     depends_on:
       - wp
     ports:
@@ -69,6 +69,24 @@ services:
     networks:
       - dbg-net
 
+  division-theme:
+    build:
+      dockerfile: docker/theme.local.Dockerfile
+      context: "."
+      target: "division-builder"
+    # mounting local volume for hot-reload
+    # TODO determine npm or yarn and remove one.
+    volumes:
+      - /theme/node_modules
+      - ./site/web/app/themes/division-theme:/theme
+      - /var/cache/yarn
+    depends_on:
+      - wp
+    ports:
+      - "3002:3000"
+      - "3003:3001"
+    networks:
+      - dbg-net
 networks:
   dbg-net:
 volumes:

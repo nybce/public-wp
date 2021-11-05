@@ -1,9 +1,4 @@
-FROM node:14-alpine as builder
-COPY ./site/web/app/themes/boilerplate-theme/package.json /source/
-WORKDIR /source
-RUN npm install
-
-FROM node:14-alpine
+FROM node:14-alpine as node-base
 
 RUN apk add --no-cache bash \
   autoconf \
@@ -24,11 +19,29 @@ RUN apk add --no-cache bash \
   zlib \
   zlib-dev \
   lcms2-dev
-
 RUN rm -rf /var/cache/apk/*
 
-RUN yarn config set cache-folder /var/cache/yarn
-COPY --from=builder /source/node_modules /theme/node_modules
+
+FROM node-base as enterprise-builder
+COPY ./site/web/app/themes/enterprise-theme/package.json /source/
+WORKDIR /source
+RUN npm install
+RUN ls -lrth
+RUN mkdir /theme
+RUN mv /source/node_modules /theme/node_modules
+WORKDIR /theme
+
+COPY docker/bin/theme-entrypoint.sh /usr/local/bin/theme-entrypoint.sh
+ENTRYPOINT ["theme-entrypoint.sh"]
+CMD ["npm", "run", "start"]
+
+
+FROM node-base as division-builder
+COPY ./site/web/app/themes/division-theme/package.json /source/
+WORKDIR /source
+RUN npm install
+RUN mkdir /theme
+RUN mv /source/node_modules /theme/node_modules
 WORKDIR /theme
 
 COPY docker/bin/theme-entrypoint.sh /usr/local/bin/theme-entrypoint.sh
