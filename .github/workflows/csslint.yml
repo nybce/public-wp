@@ -11,7 +11,9 @@ jobs:
   run-linters:
     name: Run linters
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./site/web/app/themes/enterprise-theme
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
@@ -22,7 +24,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
       - run: npm install
-        working-dir: ./site/web/app/themes/enterprise-theme
       - run: npm run lint-css
       - name: Check out Git repository
         uses: actions/checkout@v2
