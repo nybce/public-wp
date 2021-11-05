@@ -166,6 +166,9 @@ sitemap.xml.gz
 .vaultpass
 
 /media
+!db_dumps/.gitkeep
+db_dumps/
+!db_dumps/seed.sql
 site/uploads/
 # End of https://www.gitignore.io/api/osx,linux,windows,wordpress,phpstorm+all
 
