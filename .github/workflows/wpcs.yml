@@ -6,7 +6,9 @@ on:
       - '*.php'
 jobs:
   phpcs:
-
+    defaults:
+      run:
+        working-directory: ./site
     runs-on: ubuntu-latest
 
     steps:
