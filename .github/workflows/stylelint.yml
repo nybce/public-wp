@@ -1,17 +1,14 @@
 ---
 name: Style Lint
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
-  pull_request:
-    branches:
-      - '**'
+on: [pull_request]
 jobs:
   run-linters:
     name: Run Stylelint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: ""
       - name: Reviewdog Stylelint Enterprise
         uses: reviewdog/action-stylelint@v1
         with:
