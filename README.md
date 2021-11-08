@@ -31,7 +31,7 @@ Access to Github & 1password.
 127.0.0.1	ribc.local.org
 ```
 
-3. In the project root run `cp .githooks/pre-commit .git/hooks/pre-commit`
+3. In the project root run `git config --local core.hooksPath .githooks/`
 
 ### BBX
 - Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli

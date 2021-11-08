@@ -80,7 +80,7 @@ if ! $PASS; then
   if ! $THEME_ESLINT_PASS; then
       printf "\n- THEME ESLINT failed\n"
   fi
-  if ! APP_PHPLINT_PASS; then
+  if ! $APP_PHPLINT_PASS; then
       printf "\n- Wordpress Coding Standards failed\n"
   fi
   if ! $THEME_STYLELINT_PASS; then

@@ -49,10 +49,10 @@ RUN mkdir /db_dumps
 RUN apk add openssh
 RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
 RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
-COPY ./.env/local.env /site/.env
-COPY ./.env/local.env /.env
+COPY ./envfiles/local.env /site/.env
+COPY ./envfiles/local.env /.env
 RUN mkdir /envs
-COPY ./.env/* /envs
+COPY ./envfiles/* /envs
 COPY .vaultpass /envs
 
 # Update composer dependencies at runtime

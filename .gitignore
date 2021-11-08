@@ -172,3 +172,6 @@ db_dumps/
 site/uploads/
 # End of https://www.gitignore.io/api/osx,linux,windows,wordpress,phpstorm+all
 
+db_dumps/*
+media/*
+.vaultpass
