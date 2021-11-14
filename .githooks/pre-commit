@@ -98,8 +98,6 @@ if ! $PASS; then
       printf "\n- THEME STYLELINT failed\n"
   fi
   exit 1
-else
-  printf "\033[42mCOMMIT SUCCEEDED\033[0m\n"
 fi
 
 exit $?

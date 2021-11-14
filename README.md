@@ -49,7 +49,8 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
    Now you will be able to create feature branches using `git flow` commands like this `git flow feature start <JIRA TICKET ID>-authentication`.
 1. Configure Git Hooks. In the project root run:
     1. `cp .githooks/pre-commit .git/hooks/pre-commit`
-    1. `chmod +x .git/hooks/pre-commit`
+    1. `cp .githooks/commit-msg .git/hooks/commit-msg`
+    1. `chmod +x .git/hooks/*`
 
 ### BBX
 - Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli
