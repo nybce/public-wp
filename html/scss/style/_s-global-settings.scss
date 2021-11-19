@@ -1,0 +1,74 @@
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+/* GLOBAL SETTINGS */
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+html {
+  height: auto;
+}
+
+body {
+  height: auto;
+  overflow: visible;
+}
+
+body ::selection {
+  color: #fff;
+  background: #000;
+}
+
+body ::-moz-selection {
+  color: #fff;
+  background: #000;
+}
+
+.swiper-slide:not(:first-child) {
+  display: block;
+}
+
+.bg-color-blue {
+  background-color: #274298;
+}
+
+.bg-color-dark-blue {
+  background-color: #002169;
+  ;
+}
+
+.bg-color-light-blue {
+  background-color: #47A3FF;
+}
+
+.bg-color-red {
+  background-color: #DF1818;
+}
+
+.bg-color-violet {
+  background-color: #47A3FF;
+}
+
+.clr-grey {
+  background: #C4C4C4;
+}
+
+.clr-yellow {
+  background: #FFA800;
+}
+
+.clr-blue {
+  background: #009BCC;
+}
+
+.clr-aqua {
+  background: #BDF6FD;
+}
+
+.clr-white {
+  background: #FFFFFF;
+}
+
+.clr-violet {
+  background: #7C1DC9;
+}
+
+.clr-black {
+  background: #161616;
+}

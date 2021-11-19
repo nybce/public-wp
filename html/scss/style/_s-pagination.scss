@@ -1,0 +1,113 @@
+/**-----------------------------------------------------------------------*/
+/** Pagination */
+/**-----------------------------------------------------------------------*/
+.pagination {
+  text-align: center;
+
+  ul {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.pagination li {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 2em;
+  height: 2em;
+  font-size: 1.6rem;
+  line-height: 1.5em;
+  font-weight: 500;
+  color: $color-text-10;
+  background: $color-white;
+  border: 0.0625em solid $color-text-30;
+  border-radius: 100%;
+  transition: $transition;
+  cursor: pointer;
+  margin-right: 1em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .pagination-arrow {
+    i {
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        height: 0.5em;
+        width: 0.5em;
+        top: 50%;
+        left: 50%;
+        border-right: 0.0625em solid $color-text-10;
+        border-bottom: 0.0625em solid $color-text-10;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        transition: 0.25s ease-in;
+      }
+    }
+
+    &.left {
+      left: 55%;
+
+      i {
+        &::before {
+          transform: translate(-50%, -50%) rotate(135deg);
+        }
+      }
+    }
+
+    &.right {
+      left: 45%;
+    }
+  }
+}
+
+.pagination li a {
+  @include centerAbsolute;
+}
+
+.pagination li.active {
+  background: $color-primary-base2-10;
+  border-color: $color-primary-base2-10;
+  a {
+    color: $color-white;
+  }
+}
+
+.pagination .dots {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (min-width: 1200px) {
+  .pagination li:hover {
+    background: $color-info;
+    border-color: $color-info;
+    a {
+      color: $color-white;
+    }
+  }
+
+  .pagination li.dots:hover {
+    color: $color-white;
+  }
+
+  .pagination li:hover {
+    .pagination-arrow {
+      i {
+        &::before {
+          border-color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .pagination li {
+    font-size: 1.4rem;
+  }
+}
