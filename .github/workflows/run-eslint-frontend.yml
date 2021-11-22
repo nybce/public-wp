@@ -26,3 +26,12 @@ jobs:
           reporter: github-pr-review
           workdir: 'site/web/app/themes/division-theme/'
           eslint_flags: './*.js'
+      - name: Reviewdog ESLint HTML
+        uses: reviewdog/action-eslint@v1
+        with:
+          fail_on_error: true
+          level: info
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          workdir: 'html/'
+          eslint_flags: './*.js'
