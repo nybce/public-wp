@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Enforce commit message naming.
 INPUT_FILE=$1
 START_LINE=`head -n1 $INPUT_FILE`
