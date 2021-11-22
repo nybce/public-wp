@@ -7,6 +7,17 @@ PLUGINS="$(git rev-parse --show-toplevel)/site/web/app/plugins"
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
 STAGED_THEME_FILES=$(git diff --cached --name-only --diff-filter=ACM $THEMES)
 
+# Enforce branch naming.
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+error_msg="Aborting commit. Your branch must start with a N2RDEV-* Jira issue number format, e.g. 'N2RDEV-123-issue-name. Use \`git branch --move <N2RDEV-123-new-name>\` to rename."
+# Regular expression to validate that the branch name starts with Jira story ID, e.g. IFES-000.
+no_match_n2rdev=1; [[ $branch_name =~ N2RDEV-[0-9]+ ]] && no_match_n2rdev=0
+
+if [ $no_match_n2rdev == 1 ]; then
+    echo "${error_msg}" >&2
+    exit 1
+fi
+
 # Bail out if no staged changes
 if [[ "$STAGED_FILES" = "" ]]; then
   exit 0
@@ -87,8 +98,6 @@ if ! $PASS; then
       printf "\n- THEME STYLELINT failed\n"
   fi
   exit 1
-else
-  printf "\033[42mCOMMIT SUCCEEDED\033[0m\n"
 fi
 
 exit $?

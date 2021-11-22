@@ -79,6 +79,7 @@ services:
     volumes:
       - /theme/node_modules
       - ./site/web/app/themes/division-theme:/theme
+      - ./html:/theme/html
       - /var/cache/yarn
     depends_on:
       - wp
