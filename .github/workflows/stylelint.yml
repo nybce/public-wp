@@ -22,4 +22,4 @@ jobs:
         working-directory: 'site/web/app/themes/division-theme/'
       - name: Linting HTML scss
         run: npm install && npm run lint-css
-        working-directory: 'site/web/app/themes/division-theme/'
+        working-directory: 'html/'

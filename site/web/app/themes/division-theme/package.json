@@ -6,10 +6,12 @@
   "scripts": {
     "start": "webpack --mode development",
     "build": "webpack --mode production --config ./webpack.prod.config.js",
-    "lint": "eslint /theme/*.js",
-    "lint-css": "stylelint ./**/*.scss",
-    "lint-css-fix": "stylelint /**/**/*.scss --fix ",
-    "lint-fix": "eslint --fix /**/*.js"
+    "lint": "eslint .",
+    "lint-css": "stylelint **/*.scss",
+    "lint-css-fix": "stylelint **/*.scss --fix ",
+    "lint-fix": "eslint --fix .",
+    "lint-html": "eslint /html",
+    "lint-html-fix": "eslint /html"
   },
   "keywords": [],
   "author": "tone4hook",

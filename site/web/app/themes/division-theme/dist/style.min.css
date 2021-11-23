@@ -38,8 +38,7 @@ h2 {
     .animate-fade-left.fade-in {
       transform: translateX(0); }
   .animate-fade-right {
-    transform: translateX(-50px);
-    height: 10px; }
+    transform: translateX(-50px); }
     .animate-fade-right.fade-in {
       transform: translateX(0); }
   .animate-fade-up {

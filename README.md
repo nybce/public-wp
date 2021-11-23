@@ -38,7 +38,7 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
    No branches exist yet. Base branches must be created now.
    Branch name for production releases: [master]
    Branch name for "next release" development: [develop]
-   
+
    How to name your supporting branch prefixes?
    Feature branches? [feature/] feature/N2RDEV-
    Release branches? [release/]
@@ -91,7 +91,27 @@ Following the line `web/app/plugins/*` add `!web/app/plugins/PLUGIN_DIRECTORY` t
 
 ## Theme Development
 
-TBD.
+### Linting
+
+#### Baselines
+- JS, SCSS, and PHP are linted before commits are able to made and before pull requests are able to be merged.
+- JS is linted with eslint and based on the wordpress/eslint-plugin rules
+- SCSS is linted with stylelint and based on stylelint-config-wordpress
+- PHP is linted via phpcs and uses Wordpress Coding Standards
+
+##### JS
+- Any 3rd party libraries should be placed in a `lib` directory
+- To lint the theme js run `bash scripts/lintJs.sh THEMENAME`. Theme name will be division or enterprise
+- To lint the HTML js run `bash scripts/lintJsHtml.sh`
+
+##### SCSS
+- Any 3rd party libraries should be placed in a `lib` directory
+- To lint the theme scss run `bash scripts/lintCss.sh THEMENAME`. Theme name will be division or enterprise
+- To lint the HTML css run `bash scripts/lintCssHtml.sh`
+
+##### PHP
+- To run phpcs on wordpress development run `bash scripts/lintWp.sh`
+
 
 ### Folder Structure
 
@@ -143,8 +163,8 @@ Wherever possible centralize definitions using variables or mixins.
 ## Deployment
 Deployment occurs upon merge & successful build to an environment branch.
 
-1. PRs merged to `develop` branch will be deployed to the `develop` environment. 
-1. Upon internal approval `develop` will be merged to `staging`. 
+1. PRs merged to `develop` branch will be deployed to the `develop` environment.
+1. Upon internal approval `develop` will be merged to `staging`.
 1. Upon client approval `develop` will be merged to `master` branch for a production deploy.
 
 - `master` branch deploys to `production` environment
