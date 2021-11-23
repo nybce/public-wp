@@ -26,6 +26,8 @@ fi
 
 THEME_ESLINT_PASS=true
 THEME_STYLELINT_PASS=true
+HTML_ESLINT_PASS=true
+HTML_STYLELINT_PASS=true
 APP_PHPLINT_PASS=true
 # Check for eslint
 #if [[ ! -x "$ESLINT" ]]; then
@@ -55,6 +57,25 @@ else
         THEME_STYLELINT_PASS=false
         PASS=false
     fi
+    docker-compose run division-theme npm run lint-html
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mHTML ESLint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mHTML ESLint Failed!\033[0m\n"
+        HTML_ESLINT_PASS=false
+        PASS=false
+    fi
+
+    docker-compose exec division-theme bash -c "cd /html && ../theme/node_modules/stylelint/bin/stylelint.js **/*.scss"
+    if [[ "$?" == 0 ]]; then
+        printf "\t\033[32mHTML stylelint Passed!\033[0m\n"
+    else
+        printf "\t\033[41mHTML stylelint Failed!\033[0m\n"
+        HTML_STYLELINT_PASS=false
+        PASS=false
+    fi
+
+
     # Staged files exist. Run checks
     docker-compose run enterprise-theme npm run lint
     if [[ "$?" == 0 ]]; then
@@ -97,6 +118,9 @@ if ! $PASS; then
   fi
   if ! $THEME_STYLELINT_PASS; then
       printf "\n- THEME STYLELINT failed\n"
+  fi
+  if ! $HTML_STYLELINT_PASS; then
+      printf "\n- HTML STYLELINT failed\n"
   fi
   exit 1
 fi
