@@ -2,10 +2,22 @@
 set -o pipefail
 
 THEMES="$(git rev-parse --show-toplevel)/site/web/app/themes"
+HTML="$(git rev-parse --show-toplevel)/site/web/app/html"
 MUPLUGINS="$(git rev-parse --show-toplevel)/site/web/app/mu-plugins"
 PLUGINS="$(git rev-parse --show-toplevel)/site/web/app/plugins"
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
 STAGED_THEME_FILES=$(git diff --cached --name-only --diff-filter=ACM $THEMES)
+STAGED_HTML_FILES=(git diff --cached --name-only --diff-filter=ACM $HTML)
+# Enforce branch naming.
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+error_msg="Aborting commit. Your branch must start with a N2RDEV-* Jira issue number format, e.g. 'N2RDEV-123-issue-name. Use \`git branch --move <N2RDEV-123-new-name>\` to rename."
+# Regular expression to validate that the branch name starts with Jira story ID, e.g. IFES-000.
+no_match_n2rdev=1; [[ $branch_name =~ N2RDEV-[0-9]+ ]] && no_match_n2rdev=0
+
+if [ $no_match_n2rdev == 1 ]; then
+    echo "${error_msg}" >&2
+    exit 1
+fi
 
 # Enforce branch naming.
 branch_name=$(git rev-parse --abbrev-ref HEAD)
@@ -33,7 +45,7 @@ APP_PHPLINT_PASS=true
 #fi
 
 # THEME checks
-if [[ "$STAGED_THEME_FILES" = "" ]]; then
+if [[ "$STAGED_THEME_FILES" = "" ]] && [[ "$STAGED_HTML_FILES" = "" ]]; then
     printf "No THEME changes. Skipping THEME checks\n"
 else
     # Staged files exist. Run checks
