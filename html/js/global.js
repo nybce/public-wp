@@ -343,30 +343,6 @@ jQuery(function ($) {
 
   document.addEventListener('keydown', keyboardFocus, false);
 
-  // filter style click
-  $('.filters-list li').on('click', function () {
-    $(this)
-      .addClass('active')
-      .siblings()
-      .removeClass('active');
-  });
-
-  // categories mobile
-  $('.category-title').on('click', function () {
-    $(this)
-      .toggleClass('active')
-      .closest('.categories-menu')
-      .toggleClass('active');
-  });
-
-  $('.categories-list-item').on('click', function () {
-    $(this)
-      .closest('.categories-menu')
-      .removeClass('active')
-      .find('.category-title')
-      .removeClass('active');
-  });
-
 
   // Invalid Input
   $('.input[required]').on('blur', function () {
@@ -376,30 +352,6 @@ jQuery(function ($) {
       $(this).addClass('invalid');
     }
   });
-
-
-
-  // product filters
-  $('.filters-list li').on('click', function () {
-    const filter = $(this).data('filter');
-    $('.filters-row > *').hide();
-    $('.filters-row > ' + filter).show();
-  });
-
-
-
-  //show all
-  $('.filter-all .show-all-btn').on('click', function () {
-    $(this).parent('.filter-all').toggleClass('show');
-    $(this).parent().find('.filter-list').slideToggle(600);
-
-    if ($(this).parents('.filter-all').hasClass('show')) {
-      $(this).text($(this).data('active-text'));
-    } else {
-      $(this).text($(this).data('orig-text'));
-    }
-  });
-
 
 
   //visible more text seo block
@@ -415,61 +367,6 @@ jQuery(function ($) {
   });
 
 
-
-  //autocomplete
-  // var available_tags = [
-  //   "Мобільний телефон Xiaomi Poco X3 6/128GB",
-  //   "Мобільний телефон Xiaomi Poco X3 6/64GB",
-  //   "Мобільний телефон Xiaomi Poco X3 6/256GB",
-  //   " Xiaomi Poco X3 6/128GB планшет",
-  //   "Мобільний телефон Xiaomi Poco X3 8/128GB",
-  //   "Мобільний телефон Xiaomi Poco X3 8/64GB",
-  //   "Мобільний телефон Xiaomi Poco X3 8/256GB"
-  // ];
-  var availableTags = [
-    {
-      value: 'Мобільний телефон Xiaomi Redmi Note 10 4/128GB Lake Green',
-      icon: 'img/content/search-img-1.png'
-    },
-    {
-      value: 'Мобильный телефон Vivo V21 8/128GB Dusk Blue',
-      icon: 'img/content/search-img-2.png'
-    },
-    {
-      value: 'Мобильный телефон Huawei P40 lite 6/128GB Black',
-      icon: 'img/content/search-img-3.png'
-    },
-    {
-      value: 'Мобільний телефон Xiaomi Redmi Note 10 4/128GB Lake Green',
-      icon: 'img/content/search-img-4.png'
-    },
-    {
-      value: 'Мобильный телефон Nokia 3.4 3/64GB Charcoal',
-      icon: 'img/content/search-img-5.png'
-    }
-  ];
-
-  var btnSeeAll = [
-    {
-      value: 'Переглянути всі',
-      counter: '128',
-
-    }
-  ]
-
-  if ($('.search-form').length) {
-    $('.search-form input').each(function () {
-      $(this).autocomplete({
-        source: availableTags
-
-      }).autocomplete('instance')._renderItem = function (ul, item) {
-        return $('<li>')
-          .append('<span class="img-wrapp"><img src="' + item.icon + '" alt="preview image"/></span>' + '<div class="search-item-title">' + item.value + '</div>')
-          .appendTo(ul)
-      }
-    });
-  };
-
   //menu
   $(".mobile-button").on("click", function () {
     $(this).toggleClass("active");
@@ -478,67 +375,23 @@ jQuery(function ($) {
     $('.sidebar-close').removeClass('active');
     $('.sidebar').removeClass('active');
     $("html").toggleClass("overflow-menu");
-    $(this).parents("header").toggleClass("open-menu");
-    _functions.addScroll();
-  });
-
-  //open megamenu
-  $(".dropdown-toggle").on("click", function (e) {
-    e.preventDefault();
-    $('header').removeClass('open-menu');
-    $('.mobile-button').removeClass('active');
-    $("html").removeClass("overflow-menu");
-    $('.sidebar-close').removeClass('active');
-    $('.sidebar').removeClass('active');
-
-    if ($(this).hasClass("active")) {
-      $(this).removeClass("active");
-      $(".dropdown-menu").removeClass("active");
-      // _functions.addScroll();
-    } else {
-      $(".dropdown-menu").addClass("active");
-      $(this).addClass("active");
-      // _functions.removeScroll();
-    }
-  });
-
-  $(".bg-layer").on("click", function () {
-    $(this).closest(".dropdown-menu").removeClass("active");
-    $(".dropdown-toggle").removeClass("active");
+    $(this).parents('header').find('.toggle-block').toggleClass('open');
     _functions.addScroll();
   });
 
 
-
-  //layer close
-  $('.layer-close').on('click', function () {
-    $('header').find('.header-bottom').removeClass('active')
-    $('header').find('.ham').removeClass('active')
-    $('header').removeClass('active')
-    $('html').removeClass('overflow-menu');
-    _functions.addScroll();
-  });
-
-
-
-  // mobile btn sub menu
+  // mobile menu
   $(document).on('click', '.dropdown-btn', function () {
     if ($(window).width() < 1199) {
       $(this).parent().addClass('active');
     }
   });
-  $(document).on('click', '.dropdown-list-title', function () {
-    if ($(window).width() < 1199) {
-      $(this).parent().toggleClass('active');
-      $(this).parent().find('.sub-menu').slideToggle(600);
-    }
-  });
+
   $('.dropdown-close').on('click', function () {
     if ($(window).width() < 1199) {
       $(this).parents('.dropdown-item').removeClass('active');
     }
   });
-
 
 
   //accordion
@@ -551,41 +404,6 @@ jQuery(function ($) {
       $(this).closest('.accordion').find('.accordion-title').not(this).removeClass('active').next().slideUp();
       $(this).addClass('active').next().slideDown();
     }
-  });
-
-  //filters
-  $('.filter-title').on('click', function () {
-    $(this).toggleClass('active');
-    $(this).next('.filter-inner').slideToggle(500);
-  });
-  if ($(window).width() < 992) {
-    var sidebarClose = $('.sidebar-close').attr('data-close'),
-      sidebarFilters = $('.sidebar-close').find('img').attr('src');
-
-    $('.sidebar-close').on('click', function () {
-      $(this).toggleClass('active');
-      $('.sidebar').toggleClass('active');
-      if ($(this).hasClass('active')) {
-        _functions.removeScroll();
-      } else {
-        _functions.addScroll();
-      }
-    });
-    $('.sidebar-overlay').on('click', function () {
-      $(this).closest('.sidebar').removeClass('active');
-      $('.sidebar-close').removeClass('active');
-      $('.sidebar-close').find('img').attr('src', sidebarFilters);
-      _functions.addScroll();
-    });
-  }
-
-  //clear filter
-  $('.clear-filter').on("click", function (e) {
-    e.preventDefault();
-    $('.sidebar-entry').each(function () {
-      $('input').prop('checked', false);
-      $('li.active').removeClass('active');
-    });
   });
 
 
@@ -603,31 +421,10 @@ jQuery(function ($) {
     $(this).closest('.tab-nav').removeClass('active').find('.tab-title').text($(this).text());
   });
 
-  // open dropdown-category
-  $(".dropdown-category-item").hover(function () {
-    if ($(window).width() > 1200) {
-      $(this).find('.dropdown-submenu').toggleClass('active');
-    }
+
+  // tag
+  $(document).on('click', '.tag', function () {
+    $(this).toggleClass('active');
   });
-
-  $(".dropdown-category-item").on('click', function () {
-    if ($(window).width() < 1200) {
-      $(this).toggleClass('active');
-      $(this).find('.dropdown-submenu').slideToggle(500);
-    }
-  });
-
-  // dropdown-list
-  $(document).on('click', '.navigation ul li.dropdown', function () {
-    if ($(window).width() < 1200) {
-      $(this).toggleClass('active').find('.dropdown-list').toggleClass('active');
-    }
-  });
-
-    // dropdown-list
-    $(document).on('click', '.tag', function () {
-      $(this).toggleClass('active');
-    });
-
 
 });

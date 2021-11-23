@@ -118,13 +118,16 @@
       position: absolute;
       top: 50%;
       right: 0;
-      width: 1.125em;
-      height: 0.125em;
       transform: translateY(-50%);
       border-right: 2px solid;
       border-bottom: 2px solid;
       border-color: $color-primary-base1-10;
       transition: $transition;
+    }
+
+    &::before {
+      width: 1.125em;
+      right: -0.0625em;
     }
 
     &::after {
@@ -159,12 +162,12 @@
     margin-right: 1.21em;
     background: transparent;
 
-    &:focus {
-      background: transparent;
-      border-color: transparent;
-      max-width: 8.85em;
-      outline: none;
-    }
+    // &:focus {
+    //   background: transparent;
+    //   border-color: transparent;
+    //   max-width: 8.85em;
+    //   outline: none;
+    // }
   }
 
   button {
@@ -358,6 +361,17 @@
     }
   }
 
+  .btn-search {
+    .input {
+      &:focus {
+        background: transparent;
+        border-color: transparent;
+        max-width: 8.85em;
+        outline: none;
+      }
+    }
+  }
+
   .btn-search:hover {
     background: $color-primary-base1-10;
     border-color: $color-primary-base1-10;
@@ -389,6 +403,7 @@
       }
     }
   }
+
 
   // .btn-plus {
   //   &-primary:hover {
@@ -422,6 +437,19 @@
       &::before,
       &::after {
         background: $color-white;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .btn-search {
+    .input {
+      max-width: 100%;
+      &:focus {
+        background: transparent;
+        border-color: transparent;
+        outline: none;
       }
     }
   }

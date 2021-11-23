@@ -84,3 +84,13 @@ a {
     background: $color-primary-base1-10;
   }
 }
+
+/**--------------------------------------------------------------------------------------------*/
+/** RESET STYLE FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division {
+  html:not(.touch-screen)::-webkit-scrollbar-thumb,
+  html:not(.touch-screen) *::-webkit-scrollbar-thumb {
+    background: $color-primary-base2-20;
+  }
+}
