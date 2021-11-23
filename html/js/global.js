@@ -384,12 +384,14 @@ jQuery(function ($) {
   $(document).on('click', '.dropdown-btn', function () {
     if ($(window).width() < 1199) {
       $(this).parent().addClass('active');
+      $(this).parents().find('.toggle-block.open').addClass('remove-overflow');
     }
   });
 
   $('.dropdown-close').on('click', function () {
     if ($(window).width() < 1199) {
       $(this).parents('.dropdown-item').removeClass('active');
+      $(this).parents().find('.toggle-block.open').removeClass('remove-overflow');
     }
   });
 

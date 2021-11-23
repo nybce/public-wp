@@ -181,44 +181,111 @@ a {
   width: 100% !important;
 }
 
+.spacer-0 {
+  height: 0;
+}
+
 .spacer-2 {
-  height: 2rem;
+  height: 0.2rem;
 }
 
 .spacer-4 {
-  height: 4rem;
+  height: 0.4rem;
 }
 
 .spacer-8 {
-  height: 8rem;
+  height: 0.8rem;
 }
 
 .spacer-12 {
-  height: 12rem;
+  height: 1.2rem;
 }
 
 .spacer-16 {
-  height: 16rem;
+  height: 1.6rem;
 }
 
 .spacer-24 {
-  height: 24rem;
+  height: 2.4rem;
 }
 
 .spacer-32 {
-  height: 32rem;
+  height: 3.2rem;
 }
 
 .spacer-40 {
-  height: 40rem;
+  height: 4rem;
 }
 
 .spacer-48 {
-  height: 48rem;
+  height: 4.8rem;
 }
 
 .spacer-64 {
-  height: 64rem;
+  height: 6.4rem;
 }
+
+.spacer-96 {
+  height: 9.6rem;
+}
+
+.spacer-120 {
+  height: 12rem;
+}
+
+@media (max-width: 991px) {
+  .spacer-xs-0 {
+    height: 0;
+  }
+
+  .spacer-xs-2 {
+    height: 0.2rem;
+  }
+
+  .spacer-xs-4 {
+    height: 0.4rem;
+  }
+
+  .spacer-xs-8 {
+    height: 0.8rem;
+  }
+
+  .spacer-xs-12 {
+    height: 1.2rem;
+  }
+
+  .spacer-xs-16 {
+    height: 1.6rem;
+  }
+
+  .spacer-xs-24 {
+    height: 2.4rem;
+  }
+
+  .spacer-xs-32 {
+    height: 3.2rem;
+  }
+
+  .spacer-xs-40 {
+    height: 4rem;
+  }
+
+  .spacer-xs-48 {
+    height: 4.8rem;
+  }
+
+  .spacer-xs-64 {
+    height: 6.4rem;
+  }
+
+  .spacer-xs-96 {
+    height: 9.6rem;
+  }
+
+  .spacer-xs-120 {
+    height: 12rem;
+  }
+}
+
 
 /* breakpoints */

@@ -1,6 +1,14 @@
 /**--------------------------------------------------------------------------------*/
 /**     RESET     */
 /**--------------------------------------------------------------------------------*/
+:root {
+  --track-color: #FC1921;
+}
+
+.division {
+  --track-color: #439BFF;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -8,7 +16,7 @@ html {
 *,
 *:before,
 *:after {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 * {
@@ -37,12 +45,12 @@ html:not(.touch-screen) *::-webkit-scrollbar {
 
 html:not(.touch-screen)::-webkit-scrollbar-track,
 html:not(.touch-screen) *::-webkit-scrollbar-track {
-  background: #E2E2E2;
+  background: #e2e2e2;
 }
 
 html:not(.touch-screen)::-webkit-scrollbar-thumb,
 html:not(.touch-screen) *::-webkit-scrollbar-thumb {
-  background: $color-primary-base1-10;
+  background: var(--track-color);
   border-radius: 10px;
 }
 
@@ -54,7 +62,7 @@ html:not(.touch-screen) *::-webkit-scrollbar-thumb {
 }
 
 button {
-  background: none
+  background: none;
 }
 
 a {
@@ -67,7 +75,6 @@ a {
 }
 
 @media (max-width: 767px) {
-
   html::-webkit-scrollbar,
   html *::-webkit-scrollbar {
     width: 3px;
@@ -81,16 +88,6 @@ a {
 
   html::-webkit-scrollbar-thumb,
   html *::-webkit-scrollbar-thumb {
-    background: $color-primary-base1-10;
-  }
-}
-
-/**--------------------------------------------------------------------------------------------*/
-/** RESET STYLE FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division {
-  html:not(.touch-screen)::-webkit-scrollbar-thumb,
-  html:not(.touch-screen) *::-webkit-scrollbar-thumb {
-    background: $color-primary-base2-20;
+    background: var(--track-color);
   }
 }

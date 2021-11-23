@@ -47,8 +47,8 @@
 
                                         <div class="col-xl-6 col-12 align-self-center">
                                             <div class="dropdown-info">
-                                                <button class="btn-link btn-link-secondary right">Products &
-                                                    Services<i></i></button>
+                                                <a href="" class="btn-link btn-link-secondary right">Products &
+                                                    Services<i></i></a>
                                                 <div class="text-xl">
                                                     Your reliable, 24/7 supplier of blood products, services, and
                                                     professional development
@@ -87,7 +87,7 @@
 
                                         <div class="col-xl-6 col-12 align-self-center">
                                             <div class="dropdown-info">
-                                                <button class="btn-link btn-link-secondary right">Kimball Research Institute<i></i></button>
+                                                <a href="" class="btn-link btn-link-secondary right">Kimball Research Institute<i></i></a>
                                                 <div class="text-xl">
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus senectus id in at morbi magna amet.
                                                 </div>
@@ -124,7 +124,7 @@
 
                                         <div class="col-xl-6 col-12 align-self-center">
                                             <div class="dropdown-info">
-                                                <button class="btn-link btn-link-secondary right">Comprehensive Cell Solutions<i></i></button>
+                                                <a href="" class="btn-link btn-link-secondary right">Comprehensive Cell Solutions<i></i></a>
                                                 <div class="text-xl">
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus senectus id in at morbi magna amet.
                                                 </div>
@@ -156,7 +156,7 @@
 
                                         <div class="col-xl-6 col-12 align-self-center">
                                             <div class="dropdown-info">
-                                                <button class="btn-link btn-link-secondary right">NYBC Enterprise Ventures<i></i></button>
+                                                <a href="" class="btn-link btn-link-secondary right">NYBC Enterprise Ventures<i></i></a>
                                                 <div class="text-xl">
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus senectus id in at morbi magna amet.
                                                 </div>
