@@ -43,16 +43,6 @@ module.exports = {
 			}
 		),
 		extractSass,
-		new PrettierPlugin(
-			{
-				printWidth: 80,
-				tabWidth: 2,
-				useTabs: false,
-				semi: true,
-				singleQuote: true,
-				extensions: [ '.js'],
-			}
-		),
 	],
 	// Loaders configuration -> ADDED IN THIS STEP
 	// We are telling webpack to use "babel-loader" for .js and .jsx files
