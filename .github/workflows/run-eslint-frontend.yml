@@ -4,34 +4,21 @@ on: [pull_request]
 jobs:
   run-linters-eslint-frontend:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
+      - name: Stylelint Enterprise & Division
+        uses: actions/setup-node@v1
         with:
-          path: ""
-      - name: Reviewdog ESLint Enterprise
-        uses: reviewdog/action-eslint@v1
-        with:
-          fail_on_error: true
-          level: info
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          workdir: 'site/web/app/themes/enterprise-theme/'
-          eslint_flags: './*.js'
-      - name: Reviewdog ESLint Division
-        uses: reviewdog/action-eslint@v1
-        with:
-          fail_on_error: true
-          level: info
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          workdir: 'site/web/app/themes/division-theme/'
-          eslint_flags: './*.js'
-      - name: Reviewdog ESLint html
-        uses: reviewdog/action-eslint@v1
-        with:
-          fail_on_error: true
-          level: info
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          workdir: '/html'
-          eslint_flags: './*.js'
+          node-version: ${{ matrix.node-version }}
+      - name: Linting Enterprise scss
+        run: npm install && npm run lint
+        working-directory: 'site/web/app/themes/enterprise-theme/'
+      - name: Linting Division scss
+        run: npm install && npm run lint
+        working-directory: 'site/web/app/themes/division-theme/'
+      - name: Linting HTML scss
+        run: npm install && npm run lint
+        working-directory: 'html/'
