@@ -87,7 +87,7 @@
     },
     "scripts": {
         "test": [
-            "phpcs --standard=WordPress  --ignore=*.css,*.js,*.min.*"
+            "phpcs --standard=WordPress  --ignore=*.css,*.js,*.min.*,*/node_modules/*"
         ],
         "fix": [
             "phpcbf --standard=WordPress  --ignore=*.css,*.js,*.min.*"
