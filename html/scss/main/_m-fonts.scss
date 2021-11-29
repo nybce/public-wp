@@ -1,96 +1,105 @@
 /**--------------------------------------------------------------------------------*/
+
 /*****     FONTS     *****/
+
 /**--------------------------------------------------------------------------------*/
 @font-face {
-  font-family: 'Avenir';
-  src: url('../fonts/Avenir Light.eot');
-  src: url('../fonts/Avenir Light.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/Avenir Light.woff2') format('woff2'),
-      url('../fonts/Avenir Light.woff') format('woff'),
-      url('../fonts/Avenir Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+	font-display: swap;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 300;
+	src: url("../fonts/Avenir Light.eot");
+	src:
+		url("../fonts/Avenir Light.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/Avenir Light.woff2") format("woff2"),
+		url("../fonts/Avenir Light.woff") format("woff"),
+		url("../fonts/Avenir Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Avenir';
-  src: url('../fonts/Avenir Regular.eot');
-  src: url('../fonts/Avenir Regular.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/Avenir Regular.woff2') format('woff2'),
-      url('../fonts/Avenir Regular.woff') format('woff'),
-      url('../fonts/Avenir Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-display: swap;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/Avenir Regular.eot");
+	src:
+		url("../fonts/Avenir Regular.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/Avenir Regular.woff2") format("woff2"),
+		url("../fonts/Avenir Regular.woff") format("woff"),
+		url("../fonts/Avenir Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Avenir';
-  src: url('../fonts/Avenir Medium.eot');
-  src: url('../fonts/Avenir Medium.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/Avenir Medium.woff2') format('woff2'),
-      url('../fonts/Avenir Medium.woff') format('woff'),
-      url('../fonts/Avenir Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+	font-display: swap;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 500;
+	src: url("../fonts/Avenir Medium.eot");
+	src:
+		url("../fonts/Avenir Medium.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/Avenir Medium.woff2") format("woff2"),
+		url("../fonts/Avenir Medium.woff") format("woff"),
+		url("../fonts/Avenir Medium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Avenir';
-  src: url('../fonts/Avenir Heavy.eot');
-  src: url('../fonts/Avenir Heavy.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/Avenir Heavy.woff2') format('woff2'),
-      url('../fonts/Avenir Heavy.woff') format('woff'),
-      url('../fonts/Avenir Heavy.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 800;
+	src: url("../fonts/Avenir Heavy.eot");
+	src:
+		url("../fonts/Avenir Heavy.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/Avenir Heavy.woff2") format("woff2"),
+		url("../fonts/Avenir Heavy.woff") format("woff"),
+		url("../fonts/Avenir Heavy.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Avenir';
-  src: url('../fonts/Avenir Black.eot');
-  src: url('../fonts/Avenir Black.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/Avenir Black.woff2') format('woff2'),
-      url('../fonts/Avenir Black.woff') format('woff'),
-      url('../fonts/Avenir Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-
-@font-face {
-  font-family: 'DM Sans', sans-serif;
-  src: url('../fonts/DMSans-Regular.eot');
-  src: url('../fonts/DMSans-Regular.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/DMSans-Regular.woff2') format('woff2'),
-      url('../fonts/DMSans-Regular.woff') format('woff'),
-      url('../fonts/DMSans-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 900;
+	src: url("../fonts/Avenir Black.eot");
+	src:
+		url("../fonts/Avenir Black.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/Avenir Black.woff2") format("woff2"),
+		url("../fonts/Avenir Black.woff") format("woff"),
+		url("../fonts/Avenir Black.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'DM Sans', sans-serif;
-  src: url('../fonts/DMSans-Medium.eot');
-  src: url('../fonts/DMSans-Medium.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/DMSans-Medium.woff2') format('woff2'),
-      url('../fonts/DMSans-Medium.woff') format('woff'),
-      url('../fonts/DMSans-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+	font-display: swap;
+	font-family: "DM Sans", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/DMSans-Regular.eot");
+	src:
+		url("../fonts/DMSans-Regular.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/DMSans-Regular.woff2") format("woff2"),
+		url("../fonts/DMSans-Regular.woff") format("woff"),
+		url("../fonts/DMSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'DM Sans', sans-serif;
-  src: url('../fonts/DMSans-Bold.eot');
-  src: url('../fonts/DMSans-Bold.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/DMSans-Bold.woff2') format('woff2'),
-      url('../fonts/DMSans-Bold.woff') format('woff'),
-      url('../fonts/DMSans-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
+	font-display: swap;
+	font-family: "DM Sans", sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	src: url("../fonts/DMSans-Medium.eot");
+	src:
+		url("../fonts/DMSans-Medium.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/DMSans-Medium.woff2") format("woff2"),
+		url("../fonts/DMSans-Medium.woff") format("woff"),
+		url("../fonts/DMSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "DM Sans", sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	src: url("../fonts/DMSans-Bold.eot");
+	src:
+		url("../fonts/DMSans-Bold.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/DMSans-Bold.woff2") format("woff2"),
+		url("../fonts/DMSans-Bold.woff") format("woff"),
+		url("../fonts/DMSans-Bold.ttf") format("truetype");
 }

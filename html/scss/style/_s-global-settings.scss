@@ -1,74 +1,76 @@
 /*-------------------------------------------------------------------------------------------------------------------------------*/
+
 /* GLOBAL SETTINGS */
+
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 html {
-  height: auto;
+	height: auto;
 }
 
 body {
-  height: auto;
-  overflow: visible;
+	height: auto;
+	overflow: visible;
 }
 
 body ::selection {
-  color: #fff;
-  background: #000;
+	background: #000;
+	color: #fff;
 }
 
 body ::-moz-selection {
-  color: #fff;
-  background: #000;
+	background: #000;
+	color: #fff;
 }
 
 .swiper-slide:not(:first-child) {
-  display: block;
+	display: block;
 }
 
 .bg-color-blue {
-  background-color: #274298;
+	background-color: #274298;
 }
 
 .bg-color-dark-blue {
-  background-color: #002169;
-  ;
+	background-color: #002169;
+  
 }
 
 .bg-color-light-blue {
-  background-color: #47A3FF;
+	background-color: #47a3ff;
 }
 
 .bg-color-red {
-  background-color: #DF1818;
+	background-color: #df1818;
 }
 
 .bg-color-violet {
-  background-color: #47A3FF;
+	background-color: #47a3ff;
 }
 
 .clr-grey {
-  background: #C4C4C4;
+	background: #c4c4c4;
 }
 
 .clr-yellow {
-  background: #FFA800;
+	background: #ffa800;
 }
 
 .clr-blue {
-  background: #009BCC;
+	background: #009bcc;
 }
 
 .clr-aqua {
-  background: #BDF6FD;
+	background: #bdf6fd;
 }
 
 .clr-white {
-  background: #FFFFFF;
+	background: #fff;
 }
 
 .clr-violet {
-  background: #7C1DC9;
+	background: #7c1dc9;
 }
 
 .clr-black {
-  background: #161616;
+	background: #161616;
 }

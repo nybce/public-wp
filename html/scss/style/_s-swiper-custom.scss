@@ -1,233 +1,243 @@
 /**--------------------------------------------------------------------------------------*/
+
 /** SWIPER */
+
 /**--------------------------------------------------------------------------------------*/
 .swiper-entry,
 .swiper-control-wrapper {
-  position: relative;
+	position: relative;
 }
 
-.swiper-container { margin-left: auto; margin-right: auto; position: relative; overflow: hidden; list-style: none; padding: 0; z-index: 1; }
+.swiper-container {
+	list-style: none;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+}
 
 .swiper-container.swiper-container-visible {
-  overflow: visible;
+	overflow: visible;
 }
 
 .swiper-container:not(.swiper-no-swiping) .swiper-wrapper {
-  cursor: url(../img/drag.png) 16 9, ew-resize;
+	cursor: url(../img/drag.png) 16 9, ew-resize;
 }
 
 .swiper-container-vertical:not(.swiper-no-swiping) .swiper-wrapper {
-  cursor: url(../img/drag-vertical.png) 8 16, ns-resize;
+	cursor: url(../img/drag-vertical.png) 8 16, ns-resize;
 }
 
-.swiper-button-lock+.swiper-button-lock+.swiper-container .swiper-wrapper {
-  cursor: default;
+.swiper-button-lock + .swiper-button-lock + .swiper-container .swiper-wrapper {
+	cursor: default;
 }
 
-.swiper-buttons-wrapper.swiper-buttons-lock+.swiper-container .swiper-wrapper {
-  cursor: default;
+.swiper-buttons-wrapper.swiper-buttons-lock + .swiper-container .swiper-wrapper {
+	cursor: default;
 }
 
 .swiper-pagination.swiper-pagination-relative.swiper-pagination-lock,
 .swiper-pagination.swiper-pagination-lock {
-  display: none;
+	display: none;
 }
 
 .swiper-entry.hide-control .swiper-container .swiper-wrapper {
-  cursor: default;
+	cursor: default;
 }
 
 .swiper-entry.hide-control .swiper-controls,
 .swiper-entry.hide-control .swiper-pagination {
-  display: none;
+	display: none;
 }
 
 .swiper-slide {
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  backface-visibility: hidden;
+	backface-visibility: hidden;
+	background-position: center center;
+	background-size: cover;
+	position: relative;
 }
 
 /*for elements*/
 .slide-img {
-  position: relative;
-  height: 100%;
-  padding-bottom: 55%;
+	height: 100%;
+	padding-bottom: 55%;
+	position: relative;
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    object-fit: cover;
-  }
+	img {
+		left: 0;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
 }
 
 /*swiper arrow*/
 .swiper-button-prev,
 .swiper-button-next {
-  position: absolute;
-  margin-top: 0;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%);
-  height: 4.8rem;
-  width: 4.8rem;
-  background: $color-white;
-  z-index: 2;
-  outline: none;
-  border-radius: 100%;
-  border: 1px solid $color-text-30;
-  transition: $transition;
+	background: $color-white;
+	border: 1px solid $color-text-30;
+	border-radius: 100%;
+	height: 4.8rem;
+	left: 0;
+	margin-top: 0;
+	outline: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	transition: $transition;
+	width: 4.8rem;
+	z-index: 2;
 
-  &::after {
-    display: none;
-  }
+	&::after {
+		display: none;
+	}
 }
 
 .swiper-button-next {
-  left: auto;
-  right: 0;
+	left: auto;
+	right: 0;
 }
 
 .swiper-button-prev i,
 .swiper-button-next i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .swiper-button-prev i::before,
 .swiper-button-next i::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  height: 0.625em;
-  width: 0.625em;
-  top: calc(50% - 5px);
-  left: 50%;
-  border-right: 0.125em solid $color-text-10;
-  border-bottom: 0.125em solid $color-text-10;
-  transform: rotate(-45deg) translate(-50%, -50%);
-  transition: $transition;
+	border-bottom: 0.125em solid $color-text-10;
+	border-right: 0.125em solid $color-text-10;
+	content: "";
+	height: 0.625em;
+	left: 50%;
+	position: absolute;
+	top: calc(50% - 5px);
+	transform: rotate(-45deg) translate(-50%, -50%);
+	transition: $transition;
+	width: 0.625em;
+	z-index: 1;
 }
 
 .swiper-button-prev {
-  transform: scaleX(-1) translate(0, -50%);
+	transform: scaleX(-1) translate(0, -50%);
 }
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
-  opacity: 1;
+	opacity: 1;
 }
 
 /*swiper pagination*/
 .swiper-container-horizontal > .swiper-pagination-bullets {
-  left: 50%;
-  bottom: 1.5em;
-  transform: translate(-50%, 0);
-  width: auto;
+	bottom: 1.5em;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: auto;
 }
 
 .swiper-pagination {
-  line-height: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	line-height: 0;
+	z-index: 2;
 
-  &.swiper-pagination-relative {
-    position: relative;
-    margin-top: 20px;
-    bottom: 0 !important;
-    top: 0 !important;
-  }
+	&.swiper-pagination-relative {
+		bottom: 0 !important;
+		margin-top: 20px;
+		position: relative;
+		top: 0 !important;
+	}
 }
 
 .swiper-pagination-bullet {
-  position: relative;
-  width: 1em;
-  height: 1em;
-  border-radius: 100%;
-  opacity: 1;
-  transition: $transition;
-  outline: none;
-  background: $color-white;
-  border: 0.0625em solid $color-text-30;
+	background: $color-white;
+	border: 0.0625em solid $color-text-30;
+	border-radius: 100%;
+	height: 1em;
+	opacity: 1;
+	outline: none;
+	position: relative;
+	transition: $transition;
+	width: 1em;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $color-primary-base1-10;
-  border-color: $color-primary-base1-10;
+	background-color: $color-primary-base1-10;
+	border-color: $color-primary-base1-10;
 }
 
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-clickable .swiper-pagination-bullet {
-  margin: 0 0.25em;
+	margin: 0 0.25em;
 }
 
 /*custom-fraction pagination*/
 .custom-fraction-wrap {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 3;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 3;
 
-  .custom-fraction_inner {
-    width: auto;
-    text-align: center;
-    font-size: 12px;
-    line-height: 1em;
-    color: #737373;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+	.custom-fraction_inner {
+		color: #737373;
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		line-height: 1em;
+		text-align: center;
+		width: auto;
 
-    .custom-current,
-    .custom-total {
-      display: inline-block;
-      position: relative;
-    }
-    .custom-total {
-      margin-left: -3px;
-    }
-    .custom-current {
-      margin-right: -3px;
-    }
-  }
+		.custom-current,
+		.custom-total {
+			display: inline-block;
+			position: relative;
+		}
+		.custom-total {
+			margin-left: -3px;
+		}
+		.custom-current {
+			margin-right: -3px;
+		}
+	}
 }
 
 @media (min-width: 1200px) {
-  .swiper-button-prev:hover,
-  .swiper-button-next:hover {
-    border-color: $color-primary-base1-10;
-    background: $color-primary-base1-10;
+	.swiper-button-prev:hover,
+	.swiper-button-next:hover {
+		background: $color-primary-base1-10;
+		border-color: $color-primary-base1-10;
 
-    i {
-      &::before,
-      &::after {
-        border-color: $color-white;
-      }
-    }
-  }
+		i {
+			&::before,
+			&::after {
+				border-color: $color-white;
+			}
+		}
+	}
 
-  .swiper-pagination-bullet:hover {
-    background: $color-primary-base1-10;
-    border-color: $color-primary-base1-10;
-  }
+	.swiper-pagination-bullet:hover {
+		background: $color-primary-base1-10;
+		border-color: $color-primary-base1-10;
+	}
 }
 
 @media (max-width: 991px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    height: 3.2rem;
-    width: 3.2rem;
-  }
+	.swiper-button-prev,
+	.swiper-button-next {
+		height: 3.2rem;
+		width: 3.2rem;
+	}
 }
 
 @media (max-width: 767px) {
-  .swiper-entry .swiper-container {
-    overflow: visible;
-  }
+	.swiper-entry .swiper-container {
+		overflow: visible;
+	}
 }
