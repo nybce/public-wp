@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Linting HTML scss
-        run: npm install && cd scss && ../node_modules/stylelint/bin/stylelint.js . --config ../site/themes/division-theme/.stylelintrc
+        run: npm install && cd scss && ../node_modules/stylelint/bin/stylelint.js .
         working-directory: 'html/'
       - name: Linting Enterprise scss
         run: npm install && npm run lint-css
