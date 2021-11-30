@@ -14,12 +14,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Linting HTML scss
+        run: npm install && cd scss && ../node_modules/stylelint/bin/stylelint.js . --config ../site/themes/division-theme/.stylelintrc
+        working-directory: 'html/'
       - name: Linting Enterprise scss
         run: npm install && npm run lint-css
         working-directory: 'site/web/app/themes/enterprise-theme/'
       - name: Linting Division scss
         run: npm install && npm run lint-css
         working-directory: 'site/web/app/themes/division-theme/'
-      - name: Linting HTML scss
-        run: npm install && cd scss && ../node_modules/stylelint/bin/stylelint.js . --config ../../themes/division-theme/.stylelintrc
-        working-directory: 'html/'
