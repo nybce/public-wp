@@ -1,8 +1,8 @@
-/**--------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 
 /** SWIPER */
 
-/**--------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 .swiper-entry,
 .swiper-control-wrapper {
 	position: relative;
@@ -23,11 +23,11 @@
 }
 
 .swiper-container:not(.swiper-no-swiping) .swiper-wrapper {
-	cursor: url(../img/drag.png) 16 9, ew-resize;
+	cursor: url("../img/drag.png") 16 9, ew-resize;
 }
 
 .swiper-container-vertical:not(.swiper-no-swiping) .swiper-wrapper {
-	cursor: url(../img/drag-vertical.png) 8 16, ns-resize;
+	cursor: url("../img/drag-vertical.png") 8 16, ns-resize;
 }
 
 .swiper-button-lock + .swiper-button-lock + .swiper-container .swiper-wrapper {

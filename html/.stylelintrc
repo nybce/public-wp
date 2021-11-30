@@ -13,19 +13,23 @@
     "declaration-block-no-shorthand-property-overrides": true,
     "declaration-colon-space-before": "never",
     "declaration-no-important": true,
+    "declaration-property-unit-whitelist": {
+      "line-height": [ "em" ]
+    },
     "font-family-name-quotes": "always-where-recommended",
     "font-weight-notation": "numeric",
     "function-url-quotes": "always",
     "indentation": "tab",
     "max-empty-lines": 1,
     "no-missing-end-of-source-newline": true,
+    "no-descending-specificity": null,
     "number-leading-zero": "always",
     "order/properties-alphabetical-order": true,
     "rule-empty-line-before": null,
+    "selector-class-pattern": null,
+    "selector-pseudo-element-colon-notation": "double",
     "selector-combinator-space-after": "always",
     "selector-list-comma-newline-after": null,
-    "selector-max-specificity": "0,3,1",
-    "selector-pseudo-element-colon-notation": "double",
     "unit-no-unknown": true
   }
 }

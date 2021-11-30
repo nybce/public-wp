@@ -1,8 +1,8 @@
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 
 /** HEADER */
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 header {
 	backface-visibility: hidden;
 	background-color: $color-white;
@@ -31,7 +31,7 @@ header {
 		}
 	}
 
-	& + * {
+	+ * {
 		padding-top: 15rem;
 	}
 }
@@ -65,7 +65,7 @@ header {
 	justify-content: space-between;
 
 	.btn-wrapper {
-		& > *:not(:last-child) {
+		> *:not(:last-child) {
 			margin-right: 0.5em;
 		}
 	}
@@ -248,7 +248,7 @@ header {
 			}
 		}
 
-		& + * {
+		+ * {
 			padding-top: 8rem;
 		}
 	}
@@ -272,7 +272,7 @@ header {
 			flex-direction: column;
 			justify-content: flex-start;
 
-			& > *:not(:last-child) {
+			> *:not(:last-child) {
 				margin-bottom: 1em;
 				margin-right: 0;
 			}
@@ -380,7 +380,7 @@ header {
 @media (max-width: 767px) {
 	.top-menu {
 		.btn-wrapper {
-			& > * {
+			> * {
 				text-align: left;
 				width: 100%;
 			}
@@ -396,11 +396,11 @@ header {
 	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 
 /** DROPMENU */
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 .dropdown-item {
 	margin-right: 1.95em;
 	padding: 0.65em 1.3em 0.65em 0;
@@ -537,7 +537,7 @@ header {
 		display: flex;
 		justify-content: center;
 
-		& > *:not(:last-child) {
+		> *:not(:last-child) {
 			margin-right: 9em;
 		}
 	}
@@ -683,7 +683,7 @@ header {
 		.dropdown-list {
 			justify-content: flex-start;
 
-			& > *:not(:last-child) {
+			> *:not(:last-child) {
 				margin-right: 5em;
 			}
 		}
@@ -759,7 +759,7 @@ header {
 			flex-direction: column;
 			justify-content: flex-start;
 
-			& > *:not(:last-child) {
+			> *:not(:last-child) {
 				margin-bottom: 0.45em;
 				margin-right: 0;
 			}
@@ -777,11 +777,11 @@ header {
 	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 
 /** HEADER STYLE FOR DIVISION */
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 .division {
 	.header-inner {
 		&::before {

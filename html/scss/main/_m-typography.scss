@@ -1,8 +1,8 @@
-/**--------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 
 /*****     TYPOGRAPHY     *****/
 
-/**--------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 :root {
 	font-size: 62.5%;
 }
@@ -11,7 +11,7 @@ body {
 	color: $color-text-10;
 	font-family: "DM Sans", sans-serif;
 	font-size: 1.6rem;
-	font-weight: normal;
+	font-weight: 400;
 	line-height: 1.5em;
 }
 
@@ -139,7 +139,7 @@ ol {
 		}
 
 		&::before {
-			background-image: url(../img/icons/quotes.svg);
+			background-image: url("../img/icons/quotes.svg");
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;

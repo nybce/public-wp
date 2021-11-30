@@ -91,13 +91,6 @@
 		a {
 			color: $color-white;
 		}
-	}
-
-	.pagination li.dots:hover {
-		color: $color-white;
-	}
-
-	.pagination li:hover {
 		.pagination-arrow {
 			i {
 				&::before {
@@ -106,6 +99,11 @@
 			}
 		}
 	}
+
+	.pagination li.dots:hover {
+		color: $color-white;
+	}
+
 }
 
 @media (max-width: 991px) {
