@@ -20,5 +20,5 @@ jobs:
         run: npm install && npm run lint
         working-directory: 'site/web/app/themes/division-theme/'
       - name: Linting HTML JS
-        run: npm install && npm run lint-html
-        working-directory: 'site/web/app/themes/division-theme/'
+        run: npm install && node_modules/eslint/bin/eslint.js . --config ../site/themes/division-theme/.eslintrc.json
+        working-directory: 'html/'
