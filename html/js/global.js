@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars, no-undef */
 const _functions = {};
 let winW, winScr, isTouchScreen, isMac, isIE;
 
@@ -94,7 +95,9 @@ jQuery( function( $ ) {
 			$( 'header' ).addClass( 'scrolled' );
 		} else if ( winScr < 10 ) {
 			$( 'header' ).removeClass( 'scrolled' );
-			prevScroll;
+			//TODO Remove eslint disable rule
+			// What is the function of this?
+			prevScroll; // eslint-disable-line no-unused-expressions
 		}
 
 		//show-hide header on scroll
