@@ -13,12 +13,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Linting Enterprise scss
+      - name: Linting HTML JS
+        run: npm install && node_modules/eslint/bin/eslint.js .
+        working-directory: 'html/'
+      - name: Linting Enterprise JS
         run: npm install && npm run lint
         working-directory: 'site/web/app/themes/enterprise-theme/'
-      - name: Linting Division scss
+      - name: Linting Division JS
         run: npm install && npm run lint
         working-directory: 'site/web/app/themes/division-theme/'
-      - name: Linting HTML scss
-        run: npm install && npm run lint
-        working-directory: 'html/'
