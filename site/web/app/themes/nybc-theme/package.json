@@ -1,7 +1,7 @@
 {
-  "name": "nybc-enterprise-theme",
+  "name": "nybc-nybc-theme",
   "version": "1.2.0",
-  "description": "A clean slate Wordpress theme for the NYBC Enterprise sites",
+  "description": "A clean slate Wordpress theme for the NYBC Division sites",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack --mode development",
@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "lint-css": "stylelint **/*.scss",
     "lint-css-fix": "stylelint **/*.scss --fix ",
-    "lint-fix": "eslint --fix ."
+    "lint-fix": "eslint --fix .",
+    "lint-html": "eslint /html --config /theme/.eslintrc.json",
+    "lint-html-fix": "eslint /html --fix --config /theme/.eslintrc.json test"
   },
   "keywords": [],
   "author": "tone4hook",
