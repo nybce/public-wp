@@ -10,8 +10,9 @@
     "lint-css": "stylelint **/*.scss",
     "lint-css-fix": "stylelint **/*.scss --fix ",
     "lint-fix": "eslint --fix .",
-    "lint-html": "eslint /html --config /theme/.eslintrc.json",
-    "lint-html-fix": "eslint /html --fix --config /theme/.eslintrc.json"
+    "lint-html": "eslint --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme /html",
+    "lint-html-fix": "eslint --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme /html --fix"
+
   },
   "keywords": [],
   "author": "tone4hook",
