@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <? include 'inc/_top.php';?>
+    <?php include 'inc/_top.php';?>
 
     <title>New York Blood Center:: Elements</title>
 </head>
@@ -366,7 +366,7 @@
         </main>
 
     </div>
-    <? include 'inc/_bottom.php';?>
+    <?php include 'inc/_bottom.php';?>
 </body>
 
 </html>

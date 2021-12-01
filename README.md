@@ -103,11 +103,13 @@ Following the line `web/app/plugins/*` add `!web/app/plugins/PLUGIN_DIRECTORY` t
 - Any 3rd party libraries should be placed in a `lib` directory
 - To lint the theme js run `bash scripts/lintJs.sh THEMENAME`. Theme name will be division or enterprise
 - To lint the HTML js run `bash scripts/lintJsHtml.sh`
+- To run the automated fix on either command add an argument fix to the end i.e. `bash scripts/lintJsHtml.sh fix`
 
 ##### SCSS
 - Any 3rd party libraries should be placed in a `lib` directory
 - To lint the theme scss run `bash scripts/lintCss.sh THEMENAME`. Theme name will be division or enterprise
 - To lint the HTML css run `bash scripts/lintCssHtml.sh`
+- To run the automated fix on either command add an argument fix to the end i.e `bash scripts/lintCssHtml.sh fix`
 
 ##### PHP
 - To run phpcs on wordpress development run `bash scripts/lintWp.sh`

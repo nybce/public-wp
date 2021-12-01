@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <? include 'inc/_top.php';?>
+    <?php include 'inc/_top.php';?>
 
     <title>New York Blood Center:: Home Page</title>
 </head>
@@ -21,11 +21,11 @@
         </main>
 
         <footer>
-            <? include 'inc/_footer.php';?>
+            <?php include 'inc/_footer.php';?>
         </footer>
 
     </div>
-    <? include 'inc/_bottom.php';?>
+    <?php include 'inc/_bottom.php';?>
 </body>
 
 </html>
