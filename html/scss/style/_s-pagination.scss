@@ -1,113 +1,113 @@
 /**-----------------------------------------------------------------------*/
+
 /** Pagination */
+
 /**-----------------------------------------------------------------------*/
 .pagination {
-  text-align: center;
+	text-align: center;
 
-  ul {
-    display: inline-flex;
-    align-items: center;
-  }
+	ul {
+		align-items: center;
+		display: inline-flex;
+	}
 }
 
 .pagination li {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  width: 2em;
-  height: 2em;
-  font-size: 1.6rem;
-  line-height: 1.5em;
-  font-weight: 500;
-  color: $color-text-10;
-  background: $color-white;
-  border: 0.0625em solid $color-text-30;
-  border-radius: 100%;
-  transition: $transition;
-  cursor: pointer;
-  margin-right: 1em;
+	background: $color-white;
+	border: 0.0625em solid $color-text-30;
+	border-radius: 100%;
+	color: $color-text-10;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.6rem;
+	font-weight: 500;
+	height: 2em;
+	line-height: 1.5em;
+	margin-right: 1em;
+	position: relative;
+	text-align: center;
+	transition: $transition;
+	vertical-align: middle;
+	width: 2em;
 
-  &:last-child {
-    margin-right: 0;
-  }
+	&:last-child {
+		margin-right: 0;
+	}
 
-  .pagination-arrow {
-    i {
-      &::before {
-        content: "";
-        position: absolute;
-        z-index: 1;
-        height: 0.5em;
-        width: 0.5em;
-        top: 50%;
-        left: 50%;
-        border-right: 0.0625em solid $color-text-10;
-        border-bottom: 0.0625em solid $color-text-10;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        transition: 0.25s ease-in;
-      }
-    }
+	.pagination-arrow {
+		i {
+			&::before {
+				border-bottom: 0.0625em solid $color-text-10;
+				border-right: 0.0625em solid $color-text-10;
+				content: "";
+				height: 0.5em;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%) rotate(-45deg);
+				transition: 0.25s ease-in;
+				width: 0.5em;
+				z-index: 1;
+			}
+		}
 
-    &.left {
-      left: 55%;
+		&.left {
+			left: 55%;
 
-      i {
-        &::before {
-          transform: translate(-50%, -50%) rotate(135deg);
-        }
-      }
-    }
+			i {
+				&::before {
+					transform: translate(-50%, -50%) rotate(135deg);
+				}
+			}
+		}
 
-    &.right {
-      left: 45%;
-    }
-  }
+		&.right {
+			left: 45%;
+		}
+	}
 }
 
 .pagination li a {
-  @include centerAbsolute;
+	@include centerAbsolute;
 }
 
 .pagination li.active {
-  background: $color-primary-base2-10;
-  border-color: $color-primary-base2-10;
-  a {
-    color: $color-white;
-  }
+	background: $color-primary-base2-10;
+	border-color: $color-primary-base2-10;
+	a {
+		color: $color-white;
+	}
 }
 
 .pagination .dots {
-  display: inline-block;
-  vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 @media (min-width: 1200px) {
-  .pagination li:hover {
-    background: $color-info;
-    border-color: $color-info;
-    a {
-      color: $color-white;
-    }
-  }
+	.pagination li:hover {
+		background: $color-info;
+		border-color: $color-info;
+		a {
+			color: $color-white;
+		}
+		.pagination-arrow {
+			i {
+				&::before {
+					border-color: $color-white;
+				}
+			}
+		}
+	}
 
-  .pagination li.dots:hover {
-    color: $color-white;
-  }
+	.pagination li.dots:hover {
+		color: $color-white;
+	}
 
-  .pagination li:hover {
-    .pagination-arrow {
-      i {
-        &::before {
-          border-color: $color-white;
-        }
-      }
-    }
-  }
 }
 
 @media (max-width: 991px) {
-  .pagination li {
-    font-size: 1.4rem;
-  }
+	.pagination li {
+		font-size: 1.4rem;
+	}
 }
