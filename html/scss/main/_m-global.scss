@@ -181,7 +181,7 @@ a {
 /* spacers */
 [class*="spacer"] {
 	clear: both;
-	width: 100% !important;
+	width: 100%;
 }
 
 .spacer-0 {
@@ -289,6 +289,3 @@ a {
 		height: 12rem;
 	}
 }
-
-
-/* breakpoints */

@@ -1,12 +1,12 @@
-let _functions = {},
-	winW, winH, winScr, isTouchScreen, is_Mac, isIE;
+const _functions = {};
+let winW, winScr, isTouchScreen, isMac, isIE;
 
 jQuery( function( $ ) {
 	'use strict';
 
 	/* function on page ready */
 	isTouchScreen = navigator.userAgent.match( /Android/i ) || navigator.userAgent.match( /webOS/i ) || navigator.userAgent.match( /iPhone/i ) || navigator.userAgent.match( /iPad/i ) || navigator.userAgent.match( /iPod/i );
-	is_Mac = navigator.platform.toUpperCase().indexOf( 'MAC' ) >= 0;
+	isMac = navigator.platform.toUpperCase().indexOf( 'MAC' ) >= 0;
 	isIE = /MSIE 9/i.test( navigator.userAgent ) || /rv:11.0/i.test( navigator.userAgent ) || /MSIE 10/i.test( navigator.userAgent );
 
 	const $body = $( 'body' );
@@ -16,53 +16,18 @@ jQuery( function( $ ) {
 	if ( isTouchScreen ) {
 		$( 'html' ).addClass( 'touch-screen' );
 	}
-	if ( is_Mac ) {
+	if ( isMac ) {
 		$body.addClass( 'mac' );
 	}
 	if ( isIE ) {
 		$body.addClass( 'ie' );
 	}
 
-	_functions.productSwiperWrapperHeight = function() {
-		if ( ! $( '.products_swiper' ).length ) {
-			return;
-		} {
-			setTimeout( function() {
-				const h = $( '.products_swiper' ).find( '.swiper-container' ).height();
-				$( '.products_swiper' ).find( '.swiper-wrapper' ).css( {
-					height: h,
-				} );
-			}, 100 );
-		}
-		if ( ! $( '.products_swiper-2' ).length ) {
-			return;
-		} {
-			setTimeout( function() {
-				const h = $( '.products_swiper-2' ).find( '.swiper-container' ).height();
-				$( '.products_swiper-2' ).find( '.swiper-wrapper' ).css( {
-					height: h,
-				} );
-			}, 100 );
-		}
-	};
-
 	_functions.pageCalculations = function() {
 		winW = $( window ).width();
-		winH = $( window ).height();
-
-		// _functions.productSwiperWrapperHeight();
 	};
 
 	_functions.pageCalculations();
-
-	//rellax
-	setTimeout( function() {
-		if ( ! isIE && $( '.rellax' ).length && $( window ).width() > 1199 ) {
-			const rellax = new Rellax( '.rellax', {
-				center: true,
-			} );
-		}
-	}, 0 );
 
 	//images preload
 	_functions.imagesLazyLoad = function() {
@@ -105,9 +70,9 @@ jQuery( function( $ ) {
 		_functions.imagesLazyLoad();
 	}, 100 );
 
-	_functions.pageScroll = function( current, header_height ) {
+	_functions.pageScroll = function( current, headerHeight ) {
 		$( 'html, body' ).animate( {
-			scrollTop: current.offset().top - header_height,
+			scrollTop: current.offset().top - headerHeight,
 		}, 700 );
 	};
 
@@ -117,48 +82,32 @@ jQuery( function( $ ) {
 		showMaskOnHover: false,
 	} );
 
-	//sumoselect
-	if ( $( '.SelectBox' ).length ) {
-		$( '.SelectBox' ).each( function() {
-			$( this ).SumoSelect( {
-				floatWidth: 0,
-				nativeOnDevice: [],
-			} );
-		} );
-
-		$( '.SelectBox' ).on( 'sumo:opened', function( sumo ) {
-			if ( winW < 768 ) {
-				_functions.pageScroll( $( this ), $( '.header' ).outerHeight() + 30 );
-			}
-		} );
-	}
-
 	/* function on page scroll */
 	$( window ).scroll( function() {
 		_functions.scrollCall();
 	} );
 
-	let prev_scroll = 0;
+	let prevScroll = 0;
 	_functions.scrollCall = function() {
 		winScr = $( window ).scrollTop();
 		if ( winScr > 10 ) {
 			$( 'header' ).addClass( 'scrolled' );
 		} else if ( winScr < 10 ) {
 			$( 'header' ).removeClass( 'scrolled' );
-			prev_scroll;
+			prevScroll;
 		}
 
 		//show-hide header on scroll
-		if ( winScr > prev_scroll ) {
+		if ( winScr > prevScroll ) {
 			$( 'header' ).addClass( 'hide-top' );
 		} else {
 			$( 'header' ).removeClass( 'hide-top' );
 		}
-		prev_scroll = winScr;
+		prevScroll = winScr;
 
 		if ( winScr <= 10 ) {
 			$( 'header' ).removeClass( 'hide-top' );
-			prev_scroll = 0;
+			prevScroll = 0;
 		}
 
 		if ( $( 'header' ).hasClass( 'hide-top' ) ) {
@@ -186,95 +135,6 @@ jQuery( function( $ ) {
 			_functions.resizeCall();
 		}, false );
 	}
-
-	/* swiper sliders */
-	_functions.getSwOptions = function( swiper ) {
-		let options = swiper.data( 'options' );
-		options = ( ! options || typeof options !== 'object' ) ? {} : options;
-		const $p = swiper.closest( '.swiper-entry' ),
-			slidesLength = swiper.find( '>.swiper-wrapper>.swiper-slide' ).length;
-		if ( ! options.pagination ) {
-			options.pagination = {
-				el: $p.find( '.swiper-pagination' )[ 0 ],
-				clickable: true,
-			};
-		}
-		if ( ! options.navigation ) {
-			options.navigation = {
-				nextEl: $p.find( '.swiper-button-next' )[ 0 ],
-				prevEl: $p.find( '.swiper-button-prev' )[ 0 ],
-			};
-		}
-		options.preloadImages = false;
-		options.lazy = {
-			loadPrevNext: true,
-		};
-		options.observer = true;
-		options.observeParents = true;
-		options.watchOverflow = true;
-		options.centerInsufficientSlides = true;
-		if ( ! options.speed ) {
-			options.speed = 500;
-		}
-		options.roundLengths = true;
-		if ( slidesLength <= 1 ) {
-			options.loop = false;
-			$p.addClass( 'hide-control' );
-		}
-		if ( options.customFraction ) {
-			$p.addClass( 'custom-fraction-swiper' );
-			if ( slidesLength > 1 && slidesLength < 10 ) {
-				$p.find( '.custom-current' ).text( '1' );
-				$p.find( '.custom-total' ).text( slidesLength );
-			} else if ( slidesLength > 1 ) {
-				$p.find( '.custom-current' ).text( '1' );
-				$p.find( '.custom-total' ).text( slidesLength );
-			}
-		}
-		if ( isTouchScreen ) {
-			options.direction = 'horizontal';
-		}
-		return options;
-	};
-	_functions.initSwiper = function( el ) {
-		const swiper = new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
-	};
-
-	$( '.swiper-entry .swiper-container' ).each( function() {
-		_functions.initSwiper( $( this ) );
-	} );
-
-	//custom fraction
-	$( '.custom-fraction-swiper' ).each( function() {
-		const $this = $( this ),
-			$thisSwiper = $this.find( '.swiper-container' )[ 0 ].swiper;
-
-		$thisSwiper.on( 'slideChange', function() {
-			$this.find( '.custom-current' ).text(
-				function() {
-					if ( $thisSwiper.realIndex < 9 ) {
-						return +( $thisSwiper.realIndex + 1 );
-					}
-					return $thisSwiper.realIndex + 1;
-				}
-			);
-		} );
-	} );
-
-	$( '.swiper-thumbs' ).each( function() {
-		const top = $( this ).find( '.swiper-container.swiper-thumbs-top' )[ 0 ].swiper,
-			bottom = $( this ).find( '.swiper-container.swiper-thumbs-bottom' )[ 0 ].swiper;
-		top.thumbs.swiper = bottom;
-		top.thumbs.init();
-		top.thumbs.update();
-	} );
-
-	$( '.swiper-control' ).each( function() {
-		const top = $( this ).find( '.swiper-container' )[ 0 ].swiper,
-			bottom = $( this ).find( '.swiper-container' )[ 1 ].swiper;
-		top.controller.control = bottom;
-		bottom.controller.control = top;
-	} );
 
 	//popup
 	let popupTop = 0;
@@ -404,8 +264,6 @@ jQuery( function( $ ) {
 
 	//accordion
 	$( document ).on( 'click', '.accordion-item:not(.edit) .accordion-title', function() {
-		const headerHeight = $( 'header' ).height(),
-			current = $( this );
 		if ( $( this ).hasClass( 'active' ) ) {
 			$( this ).removeClass( 'active' ).next().slideUp();
 		} else {
