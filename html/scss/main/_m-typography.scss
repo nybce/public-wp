@@ -320,9 +320,6 @@ h6,
 }
 
 @media (min-width: 1200px) {
-	// .text a:hover {
-	//   color: $color-primary-base1-10;
-	// }
 	.text a:hover::before {
 		left: 0;
 		right: auto;

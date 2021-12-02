@@ -1,5 +1,5 @@
 const _functions = {};
-let winW, winScr, isTouchScreen, isMac, isIE;
+let winScr, isTouchScreen, isMac, isIE;
 
 jQuery( function( $ ) {
 	'use strict';
@@ -22,10 +22,6 @@ jQuery( function( $ ) {
 	if ( isIE ) {
 		$body.addClass( 'ie' );
 	}
-
-	_functions.pageCalculations = function() {
-		winW = $( window ).width();
-	};
 
 	_functions.pageCalculations();
 
