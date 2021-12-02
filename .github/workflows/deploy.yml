@@ -3,7 +3,7 @@ name: CI to Docker Hub
 on:
   push:
     branches:
-      - develop
+      - feature/N2R-71-docker-images
 
 jobs:
 
