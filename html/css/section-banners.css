@@ -1,0 +1,69 @@
+/**-----------------------------------------------------------------------*/
+/** BANNERS */
+/**-----------------------------------------------------------------------*/
+.bg { background-position: 50% 50%; background-repeat: no-repeat; background-attachment: scroll; background-size: cover; position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+.bg img { -o-object-fit: cover; object-fit: cover; width: 100%; height: 100%; }
+
+.bg.video { position: absolute; top: 0; bottom: 0; left: 0; right: 0; clip: rect(auto, auto, auto, auto); background-repeat: no-repeat; background-position: center; background-size: cover; }
+
+.bg.video video { position: fixed; left: 50%; top: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+.opacity:before { content: ""; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))); background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); }
+
+.opacity-1:before { content: ""; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #000000), to(rgba(9, 19, 75, 0))); background: -o-linear-gradient(bottom, #000000 1.31%, rgba(9, 19, 75, 0) 100%); background: linear-gradient(0deg, #000000 1.31%, rgba(9, 19, 75, 0) 100%); }
+
+.parallax-bg { overflow: hidden; }
+
+.parallax-bg .bg { position: absolute; width: 100%; height: 130%; top: -10%; }
+
+.banner { position: relative; overflow: hidden; }
+
+.banner-inner { position: relative; overflow: hidden; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100%; height: 100%; padding-bottom: 42.3%; -webkit-clip-path: ellipse(90% 60% at 50% 40%); clip-path: ellipse(90% 60% at 50% 40%); }
+
+.banner-inner.type-2 { padding-bottom: 22.1%; }
+
+.banner-inner.type-2 .banner-content { text-align: center; }
+
+.banner-inner.type-2 .bg.orange { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #FF7009), to(#FFB548)); background: -o-linear-gradient(bottom, #FF7009 1.31%, #FFB548 100%); background: linear-gradient(0deg, #FF7009 1.31%, #FFB548 100%); }
+
+.banner-inner.type-2 .bg.pink { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #A30361), to(#E43493)); background: -o-linear-gradient(bottom, #A30361 1.31%, #E43493 100%); background: linear-gradient(0deg, #A30361 1.31%, #E43493 100%); }
+
+.banner-inner.type-2 .bg.blue { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #0C2D83), to(#439BFF)); background: -o-linear-gradient(bottom, #0C2D83 1.31%, #439BFF 100%); background: linear-gradient(0deg, #0C2D83 1.31%, #439BFF 100%); }
+
+.banner-inner.type-2 .bg.turquoise { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #64C2AF), to(#008599)); background: -o-linear-gradient(bottom, #64C2AF 1.31%, #008599 100%); background: linear-gradient(0deg, #64C2AF 1.31%, #008599 100%); }
+
+.banner-inner.type-3 { padding-bottom: 43%; -webkit-clip-path: ellipse(66% 62% at 50% 38%); clip-path: ellipse(66% 62% at 50% 38%); }
+
+.banner-inner.type-3 .banner-content { text-align: center; }
+
+.banner-inner.type-3 .bg.rellax { height: 103%; }
+
+.banner-wrapper { position: absolute; top: 50%; left: 0; right: 0; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); z-index: 10; color: #FFF; }
+
+@media (max-width: 991px) { .banner-inner.type-2 { padding-bottom: 45%; }
+  .banner-inner.type-3 { padding-bottom: 45%; } }
+
+@media (max-width: 767px) { .banner { overflow: visible; }
+  .opacity::before { content: none; }
+  .banner-inner { height: 49.5rem; padding-bottom: 0; -webkit-clip-path: ellipse(120% 60% at 50% 40%); clip-path: ellipse(120% 60% at 50% 40%); }
+  .banner-inner.type-2 { height: auto; padding-bottom: 80%; }
+  .banner-inner.type-2 .banner-wrapper { top: 1.4rem; bottom: auto; }
+  .banner-inner.type-3 { -webkit-clip-path: ellipse(120% 60% at 50% 40%); clip-path: ellipse(120% 60% at 50% 40%); height: 49.5rem; padding-bottom: 0; }
+  .banner-wrapper { top: auto; bottom: 7.6rem; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
+  .banner-content { text-align: center; }
+  .bg img:not(.only-mob) { display: none; }
+  .bg .only-mob { display: block; } }
+
+/**-----------------------------------------------------------------------*/
+/** DECOR FOR MAIN BANNER */
+/**-----------------------------------------------------------------------*/
+.banner-decor { position: absolute; top: 0; left: 0; z-index: 1; width: 55%; height: 100%; }
+
+@media (max-width: 767px) { .banner-decor { width: 110%; }
+  .banner-decor svg { width: 165%; } }
+
+/**--------------------------------------------------------------------------------------------*/
+/** DECOR FOR MAIN BANNER FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division .banner-decor svg path { fill: #09134B; }

@@ -1,0 +1,164 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+/** QUOTES BLOCK */
+/**-----------------------------------------------------------------------*/
+.quotes-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 108.271%;
+
+  img {
+    @include imgCover;
+  }
+}
+
+.quotes-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 12rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 0.8rem;
+    height: 100%;
+    background-color: $color-primary-base1-10;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 10000px;
+    height: 100%;
+    background-color: $color-gray-100;
+  }
+
+  .text {
+    > blockquote {
+      color: $color-white;
+      border-top: 0.11em solid transparent;
+      border-bottom: 0.11em solid transparent;
+
+      q {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      h5 {
+        color: $color-white;
+        margin-top: 2.4rem;
+      }
+
+      p {
+        color: $color-text-30;
+      }
+
+      &::before {
+        background-image: url(../img/icons/quotes-red.svg);
+      }
+    }
+  }
+}
+
+.decor-right {
+  position: absolute;
+  top: -23rem;
+  right: 0;
+  width: 74.5rem;
+  height: 130rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+}
+
+@media (max-width: 1199px) {
+  .decor-right {
+    top: -20rem;
+    width: 40rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .quotes-info {
+    padding-left: 4.4rem;
+    padding-right: 4.4rem;
+
+    &::before {
+      width: 100%;
+      height: 0.4rem;
+    }
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  .decor-right {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .quotes {
+    .container {
+      padding: 0;
+    }
+  }
+
+  .quotes-info {
+    .text {
+      > blockquote {
+        font-size: 2.4rem;
+        padding: 5.33em 0 2.67em 0;
+
+        q {
+          -webkit-line-clamp: 8;
+        }
+
+        &::before {
+          top: 3.5em;
+        }
+        h5 {
+          margin-top: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+/**--------------------------------------------------------------------------------------------*/
+/** QUOTES BLOCK FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division {
+  .quotes-info {
+    &::before {
+      background-color: $color-primary-base2-20;
+    }
+
+    &::after {
+      background-color: $color-primary-base2-30;
+    }
+
+    .text {
+      > blockquote {
+        &::before {
+          background-image: url(../img/icons/quotes.svg);
+        }
+      }
+    }
+  }
+}

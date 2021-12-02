@@ -1,0 +1,162 @@
+//VARIABLES
+@import "variables-mixins";
+/**-----------------------------------------------------------------------*/
+/** NEWS BLOCK */
+/**-----------------------------------------------------------------------*/
+.news-item {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  height: 100%;
+  background-color: $color-white;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.2);
+  border-radius: 0.25em 0.25em 0 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.25em;
+    background: $gradient;
+    transition: $transition;
+  }
+}
+
+.news-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.1%;
+  transition: $transition;
+
+  img {
+    @include imgCover;
+  }
+}
+
+.border-top {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+  transition: $transition;
+  background-color: $color-secondary-80;
+}
+
+.news-img + .border-top {
+  display: none;
+}
+
+.news-info {
+  padding: 1.5em 1.5em 2.375em 1.5em;
+  transition: $transition;
+
+  .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.date {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+  font-weight: 500;
+  color: $color-text-20;
+}
+
+.news-swiper {
+  margin-left: -1rem;
+  margin-right: -1rem;
+
+  .swiper-container:not(.swiper-no-swiping) .swiper-wrapper {
+    cursor: default;
+  }
+
+  .swiper-container {
+    padding: 1rem;
+  }
+
+  .swiper-pagination {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .news-item:hover {
+
+    &::before {
+      height: 1em;
+    }
+
+    .news-img {
+      transform: translateY(-0.5em);
+    }
+
+    .border-top {
+      transform: translateY(-0.5em);
+    }
+
+    .news-info {
+      transform: translateY(-0.5em);
+
+      .title {
+        color: $color-primary-base1-10;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .date {
+    font-size: 1.4rem;
+    line-height: 1.57em;
+  }
+
+  .news-swiper {
+    .swiper-button-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > *:not(:last-child) {
+        margin-right: 1.5em;
+      }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: relative;
+      top: 0;
+      transform: unset;
+    }
+
+    .swiper-button-prev {
+      transform: scaleX(-1);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .news-info {
+    .title {
+      -webkit-line-clamp: 3;
+    }
+  }
+}
+
+/**--------------------------------------------------------------------------------------------*/
+/** NEWS BLOCK FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division {
+  .news-item {
+    &::before {
+      background: $color-primary-base2-20;
+    }
+  }
+}

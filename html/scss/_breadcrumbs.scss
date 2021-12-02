@@ -1,0 +1,49 @@
+//VARIABLES
+@import "variables-mixins";
+/**-----------------------------------------------------------------------*/
+/** BREDCRUMBS  */
+/**-----------------------------------------------------------------------*/
+.breadcrumbs {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.57em;
+  font-weight: 500;
+  color: $color-text-20;
+
+  li {
+    position: relative;
+    display: inline-block;
+    transition: $transition;
+
+    &:after {
+      content: '';
+      position: relative;
+      display: inline-block;
+      width: 0.07em;
+      height: 1.57em;
+      background: $color-text-20;
+      margin: -0.43em 0.57em;
+    }
+
+    &:last-child:after {
+      content: none;
+    }
+
+    &.active {
+      color: $color-primary-base2-10;
+    }
+  }
+
+  &.in {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+}
+
+@media (min-width: 1200px) {
+  .breadcrumbs li a:hover {
+    color: $color-primary-base2-10;
+  }
+}

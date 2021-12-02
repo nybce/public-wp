@@ -1,0 +1,314 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+/** SIDEBAR */
+/**-----------------------------------------------------------------------*/
+.page-menu-wrapper {
+  position: relative;
+  max-width: 28.5rem;
+  text-align: center;
+
+  .title {
+    text-transform: uppercase;
+    color: $color-text-20;
+  }
+
+  &.mobile {
+    display: none;
+  }
+}
+
+.page-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .mobile-button-wrapper {
+    position: relative;
+    display: none;
+    width: 3.2em;
+    height: 3.2em;
+    background-color: $color-white;
+    border-radius: 2.4rem;
+    flex-shrink: 0;
+    border: 0.1rem solid $color-secondary-90;
+  }
+
+  .page-mobile-button {
+    will-change: transform;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.8rem;
+    height: 1rem;
+    cursor: pointer;
+    z-index: 101;
+
+    span {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 0.15rem;
+      margin-top: 0;
+      background: $color-gray-100;
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 0.15rem;
+      background: $color-gray-100;
+      margin-top: 0.6rem;
+    }
+
+    &::before {
+      margin-top: -0.6rem;
+    }
+
+    &.active {
+      span {
+        transform: translateX(3rem);
+        opacity: 0;
+      }
+
+      &::after {
+        transform: translateY(-0.6rem) rotate(-45deg);
+        transform-origin: center center;
+      }
+
+      &::before {
+        transform: translateY(0.6rem) rotate(45deg);
+        transform-origin: center center;
+      }
+    }
+  }
+}
+
+.page-menu {
+  position: relative;
+  transition: $transition;
+  background-color: $color-white;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  text-align: left;
+  padding: 2.4rem;
+
+  li {
+    font-size: 1.6rem;
+    line-height: 1.5em;
+    font-weight: 700;
+    color: $color-text-10;
+    padding: 1rem 0 1rem 0.8rem;
+
+    &:first-child {
+      font-size: 1.4rem;
+      line-height: 1.57em;
+      font-weight: 500;
+      color: $color-text-20;
+    }
+
+    &.active {
+      color: $color-primary-base1-30;
+    }
+  }
+
+  & > *:not(:last-child) {
+    border-bottom: 0.1rem solid $color-secondary-90;
+  }
+}
+
+.promo-wrapper {
+  position: relative;
+  max-width: 28.5rem;
+  background-color: $color-white;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  padding: 2.4rem;
+}
+
+.promo-item {
+  padding-top: 1.6rem;
+  border-top: 0.1rem solid $color-secondary-90;
+
+  &:first-of-type {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .input {
+    width: 100%;
+    border: 0.1rem solid $color-secondary-90;
+    border-radius: 0.4rem;
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.promo-cta {
+  position: relative;
+  display: block;
+  max-width: 28.5rem;
+  padding: 2.4rem;
+  background-color: $color-gray-100;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem 0.4rem 0 0;
+  transition: $transition;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.25em;
+    background: $gradient;
+    transition: $transition;
+  }
+
+  .text-lg {
+    transition: $transition;
+  }
+}
+
+/*promo-cta modal*/
+.promo-cta-modal {
+  position: fixed;
+  z-index: 60;
+  right: 0;
+  bottom: 1rem;
+  width: 38.5rem;
+  text-align: center;
+  transform: translateX(100%);
+  transition: $transition;
+
+  .promo-cta {
+    max-width: 100%;
+    padding: 4.8rem 2.4rem;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+
+    &::before,
+    &::after {
+      background: $color-white;
+    }
+  }
+
+  &.active {
+    transform: translateX(0%);
+    right: 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-menu li:hover {
+    color: $color-primary-base1-30;
+
+    &:first-child {
+      color: $color-text-20;
+    }
+  }
+
+  .promo-cta:hover {
+    &::before {
+      height: 1em;
+    }
+
+    .title {
+      transform: translateY(-0.3em);
+    }
+
+    .text-lg {
+      transform: translateY(-0.3em);
+    }
+
+    .btn {
+      transform: translateY(-0.3em);
+      color: $color-white;
+      background: $color-primary-base1-10;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .page-menu-wrapper {
+    display: none;
+    margin: 0 auto;
+
+    .mobile-button-wrapper {
+      display: block;
+    }
+
+    .page-mobile-button {
+      display: block;
+    }
+
+    &.mobile {
+      display: block;
+    }
+  }
+
+  .page-menu-head {
+    justify-content: space-between;
+  }
+
+  .page-menu {
+    transform: scale(0);
+    z-index: -1;
+    position: absolute;
+    box-shadow: unset;
+    border-radius: unset;
+  }
+
+  .page-menu.open {
+    transform: scale(1);
+    position: relative;
+  }
+
+  .promo-wrapper {
+    margin: 0 auto;
+  }
+}
+
+/**--------------------------------------------------------------------------------------------*/
+/** SIDEBAR FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division {
+  .promo-cta {
+    background-color: $color-primary-base2-30;
+
+    &::before {
+      background: $color-primary-base2-20;
+    }
+
+    .btn {
+      border-color: $color-primary-base2-20;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .promo-cta:hover {
+      .btn {
+        background: $color-primary-base2-20;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+$color-primary-base1-10: #FC1921;
+$color-primary-base1-20: #FE444A;
+$color-primary-base1-30: #E30513;
+
+$gradient: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%);
+
+$color-secondary-10:#FF7009;
+$color-secondary-20:#64C2AF;
+$color-secondary-30:#78B81C;
+$color-secondary-40:#FFB548;
+$color-secondary-50:#A30361;
+$color-secondary-60:#E43493;
+$color-secondary-70:#008599;
+$color-secondary-80:#E2F0FF;
+$color-secondary-90:#C8D8E8;
+$color-secondary-100:#1E2A3A;
+
+$color-text-10:#1E2A3A;
+$color-text-20:#59728B;
+$color-text-30:#C8D8E8;
+$color-text-40:#FFFFFF;
+
+$color-white: #FFF;
+$color-gray-10:#F4F4F4;
+$color-gray-20:#E0E0E0;
+$color-gray-40:#A8A8A8;
+$color-gray-60:#6F6F6F;
+$color-gray-80:#393939;
+$color-gray-100:#000000;
+
+$color-error:#EC131E;
+$color-error-inverse:#FA4D56;
+$color-info:#0F35FE;
+$color-info-inverse:#4589FF;
+$color-success:#24A148;
+$color-success-inverse:#42BE65;
+$color-warning:#F3C311;
+$color-warning-inverse:#EED375;
+
+$color-primary-base2-10: #0C2D83;
+$color-primary-base2-20: #439BFF;
+$color-primary-base2-30: #09134B;
+
+$transition: .25s ease-in;
+
+@mixin centerAbsolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin beforeFull {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin imgCover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin imgContain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
