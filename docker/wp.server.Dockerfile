@@ -84,7 +84,6 @@ RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
 RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
 RUN mkdir /envs
 COPY ./.env/* /envs
-COPY .vaultpass /envs
 
 RUN mkdir /theme
 COPY --from=theme-builder /theme /theme
