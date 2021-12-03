@@ -1,0 +1,57 @@
+/**--------------------------------------------------------------------------------*/
+/**     CUSTOM PRELOADER     */
+/**--------------------------------------------------------------------------------*/
+#loader-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #fff;
+  animation: loader 1.3s linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+    visibility: hidden;
+    z-index: -10;
+    opacity: 0;
+  }
+}
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+    visibility: hidden;
+    z-index: -10;
+    opacity: 0;
+  }
+}
