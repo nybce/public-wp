@@ -23,10 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
-        with:
-          php_version: '7.4'
-          version: '1'
-
 
       - name: Detecting PHP Code Standards Violations
         run: pwd && composer run-script test web/app/themes
