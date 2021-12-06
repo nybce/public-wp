@@ -233,7 +233,35 @@ ol {
 }
 
 .text,
-.text-xl {
+.text-xl,
+.text-lg,
+.text-sm {
+
+  &.fw-500 {
+    font-weight: 500;
+  }
+
+  &.fw-600 {
+    font-weight: 600;
+  }
+
+  &.fw-700 {
+    font-weight: 700;
+  }
+
+  &.fw-800 {
+    font-weight: 800;
+  }
+
+  &.fw-900 {
+    font-weight: 900;
+  }
+}
+
+.text,
+.text-xl,
+.text-lg,
+.text-sm {
   h1,
   h2,
   h3,

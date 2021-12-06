@@ -1,6 +1,5 @@
 jQuery(function ($) {
 
-  /* swiper sliders */
   _functions.getSwOptions = function (swiper) {
     let options = swiper.data('options');
     options = (!options || typeof options !== 'object') ? {} : options;
@@ -28,7 +27,7 @@ jQuery(function ($) {
       options.loop = false;
       $p.addClass('hide-control');
     }
-    if (options.customFraction) {
+    if (options.customFraction){
       $p.addClass('custom-fraction-swiper');
       if (slidesLength > 1 && slidesLength < 10) {
         $p.find('.custom-current').text('1');
@@ -41,27 +40,22 @@ jQuery(function ($) {
     if (isTouchScreen) options.direction = "horizontal";
     return options;
   };
-
   _functions.initSwiper = function (el) {
     const swiper = new Swiper(el[0], _functions.getSwOptions(el));
   };
 
-  setTimeout(function () {
-    $('.swiper-entry .swiper-container').each(function () {
-      _functions.initSwiper($(this));
-    });
-  }, 200);
-
-
+  $('.swiper-entry .swiper-container').each(function () {
+    _functions.initSwiper($(this));
+  });
 
   //custom fraction
-  $('.custom-fraction-swiper').each(function () {
+  $('.custom-fraction-swiper').each(function() {
     var $this = $(this),
       $thisSwiper = $this.find('.swiper-container')[0].swiper;
 
-    $thisSwiper.on('slideChange', function () {
+    $thisSwiper.on('slideChange', function() {
       $this.find('.custom-current').text(
-        function () {
+        function() {
           if ($thisSwiper.realIndex < 9) {
             return + ($thisSwiper.realIndex + 1)
           } else {

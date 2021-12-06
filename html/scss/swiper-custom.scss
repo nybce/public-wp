@@ -12,7 +12,15 @@
   opacity: 1;
 }
 
-.swiper-container { margin-left: auto; margin-right: auto; position: relative; overflow: hidden; list-style: none; padding: 0; z-index: 1; }
+.swiper-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
 
 .swiper-container.swiper-container-visible {
   overflow: visible;
@@ -30,7 +38,7 @@
   cursor: default;
 }
 
-.swiper-button-wrapper.swiper-button-lock +.swiper-container .swiper-wrapper {
+.swiper-button-wrapper.swiper-button-lock + .swiper-container .swiper-wrapper {
   cursor: default;
 }
 

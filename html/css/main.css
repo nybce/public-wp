@@ -242,11 +242,21 @@ ul, ol { list-style: none; }
 
 .text-sm { font-size: 1.4rem; line-height: 1.57em; font-weight: 400; color: #1E2A3A; }
 
-.text h1, .text h2, .text h3, .text h4, .text h5, .text h6, .text-xl h1, .text-xl h2, .text-xl h3, .text-xl h4, .text-xl h5, .text-xl h6 { font-weight: 800; }
+.text.fw-500, .text-xl.fw-500, .text-lg.fw-500, .text-sm.fw-500 { font-weight: 500; }
 
-.text h2, .text-xl h2 { color: #0C2D83; }
+.text.fw-600, .text-xl.fw-600, .text-lg.fw-600, .text-sm.fw-600 { font-weight: 600; }
 
-.text h3, .text-xl h3 { color: #1E2A3A; }
+.text.fw-700, .text-xl.fw-700, .text-lg.fw-700, .text-sm.fw-700 { font-weight: 700; }
+
+.text.fw-800, .text-xl.fw-800, .text-lg.fw-800, .text-sm.fw-800 { font-weight: 800; }
+
+.text.fw-900, .text-xl.fw-900, .text-lg.fw-900, .text-sm.fw-900 { font-weight: 900; }
+
+.text h1, .text h2, .text h3, .text h4, .text h5, .text h6, .text-xl h1, .text-xl h2, .text-xl h3, .text-xl h4, .text-xl h5, .text-xl h6, .text-lg h1, .text-lg h2, .text-lg h3, .text-lg h4, .text-lg h5, .text-lg h6, .text-sm h1, .text-sm h2, .text-sm h3, .text-sm h4, .text-sm h5, .text-sm h6 { font-weight: 800; }
+
+.text h2, .text-xl h2, .text-lg h2, .text-sm h2 { color: #0C2D83; }
+
+.text h3, .text-xl h3, .text-lg h3, .text-sm h3 { color: #1E2A3A; }
 
 .title.light, .text.light, .text-xl.light, .text-lg.light, .text-sm.light { color: #FFF; }
 

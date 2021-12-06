@@ -123,13 +123,71 @@
   }
 }
 
+@media (max-width: 1600px) {
+  .decor-form-assays {
+    &.type-2 {
+      top: 35rem;
+      height: calc(100% - 35rem);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .download-card-info {
+    padding: 2.4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .download-card {
+    flex-direction: column;
+  }
+
+  .download-card-img {
+    max-width: 100%;
+    background-color: transparent;
+    padding-bottom: 0;
+    padding: 2.4rem 2.4rem 1.6rem 2.4rem;
+
+    img {
+      position: relative;
+      display: block;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+  }
+
+  .download-card-info {
+    width: 100%;
+    padding: 0 2.4rem 2.4rem 2.4rem;
+  }
+
+  .decor-form-assays {
+    top: 26rem;
+    height: calc(100% - 26rem);
+
+    &.type-2 {
+      top: 48rem;
+      height: calc(100% - 51rem);
+    }
+  }
+}
+
 /**--------------------------------------------------------------------------------------------*/
 /** DOWNLOAD CARD FOR DIVISION */
 /**--------------------------------------------------------------------------------------------*/
 .division {
-
+  .download-card {
+    &::before {
+      background: $color-primary-base2-20;
+    }
+  }
 }
 
+/**--------------------------------------------------------------------------------------------*/
+/** EXPAND MORE BUTTON */
+/**--------------------------------------------------------------------------------------------*/
 .expand-more {
   position: relative;
   cursor: pointer;
@@ -149,18 +207,11 @@
   display: block;
   text-align: center;
 
-
-
   .download-card {
     display: none;
 
-
     &.active {
       display: flex;
-      transform: translateY(0);
     }
   }
-}
-
-.expand-block.open-expand-block {
 }
