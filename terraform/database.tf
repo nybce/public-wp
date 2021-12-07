@@ -1,6 +1,6 @@
 resource "azurerm_mysql_server" "example" {
   name                = "${var.project}-db-${var.environment}"
-  location            = azurerm_resource_group.vmss.name
+  location            = azurerm_resource_group.vmss.location
   resource_group_name = azurerm_resource_group.vmss.name
 
   administrator_login          = var.database_username
