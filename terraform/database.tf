@@ -17,13 +17,6 @@ resource "azurerm_mysql_server" "example" {
   public_network_access_enabled     = true
   ssl_enforcement_enabled           = false
 
-    firewall_rule_prefix = "firewall-"
-    firewall_rules = [
-      { name = "subnet1", start_ip = "10.0.1.1", end_ip = "10.0.1.254" },
-      { name = "subnet2", start_ip = "52.255.162.124", end_ip = "52.255.162.124" },
-      { start_ip = "127.0.0.0", end_ip = "127.0.1.0" },
-    ]
-
     tags = {
       environment  = var.environment
       project_name = var.project
