@@ -76,7 +76,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
       primary                                      = true
       subnet_id                                    = azurerm_subnet.vmss.id
       application_gateway_backend_address_pool_ids = "${azurerm_application_gateway.loadbalancer.backend_address_pool[*].id}"
-      }
+    }
   }
 
   tags = {
