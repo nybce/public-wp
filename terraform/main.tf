@@ -1,7 +1,7 @@
 provider "azurerm" {
   # We recommend pinning to the specific version of the Azure Provider you're using
   # since new versions are released frequently
-  version = "=2.20.0"
+  version = "=2.88.1"
 
   features {}
 }

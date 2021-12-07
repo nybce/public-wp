@@ -158,9 +158,6 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   ssl_profile {
     name = local.ssl_profile_name
-    #  ssl_policy {
-    #    policy_type
-    #  }
   }
 }
 
