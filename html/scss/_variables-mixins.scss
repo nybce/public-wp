@@ -1,78 +1,78 @@
-$color-primary-base1-10: #FC1921;
-$color-primary-base1-20: #FE444A;
-$color-primary-base1-30: #E30513;
+$color-primary-base1-10: #fc1921;
+$color-primary-base1-20: #fe444a;
+$color-primary-base1-30: #e30513;
 
-$gradient: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%);
+$gradient: linear-gradient(90deg, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%);
 
-$color-secondary-10:#FF7009;
-$color-secondary-20:#64C2AF;
-$color-secondary-30:#78B81C;
-$color-secondary-40:#FFB548;
-$color-secondary-50:#A30361;
-$color-secondary-60:#E43493;
+$color-secondary-10:#ff7009;
+$color-secondary-20:#64c2af;
+$color-secondary-30:#78b81c;
+$color-secondary-40:#ffb548;
+$color-secondary-50:#a30361;
+$color-secondary-60:#e43493;
 $color-secondary-70:#008599;
-$color-secondary-80:#E2F0FF;
-$color-secondary-90:#C8D8E8;
-$color-secondary-100:#1E2A3A;
+$color-secondary-80:#e2f0ff;
+$color-secondary-90:#c8d8e8;
+$color-secondary-100:#1e2a3a;
 
-$color-text-10:#1E2A3A;
-$color-text-20:#59728B;
-$color-text-30:#C8D8E8;
-$color-text-40:#FFFFFF;
+$color-text-10:#1e2a3a;
+$color-text-20:#59728b;
+$color-text-30:#c8d8e8;
+$color-text-40:#fff;
 
-$color-white: #FFF;
-$color-gray-10:#F4F4F4;
-$color-gray-20:#E0E0E0;
-$color-gray-40:#A8A8A8;
-$color-gray-60:#6F6F6F;
+$color-white: #fff;
+$color-gray-10:#f4f4f4;
+$color-gray-20:#e0e0e0;
+$color-gray-40:#a8a8a8;
+$color-gray-60:#6f6f6f;
 $color-gray-80:#393939;
-$color-gray-100:#000000;
+$color-gray-100:#000;
 
-$color-error:#EC131E;
-$color-error-inverse:#FA4D56;
-$color-info:#0F35FE;
-$color-info-inverse:#4589FF;
-$color-success:#24A148;
-$color-success-inverse:#42BE65;
-$color-warning:#F3C311;
-$color-warning-inverse:#EED375;
+$color-error:#ec131e;
+$color-error-inverse:#fa4d56;
+$color-info:#0f35fe;
+$color-info-inverse:#4589ff;
+$color-success:#24a148;
+$color-success-inverse:#42be65;
+$color-warning:#f3c311;
+$color-warning-inverse:#eed375;
 
-$color-primary-base2-10: #0C2D83;
-$color-primary-base2-20: #439BFF;
-$color-primary-base2-30: #09134B;
+$color-primary-base2-10: #0c2d83;
+$color-primary-base2-20: #439bff;
+$color-primary-base2-30: #09134b;
 
-$transition: .25s ease-in;
+$transition: 0.25s ease-in;
 
 @mixin centerAbsolute {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 @mixin beforeFull {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 @mixin imgCover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 @mixin imgContain {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+	height: 100%;
+	left: 0;
+	object-fit: contain;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
