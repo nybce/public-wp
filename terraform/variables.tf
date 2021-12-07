@@ -67,7 +67,7 @@ variable "nybc_sites" {
     "comprehensivecellsolutions", "delmarvablood", "innovativebloodresources",
     "integratedlabnetwork", "mbc", "nationalcordbloodprogram", "ncbb", "ncbgg",
     "ncbp2", "nybloodcenter"
-    ]
+  ]
 }
 
 variable "cloudflare_zone_id" {
