@@ -7,12 +7,12 @@
 /* main */
 html {
 	-webkit-font-smoothing: antialiased;
-	height: auto;
+	height: 100%;
 }
 
 body {
-	height: auto;
-	overflow: visible;
+	height: 100%;
+	overflow: hidden;
 }
 
 #content-block {
@@ -31,25 +31,58 @@ footer {
 	overflow: hidden;
 }
 
+html.overflow-menu body {
+	bottom: 0;
+	left: 0;
+	max-height: 100vh;
+	overflow: hidden;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
 html.overflow-hidden body {
 	overflow: hidden;
 }
 
-html.overflow-menu,
-html.overflow-menu body {
-	overflow: hidden;
-}
-
 .swiper-slide:not(:first-child) {
-	display: block;
-}
-
-.swiper-entry .swiper-container {
-	opacity: 0;
+	display: none;
 }
 
 html.keyboard-focus :focus {
 	outline: auto;
+}
+
+.bg-image {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bg-full {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.full-size {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.img {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	vertical-align: top;
 }
 
 .clearfix {
@@ -60,6 +93,12 @@ html.keyboard-focus :focus {
 	clear: both;
 	content: "";
 	display: block;
+}
+
+.cell-view {
+	display: table-cell;
+	vertical-align: middle;
+	width: 10000px;
 }
 
 section,
@@ -94,14 +133,40 @@ sub {
 	bottom: -0.25em;
 }
 
-.container {
-	padding-left: 0;
-	padding-right: 0;
+a {
+	cursor: pointer;
+}
+
+/* bootstrap extensions */
+.embed-responsive {
+	display: block;
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+}
+
+.embed-responsive-16by9 {
+	padding-bottom: 56.25%;
+}
+
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+	border: 0;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 @media (min-width: 1601px) {
 	.container {
-		max-width: 1600px;
+		max-width: 1750px;
 		width: 100%;
 	}
 }
@@ -110,18 +175,6 @@ sub {
 	.container {
 		max-width: 1200px;
 		width: 100%;
-	}
-}
-
-@media (max-width: 767px) {
-	.container {
-		padding-left: 1.5em;
-		padding-right: 1.5em;
-	}
-
-	.container-lg {
-		padding-left: 2.75em;
-		padding-right: 2.75em;
 	}
 }
 
@@ -173,10 +226,6 @@ sub {
 
 .spacer-64 {
 	height: 6.4rem;
-}
-
-.spacer-72 {
-	height: 7.2rem;
 }
 
 .spacer-96 {
@@ -232,10 +281,6 @@ sub {
 		height: 6.4rem;
 	}
 
-	.spacer-xs-72 {
-		height: 7.2rem;
-	}
-
 	.spacer-xs-96 {
 		height: 9.6rem;
 	}
@@ -243,14 +288,4 @@ sub {
 	.spacer-xs-120 {
 		height: 12rem;
 	}
-}
-
-body ::selection {
-	background: #000;
-	color: #fff;
-}
-
-body ::-moz-selection {
-	background: #000;
-	color: #fff;
 }

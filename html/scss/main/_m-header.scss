@@ -1,17 +1,16 @@
-//VARIABLES
-@import "variables-mixins";
-
 /**--------------------------------------------------------------------------*/
 
 /** HEADER */
 
 /**--------------------------------------------------------------------------*/
 header {
-	&.hide-top {
-		.header-inner {
-			top: -7.8rem;
-		}
-	}
+	backface-visibility: hidden;
+	background-color: $color-white;
+	height: 15rem;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 101;
 
 	.logo {
 		display: inline-block;
@@ -38,31 +37,26 @@ header {
 }
 
 .header-inner {
-	backface-visibility: hidden;
 	background-color: $color-white;
 	border-bottom: 0.0625em solid $color-secondary-90;
-	height: 15rem;
-	position: fixed;
-	top: 0;
-	transition: $transition;
-	width: 100%;
-	z-index: 101;
+	height: inherit;
+	position: relative;
 
 	&::before {
 		background: $gradient;
 		content: "";
 		height: 0.25em;
 		left: 0;
-		position: fixed;
+		position: absolute;
 		top: 0;
 		width: 100%;
 	}
 }
 
 .header-top {
-	background-color: $color-white;
 	border-bottom: 0.0625em solid $color-secondary-80;
 	padding: 1.25em 1em 1em;
+	position: relative;
 }
 
 .top-menu {
@@ -82,7 +76,6 @@ header {
 }
 
 .header-bottom {
-	background-color: $color-white;
 	padding: 1em;
 }
 
@@ -241,11 +234,7 @@ header {
 
 @media (max-width: 1199px) {
 	header {
-		&.hide-top {
-			.header-inner {
-				top: 0;
-			}
-		}
+		height: 8rem;
 
 		.logo {
 			max-width: 25rem;
@@ -267,7 +256,6 @@ header {
 	.header-inner {
 		border-bottom: none;
 		display: block;
-		height: 8rem;
 	}
 
 	.header-top {
@@ -422,18 +410,14 @@ header {
 		margin-right: 0;
 	}
 
-	a {
-		position: relative;
-
-		&::before {
-			content: "";
-			height: 0;
-			left: 0;
-			padding-bottom: 35%;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
+	&::before {
+		content: "";
+		height: 0;
+		left: 0;
+		padding-bottom: 35%;
+		position: absolute;
+		top: 0;
+		width: 100%;
 	}
 
 	.dropdown-btn {
@@ -498,7 +482,7 @@ header {
 
 		.btn-link {
 			display: inline-block;
-			font-family: Avenir, sans-serif;
+			font-family: $family-avenir;
 			font-size: 3rem;
 			font-weight: 800;
 			line-height: 1.2em;
@@ -581,10 +565,10 @@ header {
 	.dropdown-item:hover {
 		>a {
 			color: $color-primary-base1-10;
+		}
 
-			&::before {
-				height: 100%;
-			}
+		&::before {
+			height: 100%;
 		}
 
 		.dropdown {
@@ -610,15 +594,6 @@ header {
 			padding-right: 1.8125em;
 		}
 	}
-
-	header.hide-top {
-		.dropdown-item:hover {
-
-			.dropdown {
-				top: 7.2rem;
-			}
-		}
-	}
 }
 
 @media (max-width: 1600px) {
@@ -634,10 +609,8 @@ header {
 		align-items: center;
 		display: flex;
 
-		a {
-			&::before {
-				content: none;
-			}
+		&::before {
+			content: none;
 		}
 
 		.dropdown-btn {
@@ -695,7 +668,7 @@ header {
 
 				span {
 					color: $color-white;
-					font-family: Avenir, sans-serif;
+					font-family: $family-avenir;
 					font-size: 2.2rem;
 					font-weight: 800;
 					line-height: 1.18em;
