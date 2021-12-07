@@ -1,0 +1,25 @@
+/**--------------------------------------------------------*/
+/** TABS  */
+/**--------------------------------------------------------*/
+.tab-nav { position: relative; margin-bottom: 2.4rem; }
+
+.tab-title { display: none; cursor: pointer; font-weight: 700; text-align: center; color: #1E2A3A; border-bottom: 0.2rem solid transparent; padding: 0; }
+
+.tab-toggle { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.tab-toggle div { cursor: pointer; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; font-size: 1.8rem; line-height: 1.44em; font-weight: 700; color: #1E2A3A; border-bottom: 0.2rem solid transparent; padding: 0; }
+
+.tab-toggle div.active { border-color: #FC1921; }
+
+.tab-toggle > *:not(:last-child) { margin-right: 2.4rem; }
+
+.tab { display: none; }
+
+.tab:nth-child(2) { display: block; }
+
+@media (min-width: 1200px) { .tab-toggle div:hover { border-color: #FC1921; } }
+
+@media (max-width: 991px) { .tab-toggle div { white-space: nowrap; } }
+
+@media (max-width: 767px) { .tab-nav { overflow: auto; padding-bottom: 0.5rem; }
+  .tab-toggle { -webkit-box-pack: start; -ms-flex-pack: start; justify-content: start; } }

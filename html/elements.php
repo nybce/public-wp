@@ -4,6 +4,8 @@
 <head>
     <?php include 'inc/_top.php';?>
 
+    <?php include 'inc/elements-includes/_main.php';?>
+
     <title>New York Blood Center:: Elements</title>
 </head>
 
@@ -12,7 +14,6 @@
     <div id="content-block">
 
         <main>
-
             <!-- TITLES -->
             <div class="section" style="margin: 20px 0;">
                 <div class="container">
@@ -366,6 +367,20 @@
         </main>
 
     </div>
+
+    <?php include 'inc/elements-includes/_accordion.php';?>
+    <?php include 'inc/elements-includes/_form-elements.php';?>
+    <?php include 'inc/elements-includes/_swiper.php';?>
+
+    <?php include 'inc/javascripts-includes/_jquery.php';?>
+    <?php include 'inc/javascripts-includes/_swiper.php';?>
+    <?php include 'inc/javascripts-includes/_inputmask.php';?>
+    <?php include 'inc/javascripts-includes/_rellax.php';?>
+    <?php include 'inc/javascripts-includes/_smoothScroll.php';?>
+
+    <?php include 'inc/javascripts-includes/_accordion.php';?>
+    <?php include 'inc/javascripts-includes/_swiper-init.php';?>
+
     <?php include 'inc/_bottom.php';?>
 </body>
 

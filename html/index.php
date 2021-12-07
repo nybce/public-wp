@@ -4,6 +4,9 @@
 <head>
     <?php include 'inc/_top.php';?>
 
+    <?php include 'inc/elements-includes/_main.php';?>
+    <?php include 'inc/flexible-includes/_section-banners.php';?>
+
     <title>New York Blood Center:: Home Page</title>
 </head>
 
@@ -17,6 +20,23 @@
 
         <main>
 
+            <?php include 'inc/flexible-blocks/_section-banner.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-contact-us.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-about-us.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-products-and-services.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-info-block.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-quotes.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-featured.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-employees.php';?>
+
+            <?php include 'inc/flexible-blocks/_section-news.php';?>
 
         </main>
 
@@ -25,7 +45,32 @@
         </footer>
 
     </div>
+
+    <?php include 'inc/elements-includes/_tabs.php';?>
+    <?php include 'inc/elements-includes/_form-elements.php';?>
+    <?php include 'inc/elements-includes/_swiper.php';?>
+
+    <?php include 'inc/flexible-includes/_section-contact-us.php';?>
+    <?php include 'inc/flexible-includes/_section-about-us.php';?>
+    <?php include 'inc/flexible-includes/_section-products-and-services.php';?>
+    <?php include 'inc/flexible-includes/_section-info-block.php';?>
+    <?php include 'inc/flexible-includes/_section-quotes.php';?>
+    <?php include 'inc/flexible-includes/_section-news.php';?>
+    <?php include 'inc/flexible-includes/_section-employees.php';?>
+
+    <?php include 'inc/javascripts-includes/_jquery.php';?>
+    <?php include 'inc/javascripts-includes/_swiper.php';?>
+    <?php include 'inc/javascripts-includes/_rellax.php';?>
+    <?php include 'inc/javascripts-includes/_smoothScroll.php';?>
+
     <?php include 'inc/_bottom.php';?>
+
+    <?php include 'inc/javascripts-includes/_header.php';?>
+    <?php include 'inc/javascripts-includes/_tabs.php';?>
+    <?php include 'inc/javascripts-includes/_swiper-init.php';?>
+    <?php include 'inc/javascripts-includes/_sumoselect-init.php';?>
+    <?php include 'inc/javascripts-includes/_rellax-init.php';?>
+
 </body>
 
 </html>

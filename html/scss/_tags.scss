@@ -1,0 +1,62 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** TAGS  */
+
+/**-----------------------------------------------------------------------*/
+.tags-list {
+	color: $color-primary-base2-20;
+	font-family: "DM Sans", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.5em;
+	position: relative;
+	text-transform: capitalize;
+
+	li {
+		display: inline-block;
+		position: relative;
+		transition: $transition;
+
+		&::after {
+			background: $color-secondary-90;
+			content: "";
+			display: inline-block;
+			height: 1em;
+			margin: -0.2em 0.5em;
+			position: relative;
+			width: 0.0625em;
+		}
+
+		&:last-child::after {
+			content: none;
+		}
+	}
+
+	li.tag-main {
+		font-family: Avenir, sans-serif;
+		font-weight: 900;
+		letter-spacing: 0.06em;
+		line-height: 1.25em;
+		text-transform: uppercase;
+	}
+}
+
+@media (min-width: 1200px) {
+	.tags-list li a:hover {
+		color: $color-primary-base2-10;
+	}
+}
+
+@media (max-width: 991px) {
+	.tags-list {
+		font-size: 1.4rem;
+
+		li.tag-main {
+			letter-spacing: 0.02em;
+			line-height: 1.29em;
+		}
+	}
+}
