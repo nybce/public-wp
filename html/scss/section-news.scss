@@ -111,6 +111,12 @@
   }
 }
 
+@media (max-width: 1600px) {
+  .news-item {
+    max-width: 38.4rem;
+  }
+}
+
 @media (max-width: 991px) {
   .date {
     font-size: 1.4rem;

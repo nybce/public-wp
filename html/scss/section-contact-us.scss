@@ -103,6 +103,16 @@
     &.mt-150 {
       margin-top: -4rem;
     }
+
+    &.type-2 {
+      .contact-block {
+        padding: 2.4rem;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 

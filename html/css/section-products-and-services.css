@@ -41,6 +41,9 @@
   .card-item:hover .title { color: #E30513; -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); }
   .card-item:hover .text { -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); } }
 
+@media (max-width: 1600px) { .card-item { max-width: 38.4rem; }
+  .card-item.small { max-width: 28.2rem; } }
+
 @media (max-width: 1400px) { .card-swiper .swiper-button-prev, .card-swiper .swiper-button-next { left: -6.4rem; }
   .card-swiper .swiper-button-next { left: auto; right: -6.4rem; } }
 

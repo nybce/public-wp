@@ -161,6 +161,7 @@
 
 .promo-cta {
   position: relative;
+  cursor: pointer;
   display: block;
   max-width: 28.5rem;
   padding: 2.4rem;
@@ -284,6 +285,10 @@
   }
 
   .promo-wrapper {
+    margin: 0 auto;
+  }
+
+  .promo-cta {
     margin: 0 auto;
   }
 }

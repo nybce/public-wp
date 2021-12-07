@@ -145,6 +145,16 @@
   }
 }
 
+@media (max-width: 1600px) {
+  .card-item {
+    max-width: 38.4rem;
+
+    &.small {
+      max-width: 28.2rem;
+    }
+  }
+}
+
 @media (max-width: 1400px) {
   .card-swiper {
     .swiper-button-prev,

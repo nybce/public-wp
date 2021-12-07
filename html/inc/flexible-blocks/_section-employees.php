@@ -35,7 +35,7 @@
 
                                     <div class="spacer-48 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-secondary right">Learn More</button>
+                                    <a href="" class="btn-link btn-link-secondary right">Learn More</a>
 
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
 
                                     <div class="spacer-48 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-secondary right">Learn More</button>
+                                    <a href="#" class="btn-link btn-link-secondary right">Learn More</a>
 
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
 
                                     <div class="spacer-48 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-secondary right">Learn More</button>
+                                    <a href="#" class="btn-link btn-link-secondary right">Learn More</a>
 
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
 
                                     <div class="spacer-48 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-secondary right">Learn More</button>
+                                    <a href="#" class="btn-link btn-link-secondary right">Learn More</a>
 
                                 </div>
                             </div>

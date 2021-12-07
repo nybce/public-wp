@@ -41,6 +41,15 @@
   }
 }
 
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  >*:not(:last-child) {
+    margin-right: 0.8rem;
+  }
+}
+
 @media (min-width: 1200px) {
   .tags-list li a:hover {
     color: $color-primary-base2-10;
@@ -54,6 +63,18 @@
     li.tag-main {
       line-height: 1.29em;
       letter-spacing: 0.02em;
+    }
+  }
+
+  .tags-wrapper {
+    margin-bottom: -0.8rem;
+
+    .tag {
+      margin-bottom: 0.8rem;
+    }
+
+    >*:not(:last-child) {
+      margin-right: 0.8rem;
     }
   }
 }

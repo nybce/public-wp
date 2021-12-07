@@ -137,6 +137,12 @@ header {
     >a {
       color: $color-text-10;
     }
+
+    &.current-menu-item {
+      >a {
+       color: $color-primary-base1-10;
+      }
+    }
   }
 
   li:last-child {
@@ -563,6 +569,12 @@ header {
         line-height: 1.57em;
         font-weight: 700;
         color: $color-white;
+      }
+
+      &.current-menu-item {
+        >a {
+         color: $color-primary-base1-10;
+        }
       }
     }
 

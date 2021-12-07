@@ -40,13 +40,34 @@ ol {
 .text {
   font-size: 1.6rem;
   line-height: 1.5em;
+}
+
+.text-xl {
+  font-size: 2rem;
+  line-height: 1.5em;
+}
+
+.text-lg {
+  font-size: 1.8rem;
+  line-height: 1.44em;
+}
+
+.text-sm {
+  font-size: 1.4rem;
+  line-height: 1.57em;
+}
+
+.text,
+.text-xl,
+.text-lg,
+.text-sm {
   font-weight: 400;
   color: $color-text-10;
 
   ul li {
     position: relative;
-    font-size: 1.6rem;
-    line-height: 1.5em;
+    font-size: inherit;
+    line-height: inherit;
     padding-left: 1.25em;
 
     &:last-child {
@@ -71,8 +92,8 @@ ol {
 
   ol li {
     position: relative;
-    font-size: 1.6rem;
-    line-height: 1.5em;
+    font-size: inherit;
+    line-height: inherit;
     font-weight: 400;
     padding-left: 1.875em;
 
@@ -145,6 +166,7 @@ ol {
     padding: 3.5em 0 1.3em 0;
 
     h5 {
+      margin-top: 2.4rem;
       font-size: 0.67em;
       font-weight: 800;
     }
@@ -211,37 +233,35 @@ ol {
   }
 }
 
-.text-xl {
-  font-size: 2rem;
-  line-height: 1.5em;
-  font-weight: 400;
-  color: $color-text-10;
-}
-
-.text-lg {
-  font-size: 1.8rem;
-  line-height: 1.44em;
-  font-weight: 400;
-  color: $color-text-10;
-}
-
+.text,
+.text-xl,
+.text-lg,
 .text-sm {
-  font-size: 1.4rem;
-  line-height: 1.57em;
-  font-weight: 400;
-  color: $color-text-10;
+  &.fw-500 {
+    font-weight: 500;
+  }
+
+  &.fw-600 {
+    font-weight: 600;
+  }
+
+  &.fw-700 {
+    font-weight: 700;
+  }
+
+  &.fw-800 {
+    font-weight: 800;
+  }
+
+  &.fw-900 {
+    font-weight: 900;
+  }
 }
 
 .text,
-.text-xl {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 800;
-  }
+.text-xl,
+.text-lg,
+.text-sm {
 
   h2 {
     color: $color-primary-base2-10;
@@ -411,13 +431,34 @@ h6,
   &.fw-900 {
     font-weight: 900;
   }
+
+  &.text-10 {
+    color: $color-text-10;
+  }
+
+  &.text-20 {
+    color: $color-text-20;
+  }
+
+  &.text-30 {
+    color: $color-text-30;
+  }
+
+  &.text-40 {
+    color: $color-text-40;
+  }
 }
 
 @media (min-width: 1200px) {
-  .text a:hover:before {
-    width: 0;
-    right: auto;
-    left: 0;
+  .text,.text-xl,.text-lg,.text-sm {
+
+    a:hover {
+      color: $color-primary-base1-10;
+
+      &::before {
+        background: $color-primary-base1-10;
+      }
+    }
   }
 }
 
@@ -474,7 +515,10 @@ h6,
     font-size: 1.8rem;
   }
 
-  .text {
+  .text,
+  .text-xl,
+  .text-lg,
+  .text-sm {
     > blockquote {
       font-size: 2.4rem;
     }
@@ -500,25 +544,28 @@ h6,
     font-size: 3rem;
   }
 
-  .text {
+  .text,
+  .text-xl,
+  .text-lg,
+  .text-sm {
     > blockquote {
       font-size: 2rem;
     }
-  }
 
-  .text-xl {
-    font-size: 1.6rem;
-  }
+    iframe {
+      + span {
+        padding: 0.8rem;
+        font-size: 1.4rem;
+      }
+    }
 
-  iframe {
-    + span {
+    picture + span {
       padding: 0.8rem;
       font-size: 1.4rem;
     }
   }
 
-  picture + span {
-    padding: 0.8rem;
-    font-size: 1.4rem;
+  .text-xl {
+    font-size: 1.6rem;
   }
 }
