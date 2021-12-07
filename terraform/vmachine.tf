@@ -1,14 +1,14 @@
 locals {
-  backend_address_pool_name   = "${var.environment}-${var.project}-be-ap"
-  frontend_http_port_name     = "${var.environment}-${var.project}-fe-http-pconf"
-  frontend_https_port_name    = "${var.environment}-${var.project}-fe-https-pconf"
-  frontend_ip_configuration   = "${var.environment}-${var.project}-fe-ipconf"
-  http_setting_name           = "${var.environment}-${var.project}-be-htst"
-  listener_http_name          = "${var.environment}-${var.project}-http-lstn"
-  listener_https_name         = "${var.environment}-${var.project}-https-lstn"
-  request_routing_rule_name   = "${var.environment}-${var.project}-rqrt"
-  redirect_configuration_name = "${var.environment}-${var.project}-rdrcfg"
-  ssl_profile_name            = "${var.environment}-${var.project}-sslprof"
+  backend_address_pool_name      = "${var.environment}-${var.project}-be-ap"
+  frontend_http_port_name        = "${var.environment}-${var.project}-fe-http-pconf"
+  frontend_https_port_name       = "${var.environment}-${var.project}-fe-https-pconf"
+  frontend_ip_configuration_name = "${var.environment}-${var.project}-fe-ipconf"
+  http_setting_name              = "${var.environment}-${var.project}-be-htst"
+  listener_http_name             = "${var.environment}-${var.project}-http-lstn"
+  listener_https_name            = "${var.environment}-${var.project}-https-lstn"
+  request_routing_rule_name      = "${var.environment}-${var.project}-rqrt"
+  redirect_configuration_name    = "${var.environment}-${var.project}-rdrcfg"
+  ssl_profile_name               = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
     "dev" = [
       "comprehensivecellsolutions.dev.bbox.ly",
@@ -25,6 +25,20 @@ locals {
   }
 }
 
+
+data "template_file" "init" {
+  template = file("ec2-init.sh.tpl")
+
+  vars = {
+    docker_registry_host     = var.docker_registry_host
+    docker_registry_username = var.docker_registry_username
+    docker_registry_password = var.docker_registry_password
+    docker_image_tag         = var.docker_image_tag
+    ansible_vault_pass       = var.ansible_vault_pass
+    environment              = var.environment
+    nginx_auth_basic         = var.nginx_auth_basic
+  }
+}
 
 resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   name                = "vmachine-set-${var.project}-${var.environment}"
@@ -61,7 +75,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
       name                                         = "internal"
       primary                                      = true
       subnet_id                                    = azurerm_subnet.vmss.id
-      application_gateway_backend_address_pool_ids = [azurerm_application_gateway.network.backend_address_pool[*].id]
+      application_gateway_backend_address_pool_ids = [azurerm_application_gateway.loadbalancer.backend_address_pool[*].id]
     }
   }
 
@@ -137,7 +151,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
   request_routing_rule {
     name                       = local.request_routing_rule_name
     rule_type                  = "Basic"
-    http_listener_name         = local.listener_name
+    http_listener_name         = local.listener_http_name
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
   }
