@@ -66,7 +66,11 @@
                       <div class="spacer-xs-24"></div>
                   </div>
 
-                  <div class="col-xl-3 offset-xl-3 col-lg-4">
+                  <div class="col-xl-3 col-lg-4">
+
+                  </div>
+
+                  <div class="col-xl-3 col-lg-4">
                       <ul class="footer-nav-list">
                           <li><a href="#">Contact</a></li>
                           <li><a href="#">Careers</a></li>

@@ -236,22 +236,35 @@ ol {
 }
 
 .text,
-.text-xl {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-weight: 800;
-	}
-
+.text-xl,
+.text-lg,
+.text-sm {
+	font-weight: 800;
 	h2 {
 		color: $color-primary-base2-10;
 	}
 
 	h3 {
 		color: $color-text-10;
+	}
+	&.fw-500 {
+		font-weight: 500;
+	}
+
+	&.fw-600 {
+		font-weight: 600;
+	}
+
+	&.fw-700 {
+		font-weight: 700;
+	}
+
+	&.fw-800 {
+		font-weight: 800;
+	}
+
+	&.fw-900 {
+		font-weight: 900;
 	}
 }
 

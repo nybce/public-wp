@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars, no-undef */
-
 jQuery( function( $ ) {
 	/* swiper sliders */
 	_functions.getSwOptions = function( swiper ) {

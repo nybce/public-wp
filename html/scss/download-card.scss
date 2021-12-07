@@ -125,11 +125,76 @@
 	}
 }
 
+@media (max-width: 1600px) {
+	.decor-form-assays {
+		&.type-2 {
+			height: calc(100% - 35rem);
+			top: 35rem;
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.download-card-info {
+		padding: 2.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.download-card {
+		flex-direction: column;
+	}
+
+	.download-card-img {
+		background-color: transparent;
+		max-width: 100%;
+		padding: 2.4rem 2.4rem 1.6rem 2.4rem;
+		padding-bottom: 0;
+
+		img {
+			display: block;
+			left: unset;
+			position: relative;
+			top: unset;
+			transform: unset;
+		}
+	}
+
+	.download-card-info {
+		padding: 0 2.4rem 2.4rem 2.4rem;
+		width: 100%;
+	}
+
+	.decor-form-assays {
+		height: calc(100% - 26rem);
+		top: 26rem;
+
+		&.type-2 {
+			height: calc(100% - 51rem);
+			top: 48rem;
+		}
+	}
+}
+
 /**--------------------------------------------------------------------------*/
 
 /** DOWNLOAD CARD FOR DIVISION */
 
 /**--------------------------------------------------------------------------*/
+.division {
+	.download-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** EXPAND MORE BUTTON */
+
+/**--------------------------------------------------------------------------*/
+
 .expand-more {
 	background: $color-secondary-100;
 	border-radius: 0 0 0.4rem 0.4rem;
@@ -145,6 +210,7 @@
 }
 
 .expand-block {
+
 	display: block;
 	position: relative;
 	text-align: center;

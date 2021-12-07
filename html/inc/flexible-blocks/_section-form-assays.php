@@ -55,6 +55,9 @@
 
                     <div class="text-xl">
                         <h2 style="color: #0C2D83;">Forms</h2>
+
+                        <div class="spacer-16"></div>
+
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ultrices est adipiscing id donec
                             nulla pulvinar.</p>
                     </div>
@@ -161,7 +164,7 @@
         </div>
     </div>
 
-    <div class="spacer-96"></div>
+    <div class="spacer-96 spacer-xs-80"></div>
 
 </div>
 
@@ -176,10 +179,11 @@
 
                 <div class="download-card-inner">
 
-                    <div class="spacer-96"></div>
+                    <div class="spacer-96 spacer-xs-48"></div>
 
                     <div class="text-xl">
                         <h2 style="color: #0C2D83;">Assays</h2>
+                        <div class="spacer-16"></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ultrices est adipiscing id donec
                             nulla pulvinar.</p>
                     </div>
@@ -188,6 +192,7 @@
 
                     <div class="text-xl">
                         <h3 style="color: #1E2A3A;">Rhode Island Blood Center</h3>
+                        <div class="spacer-16"></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet nunc accumsan malesuada vitae
                             vel ornare pulvinar scelerisque. Imperdiet facilisi elit arcu auctor convallis.</p>
                     </div>
@@ -315,6 +320,7 @@
 
                     <div class="text-xl">
                         <h3 style="color: #1E2A3A;">Memorial Blood Center</h3>
+                        <div class="spacer-16"></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet nunc accumsan malesuada vitae
                             vel ornare pulvinar scelerisque. Imperdiet facilisi elit arcu auctor convallis.</p>
                     </div>
@@ -368,8 +374,6 @@
                     </div>
 
                 </div>
-
-                <div class="spacer-96"></div>
 
             </div>
         </div>
