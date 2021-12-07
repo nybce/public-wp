@@ -51,34 +51,16 @@ services:
     networks:
       - dbg-net
   # theme
-  enterprise-theme:
+  theme:
     build:
       dockerfile: docker/theme.local.Dockerfile
       context: "."
-      target: "enterprise-builder"
+      target: "theme-builder"
     # mounting local volume for hot-reload
     # TODO determine npm or yarn and remove one.
     volumes:
       - /theme/node_modules
-      - ./site/web/app/themes/enterprise-theme:/theme
-    depends_on:
-      - wp
-    ports:
-      - "3000:3000"
-      - "3001:3001"
-    networks:
-      - dbg-net
-
-  division-theme:
-    build:
-      dockerfile: docker/theme.local.Dockerfile
-      context: "."
-      target: "division-builder"
-    # mounting local volume for hot-reload
-    # TODO determine npm or yarn and remove one.
-    volumes:
-      - /theme/node_modules
-      - ./site/web/app/themes/division-theme:/theme
+      - ./site/web/app/themes/nybc-theme:/theme
       - ./html:/html
       - /var/cache/yarn
     depends_on:

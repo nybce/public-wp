@@ -21,23 +21,8 @@ RUN apk add --no-cache bash \
   lcms2-dev
 RUN rm -rf /var/cache/apk/*
 
-
-FROM node-base as enterprise-builder
-COPY ./site/web/app/themes/enterprise-theme/package.json /source/
-WORKDIR /source
-RUN npm install
-RUN ls -lrth
-RUN mkdir /theme
-RUN mv /source/node_modules /theme/node_modules
-WORKDIR /theme
-
-COPY docker/bin/theme-entrypoint.sh /usr/local/bin/theme-entrypoint.sh
-ENTRYPOINT ["theme-entrypoint.sh"]
-CMD ["npm", "run", "start"]
-
-
-FROM node-base as division-builder
-COPY ./site/web/app/themes/division-theme/package.json /source/
+FROM node-base as theme-builder
+COPY ./site/web/app/themes/nybc-theme/package.json /source/
 WORKDIR /source
 RUN npm install
 RUN mkdir /theme
