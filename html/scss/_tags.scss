@@ -1,59 +1,62 @@
 //VARIABLES
 @import "variables-mixins";
+
 /**-----------------------------------------------------------------------*/
+
 /** TAGS  */
+
 /**-----------------------------------------------------------------------*/
 .tags-list {
-  position: relative;
-  font-family: "DM Sans", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.5em;
-  font-weight: 700;
-  text-transform: capitalize;
-  color: $color-primary-base2-20;
+	color: $color-primary-base2-20;
+	font-family: "DM Sans", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.5em;
+	position: relative;
+	text-transform: capitalize;
 
-  li {
-    position: relative;
-    display: inline-block;
-    transition: $transition;
+	li {
+		display: inline-block;
+		position: relative;
+		transition: $transition;
 
-    &:after {
-      content: '';
-      position: relative;
-      display: inline-block;
-      width: 0.0625em;
-      height: 1em;
-      background: $color-secondary-90;
-      margin: -0.2em 0.5em;
-    }
+		&::after {
+			background: $color-secondary-90;
+			content: "";
+			display: inline-block;
+			height: 1em;
+			margin: -0.2em 0.5em;
+			position: relative;
+			width: 0.0625em;
+		}
 
-    &:last-child:after {
-      content: none;
-    }
-  }
+		&:last-child::after {
+			content: none;
+		}
+	}
 
-  li.tag-main {
-    font-family: "Avenir";
-    line-height: 1.25em;
-    font-weight: 900;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+	li.tag-main {
+		font-family: Avenir, sans-serif;
+		font-weight: 900;
+		letter-spacing: 0.06em;
+		line-height: 1.25em;
+		text-transform: uppercase;
+	}
 }
 
 @media (min-width: 1200px) {
-  .tags-list li a:hover {
-    color: $color-primary-base2-10;
-  }
+	.tags-list li a:hover {
+		color: $color-primary-base2-10;
+	}
 }
 
 @media (max-width: 991px) {
-  .tags-list {
-    font-size: 1.4rem;
+	.tags-list {
+		font-size: 1.4rem;
 
-    li.tag-main {
-      line-height: 1.29em;
-      letter-spacing: 0.02em;
-    }
-  }
+		li.tag-main {
+			letter-spacing: 0.02em;
+			line-height: 1.29em;
+		}
+	}
 }

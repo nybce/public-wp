@@ -2,165 +2,159 @@
 @import "variables-mixins";
 
 /**-----------------------------------------------------------------------*/
+
 /** DOWNLOAD CARD */
+
 /**-----------------------------------------------------------------------*/
 .download-card-inner {
-  position: relative;
-  width: 100%;
+	position: relative;
+	width: 100%;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: auto;
-    bottom: 3.3rem;
-    left: 0;
-    width: 100%;
-    height: 0.1rem;
-    background-color: $color-secondary-90;
-  }
+	&::before {
+		background-color: $color-secondary-90;
+		bottom: 3.3rem;
+		content: "";
+		height: 0.1rem;
+		left: 0;
+		position: absolute;
+		top: auto;
+		width: 100%;
+	}
 
 }
 
 .download-card-wrapper {
-  &>* {
-    margin-bottom: 2.4rem;
-  }
+	> * {
+		margin-bottom: 2.4rem;
+	}
 }
 
 .download-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  transition: $transition;
-  background-color: $color-white;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding-bottom: 0.4rem;
-  width: 100%;
+	align-items: center;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-start;
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 100%;
-    height: 0.25em;
-    background: $gradient;
-    transition: $transition;
-  }
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
 }
 
 .download-card-img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  max-width: 15.1%;
-  transition: $transition;
-  background-color: $color-secondary-80;
-  border-radius: 0.4rem 0 0 0;
-  padding-bottom: 23.9%;
+	background-color: $color-secondary-80;
+	border-radius: 0.4rem 0 0 0;
+	height: 100%;
+	max-width: 15.1%;
+	padding-bottom: 23.9%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
 
-  img {
-    @include centerAbsolute;
-    max-width: 32px;
-    max-height: 35px;
-  }
+	img {
+		@include centerAbsolute;
+		max-height: 35px;
+		max-width: 32px;
+	}
 }
 
 .download-card-info {
-  position: relative;
-  transition: $transition;
-  padding: 4.8rem;
-  text-align: left;
+	padding: 4.8rem;
+	position: relative;
+	text-align: left;
+	transition: $transition;
 }
 
 .form-assays .container {
-  position: relative;
+	position: relative;
 }
 
 .decor-form-assays {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: top center;
-  background-color: $color-secondary-80;
+	background-color: $color-secondary-80;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
 
-  &.type-2 {
-    top: 29rem;
-    height: calc(100% - 31rem);
-  }
+	&.type-2 {
+		height: calc(100% - 31rem);
+		top: 29rem;
+	}
 }
 
 @media (min-width: 1200px) {
-  .download-card:hover {
+	.download-card:hover {
 
-    &::before {
-      height: 1em;
-    }
+		&::before {
+			height: 1em;
+		}
 
-    .download-card-img {
-      transform: translateY(-0.7em);
-    }
+		.download-card-img {
+			transform: translateY(-0.7em);
+		}
 
-    .download-card-info {
-      transform: translateY(-0.5em);
+		.download-card-info {
+			transform: translateY(-0.5em);
 
-      .title {
-        color: $color-primary-base1-10;
-      }
-    }
-  }
+			.title {
+				color: $color-primary-base1-10;
+			}
+		}
+	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
+
 /** DOWNLOAD CARD FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division {
 
-}
-
+/**--------------------------------------------------------------------------*/
 .expand-more {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  background: $color-secondary-100;
-  border-radius: 0 0 0.4rem 0.4rem;
-  font-size: 1.8rem;
-  line-height: 1.44em;
-  font-weight: 700;
-  color: $color-white;
-  padding: 0.22em 2.6em;
+	background: $color-secondary-100;
+	border-radius: 0 0 0.4rem 0.4rem;
+	color: $color-white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.8rem;
+	font-weight: 700;
+	line-height: 1.44em;
+	padding: 0.22em 2.6em;
+	position: relative;
+	vertical-align: middle;
 }
 
 .expand-block {
-  position: relative;
-  display: block;
-  text-align: center;
+	display: block;
+	position: relative;
+	text-align: center;
 
+	.download-card {
+		display: none;
 
-
-  .download-card {
-    display: none;
-
-
-    &.active {
-      display: flex;
-      transform: translateY(0);
-    }
-  }
-}
-
-.expand-block.open-expand-block {
+		&.active {
+			display: flex;
+			transform: translateY(0);
+		}
+	}
 }
