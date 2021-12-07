@@ -40,14 +40,14 @@ services:
       context: "."
     # mounting local volume for hot-reload
     volumes:
-      - ./site:/site
-      - ./media:/site/web/app/uploads
+      - ./site:/var/www/html
+      - ./media:/var/www/html/web/app/uploads
       - ./uploads.ini:/etc/php7/conf.d/uploads.ini
       - /var/cache/composer # Composer Cache [See Anonymous Volumes]
     depends_on:
       - db
     ports:
-      - "80:8080"
+      - "80:80"
     networks:
       - dbg-net
   # theme
