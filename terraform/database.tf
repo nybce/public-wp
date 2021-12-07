@@ -6,7 +6,7 @@ resource "azurerm_mysql_server" "example" {
   administrator_login          = var.database_username
   administrator_login_password = var.database_password
 
-  sku_name   = "Standard_B1ms"
+  sku_name   = "B_Gen5_1"
   storage_mb = 5120
   version    = "5.7"
 
@@ -16,9 +16,5 @@ resource "azurerm_mysql_server" "example" {
   infrastructure_encryption_enabled = false
   public_network_access_enabled     = true
   ssl_enforcement_enabled           = false
-
-    tags = {
-      environment  = var.environment
-      project_name = var.project
-    }
 }
+
