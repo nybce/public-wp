@@ -175,7 +175,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
     frontend_port_name             = local.frontend_https_port_name
     protocol                       = "Https"
     ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly" #@todo: VARIABLIZE THIS
-    require_sni                    = true
+    #require_sni                    = true
     ssl_profile_name               = local.ssl_profile_name
   }
 
