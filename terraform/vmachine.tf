@@ -53,14 +53,14 @@ resource "azurerm_lb" "vmss" {
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
   resource_group_name = azurerm_resource_group.vmss.name
-  loadbalancer_id     = azurerm_lb.ag.id
+  loadbalancer_id     = azurerm_lb.vmss.id
   name                = "bpepool-${var.project}-${var.environment}"
 }
 
 resource "azurerm_lb_nat_pool" "lbnatpool" {
   resource_group_name            = azurerm_resource_group.vmss.name
   name                           = "ssh"
-  loadbalancer_id                = azurerm_lb.ag.id
+  loadbalancer_id                = azurerm_lb.vmss.id
   protocol                       = "Tcp"
   frontend_port_start            = 50000
   frontend_port_end              = 50119
@@ -109,7 +109,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     ip_configuration {
       name                                   = "internal-lb"
       primary                                = false
-      subnet_id                              = azurerm_subnet.vmss.id
+      subnet_id                              = azurerm_subnet.ag.id
       load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
       load_balancer_inbound_nat_rules_ids    = [azurerm_lb_nat_pool.lbnatpool.id]
     }
