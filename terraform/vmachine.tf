@@ -98,8 +98,8 @@ resource "azurerm_role_assignment" "cert" {
 }
 
 resource "azurerm_key_vault_access_policy" "cert" {
-  key_vault_id = kv-ssl-cert-w5hb
-  tenant_id    = data.azurerm_client_config.current.tenant_id
+  key_vault_id = "kv-ssl-cert-w5hb"
+  tenant_id    = "27be78cb-b4ab-4113-bccf-26f0d9c570b0"
   object_id    = azurerm_user_assigned_identity.uai.id
 
   key_permissions = [
