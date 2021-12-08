@@ -56,7 +56,6 @@ resource "azurerm_public_ip" "vmss" {
 resource "azurerm_public_ip" "ag" {
   name                = "ag-public-ip-${var.project}-${var.environment}"
   location            = var.azure_region
-  sku                 = "Standard"
   resource_group_name = azurerm_resource_group.vmss.name
   allocation_method   = "Static"
   domain_name_label   = random_string.agrs.result
