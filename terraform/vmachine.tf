@@ -88,7 +88,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
 resource "azurerm_key_vault_access_policy" "cert" {
   key_vault_id = "/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourceGroups/wordpress-web-dev/providers/Microsoft.KeyVault/vaults/kv-ssl-cert-w5hb"
   tenant_id    = "27be78cb-b4ab-4113-bccf-26f0d9c570b0"
-  object_id    = "0c1ca8a6-6094-498a-b741-13fbdde4e6e0"
+  object_id    = "974f94f7-00c7-4496-9b77-7d5f16fe8f4d"
 
   key_permissions = [
     "Get", "List",
@@ -114,7 +114,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   identity {
     type         = "UserAssigned"
-    identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-web"]
+    identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-wordpress"]
   }
 
   gateway_ip_configuration {
