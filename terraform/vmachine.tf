@@ -88,7 +88,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
 resource "azurerm_user_assigned_identity" "uai" {
   resource_group_name = azurerm_resource_group.vmss.name
   location            = azurerm_resource_group.vmss.location
-  name                = "uacert"
+  name                = "uacert-nybc-web"
 }
 
 resource "azurerm_role_assignment" "cert" {
