@@ -159,5 +159,10 @@ resource "azurerm_application_gateway" "loadbalancer" {
   ssl_profile {
     name = local.ssl_profile_name
   }
+
+  ssl_certificate {
+    name                = "wildcard-dev-nybc-wordpress-bbox-ly"
+    key_vault_secret_id = "a71dc4d7f54f4179824ac9b6c6a9c5e3"
+  }
 }
 
