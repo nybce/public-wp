@@ -53,14 +53,14 @@ resource "azurerm_lb" "vmss" {
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
   resource_group_name = azurerm_resource_group.vmss.name
-  loadbalancer_id     = azurerm_lb.vmss.id
+  loadbalancer_id     = azurerm_lb.ag.id
   name                = "bpepool-${var.project}-${var.environment}"
 }
 
 resource "azurerm_lb_nat_pool" "lbnatpool" {
   resource_group_name            = azurerm_resource_group.vmss.name
   name                           = "ssh"
-  loadbalancer_id                = azurerm_lb.vmss.id
+  loadbalancer_id                = azurerm_lb.ag.id
   protocol                       = "Tcp"
   frontend_port_start            = 50000
   frontend_port_end              = 50119
