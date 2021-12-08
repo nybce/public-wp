@@ -162,7 +162,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   ssl_certificate {
     name                = "wildcard-dev-nybc-wordpress-bbox-ly"
-    key_vault_secret_id = "a71dc4d7f54f4179824ac9b6c6a9c5e3"
+    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
   }
 }
 
