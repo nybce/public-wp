@@ -99,7 +99,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
   }
 
   identity {
-    identity_ids = ['17ac4970-afa6-4236-9fe7-25ff77ff8266']
+    identity_ids = ["17ac4970-afa6-4236-9fe7-25ff77ff8266"]
   }
 
   gateway_ip_configuration {
