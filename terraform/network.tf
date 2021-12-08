@@ -5,6 +5,14 @@ resource "random_string" "fqdn" {
   number  = false
 }
 
+resource "random_string" "agrs" {
+  length  = 8
+  special = false
+  upper   = false
+  number  = false
+}
+
+
 resource "azurerm_virtual_network" "vmss" {
   name                = "vmss-vnet-${var.project}-${var.environment}"
   address_space       = ["10.0.0.0/16"]
@@ -41,6 +49,19 @@ resource "azurerm_public_ip" "vmss" {
   domain_name_label   = random_string.fqdn.result
   tags = {
     Name        = "${var.environment}-public-ip-${var.project}"
+    Environment = var.environment
+  }
+}
+
+resource "azurerm_public_ip" "ag" {
+  name                = "ag-public-ip-${var.project}-${var.environment}"
+  location            = var.azure_region
+  sku                 = "Standard"
+  resource_group_name = azurerm_resource_group.vmss.name
+  allocation_method   = "Static"
+  domain_name_label   = random_string.agrs.result
+  tags = {
+    Name        = "${var.environment}-ag-public-ip-${var.project}"
     Environment = var.environment
   }
 }

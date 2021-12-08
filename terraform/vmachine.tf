@@ -156,7 +156,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
-    public_ip_address_id = azurerm_public_ip.vmss.id
+    public_ip_address_id = azurerm_public_ip.ag.id
   }
 
   backend_address_pool {
