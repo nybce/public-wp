@@ -114,7 +114,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   identity {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.uai.id]
+    identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-web"]
   }
 
   gateway_ip_configuration {
