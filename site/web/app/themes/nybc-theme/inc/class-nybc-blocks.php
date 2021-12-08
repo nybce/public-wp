@@ -80,9 +80,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'name'            => 'home_hero',
 						'title'           => esc_html__( 'Home Hero', 'nybc' ),
 						'description'     => esc_html__( 'Home Hero for Home Page', 'nybc' ),
-						'render_template' => 'template-parts/blocks/home-hero/home-hero.php',
+						'render_template' => 'template-parts/blocks/home-hero.php',
 						'category'        => 'nybc',
-						'enqueue_style'   => NYBC_ASSETS_URI . '/home-hero.css',
 						'supports'        => array(
 							'multiple' => false,
 							'align'    => false,
