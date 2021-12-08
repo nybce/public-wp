@@ -85,22 +85,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   }
 }
 
-resource "azurerm_user_assigned_identity" "uai" {
-  resource_group_name = azurerm_resource_group.vmss.name
-  location            = azurerm_resource_group.vmss.location
-  name                = "uacert-nybc-web"
-}
-
-resource "azurerm_role_assignment" "cert" {
-  scope                = "/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourceGroups/wordpress-web-dev/providers/Microsoft.KeyVault/vaults/kv-ssl-cert-w5hb"
-  role_definition_name = "Reader"
-  principal_id         = azurerm_user_assigned_identity.uai.id
-}
-
 resource "azurerm_key_vault_access_policy" "cert" {
   key_vault_id = "/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourceGroups/wordpress-web-dev/providers/Microsoft.KeyVault/vaults/kv-ssl-cert-w5hb"
   tenant_id    = "27be78cb-b4ab-4113-bccf-26f0d9c570b0"
-  object_id    = azurerm_user_assigned_identity.uai.principal_id
+  object_id    = 0c1ca8a6-6094-498a-b741-13fbdde4e6e0
 
   key_permissions = [
     "Get", "List",
