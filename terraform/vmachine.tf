@@ -143,16 +143,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
-  http_listener {
-    name                           = local.listener_https_name
-    frontend_ip_configuration_name = local.frontend_ip_configuration_name
-    frontend_port_name             = local.frontend_https_port_name
-    protocol                       = "Https"
-    #ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly" #@todo: VARIABLIZE THIS
-    #require_sni                    = true
-    ssl_profile_name = local.ssl_profile_name
-  }
-
+  
   request_routing_rule {
     name                       = local.request_routing_rule_name
     rule_type                  = "Basic"
