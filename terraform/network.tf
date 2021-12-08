@@ -24,6 +24,14 @@ resource "azurerm_subnet" "vmss" {
   service_endpoints    = ["Microsoft.Storage"]
 }
 
+resource "azurerm_subnet" "ag" {
+  name                 = "ag-subnet-${var.project}-${var.environment}"
+  resource_group_name  = azurerm_resource_group.vmss.name
+  virtual_network_name = azurerm_virtual_network.vmss.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+
 resource "azurerm_public_ip" "vmss" {
   name                = "vmss-public-ip-${var.project}-${var.environment}"
   location            = var.azure_region

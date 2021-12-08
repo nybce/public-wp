@@ -105,7 +105,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
-    subnet_id = azurerm_subnet.vmss.id
+    subnet_id = azurerm_subnet.ag.id
   }
 
   frontend_port {
