@@ -85,20 +85,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   }
 }
 
-resource "azurerm_key_vault_access_policy" "cert" {
-  key_vault_id = "/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourceGroups/wordpress-web-dev/providers/Microsoft.KeyVault/vaults/kv-ssl-cert-w5hb"
-  tenant_id    = "27be78cb-b4ab-4113-bccf-26f0d9c570b0"
-  object_id    = "974f94f7-00c7-4496-9b77-7d5f16fe8f4d"
-
-  key_permissions = [
-    "Get", "List",
-  ]
-
-  secret_permissions = [
-    "Get", "List",
-  ]
-}
-
 
 
 resource "azurerm_application_gateway" "loadbalancer" {
@@ -162,7 +148,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_https_port_name
     protocol                       = "Https"
-    ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly" #@todo: VARIABLIZE THIS
+    #ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly" #@todo: VARIABLIZE THIS
     #require_sni                    = true
     ssl_profile_name = local.ssl_profile_name
   }
