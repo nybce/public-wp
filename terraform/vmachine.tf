@@ -85,6 +85,32 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   }
 }
 
+resource "azurerm_user_assigned_identity" "uai" {
+  resource_group_name = azurerm_resource_group.vmss.name
+  location            = azurerm_resource_group.vmss.location
+  name                = uacert
+}
+
+resource "azurerm_role_assignment" "cert" {
+  scope                = "kv-ssl-cert-w5hb"
+  role_definition_name = "Reader"
+  principal_id         = azurerm_user_assigned_identity.uai.id
+}
+
+resource "azurerm_key_vault_access_policy" "cert" {
+  key_vault_id = kv-ssl-cert-w5hb
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = azurerm_user_assigned_identity.uai.id
+
+  key_permissions = [
+    "Get", "List",
+  ]
+
+  secret_permissions = [
+    "Get", "List",
+  ]
+}
+
 
 
 resource "azurerm_application_gateway" "loadbalancer" {
@@ -99,7 +125,8 @@ resource "azurerm_application_gateway" "loadbalancer" {
   }
 
   identity {
-    identity_ids = ["17ac4970-afa6-4236-9fe7-25ff77ff8266"]
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.uai.id]
   }
 
   gateway_ip_configuration {
