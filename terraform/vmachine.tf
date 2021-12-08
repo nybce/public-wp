@@ -98,6 +98,10 @@ resource "azurerm_application_gateway" "loadbalancer" {
     capacity = 2
   }
 
+  identity {
+    identity_ids = ['17ac4970-afa6-4236-9fe7-25ff77ff8266']
+  }
+
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
     subnet_id = azurerm_subnet.vmss.id
