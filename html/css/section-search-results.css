@@ -1,13 +1,4 @@
 /**-----------------------------------------------------------------------*/
-/** SEARCH RESULTS */
-/**-----------------------------------------------------------------------*/
-.search-results-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
-
-.select-item-total { font-size: 1.6rem; line-height: 1.5em; font-weight: 500; color: #1E2A3A; }
-
-@media (max-width: 767px) { .select-item-total { font-size: 1.4rem; line-height: 1.57em; } }
-
-/**-----------------------------------------------------------------------*/
 /** SEARCH CARDS */
 /**-----------------------------------------------------------------------*/
 .search-cards-wrapper > *:not(:last-child) { margin-bottom: 2.4rem; }

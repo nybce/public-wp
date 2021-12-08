@@ -1,0 +1,30 @@
+/**-----------------------------------------------------------------------*/
+/** VIDEO SLIDER */
+/**-----------------------------------------------------------------------*/
+.video-swiper { /*swiper pagination*/ }
+
+.video-swiper .swiper-container { overflow: visible; }
+
+.video-swiper .swiper-button-prev, .video-swiper .swiper-button-next { left: -9.6rem; }
+
+.video-swiper .swiper-button-next { left: auto; right: -9.6rem; }
+
+.video-swiper .swiper-pagination { display: none; left: 50%; bottom: 0; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); }
+
+.video-swiper .swiper-pagination-bullet { -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); }
+
+@media (max-width: 1600px) { .video-swiper .swiper-slide { max-width: 69rem; } }
+
+@media (max-width: 1400px) { .video-swiper .swiper-button-prev, .video-swiper .swiper-button-next { left: -2.4rem; }
+  .video-swiper .swiper-button-next { left: auto; right: -2.4rem; } }
+
+@media (max-width: 1199px) { .video-swiper { padding-bottom: 4.8rem; }
+  .video-swiper .swiper-container { overflow: hidden; }
+  .video-swiper .swiper-slide { max-width: 100%; }
+  .video-swiper .swiper-button-prev, .video-swiper .swiper-button-next { display: none; }
+  .video-swiper .swiper-pagination { display: -webkit-box; display: -ms-flexbox; display: flex; } }
+
+@media (max-width: 991px) { .video-swiper .swiper-button-wrapper { position: absolute; left: 0; right: 0; bottom: 0; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; width: 100%; }
+  .video-swiper .swiper-button-prev, .video-swiper .swiper-button-next { display: block; left: 0; }
+  .video-swiper .swiper-button-next { left: auto; right: 0; }
+  .video-swiper .swiper-pagination { display: -webkit-box; display: -ms-flexbox; display: flex; position: relative; left: 0; right: 0; bottom: 0; -webkit-transform: unset; -ms-transform: unset; transform: unset; } }

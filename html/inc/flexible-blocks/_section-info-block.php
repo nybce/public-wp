@@ -30,8 +30,8 @@
 
                                     <div class="spacer-24 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-primary right">Learn
-                                        More</button>
+                                    <a href="#" class="btn-link btn-link-primary right">Learn
+                                        More</a>
 
                                 </div>
                             </div>
@@ -53,8 +53,22 @@
 
                     <div class="swiper-slide">
                         <div class="row">
-                            <div class="col-lg-6 align-self-stretch pe-md-0 order-2 order-lg-0">
-                                <div class="info-block-item">
+                            <div class="col-lg-6 pe-md-0">
+                                <div class="info-block-img">
+                                    <div class="decor-bg rellax" data-rellax-speed="1"
+                                        style="background-image: url('./img/background-shape.svg');"></div>
+                                    <div class="decor-ring rellax" data-rellax-speed="2"
+                                        style="background-image: url('./img/ring.svg');"></div>
+                                    <picture>
+                                        <source srcset='img/content/slide-1.webp' type='image/webp'>
+                                        <source srcset='img/content/slide-1.jpg' type='image/jpg'>
+                                        <img class="mask" src="img/content/slide-1.jpg" alt='mask' loading='lazy'>
+                                    </picture>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 align-self-stretch ps-md-0 order-2 order-lg-0">
+                                <div class="info-block-item type-2">
 
                                     <div class="h6 title fw-900 tagline">Tagline</div>
 
@@ -68,24 +82,12 @@
 
                                     <div class="spacer-24 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-primary right">Learn
-                                        More</button>
+                                    <a href="#" class="btn-link btn-link-primary right">Learn
+                                        More</a>
 
                                 </div>
                             </div>
-                            <div class="col-lg-6 ps-md-0">
-                                <div class="info-block-img">
-                                    <div class="decor-bg rellax" data-rellax-speed="1"
-                                        style="background-image: url('./img/background-shape.svg');"></div>
-                                    <div class="decor-ring rellax" data-rellax-speed="2"
-                                        style="background-image: url('./img/ring.svg');"></div>
-                                    <picture>
-                                        <source srcset='img/content/slide-1.webp' type='image/webp'>
-                                        <source srcset='img/content/slide-1.jpg' type='image/jpg'>
-                                        <img class="mask" src="img/content/slide-1.jpg" alt='mask' loading='lazy'>
-                                    </picture>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -105,8 +107,8 @@
 
                                     <div class="spacer-24 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-primary right">Learn
-                                        More</button>
+                                    <a href="#" class="btn-link btn-link-primary right">Learn
+                                        More</a>
 
                                 </div>
                             </div>
@@ -141,8 +143,8 @@
 
                                     <div class="spacer-24 spacer-xs-16"></div>
 
-                                    <button class="btn-link btn-link-primary right">Learn
-                                        More</button>
+                                    <a href="#" class="btn-link btn-link-primary right">Learn
+                                        More</a>
 
                                 </div>
                             </div>

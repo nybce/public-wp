@@ -2,244 +2,310 @@
 @import "variables-mixins";
 
 /**-----------------------------------------------------------------------*/
-
 /** CARD SLIDER */
-
 /**-----------------------------------------------------------------------*/
-.card-wrapper {
-	align-items: center;
-	display: flex;
-	justify-content: flex-start;
+.products-services {
+  &.mt-70 {
+    margin-top: -7rem;
+  }
+}
 
-	> *:not(:last-child) {
-		margin-right: 2.4rem;
-	}
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  & > *:not(:last-child) {
+    margin-right: 2.4rem;
+  }
 }
 
 .card-item {
-	background-color: $color-white;
-	border-radius: 0.4rem 0.4rem 0 0;
-	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
-	height: 100%;
-	min-height: 36rem;
-	position: relative;
+  position: relative;
+  height: 100%;
+  min-height: 36rem;
+  background-color: $color-white;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem 0.4rem 0 0;
 
-	&::before {
-		background: $gradient;
-		bottom: 0;
-		content: "";
-		height: 0.25em;
-		left: 0;
-		position: absolute;
-		transition: $transition;
-		width: 100%;
-	}
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.25em;
+    background: $gradient;
+    transition: $transition;
+  }
 
-	&.small {
-		min-height: auto;
-		padding: 2.4rem;
-	}
+  &.small {
+    padding: 2.4rem;
+    min-height: auto;
+  }
 
-	.large {
-		padding: 4.8rem;
-	}
+  &.large {
+    padding: 4.8rem;
+    min-height: 44.6rem;
+  }
 
-	.tagline {
-		color: $color-primary-base2-10;
-		font-weight: 900;
-		text-transform: uppercase;
-		transition: $transition;
-	}
+  .tagline {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $color-primary-base2-10;
+    transition: $transition;
+  }
 
-	.title {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+  .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-	.text {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 4;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		transition: $transition;
-	}
-}
-
-.products-services {
-	.card-item {
-		min-height: 36rem;
-	}
+  .text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: $transition;
+  }
 }
 
 .card-img {
-	height: 100%;
-	max-height: 6.4rem;
-	max-width: 6.4rem;
-	position: relative;
-	transition: $transition;
-	width: 100%;
+  position: relative;
+  transition: $transition;
+  max-width: 6.4rem;
+  max-height: 6.4rem;
+  width: 100%;
+  height: 100%;
 
-	img {
-		height: auto;
-		max-width: 100%;
-		width: 100%;
-	}
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .card-swiper {
-	.swiper-container {
-		overflow: visible;
-	}
+  .swiper-container {
+    overflow: visible;
+  }
 
-	.swiper-button-prev,
-	.swiper-button-next {
-		left: -9.6rem;
-	}
+  .swiper-button-prev,
+  .swiper-button-next {
+    left: -9.6rem;
+  }
 
-	.swiper-button-next {
-		left: auto;
-		right: -9.6rem;
-	}
+  .swiper-button-next {
+    left: auto;
+    right: -9.6rem;
+  }
 
-	.swiper-pagination {
-		display: none;
-	}
+  .swiper-pagination {
+    display: none;
+  }
+
+  &.type-2 {
+    .swiper-container {
+      overflow: hidden;
+    }
+  }
 }
 
 .decor-left {
-	background-repeat: no-repeat;
-	background-size: contain;
-	height: 130rem;
-	left: 0;
-	position: absolute;
-	top: -3rem;
-	width: 88.5rem;
-	z-index: -1;
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  width: 88.5rem;
+  height: 130rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
 }
 
 @media (min-width: 1200px) {
-	.card-item:hover {
+  .card-item:hover {
+    &::before {
+      height: 1em;
+    }
 
-		&::before {
-			height: 1em;
-		}
+    .card-img {
+      transform: translateY(-0.7em);
+    }
 
-		.card-img {
-			transform: translateY(-0.7em);
-		}
+    .tagline {
+      transform: translateY(-0.7em);
+    }
 
-		.tagline {
-			transform: translateY(-0.7em);
-		}
+    .title {
+      color: $color-primary-base1-30;
+      transform: translateY(-0.7em);
+    }
 
-		.title {
-			color: $color-primary-base1-30;
-			transform: translateY(-0.7em);
-		}
+    .text {
+      transform: translateY(-0.7em);
+    }
+  }
+}
 
-		.text {
-			transform: translateY(-0.7em);
-		}
-	}
+@media (max-width: 1600px) {
+  .card-item {
+    max-width: 38.4rem;
+
+    &.small {
+      max-width: 28.2rem;
+    }
+  }
 }
 
 @media (max-width: 1400px) {
-	.card-swiper {
-		.swiper-button-prev,
-		.swiper-button-next {
-			left: -6.4rem;
-		}
+  .card-swiper {
+    .swiper-button-prev,
+    .swiper-button-next {
+      left: -6.4rem;
+    }
 
-		.swiper-button-next {
-			left: auto;
-			right: -6.4rem;
-		}
-	}
+    .swiper-button-next {
+      left: auto;
+      right: -6.4rem;
+    }
+  }
 }
 
 @media (max-width: 1199px) {
-	.card-swiper {
-		.swiper-button-prev,
-		.swiper-button-next {
-			left: -2.4rem;
-		}
+  .products-services {
+    &.mt-70 {
+      margin-top: -2rem;
+    }
+  }
 
-		.swiper-button-next {
-			left: auto;
-			right: -2.4rem;
-		}
-	}
+  .card-item {
+    &.large {
+      min-height: 39.8rem;
+    }
+  }
 
-	.decor-left {
-		width: 70rem;
-	}
+  .card-swiper {
+    .swiper-button-prev,
+    .swiper-button-next {
+      left: -2.4rem;
+    }
+
+    .swiper-button-next {
+      left: auto;
+      right: -2.4rem;
+    }
+  }
+
+  .decor-left {
+    width: 70rem;
+  }
 }
 
 @media (max-width: 991px) {
-	.card-swiper {
-		padding-bottom: 4.8rem;
+  .card-swiper {
+    padding-bottom: 4.8rem;
 
-		.swiper-button-wrapper {
-			align-items: center;
-			bottom: 0;
-			display: flex;
-			justify-content: center;
-			position: absolute;
-			width: 100%;
+    .swiper-button-wrapper {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-			> *:not(:last-child) {
-				margin-right: 1.5em;
-			}
-		}
+      & > *:not(:last-child) {
+        margin-right: 1.5em;
+      }
+    }
 
-		.swiper-button-prev,
-		.swiper-button-next {
-			left: 0;
-			position: relative;
-			top: 0;
-			transform: unset;
-		}
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: relative;
+      top: 0;
+      transform: unset;
+    }
 
-		.swiper-button-next {
-			left: auto;
-			right: 0;
-		}
+    .swiper-button-prev,
+    .swiper-button-next {
+      left: 0;
+    }
 
-		.swiper-button-prev {
-			transform: scaleX(-1);
-		}
-	}
+    .swiper-button-next {
+      left: auto;
+      right: 0;
+    }
 
-	.decor-left {
-		display: none;
-	}
+    .swiper-button-prev {
+      transform: scaleX(-1);
+    }
+  }
+
+  .decor-left {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
-	.card-swiper {
-		.swiper-slide {
-			width: auto;
-		}
-	}
+  .card-swiper {
+    .swiper-slide {
+      width: auto;
+    }
 
-	.card-item {
-		max-width: 21.5rem;
-	}
+    &.type-2 {
+      .swiper-container {
+        overflow: visible;
+      }
+    }
+  }
+
+  .card-item {
+    max-width: 21.5rem;
+
+    &.large {
+      max-width: 28.8rem;
+      padding: 2.4rem;
+    }
+  }
 }
 
-/**--------------------------------------------------------------------------*/
-
+/**--------------------------------------------------------------------------------------------*/
 /** CARD FOR DIVISION */
-
-/**--------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------------------------*/
 .division {
-	.card-item {
-		&::before {
-			background: $color-primary-base2-20;
-		}
-	}
+  .card-item {
+    &::before {
+      background: $color-primary-base2-20;
+    }
+  }
+
+  .products-services {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -35%;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 200%;
+      background-color: $color-secondary-80;
+      clip-path: ellipse(90% 60% at 50% 40%);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .division {
+    .products-services {
+      &::before {
+        height: 250%;
+        clip-path: ellipse(170% 60% at 50% 40%);
+      }
+    }
+  }
 }

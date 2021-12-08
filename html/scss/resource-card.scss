@@ -1,0 +1,183 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+/** RESOURCE CARD */
+/**-----------------------------------------------------------------------*/
+.resource-card-wrapper {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: -2.4rem;
+}
+
+.resource-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: calc(50% - 1.2rem);
+  transition: $transition;
+  background-color: $color-white;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding-bottom: 0.4rem;
+  margin-right: 2.4rem;
+  margin-bottom: 2.4rem;
+
+  &:nth-of-type(2n) {
+    margin-right: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    height: 0.25em;
+    background: $gradient;
+    transition: $transition;
+  }
+}
+
+.resource-card-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transition: $transition;
+  border-radius: 0.4rem 0.4rem 0 0;
+  padding-bottom: 56.1%;
+
+  img {
+    @include imgCover;
+  }
+}
+
+.border-top {
+  position: relative;
+  width: 100%;
+  height: 1.5em;
+  transition: $transition;
+  background-color: $color-secondary-80;
+}
+
+.resource-card-img + .border-top {
+  display: none;
+}
+
+.resource-card-desc {
+  position: relative;
+  padding: 2.4rem;
+  transition: $transition;
+}
+
+.resource-card-title {
+  display: flex;
+  align-items: center;
+}
+
+.resource-card-icon {
+  position: relative;
+  width: 4.8rem;
+  height: 4.8rem;
+  flex-shrink: 0;
+  border-radius: 100%;
+  background-color: $color-secondary-80;
+  margin-right: 1.6rem;
+
+  img {
+    @include centerAbsolute;
+    max-width: 2.4rem;
+    max-height: 2.4rem;
+  }
+}
+
+.resource-card-info {
+  display: flex;
+}
+
+.resource-card-label {
+  position: relative;
+  width: 100%;
+  max-width: calc(50% - 1.2rem);
+  margin-right: 2.4rem;
+
+  &:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .resource-card:hover {
+
+    &::before {
+      height: 1em;
+    }
+
+    .resource-card-img {
+      transform: translateY(-0.7em);
+    }
+
+    .resource-card-desc {
+      transform: translateY(-0.5em);
+    }
+
+    .resource-card-title {
+      .title {
+        color: $color-primary-base1-30;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .resource-card-wrapper {
+    margin-bottom: -1.6rem;
+  }
+
+  .resource-card {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.6rem;
+  }
+
+  .resource-card-info {
+    flex-direction: column;
+
+    &>*:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  .resource-card-label {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}
+
+/**--------------------------------------------------------------------------------------------*/
+/** DIVIDER */
+/**--------------------------------------------------------------------------------------------*/
+.divider {
+  position: relative;
+  width: 100%;
+  height: 0.1rem;
+  background-color: $color-secondary-90;
+}
+
+/**--------------------------------------------------------------------------------------------*/
+/** RESOURCE CARD FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division {
+  .resource-card {
+    &::before {
+      background: $color-primary-base2-20;
+    }
+  }
+}

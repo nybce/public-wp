@@ -1,0 +1,183 @@
+//VARIABLES
+@import "variables-mixins";
+/**--------------------------------------------------------*/
+/** FILTER SIDEBAR  */
+/**--------------------------------------------------------*/
+.filter-sidebar {
+  position: relative;
+  z-index: 1;
+  max-width: 28.2rem;
+
+  > *:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+
+  &.mobile {
+    display: none;
+  }
+}
+
+.filter-sidebar-item {
+  position: relative;
+  background-color: $color-white;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  padding: 2.4rem;
+
+  &:first-of-type {
+    .filter-sidebar-inner {
+      display: block;
+    }
+  }
+}
+
+.filter-sidebar-head {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .title {
+    text-transform: uppercase;
+    color: $color-text-20;
+    margin-right: 2.4rem;
+  }
+
+  .mobile-button-wrapper {
+    position: relative;
+    display: none;
+    width: 3.2em;
+    height: 3.2em;
+    background-color: $color-white;
+    border-radius: 2.4rem;
+    flex-shrink: 0;
+    border: 0.1rem solid $color-secondary-90;
+  }
+
+  .filter-mobile-button {
+    will-change: transform;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.8rem;
+    height: 1rem;
+    cursor: pointer;
+    z-index: 101;
+
+    span {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 0.15rem;
+      margin-top: 0;
+      background: $color-gray-100;
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 0.15rem;
+      background: $color-gray-100;
+      margin-top: 0.6rem;
+    }
+
+    &::before {
+      margin-top: -0.6rem;
+    }
+
+    &.active {
+      span {
+        transform: translateX(3rem);
+        opacity: 0;
+      }
+
+      &::after {
+        transform: translateY(-0.6rem) rotate(-45deg);
+        transform-origin: center center;
+      }
+
+      &::before {
+        transform: translateY(0.6rem) rotate(45deg);
+        transform-origin: center center;
+      }
+    }
+  }
+}
+
+.filter-sidebar-title {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.57em;
+  font-weight: 500;
+  color: $color-text-20;
+  border-bottom: 0.1rem solid $color-secondary-80;
+  transition: $transition;
+  padding: 1.2rem 0.8rem;
+  margin-bottom: 2.4rem;
+}
+
+.filter-sidebar-inner {
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    > *:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .filter-sidebar-title:hover {
+    color: $color-primary-base1-20;
+    border-color: $color-primary-base2-10;
+  }
+}
+
+@media (max-width: 991px) {
+  .filter-sidebar {
+    display: none;
+    margin: 0 auto;
+
+    &.mobile {
+      display: block;
+    }
+  }
+
+  .filter-sidebar-head {
+    display: flex;
+
+    .mobile-button-wrapper {
+      display: block;
+    }
+
+    .filter-mobile-button {
+      display: block;
+    }
+  }
+
+  .filter-sidebar-item {
+    position: absolute;
+    z-index: -1;
+    transform: scale(0);
+    box-shadow: unset;
+    border-radius: unset;
+
+    &.open {
+      transform: scale(1);
+      position: relative;
+    }
+  }
+}

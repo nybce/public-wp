@@ -1,0 +1,1 @@
+<link href="css/resource-card.css" rel="stylesheet" type="text/css" />

@@ -1,0 +1,53 @@
+/**-----------------------------------------------------------------------*/
+/** RESOURCE CARD */
+/**-----------------------------------------------------------------------*/
+.resource-card-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: stretch; -ms-flex-align: stretch; align-items: stretch; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: -2.4rem; }
+
+.resource-card { position: relative; overflow: hidden; cursor: pointer; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: 100%; max-width: calc(50% - 1.2rem); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #FFF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 0.4rem; margin-right: 2.4rem; margin-bottom: 2.4rem; }
+
+.resource-card:nth-of-type(2n) { margin-right: 0; }
+
+.resource-card::before { content: ""; position: absolute; left: 0; bottom: 0; z-index: 2; width: 100%; height: 0.25em; background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #EF3E42), color-stop(33.67%, #F68924), color-stop(65.04%, #87BD40), color-stop(96.91%, #53C4C9)); background: -o-linear-gradient(left, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); background: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.resource-card-img { position: relative; z-index: 1; width: 100%; height: 100%; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 56.1%; }
+
+.resource-card-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
+
+.border-top { position: relative; width: 100%; height: 1.5em; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #E2F0FF; }
+
+.resource-card-img + .border-top { display: none; }
+
+.resource-card-desc { position: relative; padding: 2.4rem; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.resource-card-title { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.resource-card-icon { position: relative; width: 4.8rem; height: 4.8rem; -ms-flex-negative: 0; flex-shrink: 0; border-radius: 100%; background-color: #E2F0FF; margin-right: 1.6rem; }
+
+.resource-card-icon img { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-width: 2.4rem; max-height: 2.4rem; }
+
+.resource-card-info { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.resource-card-label { position: relative; width: 100%; max-width: calc(50% - 1.2rem); margin-right: 2.4rem; }
+
+.resource-card-label:nth-of-type(2n) { margin-right: 0; }
+
+@media (min-width: 1200px) { .resource-card:hover::before { height: 1em; }
+  .resource-card:hover .resource-card-img { -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); }
+  .resource-card:hover .resource-card-desc { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
+  .resource-card:hover .resource-card-title .title { color: #E30513; } }
+
+@media (max-width: 767px) { .resource-card-wrapper { margin-bottom: -1.6rem; }
+  .resource-card { max-width: 100%; margin-right: 0; margin-bottom: 1.6rem; }
+  .resource-card-info { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .resource-card-info > *:not(:last-child) { margin-bottom: 1.6rem; }
+  .resource-card-label { max-width: 100%; margin-right: 0; } }
+
+/**--------------------------------------------------------------------------------------------*/
+/** DIVIDER */
+/**--------------------------------------------------------------------------------------------*/
+.divider { position: relative; width: 100%; height: 0.1rem; background-color: #C8D8E8; }
+
+/**--------------------------------------------------------------------------------------------*/
+/** RESOURCE CARD FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division .resource-card::before { background: #439BFF; }

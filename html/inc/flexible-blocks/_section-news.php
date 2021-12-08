@@ -1,8 +1,6 @@
 <!-- NEWS -->
 <div class="section news">
 
-    <div class="spacer-96 spacer-xs-64"></div>
-
     <div class="container">
 
         <div class="row">
