@@ -93,8 +93,8 @@ resource "azurerm_application_gateway" "loadbalancer" {
   location            = azurerm_resource_group.vmss.location
 
   sku { # @todo
-    name     = "Standard_Small"
-    tier     = "Standard"
+    name     = "Standard_v2"
+    tier     = "Standard_v2"
     capacity = 2
   }
 
