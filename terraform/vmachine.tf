@@ -143,23 +143,13 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
-  
+
   request_routing_rule {
     name                       = local.request_routing_rule_name
     rule_type                  = "Basic"
     http_listener_name         = local.listener_http_name
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
-  }
-
-  ssl_profile {
-    name = local.ssl_profile_name
-    ssl_policy {}
-  }
-
-  ssl_certificate {
-    name                = "wildcard-dev-nybc-wordpress-bbox-ly"
-    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
   }
 }
 
