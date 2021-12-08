@@ -100,7 +100,7 @@ resource "azurerm_role_assignment" "cert" {
 resource "azurerm_key_vault_access_policy" "cert" {
   key_vault_id = "/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourceGroups/wordpress-web-dev/providers/Microsoft.KeyVault/vaults/kv-ssl-cert-w5hb"
   tenant_id    = "27be78cb-b4ab-4113-bccf-26f0d9c570b0"
-  object_id    = azurerm_user_assigned_identity.uai.id
+  object_id    = azurerm_user_assigned_identity.uai.principal_id
 
   key_permissions = [
     "Get", "List",
@@ -176,7 +176,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Https"
     ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly" #@todo: VARIABLIZE THIS
     #require_sni                    = true
-    ssl_profile_name               = local.ssl_profile_name
+    ssl_profile_name = local.ssl_profile_name
   }
 
   request_routing_rule {
@@ -189,6 +189,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   ssl_profile {
     name = local.ssl_profile_name
+    ssl_policy {}
   }
 
   ssl_certificate {
