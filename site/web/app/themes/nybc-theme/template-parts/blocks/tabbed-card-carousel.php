@@ -89,7 +89,7 @@ if ( empty( $block_tabs ) ) {
 								<a href="<?php echo esc_url( ! empty( $card['link'] ) ? $card['link']['url'] : '#' ); ?>" class="card-item small">
 									<?php if ( ! empty( $card['icon'] ) ) { ?>
 									<div class="card-img">
-										<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/icons/<?php echo esc_html( $card['icon'] ); ?>.svg" alt="icon">
+										<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/picker-icons/<?php echo esc_html( $card['icon'] ); ?>.svg" alt="icon">
 									</div>
 									<?php } ?>
 									<div class="h6 tagline"><?php echo esc_html( $card['tagline'] ); ?></div>
