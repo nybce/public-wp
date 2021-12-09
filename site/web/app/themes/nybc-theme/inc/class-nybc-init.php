@@ -18,8 +18,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	 * @package NYBC
 	 */
 	class NYBC_Init {
-
-
+    
 		/**
 		 * Thumbnail Size params
 		 *
@@ -129,7 +128,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		/**
 		 *  Remove medium_large image size
 		 *
-		 * @param array $sizes sizes.
+		 *  @param array $sizes  sizes.
 		 */
 		public static function intermediate_image_sizes_advanced( $sizes ) {
 			unset( $sizes['medium_large'] );
@@ -206,8 +205,20 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 * Set up default theme scripts and styles
 		 */
 		public static function enqueue_scripts() {
+
 			wp_enqueue_style( 'nybc-font-style', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap', array(), NYBC_SCRIPT_VER );
+
+			wp_enqueue_style( 'nybc-bootstrap-grid-style', NYBC_LIB_URI . '/css/bootstrap-grid.min.css', array(), NYBC_SCRIPT_VER );
+			wp_enqueue_style( 'nybc-swiper-style', NYBC_LIB_URI . '/css/swiper.min.css', array(), NYBC_SCRIPT_VER );
+			wp_enqueue_style( 'nybc-sumoselect-style', NYBC_LIB_URI . '/css/sumoselect.min.css', array(), NYBC_SCRIPT_VER );
+
 			wp_enqueue_style( 'nybc-main-style', NYBC_ASSETS_URI . '/style.min.css', array(), NYBC_SCRIPT_VER );
+
+			wp_enqueue_script( 'nybc-swiper', NYBC_LIB_URI . '/js/swiper.min.js', array(), NYBC_SCRIPT_VER, true );
+			wp_enqueue_script( 'nybc-rellax', NYBC_LIB_URI . '/js/rellax.min.js', array(), NYBC_SCRIPT_VER, true );
+			wp_enqueue_script( 'nybc-SmoothScroll', NYBC_LIB_URI . '/js/SmoothScroll.js', array(), NYBC_SCRIPT_VER, true );
+			wp_enqueue_script( 'nybc-sumoselect', NYBC_LIB_URI . '/js/jquery.sumoselect.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
+			wp_enqueue_script( 'nybc-inputmask', NYBC_LIB_URI . '/js/jquery.inputmask.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
 
 			wp_enqueue_script( 'nybc-main', NYBC_ASSETS_URI . '/main.bundle.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
 		}
@@ -237,7 +248,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function acf_fields() {
 			get_template_part( 'inc/acf/theme-options' );
 			get_template_part( 'inc/acf/menu-item' );
-
 		}
 
 	}
