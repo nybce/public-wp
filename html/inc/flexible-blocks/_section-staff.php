@@ -82,14 +82,12 @@
                 <div class="text-lg">
                     <h3>Funding Support</h3>
                     <div class="spacer-24"></div>
-
                     <h5>NIH P01 HL149626 Yazdanbakhsh (PD)</h5>
                     <div class="spacer-8"></div>
                     <p>07/20/2020 – 06/30/2025 <br>
                         “Complications of Hemolysis and Transfusion Therapy”</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-24"></div>
                     <h5>NIH R01 HL145451  Yazdanbakhsh (PI)</h5>
                     <div class="spacer-8"></div>
@@ -162,7 +160,6 @@
             </div>
         </div>
     </div>
-
     <div class="spacer-96"></div>
 
 </div>

@@ -1,49 +1,52 @@
 //VARIABLES
 @import "variables-mixins";
+
 /**-----------------------------------------------------------------------*/
+
 /** BREDCRUMBS  */
+
 /**-----------------------------------------------------------------------*/
 .breadcrumbs {
-  position: relative;
-  font-size: 1.4rem;
-  line-height: 1.57em;
-  font-weight: 500;
-  color: $color-text-20;
+	color: $color-text-20;
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1.57em;
+	position: relative;
 
-  li {
-    position: relative;
-    display: inline-block;
-    transition: $transition;
+	li {
+		display: inline-block;
+		position: relative;
+		transition: $transition;
 
-    &:after {
-      content: '';
-      position: relative;
-      display: inline-block;
-      width: 0.07em;
-      height: 1.57em;
-      background: $color-text-20;
-      margin: -0.43em 0.57em;
-    }
+		&::after {
+			background: $color-text-20;
+			content: "";
+			display: inline-block;
+			height: 1.57em;
+			margin: -0.43em 0.57em;
+			position: relative;
+			width: 0.07em;
+		}
 
-    &:last-child:after {
-      content: none;
-    }
+		&:last-child::after {
+			content: none;
+		}
 
-    &.active {
-      color: $color-primary-base2-10;
-    }
-  }
+		&.active {
+			color: $color-primary-base2-10;
+		}
+	}
 
-  &.in {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
+	&.in {
+		left: 0;
+		position: absolute;
+		top: 0;
+		z-index: 10;
+	}
 }
 
 @media (min-width: 1200px) {
-  .breadcrumbs li a:hover {
-    color: $color-primary-base2-10;
-  }
+	.breadcrumbs li a:hover {
+		color: $color-primary-base2-10;
+	}
 }
