@@ -86,98 +86,57 @@
 }
 
 .banner-inner {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 42.3%;
-  clip-path: ellipse(90% 60% at 50% 40%);
+	align-items: center;
+	clip-path: ellipse(90% 60% at 50% 40%);
+	display: flex;
+	height: 100%;
+	overflow: hidden;
+	padding-bottom: 42.3%;
+	position: relative;
+	width: 100%;
 
-  &.type-2 {
-    padding-bottom: 22.1%;
+	&.type-2 {
+		padding-bottom: 22.1%;
 
-    .banner-content {
-      text-align: center;
-    }
+		.banner-content {
+			text-align: center;
+		}
 
-    .bg {
+		.bg {
 
-      &.orange {
-        background: linear-gradient(0deg, $color-secondary-10 1.31%, $color-secondary-40 100%);
-      }
+			&.orange {
+				background: linear-gradient(0deg, $color-secondary-10 1.31%, $color-secondary-40 100%);
+			}
 
-      &.pink {
-        background: linear-gradient(0deg, $color-secondary-50 1.31%, $color-secondary-60 100%);
-      }
+			&.pink {
+				background: linear-gradient(0deg, $color-secondary-50 1.31%, $color-secondary-60 100%);
+			}
 
-      &.blue {
-        background: linear-gradient(0deg, $color-primary-base2-10 1.31%, $color-primary-base2-20 100%);
-      }
+			&.blue {
+				background: linear-gradient(0deg, $color-primary-base2-10 1.31%, $color-primary-base2-20 100%);
+			}
 
-      &.turquoise {
-        background: linear-gradient(0deg, $color-secondary-20 1.31%, $color-secondary-70 100%);
-      }
+			&.turquoise {
+				background: linear-gradient(0deg, $color-secondary-20 1.31%, $color-secondary-70 100%);
+			}
 
-    }
-  }
+		}
+	}
 
-  &.type-3 {
-    padding-bottom: 43%;
-    clip-path: ellipse(66% 62% at 50% 38%);
+	&.type-3 {
+		clip-path: ellipse(66% 62% at 50% 38%);
+		padding-bottom: 43%;
 
-    .banner-content {
-      text-align: center;
-    }
+		.banner-content {
+			text-align: center;
+		}
 
-    .bg {
-      &.rellax {
-        height: 103%;
-      }
-    }
-  }
-
-  &.type-4 {
-    padding-bottom: 0;
-    clip-path: unset;
-
-    .banner-wrapper {
-      position: relative;
-      width: 100%;
-      top: 0;
-      bottom: 0;
-      transform: unset;
-      border-bottom: 0.1rem solid $color-secondary-80;
-
-      .container {
-        max-width: 100%;
-      }
-    }
-
-    .banner-content {
-      position: relative;
-      height: 100%;
-      padding-left: 11rem;
-      padding-right: 12rem;
-
-      h5,.h5 {
-        color: $color-primary-base2-10;
-      }
-    }
-
-    .decor-banner-1 {
-      position: absolute;
-      top: -4rem;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: top right;
-    }
-  }
+		.bg {
+			&.rellax {
+				height: 103%;
+			}
+		}
+	}
 }
 
 .banner-wrapper {
@@ -188,25 +147,6 @@
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 10;
-}
-
-.banner-img {
-  position: relative;
-  padding-bottom: 76.63%;
-
-  &.size-2 {
-    padding-bottom: 93.63%;
-  }
-}
-
-@media (max-width: 1199px) {
-  .banner-inner {
-    &.type-4 {
-      .banner-content {
-        padding-left: 5rem;
-      }
-    }
-  }
 }
 
 @media (max-width: 991px) {
@@ -221,74 +161,56 @@
 }
 
 @media (max-width: 767px) {
-  .banner {
-    overflow: visible;
-  }
+	.banner {
+		overflow: visible;
+	}
 
-  .opacity {
-    &::before {
-      content: none;
-    }
-  }
+	.opacity {
+		&::before {
+			content: none;
+		}
+	}
 
-  .banner-inner {
-    height: 49.5rem;
-    padding-bottom: 0;
-    clip-path: ellipse(120% 60% at 50% 40%);
+	.banner-inner {
+		clip-path: ellipse(120% 60% at 50% 40%);
+		height: 49.5rem;
+		padding-bottom: 0;
 
-    &.type-2 {
-      height: auto;
-      padding-bottom: 80%;
+		&.type-2 {
+			height: auto;
+			padding-bottom: 80%;
 
-      .banner-wrapper {
-        top: 1.4rem;
-        bottom: auto;
-      }
-    }
+			.banner-wrapper {
+				bottom: auto;
+				top: 1.4rem;
+			}
+		}
 
-    &.type-3 {
-      clip-path: ellipse(120% 60% at 50% 40%);
-      height: 49.5rem;
-      padding-bottom: 0;
-    }
+		&.type-3 {
+			clip-path: ellipse(120% 60% at 50% 40%);
+			height: 49.5rem;
+			padding-bottom: 0;
+		}
+	}
 
-    &.type-4 {
-      height: auto;
+	.banner-wrapper {
+		bottom: 7.6rem;
+		top: auto;
+		transform: translateY(0);
+	}
 
-      .banner-wrapper {
-        .container {
-          max-width: 100%;
-          padding-left: 0;
-          padding-right: 0;
-        }
-      }
+	.banner-content {
+		text-align: center;
+	}
 
-      .banner-content {
-        text-align: left;
-        padding-left: 4.4rem;
-        padding-right: 4.4rem;
-      }
-    }
-  }
-
-  .banner-wrapper {
-    top: auto;
-    bottom: 7.6rem;
-    transform: translateY(0);
-  }
-
-  .banner-content {
-    text-align: center;
-  }
-
-  .bg {
-    img:not(.only-mob) {
-      display: none;
-    }
-    .only-mob {
-      display: block;
-    }
-  }
+	.bg {
+		img:not(.only-mob) {
+			display: none;
+		}
+		.only-mob {
+			display: block;
+		}
+	}
 }
 
 /**-----------------------------------------------------------------------*/

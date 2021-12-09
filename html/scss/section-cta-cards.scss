@@ -7,16 +7,31 @@
 
 /**-----------------------------------------------------------------------*/
 .cta-card-wrapper {
-
 	display: flex;
 	flex-wrap: wrap;
 
-	> *:not(:last-child) {
+	>*:not(:last-child) {
 		margin-bottom: 2.4rem;
 	}
 
 	&.vertical {
 		margin-bottom: -2.4rem;
+	}
+
+	&.column-3 {
+		flex-wrap: nowrap;
+
+		.cta-card {
+			&.vertical {
+				&:nth-child(2n) {
+					margin-right: 2.4rem;
+				}
+
+				&:nth-child(3n) {
+					margin-right: 0;
+				}
+			}
+		}
 	}
 }
 
@@ -122,7 +137,6 @@
 
 @media (min-width: 1200px) {
 	.cta-card:hover {
-
 		&::before {
 			height: 1em;
 		}
@@ -147,7 +161,51 @@
 	}
 }
 
+@media (max-width: 991px) {
+	.cta-card-wrapper {
+
+		&.column-3 {
+			flex-wrap: wrap;
+
+			.cta-card {
+				&.vertical {
+					&:nth-child(2n) {
+						margin-right: 0;
+					}
+
+					&:nth-child(3n) {
+						margin-right: 2.4rem;
+					}
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 767px) {
+	.cta-card-wrapper {
+
+		>*:not(:last-child) {
+			margin-bottom: 1.6rem;
+		}
+
+		&.vertical {
+			margin-bottom: -1.6rem;
+		}
+
+		&.column-3 {
+			flex-wrap: wrap;
+
+			.cta-card {
+				&.vertical {
+					&:nth-child(3n) {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+
 	.cta-card {
 		flex-direction: column;
 
@@ -181,11 +239,11 @@
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**---*/
 
 /** CTA CARDS FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**---*/
 .division {
 	.cta-card {
 		&::before {
