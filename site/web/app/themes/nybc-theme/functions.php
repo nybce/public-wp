@@ -22,4 +22,3 @@ define( 'NYBC_SCRIPT_VER', '1.0.0' );
  * Init Requirements
  */
 require_once __DIR__ . '/inc/class-nybc-staff-member.php';
-
