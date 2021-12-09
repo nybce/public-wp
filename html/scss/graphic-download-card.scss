@@ -1,0 +1,151 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** GRAPHIC DOWNLOAD CARD */
+
+/**-----------------------------------------------------------------------*/
+.graphic-download-card-inner {
+	position: relative;
+	width: 100%;
+}
+
+.graphic-download-card-wrapper {
+	> * {
+		margin-bottom: 1.6rem;
+	}
+}
+
+.graphic-download-card {
+	align-items: flex-start;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-start;
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	&::before {
+		background: $color-secondary-90;
+		bottom: 0;
+		content: "";
+		height: 0.0625em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
+}
+
+.graphic-download-card-img {
+	border-radius: 0.4rem 0 0 0;
+	height: 100%;
+	max-width: 15.095%;
+	padding-bottom: 15.095%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
+
+	img {
+		@include imgCover;
+	}
+}
+
+.graphic-download-card-info {
+	padding: 2.4rem 2.4rem 4.8rem 2.4rem;
+	position: relative;
+	text-align: left;
+	transition: $transition;
+}
+
+.download-btn-list {
+	display: flex;
+
+	> *:not(:last-child) {
+		margin-right: 1.6rem;
+	}
+
+	.download-btn {
+		align-items: center;
+		display: flex;
+
+		span {
+			color: $color-text-10;
+			font-size: 1.6rem;
+			font-weight: 700;
+			line-height: 1.5em;
+			margin-right: 0.8rem;
+			transition: $transition;
+		}
+
+		svg {
+			max-height: 2.4rem;
+			max-width: 2.4rem;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.graphic-download-card-info .title:hover {
+		color: $color-primary-base1-10;
+	}
+
+	.download-btn-list {
+		.download-btn:hover {
+			span {
+				color: $color-primary-base1-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.graphic-download-card-info {
+		padding: 2.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.graphic-download-card {
+		flex-direction: column;
+	}
+
+	.graphic-download-card-img {
+		max-width: 100%;
+		padding-bottom: 100%;
+	}
+
+	.graphic-download-card-info {
+		width: 100%;
+	}
+
+	.download-btn-list {
+		display: block;
+
+		> *:not(:last-child) {
+			margin-bottom: 0.8rem;
+			margin-right: 0;
+		}
+
+		.download-btn {
+			align-items: center;
+			display: flex;
+
+			span {
+				font-size: 1.4rem;
+			}
+
+			svg {
+				max-height: 2rem;
+				max-width: 2rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+/*----------------------------------------*/
+/* SUMOSELECT CUSTOM */
+/*----------------------------------------*/
+.SumoSelect { display: block; width: 100%; cursor: pointer; z-index: 3; }
+
+.SumoSelect.open { z-index: 4 !important; }
+
+.SumoSelect.open .CaptionCont { border-radius: unset; }
+
+.SumoSelect:hover { z-index: 3; }
+
+.SumoSelect > .CaptionCont { cursor: pointer; background: transparent; border-radius: unset; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; border: none; }
+
+.SumoSelect > .optWrapper { background-color: #FFF; border-radius: 0; padding: 0; overflow: auto; -webkit-box-shadow: none; box-shadow: none; top: 100%; left: 0; z-index: 2; display: block; -webkit-transform-origin: top center; -ms-transform-origin: top center; transform-origin: top center; -webkit-transform: scaleY(0); -ms-transform: scaleY(0); transform: scaleY(0); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; border: none; }
+
+.SumoSelect.open > .CaptionCont, .SumoSelect:focus > .CaptionCont, .SumoSelect:hover > .CaptionCont { -webkit-box-shadow: none; box-shadow: none; border-color: #FC1921; }
+
+.SelectBox { width: 20rem; font-size: 1.6rem; line-height: 1.5em; font-weight: 500; color: #1E2A3A; text-align: right; padding: 0 3.6rem 0 0; }
+
+.SumoSelect > .CaptionCont > span.placeholder { font-size: 1.6rem; line-height: 1.5em; font-weight: 500; font-style: normal; color: #1E2A3A; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.SumoSelect.open > .CaptionCont > span.placeholder { opacity: 1; }
+
+.SumoSelect > .CaptionCont > span { padding-right: 0; cursor: pointer; font-size: 1.6rem; line-height: 1.5em; font-weight: 500; color: #1E2A3A; }
+
+.SumoSelect > .CaptionCont > label { cursor: pointer; width: 2.4rem; height: 2.4rem; }
+
+.SumoSelect > .CaptionCont > label > i { background-image: none; opacity: 1; width: 2.4rem; height: 2.4rem; }
+
+.SumoSelect > .CaptionCont > label > i:before, .SumoSelect > .CaptionCont > label > i:after { content: ""; position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, 100%) rotate(0deg); -ms-transform: translate(-50%, 100%) rotate(0deg); transform: translate(-50%, 100%) rotate(0deg); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; display: inline-block; vertical-align: middle; border-top: 0.5rem solid #FC1921; border-right: 0.5rem solid transparent; border-bottom: 0; border-left: 0.5rem solid transparent; }
+
+.SumoSelect > .CaptionCont > label > i:before { -webkit-transform: translate(-50%, -200%) rotate(-180deg); -ms-transform: translate(-50%, -200%) rotate(-180deg); transform: translate(-50%, -200%) rotate(-180deg); }
+
+.SumoSelect > .CaptionCont > label > i:after { -webkit-transform: translate(-50%, 100%) rotate(0deg); -ms-transform: translate(-50%, 100%) rotate(0deg); transform: translate(-50%, 100%) rotate(0deg); }
+
+.SumoSelect.open > .CaptionCont > label > i:before { -webkit-transform: translate(-50%, -200%) rotate(0deg); -ms-transform: translate(-50%, -200%) rotate(0deg); transform: translate(-50%, -200%) rotate(0deg); }
+
+.SumoSelect.open > .CaptionCont > label > i:after { -webkit-transform: translate(-50%, 100%) rotate(-180deg); -ms-transform: translate(-50%, 100%) rotate(-180deg); transform: translate(-50%, 100%) rotate(-180deg); }
+
+.SumoSelect.open > .optWrapper { -webkit-transform: scaleY(1); -ms-transform: scaleY(1); transform: scaleY(1); top: 100%; margin-top: 0.5rem; border-radius: 0.6rem; background-color: #FFF; border: 0.1rem solid #E2F0FF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); }
+
+.SumoSelect > .optWrapper > .options li.opt { padding: 0; border-bottom: 0; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.SumoSelect > .optWrapper > .options li.opt + li.opt { margin-top: 0.8rem; }
+
+.SumoSelect > .optWrapper > .options > li.opt:first-child { border-radius: 0; }
+
+.SumoSelect > .optWrapper > .options > li.opt:last-child { border-radius: 0; margin-bottom: 0.8rem; }
+
+.SumoSelect > .optWrapper > .options li label { padding: 0 1.2rem; font-size: 1.6rem; line-height: 1.5em; font-weight: 500; color: #1E2A3A; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.SumoSelect > .optWrapper > .options { border-radius: 0; padding: 0; }
+
+.options > .opt.disabled:first-child { display: none; }
+
+.SumoSelect.disabled { opacity: 1; }
+
+@media (min-width: 1200px) { .SumoSelect > .CaptionCont:hover { border-color: #FC1921; }
+  .SumoSelect > .CaptionCont:hover > span.placeholder { opacity: 1; color: #FC1921; }
+  .SumoSelect.disabled > .CaptionCont:hover { border: 1px solid rgba(235, 235, 235, 0.15); }
+  .SumoSelect > .optWrapper > .options li.opt:hover { background-color: #E2F0FF; } }
+
+@media (max-width: 767px) { .SelectBox { width: 13rem; font-size: 1.4rem; line-height: 1.57em; padding: 0 2.4rem 0 0; }
+  .SumoSelect > .CaptionCont > span.placeholder { font-size: 1.4rem; line-height: 1.57em; }
+  .SumoSelect > .CaptionCont > span { font-size: 1.4rem; line-height: 1.7em; }
+  .SumoSelect.open > .optWrapper { width: calc(100% + 3rem); left: -3rem; }
+  .SumoSelect > .optWrapper > .options li label { padding: 0 1.2rem; font-size: 1.4rem; line-height: 1.57em; } }

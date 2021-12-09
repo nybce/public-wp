@@ -7,7 +7,7 @@
               <div class="row justify-content-center footer-top-inner">
 
                   <div class="col-xl-8">
-                      <div class="title-wrapper">
+                      <div class="title-wrapper type-2">
                           <div class="h5 title light text-center">Explore Our Organization</div>
                           <div class="spacer-16"></div>
                           <div class="text text-30 text-center">New York Blood Center (NYBC) is one of the largest
@@ -66,7 +66,11 @@
                       <div class="spacer-xs-24"></div>
                   </div>
 
-                  <div class="col-xl-3 offset-xl-3 col-lg-4">
+                  <div class="col-xl-3 col-lg-4">
+
+                  </div>
+
+                  <div class="col-xl-3 col-lg-4">
                       <ul class="footer-nav-list">
                           <li><a href="#">Contact</a></li>
                           <li><a href="#">Careers</a></li>

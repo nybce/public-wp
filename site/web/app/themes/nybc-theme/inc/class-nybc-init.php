@@ -235,16 +235,27 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 * Set up ACF Options Page
 		 */
 		public static function options_page() {
-			// TODO: options page.
+			if ( function_exists( 'acf_add_options_page' ) ) {
+				acf_add_options_page(
+					array(
+						'page_title' => esc_html__( 'Theme Options', 'nybc' ),
+						'menu_title' => esc_html__( 'Theme Options', 'nybc' ),
+						'menu_slug'  => 'theme-general-settings',
+						'capability' => 'edit_posts',
+						'redirect'   => false,
+						'position'   => 1,
+					)
+				);
+
+			}
 		}
 
 		/**
 		 * Set up ACF fields
 		 */
 		public static function acf_fields() {
-			// TODO: acf fields.
+			get_template_part( 'inc/acf/theme-options' );
 		}
-
 
 	}
 

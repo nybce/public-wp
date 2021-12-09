@@ -1,0 +1,252 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** BANNERS */
+
+/**-----------------------------------------------------------------------*/
+.bg {
+	background-attachment: scroll;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+
+	&.video {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		bottom: 0;
+		clip: rect(auto, auto, auto, auto);
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		video {
+			height: auto;
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			position: fixed;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: auto;
+		}
+	}
+}
+
+.opacity::before {
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.opacity-1::before {
+	background: linear-gradient(0deg, $color-gray-100 1.31%, rgba(9, 19, 75, 0) 100%);
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.parallax-bg {
+	overflow: hidden;
+
+	.bg {
+		height: 130%;
+		position: absolute;
+		top: -10%;
+		width: 100%;
+	}
+}
+
+.banner {
+	overflow: hidden;
+	position: relative;
+}
+
+.banner-inner {
+	align-items: center;
+	clip-path: ellipse(90% 60% at 50% 40%);
+	display: flex;
+	height: 100%;
+	overflow: hidden;
+	padding-bottom: 42.3%;
+	position: relative;
+	width: 100%;
+
+	&.type-2 {
+		padding-bottom: 22.1%;
+
+		.banner-content {
+			text-align: center;
+		}
+
+		.bg {
+
+			&.orange {
+				background: linear-gradient(0deg, $color-secondary-10 1.31%, $color-secondary-40 100%);
+			}
+
+			&.pink {
+				background: linear-gradient(0deg, $color-secondary-50 1.31%, $color-secondary-60 100%);
+			}
+
+			&.blue {
+				background: linear-gradient(0deg, $color-primary-base2-10 1.31%, $color-primary-base2-20 100%);
+			}
+
+			&.turquoise {
+				background: linear-gradient(0deg, $color-secondary-20 1.31%, $color-secondary-70 100%);
+			}
+
+		}
+	}
+
+	&.type-3 {
+		clip-path: ellipse(66% 62% at 50% 38%);
+		padding-bottom: 43%;
+
+		.banner-content {
+			text-align: center;
+		}
+
+		.bg {
+			&.rellax {
+				height: 103%;
+			}
+		}
+	}
+}
+
+.banner-wrapper {
+	color: $color-white;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+@media (max-width: 991px) {
+	.banner-inner {
+		&.type-2 {
+			padding-bottom: 45%;
+		}
+		&.type-3 {
+			padding-bottom: 45%;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.banner {
+		overflow: visible;
+	}
+
+	.opacity {
+		&::before {
+			content: none;
+		}
+	}
+
+	.banner-inner {
+		clip-path: ellipse(120% 60% at 50% 40%);
+		height: 49.5rem;
+		padding-bottom: 0;
+
+		&.type-2 {
+			height: auto;
+			padding-bottom: 80%;
+
+			.banner-wrapper {
+				bottom: auto;
+				top: 1.4rem;
+			}
+		}
+
+		&.type-3 {
+			clip-path: ellipse(120% 60% at 50% 40%);
+			height: 49.5rem;
+			padding-bottom: 0;
+		}
+	}
+
+	.banner-wrapper {
+		bottom: 7.6rem;
+		top: auto;
+		transform: translateY(0);
+	}
+
+	.banner-content {
+		text-align: center;
+	}
+
+	.bg {
+		img:not(.only-mob) {
+			display: none;
+		}
+		.only-mob {
+			display: block;
+		}
+	}
+}
+
+/**-----------------------------------------------------------------------*/
+
+/** DECOR FOR MAIN BANNER */
+
+/**-----------------------------------------------------------------------*/
+.banner-decor {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 55%;
+	z-index: 1;
+}
+
+@media (max-width: 767px) {
+	.banner-decor {
+		width: 110%;
+
+		svg {
+			width: 165%;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** DECOR FOR MAIN BANNER FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.banner-decor {
+
+		svg path {
+			fill: $color-primary-base2-30;
+		}
+	}
+}

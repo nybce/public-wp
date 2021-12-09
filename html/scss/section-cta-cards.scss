@@ -1,0 +1,195 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** CTA CARDS */
+
+/**-----------------------------------------------------------------------*/
+.cta-card-wrapper {
+
+	display: flex;
+	flex-wrap: wrap;
+
+	> *:not(:last-child) {
+		margin-bottom: 2.4rem;
+	}
+
+	&.vertical {
+		margin-bottom: -2.4rem;
+	}
+}
+
+.cta-card {
+	align-items: center;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-start;
+	max-width: 100%;
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+	}
+
+	&.vertical {
+		flex-direction: column;
+		margin-bottom: 2.4rem;
+		margin-right: 2.4rem;
+		max-width: calc(50% - 1.2rem);
+
+		.cta-card-img {
+			max-width: 100%;
+			padding-bottom: 54.4%;
+		}
+
+		.cta-card-info {
+			.text-xl {
+				-webkit-line-clamp: unset;
+			}
+		}
+
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+}
+
+.cta-card-img {
+	display: block;
+	height: 0;
+	max-width: 35.5%;
+	padding-bottom: 30.5%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	img {
+		@include imgCover;
+	}
+
+	&.logo {
+		background-color: $color-secondary-80;
+
+		img {
+			@include centerAbsolute;
+			max-height: 8rem;
+			max-width: 23rem;
+			object-fit: contain;
+		}
+	}
+}
+
+.cta-card-info {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 4.8rem;
+	position: relative;
+	transition: $transition;
+
+	.title {
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.text-xl {
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+@media (min-width: 1200px) {
+	.cta-card:hover {
+
+		&::before {
+			height: 1em;
+		}
+
+		.cta-card-img {
+			transform: translateY(-0.7em);
+		}
+
+		.cta-card-info {
+			transform: translateY(-0.5em);
+
+			.title {
+				color: $color-primary-base1-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.cta-card-info {
+		padding: 2.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.cta-card {
+		flex-direction: column;
+
+		&.vertical {
+			margin-bottom: 1.6rem;
+			margin-right: 0;
+			max-width: 100%;
+
+			.cta-card-img {
+				padding-bottom: 56.5%;
+			}
+		}
+	}
+
+	.cta-card-img {
+		max-width: 100%;
+		padding-bottom: 56.5%;
+
+		&.logo {
+			img {
+				max-height: 7rem;
+				max-width: 20rem;
+			}
+		}
+	}
+
+	.cta-card-info {
+		.text-xl {
+			-webkit-line-clamp: 3;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** CTA CARDS FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.cta-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
+}
