@@ -221,7 +221,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 		}
 
-
 	}
 
 	new NYBC_Init();
