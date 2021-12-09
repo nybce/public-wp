@@ -18,7 +18,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	 * @package NYBC
 	 */
 	class NYBC_Init {
-    
+
 		/**
 		 * Thumbnail Size params
 		 *
