@@ -19,8 +19,6 @@
 
 .employees-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
 
-.employees-swiper { /*swiper pagination*/ }
-
 .employees-swiper .swiper-button-prev, .employees-swiper .swiper-button-next { left: 2.4rem; }
 
 .employees-swiper .swiper-button-next { left: auto; right: 2.4rem; }

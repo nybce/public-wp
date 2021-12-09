@@ -1,8 +1,6 @@
 /**-----------------------------------------------------------------------*/
 /** VIDEO SLIDER */
 /**-----------------------------------------------------------------------*/
-.video-swiper { /*swiper pagination*/ }
-
 .video-swiper .swiper-container { overflow: visible; }
 
 .video-swiper .swiper-button-prev, .video-swiper .swiper-button-next { left: -9.6rem; }

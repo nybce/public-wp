@@ -54,16 +54,178 @@
                     <div class="select-item-total">Showing <span>32</span> Results</div>
 
                     <div class="select-item ml-auto">
-                        <div class="filter-date">
-                            <input type="text" class="input calendar" placeholder="Filter By Date">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M13 2H11V1H10V2H6V1H5V2H3C2.45 2 2 2.45 2 3V13C2 13.55 2.45 14 3 14H13C13.55 14 14 13.55 14 13V3C14 2.45 13.55 2 13 2ZM13 13H3V6H13V13ZM13 5H3V3H5V4H6V3H10V4H11V3H13V5Z"
-                                    fill="#FC1921" />
-                            </svg>
-                        </div>
+                        <div class="calendar">
+                            <div class="input input-calendar open-calendar">
+                                Filter By Date
+                                <img src="img/icons/calendar.svg" alt="">
+                            </div>
 
+                            <div class="swiper-entry calendar-swiper">
+                                <div class="swiper-button-prev"><i></i></div>
+                                <div class="swiper-button-next"><i></i></div>
+                                <div class="swiper-container"
+                                    data-options='{"slidesPerView":1, "autoHeight":true, "spaceBetween": 16, "loop":true}}'>
+                                    <div class="swiper-wrapper">
+
+                                        <div class="swiper-slide">
+                                            <div class="calendar-slide">
+                                                <div class="calendar-year">2017</div>
+                                                <div class="calendar-months-list">
+                                                    <a href="" data-month="01" data-year="2017"
+                                                        class="calendar-month ">Jan</a>
+                                                    <a href="" data-month="02" data-year="2017"
+                                                        class="calendar-month">Feb</a>
+                                                    <a href="" data-month="03" data-year="2017"
+                                                        class="calendar-month">Mar</a>
+                                                    <a href="" data-month="04" data-year="2017"
+                                                        class="calendar-month">Apr</a>
+                                                    <a href="" data-month="05" data-year="2017"
+                                                        class="calendar-month">May</a>
+                                                    <a href="" data-month="06" data-year="2017"
+                                                        class="calendar-month">Jun</a>
+                                                    <a href="" data-month="07" data-year="2017"
+                                                        class="calendar-month">Jul</a>
+                                                    <a href="" data-month="08" data-year="2017"
+                                                        class="calendar-month">Aug</a>
+                                                    <a href="" data-month="09" data-year="2017"
+                                                        class="calendar-month">Sep</a>
+                                                    <a href="" data-month="10" data-year="2017"
+                                                        class="calendar-month">Oct</a>
+                                                    <a href="" data-month="11" data-year="2017"
+                                                        class="calendar-month">Nov</a>
+                                                    <a href="" data-month="12" data-year="2017"
+                                                        class="calendar-month">Dec</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="calendar-slide">
+                                                <div class="calendar-year">2018</div>
+                                                <div class="calendar-months-list">
+                                                    <a href="" data-month="01" data-year="2018"
+                                                        class="calendar-month ">Jan</a>
+                                                    <a href="" data-month="02" data-year="2018"
+                                                        class="calendar-month">Feb</a>
+                                                    <a href="" data-month="03" data-year="2018"
+                                                        class="calendar-month">Mar</a>
+                                                    <a href="" data-month="04" data-year="2018"
+                                                        class="calendar-month">Apr</a>
+                                                    <a href="" data-month="05" data-year="2018"
+                                                        class="calendar-month">May</a>
+                                                    <a href="" data-month="06" data-year="2018"
+                                                        class="calendar-month">Jun</a>
+                                                    <a href="" data-month="07" data-year="2018"
+                                                        class="calendar-month">Jul</a>
+                                                    <a href="" data-month="08" data-year="2018"
+                                                        class="calendar-month">Aug</a>
+                                                    <a href="" data-month="09" data-year="2018"
+                                                        class="calendar-month">Sep</a>
+                                                    <a href="" data-month="10" data-year="2018"
+                                                        class="calendar-month">Oct</a>
+                                                    <a href="" data-month="11" data-year="2018"
+                                                        class="calendar-month">Nov</a>
+                                                    <a href="" data-month="12" data-year="2018"
+                                                        class="calendar-month">Dec</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="calendar-slide">
+                                                <div class="calendar-year">2019</div>
+                                                <div class="calendar-months-list">
+                                                    <a href="" data-month="01" data-year="2019"
+                                                        class="calendar-month ">Jan</a>
+                                                    <a href="" data-month="02" data-year="2019"
+                                                        class="calendar-month">Feb</a>
+                                                    <a href="" data-month="03" data-year="2019"
+                                                        class="calendar-month">Mar</a>
+                                                    <a href="" data-month="04" data-year="2019"
+                                                        class="calendar-month">Apr</a>
+                                                    <a href="" data-month="05" data-year="2019"
+                                                        class="calendar-month">May</a>
+                                                    <a href="" data-month="06" data-year="2019"
+                                                        class="calendar-month">Jun</a>
+                                                    <a href="" data-month="07" data-year="2019"
+                                                        class="calendar-month">Jul</a>
+                                                    <a href="" data-month="08" data-year="2019"
+                                                        class="calendar-month">Aug</a>
+                                                    <a href="" data-month="09" data-year="2019"
+                                                        class="calendar-month">Sep</a>
+                                                    <a href="" data-month="10" data-year="2019"
+                                                        class="calendar-month">Oct</a>
+                                                    <a href="" data-month="11" data-year="2019"
+                                                        class="calendar-month">Nov</a>
+                                                    <a href="" data-month="12" data-year="2019"
+                                                        class="calendar-month">Dec</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="calendar-slide">
+                                                <div class="calendar-year">2020</div>
+                                                <div class="calendar-months-list">
+                                                    <a href="" data-month="01" data-year="2020"
+                                                        class="calendar-month ">Jan</a>
+                                                    <a href="" data-month="02" data-year="2020"
+                                                        class="calendar-month">Feb</a>
+                                                    <a href="" data-month="03" data-year="2020"
+                                                        class="calendar-month">Mar</a>
+                                                    <a href="" data-month="04" data-year="2020"
+                                                        class="calendar-month">Apr</a>
+                                                    <a href="" data-month="05" data-year="2020"
+                                                        class="calendar-month">May</a>
+                                                    <a href="" data-month="06" data-year="2020"
+                                                        class="calendar-month">Jun</a>
+                                                    <a href="" data-month="07" data-year="2020"
+                                                        class="calendar-month">Jul</a>
+                                                    <a href="" data-month="08" data-year="2020"
+                                                        class="calendar-month">Aug</a>
+                                                    <a href="" data-month="09" data-year="2020"
+                                                        class="calendar-month">Sep</a>
+                                                    <a href="" data-month="10" data-year="2020"
+                                                        class="calendar-month">Oct</a>
+                                                    <a href="" data-month="11" data-year="2020"
+                                                        class="calendar-month">Nov</a>
+                                                    <a href="" data-month="12" data-year="2020"
+                                                        class="calendar-month">Dec</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="calendar-slide">
+                                                <div class="calendar-year">2021</div>
+                                                <div class="calendar-months-list">
+                                                    <a href="" data-month="01" data-year="2021"
+                                                        class="calendar-month">Jan</a>
+                                                    <a href="" data-month="02" data-year="2021"
+                                                        class="calendar-month">Feb</a>
+                                                    <a href="" data-month="03" data-year="2021"
+                                                        class="calendar-month">Mar</a>
+                                                    <a href="" data-month="04" data-year="2021"
+                                                        class="calendar-month">Apr</a>
+                                                    <a href="" data-month="05" data-year="2021"
+                                                        class="calendar-month">May</a>
+                                                    <a href="" data-month="06" data-year="2021"
+                                                        class="calendar-month">Jun</a>
+                                                    <a href="" data-month="07" data-year="2021"
+                                                        class="calendar-month">Jul</a>
+                                                    <a href="" data-month="08" data-year="2021"
+                                                        class="calendar-month">Aug</a>
+                                                    <a href="" data-month="09" data-year="2021"
+                                                        class="calendar-month">Sep</a>
+                                                    <a href="" data-month="10" data-year="2021"
+                                                        class="calendar-month">Oct</a>
+                                                    <a href="" data-month="11" data-year="2021"
+                                                        class="calendar-month">Nov</a>
+                                                    <a href="" data-month="12" data-year="2021"
+                                                        class="calendar-month current">Dec</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
