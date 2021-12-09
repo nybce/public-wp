@@ -1,0 +1,1 @@
+<script defer src="javascript/swiper-init.js"></script>

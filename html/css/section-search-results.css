@@ -1,0 +1,49 @@
+/**-----------------------------------------------------------------------*/
+/** SEARCH RESULTS */
+/**-----------------------------------------------------------------------*/
+.search-results-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
+
+.select-item-total { font-size: 1.6rem; line-height: 1.5em; font-weight: 500; color: #1E2A3A; }
+
+@media (max-width: 767px) { .select-item-total { font-size: 1.4rem; line-height: 1.57em; } }
+
+/**-----------------------------------------------------------------------*/
+/** SEARCH CARDS */
+/**-----------------------------------------------------------------------*/
+.search-cards-wrapper > *:not(:last-child) { margin-bottom: 2.4rem; }
+
+.search-card { position: relative; overflow: hidden; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #FFF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 0.4rem; min-height: 37.2rem; height: 100%; }
+
+.search-card::before { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 0.25em; background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #EF3E42), color-stop(33.67%, #F68924), color-stop(65.04%, #87BD40), color-stop(96.91%, #53C4C9)); background: -o-linear-gradient(left, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); background: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.search-card-img { position: relative; display: block; width: 100%; height: 0; max-width: 28.57%; padding-bottom: 27.7%; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.search-card-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
+
+.search-card-info { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -ms-flex-item-align: stretch; -ms-grid-row-align: stretch; align-self: stretch; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; padding: 6.4rem 4.8rem; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.search-card-info .tagline { font-size: 1.6rem; line-height: 1.25em; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #439BFF; }
+
+.decor-search { position: absolute; bottom: 0; left: 0; z-index: -1; width: 100%; height: 100%; background-repeat: no-repeat; background-size: 100%; background-position: top center; background-color: #E2F0FF; }
+
+@media (min-width: 1200px) { .search-card:hover::before { height: 1em; }
+  .search-card:hover .search-card-img { -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); }
+  .search-card:hover .border-top { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
+  .search-card:hover .search-card-info { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
+  .search-card:hover .search-card-info .title { color: #FC1921; } }
+
+@media (max-width: 1600px) { .search-card { min-height: 27.6rem; } }
+
+@media (max-width: 1199px) { .search-card { min-height: auto; }
+  .search-card-info { padding: 2.4rem; } }
+
+@media (max-width: 767px) { .search-cards-wrapper > *:not(:last-child) { margin-bottom: 1.6rem; }
+  .search-card { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .search-card-img { max-width: 100%; padding-bottom: 56.5%; }
+  .search-card-info .tagline { font-size: 1.4rem; line-height: 1.29em; letter-spacing: 0.02em; }
+  .decor-search { height: 97%; } }
+
+/**--------------------------------------------------------------------------------------------*/
+/** SEARCH CARDS FOR DIVISION */
+/**--------------------------------------------------------------------------------------------*/
+.division .search-card::before { background: #439BFF; }
