@@ -5,5 +5,9 @@
 <meta name='robots' content='noindex,nofollow' />
 <link rel="shortcut icon" href="img/favicon.ico" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
 <!-- CSS -->
 <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />

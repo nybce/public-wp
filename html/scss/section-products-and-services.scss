@@ -2,147 +2,149 @@
 @import "variables-mixins";
 
 /**-----------------------------------------------------------------------*/
+
 /** CARD SLIDER */
+
 /**-----------------------------------------------------------------------*/
 .card-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+	align-items: center;
+	display: flex;
+	justify-content: flex-start;
 
-  &>*:not(:last-child) {
-    margin-right: 2.4rem;
-  }
+	> *:not(:last-child) {
+		margin-right: 2.4rem;
+	}
 }
 
 .card-item {
-  position: relative;
-  height: 100%;
-  min-height: 36rem;
-  background-color: $color-white;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.4rem 0.4rem 0 0;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	height: 100%;
+	min-height: 36rem;
+	position: relative;
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 0.25em;
-    background: $gradient;
-    transition: $transition;
-  }
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+	}
 
-  &.small {
-    padding: 2.4rem;
-    min-height: auto;
-  }
+	&.small {
+		min-height: auto;
+		padding: 2.4rem;
+	}
 
-  .large {
-    padding: 4.8rem;
-  }
+	.large {
+		padding: 4.8rem;
+	}
 
-  .tagline {
-    font-weight: 900;
-    text-transform: uppercase;
-    color: $color-primary-base2-10;
-    transition: $transition;
-  }
+	.tagline {
+		color: $color-primary-base2-10;
+		font-weight: 900;
+		text-transform: uppercase;
+		transition: $transition;
+	}
 
-  .title {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+	.title {
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 
-  .text {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: $transition;
-  }
+	.text {
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transition: $transition;
+	}
 }
 
 .products-services {
-  .card-item {
-    min-height: 36rem;
-  }
+	.card-item {
+		min-height: 36rem;
+	}
 }
 
 .card-img {
-  position: relative;
-  transition: $transition;
-  max-width: 6.4rem;
-  max-height: 6.4rem;
-  width: 100%;
-  height: 100%;
+	height: 100%;
+	max-height: 6.4rem;
+	max-width: 6.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
 
-  img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
+	img {
+		height: auto;
+		max-width: 100%;
+		width: 100%;
+	}
 }
 
 .card-swiper {
-  .swiper-container {
-    overflow: visible;
-  }
+	.swiper-container {
+		overflow: visible;
+	}
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    left: -9.6rem;
-  }
+	.swiper-button-prev,
+	.swiper-button-next {
+		left: -9.6rem;
+	}
 
-  .swiper-button-next {
-    left: auto;
-    right: -9.6rem;
-  }
+	.swiper-button-next {
+		left: auto;
+		right: -9.6rem;
+	}
 
-  .swiper-pagination {
-    display: none;
-  }
+	.swiper-pagination {
+		display: none;
+	}
 }
 
 .decor-left {
-  position: absolute;
-  top: -3rem;
-  left: 0;
-  width: 88.5rem;
-  height: 130rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  z-index: -1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 130rem;
+	left: 0;
+	position: absolute;
+	top: -3rem;
+	width: 88.5rem;
+	z-index: -1;
 }
 
 @media (min-width: 1200px) {
-  .card-item:hover {
+	.card-item:hover {
 
-    &::before {
-      height: 1em;
-    }
+		&::before {
+			height: 1em;
+		}
 
-    .card-img {
-      transform: translateY(-0.7em);
-    }
+		.card-img {
+			transform: translateY(-0.7em);
+		}
 
-    .tagline {
-      transform: translateY(-0.7em);
-    }
+		.tagline {
+			transform: translateY(-0.7em);
+		}
 
-    .title {
-      color: $color-primary-base1-30;
-      transform: translateY(-0.7em);
-    }
+		.title {
+			color: $color-primary-base1-30;
+			transform: translateY(-0.7em);
+		}
 
-    .text {
-      transform: translateY(-0.7em);
-    }
-  }
+		.text {
+			transform: translateY(-0.7em);
+		}
+	}
 }
 
 @media (max-width: 1600px) {
@@ -156,101 +158,98 @@
 }
 
 @media (max-width: 1400px) {
-  .card-swiper {
-    .swiper-button-prev,
-    .swiper-button-next {
-      left: -6.4rem;
-    }
+	.card-swiper {
+		.swiper-button-prev,
+		.swiper-button-next {
+			left: -6.4rem;
+		}
 
-    .swiper-button-next {
-      left: auto;
-      right: -6.4rem;
-    }
-  }
+		.swiper-button-next {
+			left: auto;
+			right: -6.4rem;
+		}
+	}
 }
 
 @media (max-width: 1199px) {
-  .card-swiper {
-    .swiper-button-prev,
-    .swiper-button-next {
-      left: -2.4rem;
-    }
+	.card-swiper {
+		.swiper-button-prev,
+		.swiper-button-next {
+			left: -2.4rem;
+		}
 
-    .swiper-button-next {
-      left: auto;
-      right: -2.4rem;
-    }
-  }
+		.swiper-button-next {
+			left: auto;
+			right: -2.4rem;
+		}
+	}
 
-  .decor-left {
-    width: 70rem;
-  }
+	.decor-left {
+		width: 70rem;
+	}
 }
 
 @media (max-width: 991px) {
-  .card-swiper {
-    padding-bottom: 4.8rem;
+	.card-swiper {
+		padding-bottom: 4.8rem;
 
-    .swiper-button-wrapper {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+		.swiper-button-wrapper {
+			align-items: center;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			position: absolute;
+			width: 100%;
 
+			> *:not(:last-child) {
+				margin-right: 1.5em;
+			}
+		}
 
-      & > *:not(:last-child) {
-        margin-right: 1.5em;
-      }
-    }
+		.swiper-button-prev,
+		.swiper-button-next {
+			left: 0;
+			position: relative;
+			top: 0;
+			transform: unset;
+		}
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      position: relative;
-      top: 0;
-      transform: unset;
-    }
+		.swiper-button-next {
+			left: auto;
+			right: 0;
+		}
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      left: 0;
-    }
+		.swiper-button-prev {
+			transform: scaleX(-1);
+		}
+	}
 
-    .swiper-button-next {
-      left: auto;
-      right: 0;
-    }
-
-    .swiper-button-prev {
-      transform: scaleX(-1);
-    }
-  }
-
-  .decor-left {
-    display: none;
-  }
+	.decor-left {
+		display: none;
+	}
 }
 
 @media (max-width: 767px) {
-  .card-swiper {
-    .swiper-slide {
-      width: auto;
-    }
-  }
+	.card-swiper {
+		.swiper-slide {
+			width: auto;
+		}
+	}
 
-  .card-item {
-    max-width: 21.5rem;
-  }
+	.card-item {
+		max-width: 21.5rem;
+	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
+
 /** CARD FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
+
+/**--------------------------------------------------------------------------*/
 .division {
-  .card-item {
-    &::before {
-      background: $color-primary-base2-20;
-    }
-  }
+	.card-item {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
 }

@@ -82,14 +82,12 @@
                 <div class="text-lg">
                     <h3>Funding Support</h3>
                     <div class="spacer-24"></div>
-
                     <h5>NIH P01 HL149626 Yazdanbakhsh (PD)</h5>
                     <div class="spacer-8"></div>
                     <p>07/20/2020 – 06/30/2025 <br>
                         “Complications of Hemolysis and Transfusion Therapy”</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-24"></div>
                     <h5>NIH R01 HL145451  Yazdanbakhsh (PI)</h5>
                     <div class="spacer-8"></div>
@@ -97,7 +95,6 @@
                         “Patrolling Monocytes in Sickle Pain Crisis and following Transfusion”</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-24"></div>
                     <h5>NIH R01 HL130139 (NCE) Yazdanbakhsh (PI) </h5>
                     <div class="spacer-8"></div>
@@ -105,25 +102,20 @@
                         "Mechanisms Controlling Transfusion-Associated Antibody Responses in SCD Alloimmunization</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
-
                     <div class="spacer-48"></div>
                     <h3>Education and Training</h3>
                     <div class="spacer-24"></div>
-
                     <h5>Doctoral Training</h5>
                     <div class="spacer-8"></div>
                     <p>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-24"></div>
                     <h5>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK </h5>
                     <div class="spacer-8"></div>
                     <p>Columbia University, Rockefeller University</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-48"></div>
                     <h3>Notable Publications</h3>
                     <div class="spacer-24"></div>
@@ -162,9 +154,7 @@
             </div>
         </div>
     </div>
-
     <div class="spacer-96"></div>
-
 </div>
 
 <div class="section staff">

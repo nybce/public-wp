@@ -42,7 +42,6 @@
                     <div class="spacer-24"></div>
                     <a href="login.php" class="btn btn-small btn-secondary">Login</a>
                 </div>
-
             </div>
 
             <div class="col-lg-8">

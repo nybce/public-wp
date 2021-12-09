@@ -4,7 +4,8 @@
 INPUT_FILE=$1
 START_LINE=`head -n1 $INPUT_FILE`
 PATTERN="^(N2RDEV)-[[:digit:]]+: "
-if ! [[ "$START_LINE" =~ $PATTERN ]]; then
+BBOXPATTERN="^(N2R)-[[:digit:]]+: "
+if ! [[ "$START_LINE" =~ $PATTERN ]] && [[ "$START_LINE" =~ $BBOXPATTERN ]]; then
   echo "INCORRECT COMMIT MESSAGE. Example commit message: N2RDEV-123: commit message. Use Jira ticket number in your commit name."
   exit 1
 fi
