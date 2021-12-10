@@ -23,8 +23,14 @@ locals {
       "nybloodcenter.dev.bbox.ly"
     ]
   }
+  cert_files = {
+    "dev" = "kv-ssl-cert-w5hb-wildcard-dev-nybc-wordpress-bbox-ly-20211210.pfx"
+  }
 }
 
+data "local_file" "certificate_data" {
+  filename = "./certs/${local.certfiles[var.environment]}"
+}
 
 data "template_file" "init" {
   template = file("ec2-init.sh.tpl")
@@ -178,8 +184,8 @@ resource "azurerm_application_gateway" "loadbalancer" {
   }
 
   ssl_certificate {
-    name                = "sslcert"
-    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
+    name = "sslcert"
+    data = data.local_file.certificate_data.content
   }
 
   http_listener {
