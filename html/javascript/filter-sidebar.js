@@ -1,4 +1,4 @@
-jQuery(function ($) {
+jQuery ( function ( $ ){
 
   // filter
   $(".filter-mobile-button").on("click", function () {
