@@ -7,6 +7,7 @@ locals {
   listener_http_name             = "${var.environment}-${var.project}-http-lstn"
   listener_https_name            = "${var.environment}-${var.project}-https-lstn"
   request_routing_rule_name      = "${var.environment}-${var.project}-rqrt"
+  request_routing_rule_https_name      = "${var.environment}-${var.project}-https-rqrt"
   redirect_configuration_name    = "${var.environment}-${var.project}-rdrcfg"
   ssl_profile_name               = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
@@ -183,7 +184,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
-  ssl_certificate {
+  ssl_certificate { # @todo: This sucks real bad. Replace this with fetching from the keyvault once we get the rest working
     name = "sslcert"
     data = data.local_file.certificate_data.content_base64
   }
@@ -203,6 +204,14 @@ resource "azurerm_application_gateway" "loadbalancer" {
     http_listener_name         = local.listener_http_name
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
+  }
+
+  request_routing_rule {
+    name = local.request_routing_rule_https_name
+    rule_type = "Basic"
+    http_listener_name = local.listener_https_name
+    backend_address_pool_name = local.backend_address_pool_name
+    backend_http_settings_name = local.http_settings_name
   }
 }
 
