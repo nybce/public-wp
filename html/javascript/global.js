@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars, no-undef */
-const _functions = {};
+export const _functions = {};
+export let isTouchScreen = {};
 
-let winW, winH, winScr, isTouchScreen, isMac, isIE;
+let winW, winH, winScr, isMac, isIE;
 
 jQuery( function( $ ) {
 	'use strict';

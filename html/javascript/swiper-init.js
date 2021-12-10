@@ -1,4 +1,8 @@
+import { _functions, isTouchScreen } from './global';
+
 jQuery( function( $ ) {
+	let Swiper;
+
 	_functions.getSwOptions = function( swiper ) {
 		let options = swiper.data( 'options' );
 		options = ( ! options || typeof options !== 'object' ) ? {} : options;
@@ -47,8 +51,9 @@ jQuery( function( $ ) {
 		}
 		return options;
 	};
+
 	_functions.initSwiper = function( el ) {
-		const swiper = new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
+		new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
 	};
 
 	$( '.swiper-entry .swiper-container' ).each( function() {
