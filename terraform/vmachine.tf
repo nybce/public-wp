@@ -29,7 +29,7 @@ locals {
 }
 
 data "local_file" "certificate_data" {
-  filename = "./certs/${local.certfiles[var.environment]}"
+  filename = "./certs/${local.cert_files[var.environment]}"
 }
 
 data "template_file" "init" {
