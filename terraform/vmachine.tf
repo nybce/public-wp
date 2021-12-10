@@ -103,21 +103,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     ip_configuration {
       name                                         = "internal"
       primary                                      = true
-      subnet_id                                    = azurerm_subnet.ag.id
+      subnet_id                                    = azurerm_subnet.vmss.id
       application_gateway_backend_address_pool_ids = "${azurerm_application_gateway.loadbalancer.backend_address_pool[*].id}"
     }
   }
-  network_interface {
-    name                      = "nic-vmss-${var.project}-${var.environment}"
-    primary                   = false
-    network_security_group_id = azurerm_network_security_group.nsg.id
-    ip_configuration {
-      name                                   = "internal-lb"
-      primary                                = false
-      subnet_id                              = azurerm_subnet.ag.id
-      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
-      load_balancer_inbound_nat_rules_ids    = [azurerm_lb_nat_pool.lbnatpool.id]
-    }
   }
 
   tags = {
