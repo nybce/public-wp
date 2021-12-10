@@ -1,85 +1,88 @@
 //VARIABLES
 @import "variables-mixins";
+
 /**-----------------------------------------------------------------------*/
+
 /** BANNERS */
+
 /**-----------------------------------------------------------------------*/
 .bg {
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+	background-attachment: scroll;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+	img {
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
 
-  &.video {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    clip: rect(auto, auto, auto, auto);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+	&.video {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		bottom: 0;
+		clip: rect(auto, auto, auto, auto);
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
 
-    video {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-    }
-  }
+		video {
+			height: auto;
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			position: fixed;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: auto;
+		}
+	}
 }
 
-.opacity:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+.opacity::before {
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
 }
 
-.opacity-1:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, $color-gray-100 1.31%, rgba(9, 19, 75, 0) 100%);
+.opacity-1::before {
+	background: linear-gradient(0deg, $color-gray-100 1.31%, rgba(9, 19, 75, 0) 100%);
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
 }
 
 .parallax-bg {
-  overflow: hidden;
+	overflow: hidden;
 
-  .bg {
-    position: absolute;
-    width: 100%;
-    height: 130%;
-    top: -10%;
-  }
+	.bg {
+		height: 130%;
+		position: absolute;
+		top: -10%;
+		width: 100%;
+	}
 }
 
 .banner {
-  position: relative;
-  overflow: hidden;
+	overflow: hidden;
+	position: relative;
 }
 
 .banner-inner {
@@ -175,16 +178,17 @@
       background-position: top right;
     }
   }
+
 }
 
 .banner-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 10;
-  color: $color-white;
+	color: $color-white;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
 }
 
 .banner-img {
@@ -207,14 +211,14 @@
 }
 
 @media (max-width: 991px) {
-  .banner-inner {
-    &.type-2 {
-      padding-bottom: 45%;
-    }
-    &.type-3 {
-      padding-bottom: 45%;
-    }
-  }
+	.banner-inner {
+		&.type-2 {
+			padding-bottom: 45%;
+		}
+		&.type-3 {
+			padding-bottom: 45%;
+		}
+	}
 }
 
 @media (max-width: 767px) {
@@ -289,35 +293,39 @@
 }
 
 /**-----------------------------------------------------------------------*/
+
 /** DECOR FOR MAIN BANNER */
+
 /**-----------------------------------------------------------------------*/
 .banner-decor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 55%;
-  height: 100%;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 55%;
+	z-index: 1;
 }
 
 @media (max-width: 767px) {
-  .banner-decor {
-    width: 110%;
+	.banner-decor {
+		width: 110%;
 
-    svg {
-      width: 165%;
-    }
-  }
+		svg {
+			width: 165%;
+		}
+	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
-/** DECOR FOR MAIN BANNER FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division {
-  .banner-decor {
+/**--------------------------------------------------------------------------*/
 
-    svg path {
-      fill: $color-primary-base2-30;
-    }
-  }
+/** DECOR FOR MAIN BANNER FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.banner-decor {
+
+		svg path {
+			fill: $color-primary-base2-30;
+		}
+	}
 }

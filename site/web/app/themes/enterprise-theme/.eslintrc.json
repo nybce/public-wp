@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "plugin:@wordpress/eslint-plugin/esnext"
-  ],
-  "env": {
-    "browser": true
-  },
-  "ignorePatterns":  ["webpack.config.js", "webpack.prod.config.js"]
-}
