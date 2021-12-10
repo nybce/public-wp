@@ -13,6 +13,7 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 error_msg="Aborting commit. Your branch must start with a N2RDEV-* Jira issue number format, e.g. 'N2RDEV-123-issue-name. Use \`git branch --move <N2RDEV-123-new-name>\` to rename."
 # Regular expression to validate that the branch name starts with Jira story ID, e.g. IFES-000.
 no_match_n2rdev=1; [[ $branch_name =~ N2RDEV-[0-9]+ ]] && no_match_n2rdev=0
+[[ $branch_name =~ N2R-[0-9]+ ]] && no_match_n2rdev=0
 
 if [ $no_match_n2rdev == 1 ]; then
     echo "${error_msg}" >&2
@@ -24,6 +25,7 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 error_msg="Aborting commit. Your branch must start with a N2RDEV-* Jira issue number format, e.g. 'N2RDEV-123-issue-name. Use \`git branch --move <N2RDEV-123-new-name>\` to rename."
 # Regular expression to validate that the branch name starts with Jira story ID, e.g. IFES-000.
 no_match_n2rdev=1; [[ $branch_name =~ N2RDEV-[0-9]+ ]] && no_match_n2rdev=0
+[[ $branch_name =~ N2R-[0-9]+ ]] && no_match_n2rdev=0
 
 if [ $no_match_n2rdev == 1 ]; then
     echo "${error_msg}" >&2
@@ -51,7 +53,7 @@ if [[ "$STAGED_THEME_FILES" = "" ]] && [[ "$STAGED_HTML_FILES" = "" ]]; then
     printf "No THEME changes. Skipping THEME checks\n"
 else
     # Staged files exist. Run checks
-    docker exec -i  $( docker ps | grep division-theme | cut -d' ' -f1) npm run lint
+    docker exec -i  $( docker ps | grep theme | cut -d' ' -f1) npm run lint
     if [[ "$?" == 0 ]]; then
         printf "\t\033[32mTHEME ESLint Passed!\033[0m\n"
     else
@@ -59,15 +61,15 @@ else
         THEME_ESLINT_PASS=false
         PASS=false
     fi
-    docker exec -i  $( docker ps | grep division-theme | cut -d' ' -f1) npm run lint-css
+    docker exec -i  $( docker ps | grep theme | cut -d' ' -f1) npm run lint-css
     if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mDivision Theme stylelint Passed!\033[0m\n"
+        printf "\t\033[32mTheme stylelint Passed!\033[0m\n"
     else
-        printf "\t\033[41mDivision Theme stylelint Failed!\033[0m\n"
+        printf "\t\033[41mTheme stylelint Failed!\033[0m\n"
         THEME_STYLELINT_PASS=false
         PASS=false
     fi
-    docker exec -i  $( docker ps | grep division-theme | cut -d' ' -f1) npm run lint-html
+    docker exec -i  $( docker ps | grep theme | cut -d' ' -f1) bash -c "cd /html && ../theme/node_modules/eslint/bin/eslint.js --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme ."
     if [[ "$?" == 0 ]]; then
         printf "\t\033[32mHTML ESLint Passed!\033[0m\n"
     else
@@ -75,7 +77,7 @@ else
         HTML_ESLINT_PASS=false
         PASS=false
     fi
-    docker exec -i  $( docker ps | grep division-theme | cut -d' ' -f1) bash -c "cd /html/scss && ../../theme/node_modules/stylelint/bin/stylelint.js . --config /theme/.stylelintrc"
+    docker exec -i  $( docker ps | grep theme | cut -d' ' -f1) bash -c "cd /html/scss && ../../theme/node_modules/stylelint/bin/stylelint.js . --config /theme/.stylelintrc"
     if [[ "$?" == 0 ]]; then
         printf "\t\033[32mHTML stylelint Passed!\033[0m\n"
     else
@@ -85,24 +87,6 @@ else
     fi
 
 
-    # Staged files exist. Run checks
-    docker exec -i  $( docker ps | grep enterprise-theme | cut -d' ' -f1) npm run lint
-    if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mDivision Theme ESLint Passed!\033[0m\n"
-    else
-        printf "\t\033[41mDivision Theme ESLint Failed!\033[0m\n"
-        THEME_ESLINT_PASS=false
-        PASS=false
-    fi
-
-    docker exec -i  $( docker ps | grep enterprise-theme | cut -d' ' -f1) npm run lint-css
-    if [[ "$?" == 0 ]]; then
-        printf "\t\033[32mEnterprise THEME StyleLint Passed!\033[0m\n"
-    else
-        printf "\t\033[41mEnterprise THEME StyleLint Failed!\033[0m\n"
-        THEME_STYLELINT_PASS=false
-        PASS=false
-    fi
     docker exec -i  $( docker ps | grep wp | cut -d' ' -f1) composer run-script test /site/web/app/themes/
 
     if [[ "$?" == 0 ]]; then
@@ -120,11 +104,11 @@ fi
 # Summary
 if ! $PASS; then
   printf "\n\n\033[41mCOMMIT FAILED:\033[0m\n"
-  if ! $THEME_ESLINT_PASS; then
-      printf "\n- THEME ESLINT failed\n"
-  fi
   if ! $APP_PHPLINT_PASS; then
       printf "\n- Wordpress Coding Standards failed\n"
+  fi
+  if ! $THEME_ESLINT_PASS; then
+      printf "\n- THEME ESLINT failed\n"
   fi
   if ! $THEME_STYLELINT_PASS; then
       printf "\n- THEME STYLELINT failed\n"

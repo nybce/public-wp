@@ -42,6 +42,18 @@
 		line-height: 1.25em;
 		text-transform: uppercase;
 	}
+<<<<<<< HEAD
+=======
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  >*:not(:last-child) {
+    margin-right: 0.8rem;
+  }
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
 
 @media (min-width: 1200px) {

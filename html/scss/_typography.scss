@@ -263,6 +263,24 @@ ol {
 		font-weight: 800;
 	}
 
+<<<<<<< HEAD
+=======
+  &.fw-900 {
+    font-weight: 900;
+  }
+}
+
+.text,
+.text-xl,
+.text-lg,
+.text-sm {
+
+  h2 {
+    color: $color-primary-base2-10;
+  }
+
+
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	&.fw-900 {
 		font-weight: 900;
 	}
@@ -399,6 +417,23 @@ h6,
 .title {
 	color: $color-text-10;
 	transition: $transition;
+<<<<<<< HEAD
+
+	&.fw-300 {
+		font-weight: 300;
+	}
+
+	&.fw-400 {
+		font-weight: 400;
+	}
+
+	&.fw-500 {
+		font-weight: 500;
+	}
+
+	&.fw-600 {
+		font-weight: 600;
+=======
 
 	&.fw-300 {
 		font-weight: 300;
@@ -422,6 +457,15 @@ h6,
 
 	&.fw-800 {
 		font-weight: 800;
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
+	}
+
+	&.fw-700 {
+		font-weight: 700;
+	}
+
+	&.fw-800 {
+		font-weight: 800;
 	}
 
 	&.fw-900 {
@@ -430,12 +474,25 @@ h6,
 }
 
 @media (min-width: 1200px) {
+<<<<<<< HEAD
 	.text a:hover::before {
 		left: 0;
 		right: auto;
 		width: 0;
 	}
 }
+=======
+  .text,.text-xl,.text-lg,.text-sm {
+
+    a:hover {
+      color: $color-primary-base1-10;
+
+      &::before {
+        background: $color-primary-base1-10;
+      }
+    }
+  }
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 
 @media (max-width: 1400px) {
 	h1,
@@ -506,6 +563,7 @@ h6,
 }
 
 @media (max-width: 767px) {
+<<<<<<< HEAD
 	h1,
 	.h1 {
 		font-size: 3.6rem;
@@ -537,4 +595,40 @@ h6,
 		font-size: 1.4rem;
 		padding: 0.8rem;
 	}
+=======
+  h1,
+  .h1 {
+    font-size: 3.6rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 3rem;
+  }
+
+  .text,
+  .text-xl,
+  .text-lg,
+  .text-sm {
+    > blockquote {
+      font-size: 2rem;
+    }
+
+    iframe {
+      + span {
+        padding: 0.8rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    picture + span {
+      padding: 0.8rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  .text-xl {
+    font-size: 1.6rem;
+  }
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }

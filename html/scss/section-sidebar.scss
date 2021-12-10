@@ -1,11 +1,19 @@
 //VARIABLES
 @import "variables-mixins";
 
+<<<<<<< HEAD
 /**---*/
 
 /** SIDEBAR */
 
 /**---*/
+=======
+/**-----------------------------------------------------------------------*/
+
+/** SIDEBAR */
+
+/**-----------------------------------------------------------------------*/
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 .page-menu-wrapper {
 	max-width: 28.5rem;
 	position: relative;
@@ -125,7 +133,11 @@
 		}
 	}
 
+<<<<<<< HEAD
 	>*:not(:last-child) {
+=======
+	> *:not(:last-child) {
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 		border-bottom: 0.1rem solid $color-secondary-90;
 	}
 }
@@ -137,6 +149,7 @@
 	max-width: 28.5rem;
 	padding: 2.4rem;
 	position: relative;
+<<<<<<< HEAD
 
 	&.type-2 {
 		background-color: $color-primary-base2-30;
@@ -168,6 +181,8 @@
 			}
 		}
 	}
+=======
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
 
 .promo-item {
@@ -285,6 +300,7 @@
 			transform: translateY(-0.3em);
 		}
 	}
+<<<<<<< HEAD
 }
 
 @media (max-width: 1199px) {
@@ -297,6 +313,8 @@
 			}
 		}
 	}
+=======
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
 
 @media (max-width: 991px) {
@@ -372,6 +390,7 @@
 	z-index: -1;
 }
 
+<<<<<<< HEAD
 @media (max-width: 767px) {
 	.decor-login {
 		height: calc(100% - 40rem);
@@ -384,6 +403,13 @@
 /** SIDEBAR FOR DIVISION */
 
 /**---*/
+=======
+/**--------------------------------------------------------------------------*/
+
+/** SIDEBAR FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 .division {
 	.promo-cta {
 		background-color: $color-primary-base2-30;
@@ -397,6 +423,7 @@
 		}
 	}
 
+<<<<<<< HEAD
 	.promo-wrapper {
 		&.type-2 {
 			.promo-item {
@@ -407,6 +434,8 @@
 		}
 	}
 
+=======
+>>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	@media (min-width: 1200px) {
 		.promo-cta:hover {
 			.btn {

@@ -1,5 +1,5 @@
 {
-  "name": "nybc-division-theme",
+  "name": "nybc-theme",
   "version": "1.2.0",
   "description": "A clean slate Wordpress theme for the NYBC Division sites",
   "main": "src/index.js",
