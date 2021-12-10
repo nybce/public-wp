@@ -1,58 +1,61 @@
 //VARIABLES
 @import "variables-mixins";
+
 /**-----------------------------------------------------------------------*/
+
 /** SEARCH RESULTS */
+
 /**-----------------------------------------------------------------------*/
 .filters-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
 }
 
 .select-item-total {
-  font-size: 1.6rem;
-  line-height: 1.5em;
-  font-weight: 500;
-  color: $color-text-10;
+	color: $color-text-10;
+	font-size: 1.6rem;
+	font-weight: 500;
+	line-height: 1.5em;
 }
 
 .filter-date {
-  position: relative;
-  cursor: pointer;
-  max-width: 100%;
-  width: 37rem;
+	cursor: pointer;
+	max-width: 100%;
+	position: relative;
+	width: 37rem;
 
-  .input,input {
-    height: auto;
-    padding: 0;
-    border: none;
-    border-radius: unset;
+	.input,input {
+		border: none;
+		border-radius: unset;
+		height: auto;
+		padding: 0;
 
-    &:focus {
-      outline: unset;
-    }
-  }
+		&:focus {
+			outline: unset;
+		}
+	}
 
-  svg {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    z-index: -1;
-  }
+	svg {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: -1;
+	}
 }
 
 @media (max-width: 991px) {
-  .filters-wrapper {
-    &.mobile-none {
-      display: none;
-    }
-  }
+	.filters-wrapper {
+		&.mobile-none {
+			display: none;
+		}
+	}
 }
 
 @media (max-width: 767px) {
-  .select-item-total {
-    font-size: 1.4rem;
-    line-height: 1.57em;
-  }
+	.select-item-total {
+		font-size: 1.4rem;
+		line-height: 1.57em;
+	}
 }
