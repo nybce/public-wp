@@ -34,7 +34,6 @@
                 </div>
 
                 <div class="spacer-24"></div>
-
                 <div class="promo-cta">
                     <div class="h4 title fw-800 light">BloodHub</div>
                     <div class="spacer-8"></div>
@@ -42,7 +41,6 @@
                     <div class="spacer-24"></div>
                     <a href="login.php" class="btn btn-small btn-secondary">Login</a>
                 </div>
-
             </div>
 
             <div class="col-lg-8">
