@@ -1,7 +1,6 @@
 //VARIABLES
 @import "variables-mixins";
 
-<<<<<<< HEAD
 /**---*/
 
 /** NEWS BLOCK */
@@ -25,13 +24,6 @@
 	}
 }
 
-=======
-/**-----------------------------------------------------------------------*/
-
-/** NEWS BLOCK */
-
-/**-----------------------------------------------------------------------*/
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 .news-item {
 	background-color: $color-white;
 	border-radius: 0.25em 0.25em 0 0;
@@ -101,7 +93,6 @@
 .news-swiper {
 	margin-left: -1rem;
 	margin-right: -1rem;
-<<<<<<< HEAD
 
 	.swiper-container:not(.swiper-no-swiping) .swiper-wrapper {
 		cursor: default;
@@ -127,20 +118,6 @@
 	position: absolute;
 	width: 100%;
 	z-index: -1;
-=======
-
-	.swiper-container:not(.swiper-no-swiping) .swiper-wrapper {
-		cursor: default;
-	}
-
-	.swiper-container {
-		padding: 1rem;
-	}
-
-	.swiper-pagination {
-		display: none;
-	}
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
 
 @media (min-width: 1200px) {
@@ -181,15 +158,12 @@
 }
 
 @media (max-width: 991px) {
-<<<<<<< HEAD
 	.news-wrapper {
 		.news-item {
 			min-height: 39.8rem;
 		}
 	}
 
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	.date {
 		font-size: 1.4rem;
 		line-height: 1.57em;
@@ -202,11 +176,7 @@
 			justify-content: center;
 			position: relative;
 
-<<<<<<< HEAD
 			>*:not(:last-child) {
-=======
-			> *:not(:last-child) {
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 				margin-right: 1.5em;
 			}
 		}
@@ -225,7 +195,6 @@
 }
 
 @media (max-width: 767px) {
-<<<<<<< HEAD
 	.news-wrapper {
 		margin-bottom: -1.6rem;
 
@@ -237,8 +206,6 @@
 		}
 	}
 
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	.news-info {
 		.title {
 			-webkit-line-clamp: 3;
@@ -246,19 +213,11 @@
 	}
 }
 
-<<<<<<< HEAD
 /**---*/
 
 /** NEWS BLOCK FOR DIVISION */
 
 /**---*/
-=======
-/**--------------------------------------------------------------------------*/
-
-/** NEWS BLOCK FOR DIVISION */
-
-/**--------------------------------------------------------------------------*/
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 .division {
 	.news-item {
 		&::before {

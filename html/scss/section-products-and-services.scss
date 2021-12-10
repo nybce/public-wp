@@ -1,7 +1,6 @@
 //VARIABLES
 @import "variables-mixins";
 
-<<<<<<< HEAD
 /**---*/
 
 /** CARD SLIDER */
@@ -74,79 +73,6 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		transition: $transition;
-=======
-/**-----------------------------------------------------------------------*/
-
-/** CARD SLIDER */
-
-/**-----------------------------------------------------------------------*/
-.card-wrapper {
-	align-items: center;
-	display: flex;
-	justify-content: flex-start;
-
-	> *:not(:last-child) {
-		margin-right: 2.4rem;
-	}
-}
-
-.card-item {
-	background-color: $color-white;
-	border-radius: 0.4rem 0.4rem 0 0;
-	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
-	height: 100%;
-	min-height: 36rem;
-	position: relative;
-
-	&::before {
-		background: $gradient;
-		bottom: 0;
-		content: "";
-		height: 0.25em;
-		left: 0;
-		position: absolute;
-		transition: $transition;
-		width: 100%;
-	}
-
-	&.small {
-		min-height: auto;
-		padding: 2.4rem;
-	}
-
-	.large {
-		padding: 4.8rem;
-	}
-
-	.tagline {
-		color: $color-primary-base2-10;
-		font-weight: 900;
-		text-transform: uppercase;
-		transition: $transition;
-	}
-
-	.title {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	.text {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 4;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		transition: $transition;
-	}
-}
-
-.products-services {
-	.card-item {
-		min-height: 36rem;
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	}
 }
 
@@ -183,15 +109,12 @@
 	.swiper-pagination {
 		display: none;
 	}
-<<<<<<< HEAD
 
 	&.type-2 {
 		.swiper-container {
 			overflow: hidden;
 		}
 	}
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
 
 .decor-left {
@@ -207,10 +130,6 @@
 
 @media (min-width: 1200px) {
 	.card-item:hover {
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 		&::before {
 			height: 1em;
 		}
@@ -259,7 +178,6 @@
 }
 
 @media (max-width: 1199px) {
-<<<<<<< HEAD
 	.products-services {
 		&.mt-70 {
 			margin-top: -2rem;
@@ -272,8 +190,6 @@
 		}
 	}
 
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	.card-swiper {
 		.swiper-button-prev,
 		.swiper-button-next {
@@ -303,11 +219,7 @@
 			position: absolute;
 			width: 100%;
 
-<<<<<<< HEAD
 			>*:not(:last-child) {
-=======
-			> *:not(:last-child) {
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 				margin-right: 1.5em;
 			}
 		}
@@ -340,20 +252,16 @@
 		.swiper-slide {
 			width: auto;
 		}
-<<<<<<< HEAD
 
 		&.type-2 {
 			.swiper-container {
 				overflow: visible;
 			}
 		}
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 	}
 
 	.card-item {
 		max-width: 21.5rem;
-<<<<<<< HEAD
 
 		&.large {
 			max-width: 28.8rem;
@@ -367,23 +275,12 @@
 /** CARD FOR DIVISION */
 
 /**---*/
-=======
-	}
-}
-
-/**--------------------------------------------------------------------------*/
-
-/** CARD FOR DIVISION */
-
-/**--------------------------------------------------------------------------*/
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 .division {
 	.card-item {
 		&::before {
 			background: $color-primary-base2-20;
 		}
 	}
-<<<<<<< HEAD
 
 	.products-services {
 		position: relative;
@@ -411,6 +308,4 @@
 			}
 		}
 	}
-=======
->>>>>>> 6e0ca8dd15ffcaedab7bbd6db31f3c34353207d7
 }
