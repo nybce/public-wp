@@ -185,7 +185,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   ssl_certificate {
     name = "sslcert"
-    data = data.local_file.certificate_data.content
+    data = data.local_file.certificate_data.content_base64
   }
 
   http_listener {
