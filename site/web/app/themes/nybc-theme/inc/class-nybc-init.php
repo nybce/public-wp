@@ -116,7 +116,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function hooks() {
 			add_action( 'after_setup_theme', array( 'NYBC_Init', 'after_setup_theme' ) );
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
-			add_action( 'get_footer', array( 'NYBC_Init', 'footer_styles' ) );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
@@ -219,16 +218,9 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			wp_enqueue_script( 'nybc-rellax', NYBC_LIB_URI . '/js/rellax.min.js', array(), NYBC_SCRIPT_VER, true );
 			wp_enqueue_script( 'nybc-SmoothScroll', NYBC_LIB_URI . '/js/SmoothScroll.js', array(), NYBC_SCRIPT_VER, true );
 			wp_enqueue_script( 'nybc-sumoselect', NYBC_LIB_URI . '/js/jquery.sumoselect.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-			wp_enqueue_script( 'nybc-sumoselect', NYBC_LIB_URI . '/js/jquery.inputmask.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
+			wp_enqueue_script( 'nybc-inputmask', NYBC_LIB_URI . '/js/jquery.inputmask.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
 
 			wp_enqueue_script( 'nybc-main', NYBC_ASSETS_URI . '/main.bundle.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-		}
-
-		/**
-		 * Set up theme footer styles
-		 */
-		public static function footer_styles() {
-			// TODO: add styles and scripts.
 		}
 
 		/**
@@ -255,6 +247,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function acf_fields() {
 			get_template_part( 'inc/acf/theme-options' );
+			get_template_part( 'inc/acf/menu-item' );
 		}
 
 	}

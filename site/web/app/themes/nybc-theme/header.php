@@ -26,4 +26,5 @@
 <div id="loader-wrapper"></div>
 	<div id="content-block">
 		<header>
+			<?php get_template_part( 'template-parts/header/header' ); ?>
 		</header>
