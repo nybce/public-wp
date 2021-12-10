@@ -11,7 +11,7 @@ locals {
   ssl_profile_name               = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
     "dev" = [
-      "comprehensivecellsolutions.dev.bbox.ly",
+      "comprehensivecellsolutions.dev.nybc-wordpress.bbox.ly",
       "delmarvablood.dev.bbox.ly",
       "innovativebloodresources.dev.bbox.ly",
       "integratedlabnetwork.dev.bbox.ly",
@@ -101,10 +101,16 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     network_security_group_id = azurerm_network_security_group.nsg.id
 
     ip_configuration {
-      name                                         = "internal"
+      name                                         = "ip-appgateway"
       primary                                      = true
       subnet_id                                    = azurerm_subnet.vmss.id
       application_gateway_backend_address_pool_ids = "${azurerm_application_gateway.loadbalancer.backend_address_pool[*].id}"
+    }
+    ip_configuration {
+      name                                   = "ip-sshlb"
+      primary                                = false
+      subnet_id                              = azurerm_subnet.vmss.id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
     }
   }
   tags = {
