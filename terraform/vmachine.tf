@@ -1,15 +1,15 @@
 locals {
-  backend_address_pool_name      = "${var.environment}-${var.project}-be-ap"
-  frontend_http_port_name        = "${var.environment}-${var.project}-fe-http-pconf"
-  frontend_https_port_name       = "${var.environment}-${var.project}-fe-https-pconf"
-  frontend_ip_configuration_name = "${var.environment}-${var.project}-fe-ipconf"
-  http_setting_name              = "${var.environment}-${var.project}-be-htst"
-  listener_http_name             = "${var.environment}-${var.project}-http-lstn"
-  listener_https_name            = "${var.environment}-${var.project}-https-lstn"
-  request_routing_rule_name      = "${var.environment}-${var.project}-rqrt"
-  request_routing_rule_https_name      = "${var.environment}-${var.project}-https-rqrt"
-  redirect_configuration_name    = "${var.environment}-${var.project}-rdrcfg"
-  ssl_profile_name               = "${var.environment}-${var.project}-sslprof"
+  backend_address_pool_name       = "${var.environment}-${var.project}-be-ap"
+  frontend_http_port_name         = "${var.environment}-${var.project}-fe-http-pconf"
+  frontend_https_port_name        = "${var.environment}-${var.project}-fe-https-pconf"
+  frontend_ip_configuration_name  = "${var.environment}-${var.project}-fe-ipconf"
+  http_setting_name               = "${var.environment}-${var.project}-be-htst"
+  listener_http_name              = "${var.environment}-${var.project}-http-lstn"
+  listener_https_name             = "${var.environment}-${var.project}-https-lstn"
+  request_routing_rule_name       = "${var.environment}-${var.project}-rqrt"
+  request_routing_rule_https_name = "${var.environment}-${var.project}-https-rqrt"
+  redirect_configuration_name     = "${var.environment}-${var.project}-rdrcfg"
+  ssl_profile_name                = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
     "dev" = [
       "comprehensivecellsolutions.dev.nybc-wordpress.bbox.ly",
@@ -207,11 +207,12 @@ resource "azurerm_application_gateway" "loadbalancer" {
   }
 
   request_routing_rule {
-    name = local.request_routing_rule_https_name
-    rule_type = "Basic"
-    http_listener_name = local.listener_https_name
-    backend_address_pool_name = local.backend_address_pool_name
-    backend_http_settings_name = local.http_settings_name
+    name                       = local.request_routing_rule_https_name
+    rule_type                  = "Basic"
+    http_listener_name         = local.listener_https_name
+    backend_address_pool_name  = local.backend_address_pool_name
+    backend_http_settings_name = local.http_setting_name
+
   }
 }
 
