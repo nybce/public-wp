@@ -177,12 +177,17 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
+  ssl_certificate {
+    name                = "sslcert"
+    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
+  }
+
   http_listener {
     name                           = local.listener_https_name
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_https_port_name
     protocol                       = "Https"
-    ssl_certificate_name           = "wildcard-dev-nybc-wordpress-bbox-ly"
+    ssl_certificate_name           = "sslcert"
   }
 
 
