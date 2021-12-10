@@ -186,7 +186,8 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   ssl_certificate { # @todo: This sucks real bad. Replace this with fetching from the keyvault once we get the rest working
     name = "sslcert"
-    data = data.local_file.certificate_data.content_base64
+    #data = data.local_file.certificate_data.content_base64
+    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
   }
 
   http_listener {
