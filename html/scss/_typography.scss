@@ -1,275 +1,271 @@
 //VARIABLES
 @import "variables-mixins";
-/**--------------------------------------------------------------------------------*/
+
+/**--------------------------------------------------------------------------*/
+
 /*****     TYPOGRAPHY     *****/
-/**--------------------------------------------------------------------------------*/
+
+/**--------------------------------------------------------------------------*/
 :root {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.5em;
-  font-weight: normal;
-  color: $color-text-10;
+	color: $color-text-10;
+	font-family: "DM Sans", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5em;
 }
 
 strong,
 b {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
-  transition: $transition;
+	color: inherit;
+	text-decoration: none;
+	transition: $transition;
 }
 
 a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 ul,
 ol {
-  list-style: none;
+	list-style: none;
 }
 
 /*****     TEXT STYLES     *****/
 
 .text {
-  font-size: 1.6rem;
-  line-height: 1.5em;
+	color: $color-text-10;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5em;
+
+	ul li {
+		font-size: 1.6rem;
+		line-height: 1.5em;
+		padding-left: 1.25em;
+		position: relative;
+
+		&:last-child {
+			bottom: 0;
+		}
+
+		&::before {
+			background: $color-text-10;
+			border-radius: 100%;
+			content: "";
+			height: 0.4375em;
+			left: 0;
+			position: absolute;
+			top: 0.5em;
+			width: 0.4375em;
+		}
+	}
+
+	ol {
+		counter-reset: number;
+	}
+
+	ol li {
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 1.5em;
+		padding-left: 1.875em;
+		position: relative;
+
+		&:last-child {
+			bottom: 0;
+		}
+
+		&::before {
+			content: counters(number, ".", decimal);
+			counter-increment: number;
+			font-weight: 700;
+			left: 0;
+			position: absolute;
+			top: 0;
+		}
+
+		+ li {
+			margin-top: 0.8em;
+		}
+	}
+
+	a {
+		color: $color-info;
+		cursor: pointer;
+		font-size: inherit;
+		font-weight: 400;
+		line-height: inherit;
+		position: relative;
+		transition: $transition;
+		white-space: nowrap;
+
+		&::before {
+			background: $color-info;
+			bottom: 0.25em;
+			content: "";
+			height: 1px;
+			left: auto;
+			position: absolute;
+			right: 0;
+			transition: $transition;
+			width: 100%;
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 800;
+	}
+
+	h2 {
+		color: $color-primary-base2-10;
+	}
+
+	h3 {
+		color: $color-text-10;
+	}
+
+	> blockquote {
+		border-bottom: 0.11em solid $color-primary-base2-20;
+		border-top: 0.11em solid $color-primary-base2-20;
+		color: $color-text-10;
+		font-size: 3.6rem;
+		font-weight: 400;
+		line-height: 1.28em;
+		padding: 3.5em 0 1.3em 0;
+		position: relative;
+
+		h5 {
+			font-size: 0.67em;
+			font-weight: 800;
+		}
+
+		p {
+			color: $color-text-20;
+			font-size: 0.44em;
+			line-height: 1.5em;
+		}
+
+		&::before {
+			background-image: url("../img/icons/quotes.svg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: "";
+			height: 0.94em;
+			left: 0;
+			position: absolute;
+			top: 1.5em;
+			width: 1.17em;
+		}
+	}
+
+	> iframe {
+		border: 0;
+		display: block;
+		height: 38.5rem;
+		margin-bottom: 0;
+		max-height: 56.3vw;
+		max-width: 100%;
+		position: relative;
+		width: 100%;
+
+		+ span {
+			background-color: $color-secondary-100;
+			color: $color-white;
+			display: block;
+			font-size: 1.6rem;
+			font-weight: 400;
+			line-height: 1.5em;
+			padding: 1.6rem;
+			position: relative;
+		}
+	}
+
+	img {
+		display: block;
+		height: auto;
+		margin-bottom: 0;
+		max-width: 100%;
+		width: 100%;
+	}
+
+	picture + span {
+		background-color: $color-secondary-100;
+		color: $color-white;
+		display: block;
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 1.5em;
+		padding: 1.6rem;
+		position: relative;
+	}
 }
 
 .text-xl {
-  font-size: 2rem;
-  line-height: 1.5em;
+	color: $color-text-10;
+	font-size: 2rem;
+	font-weight: 400;
+	line-height: 1.5em;
 }
 
 .text-lg {
-  font-size: 1.8rem;
-  line-height: 1.44em;
+	color: $color-text-10;
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1.44em;
 }
 
 .text-sm {
-  font-size: 1.4rem;
-  line-height: 1.57em;
-}
-
-.text,
-.text-xl,
-.text-lg,
-.text-sm {
-  font-weight: 400;
-  color: $color-text-10;
-
-  ul li {
-    position: relative;
-    font-size: inherit;
-    line-height: inherit;
-    padding-left: 1.25em;
-
-    &:last-child {
-      bottom: 0;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0.5em;
-      left: 0;
-      width: 0.4375em;
-      height: 0.4375em;
-      border-radius: 100%;
-      background: $color-text-10;
-    }
-  }
-
-  ol {
-    counter-reset: number;
-  }
-
-  ol li {
-    position: relative;
-    font-size: inherit;
-    line-height: inherit;
-    font-weight: 400;
-    padding-left: 1.875em;
-
-    &:last-child {
-      bottom: 0;
-    }
-
-    &::before {
-      content: counters(number, ".", decimal);
-      counter-increment: number;
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-weight: 700;
-    }
-
-    + li {
-      margin-top: 0.8em;
-    }
-  }
-
-  a {
-    font-size: inherit;
-    line-height: inherit;
-    position: relative;
-    font-weight: 400;
-    color: $color-info;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: $transition;
-
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: 0.25em;
-      left: auto;
-      right: 0;
-      height: 1px;
-      width: 100%;
-      background: $color-info;
-      transition: $transition;
-    }
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 800;
-  }
-
-  h2 {
-    color: $color-primary-base2-10;
-  }
-
-  h3 {
-    color: $color-text-10;
-  }
-
-  > blockquote {
-    position: relative;
-    font-size: 3.6rem;
-    line-height: 1.28em;
-    font-weight: 400;
-    color: $color-text-10;
-    border-top: 0.11em solid $color-primary-base2-20;
-    border-bottom: 0.11em solid $color-primary-base2-20;
-    padding: 3.5em 0 1.3em 0;
-
-    h5 {
-      margin-top: 2.4rem;
-      font-size: 0.67em;
-      font-weight: 800;
-    }
-
-    p {
-      font-size: 0.44em;
-      line-height: 1.5em;
-      color: $color-text-20;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 1.5em;
-      left: 0;
-      width: 1.17em;
-      height: 0.94em;
-      background-image: url(../img/icons/quotes.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-  }
-
-  > iframe {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 38.5rem;
-    max-width: 100%;
-    max-height: 56.3vw;
-    border: 0;
-    margin-bottom: 0!important;
-
-    + span {
-      position: relative;
-      display: block;
-      padding: 1.6rem;
-      background-color: $color-secondary-100;
-      font-size: 1.6rem;
-      line-height: 1.5em;
-      font-weight: 400;
-      color: $color-white;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0!important;
-  }
-
-  picture + span {
-    position: relative;
-    display: block;
-    padding: 1.6rem;
-    background-color: $color-secondary-100;
-    font-size: 1.6rem;
-    line-height: 1.5em;
-    font-weight: 400;
-    color: $color-white;
-  }
+	color: $color-text-10;
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 1.57em;
 }
 
 .text,
 .text-xl,
 .text-lg,
 .text-sm {
-  &.fw-500 {
-    font-weight: 500;
-  }
+	font-weight: 800;
+	h2 {
+		color: $color-primary-base2-10;
+	}
 
-  &.fw-600 {
-    font-weight: 600;
-  }
+	h3 {
+		color: $color-text-10;
+	}
+	&.fw-500 {
+		font-weight: 500;
+	}
 
-  &.fw-700 {
-    font-weight: 700;
-  }
+	&.fw-600 {
+		font-weight: 600;
+	}
 
-  &.fw-800 {
-    font-weight: 800;
-  }
+	&.fw-700 {
+		font-weight: 700;
+	}
 
-  &.fw-900 {
-    font-weight: 900;
-  }
-}
+	&.fw-800 {
+		font-weight: 800;
+	}
 
-.text,
-.text-xl,
-.text-lg,
-.text-sm {
-
-  h2 {
-    color: $color-primary-base2-10;
-  }
-
-  h3 {
-    color: $color-text-10;
-  }
+	&.fw-900 {
+		font-weight: 900;
+	}
 }
 
 .title.light,
@@ -277,69 +273,69 @@ ol {
 .text-xl.light,
 .text-lg.light,
 .text-sm.light {
-  color: $color-white;
+	color: $color-white;
 }
 
 .text > *:not(:last-child) {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .text-truncate {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .text-cut-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .text-cut-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .text-cut-4 {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .text-left {
-  text-align: left;
+	text-align: left;
 }
 
 .text-center {
-  text-align: center;
+	text-align: center;
 }
 
 .text-right {
-  text-align: right;
+	text-align: right;
 }
 
 .text-10 {
-  color: $color-text-10;
+	color: $color-text-10;
 }
 
 .text-20 {
-  color: $color-text-20;
+	color: $color-text-20;
 }
 
 .text-30 {
-  color: $color-text-30;
+	color: $color-text-30;
 }
 
 .text-40 {
-  color: $color-text-40;
+	color: $color-text-40;
 }
 
 /*****     TITLE STYLES     *****/
@@ -355,217 +351,190 @@ h5,
 .h5,
 h6,
 .h6 {
-  color: $color-text-10;
-  font-family: Avenir, sans-serif;
+	color: $color-text-10;
+	font-family: Avenir, sans-serif;
 }
 
 h1,
 .h1 {
-  font-size: 5.4rem;
-  line-height: 1.22em;
-  letter-spacing: -0.05em;
+	font-size: 5.4rem;
+	letter-spacing: -0.05em;
+	line-height: 1.22em;
 }
 
 h2,
 .h2 {
-  font-size: 4.8rem;
-  line-height: 1.17em;
-  letter-spacing: -0.06em;
+	font-size: 4.8rem;
+	letter-spacing: -0.06em;
+	line-height: 1.17em;
 }
 
 h3,
 .h3 {
-  font-size: 3.6rem;
-  line-height: 1.28em;
-  letter-spacing: -0.02em;
+	font-size: 3.6rem;
+	letter-spacing: -0.02em;
+	line-height: 1.28em;
 }
 
 h4,
 .h4 {
-  font-size: 3rem;
-  line-height: 1.2em;
+	font-size: 3rem;
+	line-height: 1.2em;
 }
 
 h5,
 .h5 {
-  font-size: 2.4rem;
-  line-height: 1.25em;
-  letter-spacing: -0.02em;
+	font-size: 2.4rem;
+	letter-spacing: -0.02em;
+	line-height: 1.25em;
 }
 
 h6,
 .h6 {
-  font-size: 1.6rem;
-  line-height: 1.25em;
-  letter-spacing: 0.06em;
+	font-size: 1.6rem;
+	letter-spacing: 0.06em;
+	line-height: 1.25em;
 }
 
 .title {
-  color: $color-text-10;
-  transition: $transition;
+	color: $color-text-10;
+	transition: $transition;
 
-  &.fw-300 {
-    font-weight: 300;
-  }
+	&.fw-300 {
+		font-weight: 300;
+	}
 
-  &.fw-400 {
-    font-weight: 400;
-  }
+	&.fw-400 {
+		font-weight: 400;
+	}
 
-  &.fw-500 {
-    font-weight: 500;
-  }
+	&.fw-500 {
+		font-weight: 500;
+	}
 
-  &.fw-600 {
-    font-weight: 600;
-  }
+	&.fw-600 {
+		font-weight: 600;
+	}
 
-  &.fw-700 {
-    font-weight: 700;
-  }
+	&.fw-700 {
+		font-weight: 700;
+	}
 
-  &.fw-800 {
-    font-weight: 800;
-  }
+	&.fw-800 {
+		font-weight: 800;
+	}
 
-  &.fw-900 {
-    font-weight: 900;
-  }
-
-  &.text-10 {
-    color: $color-text-10;
-  }
-
-  &.text-20 {
-    color: $color-text-20;
-  }
-
-  &.text-30 {
-    color: $color-text-30;
-  }
-
-  &.text-40 {
-    color: $color-text-40;
-  }
+	&.fw-900 {
+		font-weight: 900;
+	}
 }
 
 @media (min-width: 1200px) {
-  .text,.text-xl,.text-lg,.text-sm {
-
-    a:hover {
-      color: $color-primary-base1-10;
-
-      &::before {
-        background: $color-primary-base1-10;
-      }
-    }
-  }
+	.text a:hover::before {
+		left: 0;
+		right: auto;
+		width: 0;
+	}
 }
 
 @media (max-width: 1400px) {
-  h1,
-  .h1 {
-    font-size: 4.8rem;
-  }
+	h1,
+	.h1 {
+		font-size: 4.8rem;
+	}
 
-  h2,
-  .h2 {
-    font-size: 4rem;
-  }
+	h2,
+	.h2 {
+		font-size: 4rem;
+	}
 
-  h3,
-  .h3 {
-    font-size: 3rem;
-  }
+	h3,
+	.h3 {
+		font-size: 3rem;
+	}
 
-  h4,
-  .h4 {
-    font-size: 2.4rem;
-  }
+	h4,
+	.h4 {
+		font-size: 2.4rem;
+	}
 
-  h5,
-  .h5 {
-    font-size: 2rem;
-  }
+	h5,
+	.h5 {
+		font-size: 2rem;
+	}
 }
 
 @media (max-width: 1199px) {
-  h1,
-  .h1 {
-    font-size: 4rem;
-  }
+	h1,
+	.h1 {
+		font-size: 4rem;
+	}
 
-  h2,
-  .h2 {
-    font-size: 3.6rem;
-  }
+	h2,
+	.h2 {
+		font-size: 3.6rem;
+	}
 
-  h3,
-  .h3 {
-    font-size: 2.4rem;
-  }
+	h3,
+	.h3 {
+		font-size: 2.4rem;
+	}
 
-  h4,
-  .h4 {
-    font-size: 2.2rem;
-  }
+	h4,
+	.h4 {
+		font-size: 2.2rem;
+	}
 
-  h5,
-  .h5 {
-    font-size: 1.8rem;
-  }
+	h5,
+	.h5 {
+		font-size: 1.8rem;
+	}
 
-  .text,
-  .text-xl,
-  .text-lg,
-  .text-sm {
-    > blockquote {
-      font-size: 2.4rem;
-    }
-  }
+	.text {
+		> blockquote {
+			font-size: 2.4rem;
+		}
+	}
 
-  .text-xl {
-    font-size: 1.8rem;
-  }
+	.text-xl {
+		font-size: 1.8rem;
+	}
 
-  .text-lg {
-    font-size: 1.6rem;
-  }
+	.text-lg {
+		font-size: 1.6rem;
+	}
 }
 
 @media (max-width: 767px) {
-  h1,
-  .h1 {
-    font-size: 3.6rem;
-  }
+	h1,
+	.h1 {
+		font-size: 3.6rem;
+	}
 
-  h2,
-  .h2 {
-    font-size: 3rem;
-  }
+	h2,
+	.h2 {
+		font-size: 3rem;
+	}
 
-  .text,
-  .text-xl,
-  .text-lg,
-  .text-sm {
-    > blockquote {
-      font-size: 2rem;
-    }
+	.text {
+		> blockquote {
+			font-size: 2rem;
+		}
+	}
 
-    iframe {
-      + span {
-        padding: 0.8rem;
-        font-size: 1.4rem;
-      }
-    }
+	.text-xl {
+		font-size: 1.6rem;
+	}
 
-    picture + span {
-      padding: 0.8rem;
-      font-size: 1.4rem;
-    }
-  }
+	iframe {
+		+ span {
+			font-size: 1.4rem;
+			padding: 0.8rem;
+		}
+	}
 
-  .text-xl {
-    font-size: 1.6rem;
-  }
+	picture + span {
+		font-size: 1.4rem;
+		padding: 0.8rem;
+	}
 }
