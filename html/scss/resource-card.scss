@@ -1,183 +1,189 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**---*/
+
 /** RESOURCE CARD */
-/**-----------------------------------------------------------------------*/
+
+/**---*/
 .resource-card-wrapper {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: -2.4rem;
+	align-items: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: -2.4rem;
 }
 
 .resource-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: calc(50% - 1.2rem);
-  transition: $transition;
-  background-color: $color-white;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding-bottom: 0.4rem;
-  margin-right: 2.4rem;
-  margin-bottom: 2.4rem;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2.4rem;
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
 
-  &:nth-of-type(2n) {
-    margin-right: 0;
-  }
+	&:nth-of-type(2n) {
+		margin-right: 0;
+	}
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 100%;
-    height: 0.25em;
-    background: $gradient;
-    transition: $transition;
-  }
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
 }
 
 .resource-card-img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  transition: $transition;
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding-bottom: 56.1%;
+	border-radius: 0.4rem 0.4rem 0 0;
+	height: 100%;
+	padding-bottom: 56.1%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
 
-  img {
-    @include imgCover;
-  }
+	img {
+		@include imgCover;
+	}
 }
 
 .border-top {
-  position: relative;
-  width: 100%;
-  height: 1.5em;
-  transition: $transition;
-  background-color: $color-secondary-80;
+	background-color: $color-secondary-80;
+	height: 1.5em;
+	position: relative;
+	transition: $transition;
+	width: 100%;
 }
 
 .resource-card-img + .border-top {
-  display: none;
+	display: none;
 }
 
 .resource-card-desc {
-  position: relative;
-  padding: 2.4rem;
-  transition: $transition;
+	padding: 2.4rem;
+	position: relative;
+	transition: $transition;
 }
 
 .resource-card-title {
-  display: flex;
-  align-items: center;
+	align-items: center;
+	display: flex;
 }
 
 .resource-card-icon {
-  position: relative;
-  width: 4.8rem;
-  height: 4.8rem;
-  flex-shrink: 0;
-  border-radius: 100%;
-  background-color: $color-secondary-80;
-  margin-right: 1.6rem;
+	background-color: $color-secondary-80;
+	border-radius: 100%;
+	flex-shrink: 0;
+	height: 4.8rem;
+	margin-right: 1.6rem;
+	position: relative;
+	width: 4.8rem;
 
-  img {
-    @include centerAbsolute;
-    max-width: 2.4rem;
-    max-height: 2.4rem;
-  }
+	img {
+		@include centerAbsolute;
+		max-height: 2.4rem;
+		max-width: 2.4rem;
+	}
 }
 
 .resource-card-info {
-  display: flex;
+	display: flex;
 }
 
 .resource-card-label {
-  position: relative;
-  width: 100%;
-  max-width: calc(50% - 1.2rem);
-  margin-right: 2.4rem;
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	position: relative;
+	width: 100%;
 
-  &:nth-of-type(2n) {
-    margin-right: 0;
-  }
+	&:nth-of-type(2n) {
+		margin-right: 0;
+	}
 }
 
 @media (min-width: 1200px) {
-  .resource-card:hover {
+	.resource-card:hover {
 
-    &::before {
-      height: 1em;
-    }
+		&::before {
+			height: 1em;
+		}
 
-    .resource-card-img {
-      transform: translateY(-0.7em);
-    }
+		.resource-card-img {
+			transform: translateY(-0.7em);
+		}
 
-    .resource-card-desc {
-      transform: translateY(-0.5em);
-    }
+		.resource-card-desc {
+			transform: translateY(-0.5em);
+		}
 
-    .resource-card-title {
-      .title {
-        color: $color-primary-base1-30;
-      }
-    }
-  }
+		.resource-card-title {
+			.title {
+				color: $color-primary-base1-30;
+			}
+		}
+	}
 }
 
 @media (max-width: 767px) {
-  .resource-card-wrapper {
-    margin-bottom: -1.6rem;
-  }
+	.resource-card-wrapper {
+		margin-bottom: -1.6rem;
+	}
 
-  .resource-card {
-    max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 1.6rem;
-  }
+	.resource-card {
+		margin-bottom: 1.6rem;
+		margin-right: 0;
+		max-width: 100%;
+	}
 
-  .resource-card-info {
-    flex-direction: column;
+	.resource-card-info {
+		flex-direction: column;
 
-    &>*:not(:last-child) {
-      margin-bottom: 1.6rem;
-    }
-  }
+		> *:not(:last-child) {
+			margin-bottom: 1.6rem;
+		}
+	}
 
-  .resource-card-label {
-    max-width: 100%;
-    margin-right: 0;
-  }
+	.resource-card-label {
+		margin-right: 0;
+		max-width: 100%;
+	}
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**---*/
+
 /** DIVIDER */
-/**--------------------------------------------------------------------------------------------*/
+
+/**---*/
 .divider {
-  position: relative;
-  width: 100%;
-  height: 0.1rem;
-  background-color: $color-secondary-90;
+	background-color: $color-secondary-90;
+	height: 0.1rem;
+	position: relative;
+	width: 100%;
 }
 
-/**--------------------------------------------------------------------------------------------*/
+/**----*/
+
 /** RESOURCE CARD FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
+
+/**---*/
 .division {
-  .resource-card {
-    &::before {
-      background: $color-primary-base2-20;
-    }
-  }
+	.resource-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
 }
