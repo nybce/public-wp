@@ -1,9 +1,8 @@
 <?php
 /**
- * Home Hero ACF fields
+ * NYBC Home Hero fields
  *
  * @file
- *
  * @package NYBC
  */
 
@@ -19,7 +18,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Media',
 					'name'              => 'media',
 					'type'              => 'image',
-					'instructions'      => '',
+					'instructions'      => 'This field is required',
 					'required'          => 1,
 					'conditional_logic' => array(
 						array(
@@ -50,7 +49,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Video',
 					'name'              => 'video',
 					'type'              => 'file',
-					'instructions'      => '',
+					'instructions'      => 'This field is required',
 					'required'          => 1,
 					'conditional_logic' => array(
 						array(
@@ -76,7 +75,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Title',
 					'name'              => 'title',
 					'type'              => 'text',
-					'instructions'      => '',
+					'instructions'      => 'This field is required',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -84,7 +83,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id'    => '',
 					),
-					'default_value'     => '',
+					'default_value'     => 'Home Hero',
 					'placeholder'       => '',
 					'prepend'           => '',
 					'append'            => '',
