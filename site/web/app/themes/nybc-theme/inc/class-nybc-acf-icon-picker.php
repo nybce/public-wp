@@ -78,7 +78,7 @@ if ( ! class_exists( 'NYBC_Acf_Icon_Picker' ) && class_exists( 'acf_field' ) ) {
 		 * @param array $field field options.
 		 */
 		public function render_field( $field ) {
-			$input_icon = '' === $field['value'] ? $field['value'] : $field['initial_value'];
+			$input_icon = '' !== $field['value'] ? $field['value'] : $field['initial_value'];
 			$svg        = $this->path . $input_icon . '.svg';
 			?>
 			<div class="acf-icon-picker">
