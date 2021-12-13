@@ -1,0 +1,196 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** EMPLOYEES SLIDER */
+
+/**-----------------------------------------------------------------------*/
+
+.employees-wrapper {
+	max-width: 92%;
+}
+
+.employees-info {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	padding: 6.4rem 12.6rem 6.4rem 12rem;
+	position: relative;
+
+	&::before {
+		background-color: $color-gray-100;
+		content: "";
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: -1;
+	}
+
+	&::after {
+		background-color: $color-primary-base1-10;
+		content: "";
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 0.4rem;
+		z-index: 1;
+	}
+
+	.tagline {
+		color: $color-primary-base1-10;
+		text-transform: uppercase;
+	}
+
+	.text {
+		-webkit-box-orient: vertical;
+		display: -webkit-box;
+		font-size: 3.6rem;
+		font-weight: 400;
+		-webkit-line-clamp: 5;
+		line-height: 1.28em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.position {
+		color: $color-text-30;
+	}
+}
+
+.employees-img {
+	display: block;
+	padding-bottom: 108%;
+	position: relative;
+	width: 100%;
+
+	img {
+		@include imgCover;
+	}
+}
+
+.employees-swiper {
+	.swiper-button-prev,
+	.swiper-button-next {
+		left: 2.4rem;
+	}
+
+	.swiper-button-next {
+		left: auto;
+		right: 2.4rem;
+	}
+
+	/*swiper pagination*/
+	.swiper-pagination {
+		bottom: 2.4rem;
+		right: 25%;
+	}
+	.swiper-pagination-bullet {
+		box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	}
+}
+
+@media (max-width: 1400px) {
+	.employees-info {
+		padding: 4.8rem 12.6rem 4.8rem 12rem;
+	}
+}
+
+@media (max-width: 1199px) {
+	.employees-wrapper {
+		max-width: 100%;
+	}
+
+	.employees-info {
+		.text {
+			font-size: 2.4rem;
+		}
+	}
+
+	.employees-swiper {
+		.swiper-pagination {
+			right: 15%;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.employees-info {
+		padding: 6.4rem 4.4rem 12.8rem 4.4rem;
+
+		&::after {
+			height: 0.4rem;
+			width: 100%;
+		}
+	}
+
+	.employees-swiper {
+		.swiper-button-wrapper {
+			align-items: center;
+			bottom: 7.2rem;
+			display: flex;
+			justify-content: center;
+			left: 4.4rem;
+			position: absolute;
+			right: 4.4rem;
+			width: calc(100% - 8.8rem);
+		}
+
+		.swiper-button-prev,
+		.swiper-button-next {
+			display: block;
+			left: 0;
+		}
+
+		.swiper-button-next {
+			left: auto;
+			right: 0;
+		}
+
+		.swiper-pagination {
+			bottom: 0;
+			left: 0;
+			position: relative;
+			right: 0;
+			transform: unset;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.employees-info {
+		.text {
+			-webkit-line-clamp: 6;
+		}
+	}
+
+	.employees-img {
+		padding-bottom: 100%;
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** EMPLOYEES SLIDER FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.employees-info {
+		&::before {
+			background-color: $color-primary-base2-30;
+		}
+
+		&::after {
+			background-color: $color-primary-base2-20;
+		}
+
+		.tagline {
+			color: $color-primary-base2-20;
+		}
+	}
+}
