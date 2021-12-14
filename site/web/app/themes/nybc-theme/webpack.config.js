@@ -53,6 +53,32 @@ module.exports = {
 				exclude: /node_modules/,
 				use: [ 'babel-loader' ],
 			},
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        exclude: [
+          path.resolve(__dirname, './node_modules'),
+        ],
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name]-[hash].[ext]',
+            outputPath: '../',
+            publicPath: '/dist',
+          },
+        },
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      },
 			{
 				test: /\.scss$/,
 				use: extractSass.extract(
