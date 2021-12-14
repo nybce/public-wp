@@ -1,0 +1,220 @@
+<!-- NEWS ARTICLE -->
+<div class="section news-article">
+
+    <div class="container container-lg">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+                <div class="spacer-120 spacer-xs-24"></div>
+
+                <div class="text-lg">
+                    <h3>Lorem ipsum dolor sit amet</h3>
+                    <div class="spacer-16"></div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque habitant aenean facilisi
+                        fringilla tincidunt. In convallis rhoncus, mi duis volutpat imperdiet. Condimentum cursus
+                        facilisi amet quis tristique mauris mattis. Quam neque neque, nunc luctus amet est turpis. Eu
+                        mauris sagittis ut mauris malesuada. Tempor fringilla varius venenatis, leo platea. Lectus
+                        sodales ultrices ut libero orci bibendum risus sed. Adipiscing lectus dolor mauris condimentum
+                        sed urna, elementum, vel eget. <a href="#">This is an in-text link style</a> neque massa
+                        imperdiet morbi accumsan enim auctor mattis orci. Ultrices ipsum tortor, at enim, neque,
+                        bibendum. Imperdiet suscipit neque risus ac molestie pretium amet egestas.</p>
+                    <div class="spacer-16"></div>
+                    <p>Vel gravida quis condimentum nec purus cursus erat. Nascetur sed viverra dignissim luctus tellus
+                        dolor metus. Pretium vitae sed feugiat a quisque eget habitasse proin. Mattis faucibus id
+                        suscipit viverra. Sed sagittis rhoncus at pulvinar sed. Tempus id commodo aliquet tincidunt.
+                        Vulputate porta pharetra, viverra sodales venenatis dictum montes, massa. In a magna scelerisque
+                        nunc, hac lobortis felis. Condimentum lorem lacus nunc, posuere. Lacus, sed vivamus pretium in
+                        interdum pretium nibh. Tincidunt ut iaculis ut mauris. Consequat consequat condimentum porta
+                        enim et enim, integer. Nulla neque quis imperdiet risus, scelerisque orci mauris erat egestas.
+                        Adipiscing pretium arcu ornare nisl commodo, sed tristique sit adipiscing. Ipsum convallis quam
+                        proin dis.</p>
+                    <div class="spacer-16"></div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li>Tincidunt tincidunt eu, ultrices velit consectetur nisi semper duis nunc.</li>
+                        <li>Pretium purus lectus scelerisque dui feugiat vitae orci. Ut mus maecenas a, quis quis. Id ut
+                            nunc sit metus. Vestibulum natoque vitae diam amet, arcu eros convallis ornare eget.</li>
+                        <li>Odio viverra nec, turpis ipsum posuere auctor sapien sed.</li>
+                        <li>Arcu in ut morbi iaculis euismod fames. Feugiat diam pellentesque ut ultricies vestibulum
+                            amet.</li>
+                    </ul>
+                    <div class="spacer-48"></div>
+                    <blockquote>
+                        <q>Diversity matters, because it is much more difficult for minorities to find a
+                            match. We’re committed to building diverse donorship so we can help everyone in
+                            need.</q>
+                        <h5>Eric Sanaldi</h5>
+                        <p>Medical Director, Kimball Research Institute</p>
+                    </blockquote>
+                    <div class="spacer-48"></div>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus
+                        venenatis, lectus</h4>
+                    <div class="spacer-16"></div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt tincidunt eu, ultrices velit
+                        consectetur nisi semper duis nunc. Pretium purus lectus scelerisque dui feugiat vitae orci. <a
+                            href="#">This is an in-text link style</a> mus maecenas a, quis quis. Id ut nunc sit metus.
+                        Vestibulum natoque vitae diam amet, arcu eros convallis ornare eget. Odio viverra nec, turpis
+                        ipsum posuere auctor sapien sed. Arcu in ut morbi iaculis euismod fames. Feugiat diam
+                        pellentesque ut ultricies vestibulum amet.</p>
+                    <div class="spacer-48"></div>
+
+                    <picture>
+                        <source srcset='img/content/blog-img-5.webp' type='image/webp'>
+                        <source srcset='img/content/blog-img-5.jpg' type='image/jpg'>
+                        <img src='img/content/blog-img-5.jpg' alt='' loading='lazy'>
+                    </picture>
+                    <span>Optional Image Caption.</span>
+                    <div class="spacer-48"></div>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-title">Lorem ipsum</div>
+                            <div class="accordion-inner">
+                                <div class="text-lg">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+                                        quisquam accusantium aliquid enim. Quos, omnis! Voluptates nemo earum
+                                        laudantium iste, consequuntur autem tenetur incidunt recusandae. Quod
+                                        quasi optio quos placeat?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Odio euismod erat tempus</div>
+                            <div class="accordion-inner">
+                                <div class="text-lg">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+                                        quisquam accusantium aliquid enim. Quos, omnis! Voluptates nemo earum
+                                        laudantium iste, consequuntur autem tenetur incidunt recusandae. Quod
+                                        quasi optio quos placeat?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Blandit ut urna, elementum</div>
+                            <div class="accordion-inner">
+                                <div class="text-lg">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+                                        quisquam accusantium aliquid enim. Quos, omnis! Voluptates nemo earum
+                                        laudantium iste, consequuntur autem tenetur incidunt recusandae. Quod
+                                        quasi optio quos placeat?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Neque in tristique sit sit fringilla quam</div>
+                            <div class="accordion-inner">
+                                <div class="text-lg">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+                                        quisquam accusantium aliquid enim. Quos, omnis! Voluptates nemo earum
+                                        laudantium iste, consequuntur autem tenetur incidunt recusandae. Quod
+                                        quasi optio quos placeat?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-title">Lorem ipsum dolor sit amet</div>
+                            <div class="accordion-inner">
+                                <div class="text-lg">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+                                        quisquam accusantium aliquid enim. Quos, omnis! Voluptates nemo earum
+                                        laudantium iste, consequuntur autem tenetur incidunt recusandae. Quod
+                                        quasi optio quos placeat?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacer-48"></div>
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+                    <div class="spacer-16"></div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt tincidunt eu, ultrices velit
+                        consectetur nisi semper duis nunc. Pretium purus lectus scelerisque dui feugiat vitae orci. <a
+                            href="#">This is an in-text link style</a> mus maecenas a, quis quis. Id ut nunc sit metus.
+                        Vestibulum natoque vitae diam amet, arcu eros convallis ornare eget. Odio viverra nec, turpis
+                        ipsum posuere auctor sapien sed. Arcu in ut morbi iaculis euismod fames. Feugiat diam
+                        pellentesque ut ultricies vestibulum amet.</p>
+                </div>
+
+                <div class="spacer-48"></div>
+
+                <div class="article-byline-wrapper">
+                    <div class="article-byline-info">
+                        <div class="autor-img">
+                            <picture>
+                                <source srcset='img/content/autor-1.webp' type='image/webp'>
+                                <source srcset='img/content/autor-1.jpg' type='image/jpg'>
+                                <img src='img/content/autor-1.jpg' alt='' loading='lazy'>
+                            </picture>
+                        </div>
+
+                        <div class="autor-info">
+                            <div class="text fw-500">Francesco D’Alessio</div>
+                            <div class="text text-20 fw-500">Contributor</div>
+                        </div>
+                    </div>
+
+                    <div class="article-date">
+                        <div class="text fw-500">Published</div>
+                        <div class="text text-20 fw-500">Aug 5, 2021</div>
+                    </div>
+
+                    <ul class="social-links">
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.335 2.00049H2.665C2.48904 2.0018 2.32065 2.07228 2.19622 2.19671C2.07179 2.32114 2.00131 2.48952 2 2.66549V13.3355C2.00131 13.5115 2.07179 13.6798 2.19622 13.8043C2.32065 13.9287 2.48904 13.9992 2.665 14.0005H8.41V9.36049H6.85V7.54549H8.41V6.21049C8.41 4.66049 9.355 3.81549 10.745 3.81549C11.21 3.81549 11.675 3.81549 12.14 3.88549V5.50049H11.185C10.43 5.50049 10.285 5.86049 10.285 6.38549V7.54049H12.085L11.85 9.35549H10.285V14.0005H13.335C13.511 13.9992 13.6794 13.9287 13.8038 13.8043C13.9282 13.6798 13.9987 13.5115 14 13.3355V2.66549C13.9987 2.48952 13.9282 2.32114 13.8038 2.19671C13.6794 2.07228 13.511 2.0018 13.335 2.00049V2.00049Z"
+                                        fill="white" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M5.96 12.4706C6.80457 12.476 7.64179 12.3135 8.4231 11.9928C9.20441 11.672 9.91425 11.1993 10.5115 10.6021C11.1087 10.0049 11.5814 9.29505 11.9021 8.51374C12.2229 7.73243 12.3853 6.89521 12.38 6.05064C12.38 5.95064 12.38 5.85564 12.38 5.75564C12.8178 5.43489 13.1967 5.04073 13.5 4.59064C13.0878 4.77094 12.6516 4.89052 12.205 4.94564C12.6785 4.66353 13.0337 4.21948 13.205 3.69564C12.7638 3.96036 12.2799 4.14646 11.775 4.24564C11.435 3.88333 10.985 3.64317 10.4947 3.56234C10.0045 3.4815 9.50122 3.56449 9.06287 3.79847C8.62452 4.03245 8.27549 4.40437 8.0698 4.85668C7.86411 5.309 7.81322 5.81649 7.925 6.30064C7.02801 6.25662 6.15036 6.02415 5.34918 5.6184C4.548 5.21264 3.84127 4.64268 3.275 3.94564C2.98946 4.44123 2.90291 5.02681 3.03288 5.5838C3.16285 6.1408 3.49962 6.6276 3.975 6.94564C3.62431 6.93212 3.28173 6.8362 2.975 6.66564V6.69064C2.97188 7.20856 3.14636 7.7119 3.46935 8.11678C3.79234 8.52165 4.24434 8.80361 4.75 8.91564C4.42382 9.00337 4.08215 9.01704 3.75 8.95564C3.89639 9.39734 4.17584 9.78293 4.55002 10.0595C4.9242 10.3361 5.3748 10.4902 5.84 10.5006C5.04461 11.1409 4.05605 11.4933 3.035 11.5006C2.85598 11.4955 2.67737 11.4804 2.5 11.4556C3.53348 12.1141 4.7346 12.4612 5.96 12.4556"
+                                        fill="white" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.105 2.0005H2.895C2.66236 1.99911 2.43842 2.08885 2.27114 2.25053C2.10386 2.4122 2.00653 2.63295 2 2.8655V13.1005C2.00525 13.3335 2.10218 13.555 2.26974 13.7169C2.43731 13.8789 2.66198 13.9682 2.895 13.9655H13.105C13.338 13.9682 13.5627 13.8789 13.7303 13.7169C13.8978 13.555 13.9947 13.3335 14 13.1005V2.8655C13.9935 2.63295 13.8961 2.4122 13.7289 2.25053C13.5616 2.08885 13.3376 1.99911 13.105 2.0005ZM5.555 12.2055H3.795V6.5005H5.555V12.2055ZM4.695 5.7055C4.42478 5.70558 4.16524 5.59998 3.97184 5.41125C3.77845 5.22253 3.66653 4.96565 3.66 4.6955C3.65511 4.55827 3.67853 4.4215 3.72881 4.29371C3.77909 4.16592 3.85516 4.04986 3.95226 3.95276C4.04936 3.85566 4.16542 3.7796 4.29321 3.72932C4.42099 3.67903 4.55776 3.65561 4.695 3.6605C4.95642 3.67871 5.20121 3.7954 5.37995 3.98702C5.5587 4.17865 5.65811 4.43095 5.65811 4.693C5.65811 4.95506 5.5587 5.20736 5.37995 5.39898C5.20121 5.59061 4.95642 5.7073 4.695 5.7255V5.7055ZM12.24 12.1705H10.5V9.3805C10.5 8.7155 10.5 7.8505 9.57 7.8505C8.64 7.8505 8.5 8.5805 8.5 9.3155V12.1405H6.72V6.5005H8.38V7.2505H8.415C8.58514 6.95502 8.83324 6.71199 9.13217 6.54797C9.4311 6.38396 9.76937 6.30527 10.11 6.3205C11.905 6.3205 12.24 7.5205 12.24 9.0455V12.1705Z"
+                                        fill="white" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M13.6507 2.72692C14.0153 2.87833 14.3465 3.10024 14.6252 3.37992C15.1884 3.9411 15.5057 4.70285 15.5076 5.49785C15.5095 6.29286 15.1957 7.0561 14.6352 7.61992L10.6352 11.6199C10.3551 11.9004 10.0222 12.1225 9.65579 12.2736C9.28934 12.4246 8.89658 12.5016 8.50023 12.4999C7.70526 12.5045 6.94097 12.1934 6.37522 11.6349C6.09554 11.3562 5.87363 11.025 5.72222 10.6604C5.5708 10.2957 5.49286 9.90477 5.49286 9.50992C5.49286 9.11508 5.5708 8.72412 5.72222 8.35947C5.87363 7.99481 6.09554 7.66363 6.37522 7.38492L7.08522 6.67492L7.79023 7.38492L7.08522 8.09492C6.70994 8.47087 6.49938 8.98049 6.49984 9.51169C6.50031 10.0429 6.71178 10.5521 7.08772 10.9274C7.46367 11.3027 7.9733 11.5133 8.50449 11.5128C9.03569 11.5123 9.54494 11.3009 9.92023 10.9249L13.9202 6.92492C14.1064 6.73878 14.254 6.51778 14.3548 6.27457C14.4555 6.03135 14.5074 5.77068 14.5074 5.50742C14.5074 5.24417 14.4555 4.98349 14.3548 4.74028C14.254 4.49706 14.1064 4.27607 13.9202 4.08992C13.7341 3.90378 13.5131 3.75611 13.2699 3.65537C13.0267 3.55463 12.766 3.50278 12.5027 3.50278C12.2395 3.50278 11.9788 3.55463 11.7356 3.65537C11.4924 3.75611 11.2714 3.90378 11.0852 4.08992L10.3752 3.37992C10.6539 3.10024 10.9851 2.87833 11.3498 2.72692C11.7144 2.5755 12.1054 2.49756 12.5002 2.49756C12.8951 2.49756 13.286 2.5755 13.6507 2.72692ZM1.65928 11.7599C1.76037 12.0032 1.90853 12.2241 2.09523 12.4099C2.28107 12.5966 2.50196 12.7448 2.74521 12.8459C2.98847 12.947 3.2493 12.999 3.51273 12.999C3.77616 12.999 4.03699 12.947 4.28024 12.8459C4.5235 12.7448 4.74439 12.5966 4.93023 12.4099L5.64023 13.1199C5.07109 13.6843 4.30178 14.0007 3.50023 13.9999C2.70568 14.0098 1.93964 13.7042 1.37023 13.1499C1.0898 12.8711 0.867251 12.5396 0.715391 12.1745C0.56353 11.8094 0.485352 11.4178 0.485352 11.0224C0.485352 10.627 0.56353 10.2354 0.715391 9.87032C0.867251 9.5052 1.0898 9.17371 1.37023 8.89491L5.37023 4.89491C5.93448 4.33066 6.69976 4.01367 7.49773 4.01367C8.2957 4.01367 9.06098 4.33066 9.62523 4.89491C10.1895 5.45916 10.5065 6.22444 10.5065 7.02241C10.5065 7.82038 10.1895 8.58566 9.62523 9.14991L8.56523 10.2099L7.85523 9.49991L8.91523 8.42491C9.10209 8.23785 9.25001 8.01559 9.35042 7.77099C9.45084 7.52639 9.50175 7.26431 9.50023 6.99991C9.5054 6.73633 9.45762 6.47439 9.35971 6.22962C9.2618 5.98485 9.11575 5.76221 8.93023 5.57491C8.74439 5.38821 8.5235 5.24006 8.28024 5.13896C8.03699 5.03787 7.77616 4.98583 7.51273 4.98583C7.2493 4.98583 6.98847 5.03787 6.74521 5.13896C6.50196 5.24006 6.28107 5.38821 6.09523 5.57491L2.09523 9.57491C1.90853 9.76075 1.76037 9.98164 1.65928 10.2249C1.55819 10.4682 1.50615 10.729 1.50615 10.9924C1.50615 11.2558 1.55819 11.5167 1.65928 11.7599Z"
+                                        fill="white" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer-96 spacer-xs-64"></div>
+
+</div>
