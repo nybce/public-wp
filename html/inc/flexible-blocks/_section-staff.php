@@ -89,19 +89,72 @@
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
                     <div class="spacer-24"></div>
-                    <h5>NIH P01 HL149626 Yazdanbakhsh (PD)</h5>
+                    <h5>NIH R01 HL145451  Yazdanbakhsh (PI)</h5>
                     <div class="spacer-8"></div>
-                    <p>07/20/2020 – 06/30/2025 <br>
-                        “Complications of Hemolysis and Transfusion Therapy”</p>
+                    <p>7/2019-6/2023<br>
+                        “Patrolling Monocytes in Sickle Pain Crisis and following Transfusion”</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
+                    <div class="spacer-24"></div>
+                    <h5>NIH R01 HL130139 (NCE) Yazdanbakhsh (PI) </h5>
+                    <div class="spacer-8"></div>
+                    <p>5/2016-1/2022<br>
+                        "Mechanisms Controlling Transfusion-Associated Antibody Responses in SCD Alloimmunization</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-48"></div>
+                    <h3>Education and Training</h3>
+                    <div class="spacer-24"></div>
+                    <h5>Doctoral Training</h5>
+                    <div class="spacer-8"></div>
+                    <p>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <h5>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK </h5>
+                    <div class="spacer-8"></div>
+                    <p>Columbia University, Rockefeller University</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-48"></div>
+                    <h3>Notable Publications</h3>
+                    <div class="spacer-24"></div>
+                    <p>Pal M, Bao W, Wang R, Liu Y, An X, Mitchell WB, Lobo CA, Minniti C, Shi PA, Manwani D, Yazdanbakhsh K, Zhong H. Hemolysis inhibits humoral B-cell responses and modulates alloimmunization risk in patients with sickle cell disease. Blood. 2021 Jan 14;137(2):269-280. </p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Yazdanbakhsh, K., Park, C.G., Winslow, G.M. and Choi, Y. Direct evidence for the role of COOH terminus of mouse mammary tumor virus superantigen in determining T cell receptor V specificity. J. Exp. Med. 1993; 178: 737-741.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Yazdanbakhsh, K., Lee, S., Yu, Q., and Reid, M.E. Identification of a defect in the intracellular trafficking of a Kell blood group variant.  Blood, 1999; 94; 310-318.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Tamasauskas, D., Powell, V., Saksela, K., and Yazdanbakhsh, K. A Homologous naturally-occurring mutation in Duffy and CCR5 leading to reduced receptor expression. Blood. 2001. 97 (11), 3651-3654.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Yazdanbakhsh, K., Kang S., Tamasauskas, D., Sung D., and Scaradavou, A. Complement receptor 1 inhibitors for prevention of immune-mediated red cell destruction: potential for transfusion therapy. Blood. 2003;101(12):5046-52.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Mqadmi, A., Zheng, X., and Yazdanbakhsh, K. CD4+CD25+ regulatory T cells control induction of autoimmune hemolytic anemia. Blood, 2005, 105(9):3746-8.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Yu J, Heck S, Patel V, Levan J, Yu Y, Bussel JB, Yazdanbakhsh K. Defective circulating CD25 regulatory T cells in patients with chronic immune thrombocytopenic purpura. Blood 2008;112(4):1325-8.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
+                    <div class="spacer-24"></div>
+                    <p>Bao W, Yu J, Heck S, Yazdanbakhsh K. Regulatory T cell status in red cell alloimmunized responder and non-responder mice. Blood 2009 113: 5624-5627.</p>
+                    <div class="spacer-24"></div>
+                    <div class="divider"></div>
                 </div>
-
             </div>
         </div>
     </div>
-
+    <div class="spacer-96"></div>
 </div>
 
 <div class="section staff">
@@ -458,4 +511,4 @@
 
 </div>
 
-<div class="spacer-96"></div>
+<div class="spacer-64"></div>

@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**---*/
 
 /** SIDEBAR */
 
-/**-----------------------------------------------------------------------*/
+/**---*/
 .page-menu-wrapper {
 	max-width: 28.5rem;
 	position: relative;
@@ -125,7 +125,7 @@
 		}
 	}
 
-	> *:not(:last-child) {
+	>*:not(:last-child) {
 		border-bottom: 0.1rem solid $color-secondary-90;
 	}
 }
@@ -137,6 +137,37 @@
 	max-width: 28.5rem;
 	padding: 2.4rem;
 	position: relative;
+
+	&.type-2 {
+		background-color: $color-primary-base2-30;
+		max-width: 100%;
+		padding: 4.8rem;
+
+		&::before {
+			background: $color-primary-base2-20;
+			bottom: 0;
+			content: "";
+			height: 0.25em;
+			left: 0;
+			position: absolute;
+			transition: $transition;
+			width: 100%;
+		}
+
+		.promo-item {
+			border-top: none;
+			.input {
+				background-color: $color-white;
+				color: $color-text-10;
+				margin-right: 2.4rem;
+				width: 80%;
+			}
+
+			.btn {
+				width: auto;
+			}
+		}
+	}
 }
 
 .promo-item {
@@ -165,11 +196,17 @@
 	background-color: $color-gray-100;
 	border-radius: 0.4rem 0.4rem 0 0;
 	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 	display: block;
 	max-width: 28.5rem;
 	padding: 2.4rem;
 	position: relative;
 	transition: $transition;
+
+	&.type-2 {
+		height: 100%;
+		max-width: 100%;
+	}
 
 	&::before {
 		background: $gradient;
@@ -250,6 +287,18 @@
 	}
 }
 
+@media (max-width: 1199px) {
+	.promo-wrapper {
+		&.type-2 {
+			.promo-item {
+				.input {
+					width: 70%;
+				}
+			}
+		}
+	}
+}
+
 @media (max-width: 991px) {
 	.page-menu-wrapper {
 		display: none;
@@ -287,14 +336,54 @@
 
 	.promo-wrapper {
 		margin: 0 auto;
+
+		&.type-2 {
+			margin-bottom: 1.6rem;
+			padding: 2.4rem;
+			.promo-item {
+				.input {
+					margin-bottom: 1.6rem;
+					margin-right: 0;
+					width: 100%;
+				}
+
+				.btn {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.promo-cta {
+		margin: 0 auto;
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+.decor-login {
+	background-color: $color-secondary-80;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+
+@media (max-width: 767px) {
+	.decor-login {
+		height: calc(100% - 40rem);
+		top: 40rem;
+	}
+}
+
+/**---*/
 
 /** SIDEBAR FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**---*/
 .division {
 	.promo-cta {
 		background-color: $color-primary-base2-30;
@@ -305,6 +394,16 @@
 
 		.btn {
 			border-color: $color-primary-base2-20;
+		}
+	}
+
+	.promo-wrapper {
+		&.type-2 {
+			.promo-item {
+				.btn {
+					border-color: $color-primary-base2-20;
+				}
+			}
 		}
 	}
 

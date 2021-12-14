@@ -1,0 +1,189 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**---*/
+
+/** RESOURCE CARD */
+
+/**---*/
+.resource-card-wrapper {
+	align-items: stretch;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: -2.4rem;
+}
+
+.resource-card {
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2.4rem;
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	&:nth-of-type(2n) {
+		margin-right: 0;
+	}
+
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
+}
+
+.resource-card-img {
+	border-radius: 0.4rem 0.4rem 0 0;
+	height: 100%;
+	padding-bottom: 56.1%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
+
+	img {
+		@include imgCover;
+	}
+}
+
+.border-top {
+	background-color: $color-secondary-80;
+	height: 1.5em;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+}
+
+.resource-card-img + .border-top {
+	display: none;
+}
+
+.resource-card-desc {
+	padding: 2.4rem;
+	position: relative;
+	transition: $transition;
+}
+
+.resource-card-title {
+	align-items: center;
+	display: flex;
+}
+
+.resource-card-icon {
+	background-color: $color-secondary-80;
+	border-radius: 100%;
+	flex-shrink: 0;
+	height: 4.8rem;
+	margin-right: 1.6rem;
+	position: relative;
+	width: 4.8rem;
+
+	img {
+		@include centerAbsolute;
+		max-height: 2.4rem;
+		max-width: 2.4rem;
+	}
+}
+
+.resource-card-info {
+	display: flex;
+}
+
+.resource-card-label {
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	position: relative;
+	width: 100%;
+
+	&:nth-of-type(2n) {
+		margin-right: 0;
+	}
+}
+
+@media (min-width: 1200px) {
+	.resource-card:hover {
+
+		&::before {
+			height: 1em;
+		}
+
+		.resource-card-img {
+			transform: translateY(-0.7em);
+		}
+
+		.resource-card-desc {
+			transform: translateY(-0.5em);
+		}
+
+		.resource-card-title {
+			.title {
+				color: $color-primary-base1-30;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.resource-card-wrapper {
+		margin-bottom: -1.6rem;
+	}
+
+	.resource-card {
+		margin-bottom: 1.6rem;
+		margin-right: 0;
+		max-width: 100%;
+	}
+
+	.resource-card-info {
+		flex-direction: column;
+
+		>*:not(:last-child) {
+			margin-bottom: 1.6rem;
+		}
+	}
+
+	.resource-card-label {
+		margin-right: 0;
+		max-width: 100%;
+	}
+}
+
+/**---*/
+
+/** DIVIDER */
+
+/**---*/
+.divider {
+	background-color: $color-secondary-90;
+	height: 0.1rem;
+	position: relative;
+	width: 100%;
+}
+
+/**---*/
+
+/** RESOURCE CARD FOR DIVISION */
+
+/**---*/
+.division {
+	.resource-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
+}

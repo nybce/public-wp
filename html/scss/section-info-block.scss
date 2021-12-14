@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**---*/
 
 /** INFO BLOCK SLIDER */
 
-/**-----------------------------------------------------------------------*/
+/**---*/
 
 .info-block-item {
 	align-items: flex-start;
@@ -15,6 +15,10 @@
 	justify-content: center;
 	padding: 6.4rem 9.63rem 6.4rem 0;
 	position: relative;
+
+	&.type-2 {
+		padding: 6.4rem 0 6.4rem 9.63rem;
+	}
 
 	.tagline {
 		color: $color-primary-base2-10;
@@ -103,6 +107,10 @@
 	.info-block-item {
 		padding: 4.8rem 6.4rem 4.8rem 0;
 
+		&.type-2 {
+			padding: 4.8rem 0 4.8rem 6.4rem;
+		}
+
 		.text {
 			font-size: 2.4rem;
 		}
@@ -119,6 +127,10 @@
 @media (max-width: 991px) {
 	.info-block-item {
 		padding: 4.8rem 2rem;
+
+		&.type-2 {
+			padding: 4.8rem 2rem;
+		}
 	}
 
 	.info-block-swiper {

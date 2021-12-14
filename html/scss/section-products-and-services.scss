@@ -1,11 +1,17 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**---*/
 
 /** CARD SLIDER */
 
-/**-----------------------------------------------------------------------*/
+/**---*/
+.products-services {
+	&.mt-70 {
+		margin-top: -7rem;
+	}
+}
+
 .card-wrapper {
 	align-items: center;
 	display: flex;
@@ -40,7 +46,8 @@
 		padding: 2.4rem;
 	}
 
-	.large {
+	&.large {
+		min-height: 44.6rem;
 		padding: 4.8rem;
 	}
 
@@ -66,12 +73,6 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		transition: $transition;
-	}
-}
-
-.products-services {
-	.card-item {
-		min-height: 36rem;
 	}
 }
 
@@ -108,6 +109,12 @@
 	.swiper-pagination {
 		display: none;
 	}
+
+	&.type-2 {
+		.swiper-container {
+			overflow: hidden;
+		}
+	}
 }
 
 .decor-left {
@@ -123,7 +130,6 @@
 
 @media (min-width: 1200px) {
 	.card-item:hover {
-
 		&::before {
 			height: 1em;
 		}
@@ -147,6 +153,16 @@
 	}
 }
 
+@media (max-width: 1600px) {
+	.card-item {
+		max-width: 38.4rem;
+
+		&.small {
+			max-width: 28.2rem;
+		}
+	}
+}
+
 @media (max-width: 1400px) {
 	.card-swiper {
 		.swiper-button-prev,
@@ -162,6 +178,18 @@
 }
 
 @media (max-width: 1199px) {
+	.products-services {
+		&.mt-70 {
+			margin-top: -2rem;
+		}
+	}
+
+	.card-item {
+		&.large {
+			min-height: 39.8rem;
+		}
+	}
+
 	.card-swiper {
 		.swiper-button-prev,
 		.swiper-button-next {
@@ -191,7 +219,7 @@
 			position: absolute;
 			width: 100%;
 
-			> *:not(:last-child) {
+			>*:not(:last-child) {
 				margin-right: 1.5em;
 			}
 		}
@@ -224,22 +252,60 @@
 		.swiper-slide {
 			width: auto;
 		}
+
+		&.type-2 {
+			.swiper-container {
+				overflow: visible;
+			}
+		}
 	}
 
 	.card-item {
 		max-width: 21.5rem;
+
+		&.large {
+			max-width: 28.8rem;
+			padding: 2.4rem;
+		}
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**---*/
 
 /** CARD FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**---*/
 .division {
 	.card-item {
 		&::before {
 			background: $color-primary-base2-20;
+		}
+	}
+
+	.products-services {
+		position: relative;
+
+		&::before {
+			background-color: $color-secondary-80;
+			clip-path: ellipse(90% 60% at 50% 40%);
+			content: "";
+			height: 200%;
+			left: 0;
+			position: absolute;
+			top: -35%;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.division {
+		.products-services {
+			&::before {
+				clip-path: ellipse(170% 60% at 50% 40%);
+				height: 250%;
+			}
 		}
 	}
 }

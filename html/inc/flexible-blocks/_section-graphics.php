@@ -18,7 +18,7 @@
                         <div class="spacer-16"></div>
                         <input type="text" class="input" placeholder="11201">
                         <div class="spacer-16"></div>
-                        <button class="btn btn-primary">Lookup</button>
+                        <a href="#" class="btn btn-primary">Lookup</a>
                     </div>
 
                     <div class="spacer-48"></div>
@@ -35,14 +35,13 @@
 
                 <div class="spacer-24"></div>
 
-                <a href="login.php" class="promo-cta">
+                <div class="promo-cta">
                     <div class="h4 title fw-800 light">BloodHub</div>
                     <div class="spacer-8"></div>
                     <div class="text-lg text-30">NYBC's 24/7 web-based ordering system for our hospital partners.</div>
                     <div class="spacer-24"></div>
-                    <button class="btn btn-small btn-secondary">Login</button>
-                </a>
-
+                    <a href="login.php" class="btn btn-small btn-secondary">Login</a>
+                </div>
             </div>
 
             <div class="col-lg-8">
