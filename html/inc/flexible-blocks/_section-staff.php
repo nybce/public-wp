@@ -102,20 +102,25 @@
                         "Mechanisms Controlling Transfusion-Associated Antibody Responses in SCD Alloimmunization</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
+
+
                     <div class="spacer-48"></div>
                     <h3>Education and Training</h3>
                     <div class="spacer-24"></div>
+
                     <h5>Doctoral Training</h5>
                     <div class="spacer-8"></div>
                     <p>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
+
                     <div class="spacer-24"></div>
                     <h5>PhD, Molecular Biology, National Institute for Medical Research (MRC), Mill Hill, London, UK </h5>
                     <div class="spacer-8"></div>
                     <p>Columbia University, Rockefeller University</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
+
                     <div class="spacer-48"></div>
                     <h3>Notable Publications</h3>
                     <div class="spacer-24"></div>
