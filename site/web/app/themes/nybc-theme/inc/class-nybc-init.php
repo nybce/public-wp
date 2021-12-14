@@ -117,7 +117,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function hooks() {
 			add_action( 'after_setup_theme', array( 'NYBC_Init', 'after_setup_theme' ) );
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
-			add_action( 'get_footer', array( 'NYBC_Init', 'footer_styles' ) );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
@@ -156,6 +155,29 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		}
 
 		/**
+		 *  Disable REST API
+		 */
+		public static function disable_rest_api() {
+			add_filter( 'rest_enabled', '__return_false' );
+			remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
+			remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+			remove_action( 'template_redirect', 'rest_output_link_header', 11 );
+			remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
+			remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
+			remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
+			remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
+			remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
+			remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
+			remove_action( 'init', 'rest_api_init' );
+			remove_action( 'rest_api_init', 'rest_api_default_filters', 10 );
+			remove_action( 'parse_request', 'rest_api_loaded' );
+			remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+			remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10 );
+			remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+			remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+		}
+
+		/**
 		 * Sets up theme defaults and registers support for various WordPress features.
 		 */
 		public static function after_setup_theme() {
@@ -184,14 +206,16 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 * Set up default theme scripts and styles
 		 */
 		public static function enqueue_scripts() {
-			// TODO: add styles and scripts.
-		}
+			wp_enqueue_style( 'nybc-font-style', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap', array(), NYBC_SCRIPT_VER );
 
-		/**
-		 * Set up theme footer styles
-		 */
-		public static function footer_styles() {
-			// TODO: add styles and scripts.
+			wp_enqueue_style( 'nybc-bootstrap-grid-style', NYBC_LIB_URI . '/css/bootstrap-grid.min.css', array(), NYBC_SCRIPT_VER );
+			wp_enqueue_style( 'nybc-swiper-style', NYBC_LIB_URI . '/css/swiper.min.css', array(), NYBC_SCRIPT_VER );
+			wp_enqueue_style( 'nybc-sumoselect-style', NYBC_LIB_URI . '/css/sumoselect.min.css', array(), NYBC_SCRIPT_VER );
+
+			wp_enqueue_style( 'nybc-main-style', NYBC_ASSETS_URI . '/style.min.css', array(), NYBC_SCRIPT_VER );
+
+			wp_enqueue_script( 'nybc-main', NYBC_ASSETS_URI . '/main.bundle.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
+
 		}
 
 		/**
@@ -218,9 +242,9 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function acf_fields() {
 			get_template_part( 'inc/acf/theme-options' );
+			get_template_part( 'inc/acf/menu-item' );
 
 		}
-
 
 	}
 

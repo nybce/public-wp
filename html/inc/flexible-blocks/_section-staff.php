@@ -95,7 +95,6 @@
                         “Patrolling Monocytes in Sickle Pain Crisis and following Transfusion”</p>
                     <div class="spacer-24"></div>
                     <div class="divider"></div>
-
                     <div class="spacer-24"></div>
                     <h5>NIH R01 HL130139 (NCE) Yazdanbakhsh (PI) </h5>
                     <div class="spacer-8"></div>
@@ -161,7 +160,6 @@
         </div>
     </div>
     <div class="spacer-96"></div>
-
 </div>
 
 <div class="section staff">

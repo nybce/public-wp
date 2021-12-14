@@ -14,7 +14,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta name='robots' content='noindex,nofollow' />
-	<link rel="shortcut icon" href="<?php echo esc_url( NYBC_ASSETS_URI ); ?>/img/favicon.ico" />
+	<link rel="shortcut icon" href="<?php esc_url( NYBC_IMG_URI ); ?>/favicon.ico" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,4 +26,5 @@
 <div id="loader-wrapper"></div>
 	<div id="content-block">
 		<header>
+			<?php get_template_part( 'template-parts/header/header' ); ?>
 		</header>

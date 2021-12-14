@@ -1,0 +1,226 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** DOWNLOAD CARD */
+
+/**-----------------------------------------------------------------------*/
+.download-card-inner {
+	position: relative;
+	width: 100%;
+
+	&::before {
+		background-color: $color-secondary-90;
+		bottom: 3.3rem;
+		content: "";
+		height: 0.1rem;
+		left: 0;
+		position: absolute;
+		top: auto;
+		width: 100%;
+	}
+
+}
+
+.download-card-wrapper {
+	> * {
+		margin-bottom: 2.4rem;
+	}
+}
+
+.download-card {
+	align-items: center;
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-start;
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
+}
+
+.download-card-img {
+	background-color: $color-secondary-80;
+	border-radius: 0.4rem 0 0 0;
+	height: 100%;
+	max-width: 15.1%;
+	padding-bottom: 23.9%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
+
+	img {
+		@include centerAbsolute;
+		max-height: 35px;
+		max-width: 32px;
+	}
+}
+
+.download-card-info {
+	padding: 4.8rem;
+	position: relative;
+	text-align: left;
+	transition: $transition;
+}
+
+.form-assays .container {
+	position: relative;
+}
+
+.decor-form-assays {
+	background-color: $color-secondary-80;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+
+	&.type-2 {
+		height: calc(100% - 31rem);
+		top: 29rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.download-card:hover {
+
+		&::before {
+			height: 1em;
+		}
+
+		.download-card-img {
+			transform: translateY(-0.7em);
+		}
+
+		.download-card-info {
+			transform: translateY(-0.5em);
+
+			.title {
+				color: $color-primary-base1-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1600px) {
+	.decor-form-assays {
+		&.type-2 {
+			height: calc(100% - 35rem);
+			top: 35rem;
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.download-card-info {
+		padding: 2.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.download-card {
+		flex-direction: column;
+	}
+
+	.download-card-img {
+		background-color: transparent;
+		max-width: 100%;
+		padding: 2.4rem 2.4rem 1.6rem 2.4rem;
+		padding-bottom: 0;
+
+		img {
+			display: block;
+			left: unset;
+			position: relative;
+			top: unset;
+			transform: unset;
+		}
+	}
+
+	.download-card-info {
+		padding: 0 2.4rem 2.4rem 2.4rem;
+		width: 100%;
+	}
+
+	.decor-form-assays {
+		height: calc(100% - 26rem);
+		top: 26rem;
+
+		&.type-2 {
+			height: calc(100% - 51rem);
+			top: 48rem;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** DOWNLOAD CARD FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.download-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** EXPAND MORE BUTTON */
+
+/**--------------------------------------------------------------------------*/
+
+.expand-more {
+	background: $color-secondary-100;
+	border-radius: 0 0 0.4rem 0.4rem;
+	color: $color-white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.8rem;
+	font-weight: 700;
+	line-height: 1.44em;
+	padding: 0.22em 2.6em;
+	position: relative;
+	vertical-align: middle;
+}
+
+.expand-block {
+
+	display: block;
+	position: relative;
+	text-align: center;
+
+	.download-card {
+		display: none;
+
+		&.active {
+			display: flex;
+			transform: translateY(0);
+		}
+	}
+}
