@@ -18,16 +18,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Media',
 					'name'              => 'media',
 					'type'              => 'image',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'Choose either a video file or an image. If both are present the image will be displayed',
 					'required'          => 1,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field'    => 'field_61a10bc2b95e1',
-								'operator' => '==empty',
-							),
-						),
-					),
+					'conditional_logic' => 0,
 					'wrapper'           => array(
 						'width' => '',
 						'class' => '',
@@ -49,16 +42,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Video',
 					'name'              => 'video',
 					'type'              => 'file',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'Choose either a video file or an image. If both are present the image will be displayed',
 					'required'          => 1,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field'    => 'field_61a10b64b95e0',
-								'operator' => '==empty',
-							),
-						),
-					),
+					'conditional_logic' => 0,
 					'wrapper'           => array(
 						'width' => '',
 						'class' => '',
