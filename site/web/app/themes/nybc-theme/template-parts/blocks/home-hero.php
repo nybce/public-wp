@@ -1,6 +1,6 @@
 <?php
 /**
- * Block Template. Block Template. Block Template. Block Template.
+ * Block Template.
  *
  * @file
  * @package NYBC
@@ -24,6 +24,7 @@ $media      = get_field( 'media' );
 $video      = get_field( 'video' );
 $title_text = get_field( 'title' );
 $button     = get_field( 'button' );
+
 ?>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
@@ -57,7 +58,10 @@ $button     = get_field( 'button' );
 				</div>
 			</div>
 		</div>
-		<?php if ( ! empty( $media ) ) { ?>
+		<?php
+		if ( ! empty( $media ) ) {
+			$media['url'] = aq_resize( $media['url'], 1915 );
+			?>
 
 			<div class="bg rellax" style="background-image: url('<?php echo esc_url( $media['url'] ); ?>');"></div>
 

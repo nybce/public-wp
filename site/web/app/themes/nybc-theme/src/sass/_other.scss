@@ -1,0 +1,65 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**--------------------------------------------------------------------------*/
+
+/* OTHER TOP */
+
+/**--------------------------------------------------------------------------*/
+.title-wrapper {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	width: 100%;
+
+	> * {
+		flex-shrink: 0;
+	}
+
+	&.type-2 {
+		display: block;
+	}
+
+	&.type-3 {
+		align-items: flex-start;
+
+		> * {
+			flex-shrink: unset;
+		}
+
+		> *:not(:last-child) {
+			margin-right: 12.6rem;
+		}
+
+		.title {
+			flex-shrink: 0;
+		}
+
+		.info {
+			max-width: 50rem;
+		}
+
+	}
+}
+
+@media (max-width: 991px) {
+	.title-wrapper {
+		&.type-3 {
+			flex-direction: column;
+
+			> *:not(:last-child) {
+				margin-right: 0;
+			}
+
+			.title {
+				flex-shrink: unset;
+				margin-bottom: 1.6rem;
+			}
+
+			.info {
+				max-width: 100%;
+			}
+		}
+	}
+}

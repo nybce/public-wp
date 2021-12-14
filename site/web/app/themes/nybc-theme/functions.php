@@ -19,9 +19,16 @@ define( 'NYBC_IMG_URI', NYBC_THEME_URI . '/img' );
 define( 'NYBC_THEME_DIR', get_template_directory() );
 define( 'NYBC_SCRIPT_VER', '1.0.0' );
 
+
 /**
  * Init Requirements
  */
+require_once __DIR__ . '/inc/class-nybc-acf-icon-picker.php';
 require_once __DIR__ . '/inc/class-nybc-init.php';
-require_once __DIR__ . '/inc/class-nybc-blocks.php';
+require_once __DIR__ . '/inc/class-nybc-helpers.php';
 require_once __DIR__ . '/inc/class-nybc-staff-member.php';
+require_once __DIR__ . '/inc/class-nybc-news-article.php';
+require_once __DIR__ . '/inc/class-nybc-blocks.php';
+
+
+
