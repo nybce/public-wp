@@ -82,22 +82,36 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[path][name]-[hash].[ext]',
-            outputPath: '../',
-            publicPath: '/dist',
+            outputPath: '/images',
+            esModule: false
           },
         },
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'file-loader',
             options: {
+              esModule: false,
               name: '[name].[ext]',
               outputPath: 'fonts/'
             }
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        include: [
+          path.resolve(__dirname, './node_modules'),
+        ],
+        use: {
+          loader: 'svg-inline-loader',
+          options: {
+            outputPath: '/images/icons',
+            esModule: false
+          },
+        },
       },
 			{
 				test: /\.scss$/,
