@@ -82,6 +82,21 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'return_format'     => 'id',
 					'ui'                => 1,
 				),
+				array(
+					'key'               => 'field_61b865da87fcc',
+					'label'             => 'Link',
+					'name'              => 'link',
+					'type'              => 'link',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'return_format'     => 'array',
+				),
 			),
 			'location'              => array(
 				array(
