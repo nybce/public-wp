@@ -1,0 +1,108 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** STAFF */
+
+/**-----------------------------------------------------------------------*/
+.personal-info-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: -2.4rem;
+	position: relative;
+}
+
+.personal-info {
+	border-bottom: 0.1rem solid $color-secondary-90;
+	margin-bottom: 2.4rem;
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	position: relative;
+	width: 100%;
+
+	&:nth-child(2n) {
+		margin-right: 0;
+	}
+
+	.title {
+		color: $color-primary-base2-10;
+		text-transform: uppercase;
+	}
+
+	.text-xl {
+		max-width: 80%;
+	}
+}
+
+.contact-link {
+	font-size: 2rem;
+	font-weight: 400;
+	line-height: 1.5em;
+
+	span {
+		color: $color-primary-base2-20;
+		font-weight: 700;
+	}
+
+}
+
+@media (min-width: 1200px) {
+	.page-menu li:hover {
+		color: $color-primary-base1-30;
+
+		&:first-child {
+			color: $color-text-20;
+		}
+	}
+
+	.promo-cta:hover {
+		&::before {
+			height: 1em;
+		}
+
+		.title {
+			transform: translateY(-0.3em);
+		}
+
+		.text-lg {
+			transform: translateY(-0.3em);
+		}
+
+		.btn {
+			background: $color-primary-base1-10;
+			color: $color-white;
+			transform: translateY(-0.3em);
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.personal-info {
+		.text-xl {
+			max-width: 100%;
+		}
+	}
+
+	.contact-link {
+		font-size: 1.8rem;
+	}
+}
+
+@media (max-width: 991px) {
+	.personal-info-wrapper {
+		margin-bottom: -2.4rem;
+	}
+
+	.personal-info {
+		margin-bottom: 2.4rem;
+		margin-right: 0;
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	.contact-link {
+		font-size: 1.6rem;
+	}
+}

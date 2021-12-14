@@ -1,0 +1,61 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** SEARCH RESULTS */
+
+/**-----------------------------------------------------------------------*/
+.filters-wrapper {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.select-item-total {
+	color: $color-text-10;
+	font-size: 1.6rem;
+	font-weight: 500;
+	line-height: 1.5em;
+}
+
+.filter-date {
+	cursor: pointer;
+	max-width: 100%;
+	position: relative;
+	width: 37rem;
+
+	.input,input {
+		border: none;
+		border-radius: unset;
+		height: auto;
+		padding: 0;
+
+		&:focus {
+			outline: unset;
+		}
+	}
+
+	svg {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: -1;
+	}
+}
+
+@media (max-width: 991px) {
+	.filters-wrapper {
+		&.mobile-none {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.select-item-total {
+		font-size: 1.4rem;
+		line-height: 1.57em;
+	}
+}

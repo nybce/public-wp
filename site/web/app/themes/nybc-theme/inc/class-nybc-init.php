@@ -19,6 +19,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	 */
 	class NYBC_Init {
 
+
 		/**
 		 * Thumbnail Size params
 		 *
@@ -116,7 +117,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function hooks() {
 			add_action( 'after_setup_theme', array( 'NYBC_Init', 'after_setup_theme' ) );
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
-			add_action( 'get_footer', array( 'NYBC_Init', 'footer_styles' ) );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
@@ -129,7 +129,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		/**
 		 *  Remove medium_large image size
 		 *
-		 *  @param array $sizes  sizes.
+		 * @param array $sizes sizes.
 		 */
 		public static function intermediate_image_sizes_advanced( $sizes ) {
 			unset( $sizes['medium_large'] );
@@ -206,7 +206,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 * Set up default theme scripts and styles
 		 */
 		public static function enqueue_scripts() {
-
 			wp_enqueue_style( 'nybc-font-style', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap', array(), NYBC_SCRIPT_VER );
 
 			wp_enqueue_style( 'nybc-bootstrap-grid-style', NYBC_LIB_URI . '/css/bootstrap-grid.min.css', array(), NYBC_SCRIPT_VER );
@@ -215,20 +214,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			wp_enqueue_style( 'nybc-main-style', NYBC_ASSETS_URI . '/style.min.css', array(), NYBC_SCRIPT_VER );
 
-			wp_enqueue_script( 'nybc-swiper', NYBC_LIB_URI . '/js/swiper.min.js', array(), NYBC_SCRIPT_VER, true );
-			wp_enqueue_script( 'nybc-rellax', NYBC_LIB_URI . '/js/rellax.min.js', array(), NYBC_SCRIPT_VER, true );
-			wp_enqueue_script( 'nybc-SmoothScroll', NYBC_LIB_URI . '/js/SmoothScroll.js', array(), NYBC_SCRIPT_VER, true );
-			wp_enqueue_script( 'nybc-sumoselect', NYBC_LIB_URI . '/js/jquery.sumoselect.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-			wp_enqueue_script( 'nybc-sumoselect', NYBC_LIB_URI . '/js/jquery.inputmask.min.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-
 			wp_enqueue_script( 'nybc-main', NYBC_ASSETS_URI . '/main.bundle.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-		}
 
-		/**
-		 * Set up theme footer styles
-		 */
-		public static function footer_styles() {
-			// TODO: add styles and scripts.
 		}
 
 		/**
@@ -255,6 +242,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function acf_fields() {
 			get_template_part( 'inc/acf/theme-options' );
+			get_template_part( 'inc/acf/menu-item' );
+
 		}
 
 	}
