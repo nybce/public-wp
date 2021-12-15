@@ -62,7 +62,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[path][name]-[hash].[ext]',
-            outputPath: '/images',
+            outputPath: 'images/',
             esModule: false
           },
         },
@@ -88,7 +88,7 @@ module.exports = {
         use: {
           loader: 'svg-inline-loader',
           options: {
-            outputPath: '/images/icons',
+            outputPath: 'images/icons/',
             esModule: false
           },
         },
