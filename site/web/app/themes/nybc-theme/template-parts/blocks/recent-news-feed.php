@@ -22,6 +22,8 @@ if ( ! empty( $block['className'] ) ) {
 $block_title = get_field( 'title' );
 $news        = get_field( 'news' );
 $count       = get_field( 'count' );
+$lnk         = get_field( 'link' );
+
 if ( ! empty( $news ) ) {
 	$count = 0;
 }
@@ -39,10 +41,14 @@ if ( empty( $news ) ) {
 	return;
 }
 
-$blog_link      = '';
-$page_for_posts = get_option( 'page_for_posts' );
-if ( ! empty( $page_for_posts ) ) {
-	$blog_link = get_permalink( get_option( 'page_for_posts' ) );
+$blog_link = '';
+if ( empty( $lnk ) ) {
+	$page_for_posts = get_option( 'page_for_posts' );
+	if ( ! empty( $page_for_posts ) ) {
+		$blog_link = get_permalink( get_option( 'page_for_posts' ) );
+	}
+} else {
+	$blog_link = $lnk['url'];
 }
 ?>
 
@@ -57,7 +63,7 @@ if ( ! empty( $page_for_posts ) ) {
 						<?php echo esc_html( $block_title ); ?>
 					</div>
 					<?php if ( $blog_link ) { ?>
-						<a href="<?php echo esc_url( $blog_link ); ?>" class="btn-link btn-link-primary right"><?php esc_html_e( 'View All', 'nybc' ); ?></a>
+						<a href="<?php echo esc_url( $blog_link ); ?>" class="btn-link btn-link-primary right"><?php echo ( ! empty( $lnk ) ? esc_html( $lnk['title'] ) : esc_html__( 'View All', 'nybc' ) ); ?></a>
 					<?php } ?>
 				</div>
 			</div>
