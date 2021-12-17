@@ -135,7 +135,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
   sku { # @todo
     name     = "Standard_Small"
-    tier     = "Standard_Small"
+    tier     = "Standard"
     capacity = 2
   }
 
