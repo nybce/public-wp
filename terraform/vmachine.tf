@@ -139,10 +139,10 @@ resource "azurerm_application_gateway" "loadbalancer" {
     capacity = 2
   }
 
-  identity {
-    type         = "UserAssigned"
-    identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-wordpress"]
-  }
+#  identity {
+ #   type         = "UserAssigned"
+  #  identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-wordpress"]
+  #}
 
   gateway_ip_configuration {
     name      = "my-gateway-ip-configuration"
@@ -154,10 +154,10 @@ resource "azurerm_application_gateway" "loadbalancer" {
     port = 80
   }
 
-  frontend_port {
-    name = local.frontend_https_port_name
-    port = 443
-  }
+#  frontend_port {
+#    name = local.frontend_https_port_name
+#    port = 443
+#  }
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
@@ -184,19 +184,19 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
-  ssl_certificate { # @todo: This sucks real bad. Replace this with fetching from the keyvault once we get the rest working
-    name = "sslcert"
+#  ssl_certificate { # @todo: This sucks real bad. Replace this with fetching from the keyvault once we get the rest working
+#    name = "sslcert"
     #data = data.local_file.certificate_data.content_base64
-    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
-  }
+#    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
+#  }
 
-  http_listener {
-    name                           = local.listener_https_name
-    frontend_ip_configuration_name = local.frontend_ip_configuration_name
-    frontend_port_name             = local.frontend_https_port_name
-    protocol                       = "Https"
-    ssl_certificate_name           = "sslcert"
-  }
+#  http_listener {
+ #   name                           = local.listener_https_name
+  #  frontend_ip_configuration_name = local.frontend_ip_configuration_name
+ #   frontend_port_name             = local.frontend_https_port_name
+ #   protocol                       = "Https"
+ #   ssl_certificate_name           = "sslcert"
+ # }
 
 
   request_routing_rule {
@@ -207,13 +207,13 @@ resource "azurerm_application_gateway" "loadbalancer" {
     backend_http_settings_name = local.http_setting_name
   }
 
-  request_routing_rule {
-    name                       = local.request_routing_rule_https_name
-    rule_type                  = "Basic"
-    http_listener_name         = local.listener_https_name
-    backend_address_pool_name  = local.backend_address_pool_name
-    backend_http_settings_name = local.http_setting_name
+#  request_routing_rule {
+#    name                       = local.request_routing_rule_https_name
+#    rule_type                  = "Basic"
+#    http_listener_name         = local.listener_https_name
+#    backend_address_pool_name  = local.backend_address_pool_name
+#    backend_http_settings_name = local.http_setting_name
 
-  }
+#  }
 }
 
