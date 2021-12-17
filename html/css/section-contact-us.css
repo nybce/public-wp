@@ -1,37 +1,34 @@
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 /** CONTACT US */
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .contact-us.mt-150 { margin-top: -15rem; }
 
-.contact-block { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; background-color: #000000; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem 0.4rem 0 0; padding: 3em; }
+.contact-block { -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-color: #000; border-radius: 0.4rem 0.4rem 0 0; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 3em; position: relative; }
 
-.contact-block::after { content: ''; position: absolute; bottom: -0.25em; left: 0; width: 100%; height: 0.25em; background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #EF3E42), color-stop(33.67%, #F68924), color-stop(65.04%, #87BD40), color-stop(96.91%, #53C4C9)); background: -o-linear-gradient(left, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); background: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); }
+.contact-block::after { background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #ef3e42), color-stop(33.67%, #f68924), color-stop(65.04%, #87bd40), color-stop(96.91%, #53c4c9)); background: -o-linear-gradient(left, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); background: linear-gradient(90deg, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); bottom: -0.25em; content: ""; height: 0.25em; left: 0; position: absolute; width: 100%; }
 
-.contact-block .title { width: 100%; max-width: 10%; margin-right: 4.8em; }
+.contact-block .title { margin-right: 4.8em; max-width: 10%; width: 100%; }
 
 .contact-block .text-xl { margin-right: 2.4em; max-width: 105rem; }
 
 .contact-block .btn { margin-left: auto; }
 
-@media (max-width: 1600px) { .contact-us.mt-150 { margin-top: -9rem; }
-  .contact-block .title { max-width: 12%; }
+@media (max-width: 1600px) { .contact-block .title { max-width: 12%; }
   .contact-block .text-xl { max-width: 55rem; } }
 
 @media (max-width: 1199px) { .contact-us.mt-150 { margin-top: 0; }
   .contact-block { display: block; }
-  .contact-block::after { top: -0.25em; bottom: auto; }
+  .contact-block::after { bottom: auto; top: -0.25em; }
   .contact-block > *:not(:last-child) { margin-bottom: 2.4rem; }
-  .contact-block .title { max-width: 100%; margin-right: 0; }
+  .contact-block .title { margin-right: 0; max-width: 100%; }
   .contact-block .text-xl { margin-right: 0; max-width: 100%; }
   .contact-block .btn { margin-left: 0; } }
 
-@media (max-width: 767px) { .contact-us.mt-150 { margin-top: -4rem; }
-  .contact-us.type-2 .contact-block { padding: 2.4rem; }
-  .contact-us.type-2 .contact-block .btn { width: 100%; } }
+@media (max-width: 767px) { .contact-us.mt-150 { margin-top: -4rem; } }
 
-/**--------------------------------------------------------------------------------------------*/
+/**--------------------------------------------------------------------------*/
 /** CONTACT US FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division .contact-block { background-color: #09134B; }
+/**--------------------------------------------------------------------------*/
+.division .contact-block { background-color: #09134b; }
 
-.division .contact-block::after { background: #439BFF; }
+.division .contact-block::after { background: #439bff; }

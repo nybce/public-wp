@@ -1,17 +1,17 @@
-/**--------------------------------------------------------------------------------------*/
+/**------------------------*/
 /** SWIPER */
-/**--------------------------------------------------------------------------------------*/
+/**------------------------*/
 .swiper-entry, .swiper-control-wrapper { position: relative; }
 
 .swiper-entry .swiper-container.swiper-container-initialized { opacity: 1; }
 
-.swiper-container { margin-left: auto; margin-right: auto; position: relative; overflow: hidden; list-style: none; padding: 0; z-index: 1; }
+.swiper-container { list-style: none; margin-left: auto; margin-right: auto; overflow: hidden; padding: 0; position: relative; z-index: 1; }
 
 .swiper-container.swiper-container-visible { overflow: visible; }
 
-.swiper-container:not(.swiper-no-swiping) .swiper-wrapper { cursor: url(../img/drag.png) 16 9, ew-resize; }
+.swiper-container:not(.swiper-no-swiping) .swiper-wrapper { cursor: url("../img/drag.png") 16 9, ew-resize; }
 
-.swiper-container-vertical:not(.swiper-no-swiping) .swiper-wrapper { cursor: url(../img/drag-vertical.png) 8 16, ns-resize; }
+.swiper-container-vertical:not(.swiper-no-swiping) .swiper-wrapper { cursor: url("../img/drag-vertical.png") 8 16, ns-resize; }
 
 .swiper-button-lock + .swiper-button-lock + .swiper-container .swiper-wrapper { cursor: default; }
 
@@ -23,45 +23,45 @@
 
 .swiper-entry.hide-control .swiper-controls, .swiper-entry.hide-control .swiper-pagination { display: none; }
 
-.swiper-slide { background-size: cover; background-position: center center; position: relative; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.swiper-slide { -webkit-backface-visibility: hidden; backface-visibility: hidden; background-position: center center; background-size: cover; position: relative; }
 
 /*for elements*/
-.slide-img { position: relative; height: 100%; padding-bottom: 55%; }
+.slide-img { height: 100%; padding-bottom: 55%; position: relative; }
 
-.slide-img img { position: absolute; top: 0; left: 0; width: 100%; -o-object-fit: cover; object-fit: cover; }
+.slide-img img { left: 0; -o-object-fit: cover; object-fit: cover; position: absolute; top: 0; width: 100%; }
 
 /*swiper arrow*/
-.swiper-button-prev, .swiper-button-next { position: absolute; margin-top: 0; top: 50%; left: 0; -webkit-transform: translate(0, -50%); -ms-transform: translate(0, -50%); transform: translate(0, -50%); height: 4.8rem; width: 4.8rem; background: #FFF; z-index: 2; outline: none; border-radius: 100%; border: 1px solid #C8D8E8; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+.swiper-button-prev, .swiper-button-next { background: #fff; border: 1px solid #c8d8e8; border-radius: 100%; height: 4.8rem; left: 0; margin-top: 0; outline: none; position: absolute; top: 50%; -webkit-transform: translate(0, -50%); -ms-transform: translate(0, -50%); transform: translate(0, -50%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 4.8rem; z-index: 2; }
 
 .swiper-button-prev::after, .swiper-button-next::after { display: none; }
 
 .swiper-button-next { left: auto; right: 0; }
 
-.swiper-button-prev i, .swiper-button-next i { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+.swiper-button-prev i, .swiper-button-next i { left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
 
-.swiper-button-prev i::before, .swiper-button-next i::before { content: ""; position: absolute; z-index: 1; height: 0.625em; width: 0.625em; top: calc(50% - 5px); left: 50%; border-right: 0.125em solid #1E2A3A; border-bottom: 0.125em solid #1E2A3A; -webkit-transform: rotate(-45deg) translate(-50%, -50%); -ms-transform: rotate(-45deg) translate(-50%, -50%); transform: rotate(-45deg) translate(-50%, -50%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+.swiper-button-prev i::before, .swiper-button-next i::before { border-bottom: 0.125em solid #1e2a3a; border-right: 0.125em solid #1e2a3a; content: ""; height: 0.625em; left: 50%; position: absolute; top: calc(50% - 5px); -webkit-transform: rotate(-45deg) translate(-50%, -50%); -ms-transform: rotate(-45deg) translate(-50%, -50%); transform: rotate(-45deg) translate(-50%, -50%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 0.625em; z-index: 1; }
 
 .swiper-button-prev { -webkit-transform: scaleX(-1) translate(0, -50%); -ms-transform: scaleX(-1) translate(0, -50%); transform: scaleX(-1) translate(0, -50%); }
 
-.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled { opacity: 1; }
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled { opacity: 0.7; }
 
 /*swiper pagination*/
-.swiper-container-horizontal > .swiper-pagination-bullets { left: 50%; bottom: 1.5em; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); width: auto; }
+.swiper-container-horizontal > .swiper-pagination-bullets { bottom: 1.5em; left: 50%; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); width: auto; }
 
-.swiper-pagination { line-height: 0; z-index: 2; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+.swiper-pagination { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; line-height: 0; z-index: 2; }
 
-.swiper-pagination.swiper-pagination-relative { position: relative; margin-top: 20px; top: 0; bottom: 0; }
+.swiper-pagination.swiper-pagination-relative { bottom: 0; margin-top: 20px; position: relative; top: 0; }
 
-.swiper-pagination-bullet { position: relative; width: 1em; height: 1em; border-radius: 100%; opacity: 1; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; outline: none; background: #FFF; border: 0.0625em solid #C8D8E8; }
+.swiper-pagination-bullet { background: #fff; border: 0.0625em solid #c8d8e8; border-radius: 100%; height: 1em; opacity: 1; outline: none; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 1em; }
 
-.swiper-pagination-bullet-active { background-color: #FC1921; border-color: #FC1921; }
+.swiper-pagination-bullet-active { background-color: #fc1921; border-color: #fc1921; }
 
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-clickable .swiper-pagination-bullet { margin: 0 0.25em; }
 
 /*custom-fraction pagination*/
-.custom-fraction-wrap { position: absolute; top: 10px; right: 10px; z-index: 3; }
+.custom-fraction-wrap { position: absolute; right: 10px; top: 10px; z-index: 3; }
 
-.custom-fraction-wrap .custom-fraction_inner { width: auto; text-align: center; font-size: 12px; line-height: 1em; color: #737373; font-weight: 500; letter-spacing: 0.05em; }
+.custom-fraction-wrap .custom-fraction_inner { color: #737373; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; line-height: 1em; text-align: center; width: auto; }
 
 .custom-fraction-wrap .custom-fraction_inner .custom-current, .custom-fraction-wrap .custom-fraction_inner .custom-total { display: inline-block; position: relative; }
 
@@ -69,9 +69,9 @@
 
 .custom-fraction-wrap .custom-fraction_inner .custom-current { margin-right: -3px; }
 
-@media (min-width: 1200px) { .swiper-button-prev:hover, .swiper-button-next:hover { border-color: #FC1921; background: #FC1921; }
-  .swiper-button-prev:hover i::before, .swiper-button-prev:hover i::after, .swiper-button-next:hover i::before, .swiper-button-next:hover i::after { border-color: #FFF; }
-  .swiper-pagination-bullet:hover { background: #FC1921; border-color: #FC1921; } }
+@media (min-width: 1200px) { .swiper-button-prev:hover, .swiper-button-next:hover { background: #fc1921; border-color: #fc1921; }
+  .swiper-button-prev:hover i::before, .swiper-button-prev:hover i::after, .swiper-button-next:hover i::before, .swiper-button-next:hover i::after { border-color: #fff; }
+  .swiper-pagination-bullet:hover { background: #fc1921; border-color: #fc1921; } }
 
 @media (max-width: 991px) { .swiper-button-prev, .swiper-button-next { height: 3.2rem; width: 3.2rem; } }
 

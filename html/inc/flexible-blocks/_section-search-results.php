@@ -1,7 +1,7 @@
 <!-- SEARCH RESULTS -->
 <div class="section search-results">
 
-    <div class="decor-search" data-rellax-speed="-1" style="background-image: url('./img/wave.svg');"></div>
+    <div class="decor-search" data-rellax-speed="-1" style="background-image: url('./img/wave-1.svg');"></div>
 
     <div class="container container-lg">
         <div class="row justify-content-center">

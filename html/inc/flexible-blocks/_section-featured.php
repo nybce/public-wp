@@ -21,7 +21,7 @@
                 data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item type-2">
                             <div class="news-img">
                                 <picture>
                                     <source srcset='img/content/blog-img-3.webp' type='image/webp'>
@@ -37,7 +37,7 @@
                                     <li class="tag-main">Tagline Text</li>
                                 </ul>
 
-                                <div class="spacer-16"></div>
+                                <div class="spacer-24"></div>
 
                                 <div class="h5 title fw-800">NYBC Transfusion Medicine
                                     Fellowship Program</div>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item type-2">
                             <div class="news-img">
                                 <picture>
                                     <source srcset='img/content/blog-img-4.webp' type='image/webp'>
@@ -62,7 +62,7 @@
                                     <li class="tag-main">Tagline Text</li>
                                 </ul>
 
-                                <div class="spacer-16"></div>
+                                <div class="spacer-24"></div>
 
                                 <div class="h5 title fw-800">Professional Education</div>
                             </div>
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item type-2">
 
                             <div class="border-top"></div>
 
@@ -79,7 +79,7 @@
                                     <li class="tag-main">Tagline Text</li>
                                 </ul>
 
-                                <div class="spacer-16"></div>
+                                <div class="spacer-24"></div>
 
                                 <div class="h5 title fw-800">A Timeline of NYBCe's
                                     Project ACHIEVE & The COVID Prevention Network Thus Far</div>

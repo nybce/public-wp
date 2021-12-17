@@ -1,6 +1,7 @@
-/* eslint-disable no-unused-vars, no-undef */
+import { _functions, isTouchScreen } from './global';
+import Swiper from './lib/swiper.min';
+
 jQuery( function( $ ) {
-	/* swiper sliders */
 	_functions.getSwOptions = function( swiper ) {
 		let options = swiper.data( 'options' );
 		options = ( ! options || typeof options !== 'object' ) ? {} : options;
@@ -51,7 +52,7 @@ jQuery( function( $ ) {
 	};
 
 	_functions.initSwiper = function( el ) {
-		const swiper = new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
+		new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
 	};
 
 	setTimeout( function() {
@@ -97,4 +98,19 @@ jQuery( function( $ ) {
 			$( this ).children( '.swiper-button-wrapper' ).addClass( 'swiper-button-lock' );
 		}
 	} );
+
+	//calendar
+	$( '.open-calendar' ).on( 'click', function() {
+		$( this ).parents().find( '.calendar-swiper' ).slideToggle();
+	} );
+
+	if ( $( '.calendar-swiper' ).length ) {
+		const prWrapper = $( this ).find( '.swiper-container' )[ 0 ].swiper;
+		$( this ).find( '.swiper-container .swiper-slide:last-child' ).addClass( 'active' );
+
+		if ( $( this ).find( '.swiper-container' ).find( '.swiper-slide.active' ) ) {
+			const toSlide = $( this ).find( '.swiper-container' ).find( '.swiper-slide.active' ).index();
+			prWrapper.slideTo( toSlide );
+		}
+	}
 } );

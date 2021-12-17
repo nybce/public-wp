@@ -22,7 +22,7 @@
 
                             <div class="spacer-24"></div>
 
-                            <div class="h5 title fw-800">Can I Donate?</div>
+                            <div class="h4 title fw-800">Can I Donate?</div>
 
                             <div class="spacer-8"></div>
 
@@ -39,7 +39,7 @@
 
                             <div class="spacer-24"></div>
 
-                            <div class="h5 title fw-800">Why you should give</div>
+                            <div class="h4 title fw-800">Why you should give</div>
 
                             <div class="spacer-8"></div>
 
@@ -56,7 +56,7 @@
 
                             <div class="spacer-24"></div>
 
-                            <div class="h5 title fw-800">Many ways to donate blood</div>
+                            <div class="h4 title fw-800">Many ways to donate blood</div>
 
                             <div class="spacer-8"></div>
 

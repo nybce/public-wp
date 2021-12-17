@@ -1,15 +1,15 @@
-/**--------------------------------------------------------*/
+/**------------------------*/
 /** TABS  */
-/**--------------------------------------------------------*/
-.tab-nav { position: relative; margin-bottom: 2.4rem; }
+/**------------------------*/
+.tab-nav { margin-bottom: 2.4rem; position: relative; }
 
-.tab-title { display: none; cursor: pointer; font-weight: 700; text-align: center; color: #1E2A3A; border-bottom: 0.2rem solid transparent; padding: 0; }
+.tab-title { border-bottom: 0.2rem solid transparent; color: #1e2a3a; cursor: pointer; display: none; font-weight: 700; padding: 0; text-align: center; }
 
-.tab-toggle { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+.tab-toggle { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
 
-.tab-toggle div { cursor: pointer; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; font-size: 1.8rem; line-height: 1.44em; font-weight: 700; color: #1E2A3A; border-bottom: 0.2rem solid transparent; padding: 0; }
+.tab-toggle div { border-bottom: 0.2rem solid transparent; color: #1e2a3a; cursor: pointer; font-size: 1.8rem; font-weight: 700; line-height: 1.44em; padding: 0; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
 
-.tab-toggle div.active { border-color: #FC1921; }
+.tab-toggle div.active { border-color: #fc1921; }
 
 .tab-toggle > *:not(:last-child) { margin-right: 2.4rem; }
 
@@ -17,7 +17,7 @@
 
 .tab:nth-child(2) { display: block; }
 
-@media (min-width: 1200px) { .tab-toggle div:hover { border-color: #FC1921; } }
+@media (min-width: 1200px) { .tab-toggle div:hover { border-color: #fc1921; } }
 
 @media (max-width: 991px) { .tab-toggle div { white-space: nowrap; } }
 

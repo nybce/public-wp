@@ -1,48 +1,48 @@
-/**--------------------------------------------------------*/
+/**------------------------*/
 /** FILTER SIDEBAR  */
-/**--------------------------------------------------------*/
-.filter-sidebar { position: relative; z-index: 1; max-width: 28.2rem; }
+/**------------------------*/
+.filter-sidebar { max-width: 28.2rem; position: relative; z-index: 1; }
 
 .filter-sidebar > *:not(:last-child) { margin-bottom: 1.6rem; }
 
 .filter-sidebar.mobile { display: none; }
 
-.filter-sidebar-item { position: relative; background-color: #FFF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem; padding: 2.4rem; }
+.filter-sidebar-item { background-color: #fff; border-radius: 0.4rem; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); padding: 2.4rem; position: relative; }
 
 .filter-sidebar-item:first-of-type .filter-sidebar-inner { display: block; }
 
-.filter-sidebar-head { display: none; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; width: 100%; }
+.filter-sidebar-head { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: none; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; width: 100%; }
 
-.filter-sidebar-head .title { text-transform: uppercase; color: #59728B; margin-right: 2.4rem; }
+.filter-sidebar-head .title { color: #59728b; margin-right: 2.4rem; text-transform: uppercase; }
 
-.filter-sidebar-head .mobile-button-wrapper { position: relative; display: none; width: 3.2em; height: 3.2em; background-color: #FFF; border-radius: 2.4rem; -ms-flex-negative: 0; flex-shrink: 0; border: 0.1rem solid #C8D8E8; }
+.filter-sidebar-head .mobile-button-wrapper { background-color: #fff; border: 0.1rem solid #c8d8e8; border-radius: 2.4rem; display: none; -ms-flex-negative: 0; flex-shrink: 0; height: 3.2em; position: relative; width: 3.2em; }
 
-.filter-sidebar-head .filter-mobile-button { will-change: transform; display: none; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 1.8rem; height: 1rem; cursor: pointer; z-index: 101; }
+.filter-sidebar-head .filter-mobile-button { cursor: pointer; display: none; height: 1rem; left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 1.8rem; will-change: transform; z-index: 101; }
 
-.filter-sidebar-head .filter-mobile-button span { display: block; position: absolute; top: 50%; left: 0; width: 100%; height: 0.15rem; margin-top: 0; background: #000000; }
+.filter-sidebar-head .filter-mobile-button span { background: #000; display: block; height: 0.15rem; left: 0; margin-top: 0; position: absolute; top: 50%; width: 100%; }
 
-.filter-sidebar-head .filter-mobile-button::after, .filter-sidebar-head .filter-mobile-button::before { content: ""; position: absolute; display: block; top: 50%; left: 0; width: 100%; height: 0.15rem; background: #000000; margin-top: 0.6rem; }
+.filter-sidebar-head .filter-mobile-button::after, .filter-sidebar-head .filter-mobile-button::before { background: #000; content: ""; display: block; height: 0.15rem; left: 0; margin-top: 0.6rem; position: absolute; top: 50%; width: 100%; }
 
 .filter-sidebar-head .filter-mobile-button::before { margin-top: -0.6rem; }
 
-.filter-sidebar-head .filter-mobile-button.active span { -webkit-transform: translateX(3rem); -ms-transform: translateX(3rem); transform: translateX(3rem); opacity: 0; }
+.filter-sidebar-head .filter-mobile-button.active span { opacity: 0; -webkit-transform: translateX(3rem); -ms-transform: translateX(3rem); transform: translateX(3rem); }
 
 .filter-sidebar-head .filter-mobile-button.active::after { -webkit-transform: translateY(-0.6rem) rotate(-45deg); -ms-transform: translateY(-0.6rem) rotate(-45deg); transform: translateY(-0.6rem) rotate(-45deg); -webkit-transform-origin: center center; -ms-transform-origin: center center; transform-origin: center center; }
 
 .filter-sidebar-head .filter-mobile-button.active::before { -webkit-transform: translateY(0.6rem) rotate(45deg); -ms-transform: translateY(0.6rem) rotate(45deg); transform: translateY(0.6rem) rotate(45deg); -webkit-transform-origin: center center; -ms-transform-origin: center center; transform-origin: center center; }
 
-.filter-sidebar-title { position: relative; cursor: pointer; width: 100%; font-size: 1.4rem; line-height: 1.57em; font-weight: 500; color: #59728B; border-bottom: 0.1rem solid #E2F0FF; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; padding: 1.2rem 0.8rem; margin-bottom: 2.4rem; }
+.filter-sidebar-title { border-bottom: 0.1rem solid #e2f0ff; color: #59728b; cursor: pointer; font-size: 1.4rem; font-weight: 500; line-height: 1.57em; margin-bottom: 2.4rem; padding: 1.2rem 0.8rem; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; }
 
-.filter-sidebar-inner ul { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+.filter-sidebar-inner ul { -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
 
 .filter-sidebar-inner ul > *:not(:last-child) { margin-bottom: 0.8rem; }
 
-@media (min-width: 1200px) { .filter-sidebar-title:hover { color: #FE444A; border-color: #0C2D83; } }
+@media (min-width: 1200px) { .filter-sidebar-title:hover { border-color: #0c2d83; color: #fe444a; } }
 
 @media (max-width: 991px) { .filter-sidebar { display: none; margin: 0 auto; }
   .filter-sidebar.mobile { display: block; }
   .filter-sidebar-head { display: -webkit-box; display: -ms-flexbox; display: flex; }
   .filter-sidebar-head .mobile-button-wrapper { display: block; }
   .filter-sidebar-head .filter-mobile-button { display: block; }
-  .filter-sidebar-item { position: absolute; z-index: -1; -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); -webkit-box-shadow: unset; box-shadow: unset; border-radius: unset; }
-  .filter-sidebar-item.open { -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); position: relative; } }
+  .filter-sidebar-item { border-radius: unset; -webkit-box-shadow: unset; box-shadow: unset; position: absolute; -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); z-index: -1; }
+  .filter-sidebar-item.open { position: relative; -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); } }

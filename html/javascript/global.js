@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars, no-undef */
-const _functions = {};
+export const _functions = {};
+export let isTouchScreen = {};
+export let isIE = {};
+import './lib/SmoothScroll';
 
-let winW, winH, winScr, isTouchScreen, isMac, isIE;
+let winW, winH, winScr, isMac;
 
 jQuery( function( $ ) {
 	'use strict';

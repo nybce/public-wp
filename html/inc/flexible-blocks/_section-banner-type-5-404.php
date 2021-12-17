@@ -5,8 +5,8 @@
 
         <div class="banner-wrapper">
 
-            <div class="decor-banner-1" data-rellax-speed="-1"
-                style="background-image: url('./img/banner-decor-1.svg');"></div>
+            <div class="decor-banner-2" data-rellax-speed="-1"
+                style="background-image: url('./img/banner-decor-2.svg');"></div>
 
             <div class="container">
 

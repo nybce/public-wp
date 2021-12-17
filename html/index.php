@@ -32,9 +32,13 @@
 
             <?php include 'inc/flexible-blocks/_section-quotes.php';?>
 
+            <div class="spacer-120 spacer-xs-64"></div>
+
             <?php include 'inc/flexible-blocks/_section-featured.php';?>
 
             <?php include 'inc/flexible-blocks/_section-employees.php';?>
+
+            <div class="spacer-96 spacer-xs-64"></div>
 
             <?php include 'inc/flexible-blocks/_section-news.php';?>
 
@@ -48,7 +52,7 @@
 
     <?php include 'inc/elements-includes/_tabs.php';?>
     <?php include 'inc/elements-includes/_form-elements.php';?>
-    <?php include 'inc/elements-includes/_swiper.php';?>
+
 
     <?php include 'inc/flexible-includes/_section-contact-us.php';?>
     <?php include 'inc/flexible-includes/_section-about-us.php';?>
@@ -57,6 +61,7 @@
     <?php include 'inc/flexible-includes/_section-quotes.php';?>
     <?php include 'inc/flexible-includes/_section-news.php';?>
     <?php include 'inc/flexible-includes/_section-employees.php';?>
+    <?php include 'inc/elements-includes/_swiper.php';?>
 
     <?php include 'inc/javascripts-includes/_jquery.php';?>
     <?php include 'inc/javascripts-includes/_swiper.php';?>

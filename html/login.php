@@ -22,7 +22,7 @@
 
         <main>
 
-            <?php include 'inc/flexible-blocks/_section-banner-type-2.php';?>
+            <?php include 'inc/flexible-blocks/_section-banner-type-2-image-button.php';?>
 
             <?php include 'inc/flexible-blocks/_section-sidebar-type-3-login.php';?>
 

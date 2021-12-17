@@ -1,77 +1,84 @@
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 /** BANNERS */
-/**-----------------------------------------------------------------------*/
-.bg { background-position: 50% 50%; background-repeat: no-repeat; background-attachment: scroll; background-size: cover; position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+/**------------------------*/
+.bg { background-attachment: scroll; background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
 
-.bg img { -o-object-fit: cover; object-fit: cover; width: 100%; height: 100%; }
+.bg img { height: 100%; -o-object-fit: cover; object-fit: cover; width: 100%; }
 
-.bg.video { position: absolute; top: 0; bottom: 0; left: 0; right: 0; clip: rect(auto, auto, auto, auto); background-repeat: no-repeat; background-position: center; background-size: cover; }
+.bg.video { background-position: center; background-repeat: no-repeat; background-size: cover; bottom: 0; clip: rect(auto, auto, auto, auto); left: 0; position: absolute; right: 0; top: 0; }
 
-.bg.video video { position: fixed; left: 50%; top: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+.bg.video video { height: auto; left: 50%; min-height: 100%; min-width: 100%; position: fixed; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: auto; }
 
-.opacity:before { content: ""; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))); background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); }
+.opacity::before { background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))); background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 1; }
 
-.opacity-1:before { content: ""; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #000000), to(rgba(9, 19, 75, 0))); background: -o-linear-gradient(bottom, #000000 1.31%, rgba(9, 19, 75, 0) 100%); background: linear-gradient(0deg, #000000 1.31%, rgba(9, 19, 75, 0) 100%); }
+.opacity-1::before { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #000), to(rgba(9, 19, 75, 0))); background: -o-linear-gradient(bottom, #000 1.31%, rgba(9, 19, 75, 0) 100%); background: linear-gradient(0deg, #000 1.31%, rgba(9, 19, 75, 0) 100%); content: ""; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 1; }
 
 .parallax-bg { overflow: hidden; }
 
-.parallax-bg .bg { position: absolute; width: 100%; height: 130%; top: -10%; }
+.parallax-bg .bg { height: 130%; position: absolute; top: -10%; width: 100%; }
 
-.banner { position: relative; overflow: hidden; }
+.banner { overflow: hidden; position: relative; }
 
-.banner-inner { position: relative; overflow: hidden; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 100%; height: 100%; padding-bottom: 42.3%; -webkit-clip-path: ellipse(90% 60% at 50% 40%); clip-path: ellipse(90% 60% at 50% 40%); }
+.banner-inner { -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-clip-path: ellipse(70% 60% at 50% 40%); clip-path: ellipse(70% 60% at 50% 40%); display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; overflow: hidden; padding-bottom: 56.3%; position: relative; width: 100%; }
 
 .banner-inner.type-2 { padding-bottom: 22.1%; }
 
 .banner-inner.type-2 .banner-content { text-align: center; }
 
-.banner-inner.type-2 .bg.orange { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #FF7009), to(#FFB548)); background: -o-linear-gradient(bottom, #FF7009 1.31%, #FFB548 100%); background: linear-gradient(0deg, #FF7009 1.31%, #FFB548 100%); }
+.banner-inner.type-2 .bg.orange { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #ff7009), to(#ffb548)); background: -o-linear-gradient(bottom, #ff7009 1.31%, #ffb548 100%); background: linear-gradient(0deg, #ff7009 1.31%, #ffb548 100%); }
 
-.banner-inner.type-2 .bg.pink { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #A30361), to(#E43493)); background: -o-linear-gradient(bottom, #A30361 1.31%, #E43493 100%); background: linear-gradient(0deg, #A30361 1.31%, #E43493 100%); }
+.banner-inner.type-2 .bg.pink { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #a30361), to(#e43493)); background: -o-linear-gradient(bottom, #a30361 1.31%, #e43493 100%); background: linear-gradient(0deg, #a30361 1.31%, #e43493 100%); }
 
-.banner-inner.type-2 .bg.blue { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #0C2D83), to(#439BFF)); background: -o-linear-gradient(bottom, #0C2D83 1.31%, #439BFF 100%); background: linear-gradient(0deg, #0C2D83 1.31%, #439BFF 100%); }
+.banner-inner.type-2 .bg.blue { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #0c2d83), to(#439bff)); background: -o-linear-gradient(bottom, #0c2d83 1.31%, #439bff 100%); background: linear-gradient(0deg, #0c2d83 1.31%, #439bff 100%); }
 
-.banner-inner.type-2 .bg.turquoise { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #64C2AF), to(#008599)); background: -o-linear-gradient(bottom, #64C2AF 1.31%, #008599 100%); background: linear-gradient(0deg, #64C2AF 1.31%, #008599 100%); }
+.banner-inner.type-2 .bg.turquoise { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #64c2af), to(#008599)); background: -o-linear-gradient(bottom, #64c2af 1.31%, #008599 100%); background: linear-gradient(0deg, #64c2af 1.31%, #008599 100%); }
 
-.banner-inner.type-3 { padding-bottom: 43%; -webkit-clip-path: ellipse(66% 62% at 50% 38%); clip-path: ellipse(66% 62% at 50% 38%); }
+.banner-inner.type-2 .bg.rellax { height: 103%; top: -8%; }
+
+.banner-inner.type-3 { -webkit-clip-path: ellipse(66% 62% at 50% 38%); clip-path: ellipse(66% 62% at 50% 38%); padding-bottom: 43%; }
 
 .banner-inner.type-3 .banner-content { text-align: center; }
 
 .banner-inner.type-3 .bg.rellax { height: 103%; }
 
-.banner-inner.type-4 { padding-bottom: 0; -webkit-clip-path: unset; clip-path: unset; }
+.banner-inner.type-4 { -webkit-clip-path: unset; clip-path: unset; padding-bottom: 0; }
 
-.banner-inner.type-4 .banner-wrapper { position: relative; width: 100%; top: 0; bottom: 0; -webkit-transform: unset; -ms-transform: unset; transform: unset; border-bottom: 0.1rem solid #E2F0FF; }
+.banner-inner.type-4 .banner-wrapper { border-bottom: 0.1rem solid #e2f0ff; bottom: 0; position: relative; top: 0; -webkit-transform: unset; -ms-transform: unset; transform: unset; width: 100%; }
 
 .banner-inner.type-4 .banner-wrapper .container { max-width: 100%; }
 
-.banner-inner.type-4 .banner-content { position: relative; height: 100%; padding-left: 11rem; padding-right: 12rem; }
+.banner-inner.type-4 .banner-content { height: 100%; max-width: 95%; padding-left: 11rem; padding-right: 12rem; position: relative; }
 
-.banner-inner.type-4 .banner-content h5, .banner-inner.type-4 .banner-content .h5 { color: #0C2D83; }
+.banner-inner.type-4 .banner-content h5, .banner-inner.type-4 .banner-content .h5 { color: #0c2d83; }
 
-.banner-inner.type-4 .decor-banner-1 { position: absolute; top: -4rem; left: 0; z-index: -1; width: 100%; height: 100%; background-repeat: no-repeat; background-size: contain; background-position: top right; }
+.banner-inner.type-4 .decor-banner-1 { background-position: right; background-repeat: no-repeat; background-size: contain; height: 100%; left: 0; position: absolute; top: -2rem; width: 100%; z-index: -1; }
 
-.banner-wrapper { position: absolute; top: 50%; left: 0; right: 0; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); z-index: 10; color: #FFF; }
+.banner-inner.type-4 .decor-banner-2 { background-position: right; background-repeat: no-repeat; background-size: 55%; height: 100%; left: -25rem; position: absolute; top: 0; width: calc(100% + 25rem); z-index: -1; }
 
-.banner-img { position: relative; padding-bottom: 76.63%; }
+.banner-wrapper { color: #fff; left: 0; position: absolute; right: 0; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); z-index: 10; }
+
+.banner-img { padding-bottom: 76.63%; position: relative; }
 
 .banner-img.size-2 { padding-bottom: 93.63%; }
 
-@media (max-width: 1199px) { .banner-inner.type-4 .banner-content { padding-left: 5rem; } }
+.banner-img .bg.rellax { top: -1%; }
+
+@media (max-width: 1199px) { .banner-img .bg.rellax { top: 0; } }
 
 @media (max-width: 991px) { .banner-inner.type-2 { padding-bottom: 45%; }
-  .banner-inner.type-3 { padding-bottom: 45%; } }
+  .banner-inner.type-3 { padding-bottom: 45%; }
+  .banner-inner.type-4 .decor-banner-1 { background-size: 100%; height: calc(100% - 10rem); left: -2.5rem; top: 10rem; width: calc(100% + 25rem); } }
 
 @media (max-width: 767px) { .banner { overflow: visible; }
   .opacity::before { content: none; }
-  .banner-inner { height: 49.5rem; padding-bottom: 0; -webkit-clip-path: ellipse(120% 60% at 50% 40%); clip-path: ellipse(120% 60% at 50% 40%); }
+  .banner-inner { -webkit-clip-path: ellipse(90% 60% at 50% 40%); clip-path: ellipse(90% 60% at 50% 40%); height: 49.5rem; padding-bottom: 0; }
   .banner-inner.type-2 { height: auto; padding-bottom: 80%; }
-  .banner-inner.type-2 .banner-wrapper { top: 1.4rem; bottom: auto; }
-  .banner-inner.type-3 { -webkit-clip-path: ellipse(120% 60% at 50% 40%); clip-path: ellipse(120% 60% at 50% 40%); height: 49.5rem; padding-bottom: 0; }
+  .banner-inner.type-2 .banner-wrapper { bottom: auto; top: 1.4rem; }
+  .banner-inner.type-3 { -webkit-clip-path: ellipse(90% 60% at 50% 40%); clip-path: ellipse(90% 60% at 50% 40%); height: 49.5rem; padding-bottom: 0; }
   .banner-inner.type-4 { height: auto; }
-  .banner-inner.type-4 .banner-wrapper .container { max-width: 100%; padding-left: 0; padding-right: 0; }
-  .banner-inner.type-4 .banner-content { text-align: left; padding-left: 4.4rem; padding-right: 4.4rem; }
-  .banner-wrapper { top: auto; bottom: 7.6rem; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
+  .banner-inner.type-4 .banner-wrapper .container { padding-left: 0; padding-right: 0; }
+  .banner-inner.type-4 .banner-content { padding-left: 4.4rem; padding-right: 4.4rem; text-align: left; }
+  .banner-wrapper { bottom: 7.6rem; top: auto; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
   .banner-content { text-align: center; }
   .bg img:not(.only-mob) { display: none; }
   .bg .only-mob { display: block; } }
@@ -79,12 +86,13 @@
 /**-----------------------------------------------------------------------*/
 /** DECOR FOR MAIN BANNER */
 /**-----------------------------------------------------------------------*/
-.banner-decor { position: absolute; top: 0; left: 0; z-index: 1; width: 55%; height: 100%; }
+.banner-decor { height: 100%; left: 0; position: absolute; top: 0; width: 55%; z-index: 1; }
 
-@media (max-width: 767px) { .banner-decor { width: 110%; }
-  .banner-decor svg { width: 165%; } }
+.banner-decor svg { height: 100%; }
 
-/**--------------------------------------------------------------------------------------------*/
+@media (max-width: 767px) { .banner-decor { width: 110%; } }
+
+/**--------------------------------------------------------------------------*/
 /** DECOR FOR MAIN BANNER FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division .banner-decor svg path { fill: #09134B; }
+/**--------------------------------------------------------------------------*/
+.division .banner-decor svg path { fill: #09134b; }

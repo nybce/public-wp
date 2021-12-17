@@ -30,6 +30,8 @@
 
             <?php include 'inc/flexible-blocks/_section-employees.php';?>
 
+            <div class="spacer-96 spacer-xs-64"></div>
+
             <?php include 'inc/flexible-blocks/_section-news.php';?>
         </main>
 
@@ -40,7 +42,6 @@
     </div>
 
     <?php include 'inc/elements-includes/_form-elements.php';?>
-    <?php include 'inc/elements-includes/_swiper.php';?>
     <?php include 'inc/elements-includes/_accordion.php';?>
 
     <?php include 'inc/flexible-includes/_section-sidebar.php';?>
@@ -49,6 +50,7 @@
     <?php include 'inc/flexible-includes/_section-info-block.php';?>
     <?php include 'inc/flexible-includes/_section-employees.php';?>
     <?php include 'inc/flexible-includes/_section-news.php';?>
+    <?php include 'inc/elements-includes/_swiper.php';?>
 
     <?php include 'inc/javascripts-includes/_jquery.php';?>
     <?php include 'inc/javascripts-includes/_swiper.php';?>

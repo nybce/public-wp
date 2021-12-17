@@ -9,7 +9,7 @@
                     <div class="h4 title fw-800">
                         Recent News
                     </div>
-                    <a href="news.php" class="btn-link btn-link-primary right">View All</a>
+                    <a href="news-landing.php" class="btn-link btn-link-primary right">View All</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item">
                             <div class="news-img">
                                 <picture>
                                     <source srcset='img/content/blog-img-1.webp' type='image/webp'>
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item">
 
                             <div class="border-top"></div>
 
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="swiper-slide">
-                        <a href="news-detail.php" class="news-item">
+                        <a href="detail-page-news-article.php" class="news-item">
                             <div class="news-img">
                                 <picture>
                                     <source srcset='img/content/blog-img-2.webp' type='image/webp'>
