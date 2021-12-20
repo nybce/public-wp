@@ -9,6 +9,7 @@
  * @package NYBC_Enterprise
  */
 
+global $post;
 ?>
 <footer>
 	<?php get_template_part( 'template-parts/footer/footer' ); ?>
@@ -16,6 +17,11 @@
 
 </div>
 	<?php wp_footer(); ?>
+	<?php
+	if ( ! is_front_page() && is_page() && isset( $post ) && ! $post->post_parent ) {
+		get_template_part( 'template-parts/promo-sticky-modal-cta' );
+	}
+	?>
 </body>
 
 </html>

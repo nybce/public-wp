@@ -27,7 +27,7 @@ $tagline     = get_field( 'tagline' );
 $text        = get_field( 'text' );
 ?>
 
-<a class="news-item <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" target="<?php echo esc_attr( $lnk['target'] ); ?>" href="<?php echo esc_url( $lnk['url'] ); ?>">
+<a class="news-item <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" target="<?php echo esc_attr( ! empty( $lnk ) ? $lnk['target'] : '' ); ?>" href="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '#' ); ?>">
 	<?php
 	if ( ! empty( $image ) ) {
 		$image_url = ! empty( $image ) ? $image['url'] : '';

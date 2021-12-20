@@ -34,7 +34,9 @@ $button      = get_field( 'button' );
 					<div class="text-xl text-30">
 						<?php echo esc_html( $body ); ?>
 					</div>
-					<a class="btn btn-secondary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
+					<?php if ( ! empty( $button ) ) { ?>
+						<a class="btn btn-secondary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

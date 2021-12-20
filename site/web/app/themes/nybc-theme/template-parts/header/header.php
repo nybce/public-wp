@@ -5,7 +5,9 @@
  * @package NYBC
  */
 
-$one_line_logo = get_field( 'one_line_logo', 'options' );
+$one_line_logo         = get_field( 'one_line_logo', 'options' );
+$top_right_menu_link_1 = get_field( 'top_right_menu_link_1', 'options' );
+$top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 
 ?>
 <div class="header-inner">
@@ -36,8 +38,12 @@ $one_line_logo = get_field( 'one_line_logo', 'options' );
 						</svg>
 					</button>
 				</form>
-				<a href="#" class="btn btn-small btn-primary"><?php esc_html_e( 'Login', 'nybc' ); ?></a>
-				<a href="#" class="btn btn-small btn-primary"><?php esc_html_e( 'Support Us', 'nybc' ); ?></a>
+				<?php if ( ! empty( $top_right_menu_link_1 ) ) { ?>
+					<a class="btn btn-small btn-primary" target="<?php echo esc_attr( $top_right_menu_link_1['target'] ); ?>" href="<?php echo esc_url( $top_right_menu_link_1['url'] ); ?>"><?php echo esc_html( $top_right_menu_link_1['title'] ); ?></a>
+				<?php } ?>
+				<?php if ( ! empty( $top_right_menu_link_2 ) ) { ?>
+					<a class="btn btn-small btn-primary" target="<?php echo esc_attr( $top_right_menu_link_2['target'] ); ?>" href="<?php echo esc_url( $top_right_menu_link_2['url'] ); ?>"><?php echo esc_html( $top_right_menu_link_2['title'] ); ?></a>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -81,8 +87,12 @@ $one_line_logo = get_field( 'one_line_logo', 'options' );
 								</svg>
 							</button>
 						</form>
-						<a href="#" class="btn btn-small btn-primary"><?php esc_html_e( 'Login', 'nybc' ); ?></a>
-						<a href="#" class="btn btn-small btn-primary"><?php esc_html_e( 'Support Us', 'nybc' ); ?></a>
+						<?php if ( ! empty( $top_right_menu_link_1 ) ) { ?>
+							<a class="btn btn-small btn-primary" target="<?php echo esc_attr( $top_right_menu_link_1['target'] ); ?>" href="<?php echo esc_url( $top_right_menu_link_1['url'] ); ?>"><?php echo esc_html( $top_right_menu_link_1['title'] ); ?></a>
+						<?php } ?>
+						<?php if ( ! empty( $top_right_menu_link_2 ) ) { ?>
+							<a class="btn btn-small btn-primary" target="<?php echo esc_attr( $top_right_menu_link_2['target'] ); ?>" href="<?php echo esc_url( $top_right_menu_link_2['url'] ); ?>"><?php echo esc_html( $top_right_menu_link_2['title'] ); ?></a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

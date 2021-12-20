@@ -86,7 +86,7 @@ if ( empty( $lnk ) ) {
 					<div class="swiper-slide">
 						<a href="<?php echo esc_url( get_the_permalink( $news_id ) ); ?>" class="news-item">
 							<div class="news-img">
-								<?php NYBC_Helpers::picture( $image_url, $block_title, 517, 290 ); ?>
+								<?php NYBC_Helpers::picture( $image_url, $block_title, 517, 292 ); ?>
 							</div>
 							<div class="border-top"></div>
 							<div class="news-info">

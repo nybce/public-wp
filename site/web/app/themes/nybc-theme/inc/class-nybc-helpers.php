@@ -118,6 +118,18 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			if ( empty( $url ) ) {
 				return;
 			}
+			if ( 'svg' === pathinfo( $url, PATHINFO_EXTENSION ) ) {
+				echo wp_kses(
+					"<img src=\"{$url}\" alt=\"{$alt}\">",
+					array(
+						'img' => array(
+							'src' => true,
+							'alt' => true,
+						),
+					)
+				);
+				return;
+			}
 			if ( ! empty( $width ) ) {
 				$url = aq_resize( $url, $width, $height, $crop, true, $crop );
 			}
@@ -152,6 +164,114 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 					'picture' => array(),
 				)
 			);
+		}
+
+		/**
+		 *  Pagination
+		 *
+		 * @param string $max_pages number of pages.
+		 */
+		public static function pagination( $max_pages = null ) {
+			global $paged;
+			$current = $paged;
+			if ( empty( $current ) ) {
+				$current = 1;
+			}
+			if ( ! $max_pages ) {
+				global $wp_query;
+				$max_pages = $wp_query->max_num_pages;
+				if ( ! $max_pages ) {
+					$max_pages = 1;
+				}
+			}
+			$current   = (int) $current;
+			$max_pages = (int) $max_pages;
+
+			if ( $max_pages < 2 ) {
+				return;
+			}
+			?>
+<div class="pagination">
+	<ul>
+			<?php if ( $current > 1 ) { ?>
+			<li><a class="pagination-arrow left" href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>"><i></i></a></li>
+		<?php } ?>
+		<li class="<?php echo esc_attr( 1 === $current ? 'active' : '' ); ?>">
+			<a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">1</a>
+		</li>
+			<?php if ( ( $max_pages - 1 ) > 1 ) { ?>
+		<li class="dots">...
+			<ul class="dots-select">
+				<?php for ( $i = 2; $i <= $max_pages - 1; $i++ ) { ?>
+					<li class="dots-select-link <?php echo esc_attr( $i === $current ? 'active' : '' ); ?>"><a href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>"><?php echo esc_html( $i ); ?></a></li>
+				<?php } ?>
+			</ul>
+		</li>
+		<?php } ?>
+		<li class="<?php echo esc_attr( $max_pages === $current ? 'active' : '' ); ?>">
+			<a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>"><?php echo esc_html( $max_pages ); ?></a>
+		</li>
+			<?php if ( $current < $max_pages ) { ?>
+			<li><a class="pagination-arrow right" href="<?php echo esc_url( get_pagenum_link( $current + 1 ) ); ?>"><i></i></a></li>
+		<?php } ?>
+	</ul>
+</div>
+			<?php
+		}
+
+		/**
+		 *  Sidebar tags
+		 *
+		 * @param bool $mobile is mobile nav.
+		 */
+		public static function sidebar_tags( $mobile = false ) {
+			// TODO: Sidebar tags.
+		}
+
+		/**
+		 *  Sidebar pages nav
+		 *
+		 * @param bool $mobile is mobile nav.
+		 */
+		public static function sidebar_nav( $mobile = false ) {
+			global $post;
+
+			if ( empty( $post ) ) {
+				return;
+			}
+
+			if ( ! is_page() ) {
+				self::sidebar_tags( $mobile );
+				return;
+			}
+
+			$child_pages = get_pages(
+				array(
+					'parent' => $post->ID,
+				)
+			);
+			if ( empty( $child_pages ) ) {
+				return;
+			}
+			?>
+<div class="page-menu-wrapper <?php echo esc_attr( $mobile ? 'mobile' : '' ); ?>">
+	<div class="page-menu-head">
+		<div class="h6 title fw-900"><?php esc_html_e( 'In this section', 'nybc' ); ?></div>
+
+		<div class="mobile-button-wrapper">
+			<div class="page-mobile-button"><span></span></div>
+		</div>
+	</div>
+
+	<div class="spacer-16"></div>
+	<ul class="page-menu">
+		<li><?php echo esc_html( get_the_title( $post ) ); ?></li>
+			<?php foreach ( $child_pages as $page ) { ?>
+			<li><a href="<?php echo esc_url( get_page_link( $page ) ); ?>"><?php echo esc_html( get_the_title( $page ) ); ?></a></li>
+		<?php } ?>
+	</ul>
+</div>
+			<?php
 		}
 
 	}
