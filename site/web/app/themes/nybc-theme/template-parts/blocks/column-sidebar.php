@@ -31,7 +31,7 @@ $class_name    .= ' col-lg-4 order-lg-0 order-2';
 
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php NYBC_Helpers::sidebar_nav(); ?>
-	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"/>
+	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" templateLock="false"/>
 </div>
 
 

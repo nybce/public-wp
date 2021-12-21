@@ -39,7 +39,7 @@ $class_name    .= ' col-lg-8';
 
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php NYBC_Helpers::sidebar_nav( true ); ?>
-	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"/>
+	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" templateLock="false"/>
 </div>
 
 
