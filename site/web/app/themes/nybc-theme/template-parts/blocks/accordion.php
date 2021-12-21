@@ -22,9 +22,13 @@ if ( ! empty( $block['className'] ) ) {
 $allowed_blocks = array(
 	'acf/accordion-item',
 );
+$template       = array(
+	array( 'acf/accordion-item' ),
+);
+
 ?>
 
 <div class="accordion <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
-	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"/>
+	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>"/>
 </div>
 
