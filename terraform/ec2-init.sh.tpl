@@ -17,20 +17,11 @@ apt-get update -qq >/dev/null && \
 
 docker login -u "${docker_registry_username}" -p "${docker_registry_password}" "${docker_registry_host}"
 
-docker network create nybc-web
 
-docker pull index.docker.io/elasticsearch:2-alpine
-docker run --name elasticsearch --restart unless-stopped --network nybc-web -d index.docker.io/elasticsearch:2-alpine
-
-# memcached
-docker pull index.docker.io/memcached:1.6-alpine
-docker run --name memcached --network nybc-web --restart unless-stopped -d index.docker.io/memcached:1.6-alpine
-
-docker pull index.docker.io/nybcteam/nybc-web:${docker_image_tag}
-docker run -p 8000:8000 --name nybc-web --restart unless-stopped --network nybc-web \
+docker pull index.docker.io/nybcteam/nybc-wordpress:${docker_image_tag}
+docker run --name nybc-web --restart unless-stopped --net=host \
     -e "ENVIRONMENT=${environment}" \
     -e "ANSIBLE_VAULT_PASS=${ansible_vault_pass}" \
-    -e "NGINX_AUTH_BASIC=${nginx_auth_basic}" \
     -d index.docker.io/nybcteam/nybc-web:${docker_image_tag}
 
 docker pull index.docker.io/containrrr/watchtower
