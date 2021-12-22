@@ -45,13 +45,11 @@
 
 .banner-inner.type-4 .banner-wrapper { border-bottom: 0.1rem solid #e2f0ff; bottom: 0; position: relative; top: 0; -webkit-transform: unset; -ms-transform: unset; transform: unset; width: 100%; }
 
-.banner-inner.type-4 .banner-wrapper .container { max-width: 100%; }
-
-.banner-inner.type-4 .banner-content { height: 100%; max-width: 95%; padding-left: 11rem; padding-right: 12rem; position: relative; }
+.banner-inner.type-4 .banner-content { height: 100%; max-width: 95%; padding-left: 5rem; padding-right: 5rem; position: relative; }
 
 .banner-inner.type-4 .banner-content h5, .banner-inner.type-4 .banner-content .h5 { color: #0c2d83; }
 
-.banner-inner.type-4 .decor-banner-1 { background-position: right; background-repeat: no-repeat; background-size: contain; height: 100%; left: 0; position: absolute; top: -2rem; width: 100%; z-index: -1; }
+.banner-inner.type-4 .decor-banner-1 { background-position: top right; background-repeat: no-repeat; background-size: contain; height: 100%; left: 0; position: absolute; top: -2rem; width: 100%; z-index: -1; }
 
 .banner-inner.type-4 .decor-banner-2 { background-position: right; background-repeat: no-repeat; background-size: 55%; height: 100%; left: -25rem; position: absolute; top: 0; width: calc(100% + 25rem); z-index: -1; }
 
@@ -63,11 +61,27 @@
 
 .banner-img .bg.rellax { top: -1%; }
 
-@media (max-width: 1199px) { .banner-img .bg.rellax { top: 0; } }
+@media (max-width: 1600px) { .banner-inner { -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-clip-path: ellipse(70% 60% at 50% 40%); clip-path: ellipse(70% 60% at 50% 40%); display: -webkit-box; display: -ms-flexbox; display: flex; height: 100%; overflow: hidden; padding-bottom: 56.3%; position: relative; width: 100%; }
+  .banner-inner.type-2 { padding-bottom: 22.1%; }
+  .banner-inner.type-2 .banner-content { text-align: center; }
+  .banner-inner.type-2 .bg.orange { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #ff7009), to(#ffb548)); background: -o-linear-gradient(bottom, #ff7009 1.31%, #ffb548 100%); background: linear-gradient(0deg, #ff7009 1.31%, #ffb548 100%); }
+  .banner-inner.type-2 .bg.pink { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #a30361), to(#e43493)); background: -o-linear-gradient(bottom, #a30361 1.31%, #e43493 100%); background: linear-gradient(0deg, #a30361 1.31%, #e43493 100%); }
+  .banner-inner.type-2 .bg.blue { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #0c2d83), to(#439bff)); background: -o-linear-gradient(bottom, #0c2d83 1.31%, #439bff 100%); background: linear-gradient(0deg, #0c2d83 1.31%, #439bff 100%); }
+  .banner-inner.type-2 .bg.turquoise { background: -webkit-gradient(linear, left bottom, left top, color-stop(1.31%, #64c2af), to(#008599)); background: -o-linear-gradient(bottom, #64c2af 1.31%, #008599 100%); background: linear-gradient(0deg, #64c2af 1.31%, #008599 100%); }
+  .banner-inner.type-2 .bg.rellax { height: 103%; top: -8%; }
+  .banner-inner.type-3 { -webkit-clip-path: ellipse(66% 62% at 50% 38%); clip-path: ellipse(66% 62% at 50% 38%); padding-bottom: 43%; }
+  .banner-inner.type-3 .banner-content { text-align: center; }
+  .banner-inner.type-3 .bg.rellax { height: 103%; }
+  .banner-inner.type-4 .banner-wrapper .container { max-width: 100%; padding-left: 0; padding-right: 0; }
+  .banner-inner.type-4 .banner-content { padding-left: 11rem; padding-right: 12rem; } }
+
+@media (max-width: 1199px) { .banner-inner.type-4 .banner-content { padding-left: 5rem; padding-right: 5rem; }
+  .banner-img .bg.rellax { top: 0; } }
 
 @media (max-width: 991px) { .banner-inner.type-2 { padding-bottom: 45%; }
   .banner-inner.type-3 { padding-bottom: 45%; }
-  .banner-inner.type-4 .decor-banner-1 { background-size: 100%; height: calc(100% - 10rem); left: -2.5rem; top: 10rem; width: calc(100% + 25rem); } }
+  .banner-inner.type-4 .decor-banner-1 { background-position: right; background-size: 100%; height: calc(100% - 10rem); left: -2.5rem; top: 10rem; width: calc(100% + 25rem); }
+  .banner-inner.type-4.no-image .decor-banner-1 { background-position: top right; height: 100%; top: 0; } }
 
 @media (max-width: 767px) { .banner { overflow: visible; }
   .opacity::before { content: none; }
@@ -78,21 +92,22 @@
   .banner-inner.type-4 { height: auto; }
   .banner-inner.type-4 .banner-wrapper .container { padding-left: 0; padding-right: 0; }
   .banner-inner.type-4 .banner-content { padding-left: 4.4rem; padding-right: 4.4rem; text-align: left; }
+  .banner-inner.type-4 .decor-banner-2 { background-position: top right; }
   .banner-wrapper { bottom: 7.6rem; top: auto; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
   .banner-content { text-align: center; }
   .bg img:not(.only-mob) { display: none; }
   .bg .only-mob { display: block; } }
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 /** DECOR FOR MAIN BANNER */
-/**-----------------------------------------------------------------------*/
-.banner-decor { height: 100%; left: 0; position: absolute; top: 0; width: 55%; z-index: 1; }
+/**------------------------*/
+.banner-decor { height: 100%; left: 0; position: absolute; top: 0; width: 55%; z-index: 2; }
 
 .banner-decor svg { height: 100%; }
 
 @media (max-width: 767px) { .banner-decor { width: 110%; } }
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 /** DECOR FOR MAIN BANNER FOR DIVISION */
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 .division .banner-decor svg path { fill: #09134b; }
