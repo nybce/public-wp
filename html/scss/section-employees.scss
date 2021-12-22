@@ -25,7 +25,7 @@
 		content: "";
 		height: 100%;
 		position: absolute;
-		right: 0;
+		right: -1px;
 		top: 0;
 		width: 100%;
 		z-index: -1;
@@ -70,7 +70,7 @@
 
 .employees-img {
 	display: block;
-	padding-bottom: 98%;
+	padding-bottom: 122%;
 	position: relative;
 	width: 100%;
 
@@ -96,6 +96,26 @@
 	}
 	.swiper-pagination-bullet {
 		box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	}
+}
+
+@media (max-width: 1600px) {
+	.employees {
+		.container {
+			max-width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.employees-info {
+		&::before {
+			right: 0;
+		}
+	}
+
+	.employees-img {
+		padding-bottom: 98%;
 	}
 }
 

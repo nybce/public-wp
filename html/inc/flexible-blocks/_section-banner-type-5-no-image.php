@@ -1,7 +1,7 @@
 <!-- BANNER -->
 <div class="section banner">
 
-    <div class="banner-inner type-4">
+    <div class="banner-inner type-4 no-image">
 
         <div class="banner-wrapper">
 
