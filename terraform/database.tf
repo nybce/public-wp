@@ -25,3 +25,11 @@ resource "azurerm_mysql_firewall_rule" "example" {
   start_ip_address    = "52.87.95.160"
   end_ip_address      = "52.87.95.160"
 }
+
+resource "azurerm_mysql_database" "example" {
+  name                = "db"
+  resource_group_name = azurerm_resource_group.vmss.name
+  server_name         = azurerm_mysql_server.example.name
+  charset             = "utf8"
+  collation           = "utf8_unicode_ci"
+}
