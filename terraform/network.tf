@@ -43,7 +43,7 @@ resource "azurerm_subnet" "ag" {
 resource "azurerm_public_ip" "vmss" {
   name                = "vmss-public-ip-${var.project}-${var.environment}"
   location            = var.azure_region
-  sku                 = "Standard"
+  sku                 = "Basic"
   resource_group_name = azurerm_resource_group.vmss.name
   allocation_method   = "Static"
   domain_name_label   = random_string.fqdn.result
@@ -55,6 +55,7 @@ resource "azurerm_public_ip" "vmss" {
 
 resource "azurerm_public_ip" "ag" {
   name                = "ag-public-ip-${var.project}-${var.environment}"
+  sku                 = "Basic"
   location            = var.azure_region
   resource_group_name = azurerm_resource_group.vmss.name
   allocation_method   = "Static"
