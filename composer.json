@@ -1,0 +1,96 @@
+{
+    "name": "roots/bedrock",
+    "type": "project",
+    "license": "MIT",
+    "description": "WordPress boilerplate with modern development tools, easier configuration, and an improved folder structure",
+    "homepage": "https://roots.io/bedrock/",
+    "authors": [
+        {
+            "name": "Scott Walkinshaw",
+            "email": "scott.walkinshaw@gmail.com",
+            "homepage": "https://github.com/swalkinshaw"
+        },
+        {
+            "name": "Ben Word",
+            "email": "ben@benword.com",
+            "homepage": "https://github.com/retlehs"
+        }
+    ],
+    "keywords": [
+        "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
+    ],
+    "support": {
+        "issues": "https://github.com/roots/bedrock/issues",
+        "forum": "https://discourse.roots.io/category/bedrock"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+        },
+        {
+            "type": "composer",
+            "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-muplugin/"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "composer/installers": "^1.10",
+        "vlucas/phpdotenv": "^5.3",
+        "oscarotero/env": "^2.1",
+        "roots/bedrock-autoloader": "^1.0",
+        "roots/wordpress": "^5.8",
+        "roots/wp-config": "1.0.0",
+        "roots/wp-password-bcrypt": "1.0.0",
+        "roots/multisite-url-fixer": "^1.1",
+        "wpackagist-plugin/acf-extended": "0.8.8.6",
+        "wpackagist-plugin/broken-link-checker": "^1.11.16",
+        "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
+        "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
+        "wpackagist-plugin/nitropack": "^1.5.7",
+        "wpackagist-plugin/seo-by-rank-math": "^1.0.75",
+        "wpackagist-plugin/wordfence": "^7.5.6",
+        "wpackagist-plugin/wps-hide-login": "^1.9.1",
+        "wpackagist-plugin/akismet": "^4.2.1",
+        "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
+        "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
+        "wpackagist-plugin/user-role-editor": "^4.60.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.6",
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-paths": {
+            "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin",
+                "advanced-custom-fields/advanced-custom-fields-pro",
+                "wpackagist-plugin/acf-extended",
+                "wpackagist-plugin/broken-link-checker",
+                "wpackagist-plugin/easy-wp-smtp",
+                "wpackagist-plugin/gravity-forms-custom-post-types",
+                "wpackagist-plugin/nitropack",
+                "wpackagist-plugin/seo-by-rank-math"
+            ],
+            "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "web/app/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "web/wp"
+    },
+    "scripts": {
+        "test": [
+            "phpcs --standard=WordPress  --ignore=*.css,*.js,*.min.*,*/node_modules/*"
+        ],
+        "fix": [
+            "phpcbf --standard=WordPress  --ignore=*.css,*.js,*.min.*"
+        ]
+    }
+}

@@ -1,0 +1,156 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**-----------------------------------------------------------------------*/
+
+/** STAFF CARD */
+
+/**-----------------------------------------------------------------------*/
+.staff-card-inner {
+	position: relative;
+	width: 100%;
+}
+
+.staff-card-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.staff-card {
+	background-color: $color-white;
+	border-radius: 0.4rem 0.4rem 0 0;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	height: 100%;
+	margin-bottom: 2.4rem;
+	margin-right: 2.4rem;
+	max-width: calc(50% - 1.2rem);
+	overflow: hidden;
+	padding-bottom: 0.4rem;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+
+	&:nth-child(2n) {
+		margin-right: 0;
+	}
+
+	&::before {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+		z-index: 2;
+	}
+}
+
+.staff-card-img {
+	border-radius: 0.4rem 0.4rem 0 0;
+	height: 100%;
+	padding-bottom: 56.035%;
+	position: relative;
+	transition: $transition;
+	width: 100%;
+	z-index: 1;
+
+	img {
+		@include imgCover;
+	}
+}
+
+.staff-card-info {
+	padding: 2.4rem 2.4rem 4.8rem 2.4rem;
+	position: relative;
+	text-align: left;
+	transition: $transition;
+}
+
+.decor-staff {
+	background-color: $color-secondary-80;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	bottom: 0;
+	height: calc(100% - 15rem);
+	left: 0;
+	margin-top: -0.1rem;
+	position: absolute;
+	top: 15rem;
+	width: 100%;
+	z-index: -1;
+}
+
+@media (min-width: 1200px) {
+	.staff-card:hover {
+
+		&::before {
+			height: 1em;
+		}
+
+		.staff-card-img {
+			transform: translateY(-0.5em);
+		}
+
+		.staff-card-info {
+			transform: translateY(-0.5em);
+
+			.title {
+				color: $color-primary-base1-10;
+			}
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.staff-card-info {
+		padding: 2.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.staff-card {
+		margin-bottom: 1.6rem;
+		margin-right: 0;
+		max-width: 100%;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	.decor-staff {
+		height: calc(100% - 30rem);
+		margin-top: 0;
+		top: 30rem;
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** STAFF CARD FOR DIVISION */
+
+/**--------------------------------------------------------------------------*/
+.division {
+	.staff-card {
+		&::before {
+			background: $color-primary-base2-20;
+		}
+	}
+}
+
+/**--------------------------------------------------------------------------*/
+
+/** DIVIDER */
+
+/**--------------------------------------------------------------------------*/
+.divider {
+	background-color: $color-secondary-90;
+	height: 0.1rem;
+	position: relative;
+	width: 100%;
+}

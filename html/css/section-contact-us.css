@@ -24,7 +24,9 @@
   .contact-block .text-xl { margin-right: 0; max-width: 100%; }
   .contact-block .btn { margin-left: 0; } }
 
-@media (max-width: 767px) { .contact-us.mt-150 { margin-top: -4rem; } }
+@media (max-width: 767px) { .contact-us.mt-150 { margin-top: -4rem; }
+  .contact-us.type-2 .contact-block { padding: 2.4rem; }
+  .contact-us.type-2 .contact-block .btn { width: 100%; } }
 
 /**--------------------------------------------------------------------------*/
 /** CONTACT US FOR DIVISION */
