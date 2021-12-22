@@ -97,19 +97,13 @@ sub {
 	padding-right: 0;
 }
 
-@media (min-width: 1601px) {
+@media (min-width: 1240px) {
 	.container {
 		max-width: 1200px;
 		width: 100%;
 	}
 }
 
-@media (min-width: 1200px) and (max-width: 1600px) {
-	.container {
-		max-width: 1200px;
-		width: 100%;
-	}
-}
 
 @media (max-width: 767px) {
 	.container {
