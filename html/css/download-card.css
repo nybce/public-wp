@@ -1,56 +1,56 @@
-/**-----------------------------------------------------------------------*/
+/**-------------------------*/
 /** DOWNLOAD CARD */
-/**-----------------------------------------------------------------------*/
+/**-------------------------*/
 .download-card-inner { position: relative; width: 100%; }
 
-.download-card-inner::before { content: ''; position: absolute; top: auto; bottom: 3.3rem; left: 0; width: 100%; height: 0.1rem; background-color: #C8D8E8; }
+.download-card-inner::before { background-color: #c8d8e8; bottom: 3.3rem; content: ""; height: 0.1rem; left: 0; position: absolute; top: auto; width: 100%; }
 
 .download-card-wrapper > * { margin-bottom: 2.4rem; }
 
-.download-card { position: relative; overflow: hidden; cursor: pointer; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #FFF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 0.4rem; width: 100%; }
+.download-card { -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-color: #fff; border-radius: 0.4rem 0.4rem 0 0; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); cursor: pointer; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; overflow: hidden; padding-bottom: 0.4rem; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; }
 
-.download-card::before { content: ""; position: absolute; left: 0; bottom: 0; z-index: 2; width: 100%; height: 0.25em; background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #EF3E42), color-stop(33.67%, #F68924), color-stop(65.04%, #87BD40), color-stop(96.91%, #53C4C9)); background: -o-linear-gradient(left, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); background: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+.download-card::before { background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #ef3e42), color-stop(33.67%, #f68924), color-stop(65.04%, #87bd40), color-stop(96.91%, #53c4c9)); background: -o-linear-gradient(left, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); background: linear-gradient(90deg, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); bottom: 0; content: ""; height: 0.25em; left: 0; position: absolute; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 2; }
 
-.download-card-img { position: relative; z-index: 1; width: 100%; height: 100%; max-width: 15.1%; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #E2F0FF; border-radius: 0.4rem 0 0 0; padding-bottom: 23.9%; }
+.download-card-img { background-color: #e2f0ff; border-radius: 0.4rem 0 0 0; height: 100%; max-width: 15.1%; padding-bottom: 23.9%; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 1; }
 
-.download-card-img img { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-width: 32px; max-height: 35px; }
+.download-card-img img { left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 35px; max-width: 32px; }
 
-.download-card-info { position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; padding: 4.8rem; text-align: left; }
+.download-card-info { padding: 4.8rem; position: relative; text-align: left; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
 
 .form-assays .container { position: relative; }
 
-.decor-form-assays { position: absolute; top: 0; bottom: 0; left: 0; z-index: -1; width: 100%; height: 100%; background-repeat: no-repeat; background-size: 100%; background-position: top center; background-color: #E2F0FF; }
+.decor-form-assays { background-color: #e2f0ff; background-position: top center; background-repeat: no-repeat; background-size: 100%; bottom: 0; height: calc(100% - 14rem); left: 0; position: absolute; top: 14rem; width: 100%; z-index: -1; }
 
-.decor-form-assays.type-2 { top: 29rem; height: calc(100% - 31rem); }
+.decor-form-assays.type-2 { height: calc(100% - 31rem); top: 29rem; }
 
 @media (min-width: 1200px) { .download-card:hover::before { height: 1em; }
   .download-card:hover .download-card-img { -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); }
   .download-card:hover .download-card-info { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
-  .download-card:hover .download-card-info .title { color: #FC1921; } }
+  .download-card:hover .download-card-info .title { color: #fc1921; } }
 
-@media (max-width: 1600px) { .decor-form-assays.type-2 { top: 35rem; height: calc(100% - 35rem); } }
+@media (max-width: 1600px) { .decor-form-assays.type-2 { height: calc(100% - 42rem); top: 39rem; } }
 
 @media (max-width: 1199px) { .download-card-info { padding: 2.4rem; } }
 
 @media (max-width: 767px) { .download-card { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
-  .download-card-img { max-width: 100%; background-color: transparent; padding-bottom: 0; padding: 2.4rem 2.4rem 1.6rem 2.4rem; }
-  .download-card-img img { position: relative; display: block; top: unset; left: unset; -webkit-transform: unset; -ms-transform: unset; transform: unset; }
-  .download-card-info { width: 100%; padding: 0 2.4rem 2.4rem 2.4rem; }
-  .decor-form-assays { top: 26rem; height: calc(100% - 26rem); }
-  .decor-form-assays.type-2 { top: 48rem; height: calc(100% - 51rem); } }
+  .download-card-img { background-color: transparent; max-width: 100%; padding: 2.4rem 2.4rem 1.6rem 2.4rem; padding-bottom: 0; }
+  .download-card-img img { display: block; left: unset; position: relative; top: unset; -webkit-transform: unset; -ms-transform: unset; transform: unset; }
+  .download-card-info { padding: 0 2.4rem 2.4rem 2.4rem; width: 100%; }
+  .decor-form-assays { height: calc(100% - 26rem); top: 26rem; }
+  .decor-form-assays.type-2 { height: calc(100% - 51rem); top: 48rem; } }
 
-/**--------------------------------------------------------------------------------------------*/
+/**-------------------------*/
 /** DOWNLOAD CARD FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division .download-card::before { background: #439BFF; }
+/**-------------------------*/
+.division .download-card::before { background: #439bff; }
 
-/**--------------------------------------------------------------------------------------------*/
+/**-------------------------*/
 /** EXPAND MORE BUTTON */
-/**--------------------------------------------------------------------------------------------*/
-.expand-more { position: relative; cursor: pointer; display: inline-block; vertical-align: middle; background: #1E2A3A; border-radius: 0 0 0.4rem 0.4rem; font-size: 1.8rem; line-height: 1.44em; font-weight: 700; color: #FFF; padding: 0.22em 2.6em; }
+/**-------------------------*/
+.expand-more { background: #1e2a3a; border-radius: 0 0 0.4rem 0.4rem; color: #fff; cursor: pointer; display: inline-block; font-size: 1.8rem; font-weight: 700; line-height: 1.44em; padding: 0.22em 2.6em; position: relative; vertical-align: middle; }
 
-.expand-block { position: relative; display: block; text-align: center; }
+.expand-block { display: block; position: relative; text-align: center; }
 
 .expand-block .download-card { display: none; }
 
-.expand-block .download-card.active { display: -webkit-box; display: -ms-flexbox; display: flex; }
+.expand-block .download-card.active { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }

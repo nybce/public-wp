@@ -5,11 +5,15 @@
         <div class="row">
             <div class="col-lg-4 order-lg-0 order-2">
 
+
+
                 <?php include 'inc/flexible-blocks/_page-menu.php';?>
 
                 <div class="spacer-24"></div>
 
                 <div class="promo-wrapper">
+                    <div class="decor-promo mobile" data-rellax-speed="-1" style="background-image: url('./img/wave.svg');"></div>
+
                     <div class="promo-item">
                         <div class="h5 title fw-800">Search donation centers near you</div>
                         <div class="spacer-16"></div>
@@ -150,6 +154,18 @@
                 <div class="spacer-48"></div>
 
                 <div class="text">
+
+                    <iframe loading="lazy" title="Petite vidéo de présentation rapide de Drone de Vision." width="500"
+                        height="281" src="https://www.youtube.com/embed/6i8qj5q76_Q?feature=oembed"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen="">
+                    </iframe>
+                    <span>Optional Video Caption.</span>
+                </div>
+
+                <div class="spacer-48"></div>
+
+                <div class="text">
                     <h3 style="color: #1E2A3A;">H3 Heading Style</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum scelerisque sed lobortis in
                         enim, est. Nulla pretium, id adipiscing enim arcu. Lobortis odio senectus a viverra adipiscing
@@ -166,18 +182,6 @@
                         <li>Mi, blandit eget posuere sollicitudin feugiat aliquam. Faucibus sed neque, elementum
                             bibendum duis cursus.</li>
                     </ul>
-                </div>
-
-                <div class="spacer-48"></div>
-
-                <div class="text">
-
-                    <iframe loading="lazy" title="Petite vidéo de présentation rapide de Drone de Vision." width="500"
-                        height="281" src="https://www.youtube.com/embed/6i8qj5q76_Q?feature=oembed"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen="">
-                    </iframe>
-                    <span>Optional Video Caption.</span>
                 </div>
 
                 <div class="spacer-48"></div>

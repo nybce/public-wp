@@ -1,3 +1,5 @@
+import './lib/jquery.sumoselect.min';
+
 jQuery( function( $ ) {
 	// sumoselect
 	if ( $( '.SelectBox' ).length ) {

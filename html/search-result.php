@@ -24,6 +24,8 @@
 
             <?php include 'inc/flexible-blocks/_section-search-results.php';?>
 
+            <div class="spacer-96 spacer-xs-64"></div>
+
             <?php include 'inc/flexible-blocks/_section-news.php';?>
 
         </main>
@@ -36,10 +38,11 @@
 
     <?php include 'inc/elements-includes/_form-elements.php';?>
     <?php include 'inc/elements-includes/_sumoselect.php';?>
-    <?php include 'inc/elements-includes/_swiper.php';?>
 
+    <?php include 'inc/flexible-includes/_section-filters.php';?>
     <?php include 'inc/flexible-includes/_section-search-results.php';?>
     <?php include 'inc/flexible-includes/_section-news.php';?>
+    <?php include 'inc/elements-includes/_swiper.php';?>
 
     <?php include 'inc/javascripts-includes/_jquery.php';?>
     <?php include 'inc/javascripts-includes/_swiper.php';?>

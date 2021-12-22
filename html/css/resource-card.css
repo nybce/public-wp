@@ -1,0 +1,53 @@
+/**------------------------*/
+/** RESOURCE CARD */
+/**------------------------*/
+.resource-card-wrapper { -webkit-box-align: stretch; -ms-flex-align: stretch; align-items: stretch; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin-bottom: -2.4rem; }
+
+.resource-card { background-color: #fff; border-radius: 0.4rem 0.4rem 0 0; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); cursor: pointer; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; margin-bottom: 2.4rem; margin-right: 2.4rem; max-width: calc(50% - 1.2rem); overflow: hidden; padding-bottom: 0.4rem; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; }
+
+.resource-card:nth-of-type(2n) { margin-right: 0; }
+
+.resource-card::before { background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #ef3e42), color-stop(33.67%, #f68924), color-stop(65.04%, #87bd40), color-stop(96.91%, #53c4c9)); background: -o-linear-gradient(left, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); background: linear-gradient(90deg, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); bottom: 0; content: ""; height: 0.25em; left: 0; position: absolute; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 2; }
+
+.resource-card-img { border-radius: 0.4rem 0.4rem 0 0; height: 100%; padding-bottom: 56.1%; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 1; }
+
+.resource-card-img img { height: 100%; left: 0; -o-object-fit: cover; object-fit: cover; position: absolute; top: 0; width: 100%; }
+
+.border-top { background-color: #e2f0ff; height: 1.5em; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; }
+
+.resource-card-img + .border-top { display: none; }
+
+.resource-card-desc { padding: 2.4rem; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+
+.resource-card-title { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.resource-card-icon { background-color: #e2f0ff; border-radius: 100%; -ms-flex-negative: 0; flex-shrink: 0; height: 4.8rem; margin-right: 1.6rem; position: relative; width: 4.8rem; }
+
+.resource-card-icon img { left: 50%; position: absolute; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); max-height: 2.4rem; max-width: 2.4rem; }
+
+.resource-card-info { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.resource-card-label { margin-right: 2.4rem; max-width: calc(50% - 1.2rem); position: relative; width: 100%; }
+
+.resource-card-label:nth-of-type(2n) { margin-right: 0; }
+
+@media (min-width: 1200px) { .resource-card:hover::before { height: 1em; }
+  .resource-card:hover .resource-card-img { -webkit-transform: translateY(-0.7em); -ms-transform: translateY(-0.7em); transform: translateY(-0.7em); }
+  .resource-card:hover .resource-card-desc { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
+  .resource-card:hover .resource-card-title .title { color: #e30513; } }
+
+@media (max-width: 767px) { .resource-card-wrapper { margin-bottom: -1.6rem; }
+  .resource-card { margin-bottom: 1.6rem; margin-right: 0; max-width: 100%; }
+  .resource-card-info { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+  .resource-card-info > *:not(:last-child) { margin-bottom: 1.6rem; }
+  .resource-card-label { margin-right: 0; max-width: 100%; } }
+
+/**------------------------*/
+/** DIVIDER */
+/**------------------------*/
+.divider { background-color: #c8d8e8; height: 0.1rem; position: relative; width: 100%; }
+
+/**------------------------*/
+/** RESOURCE CARD FOR DIVISION */
+/**------------------------*/
+.division .resource-card::before { background: #439bff; }

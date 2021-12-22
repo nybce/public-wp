@@ -20,7 +20,7 @@
 
                                     <div class="h6 title fw-900 tagline">Employee Spotlight</div>
 
-                                    <div class="spacer-64 spacer-xs-16"></div>
+                                    <div class="spacer-48 spacer-xs-16"></div>
 
                                     <div class="text light">
                                         “Employee statement about their passion and commitment. Lorem ipsum
@@ -58,20 +58,17 @@
                             <div class="col-lg-7 align-self-stretch pe-md-0 order-2 order-lg-0">
                                 <div class="employees-info">
 
-                                    <div class="h6 title fw-900 tagline">Employee Spotlight</div>
+                                    <div class="h6 title fw-900 tagline">Donor Stories</div>
 
-                                    <div class="spacer-64 spacer-xs-16"></div>
+                                    <div class="spacer-48 spacer-xs-16"></div>
 
                                     <div class="text light">
-                                        “Employee statement about their passion and commitment. Lorem ipsum
-                                        dolor sit amet, consectetur adipiscing elit.”
+                                        “Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet”
                                     </div>
 
                                     <div class="spacer-24 spacer-xs-16"></div>
 
-                                    <div class="h5 title fw-800 light name">Firstname Lastname</div>
-
-                                    <div class="h6 title fw-500 position">Position/Title</div>
+                                    <div class="text-xl text-30">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget.</div>
 
                                     <div class="spacer-48 spacer-xs-16"></div>
 
@@ -100,7 +97,7 @@
 
                                     <div class="h6 title fw-900 tagline">Employee Spotlight</div>
 
-                                    <div class="spacer-64 spacer-xs-16"></div>
+                                    <div class="spacer-48 spacer-xs-16"></div>
 
                                     <div class="text light">
                                         “Employee statement about their passion and commitment. Lorem ipsum

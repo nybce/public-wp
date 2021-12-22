@@ -1,41 +1,41 @@
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 /** STAFF CARD */
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .staff-card-inner { position: relative; width: 100%; }
 
 .staff-card-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
 
-.staff-card { position: relative; overflow: hidden; cursor: pointer; width: 100%; height: 100%; max-width: calc(50% - 1.2rem); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; background-color: #FFF; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 0.4rem; margin-right: 2.4rem; margin-bottom: 2.4rem; }
+.staff-card { background-color: #fff; border-radius: 0.4rem 0.4rem 0 0; -webkit-box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2); cursor: pointer; height: 100%; margin-bottom: 2.4rem; margin-right: 2.4rem; max-width: calc(50% - 1.2rem); overflow: hidden; padding-bottom: 0.4rem; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; }
 
 .staff-card:nth-child(2n) { margin-right: 0; }
 
-.staff-card::before { content: ""; position: absolute; left: 0; bottom: 0; z-index: 2; width: 100%; height: 0.25em; background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #EF3E42), color-stop(33.67%, #F68924), color-stop(65.04%, #87BD40), color-stop(96.91%, #53C4C9)); background: -o-linear-gradient(left, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); background: linear-gradient(90deg, #EF3E42 1.28%, #F68924 33.67%, #87BD40 65.04%, #53C4C9 96.91%); -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
+.staff-card::before { background: -webkit-gradient(linear, left top, right top, color-stop(1.28%, #ef3e42), color-stop(33.67%, #f68924), color-stop(65.04%, #87bd40), color-stop(96.91%, #53c4c9)); background: -o-linear-gradient(left, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); background: linear-gradient(90deg, #ef3e42 1.28%, #f68924 33.67%, #87bd40 65.04%, #53c4c9 96.91%); bottom: 0; content: ""; height: 0.25em; left: 0; position: absolute; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 2; }
 
-.staff-card-img { position: relative; z-index: 1; width: 100%; height: 100%; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; border-radius: 0.4rem 0.4rem 0 0; padding-bottom: 56.035%; }
+.staff-card-img { border-radius: 0.4rem 0.4rem 0 0; height: 100%; padding-bottom: 56.035%; position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; width: 100%; z-index: 1; }
 
-.staff-card-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
+.staff-card-img img { height: 100%; left: 0; -o-object-fit: cover; object-fit: cover; position: absolute; top: 0; width: 100%; }
 
-.staff-card-info { position: relative; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; padding: 2.4rem 2.4rem 4.8rem 2.4rem; text-align: left; }
+.staff-card-info { padding: 2.4rem 2.4rem 4.8rem 2.4rem; position: relative; text-align: left; -webkit-transition: 0.25s ease-in; -o-transition: 0.25s ease-in; transition: 0.25s ease-in; }
 
-.decor-staff { position: absolute; top: 15rem; bottom: 0; left: 0; z-index: -1; width: 100%; height: calc(100% - 15rem); background-repeat: no-repeat; background-size: 100%; background-position: top center; background-color: #E2F0FF; margin-top: -0.1rem; }
+.decor-staff { background-color: #e2f0ff; background-position: top center; background-repeat: no-repeat; background-size: 100%; bottom: 0; height: calc(100% - 15rem); left: 0; margin-top: -0.1rem; position: absolute; top: 15rem; width: 100%; z-index: -1; }
 
 @media (min-width: 1200px) { .staff-card:hover::before { height: 1em; }
   .staff-card:hover .staff-card-img { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
   .staff-card:hover .staff-card-info { -webkit-transform: translateY(-0.5em); -ms-transform: translateY(-0.5em); transform: translateY(-0.5em); }
-  .staff-card:hover .staff-card-info .title { color: #FC1921; } }
+  .staff-card:hover .staff-card-info .title { color: #fc1921; } }
 
 @media (max-width: 1199px) { .staff-card-info { padding: 2.4rem; } }
 
-@media (max-width: 767px) { .staff-card { max-width: 100%; margin-right: 0; margin-bottom: 1.6rem; }
+@media (max-width: 767px) { .staff-card { margin-bottom: 1.6rem; margin-right: 0; max-width: 100%; }
   .staff-card:last-of-type { margin-bottom: 0; }
-  .decor-staff { top: 30rem; height: calc(100% - 30rem); margin-top: 0; } }
+  .decor-staff { height: calc(100% - 30rem); margin-top: 0; top: 30rem; } }
 
-/**--------------------------------------------------------------------------------------------*/
+/**------------------------*/
 /** STAFF CARD FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/
-.division .staff-card::before { background: #439BFF; }
+/**------------------------*/
+.division .staff-card::before { background: #439bff; }
 
-/**--------------------------------------------------------------------------------------------*/
+/**------------------------*/
 /** DIVIDER */
-/**--------------------------------------------------------------------------------------------*/
-.divider { position: relative; width: 100%; height: 0.1rem; background-color: #C8D8E8; }
+/**------------------------*/
+.divider { background-color: #c8d8e8; height: 0.1rem; position: relative; width: 100%; }

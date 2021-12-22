@@ -50,7 +50,6 @@
                   <div class="col-xl-3 col-lg-4 text-center">
                       <div class="logo">
                           <img src="img/nybc-logo-footer.svg" alt="logo" loading="lazy">
-                          <img src="img/nybc-logo-footer-mobile.svg" alt="logo" class="mobile" loading="lazy">
                       </div>
 
                       <div class="spacer-16"></div>
@@ -68,8 +67,9 @@
 
                   <div class="col-xl-3 col-lg-4">
                       <ul class="footer-nav-list">
-                          <li><a href="#">Contact</a></li>
-                          <li><a href="#">Careers</a></li>
+                          <li><a href="#">NYBC Enterprise</a></li>
+                          <li><a href="#">Research</a></li>
+                          <li><a href="#">Products & Services</a></li>
                       </ul>
 
                       <div class="spacer-xs-4"></div>

@@ -1,0 +1,1 @@
+<script defer src="javascript/filter-sidebar.js"></script>

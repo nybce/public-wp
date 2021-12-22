@@ -34,6 +34,4 @@
 
     </div>
 
-    <div class="spacer-120 spacer-xs-96"></div>
-
 </div>

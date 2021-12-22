@@ -1,12 +1,12 @@
 <!-- SEARCH RESULTS -->
 <div class="section search-results">
 
-    <div class="decor-search" data-rellax-speed="-1" style="background-image: url('./img/wave.svg');"></div>
+    <div class="decor-search" data-rellax-speed="-1" style="background-image: url('./img/wave-1.svg');"></div>
 
     <div class="container container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <div class="search-results-wrapper">
+                <div class="filters-wrapper">
                     <div class="select-item-total">Showing <span>32</span> Results</div>
 
                     <div class="select-item ml-auto">

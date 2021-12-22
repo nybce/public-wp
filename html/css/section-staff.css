@@ -1,35 +1,32 @@
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 /** STAFF */
-/**-----------------------------------------------------------------------*/
-.personal-info-wrapper { position: relative; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: -2.4rem; }
+/**------------------------*/
+.personal-info-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-bottom: -2.4rem; position: relative; }
 
-.personal-info { position: relative; width: 100%; max-width: calc(50% - 1.2rem); border-bottom: 0.1rem solid #C8D8E8; margin-bottom: 2.4rem; margin-right: 2.4rem; }
+.personal-info { border-bottom: 0.1rem solid #c8d8e8; margin-bottom: 2.4rem; margin-right: 2.4rem; max-width: calc(50% - 1.2rem); position: relative; width: 100%; }
 
 .personal-info:nth-child(2n) { margin-right: 0; }
 
-.personal-info .title { text-transform: uppercase; color: #0C2D83; }
+.personal-info .title { color: #0c2d83; text-transform: uppercase; }
 
 .personal-info .text-xl { max-width: 80%; }
 
-.contact-link { font-size: 2rem; line-height: 1.5em; font-weight: 400; }
+.contact-link { font-size: 2rem; font-weight: 400; line-height: 1.5em; }
 
-.contact-link span { font-weight: 700; color: #439BFF; }
+.contact-link span { color: #439bff; font-weight: 700; }
 
-@media (min-width: 1200px) { .page-menu li:hover { color: #E30513; }
-  .page-menu li:hover:first-child { color: #59728B; }
+@media (min-width: 1200px) { .page-menu li:hover { color: #e30513; }
+  .page-menu li:hover:first-child { color: #59728b; }
   .promo-cta:hover::before { height: 1em; }
   .promo-cta:hover .title { -webkit-transform: translateY(-0.3em); -ms-transform: translateY(-0.3em); transform: translateY(-0.3em); }
   .promo-cta:hover .text-lg { -webkit-transform: translateY(-0.3em); -ms-transform: translateY(-0.3em); transform: translateY(-0.3em); }
-  .promo-cta:hover .btn { -webkit-transform: translateY(-0.3em); -ms-transform: translateY(-0.3em); transform: translateY(-0.3em); color: #FFF; background: #FC1921; } }
+  .promo-cta:hover .btn { background: #fc1921; color: #fff; -webkit-transform: translateY(-0.3em); -ms-transform: translateY(-0.3em); transform: translateY(-0.3em); }
+  .contact-link a:hover { color: #439bff; } }
 
 @media (max-width: 1199px) { .personal-info .text-xl { max-width: 100%; }
   .contact-link { font-size: 1.8rem; } }
 
 @media (max-width: 991px) { .personal-info-wrapper { margin-bottom: -2.4rem; }
-  .personal-info { max-width: 100%; margin-bottom: 2.4rem; margin-right: 0; } }
+  .personal-info { margin-bottom: 2.4rem; margin-right: 0; max-width: 100%; } }
 
 @media (max-width: 767px) { .contact-link { font-size: 1.6rem; } }
-
-/**--------------------------------------------------------------------------------------------*/
-/** STAFF FOR DIVISION */
-/**--------------------------------------------------------------------------------------------*/

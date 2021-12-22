@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**---*/
+/**------------------------*/
 
 /** SIDEBAR */
 
-/**---*/
+/**------------------------*/
 .page-menu-wrapper {
 	max-width: 28.5rem;
 	position: relative;
@@ -48,7 +48,7 @@
 		transform: translate(-50%, -50%);
 		width: 1.8rem;
 		will-change: transform;
-		z-index: 101;
+		z-index: 95;
 
 		span {
 			background: $color-gray-100;
@@ -125,7 +125,7 @@
 		}
 	}
 
-	>*:not(:last-child) {
+	> *:not(:last-child) {
 		border-bottom: 0.1rem solid $color-secondary-90;
 	}
 }
@@ -304,6 +304,10 @@
 		display: none;
 		margin: 0 auto;
 
+		.title {
+			margin-right: 0.8rem;
+		}
+
 		.mobile-button-wrapper {
 			display: block;
 		}
@@ -318,7 +322,7 @@
 	}
 
 	.page-menu-head {
-		justify-content: space-between;
+		justify-content: center;
 	}
 
 	.page-menu {
@@ -336,6 +340,7 @@
 
 	.promo-wrapper {
 		margin: 0 auto;
+		max-width: 100%;
 
 		&.type-2 {
 			margin-bottom: 1.6rem;
@@ -356,6 +361,16 @@
 
 	.promo-cta {
 		margin: 0 auto;
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	.promo-cta-modal {
+		&.active {
+			max-width: 100%;
+			right: 0;
+		}
 	}
 }
 
@@ -365,11 +380,28 @@
 	background-repeat: no-repeat;
 	background-size: 100%;
 	bottom: 0;
-	height: 100%;
+	height: calc(100% - 10rem);
 	left: 0;
 	position: absolute;
 	width: 100%;
 	z-index: -1;
+}
+
+.decor-promo {
+	background-color: $color-secondary-80;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	bottom: -55%;
+	height: calc(100% + 55%);
+	left: -70%;
+	position: absolute;
+	width: calc(100vw + 70%);
+	z-index: -1;
+
+	&.mobile {
+		display: none;
+	}
 }
 
 @media (max-width: 767px) {
@@ -377,13 +409,19 @@
 		height: calc(100% - 40rem);
 		top: 40rem;
 	}
+
+	.decor-promo {
+		&.mobile {
+			display: block;
+		}
+	}
 }
 
-/**---*/
+/**------------------------*/
 
 /** SIDEBAR FOR DIVISION */
 
-/**---*/
+/**------------------------*/
 .division {
 	.promo-cta {
 		background-color: $color-primary-base2-30;
@@ -402,6 +440,10 @@
 			.promo-item {
 				.btn {
 					border-color: $color-primary-base2-20;
+
+					&:focus {
+						background: $color-primary-base2-20;
+					}
 				}
 			}
 		}
@@ -411,6 +453,17 @@
 		.promo-cta:hover {
 			.btn {
 				background: $color-primary-base2-20;
+			}
+		}
+
+		.promo-wrapper {
+			&.type-2 {
+				.promo-item {
+					.btn:hover {
+						background: $color-primary-base2-20;
+						border-color: $color-primary-base2-20;
+					}
+				}
 			}
 		}
 	}
