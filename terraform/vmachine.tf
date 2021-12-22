@@ -184,19 +184,6 @@ resource "azurerm_application_gateway" "loadbalancer" {
     protocol                       = "Http"
   }
 
-#  ssl_certificate { # @todo: This sucks real bad. Replace this with fetching from the keyvault once we get the rest working
-#    name = "sslcert"
-    #data = data.local_file.certificate_data.content_base64
-#    key_vault_secret_id = "https://kv-ssl-cert-w5hb.vault.azure.net/secrets/wildcard-dev-nybc-wordpress-bbox-ly/a71dc4d7f54f4179824ac9b6c6a9c5e3"
-#  }
-
-#  http_listener {
- #   name                           = local.listener_https_name
-  #  frontend_ip_configuration_name = local.frontend_ip_configuration_name
- #   frontend_port_name             = local.frontend_https_port_name
- #   protocol                       = "Https"
- #   ssl_certificate_name           = "sslcert"
- # }
 
 
   request_routing_rule {
@@ -207,13 +194,5 @@ resource "azurerm_application_gateway" "loadbalancer" {
     backend_http_settings_name = local.http_setting_name
   }
 
-#  request_routing_rule {
-#    name                       = local.request_routing_rule_https_name
-#    rule_type                  = "Basic"
-#    http_listener_name         = local.listener_https_name
-#    backend_address_pool_name  = local.backend_address_pool_name
-#    backend_http_settings_name = local.http_setting_name
-
-#  }
 }
 
