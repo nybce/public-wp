@@ -13,16 +13,17 @@ locals {
   domain_name_sets = {
     "dev" = [
       "comprehensivecellsolutions.dev.nybc-wordpress.bbox.ly",
-      "delmarvablood.dev.bbox.ly",
-      "innovativebloodresources.dev.bbox.ly",
-      "integratedlabnetwork.dev.bbox.ly",
-      "mbc.dev.bbox.ly",
-      "nationalcordbloodprogram.dev.bbox.ly",
-      "ncbb.dev.bbox.ly",
-      "ncbgg.dev.bbox.ly",
-      "ncbp2.dev.bbox.ly",
-      "nybloodcenter.dev.bbox.ly"
-    ]
+      "delmarvablood.dev.nybc-wordpress.bbox.ly",
+      "innovativebloodresources.dev..nybc-wordpress.bbox.ly",
+      "integratedlabnetwork.dev.nybc-wordpress.bbox.ly",
+      "mbc.dev.nybc-wordpress.bbox.ly",
+      "nationalcordbloodprogram.dev.nybc-wordpress.bbox.ly",
+      "ncbb.dev.nybc-wordpress.bbox.ly",
+      "ncbgg.dev.nybc-wordpress.bbox.ly",
+      "ncbp2.dev.nybc-wordpress.bbox.ly",
+      "nybloodcenter.dev.nybc-wordpress.bbox.ly",
+      "nybc-enterprise.dev.nybc-wordpress.bbox.ly"
+          ]
   }
   cert_files = {
     "dev" = "kv-ssl-cert-w5hb-wildcard-dev-nybc-wordpress-bbox-ly-20211210.pfx"
@@ -47,16 +48,6 @@ data "template_file" "init" {
   }
 }
 
-resource "azurerm_lb" "vmss" {
-  name                = "lb-${var.project}-${var.environment}"
-  location            = azurerm_resource_group.vmss.location
-  resource_group_name = azurerm_resource_group.vmss.name
-
-  frontend_ip_configuration {
-    name                 = "PublicIPAddress"
-    public_ip_address_id = azurerm_public_ip.ag.id
-  }
-}
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
   resource_group_name = azurerm_resource_group.vmss.name
@@ -112,12 +103,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
       primary                                      = true
       subnet_id                                    = azurerm_subnet.vmss.id
       application_gateway_backend_address_pool_ids = "${azurerm_application_gateway.loadbalancer.backend_address_pool[*].id}"
-    }
-    ip_configuration {
-      name                                   = "ip-sshlb"
-      primary                                = false
-      subnet_id                              = azurerm_subnet.vmss.id
-      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
     }
   }
   tags = {
