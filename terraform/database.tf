@@ -18,3 +18,10 @@ resource "azurerm_mysql_server" "example" {
   ssl_enforcement_enabled           = false
 }
 
+resource "azurerm_mysql_firewall_rule" "example" {
+  name                = "blenderbox_bastion"
+  resource_group_name = azurerm_resource_group.vmss.name
+  server_name         = azurerm_mysql_server.example.name
+  start_ip_address    = "52.87.95.160"
+  end_ip_address      = "52.87.95.160"
+}
