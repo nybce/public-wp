@@ -155,16 +155,16 @@
 			transform: unset;
 			width: 100%;
 
-			.container {
-				max-width: 100%;
-			}
+			// .container {
+			// 	max-width: 100%;
+			// }
 		}
 
 		.banner-content {
 			height: 100%;
 			max-width: 95%;
-			padding-left: 11rem;
-			padding-right: 12rem;
+			padding-left: 5rem;
+			padding-right: 5rem;
 			position: relative;
 
 			h5, .h5 {
@@ -173,7 +173,7 @@
 		}
 
 		.decor-banner-1 {
-			background-position: right;
+			background-position: top right;
 			background-repeat: no-repeat;
 			background-size: contain;
 			height: 100%;
@@ -223,7 +223,93 @@
 	}
 }
 
+@media (max-width: 1600px) {
+	.banner-inner {
+		align-items: center;
+		clip-path: ellipse(70% 60% at 50% 40%);
+		display: flex;
+		height: 100%;
+		overflow: hidden;
+		padding-bottom: 56.3%;
+		position: relative;
+		width: 100%;
+
+		&.type-2 {
+			padding-bottom: 22.1%;
+
+			.banner-content {
+				text-align: center;
+			}
+
+			.bg {
+
+				&.orange {
+					background: linear-gradient(0deg, $color-secondary-10 1.31%, $color-secondary-40 100%);
+				}
+
+				&.pink {
+					background: linear-gradient(0deg, $color-secondary-50 1.31%, $color-secondary-60 100%);
+				}
+
+				&.blue {
+					background: linear-gradient(0deg, $color-primary-base2-10 1.31%, $color-primary-base2-20 100%);
+				}
+
+				&.turquoise {
+					background: linear-gradient(0deg, $color-secondary-20 1.31%, $color-secondary-70 100%);
+				}
+
+				&.rellax {
+					height: 103%;
+					top: -8%;
+				}
+
+			}
+		}
+
+		&.type-3 {
+			clip-path: ellipse(66% 62% at 50% 38%);
+			padding-bottom: 43%;
+
+			.banner-content {
+				text-align: center;
+			}
+
+			.bg {
+				&.rellax {
+					height: 103%;
+				}
+			}
+		}
+
+		&.type-4 {
+			.banner-wrapper {
+				.container {
+					max-width: 100%;
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+
+			.banner-content {
+				padding-left: 11rem;
+				padding-right: 12rem;
+			}
+		}
+	}
+}
+
 @media (max-width: 1199px) {
+	.banner-inner {
+
+		&.type-4 {
+			.banner-content {
+				padding-left: 5rem;
+				padding-right: 5rem;
+			}
+		}
+	}
+
 	.banner-img {
 		.bg {
 			&.rellax {
@@ -243,11 +329,20 @@
 		}
 		&.type-4 {
 			.decor-banner-1 {
+				background-position: right;
 				background-size: 100%;
 				height: calc(100% - 10rem);
 				left: -2.5rem;
 				top: 10rem;
 				width: calc(100% + 25rem);
+			}
+
+			&.no-image {
+				.decor-banner-1 {
+					background-position: top right;
+					height: 100%;
+					top: 0;
+				}
 			}
 		}
 	}
@@ -300,6 +395,10 @@
 				padding-right: 4.4rem;
 				text-align: left;
 			}
+
+			.decor-banner-2 {
+				background-position: top right;
+			}
 		}
 	}
 
@@ -323,18 +422,18 @@
 	}
 }
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** DECOR FOR MAIN BANNER */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .banner-decor {
 	height: 100%;
 	left: 0;
 	position: absolute;
 	top: 0;
 	width: 55%;
-	z-index: 1;
+	z-index: 2;
 
 	svg {
 		height: 100%;
@@ -347,11 +446,11 @@
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /** DECOR FOR MAIN BANNER FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 .division {
 	.banner-decor {
 
