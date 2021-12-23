@@ -22,6 +22,9 @@ RUN apk upgrade && \
 #RUN echo 'xdebug.profiler_output_dir = "/data/web"' >> /etc/php7/conf.d/xdebug.ini
 #RUN echo 'xdebug.remote_port = 9000' >> /etc/php7/conf.d/xdebug.ini
 
+# Remove unused dependencies
+RUN rm -rf /var/cache/apk/*
+
 RUN mkdir /var/cache/composer
 ENV COMPOSER_HOME=/var/cache/composer
 
