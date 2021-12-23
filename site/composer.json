@@ -44,6 +44,7 @@
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.0.0",
         "roots/multisite-url-fixer": "^1.1",
+        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
