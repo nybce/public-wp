@@ -22,7 +22,7 @@ docker pull index.docker.io/nybcteam/nybc-wordpress:${docker_image_tag}
 docker run --name nybc-web --restart unless-stopped --net=host \
     -e "ENVIRONMENT=${environment}" \
     -e "ANSIBLE_VAULT_PASS=${ansible_vault_pass}" \
-    -d index.docker.io/nybcteam/nybc-web:${docker_image_tag}
+    -d index.docker.io/nybcteam/nybc-wordpress:${docker_image_tag}
 
 docker pull index.docker.io/containrrr/watchtower
 docker run --name watchtower --restart unless-stopped \
