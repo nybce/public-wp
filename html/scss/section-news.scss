@@ -118,6 +118,10 @@
 	.swiper-pagination {
 		display: none;
 	}
+
+	.swiper-slide {
+		height: auto;
+	}
 }
 
 .decor-news {
@@ -165,6 +169,10 @@
 }
 
 @media (max-width: 1199px) {
+	.news-item {
+		max-width: 100%;
+	}
+
 	.decor-news {
 		height: 98%;
 	}

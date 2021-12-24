@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="swiper-container"
-                        data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
+                        data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="#" class="card-item small">

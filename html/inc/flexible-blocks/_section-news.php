@@ -20,7 +20,7 @@
 
 
             <div class="swiper-container"
-                data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
+                data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="detail-page-news-article.php" class="news-item">
