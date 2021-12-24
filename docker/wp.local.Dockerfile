@@ -5,7 +5,8 @@ RUN apk upgrade && \
   apk add --no-cache bash \
   ca-certificates \
   curl \
-  mysql-client
+  mysql-client \
+  nano
 
 
 # Install XDebug
@@ -44,7 +45,6 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
-RUN ls -al
 RUN mkdir /db_dumps
 RUN apk add openssh
 RUN ["chmod", "+x", "/scripts/fetchDb.sh"]

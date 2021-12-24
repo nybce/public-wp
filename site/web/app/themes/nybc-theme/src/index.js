@@ -1,2 +1,13 @@
-import './sass/style.scss';
-import './js/navigation';
+//import './sass/main.scss';
+import './js/global';
+import './js/swiper-init';
+import './js/sumoselect-init';
+import './js/rellax-init';
+import './js/inputmask-init';
+import './js/header';
+import './js/page-menu';
+import './js/promo-cta-modal';
+import './js/tabs';
+import './js/download-card';
+import './js/accordion';
+import './js/filter-sidebar';
