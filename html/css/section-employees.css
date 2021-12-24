@@ -17,7 +17,7 @@
 
 .employees-info .position { color: #c8d8e8; }
 
-.employees-img { display: block; padding-bottom: 122%; position: relative; width: 100%; }
+.employees-img { height: 100%; display: block; padding-bottom: 122%; position: relative; width: 100%; }
 
 .employees-img img { height: 100%; left: 0; -o-object-fit: cover; object-fit: cover; position: absolute; top: 0; width: 100%; }
 
