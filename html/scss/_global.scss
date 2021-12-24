@@ -93,21 +93,22 @@ sub {
 }
 
 .container {
-	padding-left: 0;
-	padding-right: 0;
+	max-width: 100%;
+	width: 100%;
 }
 
-@media (min-width: 1601px) {
+@media (max-width: 1440px) {
 	.container {
-		max-width: 1600px;
-		width: 100%;
+		max-width: 1200px;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
-@media (min-width: 1200px) and (max-width: 1600px) {
+@media (min-width: 1200px) {
 	.container {
-		max-width: 1200px;
-		width: 100%;
+		padding-left: 8.334vw;
+		padding-right: 8.334vw;
 	}
 }
 
@@ -120,6 +121,27 @@ sub {
 	.container-lg {
 		padding-left: 2.75em;
 		padding-right: 2.75em;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.container {
+		padding-left: 3.125vw;
+		padding-right: 3.125vw;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.container {
+		padding-left: 3.95vw;
+		padding-right: 3.95vw;
+	}
+}
+
+@media (min-width: 0) and (max-width: 767px) {
+	.container {
+		padding-left: 11.73vw;
+		padding-right: 11.73vw;
 	}
 }
 

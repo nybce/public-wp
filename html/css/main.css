@@ -108,11 +108,11 @@ sup { top: -0.5em; }
 
 sub { bottom: -0.25em; }
 
-.container { padding-left: 0; padding-right: 0; }
+.container { max-width: 100%; width: 100%; }
 
-@media (min-width: 1601px) { .container { max-width: 1200px; width: 100%; } }
+@media (max-width: 1440px) { .container { max-width: 1200px; padding-left: 0; padding-right: 0; } }
 
-@media (min-width: 1200px) and (max-width: 1600px) { .container { max-width: 1200px; width: 100%; } }
+@media (min-width: 1200px) { .container { padding-left: 8.334vw; padding-right: 8.334vw; } }
 
 @media (max-width: 767px) { .container { padding-left: 1.5em; padding-right: 1.5em; }
   .container-lg { padding-left: 2.75em; padding-right: 2.75em; } }

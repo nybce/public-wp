@@ -16,7 +16,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <div class="banner-content">
 
                             <h1 class="h1 title fw-800 light">
