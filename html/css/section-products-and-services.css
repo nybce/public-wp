@@ -27,6 +27,8 @@
 
 .card-swiper .swiper-container { overflow: visible; }
 
+.card-swiper .swiper-slide { height: auto; }
+
 .card-swiper .swiper-button-prev, .card-swiper .swiper-button-next { left: -9.6rem; }
 
 .card-swiper .swiper-button-next { left: auto; right: -9.6rem; }

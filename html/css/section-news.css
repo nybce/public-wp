@@ -37,6 +37,8 @@
 
 .news-swiper .swiper-pagination { display: none; }
 
+.news-swiper .swiper-slide { height: auto; }
+
 .decor-news { background-color: #e2f0ff; background-position: top center; background-repeat: no-repeat; background-size: 100%; bottom: 0; height: 100%; left: 0; position: absolute; width: 100%; z-index: -1; }
 
 @media (min-width: 1200px) { .news-item:hover::before { height: 1em; }
@@ -47,7 +49,8 @@
 
 @media (max-width: 1600px) { .news-item { max-width: 38.4rem; } }
 
-@media (max-width: 1199px) { .decor-news { height: 98%; } }
+@media (max-width: 1199px) { .news-item { max-width: 100%; }
+  .decor-news { height: 98%; } }
 
 @media (max-width: 991px) { .news-wrapper .news-item { min-height: 39.8rem; }
   .date { font-size: 1.4rem; line-height: 1.57em; }
