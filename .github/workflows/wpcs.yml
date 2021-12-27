@@ -10,7 +10,8 @@ jobs:
       run:
         working-directory: site
     runs-on: ubuntu-latest
-
+    env:
+      ACF_PRO_KEY: ${{ secrets.ACF_PRO_KEY }}
     steps:
       - uses: actions/checkout@v1
       - name: Setup PHP and disable opcache
@@ -21,6 +22,8 @@ jobs:
           ACF_PRO_KEY: ${{ secrets.ACF_PRO_KEY }}
       - name: Validate composer.json and composer.lock
         run: composer update
+        env: # Or as an environment variable
+          ACF_PRO_KEY: ${{ secrets.ACF_PRO_KEY }}
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
