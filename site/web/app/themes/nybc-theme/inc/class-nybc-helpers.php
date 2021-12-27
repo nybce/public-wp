@@ -33,7 +33,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			$branch = array();
 
 			foreach ( $nav as &$nav_item ) {
-				if ( $nav_item->menu_item_parent === $parent_id ) {
+				if ( (int) $nav_item->menu_item_parent === $parent_id ) {
 					$children = self::menu_tree( $nav, $nav_item->ID );
 					if ( $children ) {
 						$nav_item->children = $children;
@@ -199,7 +199,8 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		<li class="<?php echo esc_attr( 1 === $current ? 'active' : '' ); ?>">
 			<a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">1</a>
 		</li>
-			<?php if ( ( $max_pages - 1 ) > 1 ) { ?>
+
+			<?php if ( $max_pages > 6 ) { ?>
 		<li class="dots">...
 			<ul class="dots-select">
 				<?php for ( $i = 2; $i <= $max_pages - 1; $i++ ) { ?>
@@ -207,7 +208,14 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 				<?php } ?>
 			</ul>
 		</li>
-		<?php } ?>
+		<?php } elseif ( $max_pages > 2 ) { ?>
+				<?php for ( $i = 2; $i <= $max_pages - 1; $i++ ) { ?>
+					<li class="<?php echo esc_attr( $i === $current ? 'active' : '' ); ?>">
+						<a href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>"><?php echo esc_html( $i ); ?></a>
+					</li>
+				<?php } ?>
+			<?php } ?>
+
 		<li class="<?php echo esc_attr( $max_pages === $current ? 'active' : '' ); ?>">
 			<a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>"><?php echo esc_html( $max_pages ); ?></a>
 		</li>
@@ -225,7 +233,72 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		 * @param bool $mobile is mobile nav.
 		 */
 		public static function sidebar_tags( $mobile = false ) {
-			// TODO: Sidebar tags.
+			$cats = get_tags();
+			if ( empty( $cats ) ) {
+				return;
+			}
+			$selected       = array();
+			$selected_terms = ( isset( $_GET['terms'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) ? sanitize_text_field( wp_unslash( $_GET['terms'] ) ) : '';
+			if ( $selected_terms ) {
+				$selected = explode( ',', $selected_terms );
+			}
+			?>
+			<div class="filter-sidebar <?php echo esc_attr( $mobile ? 'mobile' : '' ); ?>">
+				<div class="filter-sidebar-head">
+					<div class="h6 title fw-900"><?php esc_html_e( 'Filters', 'nybc' ); ?></div>
+
+					<div class="mobile-button-wrapper">
+						<div class="filter-mobile-button"><span></span></div>
+					</div>
+				</div>
+
+				<div class="filter-sidebar-item">
+
+					<div class="filter-sidebar-title"><?php esc_html_e( 'Filter by Topics', 'nybc' ); ?></div>
+
+					<div class="filter-sidebar-inner">
+						<form>
+							<?php wp_nonce_field( 'filter', 'nonce' ); ?>
+							<input type="hidden" name="terms" value="">
+							<ul>
+								<li class="tag all" ><?php esc_html_e( 'View All', 'nybc' ); ?><i></i></li>
+								<?php foreach ( $cats as $cat ) { ?>
+								<li class="tag <?php echo esc_attr( in_array( '' . $cat->term_id, $selected, true ) ? 'active' : '' ); ?>" data-id="<?php echo esc_attr( $cat->term_id ); ?>">
+									<?php echo esc_html( $cat->name ); ?>
+									<i></i>
+								</li>
+								<?php } ?>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+			<?php if ( ! $mobile ) { ?>
+				<script>
+					jQuery(function ($) {
+						$('.filter-sidebar .tag').on('click', function () {
+							let tag = $(this);
+							if($(this).hasClass('all')) {
+								$('input[name=terms]').val('');
+								tag.closest('form').submit();
+								return false;
+							}
+							setTimeout( function() {
+								let tags = [];
+								tag.closest('.filter-sidebar').find('.tag.active').each( function () {
+										let id = $(this).data('id');
+										if(tags.indexOf(id) === -1) tags.push(id);
+									}
+								);
+								$('input[name=terms]').val(tags.join(','));
+								tag.closest('form').submit();
+							}, 200);
+						});
+					});
+				</script>
+				<div class="spacer-24"></div>
+				<?php
+			}
 		}
 
 		/**
@@ -250,6 +323,18 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 					'parent' => $post->ID,
 				)
 			);
+
+			$heading = get_the_title( $post );
+
+			if ( empty( $child_pages ) && $post->post_parent ) {
+
+				$child_pages = get_pages(
+					array(
+						'parent' => $post->post_parent,
+					)
+				);
+				$heading     = get_the_title( $post->post_parent );
+			}
 			if ( empty( $child_pages ) ) {
 				return;
 			}
@@ -265,13 +350,66 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 
 	<div class="spacer-16"></div>
 	<ul class="page-menu">
-		<li><?php echo esc_html( get_the_title( $post ) ); ?></li>
+		<li><?php echo esc_html( $heading ); ?></li>
 			<?php foreach ( $child_pages as $page ) { ?>
-			<li><a href="<?php echo esc_url( get_page_link( $page ) ); ?>"><?php echo esc_html( get_the_title( $page ) ); ?></a></li>
+			<li class="<?php echo esc_attr( $page->ID === $post->ID ? 'active' : '' ); ?>"><a href="<?php echo esc_url( get_page_link( $page ) ); ?>"><?php echo esc_html( get_the_title( $page ) ); ?></a></li>
 		<?php } ?>
 	</ul>
 </div>
+			<?php if ( ! $mobile ) { ?>
+<div class="spacer-24"></div>
+				<?php
+			}
+		}
+
+
+		/**
+		 *  Page breadcrumbs
+		 */
+		public static function breadcrumbs() {
+			$middle_title = '';
+			$middle_url   = '';
+			if ( is_singular( 'post' ) ) {
+				$middle_title = get_the_title( NYBC_NEWS_PAGE_ID );
+				$middle_url   = get_the_permalink( NYBC_NEWS_PAGE_ID );
+
+			} elseif ( is_singular( 'staff' ) ) {
+				$parent_page = get_field( 'parent_page' );
+				if ( ! empty( $parent_page ) ) {
+					$middle_title = get_the_title( $parent_page );
+					$middle_url   = get_the_permalink( $parent_page );
+				}
+			}
+			?>
+			<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+					<a href="<?php echo esc_url( NYBC_HOME_URI ); ?>" itemprop="item">
+						<span itemprop="name"><?php esc_html_e( 'Home', 'nybc' ); ?></span></a>
+						<meta itemprop="position" content="1" />
+				</li>
+				<?php if ( ! empty( $middle_title ) && ! empty( $middle_url ) ) { ?>
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+					<a href="<?php echo esc_url( $middle_url ); ?>" itemprop="item">
+						<span itemprop="name"><?php echo esc_html( $middle_title ); ?></span>
+					</a>
+					<meta itemprop="position" content="2" />
+				</li>
+				<?php } ?>
+				<li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+					<span itemprop="name"><?php the_title(); ?></span>
+					<meta itemprop="position" content="3" />
+				</li>
+			</ul>
 			<?php
+		}
+
+		/**
+		 *  Convert phone to tel tag
+		 *
+		 * @param string $phone phone.
+		 */
+		public static function tel( $phone ) {
+			return str_replace( array( '(', ')', ' ', '-', '.' ), '', $phone );
 		}
 
 	}

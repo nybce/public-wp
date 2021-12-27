@@ -38,11 +38,23 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function hooks() {
 			add_action( 'after_setup_theme', array( 'NYBC_Init', 'after_setup_theme' ) );
+
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
+
 			add_filter( 'body_class', array( 'NYBC_Init', 'body_class' ), 10, 2 );
 
+			add_filter(
+				'excerpt_length',
+				function () {
+					return 20;
+				}
+			);
+
+			add_filter( 'posts_clauses', array( 'NYBC_Init', 'posts_clauses' ), 10, 2 );
+
+			add_filter( 'posts_orderby', array( 'NYBC_Init', 'posts_orderby' ), 10, 2 );
 			/**
 			 *  Disable XML-RPC
 			 */
@@ -176,6 +188,52 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			}
 
 			return $classes;
+		}
+
+		/**
+		 *  Modify search query
+		 *
+		 * @param array  $pieces query pieces.
+		 * @param object $query query.
+		 *
+		 * @return array
+		 */
+		public static function posts_clauses( $pieces, $query ) {
+			global $wpdb;
+			$s = $query->get( 's' );
+			if ( ! empty( $s ) ) {
+				$pieces['where'] = preg_replace(
+					'/\(\s*' . $wpdb->posts . ".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+					'(' . $wpdb->posts . '.post_title LIKE $1) OR (' . $wpdb->postmeta . '.meta_value LIKE $1)',
+					$pieces['where']
+				);
+
+				if ( strpos( $pieces['join'], $wpdb->postmeta ) === false ) {
+					$pieces['join'] .= ' LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+				}
+				$pieces['groupby']  = "$wpdb->posts.ID";
+				$pieces['distinct'] = 'DISTINCT';
+			}
+			return $pieces;
+		}
+
+		/**
+		 *  Modify orderby in query
+		 *
+		 * @param string $orderby query pieces.
+		 * @param object $query query.
+		 *
+		 * @return string
+		 */
+		public static function posts_orderby( $orderby, $query ) {
+			global $wpdb;
+
+			if ( ! is_admin() && is_search() && isset( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'search' ) ) {
+				$sort    = sanitize_sql_orderby( wp_unslash( $_GET['bydate'] ) );
+				$orderby = "{$wpdb->prefix}posts.post_modified {$sort}";
+			}
+
+			return $orderby;
 		}
 
 	}
