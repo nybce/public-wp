@@ -24,14 +24,40 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 *  NYBC_Blocks constructor
 		 */
 		public function __construct() {
+			add_filter( 'acf/register_block_type_args', array( 'NYBC_Blocks', 'register_block_type_args' ), 100, 1 );
+
 			add_filter( 'block_categories_all', array( 'NYBC_Blocks', 'block_categories_all' ), 10, 2 );
 
 			add_action( 'acf/init', array( 'NYBC_Blocks', 'init_block_types' ) );
 
 			add_filter( 'allowed_block_types_all', array( 'NYBC_Blocks', 'allowed_block_types_all' ), 100, 2 );
 
+			add_action( 'admin_head', array( 'NYBC_Blocks', 'admin_head' ) );
+
 			add_filter( 'render_block', array( 'NYBC_Blocks', 'render_block' ), 100, 2 );
 
+		}
+
+		/**
+		 *  Modify block args
+		 *
+		 * @param array $block block data.
+		 *
+		 * @return array
+		 */
+		public static function register_block_type_args( $block ) {
+			$block['mode']     = 'edit';
+			$block['category'] = 'nybc';
+
+			if ( empty( $block['supports'] ) || $block['supports']['mode'] ) {
+				$block['supports'] = array(
+					'multiple' => true,
+					'align'    => false,
+					'mode'     => false,
+				);
+			}
+
+			return $block;
 		}
 
 		/**
@@ -57,6 +83,39 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 
 			return $block_content;
+		}
+
+
+		/**
+		 *  Insert admin block styles
+		 */
+		public static function admin_head() {
+			global $pagenow;
+			if ( 'post.php' !== $pagenow && 'post-new.php' !== $pagenow ) {
+				return;
+			}
+			?>
+			<style>
+				.wp-block-acf-column-sidebar, .wp-block-acf-column-content, .wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion-item, .wp-block-acf-accordion{
+					outline: 1px solid #c9c9c9;
+					min-height: 40px;
+				}
+				.wp-block-acf-two-column-block .wp-block-acf-column-sidebar{
+					width: 32%;
+					display: inline-block;
+					margin: 5px!important;
+				}
+				.wp-block-acf-two-column-block .wp-block-acf-column-content{
+					width: 65%;
+					display: inline-block;
+					margin: 5px!important;
+				}
+				.wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion, .wp-block-acf-column-content, .wp-block-acf-column-sidebar {
+					padding: 1px 10px!important;
+				}
+
+			</style>
+			<?php
 		}
 
 		/**
@@ -88,6 +147,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/column-sidebar',
 				'acf/column-content',
 				'acf/two-column-block',
+				'acf/one-column-block',
 				'acf/zip-code-search',
 				'acf/inline-video',
 				'acf/inline-image',
@@ -97,6 +157,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/vertical-card-row',
 				'acf/vertical-cta-card',
 				'acf/spacer',
+				'acf/child-page-hero',
+				'acf/article-byline',
 			);
 
 		}
@@ -126,6 +188,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 */
 		public static function init_block_types() {
 			self::two_column_block();// N2RDEV-80.
+			self::one_column_block();// N2RDEV-80.
 			self::spacer();
 			self::home_hero(); // N2RDEV-20   #0110.
 			self::promo_home_cta();// N2RDEV-21  #0210.
@@ -154,6 +217,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::siderail_promo_cta();// N2RDEV-89.
 			self::vertical_cta_card();// N2RDEV-87.
 			self::vertical_card_row();// N2RDEV-87.
+			self::child_page_hero();// N2RDEV-93.
+			self::article_byline();// N2RDEV-97.
 		}
 
 		/**
@@ -167,11 +232,10 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Home Hero', 'nybc' ),
 						'description'     => esc_html__( 'Home Hero for Home Page', 'nybc' ),
 						'render_template' => 'template-parts/blocks/home-hero.php',
-						'category'        => 'nybc',
 						'supports'        => array(
 							'multiple' => false,
 							'align'    => false,
-							'mode'     => 'edit',
+							'mode'     => false,
 						),
 					)
 				);
@@ -194,12 +258,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Promo Home CTA', 'nybc' ),
 						'description'     => esc_html__( 'Promo Home CTA for Home Page', 'nybc' ),
 						'render_template' => 'template-parts/blocks/promo-home-cta.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -221,12 +279,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Full Width Feature CTA', 'nybc' ),
 						'description'     => esc_html__( 'Full Width Feature CTA block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/full-width-feature-cta.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -248,12 +300,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Full Width Feature CTA Carousel', 'nybc' ),
 						'description'     => esc_html__( 'Full Width Feature CTA Carousel block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/full-width-feature-cta-carousel.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -275,12 +321,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Tabbed Card Carousel', 'nybc' ),
 						'description'     => esc_html__( 'Tabbed Card Carousel block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/tabbed-card-carousel.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -302,12 +342,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Callout with CTA Carousel', 'nybc' ),
 						'description'     => esc_html__( 'Callout with CTA Carousel block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/callout-with-cta-carousel.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -329,12 +363,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Callout with CTA', 'nybc' ),
 						'description'     => esc_html__( 'Callout with CTA block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/callout-with-cta.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -356,12 +384,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Featured Content Feed', 'nybc' ),
 						'description'     => esc_html__( 'Featured Content Feed block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/featured-content-feed.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -383,12 +405,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Featured Content Card', 'nybc' ),
 						'description'     => esc_html__( 'Featured Content Card block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/featured-content-card.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -410,12 +426,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Small Card', 'nybc' ),
 						'description'     => esc_html__( 'Small Card block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/small-card.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -437,12 +447,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Full Width Pullquote', 'nybc' ),
 						'description'     => esc_html__( 'Full Width Pullquote block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/full-width-pullquote.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -464,12 +468,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Employee Spotlight Carousel', 'nybc' ),
 						'description'     => esc_html__( 'Employee Spotlight Carousel block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/employee-spotlight-carousel.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -491,12 +489,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Large Card', 'nybc' ),
 						'description'     => esc_html__( 'Large Card block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/large-card.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -518,12 +510,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Recent News Feed', 'nybc' ),
 						'description'     => esc_html__( 'Recent News Feed block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/recent-news-feed.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -545,11 +531,10 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Parent Page Hero', 'nybc' ),
 						'description'     => esc_html__( 'Parent Page Hero block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/parent-page-hero.php',
-						'category'        => 'nybc',
 						'supports'        => array(
 							'multiple' => false,
 							'align'    => false,
-							'mode'     => 'edit',
+							'mode'     => false,
 						),
 					)
 				);
@@ -572,12 +557,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Small Card Row', 'nybc' ),
 						'description'     => esc_html__( 'Small Card Row block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/small-card-row.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -599,12 +578,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Horizontal CTA Card', 'nybc' ),
 						'description'     => esc_html__( 'Horizontal CTA Card block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/horizontal-cta-card.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -626,7 +599,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Column Sidebar', 'nybc' ),
 						'description'     => esc_html__( 'Column Sidebar Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/column-sidebar.php',
-						'category'        => 'nybc',
 						'parent'          => array( 'acf/two-column-block' ),
 						'supports'        => array(
 							'multiple' => true,
@@ -650,7 +622,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Column Content', 'nybc' ),
 						'description'     => esc_html__( 'Column Content Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/column-content.php',
-						'category'        => 'nybc',
 						'parent'          => array( 'acf/two-column-block' ),
 						'supports'        => array(
 							'multiple' => true,
@@ -674,7 +645,28 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Two Column Block', 'nybc' ),
 						'description'     => esc_html__( 'Two Column Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/two-column-block.php',
-						'category'        => 'nybc',
+						'supports'        => array(
+							'multiple' => true,
+							'align'    => false,
+							'mode'     => false,
+							'jsx'      => true,
+						),
+					)
+				);
+			}
+		}
+
+		/**
+		 *  Register One Column Block, N2RDEV-80
+		 */
+		public static function one_column_block() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'one_column_block',
+						'title'           => esc_html__( 'One Column Block', 'nybc' ),
+						'description'     => esc_html__( 'One Column Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/one-column-block.php',
 						'supports'        => array(
 							'multiple' => true,
 							'align'    => false,
@@ -697,13 +689,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Zip Code Search', 'nybc' ),
 						'description'     => esc_html__( 'Zip Code Search Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/zip-code-search.php',
-						'category'        => 'nybc',
 						'parent'          => array( 'acf/column-sidebar' ),
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -725,12 +711,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Inline Video with Caption', 'nybc' ),
 						'description'     => esc_html__( 'Inline Video with Caption Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/inline-video.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -752,12 +732,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Inline Image with Caption', 'nybc' ),
 						'description'     => esc_html__( 'Inline Image with Caption Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/inline-image.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -780,7 +754,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Accordion', 'nybc' ),
 						'description'     => esc_html__( 'Accordion Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/accordion.php',
-						'category'        => 'nybc',
 						'supports'        => array(
 							'multiple' => true,
 							'align'    => false,
@@ -803,7 +776,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Accordion Item', 'nybc' ),
 						'description'     => esc_html__( 'Accordion Item Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/accordion-item.php',
-						'category'        => 'nybc',
 						'parent'          => array( 'acf/accordion' ),
 						'supports'        => array(
 							'multiple' => true,
@@ -832,13 +804,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Siderail Promo CTA', 'nybc' ),
 						'description'     => esc_html__( 'Siderail Promo CTA Block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/siderail-promo-cta.php',
-						'category'        => 'nybc',
 						'parent'          => array( 'acf/column-sidebar' ),
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -860,12 +826,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Vertical CTA Card', 'nybc' ),
 						'description'     => esc_html__( 'Vertical CTA Card block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/vertical-cta-card.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -887,12 +847,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Vertical Card Row', 'nybc' ),
 						'description'     => esc_html__( 'Vertical Card Row block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/vertical-card-row.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -914,12 +868,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'title'           => esc_html__( 'Spacer', 'nybc' ),
 						'description'     => esc_html__( 'Spacer block', 'nybc' ),
 						'render_template' => 'template-parts/blocks/spacer.php',
-						'category'        => 'nybc',
-						'supports'        => array(
-							'multiple' => true,
-							'align'    => false,
-							'mode'     => 'edit',
-						),
 					)
 				);
 
@@ -927,6 +875,53 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/spacer' );
+			}
+		}
+
+		/**
+		 *  Register Child Page Hero block, N2RDEV-20, #0110
+		 */
+		public static function child_page_hero() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'child_page_hero',
+						'title'           => esc_html__( 'Child Page Hero', 'nybc' ),
+						'description'     => esc_html__( 'Child Page Hero block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/child-page-hero.php',
+						'supports'        => array(
+							'multiple' => false,
+							'align'    => false,
+							'mode'     => false,
+						),
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/child-page-hero' );
+			}
+		}
+
+		/**
+		 *  Article Byline Block, N2RDEV-97
+		 */
+		public static function article_byline() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'article_byline',
+						'title'           => esc_html__( 'Article Byline', 'nybc' ),
+						'description'     => esc_html__( 'Article Byline Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/article-byline.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/article-byline' );
 			}
 		}
 
