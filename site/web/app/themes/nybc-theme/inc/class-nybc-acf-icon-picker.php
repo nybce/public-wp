@@ -89,7 +89,7 @@ if ( ! class_exists( 'NYBC_Acf_Icon_Picker' ) && class_exists( 'acf_field' ) ) {
 						?>
 						<div class="acf-icon-picker__svg">
 							<img src="<?php echo esc_url( $svg ); ?>" alt=""/>
-						</div>;
+						</div>
 					<?php } else { ?>
 						<div class="acf-icon-picker__svg">
 							<span class="acf-icon-picker__svg--span">&plus;</span>

@@ -47,12 +47,9 @@ $button     = get_field( 'button' );
 								<?php echo esc_html( $title_text ); ?>
 							</h1>
 							<div class="spacer-48 spacer-xs-24"></div>
-							<?php
-							if ( ! empty( $button ) ) {
-								;
-								?>
+							<?php if ( ! empty( $button ) ) { ?>
 								<a class="btn btn-primary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
-							<?php }; ?>
+							<?php } ?>
 						</div>
 					</div>
 				</div>

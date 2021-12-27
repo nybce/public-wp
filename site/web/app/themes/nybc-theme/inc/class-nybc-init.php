@@ -19,84 +19,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	 */
 	class NYBC_Init {
 
-
-		/**
-		 * Thumbnail Size params
-		 *
-		 * @var array
-		 */
-		private static $thumbnail_size = array(
-			'width'  => 100,
-			'height' => 100,
-			'crop'   => false,
-		);
-
-		/**
-		 * Medium Size params
-		 *
-		 * @var array
-		 */
-		private static $medium_size = array(
-			'width'  => 220,
-			'height' => 220,
-			'crop'   => false,
-		);
-
-		/**
-		 * Large Size params
-		 *
-		 * @var array
-		 */
-		private static $large_size = array(
-			'width'  => 480,
-			'height' => 480,
-			'crop'   => false,
-		);
-
-		/**
-		 * Crop thumbnail size params
-		 *
-		 * @var array
-		 */
-		private static $crop_thumbnail_size = array(
-			'width'  => 400,
-			'height' => 999999,
-			'crop'   => true,
-		);
-
-		/**
-		 * Media library Size params
-		 *
-		 * @var array
-		 */
-		private static $media_library_size = array(
-			'width'  => 220,
-			'height' => 220,
-			'crop'   => true,
-		);
-
-		/**
-		 * Slick media Size params
-		 *
-		 * @var array
-		 */
-		private static $slick_media_size = array(
-			'width'  => 853,
-			'height' => 480,
-			'crop'   => true,
-		);
-
-		/**
-		 * Wide Size params
-		 *
-		 * @var array
-		 */
-		private static $wide_size = array(
-			'width'  => 1090,
-			'height' => 999999,
-			'crop'   => false,
-		);
-
 		/**
 		 *  NYBC_Init Constructor
 		 */
@@ -119,6 +41,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
+			add_filter( 'body_class', array( 'NYBC_Init', 'body_class' ), 10, 2 );
 
 			/**
 			 *  Disable XML-RPC
@@ -143,15 +66,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function add_image_sizes() {
 			remove_image_size( '1536x1536' );
 			remove_image_size( '2048x2048' );
-
-			add_image_size( 'thumbnail', self::$thumbnail_size['width'], self::$thumbnail_size['height'], self::$thumbnail_size['crop'] );
-			add_image_size( 'medium', self::$medium_size['width'], self::$medium_size['height'], self::$medium_size['crop'] );
-			add_image_size( 'large', self::$large_size['width'], self::$large_size['height'], self::$large_size['crop'] );
-
-			add_image_size( 'crop_thumbnail', self::$crop_thumbnail_size['width'], self::$crop_thumbnail_size['height'], self::$crop_thumbnail_size['crop'] );
-			add_image_size( 'media_library', self::$media_library_size['width'], self::$media_library_size['height'], self::$media_library_size['crop'] );
-			add_image_size( 'slick_media', self::$slick_media_size['width'], self::$slick_media_size['height'], self::$slick_media_size['crop'] );
-			add_image_size( 'wide', self::$wide_size['width'], self::$wide_size['height'], self::$wide_size['crop'] );
 		}
 
 		/**
@@ -200,6 +114,10 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				)
 			);
 
+			if ( ! is_admin() ) {
+				show_admin_bar( false );
+			}
+
 		}
 
 		/**
@@ -244,6 +162,20 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			get_template_part( 'inc/acf/theme-options' );
 			get_template_part( 'inc/acf/menu-item' );
 
+		}
+
+		/**
+		 *  Add body classes
+		 *
+		 * @param array $classes classes.
+		 * @param array $class additional classes.
+		 */
+		public static function body_class( $classes, $class ) {
+			if ( 'Division' === get_field( 'type', 'options' ) ) {
+				$classes[] = 'division';
+			}
+
+			return $classes;
 		}
 
 	}
