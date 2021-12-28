@@ -46,7 +46,23 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 * @return array
 		 */
 		public static function register_block_type_args( $block ) {
-			$block['mode']     = 'edit';
+			$mode = 'edit';
+			if ( in_array(
+				$block['name'],
+				array(
+					'acf/two-column-block',
+					'acf/one-column-block',
+					'acf/column-sidebar',
+					'acf/column-content',
+					'acf/accordion-item',
+					'acf/accordion',
+				),
+				true
+			) ) {
+				$mode = 'preview';
+			}
+
+			$block['mode']     = $mode;
 			$block['category'] = 'nybc';
 
 			if ( empty( $block['supports'] ) || $block['supports']['mode'] ) {
