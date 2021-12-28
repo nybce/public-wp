@@ -176,6 +176,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/spacer',
 				'acf/child-page-hero',
 				'acf/donor-stories-carousel',
+				'acf/zip-code-search-with-cta',
 				'acf/download-card',
 				'acf/download-card-container',
 				'acf/graphic-download-card',
@@ -239,6 +240,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::vertical_card_row();// N2RDEV-87.
 			self::child_page_hero();// N2RDEV-93.
 			self::donor_stories_carousel();// N2RDEV-49.
+			self::zip_code_search_with_cta();// N2RDEV-96.
 			self::download_card();// N2RDEV-125.
 			self::download_card_container();// N2RDEV-126.
 			self::graphic_download_card();// N2RDEV-127.
@@ -945,6 +947,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/donor-stories-carousel' );
+			}
+		}
+
+		/**
+		 *  Zip Code Search With CTA Block, N2RDEV-96
+		 */
+		public static function zip_code_search_with_cta() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'zip_code_search_with_cta',
+						'title'           => esc_html__( 'Zip Code Search with CTA', 'nybc' ),
+						'description'     => esc_html__( 'Zip Code Search with CTA Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/zip-code-search-with-cta.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/zip-code-search-with-cta' );
 			}
 		}
 
