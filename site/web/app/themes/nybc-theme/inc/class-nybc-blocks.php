@@ -923,7 +923,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'render_template' => 'template-parts/blocks/article-byline.php',
 					)
 				);
-				
+
 				/**
 				 *  Add block fields
 				 */
