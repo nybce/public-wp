@@ -159,6 +159,9 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/spacer',
 				'acf/child-page-hero',
 				'acf/article-byline',
+				'acf/download-card',
+				'acf/download-card-container',
+				'acf/graphic-download-card',
 			);
 
 		}
@@ -219,6 +222,9 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::vertical_card_row();// N2RDEV-87.
 			self::child_page_hero();// N2RDEV-93.
 			self::article_byline();// N2RDEV-97.
+			self::download_card();// N2RDEV-125.
+			self::download_card_container();// N2RDEV-126.
+			self::graphic_download_card();// N2RDEV-127.
 		}
 
 		/**
@@ -917,11 +923,74 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						'render_template' => 'template-parts/blocks/article-byline.php',
 					)
 				);
-
+				
 				/**
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/article-byline' );
+			}
+		}
+
+		/**
+		 *  Download Card Block, N2RDEV-125
+		 */
+		public static function download_card() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'download_card',
+						'title'           => esc_html__( 'Download Card', 'nybc' ),
+						'description'     => esc_html__( 'Download Card Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/download-card.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/download-card' );
+			}
+		}
+
+		/**
+		 *  Download Card Container Block, N2RDEV-126
+		 */
+		public static function download_card_container() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'download_card_container',
+						'title'           => esc_html__( 'Download Card Container', 'nybc' ),
+						'description'     => esc_html__( 'Download Card Container Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/download-card-container.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/download-card-container' );
+			}
+		}
+
+		/**
+		 *  Graphic Download Card Block, N2RDEV-127
+		 */
+		public static function graphic_download_card() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'graphic_download_card',
+						'title'           => esc_html__( 'Graphic Download Card', 'nybc' ),
+						'description'     => esc_html__( 'Graphic Download Card Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/graphic-download-card.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/graphic-download-card' );
 			}
 		}
 
