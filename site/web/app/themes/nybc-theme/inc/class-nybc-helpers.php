@@ -369,7 +369,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		public static function breadcrumbs() {
 			$middle_title = '';
 			$middle_url   = '';
-			if ( is_singular( 'post' ) ) {
+			if ( is_singular( 'post' ) && defined('NYBC_NEWS_PAGE_ID') ) {
 				$middle_title = get_the_title( NYBC_NEWS_PAGE_ID );
 				$middle_url   = get_the_permalink( NYBC_NEWS_PAGE_ID );
 

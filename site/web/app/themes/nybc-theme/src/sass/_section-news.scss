@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**---*/
+/**------------------------*/
 
 /** NEWS BLOCK */
 
-/**---*/
+/**------------------------*/
 .news-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -16,10 +16,16 @@
 		margin-bottom: 2.4rem;
 		margin-right: 2.4rem;
 		max-width: calc(50% - 1.2rem);
-		min-height: 47.4rem;
+		min-height: 48.2rem;
 
 		&:nth-of-type(2n) {
 			margin-right: 0;
+		}
+	}
+
+	.news-info {
+		.title {
+			max-width: 100%;
 		}
 	}
 }
@@ -42,6 +48,12 @@
 		position: absolute;
 		transition: $transition;
 		width: 100%;
+	}
+
+	&.type-2 {
+		.news-info {
+			padding: 1.5em 1.5em 4.125em 1.5em;
+		}
 	}
 }
 
@@ -78,6 +90,7 @@
 		-webkit-box-orient: vertical;
 		display: -webkit-box;
 		-webkit-line-clamp: 4;
+		max-width: 29.5rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
@@ -213,11 +226,11 @@
 	}
 }
 
-/**---*/
+/**------------------------*/
 
 /** NEWS BLOCK FOR DIVISION */
 
-/**---*/
+/**------------------------*/
 .division {
 	.news-item {
 		&::before {

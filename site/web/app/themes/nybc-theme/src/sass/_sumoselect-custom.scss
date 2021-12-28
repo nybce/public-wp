@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/*----------------------------------------*/
+/**------------------------*/
 
 /* SUMOSELECT CUSTOM */
 
-/*----------------------------------------*/
+/**------------------------*/
 .SumoSelect {
 	cursor: pointer;
 	display: block;
@@ -181,46 +181,9 @@
 	display: none;
 }
 
-// .SumoSelect > .optWrapper.multiple > .options li.opt label {
-//   padding-left: 25px;
-// }
-
-// .SumoSelect .select-all > label {
-//   padding-left: 25px;
-// }
-
-// .SumoSelect .select-all > span,
-// .SumoSelect > .optWrapper.multiple > .options li.opt span {
-//   width: 10px;
-//   margin-left: 0;
-// }
-
-// .CaptionCont img {
-//   position: absolute;
-//   left: 20px;
-//   top: 50%;
-//   transform: translateY(-50%);
-//   display: block;
-//   width: 13px;
-//   height: auto;
-// }
-
-// .CaptionCont img + span {
-//   padding-left: 25px;
-// }
-
 .SumoSelect.disabled {
 	opacity: 1;
 }
-
-// .SumoSelect.disabled > .CaptionCont {
-//   border: 1px solid rgba(235, 235, 235, 0.15);
-//   cursor: not-allowed;
-
-//   > span {
-//     cursor: not-allowed;
-//   }
-// }
 
 @media (min-width: 1200px) {
 	.SumoSelect > .CaptionCont:hover {

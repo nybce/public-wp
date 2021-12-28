@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** EMPLOYEES SLIDER */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 .employees-wrapper {
 	max-width: 92%;
@@ -17,7 +17,7 @@
 	flex-direction: column;
 	height: 100%;
 	justify-content: center;
-	padding: 6.4rem 12.6rem 6.4rem 12rem;
+	padding: 4.8rem 6.4rem 4.8rem 12rem;
 	position: relative;
 
 	&::before {
@@ -47,15 +47,20 @@
 		text-transform: uppercase;
 	}
 
-	.text {
+	.text-xl,
+	.text-lg,
+	.text-sm {
 		-webkit-box-orient: vertical;
 		display: -webkit-box;
-		font-size: 3.6rem;
-		font-weight: 400;
-		-webkit-line-clamp: 5;
-		line-height: 1.28em;
+		-webkit-line-clamp: 4;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+
+	.text {
+		font-size: 3.6rem;
+		font-weight: 400;
+		line-height: 1.28em;
 	}
 
 	.position {
@@ -65,7 +70,7 @@
 
 .employees-img {
 	display: block;
-	padding-bottom: 108%;
+	padding-bottom: 98%;
 	position: relative;
 	width: 100%;
 
@@ -85,19 +90,12 @@
 		right: 2.4rem;
 	}
 
-	/*swiper pagination*/
 	.swiper-pagination {
-		bottom: 2.4rem;
+		bottom: 4.4rem;
 		right: 25%;
 	}
 	.swiper-pagination-bullet {
 		box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	}
-}
-
-@media (max-width: 1400px) {
-	.employees-info {
-		padding: 4.8rem 12.6rem 4.8rem 12rem;
 	}
 }
 
@@ -110,6 +108,10 @@
 		.text {
 			font-size: 2.4rem;
 		}
+	}
+
+	.employees-img {
+		padding-bottom: 108%;
 	}
 
 	.employees-swiper {
@@ -127,6 +129,10 @@
 			height: 0.4rem;
 			width: 100%;
 		}
+	}
+
+	.employees-img {
+		padding-bottom: 98%;
 	}
 
 	.employees-swiper {
@@ -174,11 +180,11 @@
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /** EMPLOYEES SLIDER FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 .division {
 	.employees-info {
 		&::before {
