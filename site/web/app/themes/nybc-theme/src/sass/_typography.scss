@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /*****     TYPOGRAPHY     *****/
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 :root {
 	font-size: 62.5%;
 }
@@ -41,30 +41,76 @@ ol {
 /*****     TEXT STYLES     *****/
 
 .text {
-	color: $color-text-10;
 	font-size: 1.6rem;
-	font-weight: 400;
 	line-height: 1.5em;
+}
+
+.text-xl {
+	font-size: 2rem;
+	line-height: 1.5em;
+}
+
+.text-lg {
+	font-size: 1.8rem;
+	line-height: 1.44em;
+}
+
+.text-sm {
+	font-size: 1.4rem;
+	line-height: 1.57em;
+}
+
+.text,
+.text-xl,
+.text-lg,
+.text-sm {
+	color: $color-text-10;
+	font-weight: 400;
+
+	&.fw-500 {
+		font-weight: 500;
+	}
+
+	&.fw-600 {
+		font-weight: 600;
+	}
+
+	&.fw-700 {
+		font-weight: 700;
+	}
+
+	&.fw-800 {
+		font-weight: 800;
+	}
+
+	&.fw-900 {
+		font-weight: 900;
+	}
 
 	ul li {
-		font-size: 1.6rem;
-		line-height: 1.5em;
+		font-size: inherit;
+		line-height: inherit;
+		margin-left: 0.5em;
 		padding-left: 1.25em;
 		position: relative;
-
-		&:last-child {
-			bottom: 0;
-		}
 
 		&::before {
 			background: $color-text-10;
 			border-radius: 100%;
 			content: "";
-			height: 0.4375em;
+			height: 0.6rem;
 			left: 0;
 			position: absolute;
 			top: 0.5em;
-			width: 0.4375em;
+			width: 0.6rem;
+		}
+
+		&:last-child {
+			bottom: 0;
+		}
+
+		+ li {
+			margin-top: 0.8em;
 		}
 	}
 
@@ -73,9 +119,9 @@ ol {
 	}
 
 	ol li {
-		font-size: 1.6rem;
+		font-size: inherit;
 		font-weight: 400;
-		line-height: 1.5em;
+		line-height: inherit;
 		padding-left: 1.875em;
 		position: relative;
 
@@ -150,6 +196,7 @@ ol {
 		h5 {
 			font-size: 0.67em;
 			font-weight: 800;
+			margin-top: 2.4rem;
 		}
 
 		p {
@@ -214,70 +261,12 @@ ol {
 	}
 }
 
-.text-xl {
-	color: $color-text-10;
-	font-size: 2rem;
-	font-weight: 400;
-	line-height: 1.5em;
-}
-
-.text-lg {
-	color: $color-text-10;
-	font-size: 1.8rem;
-	font-weight: 400;
-	line-height: 1.44em;
-}
-
-.text-sm {
-	color: $color-text-10;
-	font-size: 1.4rem;
-	font-weight: 400;
-	line-height: 1.57em;
-}
-
-.text,
-.text-xl,
-.text-lg,
-.text-sm {
-	font-weight: 800;
-	h2 {
-		color: $color-primary-base2-10;
-	}
-
-	h3 {
-		color: $color-text-10;
-	}
-	&.fw-500 {
-		font-weight: 500;
-	}
-
-	&.fw-600 {
-		font-weight: 600;
-	}
-
-	&.fw-700 {
-		font-weight: 700;
-	}
-
-	&.fw-800 {
-		font-weight: 800;
-	}
-
-	&.fw-900 {
-		font-weight: 900;
-	}
-}
-
 .title.light,
 .text.light,
 .text-xl.light,
 .text-lg.light,
 .text-sm.light {
 	color: $color-white;
-}
-
-.text > *:not(:last-child) {
-	margin-bottom: 15px;
 }
 
 .text-truncate {
@@ -427,13 +416,34 @@ h6,
 	&.fw-900 {
 		font-weight: 900;
 	}
+
+	&.text-10 {
+		color: $color-text-10;
+	}
+
+	&.text-20 {
+		color: $color-text-20;
+	}
+
+	&.text-30 {
+		color: $color-text-30;
+	}
+
+	&.text-40 {
+		color: $color-text-40;
+	}
 }
 
 @media (min-width: 1200px) {
-	.text a:hover::before {
-		left: 0;
-		right: auto;
-		width: 0;
+	.text,.text-xl,.text-lg,.text-sm {
+
+		a:hover {
+			color: $color-primary-base1-10;
+
+			&::before {
+				background: $color-primary-base1-10;
+			}
+		}
 	}
 }
 
@@ -490,7 +500,10 @@ h6,
 		font-size: 1.8rem;
 	}
 
-	.text {
+	.text,
+	.text-xl,
+	.text-lg,
+	.text-sm {
 		> blockquote {
 			font-size: 2.4rem;
 		}
@@ -516,25 +529,28 @@ h6,
 		font-size: 3rem;
 	}
 
-	.text {
+	.text,
+	.text-xl,
+	.text-lg,
+	.text-sm {
 		> blockquote {
 			font-size: 2rem;
 		}
-	}
 
-	.text-xl {
-		font-size: 1.6rem;
-	}
+		iframe {
+			+ span {
+				font-size: 1.4rem;
+				padding: 0.8rem;
+			}
+		}
 
-	iframe {
-		+ span {
+		picture + span {
 			font-size: 1.4rem;
 			padding: 0.8rem;
 		}
 	}
 
-	picture + span {
-		font-size: 1.4rem;
-		padding: 0.8rem;
+	.text-xl {
+		font-size: 1.6rem;
 	}
 }

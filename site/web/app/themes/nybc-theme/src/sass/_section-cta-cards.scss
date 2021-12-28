@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**---*/
+/**------------------------*/
 
 /** CTA CARDS */
 
-/**---*/
+/**------------------------*/
 .cta-card-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -66,6 +66,7 @@
 		margin-bottom: 2.4rem;
 		margin-right: 2.4rem;
 		max-width: calc(50% - 1.2rem);
+		min-height: 28rem;
 
 		.cta-card-img {
 			max-width: 100%;
@@ -88,7 +89,7 @@
 	display: block;
 	height: 0;
 	max-width: 35.5%;
-	padding-bottom: 30.5%;
+	padding-bottom: 24.5%;
 	position: relative;
 	transition: $transition;
 	width: 100%;
@@ -180,6 +181,12 @@
 			}
 		}
 	}
+
+	.cta-card {
+		&.vertical {
+			min-height: auto;
+		}
+	}
 }
 
 @media (max-width: 767px) {
@@ -239,11 +246,11 @@
 	}
 }
 
-/**---*/
+/**------------------------*/
 
 /** CTA CARDS FOR DIVISION */
 
-/**---*/
+/**------------------------*/
 .division {
 	.cta-card {
 		&::before {

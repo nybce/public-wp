@@ -28,6 +28,7 @@ require_once __DIR__ . '/inc/class-nybc-init.php';
 require_once __DIR__ . '/inc/class-nybc-helpers.php';
 require_once __DIR__ . '/inc/class-nybc-staff-member.php';
 require_once __DIR__ . '/inc/class-nybc-news-article.php';
+require_once __DIR__ . '/inc/class-nybc-story.php';
 require_once __DIR__ . '/inc/class-nybc-blocks.php';
 require_once __DIR__ . '/inc/class-nybc-block-patterns.php';
 

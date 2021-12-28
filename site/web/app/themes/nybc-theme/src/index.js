@@ -1,4 +1,4 @@
-//import './sass/main.scss';
+import './sass/main.scss';
 import './js/global';
 import './js/swiper-init';
 import './js/sumoselect-init';

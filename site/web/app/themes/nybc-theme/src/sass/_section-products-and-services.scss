@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**---*/
+/**------------------------*/
 
 /** CARD SLIDER */
 
-/**---*/
+/**------------------------*/
 .products-services {
 	&.mt-70 {
 		margin-top: -7rem;
@@ -126,6 +126,10 @@
 	top: -3rem;
 	width: 88.5rem;
 	z-index: -1;
+
+	&.type-2 {
+		top: -30rem;
+	}
 }
 
 @media (min-width: 1200px) {
@@ -270,11 +274,11 @@
 	}
 }
 
-/**---*/
+/**------------------------*/
 
 /** CARD FOR DIVISION */
 
-/**---*/
+/**------------------------*/
 .division {
 	.card-item {
 		&::before {
