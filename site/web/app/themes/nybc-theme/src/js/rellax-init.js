@@ -1,14 +1,14 @@
 import { isIE } from './global';
 import Rellax from './lib/rellax.min';
 
-jQuery(function ($) {
-  //rellax
+jQuery( function( $ ) {
+	//rellax
 
-  setTimeout(function () {
-    if (!isIE && $('.rellax').length && $(window).width() > 1199) {
-      new Rellax('.rellax', {
-        center: true,
-      });
-    }
-  }, 0);
-});
+	setTimeout( function() {
+		if ( ! isIE && $( '.rellax' ).length && $( window ).width() > 1199 ) {
+			new Rellax( '.rellax', {
+				center: true,
+			} );
+		}
+	}, 0 );
+} );
