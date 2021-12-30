@@ -951,8 +951,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/donor-stories-carousel' );
 			}
 		}
-            
-     /**       
+
+		/**
 		 *  Article Byline Block, N2RDEV-97
 		 */
 		public static function article_byline() {
@@ -972,7 +972,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/article-byline' );
 			}
 		}
-            
+
 
 		/**
 		 *  Zip Code Search With CTA Block, N2RDEV-96
