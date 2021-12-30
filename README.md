@@ -173,12 +173,40 @@ Deployment occurs upon merge & successful build to an environment branch.
 - `staging` branch deploys to `staging` environment
 - `develop` branch should be deployed to `develop` environment
 
+
+## Transferring Media/Databases
+### File locations
+#### Databases
+Database dumps should be placed in the db_dumps directory in the project root. They should not be compressed. Other than seed.sql These files are not under version control.
+
+####Media
+Media should be unzipped in the media directory in the project root.
+
+###Pushing
+To push from your local environment to a server environment from the project root run the following command:
+`bash scripts/pushSite.sh DATABASE_FILE_NAME.sql SourceEnvironment TargetEnvironmnet` for example:
+`bash scripts/pushSite.sh local-20211230.sql local dev`.
+
+This will take the referenced database. Replace all references to local urls with dev urls as well as media locations, drop the current remote database and copy in what's been specified here.
+Following that media files will be synced from the media directory to the azure storage container.
+
+
+###Pulling
+To pull from a remote environment to your local machine run the command `bash scripts/pullSite.sh EnvironmentName`. For example:
+`bash scripts/pullSite.sh dev`.
+
+This will result in a file nybc-wp-ENVIRONMENT_NAME-to-local-DATE-replaced.sql being placed in your db_dumps directory.
+If you're using docker for local development run the command `bash scripts/loadDb.sh DATABASE_FILE_NAME` to load the database.
+
+This will also result in a file containing all media -- nybc-wp-ENVIRONMENT_NAME-media-DATE.tar being placed in the project_root/media directory.
+If your using docker for local development decompress this file and bring your containers down and back up to ensure it loads poperly
+
 ## Dockerhub
 GitHub Actions will build the WordPress container and push the image to Docker Hub with an environment tag.
 
 ## Watchtower
 Watchtower will be running on all servers. It will look for updates to Docker images with a specified environment tag and pull them down/deploy whenever a new release is pushed.
-
+'
 # MISC
 ## wp cli
 ### Search and replace
