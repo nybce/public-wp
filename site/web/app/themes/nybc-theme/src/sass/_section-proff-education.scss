@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** VIDEO SLIDER */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .video-swiper {
 	.swiper-container {
 		overflow: visible;
@@ -21,7 +21,6 @@
 		right: -9.6rem;
 	}
 
-	/*swiper pagination*/
 	.swiper-pagination {
 		bottom: 0;
 		display: none;

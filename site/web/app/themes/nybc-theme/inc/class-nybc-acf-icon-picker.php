@@ -97,7 +97,7 @@ if ( ! class_exists( 'NYBC_Acf_Icon_Picker' ) && class_exists( 'acf_field' ) ) {
 					<?php } ?>
 					<input type="hidden" readonly name="<?php echo esc_attr( $field['name'] ); ?>" value="<?php echo esc_attr( $input_icon ); ?>"/>
 				</div>
-					<?php if ( false === $field['required'] ) { ?>
+					<?php if ( false === (bool) $field['required'] ) { ?>
 					<span class="acf-icon-picker__remove">
 						Remove
 					</span>

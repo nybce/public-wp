@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** PAGINATION */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .pagination {
 	line-height: 0;
 	text-align: center;
@@ -125,6 +125,13 @@
 			transition: $transition;
 			width: 100%;
 
+			&.active {
+				background: $color-secondary-80;
+
+				a {
+					color: $color-text-10;
+				}
+			}
 		}
 
 		&.active {

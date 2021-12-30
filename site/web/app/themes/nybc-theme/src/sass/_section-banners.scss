@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** BANNERS */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .bg {
 	background-attachment: scroll;
 	background-position: 50% 50%;
@@ -87,11 +87,11 @@
 
 .banner-inner {
 	align-items: center;
-	clip-path: ellipse(90% 60% at 50% 40%);
+	clip-path: ellipse(70% 60% at 50% 40%);
 	display: flex;
 	height: 100%;
 	overflow: hidden;
-	padding-bottom: 42.3%;
+	padding-bottom: 56.3%;
 	position: relative;
 	width: 100%;
 
@@ -120,6 +120,11 @@
 				background: linear-gradient(0deg, $color-secondary-20 1.31%, $color-secondary-70 100%);
 			}
 
+			&.rellax {
+				height: 103%;
+				top: -8%;
+			}
+
 		}
 	}
 
@@ -137,6 +142,60 @@
 			}
 		}
 	}
+
+	&.type-4 {
+		clip-path: unset;
+		padding-bottom: 0;
+
+		.banner-wrapper {
+			border-bottom: 0.1rem solid #e2f0ff;
+			bottom: 0;
+			position: relative;
+			top: 0;
+			transform: unset;
+			width: 100%;
+
+			.container {
+				max-width: 100%;
+			}
+		}
+
+		.banner-content {
+			height: 100%;
+			max-width: 95%;
+			padding-left: 11rem;
+			padding-right: 12rem;
+			position: relative;
+
+			h5, .h5 {
+				color: #0c2d83;
+			}
+		}
+
+		.decor-banner-1 {
+			background-position: right;
+			background-repeat: no-repeat;
+			background-size: contain;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: -2rem;
+			width: 100%;
+			z-index: -1;
+		}
+
+		.decor-banner-2 {
+			background-position: right;
+			background-repeat: no-repeat;
+			background-size: 55%;
+			height: 100%;
+			left: -25rem;
+			position: absolute;
+			top: 0;
+			width: calc(100% + 25rem);
+			z-index: -1;
+		}
+	}
 }
 
 .banner-wrapper {
@@ -149,6 +208,31 @@
 	z-index: 10;
 }
 
+.banner-img {
+	padding-bottom: 76.63%;
+	position: relative;
+
+	&.size-2 {
+		padding-bottom: 93.63%;
+	}
+
+	.bg {
+		&.rellax {
+			top: -1%;
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.banner-img {
+		.bg {
+			&.rellax {
+				top: 0;
+			}
+		}
+	}
+}
+
 @media (max-width: 991px) {
 	.banner-inner {
 		&.type-2 {
@@ -156,6 +240,15 @@
 		}
 		&.type-3 {
 			padding-bottom: 45%;
+		}
+		&.type-4 {
+			.decor-banner-1 {
+				background-size: 100%;
+				height: calc(100% - 10rem);
+				left: -2.5rem;
+				top: 10rem;
+				width: calc(100% + 25rem);
+			}
 		}
 	}
 }
@@ -172,7 +265,7 @@
 	}
 
 	.banner-inner {
-		clip-path: ellipse(120% 60% at 50% 40%);
+		clip-path: ellipse(90% 60% at 50% 40%);
 		height: 49.5rem;
 		padding-bottom: 0;
 
@@ -187,9 +280,26 @@
 		}
 
 		&.type-3 {
-			clip-path: ellipse(120% 60% at 50% 40%);
+			clip-path: ellipse(90% 60% at 50% 40%);
 			height: 49.5rem;
 			padding-bottom: 0;
+		}
+
+		&.type-4 {
+			height: auto;
+
+			.banner-wrapper {
+				.container {
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+
+			.banner-content {
+				padding-left: 4.4rem;
+				padding-right: 4.4rem;
+				text-align: left;
+			}
 		}
 	}
 
@@ -225,15 +335,15 @@
 	top: 0;
 	width: 55%;
 	z-index: 1;
+
+	svg {
+		height: 100%;
+	}
 }
 
 @media (max-width: 767px) {
 	.banner-decor {
 		width: 110%;
-
-		svg {
-			width: 165%;
-		}
 	}
 }
 
