@@ -86,7 +86,6 @@ COPY ./.env/dev.env /site/.env
 COPY ./.env/dev.env /.env
 RUN mkdir /envs
 COPY ./.env/* /envs
-COPY .vaultpass /envs
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY ./site /site
 COPY ./uploads.ini /usr/local/etc/php/conf.d/uploads.ini
