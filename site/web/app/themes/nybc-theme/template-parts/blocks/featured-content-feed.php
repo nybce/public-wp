@@ -54,12 +54,9 @@ if ( empty( $featured_cards ) ) {
 						<a class="news-item" target="<?php echo esc_attr( $card['link'] ? $card['link']['target'] : '' ); ?>" href="<?php echo esc_url( $card['link'] ? $card['link']['url'] : '' ); ?>">
 						<?php
 						if ( ! empty( $card['image'] ) ) {
-							$image_url = isset( $card['image']['sizes']['slick_media'] ) ? $card['image']['sizes']['slick_media'] : $card['image']['url'];
-							$image_url = ! empty( $card['image'] ) ? $card['image']['url'] : '';
-
 							?>
 							<div class="news-img">
-								<?php NYBC_Helpers::picture( $image_url, $card['image']['alt'], 517, 290 ); ?>
+								<?php NYBC_Helpers::picture( $card['image'], '519x292' ); ?>
 							</div>
 							<?php } ?>
 							<div class="border-top"></div>

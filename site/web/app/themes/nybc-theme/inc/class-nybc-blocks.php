@@ -211,8 +211,14 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		public static function init_block_types() {
 			self::two_column_block();// N2RDEV-80.
 			self::one_column_block();// N2RDEV-80.
+			self::column_sidebar();// N2RDEV-80.
+			self::column_content();// N2RDEV-80.
 			self::spacer();
+
 			self::home_hero(); // N2RDEV-20   #0110.
+			self::parent_page_hero();// N2RDEV-76.
+			self::child_page_hero();// N2RDEV-93.
+
 			self::promo_home_cta();// N2RDEV-21  #0210.
 			self::full_width_feature_cta();// N2RDEV-22 #0230.
 			self::full_width_feature_cta_carousel();// N2RDEV-23  #0240.
@@ -226,11 +232,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::employee_spotlight_carousel();// N2RDEV-46  #0290.
 			self::large_card();// N2RDEV-48  #010.
 			self::recent_news_feed();// N2RDEV-47.
-			self::parent_page_hero();// N2RDEV-76.
 			self::small_card_row();// N2RDEV-78.
 			self::horizontal_cta_card();// N2RDEV-79.
-			self::column_sidebar();// N2RDEV-80.
-			self::column_content();// N2RDEV-80.
 			self::zip_code_search();// N2RDEV-83.
 			self::inline_video();// N2RDEV-85.
 			self::inline_image();// N2RDEV-90.
@@ -239,7 +242,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::siderail_promo_cta();// N2RDEV-89.
 			self::vertical_cta_card();// N2RDEV-87.
 			self::vertical_card_row();// N2RDEV-87.
-			self::child_page_hero();// N2RDEV-93.
 			self::donor_stories_carousel();// N2RDEV-49.
 			self::zip_code_search_with_cta();// N2RDEV-96.
 			self::article_byline();// N2RDEV-97.
@@ -680,6 +682,11 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						),
 					)
 				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/two-column-block' );
 			}
 		}
 
@@ -953,28 +960,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		}
 
 		/**
-		 *  Article Byline Block, N2RDEV-97
-		 */
-		public static function article_byline() {
-			if ( function_exists( 'acf_register_block_type' ) ) {
-				acf_register_block_type(
-					array(
-						'name'            => 'article_byline',
-						'title'           => esc_html__( 'Article Byline', 'nybc' ),
-						'description'     => esc_html__( 'Article Byline Block', 'nybc' ),
-						'render_template' => 'template-parts/blocks/article-byline.php',
-					)
-				);
-
-				/**
-				 *  Add block fields
-				 */
-				get_template_part( 'inc/acf/blocks/article-byline' );
-			}
-		}
-
-
-		/**
 		 *  Zip Code Search With CTA Block, N2RDEV-96
 		 */
 		public static function zip_code_search_with_cta() {
@@ -992,6 +977,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/zip-code-search-with-cta' );
+			}
+		}
+
+		/**
+		 *  Article Byline Block, N2RDEV-97
+		 */
+		public static function article_byline() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'article_byline',
+						'title'           => esc_html__( 'Article Byline', 'nybc' ),
+						'description'     => esc_html__( 'Article Byline Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/article-byline.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/article-byline' );
 			}
 		}
 

@@ -25,17 +25,15 @@ $image       = get_field( 'image' );
 $content     = get_field( 'content' );
 $lnk         = get_field( 'link' );
 
-$image_url = ! empty( $image ) ? $image['url'] : '';
-if ( empty( $image_url ) ) {
-	$image     = get_field( 'two_line_logo', 'options' );
-	$image_url = ! empty( $image ) ? $image['url'] : '';
+if ( empty( $image ) ) {
+	$image = get_field( 'two_line_logo', 'options' );
 }
 ?>
 <div class="cta-card-wrapper vertical <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
 	<a target="<?php echo esc_attr( ! empty( $lnk ) ? $lnk['target'] : '' ); ?>" href="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '#' ); ?>" class="cta-card vertical">
-		<div class="cta-card-img <?php echo esc_attr( 'svg' === pathinfo( $image_url, PATHINFO_EXTENSION ) ? 'logo' : '' ); ?>">
-			<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 519, 283, true ); ?>
+		<div class="cta-card-img <?php echo esc_attr( ( $image && 'svg' === pathinfo( $image['url'], PATHINFO_EXTENSION ) ) ? 'logo' : '' ); ?>">
+			<?php NYBC_Helpers::picture( $image, '519x283' ); ?>
 		</div>
 
 		<div class="cta-card-info">

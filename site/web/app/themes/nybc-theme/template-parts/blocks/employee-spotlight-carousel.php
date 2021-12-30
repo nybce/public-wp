@@ -43,7 +43,20 @@ if ( empty( $slides ) ) {
 					if ( empty( $slide['employee'] ) ) {
 						continue;
 					}
-					$image_url = get_the_post_thumbnail_url( $slide['employee'], 'full' );
+					$image_url = get_the_post_thumbnail_url( $slide['employee'], '800x' );
+					$image     = array(
+						'url' => $image_url,
+						'alt' => get_the_title( $slide['employee'] ),
+					);
+
+					$titles   = get_field( 'titles', $slide['employee'] );
+					$position = ! empty( $titles ) ? array_shift( $titles )['title'] : '';
+
+					if ( empty( $position ) ) {
+						$position = get_field( 'positions', $slide['employee'] );
+						$position = ! empty( $position ) ? array_shift( $position )['position'] : '';
+					}
+
 					?>
 					<div class="swiper-slide">
 					<div class="employees-wrapper">
@@ -63,7 +76,7 @@ if ( empty( $slides ) ) {
 
 									<div class="h5 title fw-800 light name"><?php echo esc_html( get_the_title( $slide['employee'] ) ); ?></div>
 
-									<div class="h6 title fw-500 position"><?php echo esc_html( get_field( 'title', $slide['employee'] ) ); ?></div>
+									<div class="h6 title fw-500 position"><?php echo esc_html( $position ); ?></div>
 
 									<div class="spacer-48 spacer-xs-16"></div>
 
@@ -73,7 +86,7 @@ if ( empty( $slides ) ) {
 							</div>
 							<div class="col-lg-5 ps-lg-0">
 								<div class="employees-img">
-									<?php NYBC_Helpers::picture( $image_url, get_the_title( $slide['employee'] ), 735 ); ?>
+									<?php NYBC_Helpers::picture( $image ); ?>
 								</div>
 							</div>
 						</div>

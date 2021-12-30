@@ -30,10 +30,9 @@ $text        = get_field( 'text' );
 <a class="news-item <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" target="<?php echo esc_attr( ! empty( $lnk ) ? $lnk['target'] : '' ); ?>" href="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '#' ); ?>">
 	<?php
 	if ( ! empty( $image ) ) {
-		$image_url = ! empty( $image ) ? $image['url'] : '';
 		?>
 		<div class="news-img">
-			<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 517, 290 ); ?>
+			<?php NYBC_Helpers::picture( $image, '519x292' ); ?>
 		</div>
 	<?php } ?>
 	<div class="border-top"></div>

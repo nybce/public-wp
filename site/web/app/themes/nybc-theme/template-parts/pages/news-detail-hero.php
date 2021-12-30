@@ -5,11 +5,10 @@
  * @package NYBC
  */
 
-$image_url  = get_the_post_thumbnail_url( null, 'full' );
+$image_url  = get_the_post_thumbnail_url( null, '800x' );
 $post_title = get_the_title();
 $date       = get_the_time( 'F j, Y' );
 $tags       = get_the_tags();
-$image_url  = ! empty( $image_url ) ? aq_resize( $image_url, 790 ) : null;
 ?>
 <div class="section banner">
 

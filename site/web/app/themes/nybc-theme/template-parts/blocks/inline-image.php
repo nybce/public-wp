@@ -26,11 +26,10 @@ if ( empty( $image ) ) {
 	return;
 }
 
-$image_url = $image['url'];
 ?>
 <div class="text <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
-	<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 1062 ); ?>
+	<?php NYBC_Helpers::picture( $image, '1062x' ); ?>
 
 	<?php if ( ! empty( $caption ) ) { ?>
 		<span><?php echo esc_html( $caption ); ?></span>

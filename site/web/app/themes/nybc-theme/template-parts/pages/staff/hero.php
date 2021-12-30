@@ -5,7 +5,7 @@
  * @package NYBC
  */
 
-$image_url  = get_the_post_thumbnail_url( null, 'full' );
+$image_url  = get_the_post_thumbnail_url( null, '800x' );
 $post_title = get_the_title();
 
 $page_title = get_field( 'page_title' );
@@ -21,8 +21,6 @@ if ( empty( $position ) ) {
 $emails  = get_field( 'emails' );
 $contact = ! empty( $emails ) ? array_shift( $emails )['email'] : '';
 
-
-$image_url = ! empty( $image_url ) ? aq_resize( $image_url, 790 ) : null;
 ?>
 <div class="section banner">
 

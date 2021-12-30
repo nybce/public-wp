@@ -32,7 +32,7 @@ if ( ! class_exists( 'NYBC_Story ' ) ) {
 		public static function taxonomy_post_type() {
 
 			register_post_type(
-				'asset',
+				'story',
 				array(
 					'labels'            => array(
 						'name'               => esc_html__( 'Stories ', 'nybc' ),
@@ -51,7 +51,7 @@ if ( ! class_exists( 'NYBC_Story ' ) ) {
 					'show_in_nav_menus' => true,
 					'show_ui'           => true,
 					'public'            => true,
-					'show_in_rest'      => false,
+					'show_in_rest'      => true,
 					'menu_position'     => 20,
 					'supports'          => array( 'title', 'editor', 'thumbnail' ),
 					'menu_icon'         => null,

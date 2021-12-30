@@ -56,8 +56,6 @@ if ( empty( $image ) ) {
 		)
 	);
 
-} else {
-	$image_url = ! empty( $image ) ? $image['url'] : '';
 }
 ?>
 <div class="article-byline-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
@@ -65,8 +63,8 @@ if ( empty( $image ) ) {
 		<div class="autor-img">
 			<?php
 			if ( ! empty( $image ) ) {
-				NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 72, 72, true );
-			} else {
+				NYBC_Helpers::picture( $image, 'thumbnail' );
+			} elseif ( $image_url ) {
 				?>
 			<img src="<?php echo esc_url( $image_url ); ?>" alt="user">
 				<?php

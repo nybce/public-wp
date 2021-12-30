@@ -33,7 +33,7 @@ $text        = get_field( 'text' );
 	<?php } ?>
 	<div class="spacer-24"></div>
 
-	<div class="h5 title fw-800"><?php echo esc_html( $block_title ); ?></div>
+	<div class="h4 title fw-800"><?php echo esc_html( $block_title ); ?></div>
 
 	<div class="spacer-8"></div>
 

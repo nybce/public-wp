@@ -20,6 +20,7 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 $allowed_blocks = array(
+	'e-learning/block',
 	'core/heading',
 	'core/list',
 	'core/quote',
@@ -33,8 +34,14 @@ $allowed_blocks = array(
 	'acf/vertical-cta-card',
 	'acf/spacer',
 	'acf/news',
+	'acf/article-byline',
+	'acf/download-card',
+	'acf/download-card-container',
+	'acf/graphic-download-card',
+	'acf/resource-cards',
 );
-$class_name    .= ' col-lg-8';
+
+$class_name .= ' col-lg-8';
 ?>
 
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">

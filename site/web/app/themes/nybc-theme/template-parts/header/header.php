@@ -28,9 +28,10 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 			}
 			?>
 			<div class="btn-wrapper">
-				<form class="btn-search">
-					<input class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
-					<button>
+				<form class="btn-search" action="<?php echo esc_url( NYBC_HOME_URI ); ?>">
+					<?php wp_nonce_field( 'search', 'nonce' ); ?>
+					<input name="s" class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
+					<button type="submit">
 						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M7.5 13.334a5.8 5.8 0 003.489-1.167l5.677 5.679 1.179-1.179-5.678-5.678A5.8 5.8 0 0013.333 7.5 5.833 5.833 0 107.5 13.334zm0-10A4.171 4.171 0 0111.666 7.5 4.171 4.171 0 017.5 11.667 4.171 4.171 0 013.333 7.5 4.171 4.171 0 017.5 3.334z"
@@ -76,9 +77,10 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 					}
 					?>
 					<div class="btn-wrapper">
-						<form class="btn-search">
-							<input class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
-							<button>
+						<form class="btn-search" action="<?php echo esc_url( NYBC_HOME_URI ); ?>">
+							<?php wp_nonce_field( 'search', 'nonce' ); ?>
+							<input name="s" class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
+							<button type="submit">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
 									<path

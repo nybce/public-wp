@@ -26,8 +26,7 @@ $color       = get_field( 'color' );
 $button_link = get_field( 'link' );
 
 $post_title = get_the_title( $post_id );
-$image_url  = ! empty( $image ) ? aq_resize( $image['url'], 1915 ) : '';
-
+$image_url  = ! empty( $image ) ? $image['sizes']['1915x'] : get_the_post_thumbnail_url( $post_id, '1915x' );
 ?>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 

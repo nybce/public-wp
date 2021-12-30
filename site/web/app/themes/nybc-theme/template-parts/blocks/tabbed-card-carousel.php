@@ -85,10 +85,27 @@ if ( empty( $block_tabs ) ) {
 						data-options='{"slidesPerView":4, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"1199":{"slidesPerView": 3}, "767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
 						<div class="swiper-wrapper">
 							<?php foreach ( $cards as $card ) { ?>
-							<div class="swiper-slide">
+								<div class="swiper-slide">
+									<a href="<?php echo esc_url( ! empty( $card['link'] ) ? $card['link']['url'] : '#' ); ?>" class="card-item small">
+										<?php if ( ! empty( $card['icon'] ) ) { ?>
+											<div class="card-img">
+												<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/picker-icons/<?php echo esc_html( $card['icon'] ); ?>.svg" alt="icon">
+											</div>
+										<?php } ?>
+										<div class="h6 tagline"><?php echo esc_html( $card['tagline'] ); ?></div>
 
-							</div>
-							<?php } ?>
+										<div class="spacer-24"></div>
+
+										<div class="h5 title fw-800"><?php echo esc_html( $card['title'] ); ?></div>
+
+										<div class="spacer-8"></div>
+
+										<div class="text text-20">
+											<?php echo esc_html( $card['text'] ); ?>
+										</div>
+									</a>
+								</div>
+								<?php } ?>
 						</div>
 					</div>
 				</div>

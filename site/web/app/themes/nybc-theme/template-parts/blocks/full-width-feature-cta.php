@@ -23,15 +23,13 @@ $image       = get_field( 'image' );
 $block_title = get_field( 'title' );
 $body        = get_field( 'body' );
 $button      = get_field( 'button' );
-
-$image_url = ! empty( $image ) ? $image['url'] : '';
 ?>
 
 <div class="section about-us <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="container container-lg">
 		<div class="about-item">
 			<div class="about-img">
-				<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 803 ); ?>
+				<?php NYBC_Helpers::picture( $image, '800x' ); ?>
 			</div>
 			<div class="about-info">
 				<div class="spacer-48"></div>
@@ -39,7 +37,9 @@ $image_url = ! empty( $image ) ? $image['url'] : '';
 				<div class="spacer-16"></div>
 				<div class="text-xl text-30"><?php echo esc_html( $body ); ?></div>
 				<div class="spacer-16"></div>
-				<a class="btn btn-primary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
+				<?php if ( ! empty( $button ) ) { ?>
+					<a class="btn btn-primary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
+				<?php } ?>
 
 			</div>
 		</div>

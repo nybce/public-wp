@@ -25,7 +25,6 @@ $content        = get_field( 'content' );
 $lnk            = get_field( 'link' );
 $image          = get_field( 'image' );
 $image_position = get_field( 'image_position' );
-$image_url      = ! empty( $image ) ? $image['url'] : '';
 
 ?>
 <div class="section info-block <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
@@ -54,7 +53,7 @@ $image_url      = ! empty( $image ) ? $image['url'] : '';
 					<div class="info-block-img">
 						<div class="decor-bg rellax" data-rellax-speed="1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 						<div class="decor-ring rellax" data-rellax-speed="2" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
-						<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 800 ); ?>
+						<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
 					</div>
 				</div>
 			<?php } else { ?>
@@ -62,7 +61,7 @@ $image_url      = ! empty( $image ) ? $image['url'] : '';
 					<div class="info-block-img">
 						<div class="decor-bg rellax" data-rellax-speed="1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 						<div class="decor-ring rellax" data-rellax-speed="2" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
-						<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 800 ); ?>
+						<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
 					</div>
 				</div>
 
