@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 
 /** STAFF */
 
-/**-----------------------------------------------------------------------*/
+/**------------------------*/
 .personal-info-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -74,6 +74,14 @@
 			color: $color-white;
 			transform: translateY(-0.3em);
 		}
+	}
+
+	.contact-link {
+
+		a:hover {
+			color: $color-primary-base2-20;
+		}
+
 	}
 }
 

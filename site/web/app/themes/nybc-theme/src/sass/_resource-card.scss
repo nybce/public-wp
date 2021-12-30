@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**---*/
+/**------------------------*/
 
 /** RESOURCE CARD */
 
-/**---*/
+/**------------------------*/
 .resource-card-wrapper {
 	align-items: stretch;
 	display: flex;
@@ -163,11 +163,11 @@
 	}
 }
 
-/**---*/
+/**------------------------*/
 
 /** DIVIDER */
 
-/**---*/
+/**------------------------*/
 .divider {
 	background-color: $color-secondary-90;
 	height: 0.1rem;
@@ -175,11 +175,11 @@
 	width: 100%;
 }
 
-/**----*/
+/**------------------------*/
 
 /** RESOURCE CARD FOR DIVISION */
 
-/**---*/
+/**------------------------*/
 .division {
 	.resource-card {
 		&::before {

@@ -1,11 +1,11 @@
 //VARIABLES
 @import "variables-mixins";
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /** HEADER */
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 header {
 	&.hide-top {
 		.header-inner {
@@ -94,32 +94,6 @@ header {
 
 .toggle-block {
 	position: relative;
-
-	// > .nav-wrapper {
-	//   > .nav-list {
-	//     li {
-	//       padding: 0.65em 1.3em 0.65em 0;
-	//       margin-right: 1.95em;
-
-	//       // &::after {
-	//       //   content: "";
-	//       //   position: absolute;
-	//       //   top: 1em;
-	//       //   right: 0.3125em;
-	//       //   transform: rotate(45deg);
-	//       //   z-index: 1;
-	//       //   height: 0.5em;
-	//       //   width: 0.5em;
-	//       //   border-right: 0.125em solid $color-primary-base1-10;
-	//       //   border-bottom: 0.125em solid $color-primary-base1-10;
-	//       //   transition: $transition;
-	//       // }
-	//     }
-	//     li:last-child {
-	//       margin-right: 0;
-	//     }
-	//   }
-	// }
 }
 
 .nav-list {
@@ -227,16 +201,6 @@ header {
 			max-width: 35rem;
 		}
 	}
-
-	// .toggle-block {
-	//   > .nav-wrapper {
-	//     > .nav-list {
-	//       li {
-	//         margin-right: 1.8em;
-	//       }
-	//     }
-	//   }
-	// }
 }
 
 @media (max-width: 1199px) {
@@ -288,10 +252,6 @@ header {
 				margin-bottom: 1em;
 				margin-right: 0;
 			}
-
-			// > * {
-			//   width: 100%;
-			// }
 		}
 
 		&.mobile {
@@ -304,11 +264,11 @@ header {
 	}
 
 	.toggle-block {
-		// max-height: 100%;
 		background: #fff;
 		display: block;
 		height: calc(100vh - 8rem);
-		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: auto;
 		padding: 0 2.75em;
 		padding-bottom: 13rem;
 		position: absolute;
@@ -378,6 +338,11 @@ header {
 			margin-right: 0;
 			padding: 0 0 0.65em 0;
 		}
+
+		> li:not(.dropdown-item) {
+
+			padding: 0 0 1.65em 0;
+		}
 	}
 
 	.mobile-button-wrapper {
@@ -393,6 +358,8 @@ header {
 	.top-menu {
 		.btn-wrapper {
 			> * {
+				line-height: 1.7em;
+				padding: 0.5125em 1.125em 0.5125em 1.5em;
 				text-align: left;
 				width: 100%;
 			}
@@ -408,11 +375,11 @@ header {
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /** DROPMENU */
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 .dropdown-item {
 	margin-right: 1.95em;
 	padding: 0.65em 1.3em 0.65em 0;
@@ -520,9 +487,8 @@ header {
 
 				&::before,
 				&::after {
-					border-bottom: 0.067em solid;
-					border-color: $color-primary-base1-10;
-					border-right: 0.067em solid;
+					border-bottom: 0.067em solid $color-primary-base1-10;
+					border-right: 0.067em solid $color-primary-base1-10;
 					content: "";
 					position: absolute;
 					right: 0;
@@ -562,6 +528,7 @@ header {
 		> li {
 			margin-right: 0;
 			padding: 0;
+			text-align: center;
 
 			>a {
 				color: $color-white;
@@ -652,12 +619,9 @@ header {
 			overflow: auto;
 			padding: 1.25em 0;
 			position: fixed;
-			transform: translate(-110%, 0);
+			transform: translate(110%, 0);
 			visibility: visible;
 			width: 100%;
-			// left: -2em;
-			// top: -1.5em;
-			// width: calc(100% + 4em);
 			z-index: 10;
 
 			&::after {
@@ -804,11 +768,11 @@ header {
 	}
 }
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 
 /** HEADER STYLE FOR DIVISION */
 
-/**--------------------------------------------------------------------------*/
+/**------------------------*/
 .division {
 	.header-inner {
 		&::before {

@@ -46,7 +46,23 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 * @return array
 		 */
 		public static function register_block_type_args( $block ) {
-			$block['mode']     = 'edit';
+			$mode = 'edit';
+			if ( in_array(
+				$block['name'],
+				array(
+					'acf/two-column-block',
+					'acf/one-column-block',
+					'acf/column-sidebar',
+					'acf/column-content',
+					'acf/accordion-item',
+					'acf/accordion',
+				),
+				true
+			) ) {
+				$mode = 'preview';
+			}
+
+			$block['mode']     = $mode;
 			$block['category'] = 'nybc';
 
 			if ( empty( $block['supports'] ) || $block['supports']['mode'] ) {
@@ -158,6 +174,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/vertical-cta-card',
 				'acf/spacer',
 				'acf/child-page-hero',
+				'acf/article-byline',
 				'acf/download-card',
 				'acf/download-card-container',
 				'acf/graphic-download-card',
@@ -220,6 +237,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::vertical_cta_card();// N2RDEV-87.
 			self::vertical_card_row();// N2RDEV-87.
 			self::child_page_hero();// N2RDEV-93.
+			self::article_byline();// N2RDEV-97.
 			self::download_card();// N2RDEV-125.
 			self::download_card_container();// N2RDEV-126.
 			self::graphic_download_card();// N2RDEV-127.
@@ -905,6 +923,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/child-page-hero' );
+			}
+		}
+
+		/**
+		 *  Article Byline Block, N2RDEV-97
+		 */
+		public static function article_byline() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'article_byline',
+						'title'           => esc_html__( 'Article Byline', 'nybc' ),
+						'description'     => esc_html__( 'Article Byline Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/article-byline.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/article-byline' );
 			}
 		}
 
