@@ -54,6 +54,14 @@ COPY ./.env/local.env /.env
 RUN mkdir /envs
 COPY ./.env/* /envs
 COPY .vaultpass /envs
+RUN apk --update add --virtual build-dependencies --no-cache wget tar
+RUN apk --update add libc6-compat ca-certificates
+
+RUN wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux && \
+    tar -xf azcopyv10.tar && \
+    apk del build-dependencies
+
+RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
 # Update composer dependencies at runtime
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
