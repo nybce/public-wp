@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * Staff post type template file
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -13,14 +13,14 @@
  */
 
 get_header(); ?>
-
 	<main>
 		<?php
 		while ( have_posts() ) {
 			the_post();
 
-			get_template_part( 'template-parts/pages/news-detail-hero' );
-			the_content();
+			get_template_part( 'template-parts/pages/staff/hero' );
+			get_template_part( 'template-parts/pages/staff/content' );
+			get_template_part( 'template-parts/pages/recent-news' );
 		}
 		?>
 	</main>

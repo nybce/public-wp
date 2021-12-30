@@ -177,6 +177,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/child-page-hero',
 				'acf/donor-stories-carousel',
 				'acf/zip-code-search-with-cta',
+				'acf/article-byline',
 				'acf/download-card',
 				'acf/download-card-container',
 				'acf/graphic-download-card',
@@ -241,6 +242,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::child_page_hero();// N2RDEV-93.
 			self::donor_stories_carousel();// N2RDEV-49.
 			self::zip_code_search_with_cta();// N2RDEV-96.
+			self::article_byline();// N2RDEV-97.
 			self::download_card();// N2RDEV-125.
 			self::download_card_container();// N2RDEV-126.
 			self::graphic_download_card();// N2RDEV-127.
@@ -949,6 +951,28 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/donor-stories-carousel' );
 			}
 		}
+            
+     /**       
+		 *  Article Byline Block, N2RDEV-97
+		 */
+		public static function article_byline() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'article_byline',
+						'title'           => esc_html__( 'Article Byline', 'nybc' ),
+						'description'     => esc_html__( 'Article Byline Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/article-byline.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/article-byline' );
+			}
+		}
+            
 
 		/**
 		 *  Zip Code Search With CTA Block, N2RDEV-96
