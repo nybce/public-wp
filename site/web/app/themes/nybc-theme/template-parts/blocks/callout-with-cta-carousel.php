@@ -42,8 +42,7 @@ if ( empty( $slides ) ) {
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $slides as $slide ) {
-						$image     = $slide['image'];
-						$image_url = ! empty( $image ) ? $image['url'] : '';
+						$image = $slide['image'];
 						?>
 					<div class="swiper-slide">
 						<div class="row">
@@ -70,7 +69,7 @@ if ( empty( $slides ) ) {
 								<div class="info-block-img">
 									<div class="decor-bg rellax" data-rellax-speed="1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 									<div class="decor-ring rellax" data-rellax-speed="2" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
-									<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 800 ); ?>
+									<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
 								</div>
 							</div>
 							<?php } else { ?>
@@ -80,7 +79,7 @@ if ( empty( $slides ) ) {
 												style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 											<div class="decor-ring rellax" data-rellax-speed="2"
 												style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
-											<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 800 ); ?>
+											<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
 										</div>
 									</div>
 

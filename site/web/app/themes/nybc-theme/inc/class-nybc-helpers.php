@@ -10,8 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-get_template_part( 'lib/class-aq-resize' );
-
 if ( ! class_exists( 'NYBC_Helpers' ) ) {
 	/**
 	 * NYBC Theme Helper class
@@ -72,96 +70,35 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		}
 
 		/**
-		 *  Convert image to WEBP format
+		 *  Create img tag
 		 *
-		 * @param string $url image url.
-		 * @return string
+		 * @param array  $image image data.
+		 * @param string $size size name.
+		 * @param string $class image class.
 		 */
-		public static function image_to_webp( $url ) {
-			if ( empty( $url ) ) {
-				return $url;
+		public static function picture( $image, $size = '', $class = '' ) {
+			if ( empty( $image ) ) {
+				return;
 			}
+			$url = ( $size && isset( $image['sizes'][ $size ] ) ) ? $image['sizes'][ $size ] : $image['url'];
+			$alt = $image['alt'];
 
-			$upload_info = wp_upload_dir();
-			$upload_dir  = $upload_info['basedir'];
-			$upload_url  = $upload_info['baseurl'];
-			$rel_path    = str_replace( $upload_url, '', $url );
-			$img_path    = $upload_dir . $rel_path;
-			$path_result = preg_replace( '/\.[^.]+$/', '.', $img_path ) . 'webp';
-
-			if ( file_exists( $path_result ) ) {
-				return preg_replace( '/\.[^.]+$/', '.', $url ) . 'webp';
-			}
-
-			$editor       = wp_get_image_editor( $img_path );
-			$resized_file = $editor->save( $path_result, 'image/webp' );
-
-			if ( ! is_wp_error( $resized_file ) ) {
-				$resized_rel_path = str_replace( $upload_dir, '', $resized_file['path'] );
-				return $upload_url . $resized_rel_path;
-			} else {
-				return false;
-			}
-
-		}
-
-		/**
-		 *  Create WEBP picture tag
-		 *
-		 * @param string $url image url.
-		 * @param string $alt image alt.
-		 * @param string $width image alt.
-		 * @param string $height image alt.
-		 * @param string $crop image alt.
-		 */
-		public static function picture( $url, $alt, $width = null, $height = null, $crop = null ) {
 			if ( empty( $url ) ) {
 				return;
 			}
-			if ( 'svg' === pathinfo( $url, PATHINFO_EXTENSION ) ) {
-				echo wp_kses(
-					"<img src=\"{$url}\" alt=\"{$alt}\">",
-					array(
-						'img' => array(
-							'src' => true,
-							'alt' => true,
-						),
-					)
-				);
-				return;
-			}
-			if ( ! empty( $width ) ) {
-				$url = aq_resize( $url, $width, $height, $crop, true, $crop );
-			}
 
-			$type = explode( '.', $url );
-			$type = ! empty( $type ) ? array_pop( $type ) : '';
-			if ( 'jpeg' === $type || 'jpg' === $type ) {
-				$type = 'jpeg';
-			} elseif ( 'png' === $type ) {
-				$type = 'png';
+			if ( ! empty( $class ) ) {
+				$class = "class='$class'";
 			}
-
-			$webp_url = self::image_to_webp( $url );
-
 			echo wp_kses(
-				"
-<picture>
-<source srcset=\"{$webp_url}\" type=\"image/webp\">
-<source srcset=\"{$url}\" type=\"image/{$type}\">
-<img src=\"{$url}\" alt=\"{$alt}\" loading='lazy'>
-</picture>",
+				"<img {$class} loading=\"lazy\" src=\"{$url}\" alt=\"{$alt}\">",
 				array(
-					'source'  => array(
-						'srcset' => true,
-						'type'   => true,
-					),
-					'img'     => array(
+					'img' => array(
 						'src'     => true,
 						'alt'     => true,
+						'class'   => true,
 						'loading' => true,
 					),
-					'picture' => array(),
 				)
 			);
 		}
@@ -313,7 +250,9 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 				return;
 			}
 
-			if ( ! is_page() ) {
+			$news_page    = get_field( 'news_page', 'options' );
+			$stories_page = get_field( 'stories_page', 'options' );
+			if ( is_page( $news_page ) || is_page( $stories_page ) ) {
 				self::sidebar_tags( $mobile );
 				return;
 			}
@@ -369,9 +308,10 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		public static function breadcrumbs() {
 			$middle_title = '';
 			$middle_url   = '';
-			if ( is_singular( 'post' ) && defined( 'NYBC_NEWS_PAGE_ID' ) ) {
-				$middle_title = get_the_title( NYBC_NEWS_PAGE_ID );
-				$middle_url   = get_the_permalink( NYBC_NEWS_PAGE_ID );
+			if ( is_singular( 'post' ) ) {
+				$news_page    = get_field( 'news_page', 'options' );
+				$middle_title = get_the_title( $news_page );
+				$middle_url   = get_the_permalink( $news_page );
 
 			} elseif ( is_singular( 'staff' ) ) {
 				$parent_page = get_field( 'parent_page' );
@@ -379,6 +319,10 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 					$middle_title = get_the_title( $parent_page );
 					$middle_url   = get_the_permalink( $parent_page );
 				}
+			} elseif ( is_singular( 'story' ) ) {
+				$stories_page = get_field( 'stories_page', 'options' );
+				$middle_title = get_the_title( $stories_page );
+				$middle_url   = get_the_permalink( $stories_page );
 			}
 			?>
 			<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">

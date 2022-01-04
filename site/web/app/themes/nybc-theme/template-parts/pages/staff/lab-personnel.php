@@ -40,8 +40,13 @@ if ( empty( $staffs ) ) {
 					<div class="staff-card-wrapper">
 						<?php
 						foreach ( $staffs as $i => $staff ) {
-							$image_url  = get_the_post_thumbnail_url( $staff, 'full' );
+							$image_url  = get_the_post_thumbnail_url( $staff, '519x292' );
 							$post_title = get_the_title( $staff );
+
+							$image = array(
+								'url' => $image_url,
+								'alt' => $post_title,
+							);
 
 							$titles   = get_field( 'titles', $staff );
 							$position = ! empty( $titles ) ? array_shift( $titles )['title'] : '';
@@ -61,12 +66,13 @@ if ( empty( $staffs ) ) {
 									$areas
 								);
 								$areas = implode( ' | ', $areas );
+
 							}
 							?>
 						<a href="#" class="staff-card" style="<?php echo esc_attr( $i >= $display_count ? 'display: none' : '' ); ?>">
 							<div class="staff-card-img">
 
-								<?php NYBC_Helpers::picture( $image_url, $post_title, 519, 292, true ); ?>
+								<?php NYBC_Helpers::picture( $image ); ?>
 
 							</div>
 

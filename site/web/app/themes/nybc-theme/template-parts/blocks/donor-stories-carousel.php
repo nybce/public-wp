@@ -43,8 +43,7 @@ if ( empty( $slides ) ) {
 					if ( empty( $slide['employee'] ) ) {
 						continue;
 					}
-					$image     = $slide['image'];
-					$image_url = ! empty( $image ) ? $image['url'] : '';
+					$image = $slide['image'];
 					?>
 					<div class="swiper-slide">
 					<div class="employees-wrapper">
@@ -73,7 +72,7 @@ if ( empty( $slides ) ) {
 							</div>
 							<div class="col-lg-5 ps-lg-0">
 								<div class="employees-img">
-									<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 735 ); ?>
+									<?php NYBC_Helpers::picture( $image, '800x' ); ?>
 								</div>
 							</div>
 						</div>

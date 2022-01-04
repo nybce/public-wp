@@ -53,12 +53,11 @@ if ( empty( $slides ) ) {
 						$block_title = $slide['title'];
 						$body        = $slide['body'];
 						$button      = $slide['button'];
-						$image_url   = ! empty( $image ) ? $image['url'] : '';
 						?>
 					<div class="swiper-slide">
 						<div class="about-item">
 							<div class="about-img">
-								<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 803 ); ?>
+								<?php NYBC_Helpers::picture( $image, '800x' ); ?>
 							</div>
 							<div class="about-info">
 								<div class="spacer-48"></div>

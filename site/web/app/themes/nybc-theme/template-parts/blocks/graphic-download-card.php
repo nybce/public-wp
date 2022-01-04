@@ -26,14 +26,12 @@ $downloads   = get_field( 'downloads' );
 if ( empty( $downloads ) ) {
 	$downloads = array();
 }
-
-$image_url = ! empty( $image ) ? $image['url'] : '';
 ?>
 <div class="graphic-download-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="graphic-download-card">
 		<div class="graphic-download-card-img">
 
-			<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 160, 160, true ); ?>
+			<?php NYBC_Helpers::picture( $image, '160x' ); ?>
 
 		</div>
 

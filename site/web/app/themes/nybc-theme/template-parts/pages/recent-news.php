@@ -16,8 +16,8 @@ $news = get_posts(
 if ( empty( $news ) ) {
 	return;
 }
-
-$blog_link = ! empty( NYBC_NEWS_PAGE_ID ) ? get_the_permalink( NYBC_NEWS_PAGE_ID ) : '';
+$news_page = get_field( 'news_page', 'options' );
+$blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 ?>
 <div class="spacer-96 spacer-xs-64"></div>
 <div class="section news">
@@ -46,15 +46,20 @@ $blog_link = ! empty( NYBC_NEWS_PAGE_ID ) ? get_the_permalink( NYBC_NEWS_PAGE_ID
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $news as $news_id ) {
-						$image_url   = get_the_post_thumbnail_url( $news_id, 'full' );
+						$image_url   = get_the_post_thumbnail_url( $news_id, '519x292' );
 						$block_title = get_the_title( $news_id );
 						$date        = get_the_time( 'M j, Y', $news_id );
 						$tags        = get_the_tags( $news_id );
+
+						$image = array(
+							'url' => $image_url,
+							'alt' => $block_title,
+						);
 						?>
 						<div class="swiper-slide">
 							<a href="<?php echo esc_url( get_the_permalink( $news_id ) ); ?>" class="news-item">
 								<div class="news-img">
-									<?php NYBC_Helpers::picture( $image_url, $block_title, 517, 292, true ); ?>
+									<?php NYBC_Helpers::picture( $image ); ?>
 								</div>
 								<div class="border-top"></div>
 								<div class="news-info">

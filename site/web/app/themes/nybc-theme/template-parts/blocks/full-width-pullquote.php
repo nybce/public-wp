@@ -24,8 +24,6 @@ $image        = get_field( 'image' );
 $quote        = get_field( 'quote' );
 $source       = get_field( 'source' );
 $source_title = get_field( 'source_title' );
-
-$image_url = ! empty( $image ) ? $image['url'] : '';
 ?>
 <div class="section quotes <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
@@ -36,7 +34,7 @@ $image_url = ! empty( $image ) ? $image['url'] : '';
 		<div class="row">
 			<div class="col-lg-5 pe-lg-0">
 				<div class="quotes-img">
-					<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 666 ); ?>
+					<?php NYBC_Helpers::picture( $image, '800x' ); ?>
 				</div>
 			</div>
 

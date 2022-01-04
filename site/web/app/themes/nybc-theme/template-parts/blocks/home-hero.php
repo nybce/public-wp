@@ -20,8 +20,13 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
-$media      = get_field( 'media' );
-$video      = get_field( 'video' );
+$image     = get_field( 'media' );
+$video     = get_field( 'video' );
+$image_url = ! empty( $image ) ? $image['sizes']['1915x'] : '';
+
+if ( empty( $image ) && empty( $video ) ) {
+	$image_url = get_the_post_thumbnail_url( $post_id, '1915x' );
+}
 $title_text = get_field( 'title' );
 $button     = get_field( 'button' );
 
@@ -56,11 +61,10 @@ $button     = get_field( 'button' );
 			</div>
 		</div>
 		<?php
-		if ( ! empty( $media ) ) {
-			$media['url'] = aq_resize( $media['url'], 1915 );
+		if ( ! empty( $image_url ) ) {
 			?>
 
-			<div class="bg rellax" style="background-image: url('<?php echo esc_url( $media['url'] ); ?>');"></div>
+			<div class="bg rellax" style="background-image: url('<?php echo esc_url( $image_url ); ?>');"></div>
 
 		<?php } elseif ( ! empty( $video ) ) { ?>
 

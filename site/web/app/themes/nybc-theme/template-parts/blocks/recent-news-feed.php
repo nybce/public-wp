@@ -78,15 +78,20 @@ if ( empty( $lnk ) ) {
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $news as $news_id ) {
-						$image_url   = get_the_post_thumbnail_url( $news_id, 'full' );
+						$image_url   = get_the_post_thumbnail_url( $news_id, '519x292' );
 						$block_title = get_the_title( $news_id );
 						$date        = get_the_time( 'M j, Y', $news_id );
 						$tags        = get_the_tags( $news_id );
+
+						$image = array(
+							'url' => $image_url,
+							'alt' => $block_title,
+						);
 						?>
 					<div class="swiper-slide">
 						<a href="<?php echo esc_url( get_the_permalink( $news_id ) ); ?>" class="news-item">
 							<div class="news-img">
-								<?php NYBC_Helpers::picture( $image_url, $block_title, 517, 292 ); ?>
+								<?php NYBC_Helpers::picture( $image ); ?>
 							</div>
 							<div class="border-top"></div>
 							<div class="news-info">

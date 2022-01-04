@@ -24,13 +24,11 @@ $block_title = get_field( 'title' );
 $image       = get_field( 'image' );
 $content     = get_field( 'content' );
 $lnk         = get_field( 'link' );
-
-$image_url = ! empty( $image ) ? $image['url'] : '';
 ?>
 <div class="cta-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<a target="<?php echo esc_attr( ! empty( $lnk ) ? $lnk['target'] : '' ); ?>" href="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '#' ); ?>" class="cta-card horizontal">
 		<div class="cta-card-img">
-			<?php NYBC_Helpers::picture( $image_url, $image ? $image['alt'] : '', 380, 325, true ); ?>
+			<?php NYBC_Helpers::picture( $image, '380x325' ); ?>
 		</div>
 
 		<div class="cta-card-info">
@@ -44,5 +42,5 @@ $image_url = ! empty( $image ) ? $image['url'] : '';
 		</div>
 
 	</a>
-	<div class="spacer-48"></div>
+	<div class="spacer-0"></div>
 </div>

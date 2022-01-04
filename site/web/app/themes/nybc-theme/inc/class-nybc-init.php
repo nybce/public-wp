@@ -20,6 +20,59 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	class NYBC_Init {
 
 		/**
+		 * Additional Image sizes
+		 *
+		 * @var array
+		 */
+		private static $image_sizes = array(
+			'160x'    => array(
+				'width'  => 160,
+				'height' => 99999,
+				'crop'   => false,
+			),
+			'380x325' => array(
+				'width'  => 380,
+				'height' => 325,
+				'crop'   => true,
+			),
+			'380x369' => array(
+				'width'  => 380,
+				'height' => 369,
+				'crop'   => true,
+			),
+			'519x283' => array(
+				'width'  => 519,
+				'height' => 283,
+				'crop'   => true,
+			),
+			'519x292' => array(
+				'width'  => 519,
+				'height' => 292,
+				'crop'   => true,
+			),
+			'654x367' => array(
+				'width'  => 654,
+				'height' => 367,
+				'crop'   => true,
+			),
+			'800x'    => array(
+				'width'  => 800,
+				'height' => 99999,
+				'crop'   => false,
+			),
+			'1062x'   => array(
+				'width'  => 1062,
+				'height' => 99999,
+				'crop'   => false,
+			),
+			'1915x'   => array(
+				'width'  => 1915,
+				'height' => 99999,
+				'crop'   => false,
+			),
+		);
+
+		/**
 		 *  NYBC_Init Constructor
 		 */
 		public function __construct() {
@@ -78,6 +131,13 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function add_image_sizes() {
 			remove_image_size( '1536x1536' );
 			remove_image_size( '2048x2048' );
+			remove_image_size( 'medium_large' );
+			remove_image_size( 'medium' );
+			remove_image_size( 'large' );
+
+			foreach ( self::$image_sizes as $name => $data ) {
+				add_image_size( $name, $data['width'], $data['height'], $data['crop'] );
+			}
 		}
 
 		/**
