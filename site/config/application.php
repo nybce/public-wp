@@ -112,7 +112,6 @@ Config::define( 'BLOG_ID_CURRENT_SITE', 1 );
 Config::define('ADMIN_COOKIE_PATH', '/');
 Config::define('COOKIE_DOMAIN', '');
 Config::define('COOKIEPATH', '');
-Config::define('SITECOOKIEPATH', '');
 
 
 /**
