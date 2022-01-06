@@ -4,6 +4,7 @@
  */
 
 use Roots\WPConfig\Config;
+use function Env\env;
 
 Config::define('SAVEQUERIES', false);
 Config::define('WP_DEBUG', false);
@@ -18,3 +19,4 @@ Config::define('DISALLOW_FILE_MODS', true);
 define('MICROSOFT_AZURE_ACCOUNT_NAME', env('MICROSOFT_AZURE_ACCOUNT_NAME'));
 define('MICROSOFT_AZURE_ACCOUNT_KEY', env('MICROSOFT_AZURE_ACCOUNT_KEY'));
 define('MICROSOFT_AZURE_USE_FOR_DEFAULT_UPLOAD', 1);
+
