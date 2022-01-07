@@ -81,7 +81,6 @@
             "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin",
                 "advanced-custom-fields/advanced-custom-fields-pro",
                 "wpackagist-plugin/acf-extended",
-                "wpackagist-plugin/broken-link-checker",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
                 "wpackagist-plugin/seo-by-rank-math"
