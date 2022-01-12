@@ -189,7 +189,7 @@ header {
 	}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
 	.nav-list li a:hover {
 		color: $color-primary-base1-10;
 	}
@@ -203,7 +203,7 @@ header {
 	}
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1299px) {
 	header {
 		&.hide-top {
 			.header-inner {
@@ -544,7 +544,7 @@ header {
 	}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
 	.dropdown-item:hover {
 		>a {
 			color: $color-primary-base1-10;
@@ -596,7 +596,7 @@ header {
 	}
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1299px) {
 	.dropdown-item {
 		align-items: center;
 		display: flex;

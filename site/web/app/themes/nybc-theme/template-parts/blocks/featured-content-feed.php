@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'featured-content-feed-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -47,11 +51,11 @@ if ( empty( $featured_cards ) ) {
 		<div class="swiper-entry news-swiper">
 
 			<div class="swiper-container"
-				data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
+				data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
 				<div class="swiper-wrapper">
 					<?php foreach ( $featured_cards as $card ) { ?>
 					<div class="swiper-slide">
-						<a class="news-item" target="<?php echo esc_attr( $card['link'] ? $card['link']['target'] : '' ); ?>" href="<?php echo esc_url( $card['link'] ? $card['link']['url'] : '' ); ?>">
+						<a class="news-item type-2" target="<?php echo esc_attr( $card['link'] ? $card['link']['target'] : '' ); ?>" href="<?php echo esc_url( $card['link'] ? $card['link']['url'] : '' ); ?>">
 						<?php
 						if ( ! empty( $card['image'] ) ) {
 							?>
@@ -66,7 +70,7 @@ if ( empty( $featured_cards ) ) {
 									<li class="tag-main"><?php echo esc_html( $card['tagline'] ); ?></li>
 								</ul>
 
-								<div class="spacer-16"></div>
+								<div class="spacer-24"></div>
 
 								<div class="h5 title fw-800"><?php echo esc_html( $card['title'] ); ?></div>
 

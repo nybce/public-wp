@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_fields = get_field( 'promo_sticky_modal_cta', 'options' );
 $block_title  = $block_fields['title'];
 $body         = $block_fields['body'];

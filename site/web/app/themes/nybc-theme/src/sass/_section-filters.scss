@@ -42,6 +42,7 @@
 
 .calendar {
 	position: relative;
+	z-index: 2;
 
 	.input-calendar {
 		border: none;
@@ -62,97 +63,172 @@
 			top: 50%;
 			transform: translateY(-50%);
 		}
+
+		p,
+		span {
+			align-items: center;
+			color: $color-text-10;
+			display: inline-flex;
+			font-size: 1.6rem;
+			font-weight: 500;
+			line-height: 1.5em;
+			user-select: none;
+		}
 	}
 }
 
-.calendar-swiper {
-	background-color: #fff;
-	box-shadow: 0 15px 29px 0 rgba(0, 0, 0, 0.07);
+.date_pick {
+	.years {
+		display: flex;
+		justify-content: center;
+		margin: 2.4rem 2.4rem 0 2.4rem;
+		position: relative;
+		text-align: center;
+
+		a {
+			position: relative;
+			width: 1.6rem;
+		}
+
+		.year-selected {
+			color: $color-text-10;
+			font-size: 1.6rem;
+			font-weight: 500;
+			line-height: 1.5em;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	.months {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 2.4rem;
+		width: 100%;
+
+		a {
+			color: $color-text-10;
+			flex-basis: calc(20% - 0.4rem);
+			flex-grow: 1;
+			font-size: 1.6rem;
+			font-weight: 500;
+			line-height: 1.5em;
+			margin: 0.8rem;
+			text-align: center;
+			text-decoration: none;
+		}
+	}
+
+	.months a:active,
+	.months a:focus,
+	.months a.active {
+		background: $color-secondary-80;
+	}
+}
+
+.date_pick.active .picker-arrow::after,
+.select_box.active .picker-arrow::after {
+	top: 1.1428em;
+	transform: rotate(225deg);
+}
+
+.date_selector {
+	background: #fff;
+	border: 0.1rem solid #c8d8e8;
+	border-radius: 0.4rem;
+	box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
 	display: none;
-	max-width: 100%;
+
+	&.active {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: calc(100% + 1rem);
+		width: 36.6rem;
+		z-index: 1;
+	}
+
+	.months .month {
+		user-select: none;
+	}
+}
+
+.box_selector {
+	background: #fff;
+	border: none;
+	display: none;
 	position: absolute;
 	width: 100%;
-	z-index: 1;
+	z-index: 10;
 
-	.swiper-button-prev,
-	.swiper-button-next {
-		background: transparent;
-		border: none;
-		border-radius: unset;
-		height: 2.4rem;
-		left: 2.4rem;
-		position: absolute;
-		top: 3.6rem;
-		width: 2.4rem;
+	a {
+		position: relative;
 
-		&.swiper-button-next {
-			left: auto;
-			right: 2.4rem;
-		}
-
-		i {
+		&.active {
 			&::before {
-				border-color: $color-primary-base1-30;
+				border: solid #24d1d7;
+				border-width: 0 3px 3px 0;
+				content: "";
+				display: block;
+				height: 0.8571em;
+				left: 1.07142em;
+				position: absolute;
+				top: 0.571428em;
+				transform: rotate(45deg);
+				width: 0.5714em;
 			}
 		}
 	}
-}
 
-.calendar-slide {
-	padding: 2.4rem;
-	position: relative;
-}
-
-.calendar-year {
-	align-items: center;
-	color: $color-text-10;
-	display: flex;
-	font-size: 1.6rem;
-	font-weight: 500;
-	justify-content: center;
-	line-height: 1.5em;
-	margin-bottom: 2.4rem;
-}
-
-.calendar-months-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin-bottom: -0.8rem;
-
-	.calendar-month {
-		align-items: center;
-		color: $color-text-10;
-		display: flex;
-		font-size: 1.6rem;
-		font-weight: 500;
-		justify-content: center;
-		line-height: 1.5em;
-		padding: 0.8rem 2.05rem;
-		transition: $transition;
-		width: 6.75rem;
-
-		&:hover {
-			background-color: $color-secondary-80;
-		}
-
-		&.current {
-			background-color: $color-secondary-80;
-		}
-
-		&.disabled {
-			opacity: 0.38;
-			pointer-events: none;
-		}
+	&.active {
+		display: block;
 	}
 }
 
-@media (min-width: 1200px) {
-	.calendar-months-list {
-		.calendar-month {
-			&:hover {
-				background-color: $color-secondary-80;
-			}
-		}
+.box_selector-list {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0;
+
+	a:hover {
+		text-decoration: none;
 	}
+
+	a.active::before {
+		content: "";
+	}
+}
+
+.box_selector-element {
+	cursor: pointer;
+	line-height: 1;
+}
+
+.picker-select-arrow::after {
+	border: solid $color-primary-base1-30;
+	border-width: 0 2px 2px 0;
+	content: "";
+	padding: 0.2857em;
+	position: absolute;
+	top: 0.42857em;
+	transition: all 0.3s ease-in-out;
+}
+
+.picker-left::after {
+	transform: rotate(135deg);
+}
+
+.picker-right::after {
+	right: 50%;
+	transform: rotate(-45deg);
+}
+
+.years input::-webkit-outer-spin-button,
+.years input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.years input[type="number"] {
+	-moz-appearance: textfield;
 }

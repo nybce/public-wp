@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'accordion-item-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -24,7 +28,7 @@ $block_title    = get_field( 'title' );
 $allowed_blocks = array(
 	'core/heading',
 	'core/list',
-	'core/quote',
+	'acf/blockquote',
 	'core/paragraph',
 );
 ?>

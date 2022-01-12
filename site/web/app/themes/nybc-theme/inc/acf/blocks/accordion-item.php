@@ -26,7 +26,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id'    => '',
 					),
-					'default_value'     => '',
+					'default_value'     => 'Accordion Item Title',
 					'placeholder'       => '',
 					'prepend'           => '',
 					'append'            => '',
