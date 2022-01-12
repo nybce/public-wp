@@ -219,7 +219,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				array(
 					'key'               => 'field_619e6020bace9',
 					'label'             => 'Title',
-					'name'              => 'title',
+					'name'              => 'footer_title',
 					'type'              => 'text',
 					'instructions'      => '',
 					'required'          => 0,
@@ -238,7 +238,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				array(
 					'key'               => 'field_619e602dbacea',
 					'label'             => 'Subtitle',
-					'name'              => 'subtitle',
+					'name'              => 'footer_subtitle',
 					'type'              => 'text',
 					'instructions'      => '',
 					'required'          => 0,
@@ -257,7 +257,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				array(
 					'key'               => 'field_619e603cbaceb',
 					'label'             => 'Address',
-					'name'              => 'address',
+					'name'              => 'footer_address',
 					'type'              => 'wysiwyg',
 					'instructions'      => '',
 					'required'          => 0,
@@ -276,7 +276,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				array(
 					'key'               => 'field_619e6094bacec',
 					'label'             => 'Column 1 Links',
-					'name'              => 'column_1_links',
+					'name'              => 'footer_column_1_links',
 					'type'              => 'repeater',
 					'instructions'      => '',
 					'required'          => 0,
@@ -312,7 +312,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				array(
 					'key'               => 'field_619e60f2bacee',
 					'label'             => 'Column 2 Links',
-					'name'              => 'column_2_links',
+					'name'              => 'footer_column_2_links',
 					'type'              => 'repeater',
 					'instructions'      => '',
 					'required'          => 0,

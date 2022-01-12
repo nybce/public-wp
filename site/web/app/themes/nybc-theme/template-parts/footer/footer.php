@@ -13,12 +13,12 @@ $two_line_logos = NYBC_Helpers::get_sites_logo();
 
 $one_line_logo = get_field( 'one_line_logo_footer', 'options' );
 
-$footer_title = get_field( 'title', 'options' );
-$subtitle     = get_field( 'subtitle', 'options' );
-$address      = get_field( 'address', 'options' );
+$footer_title = get_field( 'footer_title', 'options' );
+$subtitle     = get_field( 'footer_subtitle', 'options' );
+$address      = get_field( 'footer_address', 'options' );
 
-$column_1_links = get_field( 'column_1_links', 'options' );
-$column_2_links = get_field( 'column_2_links', 'options' );
+$column_1_links = get_field( 'footer_column_1_links', 'options' );
+$column_2_links = get_field( 'footer_column_2_links', 'options' );
 
 $facebook_link = get_field( 'facebook_link', 'options' );
 $twitter_link  = get_field( 'twitter_link', 'options' );
