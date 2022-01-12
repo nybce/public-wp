@@ -56,7 +56,7 @@ if ( ! class_exists( 'NYBC_Story ' ) ) {
 					'supports'          => array( 'title', 'editor', 'thumbnail' ),
 					'menu_icon'         => null,
 					'has_archive'       => false,
-					'taxonomies'        => array( 'post_tag' ),
+					'taxonomies'        => array( 'post_tag', 'category' ),
 				)
 			);
 		}

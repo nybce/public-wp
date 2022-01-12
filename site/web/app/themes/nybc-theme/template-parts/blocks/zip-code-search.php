@@ -10,6 +10,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'zip-code-search-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -24,8 +28,14 @@ $input_label       = get_field( 'input_label' );
 $lnk               = get_field( 'link' );
 $description_title = get_field( 'description_title' );
 $description       = get_field( 'description' );
+
+$news_page    = get_field( 'news_page', 'options' );
+$stories_page = get_field( 'stories_page', 'options' );
 ?>
 <div class="promo-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+	<?php if ( $news_page && ! is_page( $news_page ) && $stories_page && ! is_page( $stories_page ) ) { ?>
+		<div class="decor-promo mobile" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
+	<?php } ?>
 	<div class="promo-item">
 		<form action="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '' ); ?>" target="_blank">
 			<div class="h5 title fw-800"><?php echo esc_html( $block_title ); ?></div>

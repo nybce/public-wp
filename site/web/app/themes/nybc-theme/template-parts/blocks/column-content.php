@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'column-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -20,10 +24,9 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 $allowed_blocks = array(
-	'e-learning/block',
 	'core/heading',
 	'core/list',
-	'core/quote',
+	'acf/blockquote',
 	'core/paragraph',
 	'acf/small-card-row',
 	'acf/horizontal-cta-card',
@@ -39,6 +42,7 @@ $allowed_blocks = array(
 	'acf/download-card-container',
 	'acf/graphic-download-card',
 	'acf/resource-cards',
+	'acf/carousel-video',
 );
 
 $class_name .= ' col-lg-8';

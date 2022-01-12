@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $titles    = get_field( 'titles' );
 $emails    = get_field( 'emails' );
 $member    = get_field( 'member' );

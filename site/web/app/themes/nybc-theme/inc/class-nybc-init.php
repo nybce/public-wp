@@ -94,6 +94,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
 
+			add_action( 'pre_get_posts', array( 'NYBC_Init', 'pre_get_posts' ) );
+
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
 			add_filter( 'body_class', array( 'NYBC_Init', 'body_class' ), 10, 2 );
@@ -108,10 +110,12 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			add_filter( 'posts_clauses', array( 'NYBC_Init', 'posts_clauses' ), 10, 2 );
 
 			add_filter( 'posts_orderby', array( 'NYBC_Init', 'posts_orderby' ), 10, 2 );
+
 			/**
 			 *  Disable XML-RPC
 			 */
 			add_filter( 'xmlrpc_enabled', '__return_false' );
+
 		}
 
 		/**
@@ -138,29 +142,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			foreach ( self::$image_sizes as $name => $data ) {
 				add_image_size( $name, $data['width'], $data['height'], $data['crop'] );
 			}
-		}
-
-		/**
-		 *  Disable REST API
-		 */
-		public static function disable_rest_api() {
-			add_filter( 'rest_enabled', '__return_false' );
-			remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
-			remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-			remove_action( 'template_redirect', 'rest_output_link_header', 11 );
-			remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
-			remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
-			remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
-			remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
-			remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
-			remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
-			remove_action( 'init', 'rest_api_init' );
-			remove_action( 'rest_api_init', 'rest_api_default_filters', 10 );
-			remove_action( 'parse_request', 'rest_api_loaded' );
-			remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-			remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10 );
-			remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-			remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 		}
 
 		/**
@@ -205,7 +186,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			wp_enqueue_style( 'nybc-main-style', NYBC_ASSETS_URI . '/style.min.css', array(), NYBC_SCRIPT_VER );
 
 			wp_enqueue_script( 'nybc-main', NYBC_ASSETS_URI . '/main.bundle.js', array( 'jquery' ), NYBC_SCRIPT_VER, true );
-
 		}
 
 		/**
@@ -245,6 +225,10 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function body_class( $classes, $class ) {
 			if ( 'Division' === get_field( 'type', 'options' ) ) {
 				$classes[] = 'division';
+			}
+			$tag_index = array_search( 'tag', $classes, true );
+			if ( $tag_index ) {
+				unset( $classes[ $tag_index ] );
 			}
 
 			return $classes;
@@ -294,6 +278,59 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			}
 
 			return $orderby;
+		}
+
+		/**
+		 *  Modify query
+		 *
+		 * @param object $query query.
+		 */
+		public static function pre_get_posts( $query ) {
+
+			if ( $query->is_archive() && ! is_search() && $query->is_main_query() ) {
+				$query->set( 'post_type', array( 'post', 'story' ) );
+			}
+
+			if ( $query->is_archive() && ! is_search() && $query->is_main_query() && isset( $_GET['terms'] )
+				&& ! empty( $_GET['terms'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
+
+				$selected_terms = sanitize_text_field( wp_unslash( $_GET['terms'] ) );
+				$terms          = explode( ',', $selected_terms );
+				$tax_query      = $query->get( 'tax_query' ) ? $query->get( 'tax_query' ) : array();
+				// @codingStandardsIgnoreStart
+				if (!empty($terms)) {
+					$tax_query[] =
+						array(
+							'taxonomy' => 'category',
+							'terms' => $terms,
+						);
+				}
+				// @codingStandardsIgnoreEnd
+
+				$query->set( 'tax_query', $tax_query );
+			}
+
+			if ( $query->is_archive() && ! is_search() && $query->is_main_query() && isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] )
+				&& isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
+
+				$bydate = sanitize_text_field( wp_unslash( $_GET['bydate'] ) );
+				$date   = explode( '/', $bydate );
+				if ( 1 === count( $date ) ) {
+					array_unshift( $date, '01' );
+				}
+				$start = "{$date[1]}-{$date[0]}-01";
+				$end   = gmdate( 'Y-m-t', strtotime( $start ) );
+
+				$date_query = array(
+					array(
+						'after'     => $start,
+						'before'    => $end,
+						'inclusive' => true,
+					),
+				);
+				$query->set( 'date_query', $date_query );
+			}
+
 		}
 
 	}

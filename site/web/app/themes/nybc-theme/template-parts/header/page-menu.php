@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $locations = get_nav_menu_locations();
 if ( isset( $locations['page_menu'] ) ) {
 

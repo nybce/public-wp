@@ -89,7 +89,7 @@
 	display: block;
 	height: 0;
 	max-width: 35.5%;
-	padding-bottom: 24.5%;
+	padding-bottom: 30.5%;
 	position: relative;
 	transition: $transition;
 	width: 100%;
@@ -153,6 +153,12 @@
 				color: $color-primary-base1-10;
 			}
 		}
+	}
+}
+
+@media (max-width: 1600px) {
+	.cta-card-info {
+		padding: 2.4rem 4.8rem;
 	}
 }
 
