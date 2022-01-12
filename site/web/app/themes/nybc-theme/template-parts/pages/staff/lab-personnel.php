@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $display_count = 2;
 $lab_personnel = get_field( 'lab_personnel' );
 if ( empty( $lab_personnel ) ) {

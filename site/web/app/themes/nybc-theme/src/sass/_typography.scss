@@ -247,17 +247,113 @@ ol {
 		margin-bottom: 0;
 		max-width: 100%;
 		width: 100%;
+
+		+ span {
+			background-color: $color-secondary-100;
+			color: $color-white;
+			display: block;
+			font-size: 1.6rem;
+			font-weight: 400;
+			line-height: 1.5em;
+			padding: 1.6rem;
+			position: relative;
+		}
 	}
 
-	picture + span {
-		background-color: $color-secondary-100;
-		color: $color-white;
-		display: block;
-		font-size: 1.6rem;
-		font-weight: 400;
-		line-height: 1.5em;
-		padding: 1.6rem;
+	>.video-container {
+		border-radius: 0.4rem 0.4rem 0 0;
+		overflow: hidden;
 		position: relative;
+		width: 100%;
+		z-index: 1;
+
+		.video-item.html5video {
+			height: 38.5rem;
+			max-height: 56.3vw;
+			position: relative;
+
+			video {
+				height: 100%;
+				left: 0;
+				object-fit: cover;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
+
+		.video-cover {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100%;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		.playpausebtns {
+			align-items: center;
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			left: 50%;
+			margin: 0 auto;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			z-index: 2;
+
+			a {
+				background: $color-white;
+				border: 0.1rem solid #e2f0ff;
+				border-radius: 100%;
+				box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.2);
+				height: 8rem;
+				transition: $transition;
+				width: 8rem;
+
+				&::before {
+					content: none;
+				}
+
+				&::after {
+					border-bottom: 1rem solid transparent;
+					border-left: 1.6rem solid $color-secondary-100;
+					border-top: 1rem solid transparent;
+					content: "";
+					display: inline-block;
+					left: calc(50% + 0.4rem);
+					position: absolute;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					transition: $transition;
+				}
+
+				&.pause-video {
+					display: none;
+					height: 100%;
+					opacity: 0;
+					width: 100%;
+				}
+			}
+		}
+
+		+ span {
+			background-color: $color-secondary-100;
+			color: $color-white;
+			display: block;
+			font-size: 1.6rem;
+			font-weight: 400;
+			line-height: 1.5em;
+			padding: 1.6rem;
+			position: relative;
+		}
 	}
 }
 
@@ -445,6 +541,15 @@ h6,
 			}
 		}
 	}
+
+	.video-container .playpausebtns a:hover {
+		background: $color-primary-base1-30;
+		border-color: $color-primary-base1-30;
+
+		&::after {
+			border-left: 16px solid $color-white;
+		}
+	}
 }
 
 @media (max-width: 1400px) {
@@ -544,9 +649,23 @@ h6,
 			}
 		}
 
-		picture + span {
+		img + span {
 			font-size: 1.4rem;
 			padding: 0.8rem;
+		}
+
+		>.video-container {
+			.playpausebtns {
+				a {
+					height: 6rem;
+					width: 6rem;
+				}
+			}
+
+			+ span {
+				font-size: 1.4rem;
+				padding: 0.8rem;
+			}
 		}
 	}
 

@@ -89,7 +89,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					array(
 						'core/heading',
 						'core/list',
-						'core/quote',
 						'core/paragraph',
 					),
 					true
@@ -139,10 +138,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 */
 		public static function allowed_block_types_all() {
 			return array(
-				'e-learning/block',
 				'core/heading',
 				'core/list',
-				'core/quote',
 				'core/paragraph',
 				'acf/home-hero',
 				'acf/promo-home-cta',
@@ -157,6 +154,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/full-width-pullquote',
 				'acf/employee-spotlight-carousel',
 				'acf/large-card',
+				'acf/large-card-row',
 				'acf/recent-news-feed',
 				'acf/parent-page-hero',
 				'acf/small-card-row',
@@ -209,16 +207,21 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 *  Init NYBC blocks
 		 */
 		public static function init_block_types() {
+			global $pagenow;
 			self::two_column_block();// N2RDEV-80.
 			self::one_column_block();// N2RDEV-80.
 			self::column_sidebar();// N2RDEV-80.
 			self::column_content();// N2RDEV-80.
 			self::spacer();
-
-			self::home_hero(); // N2RDEV-20   #0110.
-			self::parent_page_hero();// N2RDEV-76.
-			self::child_page_hero();// N2RDEV-93.
-
+			// @codingStandardsIgnoreStart
+			if ( ! is_admin() ||
+				( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
+			) {
+				self::home_hero(); // N2RDEV-20   #0110.
+				self::parent_page_hero();// N2RDEV-76.
+				self::child_page_hero();// N2RDEV-93.
+			}
+			// @codingStandardsIgnoreEnd
 			self::promo_home_cta();// N2RDEV-21  #0210.
 			self::full_width_feature_cta();// N2RDEV-22 #0230.
 			self::full_width_feature_cta_carousel();// N2RDEV-23  #0240.
@@ -231,6 +234,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::full_width_pullquote();// N2RDEV-44 #019.
 			self::employee_spotlight_carousel();// N2RDEV-46  #0290.
 			self::large_card();// N2RDEV-48  #010.
+			self::large_card_row();// N2RDEV-68.
 			self::recent_news_feed();// N2RDEV-47.
 			self::small_card_row();// N2RDEV-78.
 			self::horizontal_cta_card();// N2RDEV-79.
@@ -525,6 +529,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/large-card' );
+			}
+		}
+
+		/**
+		 *  Register Large Card Row block, N2RDEV-68
+		 */
+		public static function large_card_row() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'large_card_row',
+						'title'           => esc_html__( 'Large Card Row', 'nybc' ),
+						'description'     => esc_html__( 'Large Card Row block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/large-card-row.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/large-card-row' );
 			}
 		}
 
