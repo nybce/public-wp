@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $news = get_posts(
 	array(
 		'post_type'   => 'post',
@@ -42,7 +46,7 @@ $blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 		<div class="swiper-entry news-swiper">
 
 			<div class="swiper-container"
-				data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
+				data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $news as $news_id ) {

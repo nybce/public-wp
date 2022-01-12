@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'tabbed-card-carousel-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -82,7 +86,7 @@ if ( empty( $block_tabs ) ) {
 					</div>
 
 					<div class="swiper-container"
-						data-options='{"slidesPerView":4, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"1199":{"slidesPerView": 3}, "767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
+						data-options='{"slidesPerView":4, "spaceBetween": 24, "breakpoints":{"1199":{"slidesPerView": 3}, "767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
 						<div class="swiper-wrapper">
 							<?php foreach ( $cards as $card ) { ?>
 								<div class="swiper-slide">

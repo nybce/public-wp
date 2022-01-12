@@ -4,7 +4,7 @@ import Swiper from './lib/swiper.min';
 jQuery( function( $ ) {
 	_functions.getSwOptions = function( swiper ) {
 		let options = swiper.data( 'options' );
-		options = ! options || typeof options !== 'object' ? {} : options;
+		options = ( ! options || typeof options !== 'object' ) ? {} : options;
 		const $p = swiper.closest( '.swiper-entry' ),
 			slidesLength = swiper.find( '>.swiper-wrapper>.swiper-slide' ).length;
 		if ( ! options.pagination ) {
@@ -55,9 +55,11 @@ jQuery( function( $ ) {
 		new Swiper( el[ 0 ], _functions.getSwOptions( el ) );
 	};
 
-	$( '.swiper-entry .swiper-container' ).each( function() {
-		_functions.initSwiper( $( this ) );
-	} );
+	setTimeout( function() {
+		$( '.swiper-entry .swiper-container' ).each( function() {
+			_functions.initSwiper( $( this ) );
+		} );
+	}, 200 );
 
 	//custom fraction
 	$( '.custom-fraction-swiper' ).each( function() {
@@ -65,12 +67,14 @@ jQuery( function( $ ) {
 			$thisSwiper = $this.find( '.swiper-container' )[ 0 ].swiper;
 
 		$thisSwiper.on( 'slideChange', function() {
-			$this.find( '.custom-current' ).text( function() {
-				if ( $thisSwiper.realIndex < 9 ) {
-					return +( $thisSwiper.realIndex + 1 );
+			$this.find( '.custom-current' ).text(
+				function() {
+					if ( $thisSwiper.realIndex < 9 ) {
+						return +( $thisSwiper.realIndex + 1 );
+					}
+					return $thisSwiper.realIndex + 1;
 				}
-				return $thisSwiper.realIndex + 1;
-			} );
+			);
 		} );
 	} );
 
@@ -94,24 +98,4 @@ jQuery( function( $ ) {
 			$( this ).children( '.swiper-button-wrapper' ).addClass( 'swiper-button-lock' );
 		}
 	} );
-
-	//calendar
-	$( '.open-calendar' ).on( 'click', function() {
-		$( this ).parents().find( '.calendar-swiper' ).slideToggle();
-	} );
-
-	if ( $( '.calendar-swiper' ).length ) {
-		const prWrapper = $( this ).find( '.swiper-container' )[ 0 ].swiper;
-		$( this )
-			.find( '.swiper-container .swiper-slide:last-child' )
-			.addClass( 'active' );
-
-		if ( $( this ).find( '.swiper-container' ).find( '.swiper-slide.active' ) ) {
-			const toSlide = $( this )
-				.find( '.swiper-container' )
-				.find( '.swiper-slide.active' )
-				.index();
-			prWrapper.slideTo( toSlide );
-		}
-	}
 } );

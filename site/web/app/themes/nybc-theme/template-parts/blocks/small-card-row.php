@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'small-card-row-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -34,7 +38,7 @@ if ( empty( $cards ) ) {
 	</div>
 
 	<div class="swiper-container"
-		data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
+		data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"767":{"slidesPerView": 2, "spaceBetween": 16}, "575":{"slidesPerView": "auto", "spaceBetween": 16}}}'>
 		<div class="swiper-wrapper">
 			<?php foreach ( $cards as $card ) { ?>
 			<div class="swiper-slide">

@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'recent-news-feed-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -43,9 +47,9 @@ if ( empty( $news ) ) {
 
 $blog_link = '';
 if ( empty( $lnk ) ) {
-	$page_for_posts = get_option( 'page_for_posts' );
+	$page_for_posts = get_field( 'news_page', 'options' );
 	if ( ! empty( $page_for_posts ) ) {
-		$blog_link = get_permalink( get_option( 'page_for_posts' ) );
+		$blog_link = get_permalink( $page_for_posts );
 	}
 } else {
 	$blog_link = $lnk['url'];

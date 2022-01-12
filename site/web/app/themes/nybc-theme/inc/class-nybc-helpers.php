@@ -73,7 +73,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		 *  Create img tag
 		 *
 		 * @param array  $image image data.
-		 * @param string $size size name.
+		 * @param string $size image size.
 		 * @param string $class image class.
 		 */
 		public static function picture( $image, $size = '', $class = '' ) {
@@ -170,10 +170,15 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		 * @param bool $mobile is mobile nav.
 		 */
 		public static function sidebar_tags( $mobile = false ) {
-			$cats = get_tags();
+			$cats = get_categories();
 			if ( empty( $cats ) ) {
 				return;
 			}
+			$bydate = '';
+			if ( isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
+				$bydate = sanitize_text_field( wp_unslash( $_GET['bydate'] ) );
+			}
+
 			$selected       = array();
 			$selected_terms = ( isset( $_GET['terms'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) ? sanitize_text_field( wp_unslash( $_GET['terms'] ) ) : '';
 			if ( $selected_terms ) {
@@ -197,6 +202,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 						<form>
 							<?php wp_nonce_field( 'filter', 'nonce' ); ?>
 							<input type="hidden" name="terms" value="">
+							<input type="hidden" name="bydate" value="<?php echo esc_attr( $bydate ); ?>">
 							<ul>
 								<li class="tag all" ><?php esc_html_e( 'View All', 'nybc' ); ?><i></i></li>
 								<?php foreach ( $cats as $cat ) { ?>
@@ -246,14 +252,14 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		public static function sidebar_nav( $mobile = false ) {
 			global $post;
 
-			if ( empty( $post ) ) {
+						$news_page = get_field( 'news_page', 'options' );
+			$stories_page          = get_field( 'stories_page', 'options' );
+			if ( ( $news_page && is_page( $news_page ) ) || ( $stories_page && is_page( $stories_page ) ) || is_archive() ) {
+				self::sidebar_tags( $mobile );
 				return;
 			}
 
-			$news_page    = get_field( 'news_page', 'options' );
-			$stories_page = get_field( 'stories_page', 'options' );
-			if ( is_page( $news_page ) || is_page( $stories_page ) ) {
-				self::sidebar_tags( $mobile );
+			if ( empty( $post ) ) {
 				return;
 			}
 
@@ -301,7 +307,6 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			}
 		}
 
-
 		/**
 		 *  Page breadcrumbs
 		 */
@@ -321,8 +326,10 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 				}
 			} elseif ( is_singular( 'story' ) ) {
 				$stories_page = get_field( 'stories_page', 'options' );
-				$middle_title = get_the_title( $stories_page );
-				$middle_url   = get_the_permalink( $stories_page );
+				if ( ! empty( $stories_page ) ) {
+					$middle_title = get_the_title( $stories_page );
+					$middle_url   = get_the_permalink( $stories_page );
+				}
 			}
 			?>
 			<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">

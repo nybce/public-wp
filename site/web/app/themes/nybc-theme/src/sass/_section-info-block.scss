@@ -59,11 +59,8 @@
 	display: block;
 	height: auto;
 	margin: 0 auto;
-	-webkit-mask-image: url("../img/image-mask.svg");
 	mask-image: url("../img/image-mask.svg");
-	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
-	-webkit-mask-size: contain;
 	mask-size: contain;
 	max-width: 100%;
 }

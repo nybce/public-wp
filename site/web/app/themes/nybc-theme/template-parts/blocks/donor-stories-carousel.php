@@ -11,6 +11,10 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $block_id = 'donor-stories-carousel-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
@@ -53,7 +57,7 @@ if ( empty( $slides ) ) {
 
 									<div class="h6 title fw-900 tagline"><?php esc_html_e( 'Donor Stories', 'nybc' ); ?></div>
 
-									<div class="spacer-64 spacer-xs-16"></div>
+									<div class="spacer-48 spacer-xs-16"></div>
 
 									<div class="text light">
 										“<?php echo esc_html( $slide['quote'] ); ?>”

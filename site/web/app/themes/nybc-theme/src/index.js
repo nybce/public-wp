@@ -11,3 +11,5 @@ import './js/tabs';
 import './js/download-card';
 import './js/accordion';
 import './js/filter-sidebar';
+import './js/video';
+import './js/calendar';
