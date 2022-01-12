@@ -13,10 +13,12 @@
 	margin-bottom: -2.4rem;
 
 	.news-item {
+		height: auto;
 		margin-bottom: 2.4rem;
 		margin-right: 2.4rem;
 		max-width: calc(50% - 1.2rem);
 		min-height: 48.2rem;
+		min-width: calc(50% - 1.2rem);
 
 		&:nth-of-type(2n) {
 			margin-right: 0;
@@ -118,6 +120,10 @@
 	.swiper-pagination {
 		display: none;
 	}
+
+	.swiper-slide {
+		height: auto;
+	}
 }
 
 .decor-news {
@@ -165,6 +171,10 @@
 }
 
 @media (max-width: 1199px) {
+	.news-item {
+		max-width: 100%;
+	}
+
 	.decor-news {
 		height: 98%;
 	}

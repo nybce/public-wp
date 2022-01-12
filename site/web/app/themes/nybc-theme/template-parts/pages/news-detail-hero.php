@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $image_url  = get_the_post_thumbnail_url( null, '800x' );
 $post_title = get_the_title();
 $date       = get_the_time( 'F j, Y' );

@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $two_line_logos = NYBC_Helpers::get_sites_logo();
 
 $one_line_logo = get_field( 'one_line_logo_footer', 'options' );

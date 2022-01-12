@@ -5,6 +5,10 @@
  * @package NYBC
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $one_line_logo         = get_field( 'one_line_logo', 'options' );
 $top_right_menu_link_1 = get_field( 'top_right_menu_link_1', 'options' );
 $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );

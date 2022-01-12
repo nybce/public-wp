@@ -73,6 +73,7 @@
 
 .pagination li a {
 	@include centerAbsolute;
+	width: 100%;
 }
 
 .pagination li.active {

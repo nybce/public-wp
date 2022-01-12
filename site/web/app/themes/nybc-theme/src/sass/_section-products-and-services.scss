@@ -29,6 +29,7 @@
 	height: 100%;
 	min-height: 36rem;
 	position: relative;
+	width: 100%;
 
 	&::before {
 		background: $gradient;
@@ -94,6 +95,10 @@
 .card-swiper {
 	.swiper-container {
 		overflow: visible;
+	}
+
+	.swiper-slide {
+		height: auto;
 	}
 
 	.swiper-button-prev,
