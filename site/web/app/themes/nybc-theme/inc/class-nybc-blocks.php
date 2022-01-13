@@ -1164,7 +1164,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/blockquote' );
 			}
 		}
-    
+
 	}
 
 	new NYBC_Blocks();
