@@ -2,12 +2,12 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package NYBC_Enterprise
+ * @package NYBC
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 global $post;
 ?>
@@ -18,7 +18,7 @@ global $post;
 </div>
 	<?php wp_footer(); ?>
 	<?php
-	if ( ! is_front_page() && is_page() && isset( $post ) && ! $post->post_parent ) {
+	if ( ! is_front_page() && is_page() && isset( $post ) && ! $post->post_parent && get_field( 'enable_promo_sticky_modal_cta', 'options' ) ) {
 		get_template_part( 'template-parts/promo-sticky-modal-cta' );
 	}
 	?>

@@ -141,6 +141,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'core/heading',
 				'core/list',
 				'core/paragraph',
+				'acf/blockquote',
 				'acf/home-hero',
 				'acf/promo-home-cta',
 				'acf/full-width-feature-cta',
@@ -171,6 +172,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/vertical-card-row',
 				'acf/vertical-cta-card',
 				'acf/spacer',
+				'acf/news',
 				'acf/child-page-hero',
 				'acf/donor-stories-carousel',
 				'acf/zip-code-search-with-cta',
@@ -216,8 +218,8 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::spacer();
 			// @codingStandardsIgnoreStart
 			if ( ! is_admin() ||
-                ( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
-            ) {
+				  ( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
+			) {
 				self::home_hero(); // N2RDEV-20   #0110.
 				self::parent_page_hero();// N2RDEV-76.
 				self::child_page_hero();// N2RDEV-93.
@@ -241,6 +243,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::zip_code_search();// N2RDEV-83.
 			self::inline_video();// N2RDEV-85.
 			self::inline_image();// N2RDEV-90.
+			self::blockquote();
 			self::accordion_item();// N2RDEV-86.
 			self::accordion();// N2RDEV-86.
 			self::siderail_promo_cta();// N2RDEV-89.
@@ -254,6 +257,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::graphic_download_card();// N2RDEV-127.
 			self::resource_cards();// N2RDEV-130.
 			self::carousel_video();// N2RDEV-129.
+			self::news();// N2RDEV-102.
 		}
 
 		/**
@@ -920,6 +924,33 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		}
 
 		/**
+		 *  Register News block
+		 */
+		public static function news() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'news',
+						'title'           => esc_html__( 'News/Stories', 'nybc' ),
+						'description'     => esc_html__( 'News/Stories block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/news.php',
+						'supports'        => array(
+							'multiple' => false,
+							'align'    => false,
+							'mode'     => false,
+						),
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/news' );
+
+			}
+		}
+
+		/**
 		 *  Register Child Page Hero block, N2RDEV-20, #0110
 		 */
 		public static function child_page_hero() {
@@ -1113,6 +1144,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 		}
 
+		/**
+		 *  Blockquote Block, N2RDEV-129
+		 */
+		public static function blockquote() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'blockquote',
+						'title'           => esc_html__( 'Blockquote', 'nybc' ),
+						'description'     => esc_html__( 'Blockquote Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/blockquote.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/blockquote' );
+			}
+		}
+    
 	}
 
 	new NYBC_Blocks();
