@@ -218,7 +218,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::spacer();
 			// @codingStandardsIgnoreStart
 			if ( ! is_admin() ||
-				( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
+				  ( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
 			) {
 				self::home_hero(); // N2RDEV-20   #0110.
 				self::parent_page_hero();// N2RDEV-76.
@@ -1164,6 +1164,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/blockquote' );
 			}
 		}
+
 	}
 
 	new NYBC_Blocks();
