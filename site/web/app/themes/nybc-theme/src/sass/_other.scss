@@ -9,12 +9,17 @@
 .title-wrapper {
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	position: relative;
 	width: 100%;
 
 	> * {
 		flex-shrink: 0;
+	}
+
+	> *:not(:last-child) {
+		margin-right: 15px;
 	}
 
 	&.type-2 {
@@ -39,7 +44,6 @@
 		.info {
 			max-width: 50rem;
 		}
-
 	}
 }
 
@@ -60,6 +64,195 @@
 			.info {
 				max-width: 100%;
 			}
+		}
+	}
+}
+
+/*style for tablepress*/
+.dataTables_wrapper {
+	.dataTables_length,
+	.dataTables_filter {
+		margin-bottom: 15px;
+	}
+
+	.dataTables_info,
+	.dataTables_paginate {
+		margin-top: 15px;
+	}
+
+	label input,
+	label select {
+		border: 0.0625em solid $color-secondary-90;
+		border-radius: 2.5em;
+		padding: 0 1rem;
+	}
+
+	.paging_simple .paginate_button.next::after,
+	.paging_simple .paginate_button.next::before,
+	.paging_simple .paginate_button.previous::after,
+	.paging_simple .paginate_button.previous::before {
+		background: none;
+		bottom: unset;
+		content: none;
+		font-family: unset;
+		font-size: unset;
+		height: unset;
+		left: 0;
+		text-shadow: unset;
+		width: unset;
+	}
+
+	.dataTables_paginate a {
+		text-decoration: none;
+	}
+
+	.paging_simple .paginate_button {
+		&.previous {
+			padding-left: 30px;
+
+			&::after {
+				left: 1.2rem;
+				right: auto;
+				transform: translate(-50%, -50%) rotate(135deg);
+			}
+
+			&::before {
+				left: 0;
+				right: auto;
+			}
+		}
+
+		&.next {
+			padding-right: 30px;
+
+			&::after {
+				left: auto;
+				right: 0.4rem;
+				transform: translate(-50%, -50%) rotate(-45deg);
+			}
+
+			&::before {
+				left: auto;
+				right: 0;
+			}
+		}
+
+		&.previous,
+		&.next {
+			&::after {
+				border-bottom: 0.0625em solid $color-secondary-100;
+				border-right: 0.0625em solid $color-secondary-100;
+				content: "";
+				height: 0.7rem;
+				position: absolute;
+				top: 50%;
+				transition: 0.25s ease-in;
+				width: 0.7rem;
+			}
+
+			&::before {
+				border: 0.1rem solid $color-secondary-90;
+				border-radius: 100%;
+				content: "";
+				height: 2rem;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 2rem;
+			}
+		}
+
+		&.disabled {
+			pointer-events: none;
+		}
+
+		&.previous.disabled,
+		&.next.disabled {
+			&::after {
+				border-color: #999;
+			}
+		}
+	}
+}
+
+table {
+	&.tablepress tfoot th,
+	&.tablepress thead th {
+		background-color: $color-secondary-80;
+		border-right: 0.0625em solid $color-secondary-90;
+		transition: 0.25s ease-in;
+
+		&:last-of-type {
+			border-right: none;
+		}
+	}
+
+	&.tablepress tbody td,
+	&.tablepress tfoot th {
+		border-right: 0.0625em solid $color-secondary-90;
+
+		&:last-of-type {
+			border-right: none;
+		}
+	}
+
+	&.tablepress td,
+	&.tablepress th {
+		padding: 10px 15px;
+	}
+
+	&.tablepress .sorting_asc,
+	&.tablepress .sorting_desc {
+		background-color: $color-secondary-90;
+	}
+
+	&.tablepress .odd td {
+		background-color: $color-gray-10;
+	}
+}
+
+@media (min-width: 1200px) {
+	.dataTables_wrapper .paging_simple .paginate_button.next:hover,
+	.dataTables_wrapper .paging_simple .paginate_button.previous:hover {
+
+		&::before {
+			background-color: $color-primary-base1-30;
+			border-color: $color-primary-base1-30;
+		}
+
+		&::after {
+			border-color: $color-white;
+		}
+	}
+
+	table.tablepress .sorting:hover {
+		background-color: $color-secondary-90;
+	}
+}
+
+@media (max-width: 767px) {
+	.dataTables_wrapper {
+		.dataTables_length,
+		.dataTables_filter {
+			margin-bottom: 10px;
+			width: 100%;
+		}
+
+		.dataTables_info,
+		.dataTables_paginate {
+			margin-top: 10px;
+		}
+
+		.dataTables_filter {
+			float: left;
+		}
+
+		.dataTables_paginate {
+			float: left;
+		}
+
+		.dataTables_paginate.paging_simple {
+			padding: 0;
 		}
 	}
 }
