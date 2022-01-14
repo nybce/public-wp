@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'NYBC_Table' ) ) {
 	/**
-	 * Articulate Course post type class
+	 * Table class
 	 *
 	 * @category Class
 	 * @package NYBC
