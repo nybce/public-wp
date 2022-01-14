@@ -62,13 +62,15 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 		 *  NYBC_Articulate Constructor
 		 */
 		public function __construct() {
+			if ( function_exists( 'get_field' ) ) {
+				self::$azure_storage_account_name = get_field( 'azure_storage_account_name', 'options' );
+				self::$azure_storage_account_key  = get_field( 'azure_storage_account_key', 'options' );
+				self::$azure_storage_container    = get_field( 'azure_storage_storage_container', 'options' );
+				$max_files                        = get_field( 'number_of_files_per_one_push', 'options' );
 
-			self::$azure_storage_account_name = get_field( 'azure_storage_account_name', 'options' );
-			self::$azure_storage_account_key  = get_field( 'azure_storage_account_key', 'options' );
-			self::$azure_storage_container    = get_field( 'azure_storage_storage_container', 'options' );
-			$max_files                        = get_field( 'number_of_files_per_one_push', 'options' );
-			if ( ! empty( $max_files ) ) {
-				self::$max_files = $max_files;
+				if ( ! empty( $max_files ) ) {
+					self::$max_files = $max_files;
+				}
 			}
 
 			if ( empty( self::$azure_storage_account_name ) || empty( self::$azure_storage_account_key ) || empty( self::$azure_storage_container ) ) {
@@ -122,33 +124,33 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 		 */
 		public static function taxonomy_post_type() {
 
-				register_post_type(
-					'articulate',
-					array(
-						'labels'            => array(
-							'name'               => esc_html__( 'Articulate Course', 'nybc' ),
-							'singular_name'      => esc_html__( 'Articulate Course', 'nybc' ),
-							'add_new'            => esc_html__( 'Add Articulate Course', 'nybc' ),
-							'add_new_item'       => esc_html__( 'Add Articulate Course', 'nybc' ),
-							'edit_item'          => esc_html__( 'Edit Articulate Course', 'nybc' ),
-							'new_item'           => esc_html__( 'New Articulate Course', 'nybc' ),
-							'view_item'          => esc_html__( 'View Articulate Course', 'nybc' ),
-							'search_items'       => esc_html__( 'Search Articulate Course', 'nybc' ),
-							'not_found'          => esc_html__( 'Articulate Course not found', 'nybc' ),
-							'not_found_in_trash' => esc_html__( 'Articulate Course not found in trash', 'nybc' ),
-							'parent_item_colon'  => esc_html__( 'Articulate Course', 'nybc' ),
-							'menu_name'          => esc_html__( 'Articulate Courses', 'nybc' ),
-						),
-						'show_in_nav_menus' => true,
-						'show_ui'           => true,
-						'public'            => false,
-						'show_in_rest'      => false,
-						'menu_position'     => 20,
-						'supports'          => array( 'title' ),
-						'menu_icon'         => null,
-						'has_archive'       => false,
-					)
-				);
+			register_post_type(
+				'articulate',
+				array(
+					'labels'            => array(
+						'name'               => esc_html__( 'Articulate Course', 'nybc' ),
+						'singular_name'      => esc_html__( 'Articulate Course', 'nybc' ),
+						'add_new'            => esc_html__( 'Add Articulate Course', 'nybc' ),
+						'add_new_item'       => esc_html__( 'Add Articulate Course', 'nybc' ),
+						'edit_item'          => esc_html__( 'Edit Articulate Course', 'nybc' ),
+						'new_item'           => esc_html__( 'New Articulate Course', 'nybc' ),
+						'view_item'          => esc_html__( 'View Articulate Course', 'nybc' ),
+						'search_items'       => esc_html__( 'Search Articulate Course', 'nybc' ),
+						'not_found'          => esc_html__( 'Articulate Course not found', 'nybc' ),
+						'not_found_in_trash' => esc_html__( 'Articulate Course not found in trash', 'nybc' ),
+						'parent_item_colon'  => esc_html__( 'Articulate Course', 'nybc' ),
+						'menu_name'          => esc_html__( 'Articulate Courses', 'nybc' ),
+					),
+					'show_in_nav_menus' => true,
+					'show_ui'           => true,
+					'public'            => false,
+					'show_in_rest'      => false,
+					'menu_position'     => 20,
+					'supports'          => array( 'title' ),
+					'menu_icon'         => null,
+					'has_archive'       => false,
+				)
+			);
 
 		}
 
@@ -165,21 +167,21 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 		public static function articulate_load_meta_box() {
 			?>
 			<form  id="import-form" style="position: relative">
-			<?php wp_nonce_field( 'articulate_load', 'nonce' ); ?>
-			<table width="100%">
-				<tr>
-					<td style="width: 25%">Choose File</td>
-					<td>
-						<input type="file" style="" name="course_file" accept=".zip" value="" />
-					</td>
-					<td style="width: 25%">
-						<div class="import-loader" style="display: none; color: red">
-						Please wait...
-						<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/ajax-loading.gif"  style="position:absolute;top:-10px;width:50px;"/>
-						</div>
-					</td>
-				</tr>
-			</table>
+				<?php wp_nonce_field( 'articulate_load', 'nonce' ); ?>
+				<table width="100%">
+					<tr>
+						<td style="width: 25%">Choose File</td>
+						<td>
+							<input type="file" style="" name="course_file" accept=".zip" value="" />
+						</td>
+						<td style="width: 25%">
+							<div class="import-loader" style="display: none; color: red">
+								Please wait...
+								<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/ajax-loading.gif"  style="position:absolute;top:-10px;width:50px;"/>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</form>
 			<script>
 				jQuery( document ).ready( function( $ ) {
@@ -311,7 +313,7 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 				}
 				$wp_filesystem->rmdir( $unzip_dir_path, true );
 				// @codingStandardsIgnoreStart
-                @unlink( $file_path );
+				@unlink( $file_path );
 				// @codingStandardsIgnoreEnd
 			}
 
@@ -387,7 +389,7 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 						}
 						// @codingStandardsIgnoreStart
 						$content = fopen( $item, 'r' );
-                        // @codingStandardsIgnoreEnd
+						// @codingStandardsIgnoreEnd
 						if ( 'js' === $pathinfo['extension'] ) {
 							$mime = 'application/javascript';
 						} elseif ( 'css' === $pathinfo['extension'] ) {
