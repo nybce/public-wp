@@ -30,7 +30,7 @@ if ( empty( $cards ) ) {
 }
 
 ?>
-<div class="swiper-entry card-swiper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="swiper-entry card-swiper mb-48 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="swiper-button-wrapper">
 		<div class="swiper-button-prev"><i></i></div>
 		<div class="swiper-pagination"></div>
@@ -65,4 +65,3 @@ if ( empty( $cards ) ) {
 		</div>
 	</div>
 </div>
-<div class="spacer-48"></div>

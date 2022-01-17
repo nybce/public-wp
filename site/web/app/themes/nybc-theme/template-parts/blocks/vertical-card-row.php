@@ -24,11 +24,12 @@ if ( ! empty( $block['className'] ) ) {
 }
 
 $cards = get_field( 'cards' );
+
 if ( empty( $cards ) ) {
 	return;
 }
 ?>
-<div class="cta-card-wrapper vertical <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="cta-card-wrapper vertical mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php
 	foreach ( $cards as $card ) {
 		$block_title = $card['title'];

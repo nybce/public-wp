@@ -58,7 +58,7 @@ if ( empty( $videos ) ) {
 					<div class="swiper-slide">
 						<div class="text">
 							<?php if ( ! empty( $url ) ) { ?>
-							<iframe loading="lazy" title="Petite vidéo de présentation rapide de Drone de Vision."
+							<iframe loading="lazy" title=""
 									width="500" height="281" src="<?php echo esc_url( $url ); ?>"
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen="">

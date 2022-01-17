@@ -29,7 +29,7 @@ $image       = get_field( 'image' );
 $content     = get_field( 'content' );
 $lnk         = get_field( 'link' );
 ?>
-<div class="cta-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="cta-card-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<a target="<?php echo esc_attr( ! empty( $lnk ) ? $lnk['target'] : '' ); ?>" href="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '#' ); ?>" class="cta-card horizontal">
 		<div class="cta-card-img">
 			<?php NYBC_Helpers::picture( $image, '380x325' ); ?>
@@ -46,5 +46,4 @@ $lnk         = get_field( 'link' );
 		</div>
 
 	</a>
-	<div class="spacer-0"></div>
 </div>

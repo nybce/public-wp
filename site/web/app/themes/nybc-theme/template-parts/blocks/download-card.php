@@ -33,7 +33,7 @@ if ( empty( $file ) && ! empty( $lnk ) ) {
 }
 ?>
 
-<div class="download-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="download-card-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<a href="<?php echo esc_url( $file ); ?>" class="download-card" <?php echo esc_html( $file ? 'download' : '' ); ?>>
 		<div class="download-card-img">
 			<img src="<?php echo esc_url( NYBC_IMG_URI ); ?>/icons/pdf.svg" alt="">

@@ -28,7 +28,7 @@ $body        = get_field( 'body' );
 $lnk         = get_field( 'link' );
 ?>
 
-<div class="promo-cta <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="promo-cta mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="h4 title fw-800 light"><?php echo esc_html( $block_title ); ?></div>
 	<div class="spacer-8"></div>
 	<div class="text-lg text-30"><?php echo esc_html( $body ); ?></div>
