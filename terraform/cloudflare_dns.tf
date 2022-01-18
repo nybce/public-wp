@@ -1,8 +1,8 @@
-resource "cloudflare_record" "web_dev_records" {
+resource "cloudflare_record" "web_staging_records" {
   zone_id  = var.cloudflare_zone_id
   proxied  = false
-  for_each = toset(var.environment == "dev" ? var.nybc_sites : [])
-  name     = each.key == "nybloodcenter" ? "dev.nybc-wordpress" : "${each.key}.dev.nybc-wordpress"
+  for_each = toset(var.environment == "staging" ? var.nybc_sites : [])
+  name     = each.key == "nybloodcenter" ? "staging.nybc-wordpress" : "${each.key}.staging.nybc-wordpress"
   value    = azurerm_public_ip.vmss.fqdn
   type     = "CNAME"
   ttl      = 1

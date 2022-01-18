@@ -11,22 +11,22 @@ locals {
   redirect_configuration_name     = "${var.environment}-${var.project}-rdrcfg"
   ssl_profile_name                = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
-    "dev" = [
-      "comprehensivecellsolutions.dev.nybc-wordpress.bbox.ly",
-      "delmarvablood.dev.nybc-wordpress.bbox.ly",
-      "innovativebloodresources.dev..nybc-wordpress.bbox.ly",
-      "integratedlabnetwork.dev.nybc-wordpress.bbox.ly",
-      "mbc.dev.nybc-wordpress.bbox.ly",
-      "nationalcordbloodprogram.dev.nybc-wordpress.bbox.ly",
-      "ncbb.dev.nybc-wordpress.bbox.ly",
-      "ncbgg.dev.nybc-wordpress.bbox.ly",
-      "ncbp2.dev.nybc-wordpress.bbox.ly",
-      "nybloodcenter.dev.nybc-wordpress.bbox.ly",
-      "nybc-enterprise.dev.nybc-wordpress.bbox.ly"
+    "staging" = [
+      "comprehensivecellsolutions.staging.nybc-wordpress.bbox.ly",
+      "delmarvablood.staging.nybc-wordpress.bbox.ly",
+      "innovativebloodresources.staging..nybc-wordpress.bbox.ly",
+      "integratedlabnetwork.staging.nybc-wordpress.bbox.ly",
+      "mbc.staging.nybc-wordpress.bbox.ly",
+      "nationalcordbloodprogram.staging.nybc-wordpress.bbox.ly",
+      "ncbb.staging.nybc-wordpress.bbox.ly",
+      "ncbgg.staging.nybc-wordpress.bbox.ly",
+      "ncbp2.staging.nybc-wordpress.bbox.ly",
+      "nybloodcenter.staging.nybc-wordpress.bbox.ly",
+      "nybc-enterprise.staging.nybc-wordpress.bbox.ly"
           ]
   }
   cert_files = {
-    "dev" = "kv-ssl-cert-w5hb-wildcard-dev-nybc-wordpress-bbox-ly-20211210.pfx"
+    "staging" = "kv-ssl-cert-w5hb-wildcard-staging-nybc-wordpress-bbox-ly-20211210.pfx"
   }
 }
 
@@ -108,7 +108,7 @@ resource "azurerm_application_gateway" "loadbalancer" {
 
 #  identity {
  #   type         = "UserAssigned"
-  #  identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-wordpress"]
+  #  identity_ids = ["/subscriptions/8de7edc2-0e4f-4e75-876b-0826d65306f9/resourcegroups/wordpress-web-staging/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uacert-nybc-wordpress"]
   #}
 
   gateway_ip_configuration {
