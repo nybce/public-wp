@@ -26,7 +26,7 @@ locals {
           ]
   }
   cert_files = {
-    "staging" = "kv-ssl-cert-w5hb-wildcard-staging-nybc-wordpress-bbox-ly-20211210.pfx"
+    "staging" = "kv-ssl-cert-w5hb-wildcard-dev-nybc-wordpress-bbox-ly-20211210.pfx"
   }
 }
 
