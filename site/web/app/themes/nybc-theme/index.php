@@ -16,26 +16,26 @@ global $wp_query;
 $query = $wp_query;
 
 $archive_hero = get_field( 'archive_hero', 'options' );
-$tagline      = $archive_hero['tagline'];
-$image        = $archive_hero['image'];
-$color        = $archive_hero['color'];
-$button_link  = $archive_hero['link'];
+$tagline      = $archive_hero ? $archive_hero['tagline'] : '';
+$image        = $archive_hero ? $archive_hero['image'] : '';
+$color        = $archive_hero ? $archive_hero['color'] : '';
+$button_link  = $archive_hero ? $archive_hero['link'] : '';
 
 $post_title = wp_strip_all_tags( get_the_archive_title() );
 
 $image_url = ! empty( $image ) ? $image['sizes']['1915x'] : '';
 
 $archive_zip_search                   = get_field( 'archive_zip_search', 'options' );
-$archive_zip_search_title             = $archive_zip_search['title'];
-$archive_zip_search_label             = $archive_zip_search['input_label'];
-$archive_zip_search_lnk               = $archive_zip_search['link'];
-$archive_zip_search_description_title = $archive_zip_search['description_title'];
-$archive_zip_search_description       = $archive_zip_search['description'];
+$archive_zip_search_title             = $archive_zip_search ? $archive_zip_search['title'] : '';
+$archive_zip_search_label             = $archive_zip_search ? $archive_zip_search['input_label'] : '';
+$archive_zip_search_lnk               = $archive_zip_search ? $archive_zip_search['link'] : '';
+$archive_zip_search_description_title = $archive_zip_search ? $archive_zip_search['description_title'] : '';
+$archive_zip_search_description       = $archive_zip_search ? $archive_zip_search['description'] : '';
 
 $archive_cta       = get_field( 'archive_cta', 'options' );
-$archive_cta_title = $archive_cta['title'];
-$archive_cta_body  = $archive_cta['body'];
-$archive_cta_lnk   = $archive_cta['link'];
+$archive_cta_title = $archive_cta ? $archive_cta['title'] : '';
+$archive_cta_body  = $archive_cta ? $archive_cta['body'] : '';
+$archive_cta_lnk   = $archive_cta ? $archive_cta['link'] : '';
 
 $bydate = '';
 if ( isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
