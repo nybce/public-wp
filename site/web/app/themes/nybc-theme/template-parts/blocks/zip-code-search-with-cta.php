@@ -72,5 +72,4 @@ $description_cta   = get_field( 'description_cta' );
 		</div>
 	</div>
 </div>
-
 <div class="spacer-120"></div>

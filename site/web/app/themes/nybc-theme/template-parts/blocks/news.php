@@ -64,7 +64,6 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 	}
 	// @codingStandardsIgnoreEnd
 }
-
 $query = new WP_Query( $args );
 
 ?>

@@ -35,7 +35,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			add_action( 'admin_head', array( 'NYBC_Blocks', 'admin_head' ) );
 
 			add_filter( 'render_block', array( 'NYBC_Blocks', 'render_block' ), 100, 2 );
-
 		}
 
 		/**
@@ -56,6 +55,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/column-content',
 					'acf/accordion-item',
 					'acf/accordion',
+					'acf/horizontal-line',
 				),
 				true
 			) ) {
@@ -94,7 +94,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					true
 				) && ! is_admin() && ! wp_is_json_request()
 			) {
-				$block_content = "<div class=\"text\">$block_content</div>";
+				$block_content = "<div class=\"text mb-24\">$block_content</div>";
 			}
 
 			return $block_content;
@@ -114,6 +114,10 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				.wp-block-acf-column-sidebar, .wp-block-acf-column-content, .wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion-item, .wp-block-acf-accordion{
 					outline: 1px solid #c9c9c9;
 					min-height: 40px;
+				}
+				.wp-block-acf-horizontal-line{
+					min-height: 20px;
+					padding: 1px 10px!important;
 				}
 				.wp-block-acf-two-column-block .wp-block-acf-column-sidebar{
 					width: 32%;
@@ -182,6 +186,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/graphic-download-card',
 				'acf/resource-cards',
 				'acf/carousel-video',
+				'acf/horizontal-line',
 			);
 
 		}
@@ -216,10 +221,11 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::column_sidebar();// N2RDEV-80.
 			self::column_content();// N2RDEV-80.
 			self::spacer();
+			self::horizontal_line();
 			// @codingStandardsIgnoreStart
 			if ( ! is_admin() ||
-				  ( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
-			) {
+                ( is_admin() && !('post.php' === $pagenow && isset( $_GET['post'] ) && in_array(get_post_type( (int) $_GET['post'] ), array('post','story','staff'), true)))
+            ) {
 				self::home_hero(); // N2RDEV-20   #0110.
 				self::parent_page_hero();// N2RDEV-76.
 				self::child_page_hero();// N2RDEV-93.
@@ -1145,7 +1151,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		}
 
 		/**
-		 *  Blockquote Block, N2RDEV-129
+		 *  Blockquote Block
 		 */
 		public static function blockquote() {
 			if ( function_exists( 'acf_register_block_type' ) ) {
@@ -1162,6 +1168,22 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/blockquote' );
+			}
+		}
+
+		/**
+		 *  Horizontal Line Block
+		 */
+		public static function horizontal_line() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'horizontal_line',
+						'title'           => esc_html__( 'Horizontal Line', 'nybc' ),
+						'description'     => esc_html__( 'Horizontal Line Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/horizontal-line.php',
+					)
+				);
 			}
 		}
 

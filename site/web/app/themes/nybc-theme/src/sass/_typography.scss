@@ -87,7 +87,7 @@ ol {
 		font-weight: 900;
 	}
 
-	ul li {
+	>ul > li {
 		font-size: inherit;
 		line-height: inherit;
 		margin-left: 0.5em;
@@ -112,13 +112,69 @@ ol {
 		+ li {
 			margin-top: 0.8em;
 		}
+
+		>ul li {
+			font-size: inherit;
+			line-height: inherit;
+			margin-left: 0.5em;
+			padding-left: 1.25em;
+			position: relative;
+
+			&::before {
+				background: $color-text-10;
+				border-radius: 100%;
+				content: "";
+				height: 0.6rem;
+				left: 0;
+				position: absolute;
+				top: 0.5em;
+				width: 0.6rem;
+			}
+
+			&:last-child {
+				bottom: 0;
+			}
+
+			+ li {
+				margin-top: 0.8em;
+			}
+		}
+
+		>ol {
+			counter-reset: number;
+		}
+
+		>ol li {
+			font-size: inherit;
+			font-weight: 400;
+			line-height: inherit;
+			padding-left: 1.875em;
+			position: relative;
+
+			&:last-child {
+				bottom: 0;
+			}
+
+			&::before {
+				content: counters(number, ".", decimal);
+				counter-increment: number;
+				font-weight: 700;
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+
+			+ li {
+				margin-top: 0.8em;
+			}
+		}
 	}
 
-	ol {
+	>ol {
 		counter-reset: number;
 	}
 
-	ol li {
+	>ol > li {
 		font-size: inherit;
 		font-weight: 400;
 		line-height: inherit;
@@ -140,6 +196,62 @@ ol {
 
 		+ li {
 			margin-top: 0.8em;
+		}
+
+		>ul li {
+			font-size: inherit;
+			line-height: inherit;
+			margin-left: 0.5em;
+			padding-left: 1.25em;
+			position: relative;
+
+			&::before {
+				background: $color-text-10;
+				border-radius: 100%;
+				content: "";
+				height: 0.6rem;
+				left: 0;
+				position: absolute;
+				top: 0.5em;
+				width: 0.6rem;
+			}
+
+			&:last-child {
+				bottom: 0;
+			}
+
+			+ li {
+				margin-top: 0.8em;
+			}
+		}
+
+		>ol {
+			counter-reset: number;
+		}
+
+		>ol li {
+			font-size: inherit;
+			font-weight: 400;
+			line-height: inherit;
+			padding-left: 1.875em;
+			position: relative;
+
+			&:last-child {
+				bottom: 0;
+			}
+
+			&::before {
+				content: counters(number, ".", decimal);
+				counter-increment: number;
+				font-weight: 700;
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+
+			+ li {
+				margin-top: 0.8em;
+			}
 		}
 	}
 

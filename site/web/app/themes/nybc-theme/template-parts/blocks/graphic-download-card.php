@@ -31,7 +31,7 @@ if ( empty( $downloads ) ) {
 	$downloads = array();
 }
 ?>
-<div class="graphic-download-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="graphic-download-card-wrapper mb-16 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="graphic-download-card">
 		<div class="graphic-download-card-img">
 

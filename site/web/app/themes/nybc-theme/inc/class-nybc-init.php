@@ -310,7 +310,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				$query->set( 'tax_query', $tax_query );
 			}
 
-			if ( $query->is_archive() && ! is_search() && $query->is_main_query() && isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] )
+			if ( ( $query->is_archive() || is_home() ) && ! is_search() && $query->is_main_query() && isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] )
 				&& isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
 
 				$bydate = sanitize_text_field( wp_unslash( $_GET['bydate'] ) );

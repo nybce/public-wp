@@ -32,7 +32,7 @@ $description       = get_field( 'description' );
 $news_page    = get_field( 'news_page', 'options' );
 $stories_page = get_field( 'stories_page', 'options' );
 ?>
-<div class="promo-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="promo-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php if ( $news_page && ! is_page( $news_page ) && $stories_page && ! is_page( $stories_page ) ) { ?>
 		<div class="decor-promo mobile" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
 	<?php } ?>

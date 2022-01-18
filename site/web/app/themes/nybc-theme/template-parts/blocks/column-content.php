@@ -43,6 +43,7 @@ $allowed_blocks = array(
 	'acf/graphic-download-card',
 	'acf/resource-cards',
 	'acf/carousel-video',
+	'acf/horizontal-line',
 );
 
 $class_name .= ' col-lg-8';

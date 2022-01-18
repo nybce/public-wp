@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$block_id = 'blockquote-' . $block['id'];
+$block_id = 'horizontal-line-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
 }
@@ -23,14 +23,7 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
-$text     = get_field( 'text' );
-$author   = get_field( 'author' );
-$position = get_field( 'position' );
 ?>
 <div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
-	<blockquote>
-		<q><?php echo esc_html( $text ); ?></q>
-		<h5><?php echo esc_html( $author ); ?></h5>
-		<p><?php echo esc_html( $position ); ?></p>
-	</blockquote>
+	<hr>
 </div>
