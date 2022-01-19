@@ -25,9 +25,6 @@ locals {
       "nybc-enterprise.staging.nybc-wordpress.bbox.ly"
           ]
   }
-  cert_files = {
-    "staging" = "kv-ssl-cert-w5hb-wildcard-dev-nybc-wordpress-bbox-ly-20211210.pfx"
-  }
 }
 
 resource "random_id" "server" {
@@ -40,9 +37,6 @@ resource "random_id" "server" {
 }
 
 
-data "local_file" "certificate_data" {
-  filename = "certs/${local.cert_files[var.environment]}"
-}
 
 data "template_file" "init" {
   template = file("ec2-init.sh.tpl")
