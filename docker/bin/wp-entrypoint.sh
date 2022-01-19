@@ -1,6 +1,7 @@
 #!/bin/bash
 set -a
 echo "upgrade composer dependencies"
-composer update -vvv
+composer install -n
+composer update -vvv -n
 # compose update
 exec "$@"
