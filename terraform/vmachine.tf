@@ -61,7 +61,7 @@ data "template_file" "init" {
 
 
 resource "azurerm_app_service_plan" "wordpress_service_plan" {
- name                = "${var.name}-${var.environment}-service-plan"
+ name                = "${var.project}-${var.environment}-service-plan"
  location            = azurerm_resource_group.vmss.location
  resource_group_name = azurerm_resource_group.vmss.name
  kind                = "Linux"
