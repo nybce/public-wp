@@ -97,4 +97,4 @@ RUN --mount=type=secret,id=vaultpass \
   cat /run/secrets/vaultpass >> /.vaultpass
 RUN chmod 777 /.vaultpass
 ENTRYPOINT ["wp-entrypoint.sh"]
-CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--port=80", "--allow-root"]
+CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--port=9000", "--allow-root"]
