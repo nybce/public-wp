@@ -62,7 +62,8 @@
         "wpackagist-plugin/user-role-editor": "^4.60.2",
         "wpackagist-plugin/wordfence": "^7.5.6",
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
-        "wpackagist-plugin/wps-hide-login": "^1.9.1"
+        "wpackagist-plugin/wps-hide-login": "^1.9.1",
+        "wpackagist-plugin/tablepress": "^1.14"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -72,7 +73,19 @@
     },
     "config": {
         "optimize-autoloader": true,
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "wpackagist-plugin/*": true,
+            "roots/*": true,
+            "oscarotero/env": true,
+            "composer/installers": true,
+            "pivvenit/acf-pro-installer": true,
+            "advanced-custom-fields/advanced-custom-fields-pro": true,
+            "roave/security-advisories": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "squizlabs/php_codesniffer": true,
+            "wp-coding-standards/wpcs": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

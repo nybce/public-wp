@@ -65,7 +65,18 @@
     },
     "config": {
         "optimize-autoloader": true,
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "wpackagist-plugin/*": true,
+            "roots/*": true,
+            "oscarotero/env": true,
+            "composer/installers": true,
+            "advanced-custom-fields/advanced-custom-fields-pro": true,
+            "roave/security-advisories": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "squizlabs/php_codesniffer": true,
+            "wp-coding-standards/wpcs": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -77,7 +88,6 @@
                 "wpackagist-plugin/broken-link-checker",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/nitropack",
                 "wpackagist-plugin/seo-by-rank-math"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
