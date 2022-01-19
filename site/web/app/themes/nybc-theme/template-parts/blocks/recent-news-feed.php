@@ -98,7 +98,7 @@ if ( empty( $lnk ) ) {
 							<div class="news-img">
 								<?php NYBC_Helpers::picture( $image ); ?>
 							</div>
-                            <?php } ?>
+							<?php } ?>
 							<div class="border-top"></div>
 							<div class="news-info">
 								<?php

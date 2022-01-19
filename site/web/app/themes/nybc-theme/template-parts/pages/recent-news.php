@@ -66,7 +66,7 @@ $blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 								<div class="news-img">
 									<?php NYBC_Helpers::picture( $image ); ?>
 								</div>
-                                <?php } ?>
+								<?php } ?>
 								<div class="border-top"></div>
 								<div class="news-info">
 									<?php
