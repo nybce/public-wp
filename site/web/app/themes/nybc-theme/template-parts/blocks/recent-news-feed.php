@@ -78,7 +78,7 @@ if ( empty( $lnk ) ) {
 		<div class="swiper-entry news-swiper">
 
 			<div class="swiper-container"
-				data-options='{"slidesPerView":3, "autoHeight": true, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
+				data-options='{"slidesPerView":3, "spaceBetween": 24, "breakpoints":{"991":{"slidesPerView": 2}, "767":{"slidesPerView": 1, "spaceBetween": 16}}}'>
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $news as $news_id ) {
@@ -94,9 +94,11 @@ if ( empty( $lnk ) ) {
 						?>
 					<div class="swiper-slide">
 						<a href="<?php echo esc_url( get_the_permalink( $news_id ) ); ?>" class="news-item">
+							<?php if ( ! empty( $image ) ) { ?>
 							<div class="news-img">
 								<?php NYBC_Helpers::picture( $image ); ?>
 							</div>
+							<?php } ?>
 							<div class="border-top"></div>
 							<div class="news-info">
 								<?php
