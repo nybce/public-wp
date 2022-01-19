@@ -62,9 +62,11 @@ $blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 						?>
 						<div class="swiper-slide">
 							<a href="<?php echo esc_url( get_the_permalink( $news_id ) ); ?>" class="news-item">
+								<?php if ( ! empty( $image ) ) { ?>
 								<div class="news-img">
 									<?php NYBC_Helpers::picture( $image ); ?>
 								</div>
+                                <?php } ?>
 								<div class="border-top"></div>
 								<div class="news-info">
 									<?php
