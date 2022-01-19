@@ -46,7 +46,7 @@ jobs:
       -
         name: Build and push staging
         if: github.ref == 'refs/heads/staging' || github.event.pull_request.base.ref == 'staging'
-        id: docker_build
+        id: docker_build_staging
         uses: docker/build-push-action@v2
         with:
           context: .
