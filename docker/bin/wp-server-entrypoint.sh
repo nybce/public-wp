@@ -1,10 +1,10 @@
 #!/bin/bash
 set -a
 echo "upgrade composer dependencies"
-composer update -vvv -n
+ansible-vault decrypt /envs/staging.env --vault-password-file=/echo_ansible_vault_pass.sh
 chmod 777 /envs/staging.env
-ansible-vault decrypt /envs/staging.env --vault-password-file=/.vaultpass
 source /envs/staging.env
 cp /envs/staging.env /site/.env
+composer update -vvv -n
 composer install -n
 exec "$@"
