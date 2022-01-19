@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $wp_query;
 $sort = ( isset( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'search' ) ) ? sanitize_text_field( wp_unslash( $_GET['bydate'] ) ) : '';
+
+$posts_query = $wp_query->posts;
 ?>
 <div class="section search-results">
 
@@ -41,14 +43,16 @@ $sort = ( isset( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce
 
 		<div class="row justify-content-center">
 			<div class="col-lg-10">
-				<?php if ( have_posts() ) { ?>
+				<?php if ( ! empty( $posts_query ) ) { ?>
 				<div class="search-cards-wrapper">
 					<?php
-					while ( have_posts() ) {
-						the_post();
-						$lnk         = get_the_permalink();
-						$image_url   = get_the_post_thumbnail_url( null, '380x369' );
-						$block_title = get_the_title();
+					foreach ( $posts_query as $pst ) {
+						if ( isset( $pst->site_id ) ) {
+							switch_to_blog( $pst->site_id );
+						}
+						$lnk         = get_the_permalink( $pst );
+						$image_url   = get_the_post_thumbnail_url( $pst, '380x369' );
+						$block_title = get_the_title( $pst );
 						$image       = array(
 							'url' => $image_url,
 							'alt' => $block_title,
@@ -66,10 +70,15 @@ $sort = ( isset( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce
 
 							<div class="spacer-16"></div>
 
-							<div class="text-xl text-20"><?php the_excerpt(); ?></div>
+							<div class="text-xl text-20"><?php echo esc_html( get_the_excerpt( $pst ) ); ?></div>
 						</div>
 					</a>
-					<?php } ?>
+						<?php
+						if ( isset( $pst->site_id ) ) {
+							restore_current_blog();
+						}
+					}
+					?>
 
 				</div>
 				<?php } ?>
