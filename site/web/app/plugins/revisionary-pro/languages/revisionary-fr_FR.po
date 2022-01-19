@@ -1,0 +1,922 @@
+# Translation of PublishPress - PublishPress Revisions in French (France)
+# This file is distributed under the same license as the PublishPress - PublishPress Revisions package.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress - PublishPress Revisions\n"
+"POT-Creation-Date: 2021-09-30 14:15-0400\n"
+"PO-Revision-Date: 2021-09-30 14:16-0400\n"
+"Last-Translator: Kevin Behrens <kevin@publishpress.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: admin\n"
+"X-Poedit-SearchPath-2: classes\n"
+"X-Poedit-SearchPath-3: includes\n"
+
+msgid "PublishPress Revisions requires WordPress version %s or higher."
+msgstr "PublishPress Revisions nécessite la version WordPress %s ou plus."
+
+msgid "PublishPress Revisions requires PHP version %s or higher."
+msgstr "PublishPress Revisions nécessite la version PHP %s ou supérieure."
+
+msgid "Another copy of PublishPress Revisions (or Revisionary) is already activated (version %1$s)"
+msgstr "Une autre copie de PublishPress Revisions (ou Revisionary) est déjà activée (version %1$s)"
+
+msgid "Another copy of PublishPress Revisions (or Revisionary) is already activated (version %1$s: \"%2$s\")"
+msgstr "Une autre copie de PublishPress Revisions (ou Revisionary) est déjà activée (version %1$s: « %2$s »)"
+
+msgid "<strong>This plugin can be deleted.</strong>"
+msgstr "<strong>Ce plugin peut être supprimé.</strong>"
+
+msgid "A scheduled revision to your %1$s \"%2$s\" has been published."
+msgstr "Une demande de révision planifiée pour votre %1$s \"%2$s\" a été publiée."
+
+msgid "The scheduled revision you submitted for the %1$s \"%2$s\" has been published."
+msgstr "Votre demande de révision planifiée pour %1$s \"%2$s\" a été publiée."
+
+msgid "[%s] Scheduled Revision Publication Notice"
+msgstr "[%s] Notification concernant votre demande de révision planifiée"
+
+msgid "The revision you submitted for the %1$s \"%2$s\" has been approved."
+msgstr "La demande de révision pour %1$s \"%2$s\" a été traitée."
+
+msgid "View it online: "
+msgstr "Visualiser la demande en ligne: "
+
+msgid "Editor: "
+msgstr "Éditeur:"
+
+msgid "Preview it here: "
+msgstr "Prévisualiser ici:"
+
+msgid "It will be published on %s"
+msgstr "Elle sera publiée le %s"
+
+msgid "The submitter was %1$s."
+msgstr "Le demandeur était %1$s."
+
+msgid "A revision to your %1$s \"%2$s\" has been approved."
+msgstr "Votre demande de révision pour %1$s \"%2$s\" a été traitée."
+
+msgid "[%s] Revision Approval Notice"
+msgstr "[%s] Notification concernant votre demande de révision"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact the PublishPress team"
+msgstr "Contactez l'équipe de PublishPress"
+
+msgid "PublishPress Revisions Documentation"
+msgstr "Documentation sur les révisions PublishPress"
+
+msgid "About"
+msgstr "À propos"
+
+msgid "About PublishPress Revisions"
+msgstr "À propos de PublishPress Revisions"
+
+msgid "If you like %s, please leave us a %s rating. Thank you!"
+msgstr "Si vous aimez %s, veuillez nous laisser une note %s. Merci!"
+
+msgid "%s (revision)"
+msgstr "%s (révision)"
+
+msgid "Upgrade to Pro"
+msgstr "Passer à la version Pro"
+
+msgid "Revisions"
+msgstr "Révisions"
+
+msgid "Save as Pending Revision"
+msgstr "Enregistrer en tant que révision en attente"
+
+msgid "The revision was published."
+msgstr "Cette demande de révision a été publiée."
+
+msgid "The revision was scheduled for publication."
+msgstr "Cette demande de révision a été planifiée pour publication."
+
+msgid "The revision was restored."
+msgstr "La demande de révision a été restaurée."
+
+msgid "Revision Queue"
+msgstr "File d’attente de révision"
+
+msgid "Workflow&hellip;"
+msgstr "Workflow&hellip;"
+
+msgid "<span class=\"dashicons dashicons-clock\"></span>&nbsp;%s Scheduled Revision"
+msgid_plural "<span class=\"dashicons dashicons-clock\"></span>&nbsp;%s Scheduled Revisions"
+msgstr[0] "<span class=\"dashicons dashicons-clock\"></span>%s Révision planifiée"
+msgstr[1] "<span class=\"dashicons dashicons-clock\"></span>%s Révisions planifiées"
+
+msgid "<span class=\"dashicons dashicons-edit\"></span>&nbsp;%s Pending Revision"
+msgid_plural "<span class=\"dashicons dashicons-edit\"></span>&nbsp;%s Pending Revisions"
+msgstr[0] "<span class=\"dashicons dashicons-edit\"></span>%s Révision en attente"
+msgstr[1] "<span class=\"dashicons dashicons-edit\"></span>%s Révisions en attente"
+
+msgid "Do not schedule current changes yet, but save to Revision Queue"
+msgstr "Ne pas encore planifier les modifications en cours, mais enregistrer dans la file d’attente de révision"
+
+msgid "Do not publish current changes yet, but save to Revision Queue"
+msgstr "Ne publiez pas encore les modifications actuelles, mais enregistrez dans la file d’attente de révision"
+
+msgid "Approve Revision"
+msgstr "Approuver la révision"
+
+msgid "<span class=\"dashicons dashicons-backup\"></span>&nbsp;%s Revision Edit"
+msgid_plural "<span class=\"dashicons dashicons-backup\"></span>&nbsp;%s Revision Edits"
+msgstr[0] "<span class=\"dashicons dashicons-backup\"></span>Modification de la révision %s"
+msgstr[1] "<span class=\"dashicons dashicons-backup\"></span>Modifications de révision %s"
+
+msgid "Revision Queue %s"
+msgstr "File d’attente de révision %s"
+
+msgctxt "PublishedPostName (other filter captions)"
+msgid "Revision Queue for \"%s\"%s"
+msgstr "File d’attente de révision pour « %s\"%s"
+
+msgid "%sPost Author: %s"
+msgstr "%sPost Auteur: %s"
+
+msgctxt "Posts / Pages / etc."
+msgid "of %s"
+msgstr "de %s"
+
+msgctxt "Author Name"
+msgid "%s: "
+msgstr "%s: "
+
+msgid "%s revision published."
+msgid_plural "%s revisions published."
+msgstr[0] "%s révision publiée."
+msgstr[1] "%s révisions publiées."
+
+msgid "%s revision approved."
+msgid_plural "%s revisions approved."
+msgstr[0] "%s révision approuvée."
+msgstr[1] "%s révisions approuvées."
+
+msgid "Pending Revisions and Scheduled Revisions are both disabled. See Revisions > Settings."
+msgstr "Les révisions en attente et les révisions planifiées sont toutes deux désactivées. Voir Révisions > Paramètres."
+
+msgid "You are not allowed to manage revisions."
+msgstr "Vous n’êtes pas autorisé à gérer les révisions."
+
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+msgid "Visibility:"
+msgstr "Visibilité :"
+
+msgid "Your site is configured to keep only the last %s revisions."
+msgstr "Votre site est configuré pour conserver uniquement les %s dernières révisions."
+
+msgid "Revision Edits: %s"
+msgstr "Modifications de révision : %s"
+
+msgid "List"
+msgstr "Liste"
+
+msgid "Manage"
+msgstr "Gérer"
+
+msgid "Preview / Restore"
+msgstr "Aperçu / Restauration"
+
+msgid "View"
+msgstr "Voir"
+
+msgctxt "revision date short format"
+msgid "j M @ H:i"
+msgstr "j M @ H:i"
+
+msgid "M j, Y @ H:i"
+msgstr "M j, Y @ H:i"
+
+msgid "M j, Y @ g:i a"
+msgstr "M j, Y @ g:i a"
+
+msgid "%s%s from now"
+msgstr "%s%s à partir de maintenant"
+
+msgid "Submitted "
+msgstr "Remis "
+
+msgid "Requested for "
+msgstr "Demandé pour"
+
+msgid "Scheduled for "
+msgstr "Prévu pour"
+
+msgid "Beaver Builder Settings"
+msgstr "Paramètres du constructeur de castors"
+
+msgid "Beaver Builder Data"
+msgstr "Données du constructeur de castors"
+
+msgid "Featured Image"
+msgstr "Image à la une"
+
+msgid "Page Template"
+msgstr "Modèle de page"
+
+msgid "Ping Status"
+msgstr "État du ping"
+
+msgid "Comment Status"
+msgstr "État du commentaire"
+
+msgid "Menu Order"
+msgstr "Ordre du menu"
+
+msgid "Post Parent"
+msgstr "Article Parent"
+
+msgid "Post Date"
+msgstr "Date de l'article"
+
+msgid "Compare %s of &#8220;%s&#8221;"
+msgstr "Comparez %s de &#8220;%s&s&#8221;"
+
+msgid "Compare Changes"
+msgstr "Comparer les modifications"
+
+msgid "Preview Revision"
+msgstr "Révision d’aperçu"
+
+msgid "Delete Revision"
+msgstr "Supprimer Revision"
+
+msgctxt "MonthName 4-DigitYear"
+msgid "%1$s %2$d"
+msgstr "%1$s %2$d"
+
+msgid "All dates"
+msgstr "Toutes les dates"
+
+msgid "Filter by date"
+msgstr "Filtrer par date"
+
+msgid "All %s"
+msgstr "Tous %s"
+
+msgid "%sMy Published Posts%s(%s)"
+msgstr "%sMy Publications%s(%s)"
+
+msgid "%sMy Revisions%s(%s)"
+msgstr "%sMy Révisions%s(%s)"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Compare Past Revisions"
+msgstr "Comparer les révisions passées"
+
+msgid "View published post"
+msgstr "Voir le post publié"
+
+msgid "View only revisions of %s"
+msgstr "Afficher uniquement les révisions de %s"
+
+msgid "No author"
+msgstr "aucun auteur"
+
+msgid "Requested publication: %s"
+msgstr "Publication demandée : %s"
+
+msgid "Scheduled publication: %s"
+msgstr "Publication planifiée : %s"
+
+msgid "Y/m/d g:i a"
+msgstr "Y/m/d g:i a"
+
+msgid "Y/m/d g:i:s a"
+msgstr "Y/m/d g:i:s a"
+
+msgid "Post Author"
+msgstr "Auteur de l’article"
+
+msgid "Published Post"
+msgstr "Publié Post"
+
+msgid "Submission"
+msgstr "Soumission"
+
+msgid "Revised By"
+msgstr "Révisé par"
+
+msgid "Post Type"
+msgstr "Type d'article"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Revision"
+msgstr "Révision"
+
+msgid "Network Defaults"
+msgstr "Paramètres par défaut réseau"
+
+msgid "Network Settings"
+msgstr "Paramètres du réseau"
+
+msgid "View %s"
+msgstr "Voir %s"
+
+msgid "%1$s %2$s Revisions"
+msgstr "%1$s %2$s Révisions"
+
+msgid "%1$s %2$s Revision"
+msgstr "%1$s %2$s Révision"
+
+msgid "unselect"
+msgstr "déselectionner"
+
+msgid "select"
+msgstr "sélectionner"
+
+msgid "filter:"
+msgstr "filtrer:"
+
+msgid "show eligible users (%d)"
+msgstr "afficher les utilisateurs admissibles (%d)"
+
+msgid "show current users (%d)"
+msgstr "afficher les utilisateurs courants (%d)"
+
+msgid "Enter additional User Names or IDs (comma-separate)"
+msgstr "Entrez les noms d'utilisateur additionnels ou leurs ID (séparé par une virgule)"
+
+msgid "no %s revisions available."
+msgstr "aucune révision %s disponible."
+
+msgid "%1$s <span class=\"count\"> (%2$s)</span>"
+msgstr "%1$s <span class=\"count\">(%2$s)</span>"
+
+msgid "Past Revisions"
+msgstr "Révisions antérieures"
+
+msgid "The requested revision does not exist."
+msgstr "La révision demandée n'existe pas."
+
+msgid "Revisions of %s"
+msgstr "Révisions de %s"
+
+msgid "Past"
+msgstr "antérieure"
+
+msgid "No revision specified."
+msgstr "Aucune révision spécifié."
+
+msgid "<strong>Note:</strong> For visual display of revisions, add the following code to foliopress-wysiwyg.php:<br />&nbsp;&nbsp;if ( strpos( $_SERVER['REQUEST_URI'], 'admin.php?page=rvy-revisions' ) ) return;"
+msgstr "<strong>Remarque :</strong> Pour l’affichage visuel des révisions, ajoutez le code suivant à foliopress-wysiwyg.php :<br />si ( strpos( $_SERVER['REQUEST_URI'], 'admin.php?page=rvy-revisions') ) de retour;"
+
+msgid "Publishers to Notify of Your Revision"
+msgstr "Éditeurs à avertir pour votre demande de révision"
+
+msgid "Current Time"
+msgstr "Heure actuelle"
+
+msgid "Submit Scheduled Revision"
+msgstr "Soumettre une révision planifiée"
+
+msgid "Submit Revision"
+msgstr "Soumettre les changements"
+
+msgid "Schedule Revision"
+msgstr "Révision de l’horaire"
+
+msgid "Modified Date"
+msgstr "Date de modification"
+
+msgid "The revision will be deleted. Are you sure?"
+msgstr "La demande de révision sera suppirmée.  Continuer?"
+
+msgid "%1$s <span class=\"rvy-revision-pubish-date\">(Publish date: %2$s)</span>"
+msgstr "%1$s <span class=\"rvy-revision-pubish-date\">(Date de publication : %2$s)</span>"
+
+msgid "%1$s <span class=\"rvy-revision-pubish-date\">(Requested publication: %2$s)</span>"
+msgstr "%1$s <span class=\"rvy-revision-pubish-date\">(Publication demandée : %2$s)</span>"
+
+msgctxt "revision schedule date format"
+msgid "j F, Y, g:i a"
+msgstr "j F, Y, g:i a"
+
+msgid "%1$s (Autosave)"
+msgstr "%1$s (Autosave)"
+
+msgid "%1$s (Current)"
+msgstr "%1$s (Courant)"
+
+msgctxt "revision date format"
+msgid "j F, Y @ g:i a"
+msgstr "j F, Y @ g:i a"
+
+msgid "No email notifications will be sent."
+msgstr "Aucune notification par e-mail ne sera envoyée."
+
+msgid "Publishers will be notified (but cannot be selected here)."
+msgstr "Les éditeurs seront avisés (mais ne peuvent pas être sélectionnés ici)."
+
+msgid "Revert to Defaults"
+msgstr "Revenir aux valeurs par défaut"
+
+msgid "All settings in this form (including those on unselected tabs) will be reset to DEFAULTS.  Are you sure?"
+msgstr "Tous les paramètres de ce formulaire (y compris ceux sur les onglets non sélectionnés) seront réinitialisés en DEFAULTS.  Es-tu sûr?"
+
+msgctxt "option_tabname (explanatory note)"
+msgid "<span class=\"rs-h3text\">%1$s</span> (%2$s)"
+msgstr "<span class=\"rs-h3text\">%1$s</span> (%2$s)"
+
+msgid "Specify which PublishPress Revisions Settings to control network-wide. Unselected settings are controlled separately on each site."
+msgstr "Spécifiez quels paramètres de révisions PublishPress pour contrôler l’ensemble du réseau. Les paramètres non sélectionnés sont contrôlés séparément sur chaque site."
+
+msgid "network-wide control of \"%s\""
+msgstr "contrôle à l’échelle du réseau des «s%»"
+
+msgid "Documentation"
+msgstr "Documentation"
+
+msgid "Show with message content"
+msgstr "Afficher avec le contenu du message"
+
+msgid "Show Notification Log / Buffer"
+msgstr "Afficher le journal des notifications / Tampon"
+
+msgid "Seconds until next buffer processing time: %d"
+msgstr "Secondes jusqu’au temps de traitement de la mémoire tampon suivante : %d"
+
+msgid "Sent in last day: %d / %d"
+msgstr "Envoyé le dernier jour: %d / %d"
+
+msgid "Sent in last hour: %d / %d"
+msgstr "Envoyé dans la dernière heure: %d / %d"
+
+msgid "Sent in last minute: %d / %d"
+msgstr "Envoyé à la dernière minute : %d / %d"
+
+msgid "Truncate Notification Log"
+msgstr "Journal des notifications tronquées"
+
+msgid "Purge Notification Buffer"
+msgstr "Tampon de notification de purge"
+
+msgid "Notification Log"
+msgstr "Journal de notification"
+
+msgid "Notification Buffer"
+msgstr "Tampon de notification"
+
+msgid "To avoid notification failures, buffer emails for delayed sending once minute, hour or day limits are exceeded"
+msgstr "Pour éviter les échecs de notification, les e-mails tampon s’appliquant aux envois retardés une fois minutes, heures ou jours sont dépassés"
+
+msgid "Note: \"by default\" means Pending Revision creators can customize email notification recipients before submitting.  For more flexibility in moderation and notification, install the %1$s PressPermit Pro%2$s plugin."
+msgstr "Remarque : « par défaut », les créateurs de révision en attente peuvent personnaliser les destinataires de notification par courriel avant de les soumettre.  Pour plus de flexibilité dans la modération et la notification, installez le plugin %1$sPressPermit Pro%2$s "
+
+msgid "Note: \"by default\" means Pending Revision creators can customize email notification recipients before submitting.  Eligibile \"Publisher\" email recipients are members of the Pending Revision Monitors group who <strong>also</strong> have the ability to publish the revision.  If not explicitly defined, the Monitors group is all users with a primary WP role of Administrator or Editor."
+msgstr "Remarque : « par défaut », les créateurs de révision en attente peuvent personnaliser les destinataires de notification par courriel avant de les soumettre.  Les destinataires de messagerie Eligibile « Publisher » sont membres du groupe Moniteurs de révision en attente qui ont <strong>également</strong> la possibilité de publier la révision.  S’il n’est pas défini explicitement, le groupe Moniteurs est tous les utilisateurs ayant un rôle WP principal d’administrateur ou d’éditeur."
+
+msgid "Always"
+msgstr "Toujours"
+
+msgid "By default"
+msgstr "Par défaut"
+
+msgid "Never"
+msgstr "Jamais"
+
+msgid "select recipients"
+msgstr "sélectionner des destinataires"
+
+msgid "Regenerate revision storage flags (for Revision Queue listing)"
+msgstr "Régénérer les indicateurs de stockage de révision (pour la liste de la file d’attente de révision)"
+
+msgid "Show descriptive captions for PublishPress Revisions settings"
+msgstr "Afficher les légendes descriptives pour les paramètres De publishPress Revisions"
+
+msgid "This may improve compatibility with some plugins."
+msgstr "Cela peut améliorer la compatibilité avec certains plugins."
+
+msgid "This restriction applies to users who are not full editors for the post type. To enable a role, give it the list_others_revisions capability."
+msgstr "Cette restriction s’applique aux utilisateurs qui ne sont pas des éditeurs complets pour le type de publication. Pour activer un rôle, donnez-lui la list_others_revisions capacité."
+
+msgid "This restriction applies to users who are not full editors for the post type. To enable a role, give it the edit_others_revisions capability."
+msgstr "Cette restriction s’applique aux utilisateurs qui ne sont pas des éditeurs complets pour le type de publication. Pour activer un rôle, donnez-lui la edit_others_revisions capacité."
+
+msgid "For compatibility with Advanced Custom Fields, Beaver Builder and WPML, upgrade to <a href=\"%s\" target=\"_blank\">PublishPress Revisions Pro</a>."
+msgstr "Pour la compatibilité avec Advanced Custom Fields, Beaver Builder et WPML, passez à <a href=\"%s\" target=\"_blank\">PublishPress Revisions Pro</a>."
+
+msgid "If disabled, Compare screen links to Revision Preview for approval"
+msgstr "Si désactivé, comparer les liens d’écran vers Revision Preview pour approbation"
+
+msgid "Some themes or plugins may require Revision Slug or Revision ID link type for proper template loading and field display."
+msgstr "Certains thèmes ou plugins peuvent nécessiter le type de lien Révision Slug ou Revision ID pour le chargement de modèle et l’affichage du champ appropriés."
+
+msgid "Revision ID only"
+msgstr "ID de révision uniquement"
+
+msgid "Revision Slug"
+msgstr "Revision Slug"
+
+msgid "Published Post Slug"
+msgstr "Publié Post Slug"
+
+msgid "For themes that block revision preview, hide preview links from non-Administrators"
+msgstr "Pour les thèmes qui bloquent l’aperçu de révision, masquer les liens d’aperçu des non-Administrateurs"
+
+msgid "When a pending revision is published, also update the publish date."
+msgstr "Lorsqu’une révision en attente est publiée, mettez également à jour la date de publication."
+
+msgid "Enable Contributors to submit revisions to their own published content. Revisors and users who have the edit_others (but not edit_published) capability for the post type can submit revisions to other user's content. These Pending Revisions are listed in %sRevision Queue%s."
+msgstr "Permettre aux contributeurs de soumettre des révisions à leur propre contenu publié. Les réviseurs et les utilisateurs qui ont la capacité edit_others (mais pas edit_published) pour le type de publication peuvent soumettre des révisions au contenu d’un autre utilisateur. Ces révisions en attente sont répertoriées dans %sRevision Queue%s."
+
+msgid "Publish scheduled revisions asynchronously, via a secondary http request from the server.  This is usually best since it eliminates delay, but some servers may not support it."
+msgstr "Publiez les révisions planifiées de façon asynchrone, via une demande http secondaire du serveur.  C’est généralement mieux car il élimine le retard, mais certains serveurs peuvent ne pas le prendre en charge."
+
+msgid "When a scheduled revision is published, also update the publish date."
+msgstr "Lorsqu’une révision planifiée est publiée, mettez également à jour la date de publication."
+
+msgid "If a currently published post or page is edited and a future date set, the change will not be applied until the selected date."
+msgstr "Si une publication ou une page actuellement publiée est modifiée et qu’une date future est définie, la modification ne sera pas appliquée avant la date sélectionnée."
+
+msgid "If checked, users lacking site-wide publishing capabilities will also be checked for the edit_others_drafts capability"
+msgstr "S’ils sont vérifiés, les utilisateurs qui n’ont pas de capacités de publication à l’échelle du site seront également vérifiés pour la capacité edit_others_drafts"
+
+msgid "The user role \"Revisor\" role is now available. Include capabilities for all custom post types in this role?"
+msgstr "Le rôle utilisateur \" Revisor \" est maintenant disponible. Inclure des fonctionnalités pour tous les types de publication personnalisés dans ce rôle ?"
+
+msgid "Note that %1$s network-wide settings%2$s may also be available."
+msgstr "Notez que des paramètres à l’échelle du réseau de %1$speuvent également%2$s être disponibles."
+
+msgid "Here you can change the default value for settings which are controlled separately on each site."
+msgstr "Ici, vous pouvez modifier la valeur par défaut pour les paramètres qui sont contrôlés séparément sur chaque site."
+
+msgid "Use this tab to make <strong>NETWORK-WIDE</strong> changes to PublishPress Revisions settings. %s"
+msgstr "Utilisez cet onglet pour apporter des modifications <strong>NETWORK-WIDE</strong> aux paramètres De révisions PublishPress. %s"
+
+msgid "You can also specify %1$sdefaults for site-specific settings%2$s."
+msgstr "Vous pouvez également spécifier %1$sdefaults pour les paramètres spécifiques au site%2$s."
+
+msgid "These are the <strong>default</strong> settings for options which can be adjusted per-site."
+msgstr "Il s’agit des paramètres <strong>par défaut</strong> pour les options qui peuvent être ajustées par site."
+
+msgid "Update &raquo;"
+msgstr "Mettre à jour &raquo;"
+
+msgid "PublishPress Revisions Settings"
+msgstr "Paramètres des révisions PublishPress"
+
+msgid "PublishPress Revisions Site Settings"
+msgstr "Paramètres du site PublishPress Revisions"
+
+msgid "PublishPress Revisions Network Defaults"
+msgstr "PublishPress Revisions Network Defaults"
+
+msgid "PublishPress Revisions Network Settings"
+msgstr "Publier les révisionspresses Paramètres du réseau"
+
+msgid "Email Editors and Administrators when a Pending Revision is approved"
+msgstr "Éditeurs et administrateurs de messagerie lorsqu’une révision en attente est approuvée"
+
+msgid "Email Editors and Administrators when a Scheduled Revision is published"
+msgstr "Éditeurs et administrateurs de messagerie lorsque une révision planifiée est publiée"
+
+msgid "Email Editors and Administrators when a Pending Revision is submitted"
+msgstr "Éditeurs et administrateurs de messagerie lorsqu’une révision en attente est soumise"
+
+msgid "Email designated Publishers when a Pending Revision is approved"
+msgstr "Envoyer un courriel aux éditeurs désignés lorsqu’une révision en attente est approuvée"
+
+msgid "Email designated Publishers when a Scheduled Revision is published"
+msgstr "Envoyer un courriel aux éditeurs désignés lors de la publication d’une révision planifiée"
+
+msgid "Email designated Publishers when a Pending Revision is submitted"
+msgstr "Envoyer un courriel aux éditeurs désignés lorsqu’une révision en attente est soumise"
+
+msgid "Approve Button on Compare Revisions screen"
+msgstr "Bouton Approuver sur l’écran Comparer les révisions"
+
+msgid "Preview Link Type"
+msgstr "Type de lien d’aperçu"
+
+msgid "Show Preview Links"
+msgstr "Afficher les liens d’aperçu"
+
+msgid "Prevent Revisors from editing other user&apos;s drafts"
+msgstr "Empêcher les réviseurs d’éditer d’autres brouillons utilisateur-apos;s"
+
+msgid "All custom post types available to Revisors"
+msgstr "Tous les types de publication personnalisés disponibles pour Revisors"
+
+msgid "Enable notification buffer"
+msgstr "Activer la mémoire tampon de notification"
+
+msgid "Email the Revisor when a Scheduled Revision is published"
+msgstr "Envoyer un courriel au Réviseur lorsqu’une révision planifiée est publiée"
+
+msgid "Email the original Author when a Scheduled Revision is published"
+msgstr "Envoyer un courriel à l’auteur d’origine lorsqu’une révision planifiée est publiée"
+
+msgid "Email the Revisor when a Pending Revision is approved"
+msgstr "Envoyer un courriel au Réviseur lorsqu’une révision en attente est approuvée"
+
+msgid "Email the original Author when a Pending Revision is approved"
+msgstr "Envoyer un courriel à l’auteur d’origine lorsqu’une révision en attente est approuvée"
+
+msgid "Email original Author when a Pending Revision is submitted"
+msgstr "Envoyer un message d’auteur original lorsqu’une révision en attente est soumise"
+
+msgid "Update Publish Date"
+msgstr "Mettre à jour la date de publication"
+
+msgid "Asynchronous Publishing"
+msgstr "Éditions asynchrones"
+
+msgid "Strip html tags out of difference display"
+msgstr "Bandez les balises html hors de l’affichage de différence"
+
+msgid "Revision publication triggers API actions to mimic post update"
+msgstr "La publication de révision déclenche des actions d’API pour imiter la mise à jour post"
+
+msgid "Prevent Revisors from viewing others&apos; revisions"
+msgstr "Empêcher les réviseurs de consulter les autres; révisions"
+
+msgid "Prevent Revisors from editing others&apos; revisions"
+msgstr "Empêcher les réviseurs d’éditer d’autres; les révisions"
+
+msgid "Enable Scheduled Revisions"
+msgstr "Activer les révisions planifiées"
+
+msgid "Enable Pending Revisions"
+msgstr "Activer les révisions en attente"
+
+msgid "Email Notification"
+msgstr "Notification par courriel"
+
+msgid "Revision Options"
+msgstr "Options de révision"
+
+msgid "Preview / Approval"
+msgstr "Aperçu / Approbation"
+
+msgid "Role Definition"
+msgstr "Définition des rôles"
+
+msgid "Setting Scope"
+msgstr "Définition de l’étendue"
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "%sPending Revisions: %s"
+msgstr "%sPending Revisions : %s"
+
+msgid "%sScheduled Revisions: %s"
+msgstr "%sScheduled Revisions: %s"
+
+msgid "Compare this revision to published copy, or to other revisions"
+msgstr "Comparez cette révision à la copie publiée ou à d’autres révisions"
+
+msgctxt "revisions"
+msgid "Compare"
+msgstr "Comparer"
+
+msgid "Approve saved changes"
+msgstr "Approuver les modifications enregistrées"
+
+msgid "Edit %s Revision"
+msgstr "Modifier la révision de %s"
+
+msgid "View unsaved changes"
+msgstr "Afficher les modifications non enregistrées"
+
+msgid "View saved revision"
+msgstr "Afficher la révision enregistrée"
+
+msgid "View / moderate saved revision"
+msgstr "Afficher / révision modérée enregistrée"
+
+msgid "View / Approve"
+msgstr "Afficher / Approuver"
+
+msgid "View / Publish"
+msgstr "Afficher / Publier"
+
+msgid "Revision updated."
+msgstr "Révision mise à jour."
+
+msgid "Revision updated. %sView Preview%s"
+msgstr "Révision mise à jour. %sView Preview%s"
+
+msgid "Dismiss"
+msgstr "Rejeter"
+
+msgid "<strong>Revisionary is now PublishPress Revisions!</strong> Note the new Revisions menu and %sRevision Queue%s screen, where Pending and Scheduled Revisions are listed. %s"
+msgstr "<strong>Revisionary est maintenant PublishPress Révisions!</strong> Notez le nouveau menu Révisions et l’écran %sRevision Queue%s, où sont répertoriés les révisions en attente et planifiées. %s"
+
+msgid "<strong>Welcome to PublishPress Revisions!</strong> Here&apos;s how it works:%s<li>\"Contributors\" can submit revisions to their published posts.</li><li>\"Revisors\" can submit revisions to posts and pages published by others.</li><li>\"Authors\", \"Editors\" and \"Administrators\" can approve revisions or schedule their own revisions.</li>%s%s%s"
+msgstr "<strong>Bienvenue à PublishPress Révisions!</strong> Voici comment cela fonctionne:%s<li>Les « contributeurs » peuvent soumettre des révisions à leurs publications.</li><li>Les « reviseurs » peuvent soumettre des révisions aux publications et aux pages publiées par d’autres.</li><li>Les « auteurs », les « éditeurs » et les « administrateurs » peuvent approuver les révisions ou planifier leurs propres révisions.</li>%s%s%s"
+
+msgid "For more details on setting up PublishPress Revisions, %sread this guide%s."
+msgstr "Pour plus de détails sur la configuration des révisions PublishPress, %sread this guide%s."
+
+msgid "Sorry, you are not allowed to delete this revision."
+msgstr "Désolé, vous n’êtes pas autorisé à supprimer cette révision."
+
+msgid "Sorry, you are not allowed to approve this revision."
+msgstr "Désolé, vous n’êtes pas autorisé à approuver cette révision."
+
+msgid "Return to Edit %s"
+msgstr "Retour à Modifier %s"
+
+msgid "Return to Edit Pages"
+msgstr "Retour à la modification des pages"
+
+msgid "Return to Edit Posts"
+msgstr "Retour à la modification des articles"
+
+msgid "Go back to submit another revision"
+msgstr "Revenir pour soumettre une autre révision"
+
+msgid "It will be published when an editor approves it."
+msgstr "Il sera publié lorsqu’un éditeur l’approuvera."
+
+msgid "If approved by an editor, it will be published on the date you specified."
+msgstr "S’il est approuvé par un éditeur, il sera publié à la date que vous avez spécifiée."
+
+msgid "Your modification has been saved for editorial review."
+msgstr "Votre modification a été enregistrée pour révision."
+
+msgid "View Revision Queue"
+msgstr "Afficher la file d’attente de révision"
+
+msgid "Go back to schedule another revision"
+msgstr "Revenir à planifier une autre révision"
+
+msgid "Keep editing the revision"
+msgstr "Continuer à modifier la révision"
+
+msgid "Preview it"
+msgstr "Prévisualiser"
+
+msgid "Your modification was saved as a Scheduled Revision."
+msgstr "Votre modification a été enregistrée en tant que Révision planifiée"
+
+msgid "Sorry, an error occurred while attempting to save your revision."
+msgstr "Désolé, une erreur s’est produite lors de la tentative d’enregistrement de votre révision."
+
+msgid "Edit Revision: "
+msgstr "Modifier la révision :"
+
+msgid "Revision Queue: "
+msgstr "File d’attente de révision :"
+
+msgid "Preview and Approval: "
+msgstr "Aperçu et approbation :"
+
+msgid "It was submitted by %1$s."
+msgstr "Envoyé par %1$s."
+
+msgid "A pending revision to the %1$s \"%2$s\" has been submitted."
+msgstr "Une demande de révision pour %1$s \"%2$s\" a été envoyée."
+
+msgid "[%s] Pending Revision Notification"
+msgstr "[%s] Notification pour révision en attente"
+
+msgid "Invalid page template."
+msgstr "Modèle de page invalide."
+
+msgid "Invalid taxonomy: %s"
+msgstr "Taxonomie non valide : %s"
+
+msgid "Could not insert revision into the database"
+msgstr "Impossible d’insérer une révision dans la base de données"
+
+msgid "Scheduled Revision Created"
+msgstr "Révision planifiée créée"
+
+msgid "Revision Scheduling Error"
+msgstr "Erreur de planification de révision"
+
+msgid "Sorry, an error occurred while attempting to schedule your revision!"
+msgstr "Désolé, une erreur s’est produite lors de la tentative de planifier votre révision!"
+
+msgid "Pending Revision Created"
+msgstr "Demande de révision créée"
+
+msgid "Revision Submission Error"
+msgstr "Erreur de soumission de révision"
+
+msgid "Sorry, an error occurred while attempting to submit your revision!"
+msgstr "Désolé, une erreur s’est produite lors de la tentative de soumettre votre révision!"
+
+msgid "Autosave disabled when editing a published post/page to create a pending revision."
+msgstr "Autoparter désactivé lors de la modification d’une publication/page publiée pour créer une révision en attente."
+
+msgid "Revision Workflow"
+msgstr "Flux de travail de révision"
+
+msgctxt "User role"
+msgid "Revisor"
+msgstr "Revisor"
+
+msgid "Revisor"
+msgstr "Réviseur"
+
+msgid "Scheduled"
+msgstr "Planifié"
+
+msgid "Scheduled Revisions"
+msgstr "Révisions programmées"
+
+msgid "Scheduled Revision"
+msgstr "Révision planifiée"
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Pending Revisions"
+msgstr "Révisions en attente"
+
+msgid "Update Revision"
+msgstr "Mettre à jour la révision"
+
+msgid "Save Revision"
+msgstr "Enregistrer la révision"
+
+msgid "Publish Revision"
+msgstr "Publier la révision"
+
+msgid "Pending Revision"
+msgstr "Révision en attente"
+
+msgid "Every 2 Minutes"
+msgstr "Toutes les 2 minutes"
+
+msgid "Invalid featured media ID."
+msgstr "ID de média en vedette non valide."
+
+msgid "%1$s queries in %2$s seconds. %3$s MB used."
+msgstr "%1$s requêtes en %2$s secondes. %3$s Mo utilisé."
+
+msgid "This is the Current Revision. %s"
+msgstr "Il s’agit de la révision en cours. %s"
+
+msgid "This is a Past Revision (from %s). %s %s"
+msgstr "Il s’agit d’une révision passée (à partir de %s). %s %s"
+
+msgid "Restore"
+msgstr "Restaurer"
+
+msgid "This is a Scheduled Revision (for publication on %s). %s %s %s"
+msgstr "Il s’agit d’une révision planifiée (pour publication sur %s). %s %s %s"
+
+msgid "Reload"
+msgstr "Rafraichir"
+
+msgid "This revision is very new, preview may not be synchronized with theme."
+msgstr "Cette révision est très nouvelle, l’aperçu peut ne pas être synchronisé avec le thème."
+
+msgid "This is a Pending Revision. %s %s %s"
+msgstr "Il s’agit d’une révision en attente. %s %s %s"
+
+msgid "Publish now"
+msgstr "Publier maintenant"
+
+msgid "This is a Pending Revision (requested publish date: %s). %s %s %s"
+msgstr "Il s’agit d’une révision en attente (date de publication demandée : %s). %s %s %s "
+
+msgid "Approve"
+msgstr "Approuver"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "%sView&nbsp;Published&nbsp;Post%s"
+msgstr "%sView&nbsp;Published&nbsp;Post%s"
+
+msgid "%sCompare%s%sView&nbsp;Published&nbsp;Post%s"
+msgstr "%sCompare%s%sView&nbsp;Published&nbsp;Post%s"
+
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+msgid "PublishPress"
+msgstr "PublishPress"
+
+msgid "Maintain published content with teamwork and precision using the Revisions model to submit, approve and schedule changes."
+msgstr "Maintenir le contenu publié avec le travail d’équipe et la précision à l’aide du modèle révisions pour soumettre, approuver et planifier les changements."
+
+msgid "https://publishpress.com/revisionary/"
+msgstr "https://publishpress.com/revisionary/"
+
+msgid "PublishPress Revisions"
+msgstr "Révisions PublishPress"

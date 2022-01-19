@@ -8,6 +8,11 @@ web/app/mu-plugins/*
 web/app/plugins/*
 !web/app/plugins/windows-azure-storage
 !web/app/plugins/distributor
+!web/app/plugins/gravityforms
+!web/app/plugins/capabilities-pro
+!web/app/plugins/publishpress-pro
+!web/app/plugins/revisionary-pro
+!web/app/plugins/seo-by-rank-math-pro
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep

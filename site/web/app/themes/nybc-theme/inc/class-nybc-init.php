@@ -20,6 +20,13 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	class NYBC_Init {
 
 		/**
+		 * Site ID for additional search
+		 *
+		 * @var int
+		 */
+		private static $site_id_for_additional_search = null;
+
+		/**
 		 * Additional Image sizes
 		 *
 		 * @var array
@@ -79,11 +86,11 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			if ( ! is_admin() && ! function_exists( 'get_field' ) ) {
 				die( 'ACF Pro plugin required!' );
 			}
-
+			self::acf_fields();
 			self::add_image_sizes();
 			self::options_page();
-			self::acf_fields();
 			self::hooks();
+
 		}
 
 		/**
@@ -95,6 +102,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			add_action( 'wp_enqueue_scripts', array( 'NYBC_Init', 'enqueue_scripts' ) );
 
 			add_action( 'pre_get_posts', array( 'NYBC_Init', 'pre_get_posts' ) );
+
+			add_filter( 'the_posts', array( 'NYBC_Init', 'the_posts' ), 10, 2 );
 
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
@@ -111,11 +120,41 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_filter( 'posts_orderby', array( 'NYBC_Init', 'posts_orderby' ), 10, 2 );
 
+			add_filter( 'login_errors', array( 'NYBC_Init', 'login_errors' ) );
+
+			add_action( 'init', array( 'NYBC_Init', 'init' ), 100 );
+
 			/**
 			 *  Disable XML-RPC
 			 */
 			add_filter( 'xmlrpc_enabled', '__return_false' );
 
+		}
+
+		/**
+		 *  Modify roles and status
+		 */
+		public static function init() {
+			global $wp_roles;
+
+			unset( $wp_roles->roles['editor'] );
+			unset( $wp_roles->roles['subscriber'] );
+			unset( $wp_roles->roles['custom_permalinks_manager'] );
+
+			$wp_roles->roles['author']['name']      = esc_html__( 'Content Editor', 'nybc' );
+			$wp_roles->roles['contributor']['name'] = esc_html__( 'Content Publisher', 'nybc' );
+		}
+
+		/**
+		 *  Replace login error message
+		 *
+		 * @param string $errors error.
+		 *
+		 * @return string
+		 */
+		public static function login_errors( $errors ) {
+			$errors = esc_html__( 'Wrong Login Details', 'nybc' );
+			return $errors;
 		}
 
 		/**
@@ -244,6 +283,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function posts_clauses( $pieces, $query ) {
 			global $wpdb;
+
 			$s = $query->get( 's' );
 			if ( ! empty( $s ) ) {
 				$pieces['where'] = preg_replace(
@@ -287,6 +327,20 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 */
 		public static function pre_get_posts( $query ) {
 
+			if ( ! is_admin() && is_multisite() ) {
+				self::$site_id_for_additional_search = (int) get_field( 'site_id_for_additional_search', 'options' );
+				if ( ! get_blog_details( self::$site_id_for_additional_search ) ) {
+					self::$site_id_for_additional_search = null;
+				}
+			}
+
+			if ( ! is_admin() && is_multisite() && self::$site_id_for_additional_search && is_search() && $query->is_main_query() ) {
+				$curr_page = $query->get( 'paged' );
+				$query->set( '_paged', $curr_page ? $curr_page : 1 );
+				$query->set( 'posts_per_page', -1 );
+				$query->set( 'paged', 1 );
+			}
+
 			if ( $query->is_archive() && ! is_search() && $query->is_main_query() ) {
 				$query->set( 'post_type', array( 'post', 'story' ) );
 			}
@@ -309,7 +363,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 				$query->set( 'tax_query', $tax_query );
 			}
-
 			if ( ( $query->is_archive() || is_home() ) && ! is_search() && $query->is_main_query() && isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] )
 				&& isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'filter' ) ) {
 
@@ -331,6 +384,76 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				$query->set( 'date_query', $date_query );
 			}
 
+		}
+
+		/**
+		 *  Modify posts result
+		 *
+		 * @param object $posts result posts.
+		 * @param object $query query.
+		 *
+		 * @return array
+		 */
+		public static function the_posts( $posts, $query ) {
+			global $wp_query;
+			if ( ! is_admin() && is_multisite() ) {
+				self::$site_id_for_additional_search = (int) get_field( 'site_id_for_additional_search', 'options' );
+				if ( ! get_blog_details( self::$site_id_for_additional_search ) ) {
+					self::$site_id_for_additional_search = null;
+				}
+			}
+
+			if ( ! is_admin() && is_multisite() && self::$site_id_for_additional_search && is_search() && $query->is_main_query() ) {
+				$posts_per_page = get_option( 'posts_per_page' );
+				$curr_page      = $query->get( '_paged' );
+				$curr_site_id   = get_current_blog_id();
+
+				if ( self::$site_id_for_additional_search !== $curr_site_id ) {
+					$site_id = self::$site_id_for_additional_search;
+					switch_to_blog( $site_id );
+
+					$posts_site = get_posts(
+						array(
+							'suppress_filters' => false,
+							's'                => $query->get( 's' ),
+							'posts_per_page'   => -1,
+							'post_type'        => array(
+								'post',
+								'page',
+								'story',
+								'staff',
+							),
+						)
+					);
+					$posts_site = array_map(
+						function ( $p ) use ( $site_id ) {
+							$p->site_id = $site_id;
+							return $p;
+						},
+						$posts_site
+					);
+					$posts      = array_merge( $posts, is_array( $posts_site ) ? $posts_site : array() );
+					restore_current_blog();
+				}
+
+				if ( isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'search' ) ) {
+					$sort = sanitize_sql_orderby( wp_unslash( $_GET['bydate'] ) );
+					usort(
+						$posts,
+						function( $a, $b ) use ( $sort ) {
+							return 'ASC' === $sort ? strtotime( $a->post_modified ) - strtotime( $b->post_modified ) : strtotime( $b->post_modified ) - strtotime( $a->post_modified );
+						}
+					);
+				}
+				$wp_query->found_posts   = count( $posts );
+				$wp_query->max_num_pages = ceil( $wp_query->found_posts / $posts_per_page );
+
+				$posts = array_slice( $posts, ( $curr_page - 1 ) * $posts_per_page, $posts_per_page );
+
+				$wp_query->set( 'posts_per_page', $posts_per_page );
+				$wp_query->set( 'paged', $curr_page );
+			}
+			return $posts;
 		}
 
 	}
