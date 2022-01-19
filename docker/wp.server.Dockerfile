@@ -93,6 +93,7 @@ COPY ./uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
-
+RUN /run/secrets/vaultpass >> /.vaultpass
+RUN chmod 777 /.vaultpass
 ENTRYPOINT ["wp-entrypoint.sh"]
 CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--port=80", "--allow-root"]

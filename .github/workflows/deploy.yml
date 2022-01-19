@@ -56,6 +56,8 @@ jobs:
           tags: nybcteam/nybc-wordpress:staging
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+          secrets: |
+            "vaultpass=${{ secrets.VAULTPASS }}"
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
