@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-
+      - staging
 jobs:
 
   build:
@@ -31,7 +31,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       -
-        name: Build and push
+        name: Build and push develop
+        if: github.ref == 'refs/heads/develop' || github.event.pull_request.base.ref == 'develop'
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -40,6 +41,19 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: nybcteam/nybc-wordpress:develop
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+      -
+        name: Build and push staging
+        if: github.ref == 'refs/heads/staging' || github.event.pull_request.base.ref == 'staging'
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./docker/wp.server.Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags: nybcteam/nybc-wordpress:staging
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       -
