@@ -1,6 +1,7 @@
 // We are using node's native package 'path'
 // https://nodejs.org/api/path.html
 const path = require( 'path' );
+const postcssPresetEnv = require('postcss-preset-env');
 
 const webpack = require( 'webpack' ); // reference to webpack Object
 // using the newer beta version for >= Webpack 4
@@ -104,7 +105,14 @@ module.exports = {
 									minimize: true,
 								},
 							},
-							{
+              {
+                loader: 'postcss-loader',
+                options: {
+                  postcssOptions: {
+                    plugins: [postcssPresetEnv(/* pluginOptions */)],
+                  },
+                },
+              },							{
 								loader: 'sass-loader',
 							},
 						],
