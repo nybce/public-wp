@@ -99,6 +99,7 @@ if ( ! class_exists( 'NYBC_Table' ) ) {
 				<input type="hidden" name="table_id" value="<?php echo esc_attr( $table['id'] ); ?>">
 				<input type="hidden" name="action" value="table_export">
 				<?php wp_nonce_field( 'table_export', 'nonce' ); ?>
+				<div class="spacer-24"></div>
 				<button type="submit" class="btn btn-primary"><?php esc_html_e( 'Load CSV', 'nybc' ); ?></button>
 			</form>
 			<?php

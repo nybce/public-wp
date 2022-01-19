@@ -103,6 +103,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_action( 'pre_get_posts', array( 'NYBC_Init', 'pre_get_posts' ) );
 
+			add_filter( 'the_posts', array( 'NYBC_Init', 'the_posts' ), 10, 2 );
+
 			add_filter( 'intermediate_image_sizes_advanced', array( 'NYBC_Init', 'intermediate_image_sizes_advanced' ), 20, 1 );
 
 			add_filter( 'body_class', array( 'NYBC_Init', 'body_class' ), 10, 2 );
@@ -382,6 +384,76 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				$query->set( 'date_query', $date_query );
 			}
 
+		}
+
+		/**
+		 *  Modify posts result
+		 *
+		 * @param object $posts result posts.
+		 * @param object $query query.
+		 *
+		 * @return array
+		 */
+		public static function the_posts( $posts, $query ) {
+			global $wp_query;
+			if ( ! is_admin() && is_multisite() ) {
+				self::$site_id_for_additional_search = (int) get_field( 'site_id_for_additional_search', 'options' );
+				if ( ! get_blog_details( self::$site_id_for_additional_search ) ) {
+					self::$site_id_for_additional_search = null;
+				}
+			}
+
+			if ( ! is_admin() && is_multisite() && self::$site_id_for_additional_search && is_search() && $query->is_main_query() ) {
+				$posts_per_page = get_option( 'posts_per_page' );
+				$curr_page      = $query->get( '_paged' );
+				$curr_site_id   = get_current_blog_id();
+
+				if ( self::$site_id_for_additional_search !== $curr_site_id ) {
+					$site_id = self::$site_id_for_additional_search;
+					switch_to_blog( $site_id );
+
+					$posts_site = get_posts(
+						array(
+							'suppress_filters' => false,
+							's'                => $query->get( 's' ),
+							'posts_per_page'   => -1,
+							'post_type'        => array(
+								'post',
+								'page',
+								'story',
+								'staff',
+							),
+						)
+					);
+					$posts_site = array_map(
+						function ( $p ) use ( $site_id ) {
+							$p->site_id = $site_id;
+							return $p;
+						},
+						$posts_site
+					);
+					$posts      = array_merge( $posts, is_array( $posts_site ) ? $posts_site : array() );
+					restore_current_blog();
+				}
+
+				if ( isset( $_GET['bydate'] ) && ! empty( $_GET['bydate'] ) && isset( $_GET['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['nonce'] ) ), 'search' ) ) {
+					$sort = sanitize_sql_orderby( wp_unslash( $_GET['bydate'] ) );
+					usort(
+						$posts,
+						function( $a, $b ) use ( $sort ) {
+							return 'ASC' === $sort ? strtotime( $a->post_modified ) - strtotime( $b->post_modified ) : strtotime( $b->post_modified ) - strtotime( $a->post_modified );
+						}
+					);
+				}
+				$wp_query->found_posts   = count( $posts );
+				$wp_query->max_num_pages = ceil( $wp_query->found_posts / $posts_per_page );
+
+				$posts = array_slice( $posts, ( $curr_page - 1 ) * $posts_per_page, $posts_per_page );
+
+				$wp_query->set( 'posts_per_page', $posts_per_page );
+				$wp_query->set( 'paged', $curr_page );
+			}
+			return $posts;
 		}
 
 	}
