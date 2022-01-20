@@ -1,0 +1,60 @@
+---
+services:
+  web:
+    image: tugboatqa/php:7.4.27-fpm-bullseye
+    default: true
+    depends: mysql
+    commands:
+      init:
+        - apt-get install -y rsync libzip-dev
+
+        # Enable extra apache modules.
+        - a2enmod rewrite headers
+
+        # Install the PHP extensions
+        - docker-php-ext-install mysqli exif zip
+        # Install imagick
+        - apt-get install -y libmagickwand-dev
+        - pecl install imagick-beta -y
+        - docker-php-ext-enable imagick
+        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --version=1.10.23
+        # Install wp-cli
+        - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        - chmod +x wp-cli.phar
+        - mv wp-cli.phar /usr/local/bin/wp
+
+        # Link the document root to the expected path. This example links /site
+        # to the docroot
+        - ln -snf "${TUGBOAT_ROOT}/site" "${DOCROOT}"
+
+      update:
+        - composer1 install --optimize-autoloader
+        # Copy the uploads directory from an external server. The public
+        # SSH key found in the Tugboat Repository configuration must be
+        # copied to the external server in order to use rsync over SSH.
+        - mkdir -p "${DOCROOT}/web/app/uploads" || /bin/true
+        - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopyv10.tar
+        - /site/azcopy_linux_amd64_10.13.0/azcopy cp 'https://${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/${MICROSOFT_AZURE_STORAGES_CONTAINER}/*?sv=${MICROSOFT_AZURE_STORAGES_SAS}' '${DOCROOT}/web/app/uploads' --recursive"
+        - chgrp -R www-data "${DOCROOT}/web/app/uploads"
+        - find "${DOCROOT}/web/app/uploads" -type d -exec chmod 2775 {} \;
+        - find "${DOCROOT}/web/app/uploads" -type f -exec chmod 0664 {} \;
+
+        # Cleanup
+        - apt-get clean
+        - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+      build:
+        - bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
+        - wp --allow-root --path="${DOCROOT}" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - wp --allow-root --path="${DOCROOT}" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+
+      online:
+  mysql:
+    # Use the latest available 5.x version of MySQL
+    image: tugboatqa/mariadb:10.4.21-focal
+    # A set of commands to run while building this service
+    commands:
+      build:
+        - echo "CREATE DATABASE wp;" | mysql
+        - echo "GRANT ALL PRIVILEGES on wp.* TO 'tugboat'@'%';" | mysql
+        - ssh nybc_team_tugboat@52.87.95.160 'set -a; source dbcreds.env; mysqldump db'   | mysql
