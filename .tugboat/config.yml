@@ -6,9 +6,6 @@ services:
     depends: mysql
     commands:
       init:
-        # Enable extra apache modules.
-        - a2enmod rewrite headers
-
         # Install the PHP extensions
         - docker-php-ext-install mysqli exif zip
         # Install imagick
