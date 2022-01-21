@@ -41,7 +41,7 @@ services:
       build:
         - ls ${TUGBOAT_ROOT}
         - bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
-        - cp -r ${TUGBOAT_ROOT}/site/web ${TUGBOAT_ROOT}/web
+        - cp -r ${TUGBOAT_ROOT}/site/web/* ${TUGBOAT_ROOT}/web
         - ln -snf "${TUGBOAT_ROOT}/web" "/var/www/html"
 #        - wp --allow-root --path="/var/www/html" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 #        - wp --allow-root --path="/var/www/html" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
