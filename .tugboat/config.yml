@@ -51,4 +51,4 @@ services:
       build:
         - echo "CREATE DATABASE wp;" | mysql
         - echo "GRANT ALL PRIVILEGES on wp.* TO 'tugboat'@'%';" | mysql
-        - ssh nybc_team@52.87.95.160 'set -a; source dbcreds.env; mysqldump  -h $MYSQL_HOST -u $USER -p$MYSQL_PWD db'   | mysql
+        - ssh nybc_team@52.87.95.160 'set -a; source dbcreds.env; mysqldump  -h $MYSQL_HOST -u $USER -p$MYSQL_PWD db'   | mysql tugboat
