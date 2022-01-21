@@ -7,6 +7,7 @@ services:
     commands:
       init:
         # Install imagick and zip
+        - apt-get update
         - apt-get install -y libmagickwand-dev libzip-dev
         # Install the PHP extensions
         - docker-php-ext-install mysqli exif zip
@@ -52,4 +53,4 @@ services:
       build:
         - echo "CREATE DATABASE wp;" | mysql
         - echo "GRANT ALL PRIVILEGES on wp.* TO 'tugboat'@'%';" | mysql
-        - ssh nybc_team_tugboat@52.87.95.160 'set -a; source dbcreds.env; mysqldump db'   | mysql
+        - ssh nybc_team@52.87.95.160 'set -a; source dbcreds.env; mysqldump db'   | mysql
