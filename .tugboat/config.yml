@@ -39,7 +39,7 @@ services:
 
       build:
         - ls ${TUGBOAT_ROOT}
-        - ln -snf "${TUGBOAT_ROOT}/site" "${DOCROOT}"
+        - ln -snf "${TUGBOAT_ROOT}/web" "${DOCROOT}"
         - bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
         - wp --allow-root --path="${DOCROOT}" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
         - wp --allow-root --path="${DOCROOT}" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
@@ -53,4 +53,4 @@ services:
       build:
         - echo "CREATE DATABASE wp;" | mysql
         - echo "GRANT ALL PRIVILEGES on wp.* TO 'tugboat'@'%';" | mysql
-        - ssh nybc_team@52.87.95.160 "set -a; source dbcreds.env; mysqldump  -h $MYSQL_HOST -u $USER -p$MYSQL_PWD db"   | mysql tugboat
+        - ssh nybc_team@52.87.95.160 "mysqldump --defaults-file=~/.my.cnf -hwordpress-web-db-staging.mysql.database.azure.com db"   | mysql tugboat
