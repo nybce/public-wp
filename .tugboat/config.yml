@@ -22,16 +22,16 @@ services:
         # Copy the uploads directory from an external server. The public
         # SSH key found in the Tugboat Repository configuration must be
         # copied to the external server in order to use rsync over SSH.
-        - mkdir -p "/var/www/html/web/app/uploads" || /bin/true
+        - mkdir -p "${TUGBOAT_ROOT}/web/app/uploads" || /bin/true
 
       update:
         - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux
         - tar -xf azcopyv10.tar
         - ls -ltrh
-        - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "/var/www/html/web/app/uploads" --recursive --check-length=false
-        - chgrp -R www-data "/var/www/html/web/app/uploads"
-        - find "/var/www/html/web/app/uploads" -type d -exec chmod 2775 {} \;
-        - find "/var/www/html/web/app/uploads" -type f -exec chmod 0664 {} \;
+        - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "${TUGBOAT_ROOT}/web/app/uploads" --recursive --check-length=false
+        - chgrp -R www-data "${TUGBOAT_ROOT}/web/app/uploads"
+        - find "${TUGBOAT_ROOT}/web/app/uploads" -type d -exec chmod 2775 {} \;
+        - find "${TUGBOAT_ROOT}/web/app/uploads" -type f -exec chmod 0664 {} \;
 
         # Cleanup
         - apt-get clean
@@ -40,9 +40,9 @@ services:
       build:
         - ls ${TUGBOAT_ROOT}
         - pwd ${TUGBOAT_ROOT}
-        - bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
-        - wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-        - wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        #- bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
+        #- wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        #- wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
   mysql:
