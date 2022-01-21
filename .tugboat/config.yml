@@ -29,10 +29,11 @@ services:
         - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux
         - tar -xf azcopyv10.tar
         - ls -ltrh
-        - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "${TUGBOAT_ROOT}/web/app/uploads" --recursive --check-length=false
-        - chgrp -R www-data "${TUGBOAT_ROOT}/web/app/uploads"
-        - find "${TUGBOAT_ROOT}/web/app/uploads" -type d -exec chmod 2775 {} \;
-        - find "${TUGBOAT_ROOT}/web/app/uploads" -type f -exec chmod 0664 {} \;
+        - mkdir -p "${TUGBOAT_ROOT}/site/web/app/uploads" || /bin/true
+        - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "${TUGBOAT_ROOT}/site/web/app/uploads" --recursive --check-length=false
+        - chgrp -R www-data "${TUGBOAT_ROOT}/site/web/app/uploads"
+        - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type d -exec chmod 2775 {} \;
+        - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type f -exec chmod 0664 {} \;
 
         # Cleanup
         - apt-get clean
@@ -41,10 +42,12 @@ services:
       build:
         - ls ${TUGBOAT_ROOT}
         - bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
-        - cp -r ${TUGBOAT_ROOT}/site/web/* ${TUGBOAT_ROOT}/web
-        - ln -snf "${TUGBOAT_ROOT}/web" "/var/www/html"
-#        - wp --allow-root --path="/var/www/html" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-#        - wp --allow-root --path="/var/www/html" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - cp -r ${TUGBOAT_ROOT}/web/* ${TUGBOAT_ROOT}/site/web
+        - ln -snf "${TUGBOAT_ROOT}/site" "/var/www/html"
+        - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
+        - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
+        - wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
   mysql:
