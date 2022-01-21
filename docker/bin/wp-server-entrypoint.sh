@@ -1,7 +1,7 @@
 #!/bin/bash
 set -a
 echo "upgrade composer dependencies"
-ansible-vault decrypt /envs/staging.env --vault-password-file=/echo_ansible_vault_pass.sh
+ansible-vault decrypt /envs/staging.env --vault-password-file=/.vaultpass
 chmod 777 /envs/staging.env
 source /envs/staging.env
 cp /envs/staging.env /site/.env
