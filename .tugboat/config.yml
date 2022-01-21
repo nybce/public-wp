@@ -9,7 +9,7 @@ services:
         # Install the PHP extensions
         - docker-php-ext-install mysqli exif zip
         # Install imagick
-        - apt-get install -y libmagickwand-dev
+        - apt-get install -y libmagickwand-dev libzip-dev
         - pecl install imagick-beta -y
         - docker-php-ext-enable imagick
         - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --version=1.10.23
