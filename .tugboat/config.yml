@@ -25,8 +25,10 @@ services:
         # SSH key found in the Tugboat Repository configuration must be
         # copied to the external server in order to use rsync over SSH.
         - mkdir -p "${DOCROOT}/web/app/uploads" || /bin/true
-        - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopyv10.tar
-        - /site/azcopy_linux_amd64_10.13.0/azcopy cp 'https://${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/${MICROSOFT_AZURE_STORAGES_CONTAINER}/*?sv=${MICROSOFT_AZURE_STORAGES_SAS}' '${DOCROOT}/web/app/uploads' --recursive
+        - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux
+        - tar -xf azcopyv10.tar
+        - ls -ltrh
+        - ./azcopy_linux_amd64_10.13.0/azcopy cp 'https://${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/${MICROSOFT_AZURE_STORAGES_CONTAINER}/*?sv=${MICROSOFT_AZURE_STORAGES_SAS}' '${DOCROOT}/web/app/uploads' --recursive
         - chgrp -R www-data "${DOCROOT}/web/app/uploads"
         - find "${DOCROOT}/web/app/uploads" -type d -exec chmod 2775 {} \;
         - find "${DOCROOT}/web/app/uploads" -type f -exec chmod 0664 {} \;
