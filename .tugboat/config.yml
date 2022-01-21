@@ -46,8 +46,8 @@ services:
         - ln -snf "${TUGBOAT_ROOT}/site" "/var/www/html"
         - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
         - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
-        - wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-        - wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        #- wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        #- wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
   mysql:
