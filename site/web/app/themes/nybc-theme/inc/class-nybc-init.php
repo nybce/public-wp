@@ -132,7 +132,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_filter( 'dt_syndicatable_capabilities', array( 'NYBC_Init', 'dt_push_capabilities' ) );
 
-
 			/**
 			 *  Disable XML-RPC
 			 */
@@ -224,7 +223,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			if ( ! is_admin() ) {
 				show_admin_bar( false );
 			}
-
 
 		}
 
@@ -472,18 +470,36 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			return $posts;
 		}
 
-		public static function dt_push_capabilities( $cap){
+		/**
+		 *  Modify Distributor push capabilities
+		 *
+		 * @param string $cap capability name.
+		 *
+		 * @return string
+		 */
+		public static function dt_push_capabilities( $cap ) {
 			$curr_user_id = get_current_user_id();
 
-			if(!is_super_admin($curr_user_id)) $cap = 'distributor_push_content';
+			if ( ! is_super_admin( $curr_user_id ) ) {
+				$cap = 'distributor_push_content';
+			}
 
 			return $cap;
 		}
 
-		public static function dt_pull_capabilities( $cap){
+		/**
+		 *  Modify Distributor pull capabilities
+		 *
+		 * @param string $cap capability name.
+		 *
+		 * @return string
+		 */
+		public static function dt_pull_capabilities( $cap ) {
 			$curr_user_id = get_current_user_id();
 
-			if(!is_super_admin($curr_user_id)) $cap = 'distributor_pull_content';
+			if ( ! is_super_admin( $curr_user_id ) ) {
+				$cap = 'distributor_pull_content';
+			}
 
 			return $cap;
 		}
