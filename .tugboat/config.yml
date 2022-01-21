@@ -19,10 +19,6 @@ services:
         - chmod +x wp-cli.phar
         - mv wp-cli.phar /usr/local/bin/wp
 
-        # Link the document root to the expected path. This example links /site
-        # to the docroot
-        - ln -snf "${TUGBOAT_ROOT}/site" "${DOCROOT}"
-
       update:
         - composer1 install --optimize-autoloader
         # Copy the uploads directory from an external server. The public
@@ -40,6 +36,8 @@ services:
         - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
       build:
+        - ls ${TUGBOAT_ROOT}
+        - ln -snf "${TUGBOAT_ROOT}/site" "${DOCROOT}"
         - bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
         - wp --allow-root --path="${DOCROOT}" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
         - wp --allow-root --path="${DOCROOT}" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
