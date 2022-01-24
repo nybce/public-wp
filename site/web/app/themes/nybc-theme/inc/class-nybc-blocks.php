@@ -56,6 +56,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/accordion-item',
 					'acf/accordion',
 					'acf/horizontal-line',
+					'acf/text',
 				),
 				true
 			) ) {
@@ -111,7 +112,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 			?>
 			<style>
-				.wp-block-acf-column-sidebar, .wp-block-acf-column-content, .wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion-item, .wp-block-acf-accordion{
+				.wp-block-acf-column-sidebar, .wp-block-acf-column-content, .wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion-item, .wp-block-acf-accordion, .wp-block-acf-text{
 					outline: 1px solid #c9c9c9;
 					min-height: 40px;
 				}
@@ -129,7 +130,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					display: inline-block;
 					margin: 5px!important;
 				}
-				.wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion, .wp-block-acf-column-content, .wp-block-acf-column-sidebar {
+				.wp-block-acf-two-column-block, .wp-block-acf-one-column-block, .wp-block-acf-accordion, .wp-block-acf-column-content, .wp-block-acf-column-sidebar, .wp-block-acf-text {
 					padding: 1px 10px!important;
 				}
 
@@ -142,6 +143,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		 */
 		public static function allowed_block_types_all() {
 			return array(
+				'acf/text',
 				'core/heading',
 				'core/list',
 				'core/paragraph',
@@ -220,6 +222,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::one_column_block();// N2RDEV-80.
 			self::column_sidebar();// N2RDEV-80.
 			self::column_content();// N2RDEV-80.
+			self::text();// N2RDEV-182.
 			self::spacer();
 			self::horizontal_line();
 			// @codingStandardsIgnoreStart
@@ -1187,6 +1190,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 		}
 
+		/**
+		 *  Text Block
+		 */
+		public static function text() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'text',
+						'title'           => esc_html__( 'Text Block', 'nybc' ),
+						'description'     => esc_html__( 'Text Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/text.php',
+						'supports'        => array(
+							'multiple' => true,
+							'align'    => false,
+							'mode'     => false,
+							'jsx'      => true,
+						),
+					)
+				);
+			}
+		}
 	}
 
 	new NYBC_Blocks();
