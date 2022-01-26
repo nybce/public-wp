@@ -31,7 +31,7 @@ services:
         - ls -ltrh
         - mkdir -p "${TUGBOAT_ROOT}/site/web/app/uploads" || /bin/true
         - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "${TUGBOAT_ROOT}/site/web/app/uploads" --recursive --check-length=false
-        - chgrp -R www-data "${TUGBOAT_ROOT}/site/web/app/uploads"
+        - chgrp -R www-data "${TUGBOAT_ROOT}"
         - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type d -exec chmod 2775 {} \;
         - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type f -exec chmod 0664 {} \;
 
@@ -42,12 +42,16 @@ services:
       build:
         - ls ${TUGBOAT_ROOT}
         - bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
-#        - ln -snf "${TUGBOAT_ROOT}/site" "/var/www/html"
+        - composer1 install --optimize-autoloader
+        - ln -snf ${TUGBOAT_ROOT}/site/web /var/www/html
         - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
         - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
-        - sed 's#web/#site/web/#g' composer.json > composer.json
-        #- wp --allow-root --path="/var/www/html/web" search-replace "${TUGBOAT_BASE_PREVIEW_URL_HOST}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-        #- wp --allow-root --path="/var/www/html/web" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - sed 's#web/#site/web/#g' composer.json > composer2.json
+        - mv composer2.json composer.json
+        - sed 's#/site/vendor/autoload.php/#/var/lib/tugboat/site/vendor/autoload.php#g' /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php > /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php
+        - mv /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
   mysql:
