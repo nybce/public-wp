@@ -5,7 +5,9 @@ jQuery( function( $ ) {
 			$( this ).hide();
 			$( this ).next( 'a.pause-video' ).show();
 			// IF VIDEO HAS COVER
-			const hasitcover = $( this ).parents( '.video-container' ).find( '.video-cover' );
+			const hasitcover = $( this )
+				.parents( '.video-container' )
+				.find( '.video-cover' );
 			if ( hasitcover.length > 0 ) {
 				hasitcover.fadeOut();
 			}
@@ -16,7 +18,9 @@ jQuery( function( $ ) {
 			$( this ).prev( 'a.play-video' ).show();
 		} );
 		$( '.video-item video' ).on( 'ended', function() {
-			const hasitcovertwo = $( this ).parents( '.video-container' ).find( '.video-cover' );
+			const hasitcovertwo = $( this )
+				.parents( '.video-container' )
+				.find( '.video-cover' );
 			if ( hasitcovertwo.length > 0 ) {
 				hasitcovertwo.fadeIn();
 			}

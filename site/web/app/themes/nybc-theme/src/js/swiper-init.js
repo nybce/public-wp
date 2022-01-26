@@ -4,7 +4,7 @@ import Swiper from './lib/swiper.min';
 jQuery( function( $ ) {
 	_functions.getSwOptions = function( swiper ) {
 		let options = swiper.data( 'options' );
-		options = ( ! options || typeof options !== 'object' ) ? {} : options;
+		options = ! options || typeof options !== 'object' ? {} : options;
 		const $p = swiper.closest( '.swiper-entry' ),
 			slidesLength = swiper.find( '>.swiper-wrapper>.swiper-slide' ).length;
 		if ( ! options.pagination ) {
@@ -67,14 +67,12 @@ jQuery( function( $ ) {
 			$thisSwiper = $this.find( '.swiper-container' )[ 0 ].swiper;
 
 		$thisSwiper.on( 'slideChange', function() {
-			$this.find( '.custom-current' ).text(
-				function() {
-					if ( $thisSwiper.realIndex < 9 ) {
-						return +( $thisSwiper.realIndex + 1 );
-					}
-					return $thisSwiper.realIndex + 1;
+			$this.find( '.custom-current' ).text( function() {
+				if ( $thisSwiper.realIndex < 9 ) {
+					return +( $thisSwiper.realIndex + 1 );
 				}
-			);
+				return $thisSwiper.realIndex + 1;
+			} );
 		} );
 	} );
 

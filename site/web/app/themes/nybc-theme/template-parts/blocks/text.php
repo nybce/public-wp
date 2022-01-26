@@ -31,7 +31,7 @@ $allowed_blocks = array(
 	'acf/accordion',
 );
 
-$class_name .= ' mb-48';
+$class_name .= 'text-block mb-48';
 ?>
 
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
