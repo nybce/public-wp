@@ -41,9 +41,8 @@ services:
 
       build:
         - ls ${TUGBOAT_ROOT}
-        #- bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
-        #- cp -r ${TUGBOAT_ROOT}/web/* ${TUGBOAT_ROOT}/site/web
-        #- ln -snf "${TUGBOAT_ROOT}/site" "/var/www/html"
+        - bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
+#        - ln -snf "${TUGBOAT_ROOT}/site" "/var/www/html"
         - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
         - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
         - sed 's#web/#site/web/#g' composer.json > composer.json
@@ -59,6 +58,4 @@ services:
       build:
         - ssh nybc_team@52.87.95.160 "mysqldump --defaults-file=~/.my.cnf -hwordpress-web-db-staging.mysql.database.azure.com db" > db.sql
         - mysql tugboat < ./db.sql
-        - echo "CREATE DATABASE wp;" | mysql
-        - echo "GRANT ALL PRIVILEGES on wp.* TO 'tugboat'@'%';" | mysql
         - rm db.sql
