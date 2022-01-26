@@ -48,7 +48,7 @@ services:
         - ln -snf ${TUGBOAT_ROOT}/site/web /var/www/html
         - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
         - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
-        - sed sed 's#site/vendor/#var/lib/tugboat/site/vendor/#g' /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php > /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php
+        - sed 's#site/vendor/#var/lib/tugboat/site/vendor/#g' /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php > /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php
         - mv /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php
         - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
         - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
