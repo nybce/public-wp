@@ -9,7 +9,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$two_line_logos = NYBC_Helpers::get_sites_logo();
+$two_line_logos = array(
+	array(
+		'img_url' => NYBC_IMG_URI . '/community.svg',
+		'link'    => 'https://savealifenow.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/nebraska.svg',
+		'link'    => 'https://www.ncbb.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/rhode_island.svg',
+		'link'    => 'https://www.ribc.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/memorial.svg',
+		'link'    => 'https://www.mbc.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
+		'link'    => 'https://www.delmarvablood.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
+		'link'    => 'https://www.nybloodcenter.org/',
+	),
+);
 
 $one_line_logo = get_field( 'one_line_logo_footer', 'options' );
 
@@ -55,9 +80,9 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 						foreach ( $two_line_logos as $logo ) {
 							if ( ! empty( $logo ) ) {
 								?>
-						<div class="logo-img">
-							<img src="<?php echo esc_url( $logo['url'] ); ?>" alt="" loading="lazy">
-						</div>
+						<a href="<?php echo esc_url( $logo['link'] ); ?>" target="_blank" class="logo-img">
+							<img src="<?php echo esc_url( $logo['img_url'] ); ?>" alt="" loading="lazy">
+						</a>
 								<?php
 							}
 						}
