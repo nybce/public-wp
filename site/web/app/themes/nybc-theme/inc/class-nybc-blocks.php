@@ -95,7 +95,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					true
 				) && ! is_admin() && ! wp_is_json_request()
 			) {
-				$block_content = "<div class=\"text mb-24\">$block_content</div>";
+				$block_content = "<div class=\"text\">$block_content</div>";
 			}
 
 			return $block_content;

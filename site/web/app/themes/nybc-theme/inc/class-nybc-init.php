@@ -120,8 +120,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_filter( 'posts_orderby', array( 'NYBC_Init', 'posts_orderby' ), 10, 2 );
 
-			add_filter( 'login_errors', array( 'NYBC_Init', 'login_errors' ) );
-
 			add_action( 'init', array( 'NYBC_Init', 'init' ), 100 );
 
 			add_filter( 'dt_pull_capabilities', array( 'NYBC_Init', 'dt_pull_capabilities' ) );
@@ -157,18 +155,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			get_role( 'contributor' )->add_cap( 'distributor_push_content', false );
 
-		}
-
-		/**
-		 *  Replace login error message
-		 *
-		 * @param string $errors error.
-		 *
-		 * @return string
-		 */
-		public static function login_errors( $errors ) {
-			$errors = esc_html__( 'Wrong Login Details', 'nybc' );
-			return $errors;
 		}
 
 		/**
