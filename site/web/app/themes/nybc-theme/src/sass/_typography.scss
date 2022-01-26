@@ -557,12 +557,12 @@ ol {
 	}
 }
 
-.text-block *:last-child {
+.text-block:last-child {
 	margin-bottom: 0;
 }
 
 .accordion-inner {
-	.text-lg *:last-child {
+	.text-lg > *:last-child {
 		margin-bottom: 0;
 	}
 }
