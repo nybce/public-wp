@@ -50,8 +50,8 @@ services:
         - mv composer2.json composer.json
         - sed 's#/site/vendor/autoload.php/#/var/lib/tugboat/site/vendor/autoload.php#g' /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php > /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php
         - mv /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate2.php /var/lib/tugboat/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php
-        - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+#        - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+#        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
   mysql:
