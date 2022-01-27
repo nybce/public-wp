@@ -104,7 +104,9 @@ RUN alias composer='php /usr/bin/composer'
 USER www-data
 
 # PHP Composer
+RUN mv .env envbak
 RUN composer install
+RUN mv envbak .env
 
 ENTRYPOINT ["wp-entrypoint.sh"]
 
