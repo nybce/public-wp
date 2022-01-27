@@ -31,15 +31,20 @@ COPY ./site/web/app/themes/nybc-theme /theme
 WORKDIR /theme
 RUN npm run build
 
-FROM php:7.4-fpm-alpine
+FROM php:7.4.27-apache-bullseye
 
 
-RUN apk upgrade && \
-  apk add --no-cache bash \
-  ca-certificates \
-  curl \
-  mysql-client
-
+RUN apt-get update
+RUN apt-get install -y libmagickwand-dev libzip-dev
+        # Install the PHP extensions
+RUN docker-php-ext-install mysqli exif zip
+RUN pecl install imagick-beta -y
+RUN docker-php-ext-enable imagick
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --version=1.10.23
+        # Install wp-cli
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
 # Remove unused dependencies
 RUN rm -rf /var/cache/apk/*
 
@@ -54,14 +59,13 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 WORKDIR /site
-RUN apk add ansible
+RUN apt-get install -y ansible
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
 RUN ls -al
 RUN mkdir /db_dumps
-RUN apk add openssh
 RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
 RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
 COPY ./.env/dev.env /site/.env
@@ -69,35 +73,35 @@ COPY ./.env/dev.env /.env
 RUN mkdir /envs
 COPY ./.env/* /envs
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
-COPY ./site /site
 COPY ./uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 # Update composer dependencies at runtime
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
-COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
-RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
+RUN apt-get install -y libpng-dev unzip
+RUN docker-php-ext-install gd
 
 
 # Installing Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 RUN alias composer='php /usr/bin/composer'
 # Set the user
-COPY ./site/composer.json /site
-RUN chown -R www-data:www-data /site
+
 RUN chown -R www-data:www-data /usr/local/bin/wp-entrypoint.sh
 RUN chown -R www-data:www-data /envs
 RUN chown -R www-data:www-data /echo_ansible_vault_pass.sh
+RUN rm /site/.env
+COPY ./site /site
+RUN chown -R www-data:www-data /site
 USER www-data
+COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
+COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 
 # PHP Composer
-RUN mv .env envbak
 ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
 RUN export ACF_PRO_KEY=${ACF_PRO_KEY}
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN /site/composer-install.sh && rm /site/composer-install.sh
+COPY ./.env/dev.env /site/.env
 
-RUN mv envbak .env
-
+RUN ln -snf /site/web /var/www/html
 ENTRYPOINT ["wp-entrypoint.sh"]
-
-CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--port=80", "--allow-root"]
