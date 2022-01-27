@@ -95,6 +95,7 @@ ENV ACF_PRO_KEY ${ACF_PRO_KEY}
 ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN export ACF_PRO_KEY=${ACF_PRO_KEY}
+RUN rm /site/.env
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN /site/composer-install.sh && rm /site/composer-install.sh
 
