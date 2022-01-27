@@ -88,9 +88,6 @@ RUN alias composer='php /usr/bin/composer'
 COPY ./site /site
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
-RUN --mount=type=secret,id=vaultpass \
-  echo "export $(cat /run/secrets/vaultpass)"  >> /echo_ansible_vault_pass
-
 # PHP Composer
 ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
