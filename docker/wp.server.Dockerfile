@@ -66,8 +66,6 @@ RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
 RUN ls -al
 RUN mkdir /db_dumps
-RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
-RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
 COPY ./.env/dev.env /site/.env
 COPY ./.env/dev.env /.env
 RUN mkdir /envs
@@ -86,7 +84,6 @@ RUN alias composer='php /usr/bin/composer'
 # Set the user
 
 COPY ./site /site
-COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 # PHP Composer
 ARG ACF_PRO_KEY=''
@@ -96,6 +93,6 @@ ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN composer install
-RUN cp /.env /site/.env
+COPY .env/dev.env /site/.env
 RUN ln -snf /site/web /var/www/html
 ENTRYPOINT ["wp-entrypoint.sh"]
