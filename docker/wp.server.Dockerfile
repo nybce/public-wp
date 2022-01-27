@@ -90,8 +90,8 @@ COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
-ARG ACF_PRO_KEY=''
-ENV ACF_PRO_KEY ${ACF_PRO_KEY}
+RUN --mount=type=secret,id=ACF_PRO_KEY \
+   export ACF_PRO_KEY=$(cat /run/secrets/ACF_PRO_KEY)
 
 COPY ./site/composer.json /site
 
