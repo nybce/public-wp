@@ -93,11 +93,9 @@ ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
 ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
-RUN rm /site/.env
+RUN mv /site/.env /site/envbak
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN composer install
-
-COPY ./.env/dev.env /site/.env
-
+RUN cp /.env /site/.env
 RUN ln -snf /site/web /var/www/html
 ENTRYPOINT ["wp-entrypoint.sh"]
