@@ -88,6 +88,8 @@ RUN alias composer='php /usr/bin/composer'
 COPY ./site /site
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
+RUN --mount=type=secret,id=vaultpass \
+  echo "export $(cat .vaultpas)  >> /echo_ansible_vault_pass.sh
 
 # PHP Composer
 ARG ACF_PRO_KEY=''
@@ -102,4 +104,4 @@ RUN /site/composer-install.sh && rm /site/composer-install.sh
 COPY ./.env/dev.env /site/.env
 
 RUN ln -snf /site/web /var/www/html
-ENTRYPOINT ["wp-entrypoint.sh"]
+#ENTRYPOINT ["wp-entrypoint.sh"]
