@@ -47,10 +47,13 @@ $posts_query = $wp_query->posts;
 				<div class="search-cards-wrapper">
 					<?php
 					foreach ( $posts_query as $pst ) {
+						$site_host = null;
 						if ( isset( $pst->site_id ) ) {
 							switch_to_blog( $pst->site_id );
+							$site_host = NYBC_Helpers::get_site_host( $pst->site_id );
 						}
-						$lnk         = get_the_permalink( $pst );
+						$lnk = NYBC_Helpers::get_post_real_url( $pst, $site_host );
+
 						$image_url   = get_the_post_thumbnail_url( $pst, '380x369' );
 						$block_title = get_the_title( $pst );
 						$image       = array(
@@ -58,6 +61,7 @@ $posts_query = $wp_query->posts;
 							'alt' => $block_title,
 						);
 						?>
+
 					<a href="<?php echo esc_url( $lnk ); ?>" class="search-card">
 						<?php if ( ! empty( $image_url ) ) { ?>
 							<div class="search-card-img">

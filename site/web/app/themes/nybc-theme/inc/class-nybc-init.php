@@ -206,10 +206,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				)
 			);
 
-			if ( ! is_admin() ) {
-				show_admin_bar( false );
-			}
-
 		}
 
 		/**
