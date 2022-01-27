@@ -90,9 +90,6 @@ COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
-RUN --mount=type=secret,id=ACF_PRO_KEY \
-   export ACF_PRO_KEY=$(cat /run/secrets/ACF_PRO_KEY)
-
 COPY ./site/composer.json /site
 
 # Installing Composer
@@ -105,6 +102,8 @@ USER www-data
 
 # PHP Composer
 RUN mv .env envbak
+RUN --mount=type=secret,id=ACF_PRO_KEY \
+   export ACF_PRO_KEY=$(cat /run/secrets/ACF_PRO_KEY)
 RUN composer install
 RUN mv envbak .env
 
