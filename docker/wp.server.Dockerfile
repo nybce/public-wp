@@ -70,10 +70,8 @@ COPY ./.env/dev.env /site/.env
 COPY ./.env/dev.env /.env
 RUN mkdir /envs
 COPY ./.env/* /envs
-COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY ./uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 # Update composer dependencies at runtime
-COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 RUN apt-get install -y libpng-dev unzip
 RUN docker-php-ext-install gd
 
@@ -95,4 +93,6 @@ COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN composer install
 COPY .env/dev.env /site/.env
 RUN ln -snf /site/web /var/www/html
+COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
+COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["wp-entrypoint.sh"]
