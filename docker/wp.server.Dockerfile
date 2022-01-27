@@ -104,6 +104,7 @@ USER www-data
 RUN mv .env envbak
 RUN --mount=type=secret,id=ACF_PRO_KEY \
    export ACF_PRO_KEY=$(cat /run/secrets/ACF_PRO_KEY)
+RUN export
 RUN composer install
 RUN mv envbak .env
 
