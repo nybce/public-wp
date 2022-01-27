@@ -37,6 +37,7 @@ require_once __DIR__ . '/inc/class-nybc-blocks.php';
 require_once __DIR__ . '/inc/class-nybc-block-patterns.php';
 require_once __DIR__ . '/inc/class-nybc-articulate.php';
 require_once __DIR__ . '/inc/class-nybc-table.php';
+require_once __DIR__ . '/inc/class-nybc-distributor.php';
 
 
 
