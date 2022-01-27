@@ -67,10 +67,6 @@ RUN php ./wp-cli.phar --info
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-# PHP Composer
-COPY docker/bin/composer-install.sh /tmp/composer-install.sh
-RUN /tmp/composer-install.sh
-
 WORKDIR /site
 RUN apk add ansible
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
@@ -94,5 +90,22 @@ COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
+ARG ACF_PRO_KEY=''
+ENV ACF_PRO_KEY ${ACF_PRO_KEY}
+
+COPY ./site/composer.json /site
+
+# Installing Composer
+RUN chown www-data:www-data /site
+RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+RUN alias composer='php /usr/bin/composer'
+
+# Set the user
+USER www-data
+
+# PHP Composer
+RUN composer install
+
 ENTRYPOINT ["wp-entrypoint.sh"]
+
 CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--port=80", "--allow-root"]

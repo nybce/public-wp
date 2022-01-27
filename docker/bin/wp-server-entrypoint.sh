@@ -1,7 +1,5 @@
 #!/bin/bash
 set -a
-echo "upgrade composer dependencies"
-composer update -vvv -n
 chmod 777 /envs/dev.env
 chmod 777 /echo_ansible_vault_pass.sh
 bash /echo_ansible_vault_pass.sh > /envs/.vaultpass

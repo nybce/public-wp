@@ -35,10 +35,6 @@ RUN php ./wp-cli.phar --info
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-# PHP Composer
-COPY docker/bin/composer-install.sh /tmp/composer-install.sh
-RUN /tmp/composer-install.sh
-
 WORKDIR /site
 RUN apk add ansible
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
@@ -63,7 +59,21 @@ RUN wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux && \
 
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
-# Update composer dependencies at runtime
+COPY ./site/composer.json /site
+
+# Installing Composer
+RUN chown www-data:www-data /site
+RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+RUN alias composer='php /usr/bin/composer'
+
+# Set the user
+USER www-data
+
+# PHP Composer
+COPY docker/bin/composer-install.sh /site/composer-install.sh
+RUN /site/composer-install.sh && rm /site/composer-install.sh
+
+
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["wp-entrypoint.sh"]
 CMD ["wp", "server", "--docroot=web", "--host=0.0.0.0", "--allow-root"]
