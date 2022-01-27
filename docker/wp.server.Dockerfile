@@ -98,7 +98,7 @@ ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN rm /site/.env
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
-RUN /site/composer-install.sh && rm /site/composer-install.sh
+RUN composer install
 
 COPY ./.env/dev.env /site/.env
 
