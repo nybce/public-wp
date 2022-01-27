@@ -42,7 +42,7 @@ jobs:
           tags: nybcteam/nybc-wordpress:develop
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-          build-args: ACF_PRO_KEY="${{ secrets.ACF_PRO_KEY }}"
+          build-args: ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
           secrets: |
             "vaultpass=${{ secrets.VAULTPASS }}"
 
