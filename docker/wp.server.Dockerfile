@@ -89,7 +89,7 @@ COPY ./site /site
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN --mount=type=secret,id=vaultpass \
-  echo "export $(cat .vaultpas)  >> /echo_ansible_vault_pass.sh
+  echo "export $(cat /run/secrets/vaultpass)"  >> /echo_ansible_vault_pass.sh
 
 # PHP Composer
 ARG ACF_PRO_KEY=''
