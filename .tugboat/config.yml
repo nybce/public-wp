@@ -49,7 +49,7 @@ services:
         - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
         - sed -i 's#site/vendor/#var/lib/tugboat/site/vendor/#g' ${TUGBOAT_ROOT}/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php
         - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/storage-wordpress-web-staging" "${TUGBOAT_SERVICE_URL_HOST}/app/uploads" --skip-columns=guid
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/storage-wordpress-web-${ENV}" "${TUGBOAT_SERVICE_URL_HOST}/app/uploads" --skip-columns=guid
         - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
 
       online:
@@ -59,6 +59,6 @@ services:
     # A set of commands to run while building this service
     commands:
       build:
-        - ssh nybc_team@52.87.95.160 "mysqldump --defaults-file=~/.my.cnf -hwordpress-web-db-staging.mysql.database.azure.com db" > db.sql
+        - ssh nybc_team@52.87.95.160 "mysqldump --defaults-file=~/.my.cnf -hwordpress-web-db-${ENV}.mysql.database.azure.com db" > db.sql
         - mysql tugboat < ./db.sql
         - rm db.sql
