@@ -85,22 +85,19 @@ RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-di
 RUN alias composer='php /usr/bin/composer'
 # Set the user
 
-RUN chown -R www-data:www-data /usr/local/bin/wp-entrypoint.sh
-RUN chown -R www-data:www-data /envs
-RUN chown -R www-data:www-data /echo_ansible_vault_pass.sh
-RUN rm /site/.env
 COPY ./site /site
-RUN chown -R www-data:www-data /site
-USER www-data
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 
 # PHP Composer
 ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
+ARG COMPOSER_ALLOW_SUPERUSR=1
+ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN export ACF_PRO_KEY=${ACF_PRO_KEY}
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN /site/composer-install.sh && rm /site/composer-install.sh
+
 COPY ./.env/dev.env /site/.env
 
 RUN ln -snf /site/web /var/www/html
