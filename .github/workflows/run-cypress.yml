@@ -1,0 +1,112 @@
+---
+name: Accessibility Tests
+on: deployment_status
+
+jobs:
+  run-cypress:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    name: Run CYPRESS 
+    steps:
+      - name: set pending status
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          debug: true
+          script: |
+            return github.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'pending',
+              context: 'Cypress AXE tests',
+              description: 'Running tests',
+              target_url: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            });
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          #cache: 'npm'
+          #cache-dependency-path: 'frontend/package-lock.json'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install node packages
+        run: npm --prefix=frontend/ install
+
+
+      # This is required because the environment_url param that Tugboat uses
+      # to tell us where the preview is located isn't supported unless you
+      # specify the custom Accept header when getting the deployment_status,
+      # and GitHub actions doesn't do that by default. So instead we have to
+      # load the status object manually and get the data we need.
+      # https://developer.github.com/changes/2016-04-06-deployment-and-deployment-status-enhancements/
+      - name: get deployment status
+        id: get-status-env
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
+          script: |
+            const result = await github.repos.getDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: context.payload.deployment.id,
+              status_id: context.payload.deployment_status.id,
+              headers: {
+                'Accept': 'application/vnd.github.ant-man-preview+json'
+              },
+            });
+            console.log(result);
+            return result.data.environment_url; 
+      - name: echo tugboat preview url
+        run: |
+          echo ${{ steps.get-status-env.outputs.result }}
+          # The first time you hit a Tugboat URL it can take a while to load, so
+          # we visit it once here to prime it. Otherwise the very first test
+          # will often timeout.
+          curl ${{ steps.get-status-env.outputs.result }}
+      - name: Run Cypress AXE
+        id: run-cypress-axe
+        env: 
+          CYPRESS_BASE_URL: ${{ steps.get-status-env.outputs.result }}
+        run: npm --prefix=frontend/ run test:a11y
+        continue-on-error: true
+      - name: echo cypress outcome
+        run: |
+          echo ${{ steps.run-cypress-axe.outcome }}
+          echo ${{ steps.run-cypress-axe.outcome == 'failure' || steps.run-cypress-axe.outcome == 'cancelled' }}
+      - name: tests pass - set status
+        if: ${{ steps.run-cypress-axe.outcome == 'success'}}
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            return github.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: "success",
+              context: 'Cypress AXE tests',
+              target_url: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            });
+      - name: job failed - set status
+        if: ${{ steps.run-cypress-axe.outcome == 'failure' || steps.run-cypress-axe.outcome == 'cancelled' }} 
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            return github.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: "error",
+              context: 'Cypress AXE tests',
+              target_url: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            });
+      - name: archive testing artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: frontend/tests/cypress/screenshots
+          if-no-files-found: ignore
+
