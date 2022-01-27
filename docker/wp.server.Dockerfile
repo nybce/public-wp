@@ -76,22 +76,23 @@ COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
-COPY ./site/composer.json /site
 
 # Installing Composer
-RUN chown www-data:www-data /site
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 RUN alias composer='php /usr/bin/composer'
-
 # Set the user
+COPY ./site/composer.json /site
+RUN chown -R www-data:www-data /site
 USER www-data
-
+RUN ls -ltrah /site
 # PHP Composer
 RUN mv .env envbak
 ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
-RUN export
-RUN composer install
+RUN export ACF_PRO_KEY=${ACF_PRO_KEY}
+COPY docker/bin/composer-install-server.sh /site/composer-install.sh
+RUN /site/composer-install.sh && rm /site/composer-install.sh
+
 RUN mv envbak .env
 
 ENTRYPOINT ["wp-entrypoint.sh"]
