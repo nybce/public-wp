@@ -83,8 +83,11 @@ RUN alias composer='php /usr/bin/composer'
 # Set the user
 COPY ./site/composer.json /site
 RUN chown -R www-data:www-data /site
+RUN chown -R www-data:www-data /usr/local/bin/wp-entrypoint.sh
+RUN chown -R www-data:www-data /envs
+RUN chown -R www-data:www-data /echo_ansible_vault_pass.sh
 USER www-data
-RUN ls -ltrah /site
+
 # PHP Composer
 RUN mv .env envbak
 ARG ACF_PRO_KEY=''
