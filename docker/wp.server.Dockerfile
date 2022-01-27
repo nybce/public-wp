@@ -40,20 +40,6 @@ RUN apk upgrade && \
   curl \
   mysql-client
 
-
-# Install XDebug
-#RUN pecl config-set php_ini /etc/php7/php.ini
-#RUN pecl install xdebug
-#RUN echo 'zend_extension=/usr/lib/php7/modules/xdebug.so' >> /etc/php7/php.ini
-#RUN touch /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_enable = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_autostart = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_connect_back = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_handler = dbgp' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.profiler_enable = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.profiler_output_dir = "/data/web"' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_port = 9000' >> /etc/php7/conf.d/xdebug.ini
-
 # Remove unused dependencies
 RUN rm -rf /var/cache/apk/*
 
@@ -102,8 +88,8 @@ USER www-data
 
 # PHP Composer
 RUN mv .env envbak
-RUN --mount=type=secret,id=ACF_PRO_KEY \
-   export ACF_PRO_KEY=$(cat /run/secrets/ACF_PRO_KEY)
+ARG ACF_PRO_KEY=''
+ENV ACF_PRO_KEY ${ACF_PRO_KEY}
 RUN export
 RUN composer install
 RUN mv envbak .env
