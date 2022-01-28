@@ -23,7 +23,7 @@ if ( empty( $staffs ) ) {
 }
 ?>
 <div class="section staff">
-	<div class="decor-staff" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>');"></div>
+	<div class="decor-staff" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
 
 	<div class="container container-lg">
 		<div class="row justify-content-center">

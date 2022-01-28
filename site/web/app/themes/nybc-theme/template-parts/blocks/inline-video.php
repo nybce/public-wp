@@ -30,7 +30,7 @@ if ( empty( $url ) ) {
 	return;
 }
 ?>
-<div class="text mb-48 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
 	<iframe loading="lazy"  width="500"
 			height="281" src="<?php echo esc_url( $url ); ?>"
