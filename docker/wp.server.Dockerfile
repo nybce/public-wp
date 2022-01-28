@@ -89,7 +89,6 @@ ENV ACF_PRO_KEY ${ACF_PRO_KEY}
 ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
-COPY docker/bin/composer-install-server.sh /site/composer-install.sh
 RUN composer install
 COPY .env/dev.env /site/.env
 RUN rm -r /var/www/html
@@ -98,4 +97,5 @@ RUN --mount=type=secret,id=vaultpass \
   cat /run/secrets/vaultpass >> /.vaultpass
 RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
-ENTRYPOINT ["wp-entrypoint.sh"]
+RUN /usr/local/bin/wp-entrypoint.sh
+ENTRYPOINT ["docker-php-entrypoint"]
