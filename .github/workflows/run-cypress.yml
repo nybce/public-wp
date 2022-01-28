@@ -32,6 +32,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install node packages
         run: npm --prefix=cypress-axe/ install
+      - name: printout filesystem
+        run: find cypress-axe/.
 
 
       # This is required because the environment_url param that Tugboat uses
@@ -107,6 +109,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
-          path: cypress-axe/tests/cypress/screenshots
+          path: cypress-axe/cypress/screenshots
           if-no-files-found: ignore
 
