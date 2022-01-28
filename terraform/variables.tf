@@ -4,12 +4,12 @@ variable "azure_region" {
 
 variable "environment" {
   description = "environment"
-  default     = "dev"
+  default     = "staging"
 }
 
 variable "project" {
   description = "project name"
-  default     = "nybc-dev-wordpress"
+  default     = "nybc-staging-wordpress"
 }
 
 variable "database_username" {
@@ -46,7 +46,7 @@ variable "application_port" {
 
 variable "docker_image_tag" {
   description = "docker image tag to be used"
-  default     = "dev"
+  default     = "staging"
 }
 
 variable "docker_registry_host" {

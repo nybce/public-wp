@@ -86,11 +86,13 @@ COPY --from=theme-builder /theme /site/web/app/themes/nybc-theme
 # PHP Composer
 ARG ACF_PRO_KEY=''
 ENV ACF_PRO_KEY ${ACF_PRO_KEY}
+ARG ENVIRONMENT=''
+ENV ENVIRONMENT ${ENVIRONMENT}
 ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
 RUN composer install
-COPY .env/dev.env /site/.env
+COPY .env/${ENVIRONMENT}.env /site/.env
 RUN rm -r /var/www/html
 RUN ln -snf /site/web /var/www/html
 RUN --mount=type=secret,id=vaultpass \

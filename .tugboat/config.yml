@@ -1,0 +1,64 @@
+---
+services:
+  web:
+    image: tugboatqa/php:7.4.27-apache-bullseye
+    default: true
+    depends: mysql
+    commands:
+      init:
+        # Install imagick and zip
+        - apt-get update
+        - apt-get install -y libmagickwand-dev libzip-dev
+        # Install the PHP extensions
+        - docker-php-ext-install mysqli exif zip
+        - pecl install imagick-beta -y
+        - docker-php-ext-enable imagick
+        - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer1 --version=1.10.23
+        # Install wp-cli
+        - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        - chmod +x wp-cli.phar
+        - mv wp-cli.phar /usr/local/bin/wp
+#        - composer1 install --optimize-autoloader
+        # Copy the uploads directory from an external server. The public
+        # SSH key found in the Tugboat Repository configuration must be
+        # copied to the external server in order to use rsync over SSH.
+        - mkdir -p "${TUGBOAT_ROOT}/web/app/uploads" || /bin/true
+        - bash ${TUGBOAT_ROOT}/.tugboat/install_node.sh
+
+      update:
+        - wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux
+        - tar -xf azcopyv10.tar
+        - ls -ltrh
+        - mkdir -p "${TUGBOAT_ROOT}/site/web/app/uploads" || /bin/true
+        - ./azcopy_linux_amd64_10.13.0/azcopy cp "https://$MICROSOFT_AZURE_ACCOUNT_NAME.blob.core.windows.net/$MICROSOFT_AZURE_STORAGES_CONTAINER/*?sv=$MICROSOFT_AZURE_STORAGES_SAS" "${TUGBOAT_ROOT}/site/web/app/uploads" --recursive --check-length=false
+        - chgrp -R www-data "${TUGBOAT_ROOT}"
+        - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type d -exec chmod 2775 {} \;
+        - find "${TUGBOAT_ROOT}/site/web/app/uploads" -type f -exec chmod 0664 {} \;
+
+        # Cleanup
+        - apt-get clean
+        - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+      build:
+        - ls ${TUGBOAT_ROOT}
+        - bash ${TUGBOAT_ROOT}/.tugboat/install_theme.sh
+        - sed -i 's#web/#site/web/#g' composer.json
+        - composer1 install --optimize-autoloader --working-dir ${TUGBOAT_ROOT}/site
+        - ln -snf ${TUGBOAT_ROOT}/site/web /var/www/html
+        - export WP_HOME=${TUGBOAT_SERVICE_URL_HOST}
+        - export WP_SITEURL="${TUGBOAT_SERVICE_URL_HOST}/wp"
+        - sed -i 's#site/vendor/#var/lib/tugboat/site/vendor/#g' ${TUGBOAT_ROOT}/site/web/app/themes/nybc-theme/inc/class-nybc-articulate.php
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/storage-wordpress-web-${ENV}" "${TUGBOAT_SERVICE_URL_HOST}/app/uploads" --skip-columns=guid
+        - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
+
+      online:
+  mysql:
+    # Use the latest available 5.x version of MySQL
+    image: tugboatqa/mariadb:10.4.21-focal
+    # A set of commands to run while building this service
+    commands:
+      build:
+        - ssh nybc_team@52.87.95.160 "mysqldump --defaults-file=~/.my.cnf -hwordpress-web-db-${ENV}.mysql.database.azure.com db" > db.sql
+        - mysql tugboat < ./db.sql
+        - rm db.sql
