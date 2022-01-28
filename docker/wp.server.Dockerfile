@@ -97,4 +97,5 @@ RUN ln -snf /site/web /var/www/html
 RUN --mount=type=secret,id=vaultpass \
   cat /run/secrets/vaultpass >> /.vaultpass
 RUN chmod 666 /.vaultpass
+COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["wp-entrypoint.sh"]
