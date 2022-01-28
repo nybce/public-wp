@@ -43,6 +43,12 @@ jobs:
           tags: nybcteam/nybc-wordpress:develop
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
+            ENVIRONMENT=dev
+          secrets: |
+            "vaultpass=${{ secrets.VAULTPASS }}"
+
       -
         name: Build and push staging
         if: github.ref == 'refs/heads/staging' || github.event.pull_request.base.ref == 'staging'
@@ -56,6 +62,9 @@ jobs:
           tags: nybcteam/nybc-wordpress:staging
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
+            ENVIRONMENT=staging
           secrets: |
             "vaultpass=${{ secrets.VAULTPASS }}"
       -
