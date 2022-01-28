@@ -51,7 +51,7 @@ services:
         - wp --allow-root --path="/var/www/html/wp" search-replace "${ENV_WP_URL}" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
         - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net/storage-wordpress-web-${ENV}" "${TUGBOAT_SERVICE_URL_HOST}/app/uploads" --skip-columns=guid
         - wp --allow-root --path="/var/www/html/wp" search-replace "${MICROSOFT_AZURE_ACCOUNT_NAME}.blob.core.windows.net" "${TUGBOAT_SERVICE_URL_HOST}" --skip-columns=guid
-
+        - ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
       online:
   mysql:
     # Use the latest available 5.x version of MySQL
