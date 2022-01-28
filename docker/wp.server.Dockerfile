@@ -94,7 +94,7 @@ RUN composer install
 COPY .env/dev.env /site/.env
 RUN rm -r /var/www/html
 RUN ln -snf /site/web /var/www/html
-COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
-COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
-COPY docker/bin/composer-install-server.sh /site/composer-install.sh
-RUN /site/composer-install.sh
+RUN --mount=type=secret,id=vaultpass \
+  cat /run/secrets/vaultpass >> /.vaultpass
+RUN chmod 666 /.vaultpass
+ENTRYPOINT ["wp-entrypoint.sh"]

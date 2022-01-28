@@ -1,6 +1,8 @@
 #!/bin/bash
 set -a
-ansible-vault decrypt /envs/dev.env --vault-password-file=/echo_ansible_vault_pass.sh
+echo "upgrade composer dependencies"
+ansible-vault decrypt /envs/dev.env --vault-password-file=/.vaultpass
+chmod 777 /envs/dev.env
 source /envs/dev.env
 cp /envs/dev.env /site/.env
 exec "$@"
