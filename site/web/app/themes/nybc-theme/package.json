@@ -11,7 +11,8 @@
     "lint-css-fix": "stylelint **/*.scss --fix ",
     "lint-fix": "eslint --fix .",
     "lint-html": "eslint --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme /html",
-    "lint-html-fix": "eslint --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme /html --fix"
+    "lint-html-fix": "eslint --config /theme/.eslintrc.json --resolve-plugins-relative-to /theme /html --fix",
+    "test:a11y": "cypress run -C cypress/cypress.json --spec cypress/integration/routeAccessibility.spec.js"
   },
   "keywords": [],
   "author": "tone4hook",
@@ -24,6 +25,8 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.1",
+    "cypress": "^8.5.0",
+    "cypress-axe": "^0.13.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -45,5 +48,9 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss": "^8.0.0",
+    "postcss-cli": "^8.1.0"
+  }
 }

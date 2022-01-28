@@ -31,7 +31,7 @@ jobs:
           #cache-dependency-path: 'frontend/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
       - name: Install node packages
-        run: npm --prefix=cypress-axe/ install
+        run: npm --prefix=site/web/app/themes/nybc-theme/ install
       - name: printout filesystem
         run: find cypress-axe/.
 
@@ -71,7 +71,7 @@ jobs:
         id: run-cypress-axe
         env:
           CYPRESS_BASE_URL: ${{ steps.get-status-env.outputs.result }}
-        run: npm --prefix=cypress-axe/ run test:a11y
+        run: npm --prefix=site/web/app/themes/nybc-theme/ run test:a11y
         continue-on-error: true
       - name: echo cypress outcome
         run: |
@@ -109,6 +109,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
-          path: cypress-axe/tests/cypress/screenshots
+          path: site/web/app/themes/nybc-theme/tests/cypress/screenshots
           if-no-files-found: ignore
 
