@@ -92,14 +92,14 @@ ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
 RUN composer install
-COPY .env/dev.env /site/.env
+COPY .env/${ENVIRONMENT}.env /site/.env
 RUN rm -r /var/www/html
 RUN ln -snf /site/web /var/www/html
 RUN --mount=type=secret,id=vaultpass \
   cat /run/secrets/vaultpass >> /.vaultpass
 RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
-RUN /usr/local/bin/wp-entrypoint.sh ${ENVIRONMENT}
+RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
