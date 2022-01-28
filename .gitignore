@@ -157,6 +157,7 @@ $RECYCLE.BIN/
 *.log
 
 .htaccess
+!site/web/.htaccess
 license.txt
 readme.html
 sitemap.xml
