@@ -99,3 +99,8 @@ RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
+
+WORKDIR /var/www/html
+
+EXPOSE 80
+CMD ["apache2-foreground"]
