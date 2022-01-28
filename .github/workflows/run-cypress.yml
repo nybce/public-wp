@@ -6,7 +6,7 @@ jobs:
   run-cypress:
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
-    name: Run CYPRESS 
+    name: Run CYPRESS
     steps:
       - name: set pending status
         uses: actions/github-script@v3
@@ -31,7 +31,9 @@ jobs:
           #cache-dependency-path: 'frontend/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
       - name: Install node packages
-        run: npm --prefix=frontend/ install
+        run: npm --prefix=cypress-axe/ install
+      - name: printout filesystem
+        run: find cypress-axe/.
 
 
       # This is required because the environment_url param that Tugboat uses
@@ -57,7 +59,7 @@ jobs:
               },
             });
             console.log(result);
-            return result.data.environment_url; 
+            return result.data.environment_url;
       - name: echo tugboat preview url
         run: |
           echo ${{ steps.get-status-env.outputs.result }}
@@ -67,9 +69,9 @@ jobs:
           curl ${{ steps.get-status-env.outputs.result }}
       - name: Run Cypress AXE
         id: run-cypress-axe
-        env: 
+        env:
           CYPRESS_BASE_URL: ${{ steps.get-status-env.outputs.result }}
-        run: npm --prefix=frontend/ run test:a11y
+        run: npm --prefix=cypress-axe/ run test:a11y
         continue-on-error: true
       - name: echo cypress outcome
         run: |
@@ -90,7 +92,7 @@ jobs:
               target_url: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             });
       - name: job failed - set status
-        if: ${{ steps.run-cypress-axe.outcome == 'failure' || steps.run-cypress-axe.outcome == 'cancelled' }} 
+        if: ${{ steps.run-cypress-axe.outcome == 'failure' || steps.run-cypress-axe.outcome == 'cancelled' }}
         uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -107,6 +109,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
-          path: frontend/tests/cypress/screenshots
+          path: cypress-axe/tests/cypress/screenshots
           if-no-files-found: ignore
 
