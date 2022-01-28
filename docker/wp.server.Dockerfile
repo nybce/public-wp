@@ -99,7 +99,7 @@ RUN --mount=type=secret,id=vaultpass \
   cat /run/secrets/vaultpass >> /.vaultpass
 RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
-RUN /usr/local/bin/wp-entrypoint.sh
+RUN /usr/local/bin/wp-entrypoint.sh ${ENVIRONMENT}
 ENTRYPOINT ["docker-php-entrypoint"]
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 
