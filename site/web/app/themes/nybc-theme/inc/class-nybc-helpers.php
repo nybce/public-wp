@@ -363,5 +363,57 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			return str_replace( array( '(', ')', ' ', '-', '.' ), '', $phone );
 		}
 
+		/**
+		 *  Convert url data array to url
+		 *
+		 * @param array $url_array url data array.
+		 *
+		 * @return string
+		 */
+		public static function build_url( $url_array ) {
+			return sprintf(
+				'%s://%s%s%s%s',
+				$url_array['scheme'],
+				$url_array['host'],
+				isset( $url_array['path'] ) ? $url_array['path'] : '',
+				isset( $url_array['query'] ) ? '?' . $url_array['query'] : '',
+				isset( $url_array['fragment'] ) ? '#' . $url_array['fragment'] : ''
+			);
+		}
+
+		/**
+		 *  Get site domain
+		 *
+		 * @param int $site_id site ID.
+		 *
+		 * @return string
+		 */
+		public static function get_site_host( $site_id ) {
+			global $wpdb;
+			$query = "SELECT domain FROM {$wpdb->blogs} WHERE blog_id = '$site_id'";
+			// @codingStandardsIgnoreStart
+			$result = $wpdb->get_var( $query );
+			// @codingStandardsIgnoreEnd
+			return ! empty( $result ) ? $result : null;
+		}
+
+		/**
+		 *  Get post real link
+		 *
+		 * @param object $pst post data.
+		 * @param string $site_host site domain.
+		 *
+		 * @return string
+		 */
+		public static function get_post_real_url( $pst, $site_host ) {
+			$lnk        = get_permalink( $pst );
+			$lnk_parsed = wp_parse_url( $lnk );
+
+			if ( $lnk_parsed && $site_host && $lnk_parsed['host'] !== $site_host ) {
+				$lnk_parsed['host'] = $site_host;
+				$lnk                = self::build_url( $lnk_parsed );
+			}
+			return $lnk;
+		}
 	}
 }

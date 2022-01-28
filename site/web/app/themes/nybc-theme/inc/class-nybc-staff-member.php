@@ -114,7 +114,9 @@ if ( ! class_exists( 'NYBC_Staff_Member' ) ) {
 				if ( ! empty( $parent ) ) {
 					$parent_link = get_the_permalink( $parent );
 					$parent_link = str_replace( NYBC_HOME_URI, '', $parent_link );
-					$permalink   = $parent_link . $post->post_name . '/';
+					// @codingStandardsIgnoreStart
+					$permalink   = $parent_link . sanitize_title( ! empty( $_POST['post_title'] ) ?  wp_unslash($_POST['post_title']) : $post->post_title ) . '/';
+					// @codingStandardsIgnoreEnd
 				}
 			}
 
@@ -133,7 +135,17 @@ if ( ! class_exists( 'NYBC_Staff_Member' ) ) {
 			<script>
 				jQuery(function ($) {
 					$('div[data-name="parent_page"] select').on('change', function () {
-						$('#custom-permalinks-post-slug').val('');
+						if($(this).val()) {
+							$('#custom-permalinks-post-slug').val('').prop('disabled', true);
+							$('#custom_permalink').val('' + Math.floor(Math.random() * 10000));
+						}
+					});
+					$('#title').on('blur keyup', function () {
+						if($(this).val()) {
+							setTimeout( function() {
+								$('div[data-name="parent_page"] select').change();
+							}, 2000);
+						}
 					});
 				});
 			</script>
