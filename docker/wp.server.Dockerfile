@@ -96,4 +96,4 @@ RUN ln -snf /site/web /var/www/html
 COPY ./scripts/echo_ansible_vault_pass.sh /echo_ansible_vault_pass.sh
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 COPY docker/bin/composer-install-server.sh /site/composer-install.sh
-RUN /site/composer-install.sh && rm /site/composer-install.sh
+RUN /site/composer-install.sh
