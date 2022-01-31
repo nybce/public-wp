@@ -20,12 +20,12 @@ $two_line_logos = array(
 		'link'    => 'https://savealifenow.org/',
 		'label'   => 'savealifenow.org',
 	),
-  array(
+	array(
 		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
 		'link'    => 'https://www.delmarvablood.org/',
 		'label'   => 'delmarva',
-	),	
-  array(
+	),
+	array(
 		'img_url' => NYBC_IMG_URI . '/memorial.svg',
 		'link'    => 'https://www.mbc.org/',
 		'label'   => 'memorial blood center',
