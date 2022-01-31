@@ -11,8 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $two_line_logos = array(
 	array(
+		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
+		'link'    => 'https://www.nybloodcenter.org/',
+	),
+	array(
 		'img_url' => NYBC_IMG_URI . '/community.svg',
 		'link'    => 'https://savealifenow.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
+		'link'    => 'https://www.delmarvablood.org/',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/memorial.svg',
+		'link'    => 'https://www.mbc.org/',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/nebraska.svg',
@@ -21,18 +33,6 @@ $two_line_logos = array(
 	array(
 		'img_url' => NYBC_IMG_URI . '/rhode_island.svg',
 		'link'    => 'https://www.ribc.org/',
-	),
-	array(
-		'img_url' => NYBC_IMG_URI . '/memorial.svg',
-		'link'    => 'https://www.mbc.org/',
-	),
-	array(
-		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
-		'link'    => 'https://www.delmarvablood.org/',
-	),
-	array(
-		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
-		'link'    => 'https://www.nybloodcenter.org/',
 	),
 );
 
