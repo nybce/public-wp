@@ -5,5 +5,5 @@ resource "azurerm_container_registry" "nybc_container" {
   sku                      = "Basic"
   admin_enabled            = true
   admin_username           = var.docker_registry_username
-  admin_username           = var.docker_registry_password
+  admin_password           = var.docker_registry_password
 }
