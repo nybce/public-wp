@@ -230,7 +230,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			if ( isset( $wp_roles->roles['contributor'] ) ) {
 				$wp_roles->roles['contributor']['name'] = esc_html__( 'Content Publisher', 'nybc' );
 				get_role( 'contributor' )->add_cap( 'distributor_pull_content' );
-				get_role( 'contributor' )->add_cap( 'distributor_push_content', false );
+				get_role( 'contributor' )->add_cap( 'distributor_push_content' );
 			}
 
 			if ( isset( $wp_roles->roles['administrator'] ) ) {

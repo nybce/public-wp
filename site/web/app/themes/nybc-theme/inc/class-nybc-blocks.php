@@ -189,6 +189,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/resource-cards',
 				'acf/carousel-video',
 				'acf/horizontal-line',
+				'gravityforms/form',
 			);
 
 		}
