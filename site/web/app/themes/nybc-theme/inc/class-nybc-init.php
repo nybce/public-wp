@@ -19,6 +19,30 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 	 */
 	class NYBC_Init {
 
+
+		/**
+		 * Post statuses
+		 *
+		 * @var array
+		 */
+		private static $post_statuses = array(
+			'publish'  => 'Published',
+			'pending'  => 'In Review',
+			'draft'    => 'Draft',
+			'archived' => 'Archived',
+		);
+
+		/**
+		 * Roles
+		 *
+		 * @var array
+		 */
+		private static $roles = array(
+			'administrator',
+			'author',
+			'contributor',
+		);
+
 		/**
 		 * Site ID for additional search
 		 *
@@ -109,13 +133,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_filter( 'body_class', array( 'NYBC_Init', 'body_class' ), 10, 2 );
 
-			add_filter(
-				'excerpt_length',
-				function () {
-					return 20;
-				}
-			);
-
 			add_filter( 'posts_clauses', array( 'NYBC_Init', 'posts_clauses' ), 10, 2 );
 
 			add_filter( 'posts_orderby', array( 'NYBC_Init', 'posts_orderby' ), 10, 2 );
@@ -130,6 +147,19 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_filter( 'dt_syndicatable_capabilities', array( 'NYBC_Init', 'dt_push_capabilities' ) );
 
+			add_filter( 'pp_custom_status_list', array( 'NYBC_Init', 'pp_custom_status_list' ), 10, 2 );
+
+			add_action( 'manage_posts_custom_column', array( 'NYBC_Init', 'filter_manage_posts_custom_column' ) );
+
+			add_action( 'manage_pages_custom_column', array( 'NYBC_Init', 'filter_manage_posts_custom_column' ) );
+
+			add_filter(
+				'excerpt_length',
+				function () {
+					return 20;
+				}
+			);
+
 			/**
 			 *  Disable XML-RPC
 			 */
@@ -138,22 +168,86 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		}
 
 		/**
-		 *  Modify roles and status
+		 *  Modify PublishPress status column
+		 *
+		 * @param array $column_name Column name.
+		 */
+		public static function filter_manage_posts_custom_column( $column_name ) {
+			if ( 'status' === $column_name ) {
+				global $post;
+				if ( 'archived' === $post->post_status ) {
+					echo esc_html( self::$post_statuses[ $post->post_status ] );
+				}
+			}
+		}
+
+		/**
+		 *  Modify PublishPress statuses
+		 *
+		 * @param array  $custom_statuses statuses array.
+		 * @param object $post post data.
+		 *
+		 * @return array
+		 */
+		public static function pp_custom_status_list( $custom_statuses, $post ) {
+			$new_statuses = array();
+			foreach ( $custom_statuses as $i => $status ) {
+				if ( isset( self::$post_statuses[ $status->slug ] ) ) {
+					$status->name   = self::$post_statuses[ $status->slug ];
+					$new_statuses[] = $status;
+				}
+			}
+
+			$new_statuses[] = (object) array(
+				'term_id'     => 'archived',
+				'name'        => self::$post_statuses['archived'],
+				'slug'        => 'archived',
+				'description' => '',
+				'color'       => '#000000',
+				'icon'        => 'dashicons-archive',
+				'position'    => count( self::$post_statuses ),
+			);
+
+			return $new_statuses;
+		}
+
+		/**
+		 *  Modify roles and statuses
 		 */
 		public static function init() {
 			global $wp_roles;
 
-			unset( $wp_roles->roles['editor'] );
-			unset( $wp_roles->roles['subscriber'] );
-			unset( $wp_roles->roles['custom_permalinks_manager'] );
+			foreach ( $wp_roles->roles as $role => $data ) {
+				if ( ! in_array( $role, self::$roles, true ) ) {
+					unset( $wp_roles->roles[ $role ] );
+				}
+			}
 
-			$wp_roles->roles['author']['name']      = esc_html__( 'Content Editor', 'nybc' );
-			$wp_roles->roles['contributor']['name'] = esc_html__( 'Content Publisher', 'nybc' );
+			if ( isset( $wp_roles->roles['author'] ) ) {
+				$wp_roles->roles['author']['name'] = esc_html__( 'Content Editor', 'nybc' );
+			}
 
-			get_role( 'administrator' )->add_cap( 'distributor_pull_content' );
-			get_role( 'contributor' )->add_cap( 'distributor_pull_content' );
+			if ( isset( $wp_roles->roles['contributor'] ) ) {
+				$wp_roles->roles['contributor']['name'] = esc_html__( 'Content Publisher', 'nybc' );
+				get_role( 'contributor' )->add_cap( 'distributor_pull_content' );
+				get_role( 'contributor' )->add_cap( 'distributor_push_content' );
+			}
 
-			get_role( 'contributor' )->add_cap( 'distributor_push_content', false );
+			if ( isset( $wp_roles->roles['administrator'] ) ) {
+				get_role( 'administrator' )->add_cap( 'distributor_pull_content' );
+			}
+
+			$label = self::$post_statuses['archived'];
+			register_post_status(
+				'archived',
+				array(
+					'label'                     => $label,
+					'public'                    => true,
+					'exclude_from_search'       => false,
+					'show_in_admin_all_list'    => true,
+					'show_in_admin_status_list' => true,
+				)
+			);
 
 		}
 
@@ -206,10 +300,6 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				)
 			);
 
-			if ( ! is_admin() ) {
-				show_admin_bar( false );
-			}
-
 		}
 
 		/**
@@ -260,6 +350,8 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		 *
 		 * @param array $classes classes.
 		 * @param array $class additional classes.
+		 *
+		 * @return array
 		 */
 		public static function body_class( $classes, $class ) {
 			if ( 'Division' === get_field( 'type', 'options' ) ) {

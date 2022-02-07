@@ -35,7 +35,7 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 				<form class="btn-search" action="<?php echo esc_url( NYBC_HOME_URI ); ?>">
 					<?php wp_nonce_field( 'search', 'nonce' ); ?>
 					<input name="s" class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
-					<button type="submit">
+					<button type="submit" aria-label="submit">
 						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M7.5 13.334a5.8 5.8 0 003.489-1.167l5.677 5.679 1.179-1.179-5.678-5.678A5.8 5.8 0 0013.333 7.5 5.833 5.833 0 107.5 13.334zm0-10A4.171 4.171 0 0111.666 7.5 4.171 4.171 0 017.5 11.667 4.171 4.171 0 013.333 7.5 4.171 4.171 0 017.5 3.334z"
@@ -55,9 +55,9 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 
 	<div class="header-bottom">
 		<div class="mobile-menu">
-			<a href="<?php echo esc_html( NYBC_HOME_URI ); ?>" class="logo">
+			<a href="<?php echo esc_html( NYBC_HOME_URI ); ?>" class="logo" aria-label="NY BLOOD CENTER">
 				<?php if ( ! empty( $one_line_logo ) ) { ?>
-					<img src="<?php echo esc_html( $one_line_logo['url'] ); ?>" alt="<?php echo esc_html( $one_line_logo['alt'] ); ?>">
+					<img src="<?php echo esc_html( $one_line_logo['url'] ); ?>" alt="NY BLOOD CENTER<?php echo esc_html( $one_line_logo['alt'] ); ?>">
 				<?php } ?>
 			</a>
 
@@ -82,9 +82,9 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 					?>
 					<div class="btn-wrapper">
 						<form class="btn-search" action="<?php echo esc_url( NYBC_HOME_URI ); ?>">
-							<?php wp_nonce_field( 'search', 'nonce' ); ?>
+							<?php wp_nonce_field( 'search', 'mobile-nonce' ); ?>
 							<input name="s" class="input" type="search" placeholder="<?php esc_html_e( 'Search', 'nybc' ); ?>">
-							<button type="submit">
+							<button type="submit" aria-label="search">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
 									<path

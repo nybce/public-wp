@@ -157,6 +157,7 @@ $RECYCLE.BIN/
 *.log
 
 .htaccess
+!site/web/.htaccess
 license.txt
 readme.html
 sitemap.xml
@@ -171,4 +172,6 @@ db_dumps/
 !db_dumps/seed.sql
 site/uploads/
 # End of https://www.gitignore.io/api/osx,linux,windows,wordpress,phpstorm+all
+
+node_modules/*
 

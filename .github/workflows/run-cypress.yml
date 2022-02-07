@@ -28,10 +28,12 @@ jobs:
         with:
           node-version: '12'
           #cache: 'npm'
-          #cache-dependency-path: 'frontend/package-lock.json'
+          #cache-dependency-path: 'cypress-axe/package-lock.json'
           registry-url: 'https://registry.npmjs.org'
       - name: Install node packages
-        run: npm --prefix=frontend/ install
+        run: npm --prefix=cypress-axe/ install
+      - name: printout filesystem
+        run: find cypress-axe/.
 
 
       # This is required because the environment_url param that Tugboat uses
@@ -69,7 +71,7 @@ jobs:
         id: run-cypress-axe
         env: 
           CYPRESS_BASE_URL: ${{ steps.get-status-env.outputs.result }}
-        run: npm --prefix=frontend/ run test:a11y
+        run: npm --prefix=cypress-axe/ run test:a11y
         continue-on-error: true
       - name: echo cypress outcome
         run: |
@@ -107,6 +109,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots
-          path: frontend/tests/cypress/screenshots
+          path: cypress-axe/cypress/screenshots
           if-no-files-found: ignore
 

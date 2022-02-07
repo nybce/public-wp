@@ -12,17 +12,17 @@ locals {
   ssl_profile_name                = "${var.environment}-${var.project}-sslprof"
   domain_name_sets = {
     "staging" = [
-      "comprehensivecellsolutions.staging.nybc-wordpress.bbox.ly",
-      "delmarvablood.staging.nybc-wordpress.bbox.ly",
-      "innovativebloodresources.staging..nybc-wordpress.bbox.ly",
-      "integratedlabnetwork.staging.nybc-wordpress.bbox.ly",
-      "mbc.staging.nybc-wordpress.bbox.ly",
-      "nationalcordbloodprogram.staging.nybc-wordpress.bbox.ly",
-      "ncbb.staging.nybc-wordpress.bbox.ly",
-      "ncbgg.staging.nybc-wordpress.bbox.ly",
-      "ncbp2.staging.nybc-wordpress.bbox.ly",
-      "nybloodcenter.staging.nybc-wordpress.bbox.ly",
-      "nybc-enterprise.staging.nybc-wordpress.bbox.ly"
+      "comprehensivecellsolutions.${var.environment}.nybc-wordpress.bbox.ly",
+      "delmarvablood.${var.environment}.nybc-wordpress.bbox.ly",
+      "innovativebloodresources.${var.environment}..nybc-wordpress.bbox.ly",
+      "integratedlabnetwork.${var.environment}.nybc-wordpress.bbox.ly",
+      "mbc.${var.environment}.nybc-wordpress.bbox.ly",
+      "nationalcordbloodprogram.${var.environment}.nybc-wordpress.bbox.ly",
+      "ncbb.${var.environment}.nybc-wordpress.bbox.ly",
+      "ncbgg.${var.environment}.nybc-wordpress.bbox.ly",
+      "ncbp2.${var.environment}.nybc-wordpress.bbox.ly",
+      "nybloodcenter.${var.environment}.nybc-wordpress.bbox.ly",
+      "nybc-enterprise.${var.environment}.nybc-wordpress.bbox.ly"
           ]
   }
 }
@@ -76,7 +76,7 @@ resource "azurerm_app_service" "my_app_service_container" {
  client_affinity_enabled = true
  site_config {
      app_command_line = ""
-     linux_fx_version = "DOCKER|nybcteam/nybc-wordpress:staging"
+     linux_fx_version = "DOCKER|nybcteam/nybc-wordpress:${var.environment}"
  }
  app_settings = {
   "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
