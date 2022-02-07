@@ -4,9 +4,6 @@ resource "azurerm_container_registry" "nybc_container" {
   location                 = azurerm_resource_group.vmss.location
   sku                      = "Basic"
   admin_enabled            = true
-}
-
-output "admin_password" {
-  value       = azurerm_container_registry.nybc_container.admin_password
-  description = "The object ID of the user"
+  admin_username           = var.docker_registry_username
+  admin_username           = var.docker_registry_password
 }
