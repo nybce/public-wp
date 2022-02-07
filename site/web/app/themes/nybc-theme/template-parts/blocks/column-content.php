@@ -45,6 +45,7 @@ $allowed_blocks = array(
 	'acf/resource-cards',
 	'acf/carousel-video',
 	'acf/horizontal-line',
+	'gravityforms/form',
 );
 
 $class_name .= ' col-lg-8';
