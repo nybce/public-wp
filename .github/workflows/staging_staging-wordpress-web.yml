@@ -32,6 +32,14 @@ jobs:
         push: true
         tags: nybcwordpresscontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4429a6e86cab43c38c4edc1a07292d6e }}/nybcteamnybc-wordpress:${{ github.sha }}
         file: ./Dockerfile
+        builder: ${{ steps.buildx.outputs.name }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
+        build-args: |
+          ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
+          ENVIRONMENT=staging
+        secrets: |
+          "vaultpass=${{ secrets.VAULTPASS }}"
 
   deploy:
     runs-on: ubuntu-latest
