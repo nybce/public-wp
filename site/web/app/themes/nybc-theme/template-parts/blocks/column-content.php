@@ -24,11 +24,9 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 $allowed_blocks = array(
+	'core/shortcode',
 	'acf/text',
-	'core/heading',
-	'core/list',
 	'acf/blockquote',
-	'core/paragraph',
 	'acf/small-card-row',
 	'acf/horizontal-cta-card',
 	'acf/inline-video',
@@ -39,7 +37,6 @@ $allowed_blocks = array(
 	'acf/spacer',
 	'acf/news',
 	'acf/article-byline',
-	'acf/download-card',
 	'acf/download-card-container',
 	'acf/graphic-download-card',
 	'acf/resource-cards',

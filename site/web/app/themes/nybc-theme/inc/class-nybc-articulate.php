@@ -28,9 +28,9 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 		/**
 		 * Main course file
 		 *
-		 * @var string
+		 * @var array
 		 */
-		private static $main_file = 'story.html';
+		private static $main_file = ['story.html', 'presentation.html'];
 
 		/**
 		 * Max files
@@ -409,9 +409,12 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 
 						$blob_client->createBlockBlob( $azure_storage_container, $local_path, $content, $opts );
 
-						if ( basename( $item ) === self::$main_file ) {
+						if ( in_array(basename( $item ), self::$main_file, true )) {
 							$result['url'] = $blob_client->getBlobUrl( $azure_storage_container, $local_path );
 						}
+						if (!$result['url']) {
+              $result['url'] = $blob_client->getBlobUrl( $azure_storage_container, $local_path );
+            }
 
 						unlink( $item );
 						if ( $i > self::$max_files ) {
