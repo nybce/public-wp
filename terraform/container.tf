@@ -1,4 +1,4 @@
-resource "azurerm_container_registry" "nybc_container" {
+resource "azurerm_container_registry" "nybc_wordpress_container_registry" {
   name                     = "acrname"
   resource_group_name      = azurerm_resource_group.vmss.name
   location                 = azurerm_resource_group.vmss.location
