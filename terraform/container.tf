@@ -7,13 +7,13 @@ resource "azurerm_container_registry" "nybc_wordpress_container_registry" {
 }
 
 output "admin_password" {
-  value       = azurerm_container_registry.nybc_container.admin_password
+  value       = azurerm_container_registry.nybc_wordpress_container_registry.admin_password
   description = "The object ID of the user"
   sensitive = true
 }
 
 output "admin_username" {
-  value       = azurerm_container_registry.nybc_container.admin_username
+  value       = azurerm_container_registry.nybc_wordpress_container_registry.admin_username
   description = "The object ID of the user"
   sensitive = true
 }
