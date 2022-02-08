@@ -72,8 +72,12 @@ resource "azurerm_app_service" "my_app_service_container" {
  location            = azurerm_resource_group.vmss.location
  resource_group_name = azurerm_resource_group.vmss.name
  app_service_plan_id     = azurerm_app_service_plan.wordpress_service_plan.id
- https_only              = false
+ https_only              = true
  client_affinity_enabled = true
+ site_config {
+     app_command_line = ""
+     linux_fx_version = "DOCKER|nybcteam/nybc-wordpress:${var.environment}"
+ }
 
  app_settings = {
   "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
