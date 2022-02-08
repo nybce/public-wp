@@ -67,7 +67,7 @@ resource "azurerm_app_service_plan" "wordpress_service_plan" {
  }
 }
 
-resource "azurerm_app_service" "my_app_service_container" {
+resource "azurerm_app_service" "nybc_wordpress_container" {
  name                    = "${var.environment}-${var.project}"
  location            = azurerm_resource_group.vmss.location
  resource_group_name = azurerm_resource_group.vmss.name
