@@ -76,14 +76,14 @@ resource "azurerm_app_service" "nybc_wordpress_app_service" {
  client_affinity_enabled = true
  site_config {
      app_command_line = ""
-     linux_fx_version = "DOCKER|nybcteam/nybc-wordpress:${var.environment}"
+     linux_fx_version = "DOCKER|nybcwordpresscontainerregistry/nybcteamnybc-wordpress:b6e7cf6d2d72dd83dc193d341d9e2a9bafffc3b5"
  }
 
  app_settings = {
   "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
-  "DOCKER_REGISTRY_SERVER_URL"          = "${var.docker_registry_host}"
-  "DOCKER_REGISTRY_SERVER_PASSWORD"     = "${var.docker_registry_password}"
-  "DOCKER_REGISTRY_SERVER_USERNAME"     = "${var.docker_registry_username}"
+  "DOCKER_REGISTRY_SERVER_URL"          = "https://${var.docker_registry_host}"
+  "DOCKER_REGISTRY_SERVER_PASSWORD"     = azurerm_container_registry.nybc_wordpress_container_registry.admin_password
+  "DOCKER_REGISTRY_SERVER_USERNAME"     = azurerm_container_registry.nybc_wordpress_container_registry.admin_username
   "ansible_vault_pass"       = "${var.ansible_vault_pass}"
   "environment"              = "${var.environment}"
   "ANSIBLE_VAULT_PASS"       = "${var.ansible_vault_pass}"

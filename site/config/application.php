@@ -136,7 +136,7 @@ $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 if (file_exists($env_config)) {
   require_once $env_config;
 }
-
+Config::define('FS_METHOD', 'direct' );
 Config::apply();
 
 /**
