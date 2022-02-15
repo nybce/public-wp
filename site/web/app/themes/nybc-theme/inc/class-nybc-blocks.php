@@ -144,6 +144,9 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 		public static function allowed_block_types_all() {
 			return array(
 				'core/shortcode',
+				'core/heading',
+				'core/list',
+				'core/paragraph',
 				'acf/blockquote',
 				'acf/home-hero',
 				'acf/promo-home-cta',
