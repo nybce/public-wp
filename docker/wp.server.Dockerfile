@@ -101,7 +101,9 @@ RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
-RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load && \
+    mkdir /var/www/html/app/uploads && \
+    chown -R www-data: /var/www/html/app/uploads
 
 WORKDIR /var/www/html
 
