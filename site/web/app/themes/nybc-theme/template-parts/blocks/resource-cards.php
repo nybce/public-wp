@@ -28,7 +28,7 @@ if ( empty( $cards ) ) {
 	return;
 }
 ?>
-<div class="resource-card-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="resource-card-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
 	<?php
 	foreach ( $cards as $card ) {

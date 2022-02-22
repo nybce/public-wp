@@ -24,6 +24,7 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 $allowed_blocks = array(
+	'core/shortcode',
 	'acf/text',
 	'acf/blockquote',
 	'acf/small-card-row',
@@ -36,12 +37,12 @@ $allowed_blocks = array(
 	'acf/spacer',
 	'acf/news',
 	'acf/article-byline',
-	'acf/download-card',
 	'acf/download-card-container',
 	'acf/graphic-download-card',
 	'acf/resource-cards',
 	'acf/carousel-video',
 	'acf/horizontal-line',
+	'gravityforms/form',
 );
 
 $class_name .= ' col-lg-8';
