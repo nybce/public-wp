@@ -25,9 +25,6 @@ if ( ! empty( $block['className'] ) ) {
 }
 $allowed_blocks = array(
 	'core/shortcode',
-	'core/heading',
-	'core/list',
-	'core/paragraph',
 	'acf/text',
 	'acf/blockquote',
 	'acf/small-card-row',
