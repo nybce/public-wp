@@ -66,7 +66,7 @@ if ( empty( $cards ) ) {
 			<div class="spacer-24"></div>
 
 			<?php if ( ! empty( $more_info ) ) { ?>
-				<div class="divider"></div>
+				<hr>
 
 				<div class="spacer-24"></div>
 
@@ -74,11 +74,11 @@ if ( empty( $cards ) ) {
 					<?php
 					foreach ( $more_info as $info ) {
 						$info_title       = $info['title'];
-						$info_description = $info['description '];
+						$info_description = $info['description'];
 						$info_count       = $info['count'];
 						?>
 						<div class="resource-card-label">
-							<div class="text text-20"><?php echo esc_html( $card_title ); ?></div>
+							<div class="text text-20"><?php echo esc_html( $info_title ); ?></div>
 							<?php if ( ! empty( $info_description ) ) { ?>
 								<div class="spacer-4"></div>
 								<div class="h5 title fw-800"><?php echo esc_html( $info_description ); ?></div>

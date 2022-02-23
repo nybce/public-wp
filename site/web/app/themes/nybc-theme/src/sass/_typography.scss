@@ -258,24 +258,26 @@ ol {
 	a {
 		color: $color-info;
 		cursor: pointer;
+		display: inline;
 		font-size: inherit;
 		font-weight: 400;
 		line-height: inherit;
 		position: relative;
+		text-decoration: underline;
 		transition: $transition;
-		white-space: nowrap;
+		// white-space: nowrap;
 
-		&::before {
-			background: $color-info;
-			bottom: 0.25em;
-			content: "";
-			height: 1px;
-			left: auto;
-			position: absolute;
-			right: 0;
-			transition: $transition;
-			width: 100%;
-		}
+		// &::before {
+		// 	background: $color-info;
+		// 	bottom: 0.25em;
+		// 	content: "";
+		// 	height: 1px;
+		// 	left: auto;
+		// 	position: absolute;
+		// 	right: 0;
+		// 	transition: $transition;
+		// 	width: 100%;
+		// }
 	}
 
 	h1,
