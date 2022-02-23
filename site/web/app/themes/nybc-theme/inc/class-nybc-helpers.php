@@ -252,8 +252,8 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		public static function sidebar_nav( $mobile = false ) {
 			global $post;
 
-						$news_page = get_field( 'news_page', 'options' );
-			$stories_page          = get_field( 'stories_page', 'options' );
+			$news_page    = get_field( 'news_page', 'options' );
+			$stories_page = get_field( 'stories_page', 'options' );
 			if ( ( $news_page && is_page( $news_page ) ) || ( $stories_page && is_page( $stories_page ) ) || is_archive() ) {
 				self::sidebar_tags( $mobile );
 				return;
@@ -273,12 +273,13 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 
 			if ( empty( $child_pages ) && $post->post_parent ) {
 
-				$child_pages = get_pages(
+				$child_pages      = get_pages(
 					array(
 						'parent' => $post->post_parent,
 					)
 				);
-				$heading     = get_the_title( $post->post_parent );
+				$post_parent_link = get_page_link( $post->post_parent );
+				$heading          = "<a href='$post_parent_link'>" . get_the_title( $post->post_parent ) . '</a>';
 			}
 			if ( empty( $child_pages ) ) {
 				return;
@@ -295,7 +296,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 
 	<div class="spacer-16"></div>
 	<ul class="page-menu">
-		<li><?php echo esc_html( $heading ); ?></li>
+		<li><?php echo wp_kses_post( $heading ); ?></li>
 			<?php foreach ( $child_pages as $page ) { ?>
 			<li class="<?php echo esc_attr( $page->ID === $post->ID ? 'active' : '' ); ?>"><a href="<?php echo esc_url( get_page_link( $page ) ); ?>"><?php echo esc_html( get_the_title( $page ) ); ?></a></li>
 		<?php } ?>
