@@ -55,7 +55,8 @@
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
-        "wpackagist-plugin/user-role-editor": "^4.60.2"
+        "wpackagist-plugin/user-role-editor": "^4.60.2",
+        "wpackagist-plugin/duplicate-post": "^4.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
