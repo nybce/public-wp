@@ -591,7 +591,12 @@ header {
 @media (max-width: 1600px) {
 	.dropdown-item {
 		.dropdown-info {
-			max-width: 50rem;
+			.text,
+			.text-xl,
+			.text-lg,
+			.text-sm {
+				max-width: 50rem;
+			}
 		}
 	}
 }
@@ -713,6 +718,13 @@ header {
 		.dropdown-info {
 			margin-bottom: 1.8em;
 			padding-bottom: 1.8em;
+
+			.text,
+			.text-xl,
+			.text-lg,
+			.text-sm {
+				max-width: 100%;
+			}
 
 			.btn-link {
 				padding-right: 1em;
