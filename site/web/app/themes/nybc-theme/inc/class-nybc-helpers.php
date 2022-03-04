@@ -170,7 +170,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		 * @param bool $mobile is mobile nav.
 		 */
 		public static function sidebar_tags( $mobile = false ) {
-			$cats = get_categories();
+			$cats = get_tags();
 			if ( empty( $cats ) ) {
 				return;
 			}

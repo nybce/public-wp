@@ -447,7 +447,7 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 				if (!empty($terms)) {
 					$tax_query[] =
 						array(
-							'taxonomy' => 'category',
+							'taxonomy' => 'post_tag',
 							'terms' => $terms,
 						);
 				}

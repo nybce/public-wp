@@ -57,7 +57,7 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 	if ( ! empty( $terms ) ) {
 		$args['tax_query'] = array(
 			array(
-				'taxonomy' => 'category',
+				'taxonomy' => 'post_tag',
 				'terms'    => $terms,
 			),
 		);
