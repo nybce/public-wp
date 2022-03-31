@@ -265,7 +265,9 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 
 			$child_pages = get_pages(
 				array(
-					'parent' => $post->ID,
+					'parent'      => $post->ID,
+					'sort_column' => 'menu_order',
+					'sort_order'  => 'ASC',
 				)
 			);
 
@@ -275,7 +277,9 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 
 				$child_pages      = get_pages(
 					array(
-						'parent' => $post->post_parent,
+						'parent'      => $post->post_parent,
+						'sort_column' => 'menu_order',
+						'sort_order'  => 'ASC',
 					)
 				);
 				$post_parent_link = get_page_link( $post->post_parent );

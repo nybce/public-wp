@@ -48,7 +48,7 @@ if ( empty( $slides ) ) {
 			</div>
 
 			<div class="swiper-container"
-				data-options='{"autoplay": {"delay": 5000}, "loop": true, "slidesPerView": 1, "breakpoints":{"767":{"slidesPerView": 1, "spaceBetween": 45}}}'>
+				data-options='{"autoplay": {"delay": 5000}, "autoHeight": true, "loop": true, "slidesPerView": 1, "breakpoints":{"767":{"slidesPerView": 1, "spaceBetween": 45}}}'>
 				<div class="swiper-wrapper">
 
 					<?php
