@@ -567,6 +567,15 @@ ol {
 	.text-lg > *:last-child {
 		margin-bottom: 0;
 	}
+
+	.text-lg {
+		>.text > *:last-child,
+		>.text-xl > *:last-child,
+		>.text-lg > *:last-child,
+		> .text-sm > *:last-child {
+			margin-bottom: 1.6rem;
+		}
+	}
 }
 
 .title.light,

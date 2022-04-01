@@ -344,6 +344,11 @@
 @media (max-width: 767px) {
 	.banner-decor {
 		width: 110%;
+
+		svg {
+			height: auto;
+			width: 200%;
+		}
 	}
 }
 
