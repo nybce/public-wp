@@ -54,7 +54,7 @@ $image_position = get_field( 'image_position' );
 					</div>
 				</div>
 				<div class="col-lg-6 ps-md-0">
-					<div class="info-block-img">
+					<div class="info-block-img type-2 ms-auto">
 						<div class="decor-bg rellax" data-rellax-speed="1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 						<div class="decor-ring rellax" data-rellax-speed="2" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
 						<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
@@ -62,7 +62,7 @@ $image_position = get_field( 'image_position' );
 				</div>
 			<?php } else { ?>
 				<div class="col-lg-6 pe-md-0">
-					<div class="info-block-img">
+					<div class="info-block-img type-2">
 						<div class="decor-bg rellax" data-rellax-speed="1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/background-shape.svg');"></div>
 						<div class="decor-ring rellax" data-rellax-speed="2" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/ring.svg');"></div>
 						<?php NYBC_Helpers::picture( $image, '800x', 'mask' ); ?>
