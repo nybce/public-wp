@@ -14,6 +14,7 @@ Config::define('SCRIPT_DEBUG', false);
 ini_set('display_errors', 0);
 
 // Enable plugin and theme updates and installation from the admin
+Config::define( 'FS_METHOD', 'direct' );
 Config::define('DISALLOW_FILE_MODS', true);
 
 define('MICROSOFT_AZURE_ACCOUNT_NAME', env('MICROSOFT_AZURE_ACCOUNT_NAME'));

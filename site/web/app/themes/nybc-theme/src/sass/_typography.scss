@@ -258,24 +258,26 @@ ol {
 	a {
 		color: $color-info;
 		cursor: pointer;
+		display: inline;
 		font-size: inherit;
 		font-weight: 400;
 		line-height: inherit;
 		position: relative;
+		text-decoration: underline;
 		transition: $transition;
-		white-space: nowrap;
+		// white-space: nowrap;
 
-		&::before {
-			background: $color-info;
-			bottom: 0.25em;
-			content: "";
-			height: 1px;
-			left: auto;
-			position: absolute;
-			right: 0;
-			transition: $transition;
-			width: 100%;
-		}
+		// &::before {
+		// 	background: $color-info;
+		// 	bottom: 0.25em;
+		// 	content: "";
+		// 	height: 1px;
+		// 	left: auto;
+		// 	position: absolute;
+		// 	right: 0;
+		// 	transition: $transition;
+		// 	width: 100%;
+		// }
 	}
 
 	h1,
@@ -565,6 +567,15 @@ ol {
 	.text-lg > *:last-child {
 		margin-bottom: 0;
 	}
+
+	.text-lg {
+		>.text > *:last-child,
+		>.text-xl > *:last-child,
+		>.text-lg > *:last-child,
+		> .text-sm > *:last-child {
+			margin-bottom: 1.6rem;
+		}
+	}
 }
 
 .title.light,
@@ -653,21 +664,21 @@ h6,
 h1,
 .h1 {
 	font-size: 5.4rem;
-	letter-spacing: -0.05em;
+	letter-spacing: 0;
 	line-height: 1.22em;
 }
 
 h2,
 .h2 {
 	font-size: 4.8rem;
-	letter-spacing: -0.06em;
+	letter-spacing: 0;
 	line-height: 1.17em;
 }
 
 h3,
 .h3 {
 	font-size: 3.6rem;
-	letter-spacing: -0.02em;
+	letter-spacing: 0;
 	line-height: 1.28em;
 }
 
@@ -680,14 +691,14 @@ h4,
 h5,
 .h5 {
 	font-size: 2.4rem;
-	letter-spacing: -0.02em;
+	letter-spacing: 0;
 	line-height: 1.25em;
 }
 
 h6,
 .h6 {
 	font-size: 1.6rem;
-	letter-spacing: 0.06em;
+	letter-spacing: 0;
 	line-height: 1.25em;
 }
 

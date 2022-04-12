@@ -142,7 +142,7 @@
 
 	.about-img {
 		margin: 0 auto;
-		max-width: 590px;
+
 		padding-bottom: 109%;
 		width: 100%;
 	}
@@ -185,6 +185,14 @@
 			position: relative;
 			right: 0;
 			transform: unset;
+		}
+
+		.swiper-slide {
+			height: auto;
+		}
+
+		.swiper-wrapper {
+			align-items: flex-start;
 		}
 	}
 }

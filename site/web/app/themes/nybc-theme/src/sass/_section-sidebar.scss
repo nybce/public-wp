@@ -118,6 +118,10 @@
 			font-size: 1.4rem;
 			font-weight: 500;
 			line-height: 1.57em;
+
+			a {
+				color: $color-text-20;
+			}
 		}
 
 		&.active {
@@ -263,6 +267,10 @@
 
 		&:first-child {
 			color: $color-text-20;
+
+			a {
+				color: $color-primary-base1-30;
+			}
 		}
 	}
 

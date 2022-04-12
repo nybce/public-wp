@@ -48,7 +48,7 @@ if ( empty( $slides ) ) {
 			</div>
 
 			<div class="swiper-container"
-				data-options='{"slidesPerView": 1, "breakpoints":{"767":{"slidesPerView": 1, "spaceBetween": 45}}}'>
+				data-options='{"autoplay": {"delay": 5000}, "autoHeight": true, "loop": true, "slidesPerView": 1, "breakpoints":{"767":{"slidesPerView": 1, "spaceBetween": 45}}}'>
 				<div class="swiper-wrapper">
 
 					<?php
@@ -68,7 +68,7 @@ if ( empty( $slides ) ) {
 								<div class="h2 title fw-800 light"><?php echo esc_html( $block_title ); ?></div>
 								<div class="spacer-16"></div>
 								<div class="text-xl text-30"><?php echo esc_html( $body ); ?></div>
-								<div class="spacer-16"></div>
+								<div class="spacer-24"></div>
 								<?php if ( ! empty( $button ) ) { ?>
 									<a class="btn btn-primary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
 								<?php } ?>

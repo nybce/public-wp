@@ -14,7 +14,7 @@ $post_title = get_the_title();
 $date       = get_the_time( 'F j, Y' );
 $tags       = get_the_tags();
 ?>
-<div class="section banner">
+<div class="section banner mb-48">
 
 	<div class="banner-inner type-4">
 

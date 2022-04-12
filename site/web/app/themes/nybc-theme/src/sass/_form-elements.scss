@@ -892,6 +892,10 @@ table.ui-datepicker-calendar
 	padding-left: 0.125em;
 }
 
+.gform_wrapper.gravity-theme .gform_heading > .gform_description {
+	margin-bottom: 4.8rem;
+}
+
 @media (min-width: 1200px) {
 	.gform_wrapper.gravity-theme .gform_fields .ginput_container_select:hover::before {
 		border-bottom: 0.125em solid $color-primary-base1-30;
@@ -975,5 +979,29 @@ table.ui-datepicker-calendar
 		height: 3rem;
 		padding: 0.4rem 0.8rem;
 		width: 3rem;
+	}
+}
+
+.gform_wrapper.gravity-theme .gform_heading > h2,
+.gform_wrapper.gravity-theme .gform_heading > .gform_title {
+	font-size: 3rem;
+	line-height: 1.2em;
+}
+
+.gform_wrapper.gravity-theme .gform_heading {
+	margin-bottom: 4.8rem;
+}
+
+@media (max-width: 1400px) {
+	.gform_wrapper.gravity-theme .gform_heading > h2,
+	.gform_wrapper.gravity-theme .gform_heading > .gform_title {
+		font-size: 2.4rem;
+	}
+}
+
+@media (max-width: 1199px) {
+	.gform_wrapper.gravity-theme .gform_heading > h2,
+	.gform_wrapper.gravity-theme .gform_heading > .gform_title {
+		font-size: 2.2rem;
 	}
 }

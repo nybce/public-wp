@@ -44,9 +44,6 @@ if ( empty( $slides ) ) {
 			<div class="swiper-wrapper">
 				<?php
 				foreach ( $slides as $slide ) {
-					if ( empty( $slide['employee'] ) ) {
-						continue;
-					}
 					$image = $slide['image'];
 					?>
 					<div class="swiper-slide">

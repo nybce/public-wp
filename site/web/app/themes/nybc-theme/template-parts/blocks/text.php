@@ -26,8 +26,9 @@ if ( ! empty( $block['className'] ) ) {
 $allowed_blocks = array(
 	'core/heading',
 	'core/list',
-	'acf/blockquote',
+	'core/html',
 	'core/paragraph',
+	'acf/blockquote',
 	'acf/accordion',
 );
 

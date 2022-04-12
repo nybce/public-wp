@@ -62,7 +62,7 @@ if ( empty( $image ) ) {
 
 }
 ?>
-<div class="article-byline-wrapper <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="article-byline-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="article-byline-info">
 		<div class="autor-img">
 			<?php

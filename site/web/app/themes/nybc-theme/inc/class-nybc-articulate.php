@@ -28,9 +28,9 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 		/**
 		 * Main course file
 		 *
-		 * @var string
+		 * @var array
 		 */
-		private static $main_file = 'story.html';
+		private static $main_file = array( 'story.html', 'presentation.html' );
 
 		/**
 		 * Max files
@@ -279,10 +279,8 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 			if ( $file_path ) {
 				$pathinfo       = pathinfo( $file_path );
 				$unzip_dir_path = $upload_dir['basedir'] . '/' . $pathinfo['filename'];
-
 				mkdir( $unzip_dir_path );
 				$result = unzip_file( $file_path, $unzip_dir_path );
-
 				if ( is_wp_error( $result ) ) {
 					die( 'Error unzip file' );
 				}
@@ -291,7 +289,9 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 				$course_path = 1 === count( $sub_dirs ) ? array_pop( $sub_dirs ) : $unzip_dir_path;
 
 			} elseif ( isset( $_POST['dir'] ) ) {
-				$course_path    = sanitize_text_field( wp_unslash( $_POST['dir'] ) );
+				// @codingStandardsIgnoreStart
+				$course_path    = wp_unslash( $_POST['dir'] ) ;
+				// @codingStandardsIgnoreEnd
 				$unzip_dir_path = dirname( $course_path ) !== $upload_dir['basedir'] ? dirname( $course_path ) : $course_path;
 			}
 
@@ -409,10 +409,9 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 
 						$blob_client->createBlockBlob( $azure_storage_container, $local_path, $content, $opts );
 
-						if ( basename( $item ) === self::$main_file ) {
+						if ( in_array( basename( $item ), self::$main_file, true ) ) {
 							$result['url'] = $blob_client->getBlobUrl( $azure_storage_container, $local_path );
 						}
-
 						unlink( $item );
 						if ( $i > self::$max_files ) {
 							$result['more'] = true;
