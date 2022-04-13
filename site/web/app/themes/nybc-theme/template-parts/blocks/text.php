@@ -28,6 +28,7 @@ $allowed_blocks = array(
 	'core/list',
 	'core/html',
 	'core/paragraph',
+	'core/image',
 	'acf/blockquote',
 	'acf/accordion',
 );
