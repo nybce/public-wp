@@ -49,6 +49,10 @@
 
 @media (max-width: 991px) {
 	.title-wrapper {
+		> * {
+			flex-shrink: unset;
+		}
+
 		&.type-3 {
 			flex-direction: column;
 
