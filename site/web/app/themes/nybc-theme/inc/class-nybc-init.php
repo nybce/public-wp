@@ -153,18 +153,24 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 
 			add_action( 'manage_pages_custom_column', array( 'NYBC_Init', 'filter_manage_posts_custom_column' ) );
 
-			add_filter(
-				'excerpt_length',
-				function () {
-					return 20;
-				}
-			);
+			add_filter( 'get_the_excerpt', array( 'NYBC_Init', 'get_the_excerpt' ), 10, 2 );
 
 			/**
 			 *  Disable XML-RPC
 			 */
 			add_filter( 'xmlrpc_enabled', '__return_false' );
 
+		}
+
+		/**
+		 * Limit excerpt to a number of characters
+		 *
+		 * @param string $excerpt post excerpt.
+		 * @param string $post post object.
+		 * @return string
+		 */
+		public static function get_the_excerpt( $excerpt, $post ) {
+			return ! empty( $excerpt ) ? substr( $excerpt, 0, 120 ) . '...' : '';
 		}
 
 		/**
@@ -291,6 +297,12 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 			*
 			*/
 			add_theme_support( 'post-thumbnails' );
+
+			/*
+			* Enable excerpt for pages.
+			*
+			*/
+			add_post_type_support( 'page', 'excerpt' );
 
 			// This theme uses wp_nav_menu() in two locations.
 			register_nav_menus(

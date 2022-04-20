@@ -10,6 +10,7 @@
 	max-width: 28.5rem;
 	position: relative;
 	text-align: center;
+	z-index: 2;
 
 	.title {
 		color: $color-text-20;
@@ -347,7 +348,6 @@
 	}
 
 	.promo-wrapper {
-		margin: 0 auto;
 		max-width: 100%;
 
 		&.type-2 {
@@ -368,7 +368,6 @@
 	}
 
 	.promo-cta {
-		margin: 0 auto;
 		max-width: 100%;
 	}
 }
