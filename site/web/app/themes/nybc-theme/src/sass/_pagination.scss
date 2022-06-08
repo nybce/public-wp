@@ -74,6 +74,8 @@
 .pagination li a {
 	@include centerAbsolute;
 	width: 100%;
+	height:100%;
+	line-height:2em;
 }
 
 .pagination li.active {
