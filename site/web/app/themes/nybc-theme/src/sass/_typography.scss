@@ -41,22 +41,22 @@ ol {
 /*****     TEXT STYLES     *****/
 
 .text {
-	font-size: 1.6rem;
-	line-height: 1.5em;
-}
-
-.text-xl {
 	font-size: 2rem;
 	line-height: 1.5em;
 }
 
+.text-xl {
+	font-size: 2.4rem;
+	line-height: 1.5em;
+}
+
 .text-lg {
-	font-size: 1.8rem;
+	font-size: 2.2rem;
 	line-height: 1.44em;
 }
 
 .text-sm {
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	line-height: 1.57em;
 }
 
@@ -836,11 +836,15 @@ h6,
 	}
 
 	.text-xl {
-		font-size: 1.8rem;
+		font-size: 2.2rem;
 	}
 
 	.text-lg {
-		font-size: 1.6rem;
+		font-size: 2rem;
+	}
+
+	.text {
+		font-size: 1.8rem;
 	}
 }
 
@@ -891,6 +895,14 @@ h6,
 	}
 
 	.text-xl {
+		font-size: 2rem;
+	}
+
+	.text-lg {
+		font-size: 1.8rem;
+	}
+
+	.text {
 		font-size: 1.6rem;
 	}
 }
