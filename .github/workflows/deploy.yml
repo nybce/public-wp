@@ -24,7 +24,7 @@ jobs:
           case $GITHUB_REF in
             refs/heads/develop)
               export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_DEVELOP }}
-              export DOCKER_USERNAME=${{ secrets.DOCKER_REGISTRY_DEVELOP_USERNAME }}
+              export DOCKER_USERNAME=${{ env.DOCKER_REGISTRY_DEVELOP_USERNAME }}
               export DOCKER_PASSWORD=${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
               export DOCKER_TAG="nybcteam/nybc-wordpress:develop"
               ;;
