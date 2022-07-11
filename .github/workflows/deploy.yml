@@ -32,7 +32,7 @@ jobs:
               export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_STAGING }}
               export DOCKER_USERNAME=${{ env.DOCKER_REGISTRY_STAGING_USERNAME }}
               export DOCKER_PASSWORD=${{ secrets.DOCKER_REGISTRY_STAGING_PASSWORD }}
-              export DOCKER_TAG="nybcwordpresscontainerregistry/nybcteamnybc-wordpress:staging"
+              export DOCKER_TAG="nybcwordpresscontainerregistry.azurecr.io/nybcwordpresscontainerregistry/nybcteamnybc-wordpress:staging"
               ;;
             *)
               echo "This ref case not handled yet; bailing out"; exit 1
