@@ -5,11 +5,44 @@ on:
     branches:
       - develop
       - staging
+env:
+  DOCKER_REGISTRY_DEVELOP: "index.docker.io"
+  DOCKER_REGISTRY_DEVELOP_USERNAME: "nybcteam"
+  DOCKER_REGISTRY_STAGING: "nybcwordpresscontainerregistry.azurecr.io"
+  DOCKER_REGISTRY_STAGING_USERNAME: "nybcwordpresscontainerregistry"
+  DOCKER_REGISTRY_PRODUCTION: ""
+  DOCKER_REGISTRY_PRODUCTION_USERNAME: ""
 jobs:
 
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set variables based on branch
+        run: |
+          # bash case statements are uncommon
+          # https://linuxize.com/post/bash-case-statement/ 
+          case $GITHUB_REF in
+            refs/heads/develop)
+              export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_DEVELOP }}
+              export DOCKER_USERNAME=${{ secrets.DOCKER_REGISTRY_DEVELOP_USERNAME }}
+              export DOCKER_PASSWORD=${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+              export DOCKER_TAG="nybcteam/nybc-wordpress:develop"
+              ;;
+            refs/heads/staging)
+              export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_STAGING }}
+              export DOCKER_USERNAME=${{ env.DOCKER_REGISTRY_STAGING_USERNAME }}
+              export DOCKER_PASSWORD=${{ secrets.DOCKER_REGISTRY_STAGING_PASSWORD }}
+              export DOCKER_TAG="nybcwordpresscontainerregistry/nybcteamnybc-wordpress:staging"
+              ;;
+            *)
+              echo "This ref case not handled yet; bailing out"; exit 1
+              ;;
+          esac
+          # In order to persist variables to the next step, we write them to the $GITHUB_ENV file
+          echo "DOCKER_TAG=$DOCKER_TAG" >> $GITHUB_ENV
+          echo "DOCKER_REGISTRY_DOMAIN=$DOCKER_REGISTRY_DOMAIN" >> $GITHUB_ENV
+          echo "DOCKER_USERNAME=$DOCKER_USERNAME" >> $GITHUB_ENV
+          echo "DOCKER_PASSWORD=$DOCKER_PASSWORD" >> $GITHUB_ENV
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -25,14 +58,15 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      -
+      - name: Log into docker registry
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
       -
+
         name: Build and push develop
-        if: github.ref == 'refs/heads/develop' || github.event.pull_request.base.ref == 'develop'
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -40,7 +74,7 @@ jobs:
           file: ./docker/wp.server.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: nybcteam/nybc-wordpress:develop
+          tags: ${{ env.DOCKER_TAG }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           build-args: |
