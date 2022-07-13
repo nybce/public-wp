@@ -48,7 +48,7 @@ RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
 COPY ./.env/local.env /site/.env
 COPY ./.env/local.env /.env
 RUN mkdir /envs
-COPY ./.env/* /envs
+COPY ./.env/* /envs/
 COPY .vaultpass /envs
 RUN apk --update add --virtual build-dependencies --no-cache wget tar
 RUN apk --update add libc6-compat ca-certificates
