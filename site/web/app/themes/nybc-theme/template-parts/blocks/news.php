@@ -74,6 +74,7 @@ $query = new WP_Query( $args );
 	<div class="filters-wrapper mobile-none">
 		<div class="select-item-total"><?php esc_html_e( 'Showing', 'nybc' ); ?>
 			<span><?php echo esc_html( $query->found_posts ); ?></span> <?php esc_html_e( 'Results', 'nybc' ); ?></div>
+		<div class="select-item-wrapper">
 		<div class="select-item ml-auto">
 			<a class="btn btn-small btn-primary" href="<?php echo home_url( $wp->request );?>">Reset Filter</a>
 		</div>
@@ -111,6 +112,7 @@ $query = new WP_Query( $args );
 					</script>
 				</div>
 			</div>
+		</div>
 		</div>
 	</div>
 
