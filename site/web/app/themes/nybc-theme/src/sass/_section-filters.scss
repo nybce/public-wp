@@ -12,6 +12,14 @@
 	justify-content: space-between;
 }
 
+.select-item-wrapper{
+	display:flex;
+	align-items:center;
+	.select-item{
+		min-width:125px;
+		padding-left:15px;
+	}
+}
 .select-item-total {
 	color: $color-text-10;
 	font-size: 1.6rem;
