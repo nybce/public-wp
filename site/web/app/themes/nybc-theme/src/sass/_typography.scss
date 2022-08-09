@@ -278,6 +278,14 @@ ol {
 		// 	transition: $transition;
 		// 	width: 100%;
 		// }
+
+	}
+
+	a[target=_blank] {
+		&::after {
+			content: url("../img/icons/external_link.svg");
+	    	margin-left: 0.25rem;
+    	}
 	}
 
 	h1,
