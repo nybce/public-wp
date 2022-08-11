@@ -285,6 +285,8 @@ ol {
 		&::after {
 			content: url("../img/icons/external_link.svg");
 	    	margin-left: 0.25rem;
+	    	display:inline-block;
+	    	width:14px;
     	}
 	}
 
