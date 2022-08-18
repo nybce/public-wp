@@ -1,0 +1,282 @@
+<content>
+  <script id="jshelpers">
+  </script>
+  <header id="header" type="x-handlebars-template">
+    <style>
+      .pintraContacts,
+      .pintraContactsResults {
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      }
+
+      .pintraContactsResultsItemContentDisplayName {
+        font-size: 14px;
+        font-weight: 400;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 24px;
+      }
+
+      .pintraContactsResultsItemContentDepartment {
+        font-size: 12px;
+        font-weight: 200;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 24px;
+      }
+
+      .pintraContactsResultsItemContentEmail {
+        font-size: 10px;
+        font-weight: 200;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 24px;
+      }
+
+      .pintraContactsDetailsHeaderContentDisplayName {
+        font-size: 28px;
+        font-weight: 200;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pintraContactsDetailsHeaderContentDepartment {
+        font-size: 14px;
+        font-weight: 200;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pintraContactsDetailsHeaderContentActions {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .pintraContactsDetailsHeaderContentAction {
+        padding: 0 8px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        margin-right: 8px;
+      }
+
+      .pintraContactsDetailsHeaderContentAction:first-child {
+        padding-left: 0px;
+      }
+
+      .pintraContactsDetailsHeaderContentAction span {
+        padding: 8px 8px;
+      }
+
+      .pintraContactsDetailsHeaderContentAction:hover,
+      .pintraContactsDetailsHeaderContentAction::selection {
+        background-color: #eeeeee;
+      }
+
+      .pintraContactsDetailsHeaderContentAction i {
+        font-size: 14px;
+        color: #0078d4
+      }
+
+      .pintraContactsPivotContactColumn,
+      .pintraContactsPivotContactHalfWidth {
+        flex: 0 0 50%;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 10px;
+        margin: 4px 4px 4px 0px;
+      }
+
+      .pintraContactsPivotContactFullWidth {
+        flex: 0 0 100%;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 10px;
+        margin: 4px 4px 4px 0px;
+      }
+
+      .pintraContactsPivotContactColumn.right,
+      .pintraContactsPivotContactHalfWidth.right {
+        border-left: 1px solid #eeeeee;
+      }
+
+      .pintraContactsPivotContactItem {
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .pintraContactsPivotContactItem:hover {
+        background-color: #eeeeee;
+      }
+
+      .pintraContactsPivotContactItem::selection {
+        background-color: #eeeeee;
+      }
+
+      .pintraContactsPivotContactItem .pintraContactsPivotContactItemTitle {
+        font-size: 12px;
+        color: #605e5c;
+      }
+
+      .pintraContactsPivotContactItem .pintraContactsPivotContactItemValue {
+        font-size: 14px;
+        color: #0078d4;
+      }
+    </style>
+  </header>
+  <section id="item" type="x-handlebars-template">
+    <div class="pintraContactsResultsItemContentDisplayName">{{displayName}}</div>
+    <div class="pintraContactsResultsItemContentDepartment">{{department}}</div>
+    <!--div class="pintraContactsResultsItemContentEmail">{{mail}}</div-->
+  </section>
+  <section id="summary" type="x-handlebars-template">
+    <div class="pintraContactsDetailsHeaderContentDisplayName">{{displayName}}</div>
+    <div class="pintraContactsDetailsHeaderContentDepartment">{{department}}</div>
+    <div class="pintraContactsDetailsHeaderContentActions">
+      <div class="pintraContactsDetailsHeaderContentAction" onclick="window.open('mailto:{{mail}}', '_blank')">
+        {{fabricIcon 'Mail'}}
+        <span>Send email</span>
+      </div>
+      <div class="pintraContactsDetailsHeaderContentAction"
+        onclick="window.open('https://teams.microsoft.com/l/chat/0/0?users={{userPrincipalName}}' , '_blank')">
+        {{fabricIcon 'TeamsLogo'}}
+        <span>Start chat</span>
+      </div>
+    </div>
+  </section>
+  <section id="contact" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactColumn pintraContactsPivotContactHalfWidth">
+      <div class="pintraContactsPivotContactItem" onclick="window.open('mailto:{{mail}}', '_blank')">
+        <div class="pintraContactsPivotContactItemTitle"><span>Email</span></div>
+        <div class="pintraContactsPivotContactItemValue"><span>{{mail}}</span></div>
+      </div>
+      <div class="pintraContactsPivotContactItem"
+        onclick="window.open('https://teams.microsoft.com/l/chat/0/0?users={{userPrincipalName}}' , '_blank')">
+        <div class="pintraContactsPivotContactItemTitle"><span>Chat</span></div>
+        <div class="pintraContactsPivotContactItemValue"><span>{{userPrincipalName}}</span></div>
+      </div>
+    </div>
+    <div class="pintraContactsPivotContactColumn pintraContactsPivotContactHalfWidth right">
+      <div class="pintraContactsPivotContactItem" onclick="window.open('tel:{{businessPhones}}', '_blank')">
+        <div class="pintraContactsPivotContactItemTitle"><span>Work phone</span></div>
+        <div class="pintraContactsPivotContactItemValue"><span>{{businessPhones}}</span></div>
+      </div>
+      <div class="pintraContactsPivotContactItem" onclick="window.open('tel:{{mobilePhone}}', '_blank')">
+        <div class="pintraContactsPivotContactItemTitle"><span>Mobile</span></div>
+        <div class="pintraContactsPivotContactItemValue"><span>{{mobilePhone}}</span></div>
+      </div>
+    </div>
+  </section>
+  <section id="aboutMe" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactFullWidth">
+      <div class="pintraContactsPivotContactItem">
+        <div class="pintraContactsPivotContactItemTitle"><span>About</span></div>
+        {{#each notes as |item i|}}
+        {{#if @first}}
+        <div class="pintraContactsPivotContactItemValue"><span>{{item.detail.content}}</span></div>
+        {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="projects" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactFullWidth">
+      <div class="pintraContactsPivotContactItem">
+        <div class="pintraContactsPivotContactItemTitle"><span>Projects</span></div>
+        {{#each projects as |item i|}}
+        <div class="pintraContactsPivotContactItemValue"><span>{{item.displayName}}</span></div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="skills" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactFullWidth">
+      <div class="pintraContactsPivotContactItem">
+        <div class="pintraContactsPivotContactItemTitle"><span>Skills</span></div>
+        {{#each skills as |item i|}}
+        <div class="pintraContactsPivotContactItemValue"><span>{{item.displayName}}</span></div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="expertise" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactFullWidth">
+      <div class="pintraContactsPivotContactItem">
+        <div class="pintraContactsPivotContactItemTitle"><span>Ask me about</span></div>
+        {{#each responsibilities as |item i|}}
+        <div class="pintraContactsPivotContactItemValue"><span>{{item.displayName}}</span></div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="interests" type="x-handlebars-template">
+    <div class="pintraContactsPivotContactFullWidth">
+      <div class="pintraContactsPivotContactItem">
+        <div class="pintraContactsPivotContactItemTitle"><span>Interests</span></div>
+        {{#each interests as |item i|}}
+        <div class="pintraContactsPivotContactItemValue"><span>{{item.displayName}}</span></div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="manager" type="x-handlebars-template">
+    <div class="pintraContactsResultsItemContentDisplayName">{{displayName}}</div>
+    <div class="pintraContactsResultsItemContentDepartment">{{department}}</div>
+    <!--div class="pintraContactsResultsItemContentEmail">{{mail}}</div-->
+  </section>
+  <section id="current" type="x-handlebars-template">
+    <div class="pintraContactsResultsItemContentDisplayName">{{displayName}}</div>
+    <div class="pintraContactsResultsItemContentDepartment">{{department}}</div>
+    <!--div class="pintraContactsResultsItemContentEmail">{{mail}}</div-->
+  </section>
+  <section id="directReport" type="x-handlebars-template">
+    <div class="pintraContactsResultsItemContentDisplayName">{{displayName}}</div>
+    <div class="pintraContactsResultsItemContentDepartment">{{department}}</div>
+    <!--div class="pintraContactsResultsItemContentEmail">{{mail}}</div-->
+  </section>
+  <footer id="footer" type="x-handlebars-template">
+    <div></div>
+  </footer>
+</content>
