@@ -5,6 +5,7 @@ web/app/mu-plugins/*
 !web/app/mu-plugins/bedrock-autoloader.php
 !web/app/mu-plugins/disallow-indexing.php
 !web/app/mu-plugins/register-theme-directory.php
+!web/app/mu-plugins/wpo365-login-intranet
 web/app/plugins/*
 !web/app/plugins/windows-azure-storage
 !web/app/plugins/distributor
@@ -13,7 +14,6 @@ web/app/plugins/*
 !web/app/plugins/publishpress-pro
 !web/app/plugins/revisionary-pro
 !web/app/plugins/seo-by-rank-math-pro
-!web/app/plugins/wpo365-login-intranet
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
