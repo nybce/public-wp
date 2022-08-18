@@ -1,0 +1,436 @@
+<content>
+  <script id="jshelpers">
+  </script>
+  <header id="header" type="x-handlebars-template">
+    <style>
+      .pintraEdList {
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      }
+
+      .pintraPersona {
+        position: relative;
+        outline: transparent;
+        min-height: 58px;
+        box-sizing: border-box;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .pintraPersona .pintraPersonaRow {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      /* Card will display avatar and to the right of it the persona's details */
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard {
+        padding: 10px;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        width: 50%;
+        max-width: 50%;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex: 1;
+        flex-grow: 1;
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard:hover {
+        background: #eeeeee;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard::selection {
+        background-color: #bfdcea;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaAvatar {
+        width: 50px;
+        height: 50px;
+        -ms-flex: 0;
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaAvatar .pintraItemIcon {
+        display: block;
+        width: inherit;
+        height: inherit;
+        text-align: center;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaAvatar .pintraItemIcon>img {
+        display: inline-block;
+        width: inherit;
+        height: auto;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaAvatar .pintraPersonaType {
+        font-size: 7px;
+        background-color: #70757a;
+        color: #e3e3e3;
+        text-align: center;
+        width: 100%;
+        height: 14px;
+        line-height: 14px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails {
+        margin-left: 6px;
+        overflow: hidden;
+        padding: 10px;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex: 1;
+        flex-grow: 1;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraPrimaryText {
+        font-size: 21px;
+        font-weight: 100;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraSecondaryText {
+        width: 95%;
+        font-size: 80%;
+        font-weight: 200;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraTertiaryText {
+        font-size: 60%;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraMeta {
+        font-size: 50%;
+        font-weight: 100;
+        color: #70757a;
+        box-sizing: border-box;
+        width: calc(100% - 50px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraActionButtonGroup {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        flex-direction: column;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraActionButtonGroup .pintraActionButtonWrapper {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex: 1;
+        flex-grow: 1;
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        font-size: 12px;
+        line-height: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraActionButtonGroup .pintraActionButtonWrapper .pintraActionButtonIcon {
+        font-size: 12px;
+        line-height: 24px;
+        height: 24px;
+        width: 24px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaDetails .pintraActionButtonGroup .pintraActionButtonWrapper .pintraActionButtonLabel {
+        font-size: 12px;
+        line-height: 24px;
+        height: 24px;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaToggle {
+        width: 24px;
+        height: 24px;
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaToggle span {
+        cursor: pointer;
+      }
+
+      .pintraPersona .pintraPersonaRow .pintraPersonaCard .pintraPersonaToggle span i {
+        font-size: 12px;
+        line-height: 12px;
+        width: 24px;
+        height: 24px;
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+    </style>
+  </header>
+  <main id="item" type="x-handlebars-template">
+    <div class="pintraPersona">
+      <div class="pintraPersonaRow">
+        <div class="pintraPersonaCard">
+          <div class="pintraPersonaAvatar">
+            <div class="pintraItemIcon">
+              {{profilePic profilePics userPrincipalName}}
+            </div>
+            <div class="pintraPersonaType">
+              <span>{{fabricIcon 'Org'}} employee</span>
+            </div>
+          </div>
+          <div class="pintraPersonaDetails">
+            <div class="pintraPrimaryText">
+              {{displayName}}
+            </div>
+            <div class="pintraSecondaryText">
+              {{jobTitle}}
+            </div>
+            <div class="pintraTertiaryText">
+              {{department}}
+            </div>
+            <div class="pintraMeta">
+              Employee ID: {{employeeId}}
+            </div>
+            <div class="pintraActionButtonGroup">
+              <div class="pintraActionButtonWrapper" onclick="window.open('mailto:{{mail}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Mail'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{mail}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('sip:{{imAddresses}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'SkypeForBusinessLogo'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{imAddresses}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('tel:{{mobilePhone}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'CellPhone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{mobilePhone}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('tel:{{businessPhones}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Phone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{businessPhones}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pintraPersonaToggle">
+            {{#ifCond manager '===' undefined}}
+            <span
+              onclick="window.wpo365.getManager('{{../userPrincipalName}}');window.wpo365.getDirectReports('{{../userPrincipalName}}')">
+              {{fabricIcon 'Org'}}
+            </span>
+            {{/ifCond}}
+            {{#ifCond manager '===' null}}
+            <span>
+              {{fabricIcon 'Blocked'}}
+            </span>
+            {{/ifCond}}
+          </div>
+        </div>
+        {{#ifCond manager '!=' null}}
+        <div class="pintraPersonaCard">
+          <div class="pintraPersonaAvatar">
+            <div class="pintraItemIcon">
+              {{profilePic ../profilePics ../manager.userPrincipalName}}
+            </div>
+            <div class="pintraPersonaType">
+              <span>{{fabricIcon 'Org'}} manager</span>
+            </div>
+          </div>
+          <div class="pintraPersonaDetails">
+            <div class="pintraPrimaryText">
+              {{../manager.displayName}}
+            </div>
+            <div class="pintraSecondaryText">
+              {{../manager.jobTitle}}
+            </div>
+            <div class="pintraTertiaryText">
+              {{../manager.department}}
+            </div>
+            <div class="pintraMeta">
+              Employee ID: {{../manager.employeeId}}
+            </div>
+            <div class="pintraActionButtonGroup">
+              <div class="pintraActionButtonWrapper" onclick="window.open('mailto:{{../manager.mail}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Mail'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{../manager.mail}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('sip:{{../manager.imAddresses}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'SkypeForBusinessLogo'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{../manager.imAddresses}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('tel:{{../manager.mobilePhone}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'CellPhone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{../manager.mobilePhone}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper"
+                onclick="window.open('tel:{{../manager.businessPhones}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Phone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{../manager.businessPhones}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/ifCond}}
+      </div>
+      {{#ifCond directReports '!==' undefined}}
+      <div class="pintraPersonaRow">
+        {{#each ../directReports}}
+        <div class="pintraPersonaCard">
+          <div class="pintraPersonaAvatar">
+            <div class="pintraItemIcon">
+              {{profilePic ../../profilePics userPrincipalName}}
+            </div>
+            <div class="pintraPersonaType">
+              <span>{{fabricIcon 'Org'}} direct report</span>
+            </div>
+          </div>
+          <div class="pintraPersonaDetails">
+            <div class="pintraPrimaryText">
+              {{displayName}}
+            </div>
+            <div class="pintraSecondaryText">
+              {{jobTitle}}
+            </div>
+            <div class="pintraTertiaryText">
+              {{department}}
+            </div>
+            <div class="pintraMeta">
+              Employee ID: {{employeeId}}
+            </div>
+            <div class="pintraActionButtonGroup">
+              <div class="pintraActionButtonWrapper" onclick="window.open('mailto:{{mail}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Mail'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{mail}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('sip:{{imAddresses}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'SkypeForBusinessLogo'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{imAddresses}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('tel:{{mobilePhone}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'CellPhone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{mobilePhone}}
+                </div>
+              </div>
+              <div class="pintraActionButtonWrapper" onclick="window.open('tel:{{businessPhones}}', '_blank')">
+                <div class="pintraActionButtonIcon">
+                  {{fabricIcon 'Phone'}}
+                </div>
+                <div class="pintraActionButtonLabel">
+                  {{businessPhones}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{/ifCond}}
+    </div>
+  </main>
+  <footer id="footer" type="x-handlebars-template">
+    <div></div>
+  </footer>
+</content>

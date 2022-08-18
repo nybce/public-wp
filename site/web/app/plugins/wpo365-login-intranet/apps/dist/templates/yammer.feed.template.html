@@ -1,0 +1,340 @@
+<content>
+  <script id="jshelpers">
+    if (!!window.wpo365
+      && 'registerHandlebarsHelper' in window.wpo365
+      && 'handlebarsSafeString' in window.wpo365
+      && 'moment' in window.wpo365) {
+      window.wpo365.registerHandlebarsHelper('formatSummary',
+        function (summary) {
+          return window.wpo365.handlebarsSafeString(
+            summary
+              .replace(/<c0\>/g, '<strong>')
+              .replace(/<\/c0\>/g, '</strong>')
+              .replace(/<ddd\/>/g, '&#8230'));
+        });
+      window.wpo365.registerHandlebarsHelper('formatDateTime', function (dateString, formatString) {
+        if (!!dateString && !!formatString) {
+          return window.wpo365.moment(Date.parse(dateString)).format(formatString);
+        }
+        return dateString;
+      });
+      window.wpo365.registerHandlebarsHelper('yammerIcon', function (svg) {
+        if (!!svg) {
+          return window.wpo365.handlebarsSafeString(svg);
+        }
+        return '';
+      });
+    }
+  </script>
+  <header id="header" type="x-handlebars-template">
+    <style>
+      .pintra-flex {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+      }
+
+      .pintra-flex-column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      .pintra-flex-shrink-0 {
+        -webkit-flex-shrink: 0;
+        -moz-flex-shrink: 0;
+        flex-shrink: 0;
+      }
+
+      .pintra-flex-grow-1 {
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+      }
+
+      .pintra-align-items {
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .pintra-align-items-start {
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        -webkit-align-items: flex-start;
+        align-items: flex-start;
+      }
+
+      .pintra-justify-content {
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+      }
+
+      .pintraYammerFeed {
+        font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      }
+
+      .pintraYammerMessage {
+        outline: transparent;
+        min-height: 60px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #eee;
+        margin: 3px;
+        cursor: pointer;
+        background-color: #ffffff;
+      }
+
+      .pintraYammerMessage:hover {
+        background: #eee;
+      }
+
+      .pintraYammerMessage::selection {
+        background-color: #bfdcea;
+      }
+
+      .pintraYammerMugshotArea {
+        width: 50px;
+        height: 50px;
+      }
+
+      .pintraYammerMugshot {
+        display: block;
+        width: inherit;
+        height: inherit;
+        text-align: center;
+      }
+
+      .pintraYammerMugshot>img {
+        display: inline-block;
+        width: inherit;
+        height: auto;
+        border-radius: 50%;
+      }
+
+      .pintraYammerTitleArea {
+        width: calc(100% - 50px);
+        box-sizing: border-box;
+        padding: 5px 20px;
+      }
+
+      .pintraYammerGroupArea {
+        height: 20px;
+        line-height: 20px;
+      }
+
+      .pintraYammerGroupIcon {
+        font-size: 14px;
+        line-height: 14px;
+        height: 14px;
+        width: 20px;
+        margin: 0;
+        padding: 0;
+        color: #0078d4;
+      }
+
+      .pintraYammerGroupName {
+        font-size: 12px;
+        line-height: 14px;
+        height: 14px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pintraYammerTitle {
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: calc(100% - 50px);
+        height: 20px;
+        line-height: 20px;
+      }
+
+      .pintraYammerTimestamp {
+        color: #646d7a;
+        font-weight: 200;
+        font-size: 12px;
+      }
+
+      .pintraYammerMain {
+        margin: 5px 20px 5px 70px;
+        padding: 10px 10px 10px 0px;
+        border-top: 1px solid #eee;
+        height: 100%;
+      }
+
+      .pintraYammerIcon>div {
+        padding: 0px 10px 0px 0px;
+      }
+
+      .pintraYammerIcon>div>svg {
+        width: 24px !important;
+        height: 24px !important;
+        color: #0078d4;
+      }
+
+      .pintraYammerBody {
+        font-size: 13px;
+      }
+
+      .pintraYammerBodyTitle {
+        padding: 0px;
+        font-size: 14px;
+        display: block;
+        font-weight: 600;
+      }
+
+      .pintraYammerBodyContent {
+        padding: 0px;
+        display: block;
+        font-size: 13px;
+      }
+
+      .pintraYammerBodyImage>img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+
+      .pintraYammerLikes {
+        line-height: 20px;
+        height: 20px;
+        margin-left: 70px;
+        font-size: 12px;
+      }
+
+      .pintraYammerLikesIcon {
+        font-size: 12px;
+        line-height: 12px;
+        height: 12px;
+        width: 20px;
+        color: #0078d4;
+      }
+
+      .pintraYammerLikesCount {
+        height: 12px;
+        line-height: 12px;
+        color: #0078d4;
+      }
+
+      .pintraYammerLoadMore {
+        padding: 5px;
+      }
+    </style>
+  </header>
+  <main id="item" type="x-handlebars-template">
+    <div class="pintra-flex pintra-flex-column pintraYammerFeed">
+      {{#each messages}}
+      <div class="pintra-flex pintra-flex-column pintraYammerMessage"
+        onclick="window.open('{{{this.web_url}}}', '_blank')">
+        <div class="pintra-flex pintraYammerHeader">
+          <div class=".pintra-flex-shrink-0 pintraYammerMugshotArea">
+            <div class="pintraYammerMugshot">
+              {{yavatar this.sender.mugshot_url this.sender.mugshot_url_template}}
+            </div>
+          </div>
+          <div class="pintra-flex pintra-flex-column pintra-flex-grow-1 pintraYammerTitleArea">
+            <div class="pintra-flex pintraYammerGroupArea">
+              <div class="pintraYammerGroupIcon">
+                {{fabricIcon 'Group'}}
+              </div>
+              <div class="pintra-flex-grow-1 pintraYammerGroupName">{{this.group.full_name}}</div>
+            </div>
+            <div class="pintraYammerTitle">{{this.sender.full_name}} - <span
+                class="pintraYammerTimestamp">{{formatDateTime this.created_at 'l LT'}}</span></div>
+          </div>
+        </div>
+        <div class="pintra-flex pintra-align-items-start pintraYammerMain">
+          <div class="pintra-flex-shrink-0 pintraYammerIcon">
+            {{#ifCond this.message_type '==' 'question'}}
+            <div class="pintra-flex pintra-flex-column">
+              <svg viewBox="0 0 240 240" class="y-icon" aria-hidden="true" tabindex="-1" focusable="false"
+                style="height: 14px; width: 14px;">
+                <path
+                  d="M137.7 75c0 10.5-2.85 18-8.55 24s-14.4 10.5-24.45 12v16.8H90.45V108c0-3 2.85-7.5 5.7-7.5 8.55-1.5 27.3-9 27.3-24 0-9-8.55-19.5-27.3-19.5-17.25 0-27.3 18-28.65 25.5L56 75c1.45-10.5 15.7-31.5 41.5-31.5S137.7 63 137.7 75zm-47.25 61.5h14.4v12h-14.4z">
+                </path>
+                <path
+                  d="M51.6 232.5V174C23 159 0 129 0 96 0 46.5 41.55 7.5 94.65 7.5c51.6 0 94.65 39 94.65 88.5 0 24-10.05 45-27.3 61.5S123.3 183 100.35 183zM94.65 21C50.25 21 12.9 54 12.9 96c0 28.5 18.6 55.5 47.4 67.5L66 165v34.5l28.65-30h1.5c21.45 0 41.55-9 55.95-22.5a73.08 73.08 0 0 0 23-52.5C176.4 54 139.2 21 94.65 21z">
+                </path>
+                <path
+                  d="M184.5 229.5L135 198l7.5-12 28.5 19.5 1.5-25.5 4.5-1.5c30-12 49.5-37.5 49.5-67.5 0-19.5-9-39-24-52.5l9-10.5c18 16.5 28.5 39 28.5 63 0 33-21 63-54 78z">
+                </path>
+              </svg>
+            </div>
+            {{/ifCond}}
+            {{#ifCond this.message_type '==' 'announcement'}}
+            <div class="pintra-flex pintra-flex-column">
+              <svg viewBox="0 0 240 240" class="y-icon" aria-hidden="true" tabindex="-1" focusable="false"
+                style="height: 14px; width: 14px;">
+                <path fill-rule="evenodd"
+                  d="M0 90c1.094 0 2.598.04 4.512.117 1.914.078 3.77.117 5.566.117.86 0 1.66-.02 2.402-.058.743-.04 1.348-.098 1.817-.176L225 52.5a17.122 17.122 0 0 1 1.875-.176c.781-.039 1.64-.058 2.578-.058 1.875 0 3.828.039 5.86.117 2.03.078 3.593.117 4.687.117v135c-1.094 0-2.617.02-4.57.059-1.953.039-3.867.058-5.743.058h-3.515c-1.016 0-1.836-.078-2.461-.234l-89.414-15.938c-.781 4.453-2.285 8.594-4.512 12.422-2.226 3.828-4.98 7.11-8.262 9.844-3.28 2.734-6.972 4.883-11.074 6.445-4.101 1.563-8.418 2.344-12.949 2.344-5.156 0-10.02-.977-14.59-2.93-4.57-1.953-8.555-4.629-11.953-8.027-3.398-3.398-6.074-7.383-8.027-11.953C60.977 175.02 60 170.156 60 165c0-2.188.234-4.414.703-6.68L14.297 150a28.823 28.823 0 0 0-2.05-.176 45.878 45.878 0 0 0-2.403-.058c-1.719 0-3.457.039-5.215.117-1.758.078-3.3.117-4.629.117V90zm97.5 97.5c2.734 0 5.352-.469 7.852-1.406 2.5-.938 4.726-2.246 6.68-3.926a23.253 23.253 0 0 0 4.921-5.918c1.328-2.266 2.227-4.766 2.695-7.5l-44.296-7.852A24.936 24.936 0 0 0 75 165c0 3.125.586 6.055 1.758 8.79 1.172 2.733 2.773 5.116 4.805 7.148 2.03 2.03 4.414 3.632 7.148 4.804 2.734 1.172 5.664 1.758 8.789 1.758zM225 67.617L15 105v30c.547 0 .977.04 1.29.117L225 172.383V67.617z">
+                </path>
+              </svg>
+            </div>
+            {{/ifCond}}
+            {{#ifCond this.message_type '==' 'poll'}}
+            <div class="pintra-flex pintra-flex-column">
+              <svg viewBox="0 0 240 240" class="y-icon" aria-hidden="true" tabindex="-1" focusable="false"
+                style="height: 14px; width: 14px;">
+                <path fill-rule="evenodd"
+                  d="M180 30v45H45V30h135zm-15 30V45H60v15h105zm-15 30v45H45V90h105zm-15 30v-15H60v15h75zm75 30v45H45v-45h165zm-15 30v-15H60v15h135zM30 210h195v15H15V15h15v195z">
+                </path>
+              </svg>
+            </div>
+            {{/ifCond}}
+            {{#if this.attachments.praise}}
+            {{#each ./this.attachments.praise}}
+            <div class="pintra-flex pintra-flex-column">
+              {{yammerIcon this.icon}}
+            </div>
+            {{/each}}
+            {{/if}}
+          </div>
+          <div class="pintraYammerBody">
+            {{#if this.attachments.praise}}
+            {{#each ./this.attachments.praise}}
+            <div class="pintraYammerBodyTitle">{{yammerIcon this.description}}</div>
+            <div class="pintraYammerBodyContent">{{yammerIcon this.comment}}</div>
+            {{/each}}
+            {{else if this.attachments.image}}
+            <div class="pintraYammerBodyTitle">{{./this.content_excerpt}}</div>
+            {{#each ./this.attachments.image}}
+            <div class="pintraYammerBodyImage"><img src="{{{this.preview}}}"></div>
+            {{/each}}
+            {{else if this.attachments.shared_message}}
+            <div class="pintraYammerBodyTitle">{{./this.content_excerpt}}</div>
+            {{#each ./this.attachments.shared_message}}
+            <div class="pintraYammerBodyContent">{{this.content_excerpt}}</div>
+            {{/each}}
+            {{else}}
+            <div>{{this.content_excerpt}}</div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="pintra-flex pintraYammerFooter">
+          <div class="pintra-flex pintra-align-items pintraYammerLikes">
+            <div class="pintraYammerLikesIcon">{{fabricIcon 'LikeSolid'}}</div>
+            <div class="pintra-flex pintraYammerLikesCount">{{this.liked_by.count}}</div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </main>
+  <footer id="footer" type="x-handlebars-template">
+    </div>
+  </footer>
+</content>
