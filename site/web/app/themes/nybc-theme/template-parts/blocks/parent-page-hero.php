@@ -35,6 +35,8 @@ $image_url  = ! empty( $image ) ? $image['sizes']['1915x'] : get_the_post_thumbn
 
 	<div class="banner-inner type-3">
 
+		<div class="opacity"></div>
+
 		<div class="banner-wrapper">
 
 			<div class="container container-lg">
