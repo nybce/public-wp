@@ -90,7 +90,7 @@ resource "azurerm_network_security_rule" "nsg_rule" {
       source_address_prefix  = "*"
       priority               = 2
     }
-    applicationssh = {
+    applicationssl = {
       destination_port_range = "443"
       source_port_range      = "*"
       source_address_prefix  = "*"
