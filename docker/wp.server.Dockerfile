@@ -119,7 +119,7 @@ COPY docker/sshd_config /etc/ssh/
 
 # Copy and configure the ssh_setup file
 RUN mkdir -p /tmp
-COPY docker/ssh_setup.sh /tmp
+COPY docker/bin/setup-ssh.sh /tmp
 RUN chmod +x /tmp/ssh_setup.sh \
     && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
