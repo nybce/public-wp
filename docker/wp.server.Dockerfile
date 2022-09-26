@@ -111,8 +111,7 @@ EXPOSE 80
 
 # Enable Azure SSH
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
-RUN apk add openssh \
-     && echo "root:Docker!" | chpasswd 
+RUN apt-get update && apt-get install -y openssh && echo "root:Docker!" | chpasswd 
 
 # Copy the sshd_config file to the /etc/ssh/ directory
 COPY docker/sshd_config /etc/ssh/
