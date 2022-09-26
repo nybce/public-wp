@@ -12,6 +12,14 @@
 	justify-content: space-between;
 }
 
+.select-item-wrapper{
+	display:flex;
+	align-items:center;
+	.select-item{
+		min-width:125px;
+		padding-left:15px;
+	}
+}
 .select-item-total {
 	color: $color-text-10;
 	font-size: 1.6rem;
@@ -52,7 +60,6 @@
 		padding: 0 3.4rem 0 0;
 		position: relative;
 		text-align: right;
-		width: 36.6rem;
 
 		img {
 			max-height: 2.4rem;

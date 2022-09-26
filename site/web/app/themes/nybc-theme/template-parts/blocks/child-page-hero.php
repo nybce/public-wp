@@ -59,7 +59,7 @@ $image_url  = ! empty( $image ) ? $image['sizes']['1915x'] : get_the_post_thumbn
 		</div>
 
 		<?php if ( ! empty( $image_url ) ) { ?>
-			<div class="opacity-1"></div>
+			<div class="opacity"></div>
 			<div class="bg rellax" style="background-image: url('<?php echo esc_url( $image_url ); ?>');"></div>
 		<?php } elseif ( ! empty( $color ) ) { ?>
 			<div class="bg" style="background-color: <?php echo esc_attr( $color ); ?>"></div>

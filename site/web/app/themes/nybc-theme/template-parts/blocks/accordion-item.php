@@ -30,6 +30,7 @@ $allowed_blocks = array(
 	'core/list',
 	'acf/blockquote',
 	'core/paragraph',
+	'core/image',
 );
 ?>
 

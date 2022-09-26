@@ -56,7 +56,10 @@ $posts_query = $wp_query->posts;
 
 						$image_url   = get_the_post_thumbnail_url( $pst, '380x369' );
 						$block_title = get_the_title( $pst );
-						$image       = array(
+						$tags        = get_the_tags( $pst->ID );
+						$first_tag   = ! empty( $tags ) ? $tags[0]->name : null;
+
+						$image = array(
 							'url' => $image_url,
 							'alt' => $block_title,
 						);
@@ -68,7 +71,12 @@ $posts_query = $wp_query->posts;
 								<?php NYBC_Helpers::picture( $image ); ?>
 							</div>
 						<?php } ?>
+
 						<div class="search-card-info">
+							<?php if ( $first_tag ) { ?>
+								<div class="h6 tagline"><?php echo esc_html( $first_tag ); ?></div>
+								<div class="spacer-16"></div>
+							<?php } ?>
 
 							<div class="h4 title fw-800"><?php echo esc_html( $block_title ); ?></div>
 
