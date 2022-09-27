@@ -43,6 +43,7 @@ if (file_exists($root_dir . '/.env')) {
  */
 define('WP_ENV', env('WP_ENV') ?: 'production');
 
+
 /**
  * URLs
  */
@@ -74,6 +75,13 @@ if (env('DATABASE_URL')) {
   Config::define('DB_USER', $dsn->user);
   Config::define('DB_PASSWORD', isset($dsn->pass) ? $dsn->pass : null);
   Config::define('DB_HOST', isset($dsn->port) ? "{$dsn->host}:{$dsn->port}" : $dsn->host);
+}
+
+/**
+ * WPO365 Settings
+ */
+if (env('WPO_SCIM_TOKEN')) {
+    Config::define('WPO_SCIM_TOKEN', env('WPO_SCIM_TOKEN'));
 }
 
 /**
@@ -136,7 +144,7 @@ $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 if (file_exists($env_config)) {
   require_once $env_config;
 }
-
+Config::define('FS_METHOD', 'direct' );
 Config::apply();
 
 /**

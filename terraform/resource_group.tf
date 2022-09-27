@@ -4,7 +4,13 @@ resource "azurerm_resource_group" "vmss" {
 }
 
 resource "azurerm_role_assignment" "access" {
-  scope                = "${azurerm_resource_group.vmss.id}"
+  scope                = azurerm_resource_group.vmss.id
   role_definition_name = "Contributor"
   principal_id         = "0e57e1d8-8d66-45f4-9455-fc584b103c3f"
+}
+
+resource "azurerm_role_assignment" "access_2" {
+  scope = azurerm_resource_group.vmss.id
+  role_definition_name = "Contributor"
+  principal_id = "d93fbbd5-37f7-40a7-82dd-7e45952d81f7"
 }

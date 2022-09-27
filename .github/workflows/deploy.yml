@@ -24,7 +24,7 @@ jobs:
           case $GITHUB_REF in
             refs/heads/develop)
               export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_DEVELOP }}
-              export DOCKER_USERNAME=${{ env.DOCKER_REGISTRY_DEVELOP_USERNAME }}
+              export DOCKER_USERNAME=${{ secrets.DOCKER_REGISTRY_DEVELOP_USERNAME }}
               export DOCKER_PASSWORD=${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
               export DOCKER_TAG="nybcteam/nybc-wordpress:develop"
               ;;
@@ -32,7 +32,7 @@ jobs:
               export DOCKER_REGISTRY_DOMAIN=${{ env.DOCKER_REGISTRY_STAGING }}
               export DOCKER_USERNAME=${{ env.DOCKER_REGISTRY_STAGING_USERNAME }}
               export DOCKER_PASSWORD=${{ secrets.DOCKER_REGISTRY_STAGING_PASSWORD }}
-              export DOCKER_TAG="nybcwordpresscontainerregistry/nybcteamnybc-wordpress:staging"
+              export DOCKER_TAG="nybcwordpresscontainerregistry.azurecr.io/nybcwordpresscontainerregistry/nybcteamnybc-wordpress:staging"
               ;;
             *)
               echo "This ref case not handled yet; bailing out"; exit 1
@@ -61,7 +61,7 @@ jobs:
       - name: Log into docker registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ env.DOCKER_REGISTRY }}
+          registry: ${{ env.DOCKER_REGISTRY_DOMAIN }}
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ env.DOCKER_PASSWORD }}
       -

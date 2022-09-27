@@ -48,7 +48,7 @@
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.0.0",
         "roots/multisite-url-fixer": "^1.1",
-        "advanced-custom-fields/advanced-custom-fields-pro": "^5.9",
+        "advanced-custom-fields/advanced-custom-fields-pro": ">=5.9 <5.11",
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
@@ -64,7 +64,8 @@
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
-        "wpackagist-plugin/wp-fastest-cache": "^1.03"
+        "wpackagist-plugin/wpo365-login":"17.4",
+        "wpackagist-plugin/wp-fastest-cache": "^1.0.5"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -97,6 +98,7 @@
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
+                "wpackagist-plugin/wpo365-login",
                 "wpackagist-plugin/seo-by-rank-math"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
