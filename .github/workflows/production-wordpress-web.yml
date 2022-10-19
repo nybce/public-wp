@@ -60,6 +60,7 @@ jobs:
         script: '.tags[-1]'
         compact: true
         raw-output: true
+      run: |
         OUTPUT=$(echo "${{ steps.get-sha-tag.outputs.output }}" | awk -F: '{print $NF}')
         echo "::set-output name=sha_tag::${OUTPUT}"
 
