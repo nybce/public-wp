@@ -47,7 +47,7 @@ jobs:
       id: meta
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        images: ${{ env.REGISTRY }}/${{ env.image-name }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         tags: |
           type=ref,event=branch
           type=sha,enable=true,prefix=sha-,format=short
