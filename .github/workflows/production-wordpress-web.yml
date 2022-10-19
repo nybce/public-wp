@@ -38,7 +38,7 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v1
       with:
-        registry: https://nybcwordpresscontainerregistry.azurecr.io/
+        registry: ${{ env.REGISTRY }}
         username: '00000000-0000-0000-0000-000000000000'
         password: ${{ env.ACR_LOGIN_TOKEN }}
 
