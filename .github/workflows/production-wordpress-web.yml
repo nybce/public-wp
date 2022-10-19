@@ -87,7 +87,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'staging-wordpress-web'
+        app-name: 'production-wordpress-web'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}
         images: '${{ steps.get-sha-tag.outputs.output }}'
