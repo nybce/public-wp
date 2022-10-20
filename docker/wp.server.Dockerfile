@@ -109,6 +109,11 @@ WORKDIR /var/www/html
 
 EXPOSE 80
 
+
+RUN rm /etc/apache2/sites-enabled/*
+COPY docker/apacheconfig/vhosts/* /etc/apache2/sites-enabled/
+COPY docker/apacheconfig/authusers /etc/apache2/authusers
+
 # Enable Azure SSH
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
 RUN apt-get update && apt-get install -y openssh-server && echo "root:Docker!" | chpasswd 
@@ -126,4 +131,4 @@ RUN chmod +x /tmp/setup-ssh.sh \
 EXPOSE 80 2222
 
 
-CMD ["apache2-foreground"]
+CMD ["bash", "/usr/local/bin/wp-entrypoint.sh", "apache2-foreground"]
