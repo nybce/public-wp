@@ -131,4 +131,4 @@ RUN chmod +x /tmp/setup-ssh.sh \
 EXPOSE 80 2222
 
 
-CMD ["apache2-foreground"]
+CMD ["bash", "/usr/local/bin/wp-entrypoint.sh", "apache2-foreground"]
