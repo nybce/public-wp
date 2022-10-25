@@ -1,0 +1,44 @@
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $open-sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 164%;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: $white;
+  border: 2px solid $navy;
+  border-radius: 2px;
+
+  &:checked {
+    background-image: url('/wp-content/themes/scb/img/icon-checkmark-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $bright-blue;
+    border: 2px solid $bright-blue;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    background-color: inherit;
+    outline: 2px solid $bright-blue;
+  }
+
+  &:disabled {
+    border: 2px solid $gray-20;
+
+    &:checked {
+      background-color: $gray-20;
+    }
+  }
+}

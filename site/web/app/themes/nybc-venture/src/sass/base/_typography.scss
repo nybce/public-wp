@@ -1,0 +1,212 @@
+// Body
+body {
+  color: $navy;
+  font-family: $open-sans;
+  // font-size: 18px;
+  // line-height: 30px;
+}
+
+// Headings
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: $source-sans-pro;
+  font-weight: 600;
+}
+
+h1, .h1 {
+  @include h1;
+}
+
+h2, .h2 {
+  @include h2;
+}
+
+h3, .h3 {
+  @include h3;
+}
+
+h4, .h4 {
+  @include h4;
+}
+
+h5, .h5 {
+  @include h5;
+}
+
+h6, .h6 {
+  font-size: 22px;
+  line-height: 120%;
+}
+
+
+// Body 
+.body-01 {
+  @include body-01;
+}
+
+.body-01-bold {
+  @include body-01-bold;
+}
+
+.body-02 {
+  @include body-02;
+}
+
+.body-02-bold {
+  @include body-02-bold;
+}
+
+.body-03 {
+  @include body-03;
+}
+
+.body-03-bold {
+  @include body-03-bold;
+}
+
+// Body-04 styles are for mobile only
+.body-04 {
+  @include body-04;
+}
+
+.body-04-bold {
+  @include body-04-bold;
+}
+
+// Text
+.label-large-semibold {
+  @include label-large-semibold;
+}
+
+.label-large-regular {
+  @include label-large-regular;
+}
+
+.label-small-semibold {
+  @include label-small-semibold;
+}
+
+.label-small-regular {
+  @include label-small-regular;
+}
+
+.highlight-quote {
+  @include highlight-quote;
+}
+
+.data-headline-01 {
+  @include data-headline-01;
+}
+
+.data-headline-02 {
+  @include data-headline-02;
+}
+
+.data-headline-03 {
+  @include data-headline-03;
+}
+
+.data-text-01 {
+  @include data-text-01;
+}
+
+.data-text-02 {
+  @include data-text-02;
+}
+
+// Text Links
+.text-link-01-semibold {
+  @include text-link-01-semibold;
+}
+
+.text-link-01-medium {
+  @include text-link-01-medium;
+}
+
+.text-link-02-semibold {
+  @include text-link-02-semibold;
+}
+
+.text-link-02-medium {
+  @include text-link-02-medium;
+}
+
+// Cards
+.card-title-large {
+  @include card-title-large;
+}
+
+.card-title-small {
+  @include card-title-small;
+}
+
+
+.content {
+  h2 {
+    @include h3;
+    margin-bottom: 24px;
+
+    @include for-tablet-landscape-up {
+      @include h4;
+    }
+  }
+
+  h3 {
+    @include h4;
+    margin-bottom: 24px;
+
+    @include for-tablet-landscape-up {
+      @include h5;
+    }
+  }
+
+  strong {
+    @include body-03-bold;
+
+    @include for-tablet-landscape-up {
+      @include body-02-bold;
+    }
+  }
+
+  p {
+    @include body-03;
+    margin-bottom: 24px;
+
+    @include for-tablet-landscape-up {
+      @include body-02;
+    }
+  }
+
+  ul {
+    margin-bottom: 24px;
+    padding-left: 32px;
+    list-style: disc;
+    @include body-03;
+
+    @include for-tablet-landscape-up {
+      @include body-02;
+    }
+  }
+
+  ol {
+    margin-bottom: 24px;
+    padding-left: 32px;
+    list-style: decimal;
+    @include body-03;
+
+    @include for-tablet-landscape-up {
+      @include body-02;
+    }
+  }
+
+  a {
+    color: $bright-blue;
+
+    &:hover {
+      color: $bright-blue;
+    }
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
