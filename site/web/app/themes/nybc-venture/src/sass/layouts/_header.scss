@@ -1,0 +1,521 @@
+.header-top {
+  position: fixed;
+  display: none;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: 44px;
+  padding: 12px;
+  background-color: $white;
+  top: 0;
+  z-index: 110;
+
+  @include background-colors;
+
+  &-rwj {
+    display: none;
+    gap: 4px;
+  }
+
+  @include for-desktop-up {
+    display: flex;
+
+    &-rwj {
+      display: flex;
+    }
+  }
+}
+
+.header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  background-color: $white;
+  border-top: 0.5px solid $gray-30;
+  border-bottom: 0.5px solid $gray-30;
+  z-index: 110;
+
+  @include background-colors;
+
+  &-logo-scb {
+    display: flex;
+    align-items: center;
+    height: 96px;
+    line-height: 0;
+
+    svg {
+      width: auto;
+      height: 36px;
+    }
+  }
+
+  &-nav-container {
+    position: fixed;
+    display: flex;
+    gap: 24px;
+    right: 0;
+    top: 0;
+
+    @include for-desktop-up {
+      top: 45px;
+    }
+  }
+
+  &-nav {
+    display: none;
+    line-height: 0;
+
+    &-item-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      line-height: 0;
+      padding: 24px;
+
+      &:hover {
+        color: $bright-blue;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+    }
+  }
+
+  &-nav-right {
+    display: flex;
+
+    &-item-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 97px;
+      padding: 36px 20px;
+      border-left: 0.5px solid $gray-30;
+      line-height: 0;
+
+      svg {
+        pointer-events: none;
+        max-width: unset;
+        max-height: unset;
+      }
+    }
+
+    &-item-btn-bright-blue[aria-expanded="true"] {
+      color: $white;
+      background-color: $bright-blue;
+      border-bottom: 1px solid $bright-blue;
+
+      svg path {
+        fill: $white;
+      }
+    }
+    
+    .btn-stay-informed {
+      display: none;
+    }
+  }
+
+  @include for-desktop-up {
+    top: 44px;
+
+    &-nav-right {
+      &-item-btn {
+        padding: 45px 48px;
+      }
+
+      .btn-mobile-menu {
+        display: none;
+      }
+      .btn-stay-informed {
+        display: flex;
+      }
+    }
+    &-nav {
+      display: flex;
+    }
+  }
+
+  @include for-large-desktop-up {
+    &-logo-scb {
+      svg {
+        width: auto;
+        height: 44px;
+      }
+    }
+  }
+  
+}
+
+
+
+
+
+
+
+.nav-mobile {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100vw;
+  height: calc(100vh - 98px);
+  padding-top: 40px;
+  background-color: $white;
+  top: 97px;
+  z-index: 100;
+  transition: transform $ease;
+  transform: translateY(-200%);
+
+  @include background-colors;
+
+  &.display {
+    transform: translateY(0%);
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &-subnav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 98px);
+    width: 100vw;
+    padding-top: 40px;
+    background-color: $white;
+    top: 0;
+    transition: transform $ease;
+    transform: translateX(300%);
+    z-index: 101;
+
+    @include background-colors;
+
+    &.display {
+      transform: translateX(0%);
+    }
+
+    &-btn-back {
+      margin-bottom: 24px;
+    }
+  }
+
+  &-subnav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 28px;
+  }
+
+  &-subnav-list-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 28px;
+
+    &-item-title {
+      margin-bottom: 8px;
+    }
+
+    &-item-body {
+      margin-bottom: 16px;
+    }
+
+    &-item-list-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &-footer-link {
+    display: flex;
+    width: 100%;
+    padding: 32px;
+    border-top: 0.5px solid $gray-30;
+  }
+
+  &-footer-bright-blue {
+    color: $white;
+    background-color: $bright-blue;
+  }
+
+  &-footer-stay-informed {
+    display: none;
+    padding: 32px 0;
+    opacity: 0;
+    transition: transform $ease;
+    transform: translateY(200vh);
+
+    &.display {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-body {
+      margin-top: 8px;
+    }
+  }
+
+  .stay-informed-btn {
+    width: 100%;
+    max-height: 62px;
+    border-color: $white;
+    justify-content: center;
+  }
+
+  .stay-informed-input {
+    width: 100%;
+    border-color: $white;
+    text-align: left;
+  }
+
+  .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 32px;
+
+    p {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 16px;
+    }
+  }
+
+  @include for-tablet-landscape-up {
+    .stay-informed-btn {
+      width: unset;
+    }
+
+    .stay-informed-input {
+      width: 320px;
+    }
+  
+    .wpcf7-form {
+      p {
+        flex-direction: row;
+        gap: 4px;
+      }
+    }
+  }
+}
+
+
+.nav-desktop {
+  opacity: 0;
+  transition: opacity $ease;
+
+  &.display {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 97px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 1;
+  }
+  
+  &-subnav {
+    position: fixed;
+    width: 100vw;
+    padding: 96px 0;
+    background-color: $white;
+    transition: transform $ease;
+    transform: translateY(-200%);
+    left: 0;
+    z-index: 100;
+    
+    @include background-colors;
+
+    &.display {
+      transform: translateY(1px);
+    }
+
+    .nav-desktop-subnav-btn-close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+
+      svg {
+        pointer-events: none;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    
+
+    &-bright-blue {
+      color: $white;
+      background-color: $bright-blue;
+
+      .nav-desktop-subnav-btn-close svg {
+        path {
+          fill: $white;
+        }
+      }
+    }
+
+    &-small {
+      padding: 60px 0;
+    }
+
+    &-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      width: 100%;
+
+      .nav-desktop-subnav-btn-close {
+        position: unset;
+        top: unset;
+        left: unset;
+      }
+    }
+
+    form,
+    .input-search,
+    .input-search input {
+      width: 100%;
+    }
+  }
+
+  &-subnav-list {
+    margin-bottom: 80px;
+    column-count: 3;
+    column-gap: 36px;
+
+    &-item {
+      display: block;
+    }
+
+    &-item + &-item {
+      margin-top: 20px;
+    }
+  }
+
+  &-subnav-list-intro {
+    display: flex;
+    gap: 64px;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    &-item-list-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  .stay-informed-btn {
+    max-height: 62px;
+    border-color: $white;
+  }
+
+  .stay-informed-input {
+    width: 320px;
+    border-color: $white;
+    text-align: left;
+  }
+
+  .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 24px;
+
+    p {
+      display: flex;
+      gap: 4px;
+    }
+  }
+
+  .wpcf7-not-valid-tip {
+    margin-top: 8px;
+    color: $white;
+  }
+
+  .wpcf7 form .wpcf7-response-output {
+    margin: 8px 0 0 0;
+    padding: unset;
+    border: unset;
+    color: $white;
+  }
+
+  .wpcf7 form.invalid .wpcf7-response-output,
+  .wpcf7 form.unaccepted .wpcf7-response-output,
+  .wpcf7 form.payment-required .wpcf7-response-output {
+    border: unset;
+    color: $white;
+  }
+
+  @include for-desktop-up {
+    &.display {
+      top: 140px;
+    }
+  }
+}
+
+// admin styles
+.admin-bar {
+  padding-top: 85px;
+  
+  .header {
+    top: 32px;
+
+    &-nav-container {
+      top: 33px;
+    }
+  }
+
+  .nav-desktop {
+    &-subnav {
+      &.display {
+        top: 129px;
+      }
+    }
+  }
+
+  .nav-mobile {
+    top: 129px;
+  }
+
+  @include for-desktop-up {
+    padding-top: 141px;
+
+    .header-top {
+      top: 32px;
+    }
+
+    .header {
+      top: 76px;
+
+      &-nav-container {
+        top: 77px;
+      }
+    }
+
+    .nav-desktop {
+      &-subnav {
+        &.display {
+          top: 172px;
+        }
+      }
+    }
+
+  }
+  
+}

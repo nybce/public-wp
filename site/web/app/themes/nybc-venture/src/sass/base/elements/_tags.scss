@@ -1,0 +1,69 @@
+.tag-card {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px 16px;
+  font-family: $barlow;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  white-space: nowrap;
+  color: $bright-blue;
+  border: 1px solid $gray-20;
+  outline: 1px solid transparent;
+  border-radius: 4px;
+
+  &-small {
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 110%;
+  }
+
+  &:hover {
+    background-color: $mint;
+    border-color: $mint;
+  }
+
+  &:focus {
+    border-color: $bright-blue;
+    outline-color: $bright-blue;
+  }
+}
+
+.tag-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  font-family: $barlow;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 18px;
+  color: $navy;
+  background-color: $mint;
+  border: 1px solid $mint;
+  outline: 1px solid transparent;
+  border-radius: 4px;
+
+  svg {
+    position: relative;
+    top: 1px;
+    height: 11px;
+    width: auto;
+  }
+
+  &-small {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: $mint-hover;
+    border-color: $mint-hover;
+  }
+
+  &:focus {
+    background-color: $mint;
+    border-color: $bright-blue;
+    outline-color: $bright-blue;
+  }
+}

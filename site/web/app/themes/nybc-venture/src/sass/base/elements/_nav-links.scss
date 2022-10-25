@@ -1,0 +1,103 @@
+.nav-link-mobile {
+  font-family: $barlow;
+  font-weight: 600;
+
+  &.icon-chevron-right::after {
+    display: inline-block;
+    content: '';
+    width: 8.55px;
+    height: 15px;
+    background-image: url('/wp-content/themes/scb/img/icon-chevron-right.svg');
+    background-size: 8.55px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 12px;
+  }
+
+  &.icon-arrow-right {
+    color: $bright-blue;
+  }
+
+  &.icon-arrow-right::after {
+    display: inline-block;
+    content: '';
+    width: 8.55px;
+    height: 15px;
+    background-image: url('/wp-content/themes/scb/img/icon-arrow-right.svg');
+    background-size: 8.55px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 12px;
+  }
+
+  &.icon-chevron-left::before {
+    display: inline-block;
+    content: '';
+    width: 15px;
+    height: 12.5px;
+    background-image: url('/wp-content/themes/scb/img/icon-chevron-left.svg');
+    background-size: 15px 12.5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
+  }
+
+  &-primary {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  &-secondary {
+    font-size: 16px;
+    line-height: 24px;
+
+    &.icon-chevron-right::after {
+      width: 5.7px;
+      height: 10px;
+      background-size: 5.7px 10px;
+      margin-left: 10px;
+    }
+
+    &.icon-chevron-left::after {
+      width: 5.7px;
+      height: 10px;
+      background-size: 5.7px 10px;
+      margin-right: 10px;
+    }
+
+    &.icon-arrow-right::after {
+      width: 15px;
+      height: 12.5px;
+      background-size: 15px 12.5px;
+      margin-left: 10px;
+    }
+  }
+
+  &-tertiary {
+    font-family: $barlow;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    &.icon-chevron-right::after {
+      width: 5.7px;
+      height: 10px;
+      background-size: 5.7px 10px;
+      margin-left: 10px;
+    }
+
+    &.icon-chevron-left::after {
+      width: 5.7px;
+      height: 10px;
+      background-size: 5.7px 10px;
+      margin-right: 10px;
+    }
+
+    &.icon-arrow-right::after {
+      width: 15px;
+      height: 12.5px;
+      background-size: 15px 12.5px;
+      margin-left: 10px;
+    }
+  }
+}
