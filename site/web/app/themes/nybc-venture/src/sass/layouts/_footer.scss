@@ -1,0 +1,101 @@
+.footer {
+  padding: 64px 0;
+  background-color: $white;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  
+  &-logo-scb {
+    display: block;
+    line-height: 0;
+  }
+
+  &-logo-rwjf {
+    display: none;
+    line-height: 0;
+  }
+
+  @include for-tablet-landscape-up {
+    &-logo-rwjf {
+      display: block;
+    }
+  }
+}
+
+.footer-middle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: 0.5px solid $gray-30;
+
+  h3 {
+    color: $gray-30;
+    margin-bottom: 16px;
+  }
+  
+  &-address-info {
+    display: grid;
+    gap: 32px;
+  }
+
+  @include for-tablet-landscape-up {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  font-family: $barlow;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 110%;
+  border-top: 0.5px solid $gray-30;
+
+  &-logo-rwjf {
+    display: block;
+    margin-bottom: 32px;
+    line-height: 0;
+
+    img {
+      width: 206px;
+      height: auto;
+    }
+  }
+
+  &-copyright {
+    margin-bottom: 16px;
+
+    span {
+      display: block;
+    }
+  }
+
+  &-nav-list {
+    display: flex;
+    gap: 12px;
+  }
+
+  @include for-tablet-landscape-up {
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-copyright {
+      margin-bottom: unset;
+
+      span {
+        display: inline;
+      }
+    }
+
+    &-logo-rwjf {
+      display: none;
+    }
+  }
+}

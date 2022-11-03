@@ -1,0 +1,33 @@
+@import '../../../../../../vendor/kenwheeler/slick/slick/slick.scss';
+
+/* the slides */
+.slick-slide {
+    margin: 0 0 0 32px;
+}
+
+/* the parent */
+.slick-list {
+    margin: 0 0 0 0;
+    padding:0 20% 0 0 !important;
+}
+
+@include for-desktop-up {
+  /* the parent */
+  .slick-list {
+    margin: 0 0 0 -32px;
+    padding: 0 !important;
+  }
+}
+
+// Make the slides the same height
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  height: inherit !important;
+}
+
+.slick-initialized .slick-slide {
+  display: flex !important;
+}
