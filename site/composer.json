@@ -65,6 +65,7 @@
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
         "wpackagist-plugin/wpo365-login":"17.4",
+        "wpackagist-plugin/wordpress-seo": "^19.10",
         "wpackagist-plugin/w3-total-cache": "^2.2.7"
     },
     "require-dev": {
