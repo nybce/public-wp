@@ -142,3 +142,8 @@
 	border-radius: 4px;
 	width: 100%;
 }
+
+.wp-block-acf-two-column-block .wp-block-acf-column-content .wp-block-acf-column-content, 
+.wp-block-acf-two-column-block .wp-block-acf-column-sidebar .wp-block-acf-column-sidebar{
+	width:100%;
+}
