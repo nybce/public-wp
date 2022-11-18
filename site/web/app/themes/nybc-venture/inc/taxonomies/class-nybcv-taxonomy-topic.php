@@ -7,7 +7,7 @@
 /**
  * Class for the topic taxonomy.
  */
-class MOCEJ_Taxonomy_Topic extends MOCEJ_Taxonomy {
+class NYBCV_Taxonomy_Topic extends NYBCV_Taxonomy {
 
 	/**
 	 * Name of the taxonomy.
@@ -71,4 +71,4 @@ class MOCEJ_Taxonomy_Topic extends MOCEJ_Taxonomy {
 		);
 	}
 }
-$mocej_taxonomy_topic = new MOCEJ_Taxonomy_Topic();
+$nybcv_taxonomy_topic = new NYBCV_Taxonomy_Topic();

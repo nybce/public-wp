@@ -7,7 +7,7 @@
 /**
  * Abstract class for post type classes.
  */
-abstract class MOCEJ_Post_Type {
+abstract class NYBCV_Post_Type {
 
 	/**
 	 * Name of the post type.
