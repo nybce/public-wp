@@ -7,7 +7,7 @@
 /**
  * Abstract class for taxonomy classes.
  */
-abstract class MOCEJ_Taxonomy {
+abstract class NYBCV_Taxonomy {
 
 	/**
 	 * Name of the taxonomy.

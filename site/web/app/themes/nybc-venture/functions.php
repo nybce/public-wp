@@ -3,9 +3,9 @@
 
 define( 'THEME_PATH', dirname( __FILE__ ) );
 
-add_action( 'after_setup_theme', 'mocej_setup' );
-function mocej_setup() {
-load_theme_textdomain( 'mocej', get_template_directory() . '/languages' );
+add_action( 'after_setup_theme', 'nybcv_setup' );
+function nybcv_setup() {
+load_theme_textdomain( 'nybcv', get_template_directory() . '/languages' );
 add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'responsive-embeds' );
@@ -14,14 +14,14 @@ add_theme_support( 'html5', array( 'search-form', 'navigation-widgets' ) );
 add_theme_support( 'woocommerce' );
 global $content_width;
 if ( !isset( $content_width ) ) { $content_width = 1920; }
-register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'mocej' ) ) );
+register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'nybcv' ) ) );
 }
-add_action( 'wp_enqueue_scripts', 'mocej_enqueue' );
-function mocej_enqueue() {
+add_action( 'wp_enqueue_scripts', 'nybcv_enqueue' );
+function nybcv_enqueue() {
 wp_enqueue_script( 'jquery' );
 }
-add_action( 'wp_footer', 'mocej_footer' );
-function mocej_footer() {
+add_action( 'wp_footer', 'nybcv_footer' );
+function nybcv_footer() {
 ?>
 <script>
 jQuery(document).ready(function($) {
@@ -53,20 +53,20 @@ $("html").addClass("opera");
 </script>
 <?php
 }
-add_filter( 'document_title_separator', 'mocej_document_title_separator' );
-function mocej_document_title_separator( $sep ) {
+add_filter( 'document_title_separator', 'nybcv_document_title_separator' );
+function nybcv_document_title_separator( $sep ) {
 $sep = esc_html( '|' );
 return $sep;
 }
-add_filter( 'the_title', 'mocej_title' );
-function mocej_title( $title ) {
+add_filter( 'the_title', 'nybcv_title' );
+function nybcv_title( $title ) {
 if ( $title == '' ) {
 return esc_html( '...' );
 } else {
 return wp_kses_post( $title );
 }
 }
-function mocej_schema_type() {
+function nybcv_schema_type() {
 $schema = 'https://schema.org/';
 if ( is_single() ) {
 $type = "Article";
@@ -79,45 +79,45 @@ $type = 'WebPage';
 }
 echo 'itemscope itemtype="' . esc_url( $schema ) . esc_attr( $type ) . '"';
 }
-add_filter( 'nav_menu_link_attributes', 'mocej_schema_url', 10 );
-function mocej_schema_url( $atts ) {
+add_filter( 'nav_menu_link_attributes', 'nybcv_schema_url', 10 );
+function nybcv_schema_url( $atts ) {
 $atts['itemprop'] = 'url';
 return $atts;
 }
-if ( !function_exists( 'mocej_wp_body_open' ) ) {
-function mocej_wp_body_open() {
+if ( !function_exists( 'nybcv_wp_body_open' ) ) {
+function nybcv_wp_body_open() {
 do_action( 'wp_body_open' );
 }
 }
-add_action( 'wp_body_open', 'mocej_skip_link', 5 );
-function mocej_skip_link() {
-echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'Skip to the content', 'mocej' ) . '</a>';
+add_action( 'wp_body_open', 'nybcv_skip_link', 5 );
+function nybcv_skip_link() {
+echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__( 'Skip to the content', 'nybcv' ) . '</a>';
 }
-add_filter( 'the_content_more_link', 'mocej_read_more_link' );
-function mocej_read_more_link() {
+add_filter( 'the_content_more_link', 'nybcv_read_more_link' );
+function nybcv_read_more_link() {
 if ( !is_admin() ) {
-return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'mocej' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
+return ' <a href="' . esc_url( get_permalink() ) . '" class="more-link">' . sprintf( __( '...%s', 'nybcv' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
-add_filter( 'excerpt_more', 'mocej_excerpt_read_more_link' );
-function mocej_excerpt_read_more_link( $more ) {
+add_filter( 'excerpt_more', 'nybcv_excerpt_read_more_link' );
+function nybcv_excerpt_read_more_link( $more ) {
 if ( !is_admin() ) {
 global $post;
-return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'mocej' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
+return ' <a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="more-link">' . sprintf( __( '...%s', 'nybcv' ), '<span class="screen-reader-text">  ' . esc_html( get_the_title() ) . '</span>' ) . '</a>';
 }
 }
 add_filter( 'big_image_size_threshold', '__return_false' );
-add_filter( 'intermediate_image_sizes_advanced', 'mocej_image_insert_override' );
-function mocej_image_insert_override( $sizes ) {
+add_filter( 'intermediate_image_sizes_advanced', 'nybcv_image_insert_override' );
+function nybcv_image_insert_override( $sizes ) {
 unset( $sizes['medium_large'] );
 unset( $sizes['1536x1536'] );
 unset( $sizes['2048x2048'] );
 return $sizes;
 }
-add_action( 'widgets_init', 'mocej_widgets_init' );
-function mocej_widgets_init() {
+add_action( 'widgets_init', 'nybcv_widgets_init' );
+function nybcv_widgets_init() {
 register_sidebar( array(
-'name' => esc_html__( 'Sidebar Widget Area', 'mocej' ),
+'name' => esc_html__( 'Sidebar Widget Area', 'nybcv' ),
 'id' => 'primary-widget-area',
 'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 'after_widget' => '</li>',
@@ -125,25 +125,25 @@ register_sidebar( array(
 'after_title' => '</h3>',
 ) );
 }
-add_action( 'wp_head', 'mocej_pingback_header' );
-function mocej_pingback_header() {
+add_action( 'wp_head', 'nybcv_pingback_header' );
+function nybcv_pingback_header() {
 if ( is_singular() && pings_open() ) {
 printf( '<link rel="pingback" href="%s" />' . "\n", esc_url( get_bloginfo( 'pingback_url' ) ) );
 }
 }
-add_action( 'comment_form_before', 'mocej_enqueue_comment_reply_script' );
-function mocej_enqueue_comment_reply_script() {
+add_action( 'comment_form_before', 'nybcv_enqueue_comment_reply_script' );
+function nybcv_enqueue_comment_reply_script() {
 if ( get_option( 'thread_comments' ) ) {
 wp_enqueue_script( 'comment-reply' );
 }
 }
-function mocej_custom_pings( $comment ) {
+function nybcv_custom_pings( $comment ) {
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url( comment_author_link() ); ?></li>
 <?php
 }
-add_filter( 'get_comments_number', 'mocej_comment_count', 0 );
-function mocej_comment_count( $count ) {
+add_filter( 'get_comments_number', 'nybcv_comment_count', 0 );
+function nybcv_comment_count( $count ) {
 if ( !is_admin() ) {
 global $id;
 $get_comments = get_comments( 'status=approve&post_id=' . $id );
@@ -156,21 +156,21 @@ return $count;
 
 
 // Post Type Base Class
-require_once THEME_PATH . '/inc/post-types/class-mocej-post-type.php';
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type.php';
 // Topic Post Type (post-type:topic).
-require_once THEME_PATH . '/inc/post-types/class-mocej-post-type-topic.php';
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-topic.php';
 // Subtopic Post Type (post-type:subtopic).
-require_once THEME_PATH . '/inc/post-types/class-mocej-post-type-subtopic.php';
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-subtopic.php';
 // Initiative Post Type (post-type:initiative).
-require_once THEME_PATH . '/inc/post-types/class-mocej-post-type-initiative.php';
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-initiative.php';
 
 
 
 
 // Taxonomy Base Class.
-require_once THEME_PATH . '/inc/taxonomies/class-mocej-taxonomy.php';
+require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy.php';
 // Topic Taxonomy (tax:topic).
-require_once THEME_PATH . '/inc/taxonomies/class-mocej-taxonomy-topic.php';
+require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy-topic.php';
 
 
 // First, this will disable support for comments and trackbacks in post types
