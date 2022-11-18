@@ -2,7 +2,7 @@
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
-<h1>WELCOME TO MOCEJ</h1>
+<h1>WELCOME TO NYBCV</h1>
 <?php
 get_template_part( 'entry' );
 comments_template();
