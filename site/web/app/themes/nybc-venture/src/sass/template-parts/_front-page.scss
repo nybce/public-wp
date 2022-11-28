@@ -1,0 +1,66 @@
+.front-hero{
+
+  height:750px;
+  width:100%;
+  position:relative;
+  background-color:$tan;
+
+
+  //background-image:url("../src/images/home/nybcv_hero_home.jpg");
+
+  &--bg{
+    &--image-bar{
+      position:absolute;
+      top:45%;
+      height:55%;
+      width:100%;
+      background-image:url("../src/images/home/nybcv_home_hero_gradiennt.png");
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat;
+    }
+    &--image-circle{
+      position: absolute;
+      top: 10%;
+      right: 15px;
+      background-image: url("../src/images/home/nybcv_home_hero_circle.png");
+      background-position: right;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 77%;
+      width: 77%;
+    }
+  }
+
+  &--text-ctn{
+    position:absolute;
+    top:12%;
+    left:5%;
+    width:60%;
+    h1{
+      text-transform:uppercase;
+      font-size:50px;
+      margin-bottom:68px;
+      line-height:60px;
+      letter-spacing:8px;
+      width:80%;
+    }
+    h2{
+      font-family:$bariol-regular;
+      font-size:42px;
+      line-height:56px;
+      width:62%;
+    }
+  }
+}
+
+.img-grid{
+  &--square{
+    &&--top-left{
+
+    }
+    &&--bot-right{
+
+    }
+  }
+}

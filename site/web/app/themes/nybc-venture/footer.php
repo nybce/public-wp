@@ -1,12 +1,6 @@
-</main>
-<?php get_sidebar(); ?>
-</div>
-<footer id="footer" role="contentinfo">
-<div id="copyright">
-&copy; <?php echo esc_html( date_i18n( __( 'Y', 'nybcv' ) ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-</div>
-</footer>
-</div>
+    </main>
+    <?php get_template_part('template-parts/global/footer', null, null); ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>
