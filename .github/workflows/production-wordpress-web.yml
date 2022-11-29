@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - production
+      - staging
   workflow_dispatch:
 env:
   CLIENT_ID: "691e28fa-9381-4c5b-a870-02c9e2ffcc28"
@@ -72,7 +73,7 @@ jobs:
         cache-to: type=inline
         build-args: |
           ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
-          ENVIRONMENT=production
+          ENVIRONMENT=${{ github.ref_name }}
         secrets: |
           "vaultpass=${{ secrets.VAULTPASS }}"
 
@@ -80,14 +81,25 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: ${{ github.ref_name }}
 
     steps:
+    - shell: python
+      id: generate-overrides
+      run: |
+
+        publish_profile = {
+          'production': "${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}",
+          'staging': "${{ secrets.AzureAppService_PublishProfile_1bea6965de524725b091c49317217825 }}"
+        }
+        with open(os.environ['GITHUB_OUTPUT'], "a") as output_file:
+          output_file.write("PUBLISHPROFILE={}".format( publish_profile[${{ github.ref_name }}] ))
+
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'production-wordpress-web'
+        app-name: '${{ github.ref_name }}-wordpress-web'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}
         images: '${{ steps.get-sha-tag.outputs.output }}'
