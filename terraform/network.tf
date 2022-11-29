@@ -12,7 +12,7 @@ resource "random_string" "agrs" {
   number  = false
 }
 
-
+/*
 resource "azurerm_virtual_network" "vmss" {
   name                = "vmss-vnet-${var.project}-${var.environment}"
   address_space       = ["10.0.0.0/16"]
@@ -111,3 +111,4 @@ resource "azurerm_network_security_rule" "nsg_rule" {
   network_security_group_name = azurerm_network_security_group.nsg.name
   depends_on                  = [azurerm_network_security_group.nsg]
 }
+*/
