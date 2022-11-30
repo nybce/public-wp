@@ -24,6 +24,9 @@ get_header();
 	     <h2>A venture fund dedicated to accelerating innovations in blood-related and cellular therapy & technologies</h2>
    	</div>
     </div>
+    <div class="front-addendum">
+    	<h2>NYBC Ventures is focused on a humanitarian & fiscal ROI, fostering New York Blood Center's mission-oriented innovation.</h2>
+    </div>
 </div>
 </div>
 
@@ -40,10 +43,10 @@ get_header();
 				<h5>Cell Therapy</h5>
 			</div>
 			<div class="img-grid--square img-grid--square--bot-right"  style="background-image:url(<?php echo get_template_directory_uri(); ?>/src/images/home/aoi/nybcv_ai_tm.png)">
-				<h5>Transfusion Medicine</h5>
+				<h5 class="white">Transfusion Medicine</h5>
 			</div>
 			<div class="img-grid--square img-grid--square--bot-right"  style="background-image:url(<?php echo get_template_directory_uri(); ?>/src/images/home/aoi/nybcv_ai_bh.png)">
-				<h5>Benign Hematology</h5>
+				<h5 class="white">Benign Hematology</h5>
 			</div>
 			<div class="img-grid--square img-grid--square--top-left"  style="background-image:url(<?php echo get_template_directory_uri(); ?>/src/images/home/aoi/nybcv_ai_id.jpg)">
 				<h5>Infectious Disease</h5>
@@ -57,21 +60,21 @@ get_header();
   <div class="container">
 	<div class="nybcv-block">
 		<div class="nybcv-block--intro">
-			<h3></h3>
-			<p></p>
+			<h3>KEY INVESTMENT STRATEGIES</h3>
+			<p>Working with NYBC Ventures goes beyond capital. We provide access to world-renowned researchers and their labs, cell manufacturing capacity, and source materials. These synergistically blend to further enable technologies of interest.</p>
 		</div>
 		<div class="card-grid">
 			<div class="card-grid--card card-grid--card--bg01">
-				<h5></h5>
-				<p></p>
+				<h5>EXTERNAL INNOVATIONS</h5>
+				<p>Early-stage companies pursuing advancements in blood-related and cellular therapeutics & technologies</p>
 			</div>
 			<div class="card-grid--card card-grid--card--bg02">
-				<h5></h5>
-				<p></p>
+				<h5>JOINT <br class="desktop-only">VENTURE</h5>
+				<p>Companies that would benefit from a partnership with Lindsley F. Kimball Research Institute (LFKRI) researchers and other New York Blood Center resources</p>
 			</div>
 			<div class="card-grid--card card-grid--card--bg03">
-				<h5></h5>
-				<p></p>
+				<h5>INTERNAL INNOVATIONS</h5>
+				<p>Discoveries emerging from New York Blood Center research labs</p>
 			</div>
 		</div>
 	</div>

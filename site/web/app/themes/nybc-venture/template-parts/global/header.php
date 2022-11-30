@@ -5,7 +5,7 @@ $path = $_SERVER['REQUEST_URI'];
 <header>
     <div class="header-inner">
         <div class="container">
-            <div class="desktop-menu">
+            <div class="desktop-menu <?php if(is_front_page()){ echo 'no-border'; }?>">
                 <a href="<?php echo HOME_URI; ?>" class="logo">NYBC VENTURES</a>
 
                 <?php

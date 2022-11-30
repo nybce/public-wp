@@ -1,17 +1,30 @@
 header{
   .header-inner{
     .desktop-menu{
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      padding: 60px 0 35px 0;
+      border-bottom:1px solid black;
       .logo{
-
+        text-transform:uppercase;
+        font-size:34px;
       }
       .top-nav-ctn{
+        display: flex;
         .top-nav{
+          display: flex;
           .menu-item{
+            margin-left: 45px;
             a{
-
+              text-transform:uppercase;
+              font-size:16px;
             }
           }
         }
+      }
+      &.no-border{
+        border:none;
       }
     }
   }

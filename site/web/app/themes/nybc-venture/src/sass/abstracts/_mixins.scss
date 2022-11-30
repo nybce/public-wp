@@ -37,12 +37,11 @@
   }
 
   @include for-desktop-up {
-    margin: 0 60px;
+    margin: 0 auto;
+    max-width: 1068px;
   }
 
   @include for-large-desktop-up {
-    margin: 0 auto;
-	  max-width: 1200px;
   }
 }
 
@@ -319,6 +318,7 @@
 }
 
 @mixin h3 {
+  /*
   font-family: $source-sans-pro;
   font-weight: 600;
   font-size: 24px;
@@ -328,6 +328,11 @@
     font-size: 48px;
     line-height: 108%;
   }
+  */
+  font-family: $source-sans-pro;  
+  font-size:40px;
+  letter-spacing:-2px;
+  margin-bottom:30px;
 }
 
 @mixin h4 {
@@ -725,4 +730,8 @@
 @font-face {
     font-family:Bariol Regular;
     src: url("../src/font/bariol_regular-webfont.ttf");
+}
+@font-face {
+    font-family:Bariol Bold Italic;
+    src: url("../src/font/bariol_bold_italic-webfont.ttf");
 }
