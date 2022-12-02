@@ -1,9 +1,11 @@
 <footer>
-    <div class="footer-bar">
-        <div class="container">
+    <div class="container">
+        <div class="footer-bar">
             <div class="footer-menu">
                 <div class="footer-menu--left">
+                    <span class="copyright">
 &copy; <?php echo esc_html( date_i18n( __( 'Y', 'nybcv' ) ) ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+</span>
 
 
 <?php
@@ -11,9 +13,9 @@ $menu_args = array(
     'theme_location' => 'footer-menu',
     'menu' => '',
     'container' => 'div',
-    'container_class' => '',
+    'container_class' => 'footer-nav-ctn',
     'container_id' => '',
-    'menu_class' => 'menu',
+    'menu_class' => 'footer-nav',
     'menu_id' => '',
     'echo' => true,
     'fallback_cb' => 'wp_page_menu',
@@ -29,8 +31,8 @@ wp_nav_menu( $menu_args);
 ?>
 </div>
 <div class="footer-menu--right">
-    <a href="#">twitter</a>
-    <a href="#">linkedin</a>
+    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
 </div>
             </div>
         </div>

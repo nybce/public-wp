@@ -159,20 +159,11 @@ return $count;
 
 // Post Type Base Class
 require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type.php';
-// Topic Post Type (post-type:topic).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-topic.php';
-// Subtopic Post Type (post-type:subtopic).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-subtopic.php';
-// Initiative Post Type (post-type:initiative).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-initiative.php';
-
-
-
+// Topic Post Type (post-type:team_member).
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-team-member.php';
 
 // Taxonomy Base Class.
 require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy.php';
-// Topic Taxonomy (tax:topic).
-require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy-topic.php';
 
 
 
