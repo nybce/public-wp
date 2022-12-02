@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width" />
   <?php wp_head(); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel='stylesheet' id='theme-css'  href='https://nybc-enterprise.staging.nybc-wordpress.bbox.ly/app/themes/nybc-venture/css/theme.min.css?ver=5.9' type='text/css' media='all' />
 </head>
 
 <body <?php body_class(); ?>>
