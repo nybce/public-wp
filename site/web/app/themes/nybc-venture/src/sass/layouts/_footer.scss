@@ -10,7 +10,10 @@
     padding-bottom:100px;
     &--left{
       display:flex;
+      align-items:center;
       .copyright{
+        font-size:10px;
+        line-height:12px;
         margin-right:10px;
         text-transform:uppercase;
       }
@@ -18,7 +21,12 @@
         .footer-nav{
           display:flex;
           .menu-item{
+            display:flex;
             margin-right:10px;
+            a{
+              font-size:10px;
+              line-height:12px;
+            }
           }
         }
       }
@@ -28,6 +36,7 @@
       a{
         background:white;
         border-radius:50px;
+        font-size:16px;
         width:32px;
         height:32px;
         display:flex;
@@ -35,6 +44,7 @@
         align-items:center;
         margin-left:10px;
         i{
+          font-size:16px;
           color:black;
         }
       }

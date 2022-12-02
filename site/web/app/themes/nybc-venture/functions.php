@@ -159,6 +159,8 @@ return $count;
 
 // Post Type Base Class
 require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type.php';
+// Topic Post Type (post-type:team_member).
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-team-member.php';
 
 // Taxonomy Base Class.
 require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy.php';

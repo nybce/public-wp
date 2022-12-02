@@ -70,55 +70,6 @@
   }
 }
 
-@mixin container-slider {
-  display: block;
-
-  @include for-phone-only {
-    margin: 0;
-  }
-
-  @include for-tablet-portrait-up {
-    margin: 0;
-  }
-
-  @include for-tablet-landscape-up {
-    margin: 0;
-  }
-
-  @include for-desktop-up {
-    margin: 0 60px;
-  }
-
-  @include for-large-desktop-up {
-    margin: 0 auto;
-	  max-width: 1200px;
-  }
-}
-
-@mixin container-report-nav {
-  display: block;
-
-  @include for-phone-only {
-    margin: 0;
-  }
-
-  @include for-tablet-portrait-up {
-    margin: 0;
-  }
-
-  @include for-tablet-landscape-up {
-    margin: 0 0 0 24px;
-  }
-
-  @include for-desktop-up {
-    margin: 0 0 0 60px;
-  }
-
-  @include for-large-desktop-up {
-    margin: 0 0 0 calc((100vw - 1200px) / 2);
-  }
-}
-
 // Section
 @mixin sectionSpacing {
   padding: 80px 0 0 0;
@@ -367,6 +318,7 @@
 }
 
 @mixin body-01 {
+  /*
   font-family: $open-sans;
   font-weight: 400;
   font-size: 20px;
@@ -376,6 +328,11 @@
     font-size: 24px;
     line-height: 164%;
   }
+  */
+  font-family:$bariol-regular;
+  font-weight:400;
+  font-size:28px;
+  line-height:33.6px;
 }
 
 @mixin body-01-bold {

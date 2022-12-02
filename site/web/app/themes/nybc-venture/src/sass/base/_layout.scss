@@ -6,10 +6,6 @@
   @include container-wide;
 }
 
-.container-slider {
-  @include container-slider;
-}
-
 .d-none {
   display: none;
 }
@@ -20,7 +16,10 @@
   margin: 30px 0;
 }
 .med-reduced-wrapper{
-  margin: 80px;
+  margin: 50px 0;
+}
+.major-reduced-wrapper{
+  margin: 80px 0;
 }
 .nybcv-block{
   &--intro{

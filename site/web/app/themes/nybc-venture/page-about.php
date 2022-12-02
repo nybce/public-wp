@@ -27,7 +27,7 @@ $side_second = $sidebar['secondary_image'];
 	</div>
 </div>
 
-<div class="med-reduced-wrapper">
+<div class="major-reduced-wrapper">
 	<div class="container">
 		<div class="two-col">
 			<div class="two-col--main">
