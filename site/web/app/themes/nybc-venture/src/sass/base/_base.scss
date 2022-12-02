@@ -1,8 +1,6 @@
 body {
-  padding-top: 96px;
 
   @include for-desktop-up {
-    padding-top: 140px;
   }
 }
 
@@ -13,5 +11,5 @@ a, button {
 }
 
 main {
-  background-color: $gray-10;
+
 }

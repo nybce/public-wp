@@ -2,6 +2,7 @@
 
 
 define( 'THEME_PATH', dirname( __FILE__ ) );
+define( 'HOME_URI', home_url( '/' ) );
 
 add_action( 'after_setup_theme', 'nybcv_setup' );
 function nybcv_setup() {
@@ -15,6 +16,7 @@ add_theme_support( 'woocommerce' );
 global $content_width;
 if ( !isset( $content_width ) ) { $content_width = 1920; }
 register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'nybcv' ) ) );
+register_nav_menus( array( 'footer-menu' => esc_html__( 'Footer Menu', 'nybcv' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'nybcv_enqueue' );
 function nybcv_enqueue() {
@@ -157,21 +159,21 @@ return $count;
 
 // Post Type Base Class
 require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type.php';
-// Topic Post Type (post-type:topic).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-topic.php';
-// Subtopic Post Type (post-type:subtopic).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-subtopic.php';
-// Initiative Post Type (post-type:initiative).
-require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-initiative.php';
-
-
-
+// Topic Post Type (post-type:team_member).
+require_once THEME_PATH . '/inc/post-types/class-nybcv-post-type-team-member.php';
 
 // Taxonomy Base Class.
 require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy.php';
-// Topic Taxonomy (tax:topic).
-require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy-topic.php';
 
+
+
+// Theme Stylesheet
+wp_register_style(
+   'theme',
+   get_template_directory_uri() . '/css/theme.min.css',
+   '1.3',
+);
+wp_enqueue_style('theme');
 
 // First, this will disable support for comments and trackbacks in post types
 function df_disable_comments_post_types_support() {
