@@ -20,7 +20,7 @@ register_nav_menus( array( 'footer-menu' => esc_html__( 'Footer Menu', 'nybcv' )
 }
 add_action( 'wp_enqueue_scripts', 'nybcv_enqueue' );
 function nybcv_enqueue() {
-wp_enqueue_script( 'jquery' );
+   wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_footer', 'nybcv_footer' );
 function nybcv_footer() {
@@ -168,12 +168,14 @@ require_once THEME_PATH . '/inc/taxonomies/class-nybcv-taxonomy.php';
 
 
 // Theme Stylesheet
+/*
 wp_register_style(
    'theme',
    get_template_directory_uri() . '/css/theme.min.css',
    '1.3',
 );
 wp_enqueue_style('theme');
+*/
 
 // First, this will disable support for comments and trackbacks in post types
 function df_disable_comments_post_types_support() {
