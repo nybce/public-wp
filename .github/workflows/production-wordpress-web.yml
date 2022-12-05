@@ -87,7 +87,6 @@ jobs:
     steps:
     - name: Deploy to Production
       if: github.ref_name == 'production'
-      id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'production-wordpress-web'
@@ -97,7 +96,6 @@ jobs:
 
     - name: Deploy to Staging
       if: github.ref_name == 'staging'
-      id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'staging-wordpress-web'
