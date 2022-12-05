@@ -1,7 +1,8 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy container app to Azure Web App - staging-wordpress-web
+name: Build and deploy container app to Azure Web App
+run-name: "Build and Deploy ${{ github.ref_name }}"
 
 on:
   push:
@@ -84,22 +85,22 @@ jobs:
       name: ${{ github.ref_name }}
 
     steps:
-    - shell: python
-      id: generate-overrides
-      run: |
-
-        publish_profile = {
-          'production': "${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}",
-          'staging': "${{ secrets.AzureAppService_PublishProfile_1bea6965de524725b091c49317217825 }}"
-        }
-        with open(os.environ['GITHUB_OUTPUT'], "a") as output_file:
-          output_file.write("PUBLISHPROFILE={}".format( publish_profile[${{ github.ref_name }}] ))
-
-    - name: Deploy to Azure Web App
+    - name: Deploy to Production
+      if: github.ref_name == 'production'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: '${{ github.ref_name }}-wordpress-web'
+        app-name: 'production-wordpress-web'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}
+        images: '${{ steps.get-sha-tag.outputs.output }}'
+
+    - name: Deploy to Staging
+      if: github.ref_name == 'staging'
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'staging-wordpress-web'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_STAGING }}
         images: '${{ steps.get-sha-tag.outputs.output }}'
