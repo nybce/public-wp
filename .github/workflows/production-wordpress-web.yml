@@ -85,6 +85,9 @@ jobs:
       name: ${{ github.ref_name }}
 
     steps:
+    - uses: Azure/login@v1
+      with:
+        creds: '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ secrets.PRODUCTION_CLIENT_SECRET }}","subscriptionId":"${{ env.SUBSCRIPTION_ID }}","tenantId":"${{ env.TENANT_ID }}"}'
     - name: Deploy to Production
       if: github.ref_name == 'production'
       uses: azure/webapps-deploy@v2
@@ -93,7 +96,6 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_PRODUCTION }}
         images: '${{ steps.get-sha-tag.outputs.output }}'
-
     - name: Deploy to Staging
       if: github.ref_name == 'staging'
       uses: azure/webapps-deploy@v2
