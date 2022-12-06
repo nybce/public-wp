@@ -3,7 +3,7 @@
   @media (max-width: 375px) { @content; }
 }
 @mixin for-tablet-portrait-up {
-  @media (min-width: 376px) { @content; }
+  @media (min-width: 480px) { @content; }
 }
 @mixin for-tablet-landscape-up {
   @media (min-width: 769px) { @content; }
@@ -23,10 +23,7 @@
 // Containers
 @mixin container {
   display: block;
-
-  @include for-phone-only {
-    margin: 0 32px;
-  }
+  margin: 0 32px;
 
   @include for-tablet-portrait-up {
     margin: 0 32px;
@@ -36,7 +33,7 @@
     margin: 0 24px;
   }
 
-  @include for-desktop-up {
+  @include for-desktop-1120-up {
     margin: 0 auto;
     max-width: 1068px;
   }
@@ -47,10 +44,7 @@
 
 @mixin container-wide {
   display: block;
-
-  @include for-phone-only {
-    margin: 0 32px;
-  }
+  margin: 0 32px;
 
   @include for-tablet-portrait-up {
     margin: 0 32px;
@@ -301,7 +295,6 @@
 @mixin h5 {
   font-family: $source-sans-pro;
   font-weight: 600;
-  font-size: 16px;
   line-height: 150%;
 
   @include for-tablet-landscape-up {

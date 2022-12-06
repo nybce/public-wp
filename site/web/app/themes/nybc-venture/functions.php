@@ -177,6 +177,14 @@ wp_register_style(
 wp_enqueue_style('theme');
 */
 
+
+//Enqueue Iframe fix script
+function enqueue_header_scripts() {
+    wp_register_script( 'header', get_template_directory_uri() . '/src/js/header.js', array( 'jquery' ), '', true );
+    wp_enqueue_script( 'header' );
+}
+add_action('wp_enqueue_scripts', 'enqueue_header_scripts');
+
 // First, this will disable support for comments and trackbacks in post types
 function df_disable_comments_post_types_support() {
    $post_types = get_post_types();

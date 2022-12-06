@@ -40,7 +40,7 @@ $args = array(
     'posts_per_page' => -1,
     'meta_key' => 'order_in_sorting',
     'orderby' => 'meta_value_num',
-    'order' => 'ASC'
+    'order' => 'DESC'
   );
 
 // The Query
