@@ -11,11 +11,13 @@
 
   $whitelist = array(
     '127.0.0.1',
-    '::1'
+    '172.29.0.1',
+    '::1',
+    '::3000',
+    '::80'
 );
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)): ?>
-
   <link rel='stylesheet' id='theme-css'  href='<?php echo HOME_URI ?>wp-content/themes/nybc-venture/css/theme.min.css' type='text/css' media='all' />
 <?php
 else:

@@ -1,30 +1,242 @@
+main{
+  margin-top:124px;
+  @include for-tablet-landscape-up {
+    margin-top:164px;
+  } 
+}
+
 header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  z-index:9999;
   .header-inner{
-    .desktop-menu{
+    position:relative;
+  }
+}
+
+
+.desktop-menu{
+  display: none;
+  position:relative;
+  justify-content: space-between;
+  align-items:center;
+  padding: 60px 0 35px 0;
+  border-bottom:1px solid black;
+  .logo{
+    text-transform:uppercase;
+    font-size:34px;
+  }
+  .top-nav-ctn{
+    display: flex;
+    .top-nav{
       display: flex;
-      justify-content: space-between;
-      align-items:center;
-      padding: 60px 0 35px 0;
-      border-bottom:1px solid black;
-      .logo{
-        text-transform:uppercase;
-        font-size:34px;
+      .menu-item{
+        margin-left: 45px;
+        a{
+          text-transform:uppercase;
+          font-size:16px;
+        }
       }
-      .top-nav-ctn{
-        display: flex;
-        .top-nav{
-          display: flex;
-          .menu-item{
-            margin-left: 45px;
-            a{
-              text-transform:uppercase;
-              font-size:16px;
-            }
+    }
+  }
+  &.no-border{
+    border:none;
+  }
+
+  @include for-tablet-landscape-up {
+    display:flex;
+  }
+}
+
+
+.mobile-menu{
+  display:flex;
+  position:relative;
+  justify-content: space-between;
+  align-items:center;
+  padding: 30px 0;
+  border-bottom:1px solid black;
+  .logo{
+    text-transform:uppercase;
+    font-size:34px;
+  }
+  .menu-btn{
+    cursor: pointer;
+    position: relative;
+    &--line {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin-bottom: 3px;
+      background-color: black;
+      transition: transform 0.3s ease-in-out;
+      transform-origin: left;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &--close {
+      display: block;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: rotate(-45deg) translateX(-50%) translateY(-50%);
+      transform-origin: top left;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        background-color: black;
+        position: absolute;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &::before {
+        width: 2px;
+        height: 18px;
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        transition-delay: 0.15s;
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+
+      &::after {
+        width: 18px;
+        height: 2px;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        transition-delay: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+    }
+
+
+    &.is-active {
+      .menu-btn {
+        &--line {
+          transform: scaleX(0);
+        }
+
+        &--close {
+          &::before {
+            transform: scaleY(1);
+            transition-delay: 0.7s;
+          }
+
+          &::after {
+            transform: scaleX(1);
+            transition-delay: 0.85s;
           }
         }
       }
-      &.no-border{
-        border:none;
+    }
+
+  }
+
+
+  @include for-tablet-landscape-up {
+    display:none;
+  } 
+}
+
+@for $i from 1 through 4 {
+  .menu-btn--line {
+    &:nth-child(#{$i}) {
+      transition-delay: 0.4s + 0.15s * $i;
+    }
+  }
+
+  .menu-btn.is-active {
+    .menu-btn--line {
+      &:nth-child(#{$i}) {
+        transition-delay: 0.45s - 0.15s * ($i - 1);
+      }
+    }
+  }
+}
+
+
+
+.toggle-block {
+  position: fixed;
+  z-index: 101;
+  top: 93px;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  transform-origin: left;
+  width: 100%;
+  height: calc(100vh - 93px); // should be changed to $header-height-mobile, could not update it on dev
+  max-height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+
+  &::before {
+    top: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: black;
+  }
+
+  &.open {
+    transform: translateX(0);
+
+    &.remove-overflow {
+      overflow: hidden;
+    }
+  }
+}
+
+/*
+.admin-bar {
+  main{
+    margin-top:124px;
+    @include for-tablet-landscape-up {
+      margin-top:164px;
+    } 
+  }
+  
+  header{
+    top:45px;
+  }
+  .toggle-block{
+    height: calc(100vh - 138px);
+    top:138px;
+  }
+
+  @include for-tablet-landscape-up {
+    header{
+      top:32px;
+    }
+  }
+}
+*/
+
+.mobile-nav-ctn{
+  .mobile-nav{
+    .menu-item{
+      margin:30px 0;
+      text-align:center;
+      a{
+
       }
     }
   }

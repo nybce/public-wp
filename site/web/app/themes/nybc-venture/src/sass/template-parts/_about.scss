@@ -1,11 +1,18 @@
 .two-col{
   display:grid;
-  grid-template-columns:2fr 1fr;
+  grid-template-columns:1fr;
   column-gap:60px;
+  grid-row-gap:30px ;
   &--main{
 
   }
   &--sidebar{
-
+    display:none;
   }
+  @include for-tablet-landscape-up {
+    grid-template-columns:2fr 1fr;
+    &--sidebar{
+      display:block;
+    }
+  } 
 }
