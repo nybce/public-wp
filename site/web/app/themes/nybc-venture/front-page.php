@@ -64,17 +64,23 @@ get_header();
 			<p>Working with NYBC Ventures goes beyond capital. We provide access to world-renowned researchers and their labs, cell manufacturing capacity, and source materials. These synergistically blend to further enable technologies of interest.</p>
 		</div>
 		<div class="card-grid">
-			<div class="card-grid--card card-grid--card--bg01">
-				<h5>EXTERNAL INNOVATIONS</h5>
-				<p>Early-stage companies pursuing advancements in blood-related and cellular therapeutics & technologies</p>
+			<div class="card-grid--card">
+				<div class="card-grid--card--bg  card-grid--card--bg01">
+					<h5>EXTERNAL INNOVATIONS</h5>
+					<p>Early-stage companies pursuing advancements in blood-related and cellular therapeutics & technologies</p>
+				</div>
 			</div>
-			<div class="card-grid--card card-grid--card--bg02">
-				<h5>JOINT <br class="desktop-only">VENTURE</h5>
-				<p>Companies that would benefit from a partnership with Lindsley F. Kimball Research Institute (LFKRI) researchers and other New York Blood Center resources</p>
+			<div class="card-grid--card">
+				<div class="card-grid--card--bg  card-grid--card--bg02">
+					<h5>JOINT <br class="desktop-only">VENTURE</h5>
+					<p>Companies that would benefit from a partnership with Lindsley F. Kimball Research Institute (LFKRI) researchers and other New York Blood Center resources</p>
+				</div>
 			</div>
-			<div class="card-grid--card card-grid--card--bg03">
-				<h5>INTERNAL INNOVATIONS</h5>
-				<p>Discoveries emerging from New York Blood Center research labs</p>
+			<div class="card-grid--card">
+				<div class="card-grid--card--bg  card-grid--card--bg03">
+					<h5>INTERNAL INNOVATIONS</h5>
+					<p>Discoveries emerging from New York Blood Center research labs</p>
+				</div>
 			</div>
 		</div>
 	</div>

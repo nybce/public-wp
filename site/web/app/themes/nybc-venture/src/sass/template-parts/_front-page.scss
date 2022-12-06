@@ -190,20 +190,25 @@
   grid-template-columns: 1fr;
   grid-gap:30px;
   &--card{
-    padding:20px 30px;
-    background-position:center;
-    background-size:contain;
-    background-repeat:no-repeat;
+    min-height:300px;
+    padding:15px;
     background-color:$tan;
+    &--bg{
+      height:100%;
+      padding:10px;
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat;
+    }
     &--bg01{
-      background-image:url("../src/images/home/kis/nybcv_kis_ei.png");
+      background-image:url("../src/images/home/kis/nybcv_kis_ei_b.png");
     }
     &--bg02{
-      background-image:url("../src/images/home/kis/nybcv_kis_jv.png");
+      background-image:url("../src/images/home/kis/nybcv_kis_jv_b.png");
     }
     &--bg03{
-      background-image:url("../src/images/home/kis/nybcv_kis_ii.png");
-    }
+      background-image:url("../src/images/home/kis/nybcv_kis_ii_b.png");
+    } 
     h5{
       font-size:38px;
       line-height:45px;
