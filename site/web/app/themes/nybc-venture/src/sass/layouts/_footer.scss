@@ -3,18 +3,21 @@
   .footer-menu{
     display:flex;
     justify-content: space-between;
-    align-items: center;
+    flex-direction:column;
+    align-items: flex-start;
     padding-left:15px;
     padding-right:15px;
     padding-top:20px;
-    padding-bottom:100px;
+    padding-bottom:30px;
     &--left{
       display:flex;
-      align-items:center;
+      flex-direction:column;
+      align-items:flex-start;
       .copyright{
-        font-size:10px;
-        line-height:12px;
+        font-size:14px;
+        line-height:18px;
         margin-right:10px;
+        margin-bottom:10px;
         text-transform:uppercase;
       }
       .footer-nav-ctn{
@@ -23,9 +26,10 @@
           .menu-item{
             display:flex;
             margin-right:10px;
+            margin-bottom:10px;
             a{
-              font-size:10px;
-              line-height:12px;
+              font-size:14px;
+              line-height:18px;
             }
           }
         }
@@ -46,6 +50,33 @@
         i{
           font-size:16px;
           color:black;
+        }
+      }
+    }
+
+    @include for-tablet-landscape-up {
+      flex-direction:initial;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom:100px;
+      &--left{
+        flex-direction:initial;
+        align-items:center;
+        .copyright{
+          font-size:10px;
+          line-height:12px;
+          margin-bottom:0;
+        }
+        .footer-nav-ctn{
+          .footer-nav{
+            .menu-item{
+                margin-bottom:0;
+              a{
+                font-size:10px;
+                line-height:12px;
+              }
+            }
+          }
         }
       }
     }
