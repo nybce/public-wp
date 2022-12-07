@@ -373,7 +373,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		$crumb_count = $pos;
 		if($parent){
 			$has_parent = true;
-			breadcrumb_nav($parent->ID,$crumb_count++);
+			NYBC_Helpers::breadcrumb_nav($parent->ID,$crumb_count++);
 		}
 		?>
 		<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
