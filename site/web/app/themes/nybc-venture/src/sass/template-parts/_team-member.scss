@@ -1,10 +1,10 @@
 .team-member{
   display:grid;
-  grid-template-columns:1fr 2fr;
+  grid-template-columns:1fr;
   column-gap:30px;
   grid-row-gap:25px;
   &--spacer{
-
+    display:none;
   }
   &--title{
     h1{
@@ -21,6 +21,8 @@
     }
   }
   &--profile-image{
+    overflow:hidden;
+    max-height:360px;
     img{
 
     }
@@ -43,6 +45,15 @@
     &--next{
       font-size:16px;
       line-height:19px;
+    }
+  }
+  @include for-tablet-landscape-up {
+    grid-template-columns:1fr 2fr;
+    &--spacer{
+      display:block;
+    }
+    &--profile-image{
+      max-height:none;
     }
   }
 }
