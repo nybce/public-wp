@@ -369,6 +369,7 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		public static function breadcrumb_nav( $id, $pos ) {
 
 		$has_parent = false;
+		$curr_post = get_post($id);
 		$parent = get_post_parent($id);
 		$crumb_count = $pos;
 		if($parent){
@@ -377,8 +378,8 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 		}
 		?>
 		<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-			<a href="<?php echo get_permalink($parent->ID) ?>" itemprop="item">
-				<span itemprop="name"><?php echo $parent->post_title ?></span>
+			<a href="<?php echo get_permalink($curr_post->ID) ?>" itemprop="item">
+				<span itemprop="name"><?php echo $curr_post->post_title ?></span>
 			</a>
 			<meta itemprop="position" content="<?php echo $crumb_count ?>" />
 		</li>
