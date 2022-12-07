@@ -55,7 +55,7 @@ $template = array(
 					</li>
 					<?php 
 					$has_parent = false;
-					$parent = get_post_parent()
+					$parent = get_post_parent();
 					$crumb_count = 2;
 					if($parent){
 						$has_parent = true;
