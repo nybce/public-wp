@@ -58,6 +58,9 @@
 				font-size:20px;
 				margin: 0 5px;
 			}
+			&:last-child::after {
+				content: none;
+			}
 		}
 	}
 }

@@ -59,23 +59,8 @@ $template = array(
 					$crumb_count = 2;
 					if($parent){
 						$has_parent = true;
+						<?php NYBC_Helpers::breadcrumb_nav( $parent->ID, $crumb_count ); ?>
 					}
-					while($has_parent):
-					?>
-						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-							<a href="<?php echo get_permalink($parent->ID) ?>" itemprop="item">
-								<span itemprop="name"><?php echo $parent->post_title ?></span>
-							</a>
-							<meta itemprop="position" content="<?php echo $crumb_count ?>" />
-						</li>
-					<?php
-					if(get_post_parent($parent->ID)){
-						$parent = get_post_parent($parent->ID);
-					}else{
-						$has_parent = false;
-					}
-					$crumb_count++;
-					endwhile;
 					 ?>
 					<li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 						<span itemprop="name"><?php the_title(); ?></span>
