@@ -59,7 +59,7 @@ $template = array(
 					$crumb_count = 2;
 					if($parent){
 						$has_parent = true;
-						<?php NYBC_Helpers::breadcrumb_nav( $parent->ID, $crumb_count ); ?>
+						NYBC_Helpers::breadcrumb_nav( $parent->ID, $crumb_count );
 					}
 					 ?>
 					<li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
