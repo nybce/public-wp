@@ -37,6 +37,44 @@ $template = array(
 <div class="section <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="container container-lg">
 		<div class="row justify-content-center">
+			<div class="breadcrumb-nav">
+				<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+						<a href="<?php echo esc_url( NYBC_HOME_URI ); ?>" itemprop="item">
+							<span itemprop="name"><?php esc_html_e( 'Home', 'nybc' ); ?></span></a>
+							<meta itemprop="position" content="1" />
+					</li>
+					<?php 
+					$has_parent = false;
+					$parent = get_post_parent();
+					$crumb_count = 2;
+					if($parent){
+						$has_parent = true;
+					}
+					while($has_parent):
+					?>
+						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<a href="<?php echo get_permalink($parent->ID) ?>" itemprop="item">
+								<span itemprop="name"><?php echo $parent->post_title ?></span>
+							</a>
+							<meta itemprop="position" content="<?php echo $crumb_count ?>" />
+						</li>
+					<?php
+					if(get_post_parent($parent->ID)){
+						$parent = get_post_parent($parent->ID);
+					}else{
+						$has_parent = false;
+					}
+					$crumb_count++;
+					endwhile;
+					 ?>
+					<li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+						<span itemprop="name"><?php the_title(); ?></span>
+						<meta itemprop="position" content="<?php echo $crumb_count ?>" />
+					</li>
+				</ul>
+			</div>
+
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="all"/>
 		</div>
 	</div>

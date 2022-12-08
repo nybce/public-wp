@@ -45,6 +45,25 @@
 		z-index: 10;
 	}
 }
+.breadcrumb-nav{
+	margin-bottom:60px;
+	.breadcrumbs{
+		li{
+			&::after{
+				background:none;
+				content:">";
+				height:auto;
+				width:auto;
+				top:2px;
+				font-size:20px;
+				margin: 0 5px;
+			}
+			&:last-child::after {
+				content: none;
+			}
+		}
+	}
+}
 
 @media (min-width: 1200px) {
 	.breadcrumbs li a:hover {

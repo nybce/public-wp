@@ -359,6 +359,33 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			<?php
 		}
 
+
+		/**
+		 * Recursive Breadcrumbs
+		 * 
+		 * @param string $id post id
+		 * @param int $pos starting position
+		 */
+		public static function breadcrumb_nav( $id, $pos ) {
+
+		$has_parent = false;
+		$curr_post = get_post($id);
+		$parent = get_post_parent($id);
+		$crumb_count = $pos;
+		if($parent){
+			$has_parent = true;
+			NYBC_Helpers::breadcrumb_nav($parent->ID,$crumb_count++);
+		}
+		?>
+		<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+			<a href="<?php echo get_permalink($curr_post->ID) ?>" itemprop="item">
+				<span itemprop="name"><?php echo $curr_post->post_title ?></span>
+			</a>
+			<meta itemprop="position" content="<?php echo $crumb_count ?>" />
+		</li>
+		<?php
+		} 
+
 		/**
 		 *  Convert phone to tel tag
 		 *
