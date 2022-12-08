@@ -16,7 +16,7 @@
       top:0%;
       height:100%;
       width:100%;
-      background-image:url("../src/images/home/nybcv_home_hero_gradiennt.png");
+      background-image:url("../src/images/home/nybcv_hero_gradient.png");
       background-position:center;
       background-size:cover;
       background-repeat:no-repeat;
@@ -46,11 +46,13 @@
       margin-bottom:68px;
       line-height:60px;
       letter-spacing:6px;
+      color:white;
     }
     h2{
       font-family:$bariol-regular;
       font-size:42px;
       line-height:56px;
+      color:white;
     }
   }
 
@@ -77,9 +79,11 @@
       width:60%;
       h1{
         width:80%;
+        color:black;
       }
       h2{
         width:62%;
+        color:black;
       }
     }
   }
@@ -205,9 +209,11 @@
       background-image:url("../src/images/home/kis/nybcv_kis_ii_b.png");
     } 
     h5{
-      font-size:38px;
-      line-height:45px;
+      font-size:34px;
+      line-height:40px;
       margin-bottom:30px;
+      font-family:$bariol-regular;
+      font-weight:600;
     }
     p{
       font-size:24px;

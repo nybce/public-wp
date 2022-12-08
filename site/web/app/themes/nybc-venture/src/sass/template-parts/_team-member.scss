@@ -18,6 +18,7 @@
       line-height:38px;
       text-transform:uppercase;
       margin:0;
+      font-family:$gotham-light;
     }
   }
   &--profile-image{
@@ -37,6 +38,7 @@
     &--previous{
       font-size:16px;
       line-height:19px;
+      text-transform: uppercase;
     } 
     &--separator{
       font-size:16px;
@@ -45,6 +47,7 @@
     &--next{
       font-size:16px;
       line-height:19px;
+      text-transform: uppercase;
     }
   }
   @include for-tablet-landscape-up {
