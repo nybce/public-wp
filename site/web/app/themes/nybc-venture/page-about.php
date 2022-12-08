@@ -36,7 +36,7 @@ $side_second = $sidebar['secondary_image'];
 			</div>
 			<div class="two-col-ti--sidebar">
 				<img src="<?php echo $side_main['sizes']['large']; ?>"/>
-				<img src="<?php echo $side_second['sizes']['large']; ?>"/>
+				<img style="margin-top:10px;" src="<?php echo $side_second['sizes']['large']; ?>"/>
 			</div>
 		</div>
 	</div>
