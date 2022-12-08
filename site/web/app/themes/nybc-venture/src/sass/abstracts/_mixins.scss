@@ -239,20 +239,20 @@
 
 //Typography
 @mixin h1 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $gotham-medium;
+  //font-weight: 600;
   font-size: 40px;
   line-height: 120%;
 
   @include for-tablet-landscape-up {
-    font-size: 84px;
+    font-size: 64px;
     line-height: 100%;
   }
 }
 
 @mixin h2 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $gotham-medium;
+  //font-weight: 600;
   font-size: 32px;
   line-height: 112%;
 
@@ -274,15 +274,15 @@
     line-height: 108%;
   }
   */
-  font-family: $source-sans-pro;  
+  font-family:$gotham-light;
   font-size:40px;
   letter-spacing:-2px;
   margin-bottom:30px;
 }
 
 @mixin h4 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $gotham-medium;
+  //font-weight: 600;
   font-size: 18px;
   line-height: 144%;
 
@@ -293,8 +293,8 @@
 }
 
 @mixin h5 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $gotham-medium;
+  //font-weight: 600;
   line-height: 150%;
 
   @include for-tablet-landscape-up {
@@ -304,8 +304,7 @@
 }
 
 @mixin h6 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $gotham-light;
   font-size: 22px;
   line-height: 120%;
 }
@@ -329,7 +328,7 @@
 }
 
 @mixin body-01-bold {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 20px;
   line-height: 164%;
@@ -341,7 +340,7 @@
 }
 
 @mixin body-02 {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 20px;
   line-height: 164%;
@@ -353,7 +352,7 @@
 }
 
 @mixin body-02-bold {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 20px;
   line-height: 164%;
@@ -365,7 +364,7 @@
 }
 
 @mixin body-03 {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 16px;
   line-height: 164%;
@@ -377,7 +376,7 @@
 }
 
 @mixin body-03-bold {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 16px;
   line-height: 164%;
@@ -390,21 +389,21 @@
 
 // Body-04 styles are for mobile only
 @mixin body-04 {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 14px;
   line-height: 164%;
 }
 
 @mixin body-04-bold {
-  font-family: $open-sans;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 14px;
   line-height: 164%;
 }
 
 @mixin label-large-semibold {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 600;
   font-size: 18px;
   line-height: 18px;
@@ -416,7 +415,7 @@
 }
 
 @mixin label-large-regular {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
@@ -428,7 +427,7 @@
 }
 
 @mixin label-small-semibold {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 600;
   font-size: 14px;
   line-height: 120%;
@@ -440,7 +439,7 @@
 }
 
 @mixin label-small-regular {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -452,7 +451,7 @@
 }
 
 @mixin highlight-quote {
-  font-family: $source-sans-pro;
+  font-family: $gotham-medium;
   font-weight: 300;
   font-size: 28px;
   line-height: 114%;
@@ -464,7 +463,7 @@
 }
 
 @mixin data-headline-01 {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 56px;
   line-height: 100%;
@@ -477,7 +476,7 @@
 }
 
 @mixin data-headline-02 {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 48px;
   line-height: 100%;
@@ -489,7 +488,7 @@
 }
 
 @mixin data-headline-03 {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 700;
   font-size: 32px;
   line-height: 100%;
@@ -501,7 +500,7 @@
 }
 
 @mixin data-text-01 {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 28px;
   line-height: 120%;
@@ -513,14 +512,14 @@
 }
 
 @mixin data-text-02 {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 400;
   font-size: 20px;
   line-height: 120%;
 }
 
 @mixin text-link-01-semibold {
-  font-family: $barlow;
+  font-family: $gotham-medium;
   font-weight: 600;
   font-size: 22px;
   line-height: 28px;
@@ -684,4 +683,19 @@
 @font-face {
     font-family:Bariol Bold Italic;
     src: url("../src/font/bariol_bold_italic-webfont.ttf");
+}
+
+@font-face {
+  font-family:Gotham Medium;
+  src: url("../src/font/Gotham-Medium_Web.woff");
+}
+
+@font-face {
+  font-family:Gotham Book;
+  src: url("../src/font/Gotham-Book_web.woff");
+}
+
+@font-face {
+  font-family:Gotham Light;
+  src: url("../src/font/Gotham-Light_Web.woff")
 }
