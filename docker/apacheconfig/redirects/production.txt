@@ -1,4 +1,5 @@
 ## NYBC Ventures www.nybcventures.org
+nybcventures.org www.nybcventures.org
 nybcventures.com www.nybcventures.org
 nybcventures.biz www.nybcventures.org
 nybcventures.info www.nybcventures.org
@@ -18,6 +19,7 @@ www.nybcventure.biz www.nybcventures.org
 www.nybcventure.info www.nybcventures.org
 
 ## NYBC Enterprises nybce.org
+nybce.org www.nybce.org
 nybce.com www.nybce.org
 
 nybcenterprises.org www.nybce.org
