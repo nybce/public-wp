@@ -73,7 +73,7 @@ get_header();
 			<div class="card-grid--card">
 				<div class="card-grid--card--bg  card-grid--card--bg02">
 					<h5>JOINT <br class="desktop-only">VENTURE</h5>
-					<p>Companies that would benefit from a partnership with Lindsley F. Kimball Research Institute (LFKRI) researchers and other New York Blood Center resources</p>
+					<p>Companies that would benefit from a partnership with Lindsley F. Kimball Research Institute (LFKRI) researchers  and cell manufacturing and sourcing capabilities</p>
 				</div>
 			</div>
 			<div class="card-grid--card">

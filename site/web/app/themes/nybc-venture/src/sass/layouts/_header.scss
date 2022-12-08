@@ -23,7 +23,7 @@ header{
   justify-content: space-between;
   align-items:center;
   padding: 60px 0 35px 0;
-  border-bottom:1px solid black;
+  border-bottom:1px solid #dcdad4;
   .logo{
     font-family:$gotham-medium;
     text-transform:uppercase;
@@ -36,6 +36,7 @@ header{
       .menu-item{
         margin-left: 45px;
         a{
+          font-family:$gotham-book;
           text-transform:uppercase;
           font-size:16px;
         }
@@ -58,11 +59,20 @@ header{
   justify-content: space-between;
   align-items:center;
   padding: 30px 0;
-  border-bottom:1px solid black;
+  border-bottom:1px solid #dcdad4;
   .logo{
     font-family:$gotham-medium;
     text-transform:uppercase;
     font-size:34px;
+  }
+  .mobile-nav-ctn{
+    .mobile-nav{
+      .menu-item{
+        a{
+          font-family:$gotham-book;
+        }
+      }
+    }
   }
   .menu-btn{
     cursor: pointer;
