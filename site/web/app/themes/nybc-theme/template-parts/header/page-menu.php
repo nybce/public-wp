@@ -74,6 +74,9 @@ if ( isset( $locations['page_menu'] ) ) {
 						</div>
 							<?php foreach ( $columns as $column ) {
 								foreach ( $column as $item2 ){
+									echo "<!-- ";
+									var_dump($item2);
+									echo " -->";
 									if ( count($item2->children) > 0 ){
 										$tier3_items = array($item2->children);
 										$tier3_menuid = 'subsubmenu-'.$item2->object_id;
