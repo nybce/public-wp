@@ -49,7 +49,7 @@ get_header();
 				<h5 class="white">Benign Hematology</h5>
 			</div>
 			<div class="img-grid--square img-grid--square--top-left"  style="background-image:url(<?php echo get_template_directory_uri(); ?>/src/images/home/aoi/nybcv_ai_id.jpg)">
-				<h5>Infectious Disease</h5>
+				<h5>Infectious <br>Disease</h5>
 			</div>
 		</div>
 	</div>
