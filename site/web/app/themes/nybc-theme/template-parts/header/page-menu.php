@@ -78,12 +78,12 @@ if ( isset( $locations['page_menu'] ) ) {
 									var_dump($item2);
 									echo " -->";
 									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
-										$tier3_items = array($item2->children);
+										$tier3_items = $item2->children;
 
 									echo "<!-- ";
 									var_dump($tier3_items);
 									echo " -->";
-									
+
 										$tier3_menuid = 'subsubmenu-'.$item2->object_id;
 										?>
 									<div class="sub-dropdown" id="<?php echo $tier3_menuid ?>">
