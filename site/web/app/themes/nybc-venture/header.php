@@ -18,10 +18,12 @@
 );
 
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)): ?>
+  <link rel="shortcut icon" href="<?php echo HOME_URI ?>wp-content/themes/nybc-venture/src/images/favicon.ico" />
   <link rel='stylesheet' id='theme-css'  href='<?php echo HOME_URI ?>wp-content/themes/nybc-venture/css/theme.min.css' type='text/css' media='all' />
 <?php
 else:
 ?>
+  <link rel="shortcut icon" href="<?php echo HOME_URI ?>app/themes/nybc-venture/src/images/favicon.ico" />
   <link rel='stylesheet' id='theme-css'  href='<?php echo HOME_URI ?>app/themes/nybc-venture/css/theme.min.css' type='text/css' media='all' />
 <?php endif; ?>
 </head>
