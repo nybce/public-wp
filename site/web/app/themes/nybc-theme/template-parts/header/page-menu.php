@@ -44,12 +44,14 @@ if ( isset( $locations['page_menu'] ) ) {
 					if ( isset( $item->children ) && ! empty( $item->children ) ) {
 						$count   = count( $item->children );
 						$columns = array( $item->children );
+						/*
 						if ( 'Two' === $number_of_columns ) {
 							$columns = array(
 								array_slice( $item->children, 0, $count / 2 ),
 								array_slice( $item->children, $count / 2 ),
 							);
 						}
+						*/
 						?>
 					<div class="col-xl-6 col-12 align-self-center">
 						<div class="dropdown-list">
@@ -70,6 +72,32 @@ if ( isset( $locations['page_menu'] ) ) {
 							</ul>
 							<?php } ?>
 						</div>
+							<?php foreach ( $columns as $column ) {
+								foreach ( $column as $item2 ){
+									if ( count($item2->children) > 0 ){
+										$tier3_items = array($item2->children);
+										$tier3_menuid = 'subsubmenu-'.$item2->object_id;
+										?>
+									<div class="sub-dropdown" id="<?php echo $tier3_menuid ?>">
+										<ul class="sub-dropdown-list">
+										<?php
+										foreach ( $tier3_items as $item3 ) {
+											$current = '';
+											if ( $queried_object_id === $item3->object_id ) {
+												$current = 'current-menu-item';
+											}
+											?>
+											<li class="<?php echo esc_attr( $current ); ?>"><a href="<?php echo esc_url( $item3->url ); ?>"><?php echo esc_html( $item3->title ); ?></a></li>
+											<?php
+										}
+										?>
+										</ul>
+									</div>
+										<?php
+									}
+								}
+							}
+							?>
 					</div>
 					<?php } ?>
 				</div>
