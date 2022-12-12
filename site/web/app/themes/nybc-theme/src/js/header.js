@@ -26,13 +26,14 @@ jQuery( function( $ ) {
 		}
 	} );
 
-	$( '.dropdown-v2-item.has-children' ).on( 'hover', function() {
+	$( '.dropdown-v2-item.has-children' ).on( 'mouseenter', function() {
 		var menuid = $(this).data('menuid');
-		var target_submenu = '.submenu-' . menuid;
+		var target_submenu = '#submenu-' . menuid;
 		console.log('hit');
 		console.log(menuid);
 		console.log(target_submenu);
-		$(target_submenu).toggleClass('active');
+		$(".sub-dropdown").removeClass('active');
+		$(target_submenu).addClass('active');
 
 	})
 } );
