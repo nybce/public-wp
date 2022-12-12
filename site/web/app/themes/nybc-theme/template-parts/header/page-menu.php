@@ -58,10 +58,15 @@ if ( isset( $locations['page_menu'] ) ) {
 								foreach ( $column as $item2 ) {
 									$current = '';
 									if ( $queried_object_id === $item2->object_id ) {
-										$current = 'current-menu-item';
+										$current .= ' current-menu-item';
 									}
+
+									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
+										$current .= ' has-children';
+									}
+									$menu_id = $item2->object_id
 									?>
-									<li class="<?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
+									<li data-menuid="" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
 									<?php
 
 								}
@@ -73,7 +78,7 @@ if ( isset( $locations['page_menu'] ) ) {
 								foreach ( $column as $item2 ){
 									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
 										$tier3_items = $item2->children;
-										$tier3_menuid = 'subsubmenu-'.$item2->object_id;
+										$tier3_menuid = 'submenu-'.$item2->object_id;
 										?>
 									<div class="sub-dropdown" id="<?php echo $tier3_menuid ?>">
 										<ul class="sub-dropdown-list">
