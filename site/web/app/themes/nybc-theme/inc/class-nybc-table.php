@@ -34,6 +34,7 @@ if ( ! class_exists( 'NYBC_Table' ) ) {
 			if ( ! class_exists( 'TablePress' ) ) {
 				return;
 			}
+
 			add_action( 'init', array( 'NYBC_Table', 'export' ) );
 			add_filter( 'tablepress_table_output', array( 'NYBC_Table', 'tablepress_table_output' ), 10, 3 );
 
