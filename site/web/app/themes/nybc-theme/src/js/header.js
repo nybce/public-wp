@@ -25,15 +25,4 @@ jQuery( function( $ ) {
 				.removeClass( 'remove-overflow' );
 		}
 	} );
-
-	$( '.dropdown-v2-item.has-children' ).on( 'mouseenter', function() {
-		var menuid = $(this).data('menuid');
-		var target_submenu = '#submenu-' . menuid;
-		console.log('hit');
-		console.log(menuid);
-		console.log(target_submenu);
-		$(".sub-dropdown").removeClass('active');
-		$(target_submenu).addClass('active');
-
-	})
 } );
