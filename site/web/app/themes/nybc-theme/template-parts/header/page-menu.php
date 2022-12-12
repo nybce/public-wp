@@ -29,17 +29,14 @@ if ( isset( $locations['page_menu'] ) ) {
 		<div class="dropdown">
 			<div class="dropdown-close"><i></i><span><?php esc_html_e( 'Back', 'nybc' ); ?></span></div>
 
-			<div class="">
-				<div class="">
+				<div class="dropdown-v2">
 
-					<div class="">
 						<div class="dropdown-info">
 							<a href="<?php echo esc_html( $item->url ); ?>" class="btn-link btn-link-secondary right"><?php echo esc_html( $item->title ); ?><i></i></a>
 							<?php if ( ! empty( $text ) ) { ?>
 							<div class="text-xl"><?php echo esc_html( $text ); ?></div>
 							<?php } ?>
 						</div>
-					</div>
 					<?php
 					if ( isset( $item->children ) && ! empty( $item->children ) ) {
 						$count   = count( $item->children );
@@ -53,7 +50,7 @@ if ( isset( $locations['page_menu'] ) ) {
 						}
 						*/
 						?>
-					<div class="">
+					<div class="dropdown-v2-list-ctn">
 						<div class="dropdown-list">
 							<?php foreach ( $columns as $column ) { ?>
 							<ul class="dropdown-list-menu">
@@ -101,7 +98,6 @@ if ( isset( $locations['page_menu'] ) ) {
 					</div>
 					<?php } ?>
 				</div>
-			</div>
 		</div>
 		<?php } ?>
 	</li>
