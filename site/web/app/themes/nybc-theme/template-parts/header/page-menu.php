@@ -66,7 +66,7 @@ if ( isset( $locations['page_menu'] ) ) {
 									}
 									$menu_id = $item2->object_id
 									?>
-									<li data-menuid="" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
+									<li data-menuid="<?php echo $menu_id ?>" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
 									<?php
 
 								}
