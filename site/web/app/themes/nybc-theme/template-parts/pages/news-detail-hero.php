@@ -26,7 +26,10 @@ $tags       = get_the_tags();
 			<div class="container">
 
 				<div class="row">
-					<?php if ( ! empty( $image_url ) ) { ?>
+					<?php 
+					// Tempfix, do not show featured image for news post in all cases
+					// if ( ! empty( $image_url ) ) {
+					if(false) { ?>
 					<div class="col-lg-5">
 						<div class="banner-img size-2">
 							<div class="bg rellax" data-rellax-speed="-1"
@@ -35,7 +38,8 @@ $tags       = get_the_tags();
 					</div>
 					<?php } ?>
 
-					<div class="col-lg-7">
+					<!--<div class="col-lg-7">-->
+					<div class="col-lg-12">
 						<div class="banner-content">
 
 							<div class="spacer-24"></div>
