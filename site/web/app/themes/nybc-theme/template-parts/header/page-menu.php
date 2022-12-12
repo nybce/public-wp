@@ -29,10 +29,10 @@ if ( isset( $locations['page_menu'] ) ) {
 		<div class="dropdown">
 			<div class="dropdown-close"><i></i><span><?php esc_html_e( 'Back', 'nybc' ); ?></span></div>
 
-			<div class="container">
-				<div class="row justify-content-between">
+			<div class="">
+				<div class="">
 
-					<div class="col-xl-6 col-12 align-self-center">
+					<div class="">
 						<div class="dropdown-info">
 							<a href="<?php echo esc_html( $item->url ); ?>" class="btn-link btn-link-secondary right"><?php echo esc_html( $item->title ); ?><i></i></a>
 							<?php if ( ! empty( $text ) ) { ?>
@@ -53,7 +53,7 @@ if ( isset( $locations['page_menu'] ) ) {
 						}
 						*/
 						?>
-					<div class="col-xl-6 col-12 align-self-center">
+					<div class="">
 						<div class="dropdown-list">
 							<?php foreach ( $columns as $column ) { ?>
 							<ul class="dropdown-list-menu">
@@ -74,16 +74,8 @@ if ( isset( $locations['page_menu'] ) ) {
 						</div>
 							<?php foreach ( $columns as $column ) {
 								foreach ( $column as $item2 ){
-									echo "<!-- ";
-									var_dump($item2);
-									echo " -->";
 									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
 										$tier3_items = $item2->children;
-
-									echo "<!-- ";
-									var_dump($tier3_items);
-									echo " -->";
-
 										$tier3_menuid = 'subsubmenu-'.$item2->object_id;
 										?>
 									<div class="sub-dropdown" id="<?php echo $tier3_menuid ?>">
