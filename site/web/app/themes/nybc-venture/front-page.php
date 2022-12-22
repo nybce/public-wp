@@ -21,7 +21,7 @@ get_header();
     	</div>
    	<div class="front-hero--text-ctn">
 	     <h1>Purpose-First Investing</h1>
-	     <h2>A venture fund dedicated to accelerating innovations in blood-related and cellular therapy & technologies</h2>
+	     <h2>A venture fund dedicated to accelerating innovations in blood and cell-based therapies & technologies</h2>
    	</div>
     </div>
     <div class="front-addendum">
