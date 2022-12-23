@@ -61,7 +61,7 @@ get_header();
 	<div class="nybcv-block">
 		<div class="nybcv-block--intro">
 			<h3>KEY INVESTMENT STRATEGIES</h3>
-			<p>Working with NYBC Ventures goes beyond capital. We provide access to world-renowned researchers and their labs, cell manufacturing capacity, and source materials. These synergistically blend to further enable technologies of interest.</p>
+			<p>Working with NYBC Ventures goes beyond capital. We provide access to world-renowned researchers and their labs, cell manufacturing capacity, and source materials.</p>
 		</div>
 		<div class="card-grid">
 			<div class="card-grid--card">
