@@ -23,7 +23,7 @@ get_header();
    	<div class="front-hero--text-ctn">
    		<?php
    		$front_hero = get_field('front_hero');
-   		if($front_hero):
+   		if(!empty($front_hero)):
    		?>
    		<h1><?php echo $front_hero['title']; ?></h1>
    		<h2><?php echo $front_hero['subtitle']; ?></h2>
@@ -38,7 +38,7 @@ get_header();
     <div class="front-addendum">
     	<?php
     	$highlight_text = get_field('highlight_text');
-    	if($highlight_text):
+    	if(!empty($highlight_text)):
     	?>
     	<h2><?php echo $highlight_text ?></h2>
     	<?php else: ?>
@@ -55,7 +55,7 @@ get_header();
 		<?php $aof = get_field('areas_of_focus'); ?>
 		<div class="nybcv-block--intro">
 			<?php 
-			if($aof['title']):
+			if(!empty($aof['title'])):
 			?>
 			<h3><?php echo $aof['title'] ?></h3>
 			<?php echo $aof['introduction_text'] ?>
@@ -66,7 +66,7 @@ get_header();
 		</div>
 		<div class="img-grid">
 			<?php
-			if($aof['aof_card_list']):
+			if(!empty($aof['aof_card_list'])):
 
     	foreach($aof['aof_card_list'] as $aofc):
         $aofc_title = $aofc['title'];
@@ -104,7 +104,7 @@ get_header();
 	<div class="nybcv-block">
 		<?php $kis = get_field('key_investment_strategies'); ?>
 		<div class="nybcv-block--intro">
-			<?php if ($kis['title']): ?>
+			<?php if (!empty($kis['title'])): ?>
 				<h3><?php echo $kis['title'] ?></h3>
 				<?php echo $kis['introduction_text'] ?>
 			<?php else: ?>
@@ -113,7 +113,7 @@ get_header();
 		<?php endif; ?>
 		</div>
 		<div class="card-grid">
-			<?php if($kis['kis_card_list']): 
+			<?php if(!empty($kis['kis_card_list'])): 
 				foreach($kis['kis_card_list'] as $kisc):
 					$kisc_bg = $kisc['background_image'];
 				?>
