@@ -44,6 +44,14 @@ if ( isset( $locations['page_menu'] ) ) {
 					if ( isset( $item->children ) && ! empty( $item->children ) ) {
 						$count   = count( $item->children );
 						$columns = array( $item->children );
+						/*
+						if ( 'Two' === $number_of_columns ) {
+							$columns = array(
+								array_slice( $item->children, 0, $count / 2 ),
+								array_slice( $item->children, $count / 2 ),
+							);
+						}
+						*/
 						?>
 					<div class="col-xl-6 col-12 align-self-center">
 						<div class="dropdown-list">
