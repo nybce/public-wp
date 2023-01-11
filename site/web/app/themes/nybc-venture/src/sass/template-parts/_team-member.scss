@@ -1,0 +1,62 @@
+.team-member{
+  display:grid;
+  grid-template-columns:1fr;
+  column-gap:30px;
+  grid-row-gap:25px;
+  &--spacer{
+    display:none;
+  }
+  &--title{
+    h1{
+      font-size:40px;
+      line-height:48px;
+      text-transform:uppercase;
+      margin:0;
+    }
+    h3{
+      font-size:32px;
+      line-height:38px;
+      text-transform:uppercase;
+      margin:0;
+      font-family:$gotham-light;
+    }
+  }
+  &--profile-image{
+    overflow:hidden;
+    max-height:360px;
+    img{
+
+    }
+  }
+  &--biography{
+
+  }
+  &--navigation{
+    border-top:1px solid $dark-grey;
+    padding:30px 0;
+    margin-top:45px;
+    &--previous{
+      font-size:16px;
+      line-height:19px;
+      text-transform: uppercase;
+    } 
+    &--separator{
+      font-size:16px;
+      line-height:19px;
+    }
+    &--next{
+      font-size:16px;
+      line-height:19px;
+      text-transform: uppercase;
+    }
+  }
+  @include for-tablet-landscape-up {
+    grid-template-columns:1fr 2fr;
+    &--spacer{
+      display:block;
+    }
+    &--profile-image{
+      max-height:none;
+    }
+  }
+}

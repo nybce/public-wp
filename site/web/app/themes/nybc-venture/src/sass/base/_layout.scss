@@ -6,10 +6,39 @@
   @include container-wide;
 }
 
-.container-slider {
-  @include container-slider;
-}
-
 .d-none {
   display: none;
+}
+.nybcv-wrapper{
+  margin: 100px 0;
+}
+.reduced-wrapper{
+  margin: 30px 0;
+}
+.med-reduced-wrapper{
+  margin: 50px 0;
+}
+.major-reduced-wrapper{
+  margin: 80px 0;
+}
+.nybcv-block{
+  &--intro{
+    margin-bottom:45px;
+    h3{
+      font-size:40px;
+      letter-spacing:-2px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+    p{
+      font-size:24px;
+      line-height:30px;
+    }
+  }
+}
+.mobile-only{
+  display:block;
+  @include for-tablet-landscape-up{
+    display:none;
+  }
 }

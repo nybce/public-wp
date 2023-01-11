@@ -111,6 +111,7 @@ EXPOSE 80
 
 
 RUN rm /etc/apache2/sites-enabled/*
+COPY docker/apacheconfig/redirects/${ENVIRONMENT}.txt /etc/apache2/redirects.txt
 COPY docker/apacheconfig/vhosts/* /etc/apache2/sites-enabled/
 COPY docker/apacheconfig/authusers /etc/apache2/authusers
 

@@ -1,15 +1,17 @@
 // Body
 body {
-  color: $navy;
-  font-family: $open-sans;
+  color: $nybcv-black;
+  font-family: $bariol-regular;
   // font-size: 18px;
   // line-height: 30px;
+  font-size:28px;
+  line-height:33.6px;
 }
 
 // Headings
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: $source-sans-pro;
-  font-weight: 600;
+  font-family: $open-sans;
+  font-weight: 400;
 }
 
 h1, .h1 {
@@ -140,73 +142,12 @@ h6, .h6 {
 }
 
 
-.content {
-  h2 {
-    @include h3;
-    margin-bottom: 24px;
-
-    @include for-tablet-landscape-up {
-      @include h4;
-    }
-  }
-
-  h3 {
-    @include h4;
-    margin-bottom: 24px;
-
-    @include for-tablet-landscape-up {
-      @include h5;
-    }
-  }
-
-  strong {
-    @include body-03-bold;
-
-    @include for-tablet-landscape-up {
-      @include body-02-bold;
-    }
-  }
-
-  p {
-    @include body-03;
-    margin-bottom: 24px;
-
-    @include for-tablet-landscape-up {
-      @include body-02;
-    }
-  }
-
-  ul {
-    margin-bottom: 24px;
-    padding-left: 32px;
-    list-style: disc;
-    @include body-03;
-
-    @include for-tablet-landscape-up {
-      @include body-02;
-    }
-  }
-
-  ol {
-    margin-bottom: 24px;
-    padding-left: 32px;
-    list-style: decimal;
-    @include body-03;
-
-    @include for-tablet-landscape-up {
-      @include body-02;
-    }
-  }
-
-  a {
-    color: $bright-blue;
-
-    &:hover {
-      color: $bright-blue;
-    }
-  }
-
-  *:last-child {
-    margin-bottom: 0;
-  }
+//nybcv typography
+p{
+  font-size:28px;
+  line-height:33.6px;
+  margin-bottom:20px;
+}
+strong{
+  font-weight:700;
 }

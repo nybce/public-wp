@@ -49,7 +49,6 @@
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/nitropack": "^1.5.7",
-        "wpackagist-plugin/seo-by-rank-math": "^1.0.75",
         "wpackagist-plugin/wordfence": "^7.5.6",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/akismet": "^4.2.1",
@@ -58,7 +57,8 @@
         "wpackagist-plugin/user-role-editor": "^4.60.2",
         "wpackagist-plugin/duplicate-post": "^4.4",
         "wpackagist-plugin/redirection": "^5.2.3",
-        "wpackagist-plugin/wp-fastest-cache": "^1.03",
+        "wpackagist-plugin/w3-total-cache": "^2.2.7",
+        "wpackagist-plugin/wordpress-seo": "^19.10",
         "wpackagist-plugin/wp-all-import": "^3.6.7"
     },
     "require-dev": {
@@ -91,8 +91,7 @@
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/broken-link-checker",
                 "wpackagist-plugin/easy-wp-smtp",
-                "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/seo-by-rank-math"
+                "wpackagist-plugin/gravity-forms-custom-post-types"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
             "web/app/themes/{$name}/": ["type:wordpress-theme"]

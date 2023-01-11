@@ -57,7 +57,6 @@
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/nitropack": "^1.5.7",
-        "wpackagist-plugin/seo-by-rank-math": "^1.0.75",
         "wpackagist-plugin/svg-support": "^2.3",
         "wpackagist-plugin/user-role-editor": "^4.60.2",
         "wpackagist-plugin/wordfence": "^7.5.6",
@@ -65,7 +64,8 @@
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
         "wpackagist-plugin/wpo365-login":"17.4",
-        "wpackagist-plugin/wp-fastest-cache": "^1.0.5"
+        "wpackagist-plugin/wordpress-seo": "^19.10",
+        "wpackagist-plugin/w3-total-cache": "^2.2.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -98,8 +98,7 @@
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/wpo365-login",
-                "wpackagist-plugin/seo-by-rank-math"
+                "wpackagist-plugin/wpo365-login"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
             "web/app/themes/{$name}/": ["type:wordpress-theme"]

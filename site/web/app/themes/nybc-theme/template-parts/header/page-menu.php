@@ -29,20 +29,23 @@ if ( isset( $locations['page_menu'] ) ) {
 		<div class="dropdown">
 			<div class="dropdown-close"><i></i><span><?php esc_html_e( 'Back', 'nybc' ); ?></span></div>
 
-				<div class="dropdown-v2">
+			<div class="container">
+				<div class="row justify-content-between">
 
+					<div class="col-xl-6 col-12 align-self-center">
 						<div class="dropdown-info">
 							<a href="<?php echo esc_html( $item->url ); ?>" class="btn-link btn-link-secondary right"><?php echo esc_html( $item->title ); ?><i></i></a>
 							<?php if ( ! empty( $text ) ) { ?>
 							<div class="text-xl"><?php echo esc_html( $text ); ?></div>
 							<?php } ?>
 						</div>
+					</div>
 					<?php
 					if ( isset( $item->children ) && ! empty( $item->children ) ) {
 						$count   = count( $item->children );
 						$columns = array( $item->children );
 						?>
-					<div class="dropdown-v2-list-ctn">
+					<div class="col-xl-6 col-12 align-self-center">
 						<div class="dropdown-list">
 							<?php foreach ( $columns as $column ) { ?>
 							<ul class="dropdown-list-menu">
@@ -50,15 +53,10 @@ if ( isset( $locations['page_menu'] ) ) {
 								foreach ( $column as $item2 ) {
 									$current = '';
 									if ( $queried_object_id === $item2->object_id ) {
-										$current .= ' current-menu-item';
+										$current = 'current-menu-item';
 									}
-
-									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
-										$current .= ' has-children';
-									}
-									$menu_id = $item2->object_id
 									?>
-									<li data-menuid="<?php echo $menu_id ?>" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
+									<li class="<?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
 									<?php
 
 								}
@@ -66,35 +64,10 @@ if ( isset( $locations['page_menu'] ) ) {
 							</ul>
 							<?php } ?>
 						</div>
-							<?php foreach ( $columns as $column ) {
-								foreach ( $column as $item2 ){
-									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
-										$tier3_items = $item2->children;
-										$tier3_menuid = 'submenu-'.$item2->object_id;
-										?>
-									<div class="sub-dropdown" id="<?php echo $tier3_menuid ?>">
-										<ul class="sub-dropdown-list">
-										<?php
-										foreach ( $tier3_items as $item3 ) {
-											$current = '';
-											if ( $queried_object_id === $item3->object_id ) {
-												$current = 'current-menu-item';
-											}
-											?>
-											<li class="<?php echo esc_attr( $current ); ?>"><a href="<?php echo esc_url( $item3->url ); ?>"><?php echo esc_html( $item3->title ); ?></a></li>
-											<?php
-										}
-										?>
-										</ul>
-									</div>
-										<?php
-									}
-								}
-							}
-							?>
 					</div>
 					<?php } ?>
 				</div>
+			</div>
 		</div>
 		<?php } ?>
 	</li>

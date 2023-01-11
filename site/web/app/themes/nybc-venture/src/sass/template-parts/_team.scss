@@ -1,0 +1,38 @@
+.team-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 20px;
+  grid-row-gap: 20px;
+  &--profile{
+    display:flex;
+    flex-direction:column;
+    &--image{
+      img{
+
+      }
+    }
+    &--text{
+      h5{
+        font-size:20px;
+        line-height:24px;
+        text-transform:uppercase;
+      }
+      h6{
+        font-family:$gotham-light;
+        font-size:20px;
+        line-height:24px;
+      }
+    }
+  }
+
+  @include for-tablet-portrait-up {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    grid-row-gap: 30px;
+  }
+  @include for-tablet-landscape-up{
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 40px;
+    grid-row-gap: 40px;
+  }
+}
