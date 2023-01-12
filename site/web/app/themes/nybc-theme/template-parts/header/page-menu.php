@@ -66,7 +66,16 @@ if ( isset( $locations['page_menu'] ) ) {
 									}
 									$menu_id = $item2->object_id
 									?>
-									<li data-menuid="<?php echo $menu_id ?>" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a></li>
+									<li data-menuid="<?php echo $menu_id ?>" class="dropdown-v2-item <?php echo esc_attr( $current ); ?>"><a  href="<?php echo esc_url( $item2->url ); ?>"><?php echo esc_html( $item2->title ); ?></a>
+										<?php if ( isset( $item2->children ) && ! empty( $item2->children ) ):
+										?>
+										<ul class="dropdown-v2-sublist">
+										<?php foreach ($item2->children as $child):?>
+											<li><a href="<?php echo $child->url ?>"><?php echo $child->title ?></a></li>
+										<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+									</li>
 									<?php
 
 								}
@@ -74,6 +83,7 @@ if ( isset( $locations['page_menu'] ) ) {
 							</ul>
 							<?php } ?>
 						</div>
+						<?php if (count($columns > 0)): ?>
 						<div class="sub-dropdown-ctn">
 							<?php foreach ( $columns as $column ) {
 								foreach ( $column as $item2 ){
@@ -102,6 +112,7 @@ if ( isset( $locations['page_menu'] ) ) {
 							}
 							?>
 						</div>
+						<?php endif; ?>
 					</div>
 					<?php } ?>
 				</div>
