@@ -34,7 +34,7 @@ jQuery( function( $ ) {
 		$(".sub-dropdown").removeClass('active');
 		$(target_submenu).addClass('active');
 	});
-	$( '.sub-dropdown.active' ).on( 'mouseleave' , function() {
+	$( '.sub-dropdown' ).on( 'mouseleave' , function() {
 		var menuid = $(this).attr('id');
 		var targetid = parseInt(menuid.split('-')[1]);
 		console.log('hit2');
