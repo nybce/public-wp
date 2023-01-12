@@ -30,10 +30,15 @@ jQuery( function( $ ) {
 		var menuid = $(this).data('menuid');
 		var target_submenu = '#submenu-' + menuid;
 		console.log('hit');
-		console.log(menuid);
 		console.log(target_submenu);
 		$(".sub-dropdown").removeClass('active');
 		$(target_submenu).addClass('active');
-
-	})
+	});
+	$( '.dropdown-v2 .sub-dropdown.active' ).on ( 'mouseleave', function() {
+		var menuid = $(this).attr('id');
+		var targetid = parseInt(menuid.split('-')[1]);
+		console.log('hit2');
+		console.log(targetid);
+		$(".sub-dropdown").removeClass('active');
+	});
 } );
