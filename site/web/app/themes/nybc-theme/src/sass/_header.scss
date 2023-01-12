@@ -566,11 +566,14 @@ header {
 		    position: absolute;
 		    font-weight: 100;
 		}
+		&.active{
+			color:$color-primary-base1-10;
+		}
 	}
 	&-list-ctn	{
 
 		display:flex;
-		width:60%;
+		width:50%;
 		.dropdown-list{
 			//add padding when ready to add hover state
 			padding:4.75em 0 13rem 0;
@@ -602,6 +605,29 @@ header {
 				}
 			}
 		}
+	}
+	&-sublist{
+		display:none;
+	}
+
+	@media (max-width: 1300px){
+
+	.dropdown-info{
+
+	}
+	&-list-ctn{
+		.dropdown-list{
+
+		}
+		.sup-dropdown-ctn{
+			display:none;
+		}
+	}
+	&-sublist{
+		display:block;
+	}
+
+
 	}
 }
 
