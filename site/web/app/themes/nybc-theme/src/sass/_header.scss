@@ -559,8 +559,12 @@ header {
 	}
 	.has-children{
 		a::after{
-			content:">";
-			cursor:pointer;
+			content: ">";
+		    cursor: pointer;
+		    margin-left: 6px;
+		    font-size: 22px;
+		    position: absolute;
+		    font-weight: 100;
 		}
 	}
 	&-list-ctn	{
