@@ -57,8 +57,6 @@
         "wpackagist-plugin/user-role-editor": "^4.60.2",
         "wpackagist-plugin/duplicate-post": "^4.4",
         "wpackagist-plugin/redirection": "^5.2.3",
-        "wpackagist-plugin/w3-total-cache": "^2.2.7",
-        "wpackagist-plugin/wordpress-seo": "^19.10",
         "wpackagist-plugin/wp-all-import": "^3.6.7"
     },
     "require-dev": {
