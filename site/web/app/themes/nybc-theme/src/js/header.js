@@ -33,6 +33,7 @@ jQuery( function( $ ) {
 		console.log(target_submenu);
 		$(".sub-dropdown").removeClass('active');
 		$(target_submenu).addClass('active');
+		$(this).addClass('active');
 	});
 	$( '.sub-dropdown' ).on( 'mouseleave' , function() {
 		var menuid = $(this).attr('id');
@@ -40,5 +41,6 @@ jQuery( function( $ ) {
 		console.log('hit2');
 		console.log(targetid);
 		$(".sub-dropdown").removeClass('active');
+		$('.dropdown-v2-item.has-children').removeClass('active');
 	});
 } );
