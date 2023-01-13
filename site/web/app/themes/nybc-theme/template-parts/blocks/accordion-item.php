@@ -29,6 +29,7 @@ $allowed_blocks = array(
 	'core/heading',
 	'core/list',
 	'acf/blockquote',
+	'acf/custom-button',
 	'core/paragraph',
 	'core/image',
 );

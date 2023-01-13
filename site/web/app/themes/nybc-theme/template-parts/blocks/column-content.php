@@ -27,6 +27,7 @@ $allowed_blocks = array(
 	'core/shortcode',
 	'acf/text',
 	'acf/blockquote',
+	'acf/custom-button',
 	'acf/small-card-row',
 	'acf/horizontal-cta-card',
 	'acf/inline-video',
