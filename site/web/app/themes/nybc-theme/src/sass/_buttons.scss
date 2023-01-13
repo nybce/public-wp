@@ -67,7 +67,6 @@
 
 	&.btn-custom {
 		background: $color-primary-base2-10;
-		border: 1px solid $color-primary-base2-10;
 		text-decoration:none;
 		color: $color-white;
 		i {
@@ -296,7 +295,6 @@
 		}
 		&-custom:hover{
 			background:$color-primary-base2-30;
-			border:$color-primary-base2-30;
 			color:$color-white;
 		}
 	}
