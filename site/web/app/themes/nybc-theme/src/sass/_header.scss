@@ -581,7 +581,8 @@ header {
 			flex:1;
 		}
 		.sub-dropdown-ctn{
-			width:40%;
+			width:50%;
+			overflow:hidden;
 		}
 		.sub-dropdown{
 			display:flex;
@@ -590,7 +591,7 @@ header {
 			flex:0;
 			background: #E2F0FF;
 			padding:0;
-			transition:all .3s ease, visibility .05s ease;
+			transition:all .3s ease, height 0s, padding 0s, visibility .05s ease;
 			height:0;
 			a{
 				font-size:0;
