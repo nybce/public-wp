@@ -65,14 +65,26 @@
 		}
 	}
 
-	&-custom {
+	&.btn-custom {
 		background: $color-primary-base2-10;
 		border: 1px solid $color-primary-base2-10;
+		text-decoration:none;
 		color: $color-white;
 		i {
 			&::after{
 				border-color: $color-white;
 			}
+		}
+		&[target="_blank"]::after{
+			display:none;
+		}
+		&:focus{
+			background: $color-primary-base2-10;
+			outline:none;
+		}
+		&:hover{
+			background: $color-primary-base2-30;
+			color:$color-white;
 		}
 	}
 
@@ -285,6 +297,7 @@
 		&-custom:hover{
 			background:$color-primary-base2-30;
 			border:$color-primary-base2-30;
+			color:$color-white;
 		}
 	}
 
