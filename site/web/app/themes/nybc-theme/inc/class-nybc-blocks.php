@@ -254,6 +254,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::inline_video();// N2RDEV-85.
 			self::inline_image();// N2RDEV-90.
 			self::blockquote();
+			self::custom_button();
 			self::accordion_item();// N2RDEV-86.
 			self::accordion();// N2RDEV-86.
 			self::siderail_promo_cta();// N2RDEV-89.
@@ -1175,6 +1176,26 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 		}
 
+		/**
+		 *  Custom Button Block
+		 */
+		public static function custom_button() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'custom_button',
+						'title'           => esc_html__( 'Custom Button', 'nybc' ),
+						'description'     => esc_html__( 'Custom Button Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/custom-button.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/custom-button' );
+			}
+		}
 		/**
 		 *  Horizontal Line Block
 		 */
