@@ -83,7 +83,7 @@ if ( isset( $locations['page_menu'] ) ) {
 							</ul>
 							<?php } ?>
 						</div>
-						<?php if (count($columns > 0)): ?>
+						<?php if( isset( $item2->children ) && ! empty( $item2->children ) ): ?>
 						<div class="sub-dropdown-ctn">
 							<?php foreach ( $columns as $column ) {
 								foreach ( $column as $item2 ){
