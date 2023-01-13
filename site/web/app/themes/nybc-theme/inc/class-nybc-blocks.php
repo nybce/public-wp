@@ -150,6 +150,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'core/html',
 				'core/image',
 				'acf/blockquote',
+				'acf/custom-button',
 				'acf/home-hero',
 				'acf/promo-home-cta',
 				'acf/full-width-feature-cta',
