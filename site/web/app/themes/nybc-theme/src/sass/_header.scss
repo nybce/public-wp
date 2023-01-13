@@ -610,18 +610,20 @@ header {
 		display:none;
 	}
 
-	@media (max-width: 1300px){
+	@media (max-width: 1299px){
 	flex-direction:column;
 	.dropdown-info{
 
 	}
-	.dropdown-item .dropdown-list-menu li{
-		text-align:left;
-	}
 	&-list-ctn{
 		width:100%;
+		padding-left:3em;
 		.dropdown-list{
 			width:100%;
+			padding:0;
+			.dropdown-list-menu li{
+				text-align:left;
+			}
 		}
 		.sup-dropdown-ctn{
 			display:none;
