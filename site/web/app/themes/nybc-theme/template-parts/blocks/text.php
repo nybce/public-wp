@@ -31,6 +31,7 @@ $allowed_blocks = array(
 	'core/image',
 	'acf/blockquote',
 	'acf/accordion',
+	'acf/custom-button'
 );
 
 $class_name .= ' text-block mb-48 ';
