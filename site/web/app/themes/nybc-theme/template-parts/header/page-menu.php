@@ -83,10 +83,9 @@ if ( isset( $locations['page_menu'] ) ) {
 							</ul>
 							<?php } ?>
 						</div>
-						<?php if( isset( $item2->children ) && ! empty( $item2->children ) ): ?>
-						<div class="sub-dropdown-ctn">
-							<?php foreach ( $columns as $column ) {
-								foreach ( $column as $item2 ){
+							<?php foreach ( $columns as $column ) { ?>
+								<div class="sub-dropdown-ctn">
+								<?php foreach ( $column as $item2 ){
 									if ( isset( $item2->children ) && ! empty( $item2->children ) ){
 										$tier3_items = $item2->children;
 										$tier3_menuid = 'submenu-'.$item2->object_id;
@@ -108,11 +107,12 @@ if ( isset( $locations['page_menu'] ) ) {
 									</div>
 										<?php
 									}
-								}
+								} ?>
+								<div class="sub-dropdown-ctn">
+						<?php
 							}
 							?>
 						</div>
-						<?php endif; ?>
 					</div>
 					<?php } ?>
 				</div>
