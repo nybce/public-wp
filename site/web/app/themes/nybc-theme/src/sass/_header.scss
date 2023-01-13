@@ -611,13 +611,17 @@ header {
 	}
 
 	@media (max-width: 1300px){
-
+	flex-direction:column;
 	.dropdown-info{
 
 	}
+	.dropdown-item .dropdown-list-menu li{
+		text-align:left;
+	}
 	&-list-ctn{
+		width:100%;
 		.dropdown-list{
-
+			width:100%;
 		}
 		.sup-dropdown-ctn{
 			display:none;
@@ -625,7 +629,17 @@ header {
 	}
 	&-sublist{
 		display:block;
+		margin-left:15px;
+		li{
+			text-align:left;
+			a{
+				&:after{
+					display:none;
+				}
+			}
+		}
 	}
+
 
 
 	}
