@@ -10,14 +10,14 @@ jQuery( function( $ ) {
 
 	// mobile menu
 	$( document ).on( 'click', '.dropdown-btn', function() {
-		if ( $( window ).width() < 1199 ) {
+		if ( $( window ).width() < 1299 ) {
 			$( this ).parent().addClass( 'active' );
 			$( this ).parents().find( '.toggle-block.open' ).addClass( 'remove-overflow' );
 		}
 	} );
 
 	$( '.dropdown-close' ).on( 'click', function() {
-		if ( $( window ).width() < 1199 ) {
+		if ( $( window ).width() < 1299 ) {
 			$( this ).parents( '.dropdown-item' ).removeClass( 'active' );
 			$( this )
 				.parents()
