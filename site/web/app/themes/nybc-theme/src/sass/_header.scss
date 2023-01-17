@@ -614,8 +614,9 @@ header {
 
 	@media (max-width: 1024px){
 	flex-direction:column;
+	justify-content: initial;
 	.dropdown-info{
-		padding-top:2em;
+		padding-top:0;
 		padding-bottom:2em;
 	}
 	&-list-ctn{
