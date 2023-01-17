@@ -27,20 +27,20 @@ jQuery( function( $ ) {
 	} );
 
 	$( '.dropdown-v2-item.has-children' ).on( 'mouseenter' , function() {
-		var menuid = $(this).data('menuid');
-		var target_submenu = '#submenu-' + menuid;
-		console.log('hit');
-		console.log(target_submenu);
-		$(".sub-dropdown").removeClass('active');
-		$(target_submenu).addClass('active');
-		$(this).addClass('active');
+		if ( $( window ).width() > 1023 ) {
+			var menuid = $(this).data('menuid');
+			var target_submenu = '#submenu-' + menuid;
+			$(".sub-dropdown").removeClass('active');
+			$(target_submenu).addClass('active');
+			$(this).addClass('active');
+		}
 	});
 	$( '.sub-dropdown' ).on( 'mouseleave' , function() {
-		var menuid = $(this).attr('id');
-		var targetid = parseInt(menuid.split('-')[1]);
-		console.log('hit2');
-		console.log(targetid);
-		$(".sub-dropdown").removeClass('active');
-		$('.dropdown-v2-item.has-children').removeClass('active');
+		if ( $( window ).width() > 1023 ) {
+			var menuid = $(this).attr('id');
+			var targetid = parseInt(menuid.split('-')[1]);
+			$(".sub-dropdown").removeClass('active');
+			$('.dropdown-v2-item.has-children').removeClass('active');
+		}
 	});
 } );
