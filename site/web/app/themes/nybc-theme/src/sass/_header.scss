@@ -616,7 +616,7 @@ header {
 	flex-direction:column;
 	justify-content: initial;
 	.dropdown-info{
-		padding-top:0;
+		padding-top:2em;
 		padding-bottom:2em;
 	}
 	&-list-ctn{
@@ -781,6 +781,7 @@ header {
 
 		.dropdown-info {
 			margin-bottom: 1em;
+			align-items:flex-start;
 		}
 
 		.dropdown-list {
