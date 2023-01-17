@@ -614,6 +614,7 @@ header {
 
 	@media (max-width: 1024px){
 	flex-direction:column;
+	justify-content: initial;
 	.dropdown-info{
 		padding-top:2em;
 		padding-bottom:2em;
@@ -780,6 +781,7 @@ header {
 
 		.dropdown-info {
 			margin-bottom: 1em;
+			align-items:flex-start;
 		}
 
 		.dropdown-list {
