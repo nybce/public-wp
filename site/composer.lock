@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be7f5de22332288d80e717e2ff20db8d",
+    "content-hash": "9308d39421a5eb4e689074d2f0c2a2d1",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -39,6 +39,86 @@
                 "docs": "https://www.advancedcustomfields.com/resources/",
                 "forum": "https://support.advancedcustomfields.com/topics/"
             }
+        },
+        {
+            "name": "bueltge/multisite-global-media",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bueltge/multisite-global-media.git",
+                "reference": "df7b2f7ab6671068f9c45695ddab9f815cb0f694"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bueltge/multisite-global-media/zipball/df7b2f7ab6671068f9c45695ddab9f815cb0f694",
+                "reference": "df7b2f7ab6671068f9c45695ddab9f815cb0f694",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "^1.2",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.2",
+                "inpsyde/php-coding-standards": "^1",
+                "johnpbloch/wordpress-core": " ^5.0",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^3",
+                "woocommerce/woocommerce": "^3.0|^4.0"
+            },
+            "type": "wordpress-muplugin",
+            "extra": {
+                "installer-disable": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "MultisiteGlobalMedia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Dominik Schilling",
+                    "homepage": "https://dominikschilling.de/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Frank Bültge",
+                    "email": "f.bueltge@inpsyde.com",
+                    "homepage": "https://bueltge.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Guido Scialfa",
+                    "email": "g.scialfa@inspyde.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Multisite Global Media is a WordPress plugin which shares media across the Multisite network.",
+            "homepage": "https://github.com/bueltge/Multisite-Global-Media",
+            "keywords": [
+                "multisite",
+                "muplugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/bueltge/multisite-global-media/issues",
+                "source": "https://github.com/bueltge/multisite-global-media/tree/0.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://bueltge.de/impressum/#hinweis",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/bueltge",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-21T19:44:09+00:00"
         },
         {
             "name": "composer/installers",
@@ -2111,24 +2191,6 @@
             "homepage": "https://wordpress.org/plugins/nitropack/"
         },
         {
-            "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.82.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.82.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.82.1.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/seo-by-rank-math/"
-        },
-        {
             "name": "wpackagist-plugin/svg-support",
             "version": "2.4.2",
             "source": {
@@ -2199,24 +2261,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordfence/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-fastest-cache",
-            "version": "1.0.5",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-fastest-cache/",
-                "reference": "tags/1.0.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-fastest-cache.1.0.5.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-fastest-cache/"
         },
         {
             "name": "wpackagist-plugin/wp-security-audit-log",

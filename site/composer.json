@@ -52,6 +52,7 @@
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
+        "wpackagist-plugin/custom-permalinks": "^2.4",
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
@@ -63,7 +64,7 @@
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
         "wpackagist-plugin/wpo365-login":"17.4",
-        "humanmade/network-media-library": "^1.5"
+        "bueltge/multisite-global-media": "^0.2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -84,7 +85,8 @@
             "roave/security-advisories": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "squizlabs/php_codesniffer": true,
-            "wp-coding-standards/wpcs": true
+            "wp-coding-standards/wpcs": true,
+            "bueltge/multisite-global-media": true
         }
     },
     "minimum-stability": "dev",
@@ -96,7 +98,8 @@
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/wpo365-login"
+                "wpackagist-plugin/wpo365-login",
+                "bueltge/multisite-global-media"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
             "web/app/themes/{$name}/": ["type:wordpress-theme"]
