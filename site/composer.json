@@ -63,7 +63,8 @@
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
-        "wpackagist-plugin/wpo365-login":"17.4"
+        "wpackagist-plugin/wpo365-login":"17.4",
+        "humanmade/network-media-library": "^1.5"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
