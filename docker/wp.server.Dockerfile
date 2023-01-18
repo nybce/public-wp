@@ -91,7 +91,6 @@ ENV ENVIRONMENT ${ENVIRONMENT}
 ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
-RUN rm /site/composer.lock
 RUN composer install
 COPY .env/${ENVIRONMENT}.env /site/.env
 RUN rm -r /var/www/html
