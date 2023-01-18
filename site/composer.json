@@ -98,7 +98,8 @@
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/wpo365-login"
+                "wpackagist-plugin/wpo365-login",
+                "bueltge/multisite-global-media"
             ],
             "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
             "web/app/themes/{$name}/": ["type:wordpress-theme"]
