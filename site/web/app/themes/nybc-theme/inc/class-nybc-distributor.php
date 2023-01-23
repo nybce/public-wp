@@ -124,16 +124,18 @@ if ( ! class_exists( 'NYBC_Distributor' ) ) {
 			$destination_blog_id = ( is_numeric( $site ) ) ? $site : $site->site->blog_id;
 
 			restore_current_blog();
-
+/*
 			if ( ! has_blocks( $original_post_id ) ) {
 				return;
 			}
-
+*/
 			$original_content = get_the_content( null, null, $original_post_id );
 			$original_blocks  = parse_blocks( $original_content );
+			/*
 			if ( ! $original_blocks || ! is_array( $original_blocks ) ) {
 				return;
 			}
+			*/
 
 			$destination_blocks = self::move_media( $original_blocks, $destination_blog_id );
 
@@ -173,17 +175,18 @@ if ( ! class_exists( 'NYBC_Distributor' ) ) {
 			if ( ! $original_blog_id || ! $original_content ) {
 				return;
 			}
-
+			/*
 			if ( ! has_blocks( $original_content ) ) {
 				return;
 			}
 
+*/
 			$original_blocks = parse_blocks( $original_content );
-
+/*
 			if ( ! $original_blocks || ! is_array( $original_blocks ) ) {
 				return;
 			}
-
+*/
 			switch_to_blog( $original_blog_id );
 
 			$destination_blocks = self::move_media( $original_blocks, $destination_blog_id );
