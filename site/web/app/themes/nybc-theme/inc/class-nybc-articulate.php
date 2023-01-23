@@ -144,10 +144,10 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 					),
 					'show_in_nav_menus' => true,
 					'show_ui'           => true,
-					'public'            => false,
+					'public'            => true,
 					'show_in_rest'      => true,
 					'menu_position'     => 20,
-					'supports'          => array( 'title' ),
+					'supports'          => array( 'title', 'editor' ),
 					'menu_icon'         => null,
 					'has_archive'       => false,
 				)
