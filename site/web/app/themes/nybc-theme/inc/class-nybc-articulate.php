@@ -72,10 +72,11 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 					self::$max_files = $max_files;
 				}
 			}
-
+/*
 			if ( empty( self::$azure_storage_account_name ) || empty( self::$azure_storage_account_key ) || empty( self::$azure_storage_container ) ) {
 				return;
 			}
+*/
 			add_action( 'init', array( 'NYBC_Articulate', 'taxonomy_post_type' ) );
 			add_action( 'admin_init', array( 'NYBC_Articulate', 'add_load_metabox' ) );
 			add_action( 'wp_ajax_import_articulate_course', array( 'NYBC_Articulate', 'import_articulate_course' ) );
