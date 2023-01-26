@@ -32,9 +32,9 @@ if ( ! empty( $block['className'] ) ) {
     $class_name .= $block['className'];
 }
 if( $align == 'Center' ){
-    $class_name .= ' ta-center';
+    $class_name .= ' text-center';
 }else if( $align == 'Right' ){
-    $class_name .= ' ta-right';
+    $class_name .= ' text-right';
 }
 
 ?>
