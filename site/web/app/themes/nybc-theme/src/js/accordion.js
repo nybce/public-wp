@@ -32,7 +32,7 @@ jQuery( function( $ ) {
 		console.log(href);
 		var ac_id = '';
 		if (href.indexOf('#') > -1) {
-			ac_id = href.split('#')[1];
+			ac_id = '#' + href.split('#')[1];
 			console.log(ac_id);
 		}else{
 			return;
