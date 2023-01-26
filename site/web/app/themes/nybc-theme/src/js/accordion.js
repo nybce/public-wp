@@ -34,12 +34,12 @@ jQuery( function( $ ) {
 		var ac_target = '';
 		if (href.indexOf('#') > -1) {
 			ac_id = '#' + href.split('#')[1];
-			ac_target = ' .accordion-title';
+			ac_target = ac_id + ' .accordion-title';
 			console.log(ac_id);
 		}else{
 			return;
 		}
-		$(ac_target).addClass('active');
+		$(ac_target).addClass('active').next().slideDown();
 		    var newurl = href.split('#')[0] + ac_id;
 		    window.history.pushState({path:newurl},'',newurl);
 		
