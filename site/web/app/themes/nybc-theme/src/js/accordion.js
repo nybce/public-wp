@@ -16,17 +16,19 @@ jQuery( function( $ ) {
 					.next()
 					.slideUp();
 				$( this ).addClass( 'active' ).next().slideDown();
-				console.log('accordion open');
+				console.log('acc open');
 				var ac_id = $(this).closest('.accordion').attr('id');
 				console.log(ac_id);
-			    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '/#' + ac_id;
-			    console.log(newurl);
-			    window.history.pushState({path:newurl},'',newurl);
+				if (history.pushState) {
+				    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '/#' + ac_id;
+				    console.log(newurl);
+				    window.history.pushState({path:newurl},'',newurl);
+				}
 			}
 		}
 	);
-	$( window ).load(function() {
-		console.log('accordion open on load');
+	$( document ).ready(function() {
+		console.log('acc open on ready');
 		var path = window.location.pathname;
 		console.log(path);
 		var ac_id = '';
@@ -37,7 +39,9 @@ jQuery( function( $ ) {
 			return;
 		}
 		$(ac_id).find('.accordion-title').addClass('active');
-	    var newurl = window.location.protocol + "//" + window.location.host + path.split('#')[0] + '/' + ac_id;
-	    window.history.pushState({path:newurl},'',newurl);
+		if (history.pushState) {
+		    var newurl = window.location.protocol + "//" + window.location.host + path.split('#')[0] + '/' + ac_id;
+		    window.history.pushState({path:newurl},'',newurl);
+		}
 	}
 } );
