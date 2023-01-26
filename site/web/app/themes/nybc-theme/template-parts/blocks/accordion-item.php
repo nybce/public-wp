@@ -15,16 +15,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$block_id = 'accordion-item-' . $block['id'];
-if ( ! empty( $block['anchor'] ) ) {
-	$block_id = $block['anchor'];
-}
 $class_name = '';
 if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
 $block_title    = get_field( 'title' );
+$id_title		= strtolower($block_title);
+$id_title		= preg_replace('/[^A-Za-z0-9]/', '', $id_title);
+$id_title		= str_replace("-", " ", $id_title);
+
+$block_id 		= 'accordion-item-' . $id_title;
+
 $allowed_blocks = array(
 	'core/heading',
 	'core/list',
@@ -32,6 +34,9 @@ $allowed_blocks = array(
 	'acf/custom-button',
 	'core/paragraph',
 	'core/image',
+	'gravityforms/form',
+	'core/html',
+	'core/shortcode',
 );
 ?>
 
