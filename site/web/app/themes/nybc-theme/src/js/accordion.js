@@ -31,14 +31,16 @@ jQuery( function( $ ) {
 		var href = window.location.href;
 		console.log(href);
 		var ac_id = '';
+		var ac_target = '';
 		if (href.indexOf('#') > -1) {
 			ac_id = '#' + href.split('#')[1];
+			ac_target = ' .accordion-title';
 			console.log(ac_id);
 		}else{
 			return;
 		}
-		$(ac_id).find('.accordion-title').addClass('active');
-		    var newurl = window.location.protocol + "//" + window.location.host + href.split('#')[0] + '/' + ac_id;
+		$(ac_target).addClass('active');
+		    var newurl = href.split('#')[0] + ac_id;
 		    window.history.pushState({path:newurl},'',newurl);
 		
 	} );
