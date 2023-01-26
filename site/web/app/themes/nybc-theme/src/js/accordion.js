@@ -19,11 +19,10 @@ jQuery( function( $ ) {
 				console.log('acc open');
 				var ac_id = $(this).closest('.accordion').attr('id');
 				console.log(ac_id);
-				if (history.pushState) {
 				    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '/#' + ac_id;
 				    console.log(newurl);
 				    window.history.pushState({path:newurl},'',newurl);
-				}
+				
 			}
 		}
 	);
@@ -39,9 +38,8 @@ jQuery( function( $ ) {
 			return;
 		}
 		$(ac_id).find('.accordion-title').addClass('active');
-		if (history.pushState) {
 		    var newurl = window.location.protocol + "//" + window.location.host + path.split('#')[0] + '/' + ac_id;
 		    window.history.pushState({path:newurl},'',newurl);
-		}
-	}
+		
+	} );
 } );
