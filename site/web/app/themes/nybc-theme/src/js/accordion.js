@@ -16,13 +16,17 @@ jQuery( function( $ ) {
 					.next()
 					.slideUp();
 				$( this ).addClass( 'active' ).next().slideDown();
+				console.log('open accordion');
 				var ac_id = $(this).closest('.accordion').attr('id');
+				console.log(ac_id);
 			    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '/#' + ac_id;
+			    console.log(newurl);
 			    window.history.pushState({path:newurl},'',newurl);
 			}
 		}
 	);
-	$( document ).ready(function() {
+	$( document ).load(function() {
+		console.log('open accordion on load');
 		var path = window.location.pathname;
 		console.log(path);
 		var ac_id = '';
