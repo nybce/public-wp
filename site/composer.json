@@ -52,7 +52,6 @@
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
-        "wpackagist-plugin/custom-permalinks": "^2.2",
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
