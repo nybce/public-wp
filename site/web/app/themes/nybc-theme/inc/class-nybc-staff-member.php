@@ -92,6 +92,7 @@ if ( ! class_exists( 'NYBC_Staff_Member' ) ) {
 						'menu_position'     => 20,
 						'supports'          => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 						'menu_icon'         => null,
+						'rewrite' 			=> array('slug' => 'our-research/meet-our-researchers','with_front' => false),
 						'has_archive'       => false,
 						'taxonomies'        => array( 'area_of_research' ),
 					)
