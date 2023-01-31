@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ffe2089419f194b2e5ef4f93a2f641a",
+    "content-hash": "cade1e800a67ee7df1256b387f73c39a",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -2299,24 +2299,6 @@
             "homepage": "https://wordpress.org/plugins/user-role-editor/"
         },
         {
-            "name": "wpackagist-plugin/w3-total-cache",
-            "version": "2.2.12",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
-                "reference": "tags/2.2.12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.2.12.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/w3-total-cache/"
-        },
-        {
             "name": "wpackagist-plugin/wordfence",
             "version": "7.8.2",
             "source": {
@@ -2335,27 +2317,6 @@
             "homepage": "https://wordpress.org/plugins/wordfence/"
         },
         {
-<<<<<<< HEAD
-=======
-            "name": "wpackagist-plugin/wordpress-seo",
-            "version": "19.14",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/19.14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.19.14.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
-        },
-        {
->>>>>>> production
             "name": "wpackagist-plugin/wp-security-audit-log",
             "version": "4.4.3.1",
             "source": {
