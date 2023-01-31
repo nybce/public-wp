@@ -91,7 +91,7 @@ ol {
 		font-weight: 900;
 	}
 
-	>ul > li {
+	ul > li {
 		font-size: inherit;
 		line-height: inherit;
 		margin-left: 0.5em;
@@ -264,7 +264,7 @@ ol {
 		cursor: pointer;
 		display: inline;
 		font-size: inherit;
-		font-weight: 400;
+		font-weight: inherit;
 		line-height: inherit;
 		position: relative;
 		text-decoration: underline;

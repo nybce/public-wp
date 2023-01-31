@@ -119,8 +119,9 @@ Config::define( 'PATH_CURRENT_SITE', '/' );
 Config::define( 'SITE_ID_CURRENT_SITE', 1 );
 Config::define( 'BLOG_ID_CURRENT_SITE', 1 );
 
+Config::define( 'WPO_MU_USE_SUBSITE_OPTIONS', true );
 Config::define('ADMIN_COOKIE_PATH', '/');
-Config::define('COOKIE_DOMAIN', '');
+Config::define('COOKIE_DOMAIN', $_SERVER['HTTP_HOST']);
 Config::define('COOKIEPATH', '');
 
 
@@ -156,3 +157,10 @@ if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . '/wp/');
 }
 
+define( 'WPO_SAML2_ADVANCED_SETTINGS', 
+	array(
+		'security' => array(
+			'requestedAuthnContext' => false 
+		)
+	)
+);

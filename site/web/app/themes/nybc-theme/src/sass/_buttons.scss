@@ -65,6 +65,28 @@
 		}
 	}
 
+	&.btn-custom {
+		background: $color-primary-base2-10;
+		text-decoration:none;
+		color: $color-white;
+		i {
+			&::after{
+				border-color: $color-white;
+			}
+		}
+		&[target="_blank"]::after{
+			display:none;
+		}
+		&:focus{
+			background: $color-primary-base2-10;
+			outline:none;
+		}
+		&:hover{
+			background: $color-primary-base2-30;
+			color:$color-white;
+		}
+	}
+
 	&-small {
 		font-size: 1.4rem;
 		line-height: 1.57em;
@@ -270,6 +292,10 @@
 		&-secondary:hover {
 			background: $color-primary-base1-10;
 			color: $color-white;
+		}
+		&-custom:hover{
+			background:$color-primary-base2-30;
+			color:$color-white;
 		}
 	}
 

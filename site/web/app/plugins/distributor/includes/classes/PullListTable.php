@@ -63,7 +63,11 @@ class PullListTable extends \WP_List_Table {
 		/**
 		 * Filters the columns displayed in the pull list table.
 		 *
-		 * @param array $columns An associative array of column headings.
+		 * @hook dt_pull_list_table_columns
+		 *
+		 * @param {array} $columns An associative array of column headings.
+		 *
+		 * @return {array} An associative array of column headings.
 		 */
 		return apply_filters( 'dt_pull_list_table_columns', $columns );
 	}
@@ -78,7 +82,8 @@ class PullListTable extends \WP_List_Table {
 
 		$current_status = ( empty( $_GET['status'] ) ) ? 'new' : sanitize_key( $_GET['status'] ); // @codingStandardsIgnoreLine No nonce needed.
 
-		$request_uri = $_SERVER['REQUEST_URI'];
+		//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- see `wp_fix_server_vars()`.
+		$request_uri = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
 
 		$url         = add_query_arg(
 			array(
@@ -263,8 +268,10 @@ class PullListTable extends \WP_List_Table {
 		/**
 		 * Fires for each column in the pull list table.
 		 *
-		 * @param string $column_name The name of the column to display.
-		 * @param \WP_Post $item The post/item to output in the column.
+		 * @hook dt_pull_list_table_custom_column
+		 *
+		 * @param {string}  $column_name The name of the column to display.
+		 * @param {WP_Post} $item        The post/item to output in the column.
 		 */
 		do_action( 'dt_pull_list_table_custom_column', $column_name, $item );
 
@@ -321,7 +328,7 @@ class PullListTable extends \WP_List_Table {
 				 * @param {bool}   $as_draft   Whether the 'Pull in as draft' option should be checked.
 				 * @param {object} $connection The connection being used to pull from.
 				 *
-				 * @return {bool}
+				 * @return {bool} Whether the 'Pull in as draft' option should be checked.
 				 */
 				$as_draft = apply_filters( 'dt_pull_as_draft', true, $connection_now );
 
@@ -331,9 +338,11 @@ class PullListTable extends \WP_List_Table {
 				}
 
 				$actions = [
-					'pull' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=syndicate&_wp_http_referer=' . rawurlencode( $_SERVER['REQUEST_URI'] ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id . '&pull_post_type=' . $item->post_type . '&dt_as_draft=' . $draft ), 'bulk-distributor_page_pull' ) ), $draft ? esc_html__( 'Pull as draft', 'distributor' ) : esc_html__( 'Pull', 'distributor' ) ),
+					//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- see `wp_fix_server_vars()`.
+					'pull' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=syndicate&_wp_http_referer=' . rawurlencode( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id . '&pull_post_type=' . $item->post_type . '&dt_as_draft=' . $draft ), 'bulk-distributor_page_pull' ) ), $draft ? esc_html__( 'Pull as draft', 'distributor' ) : esc_html__( 'Pull', 'distributor' ) ),
 					'view' => '<a href="' . esc_url( $item->link ) . '">' . esc_html__( 'View', 'distributor' ) . '</a>',
-					'skip' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=skip&_wp_http_referer=' . rawurlencode( $_SERVER['REQUEST_URI'] ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id ), 'dt_skip' ) ), esc_html__( 'Skip', 'distributor' ) ),
+					//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- see `wp_fix_server_vars()`.
+					'skip' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=skip&_wp_http_referer=' . rawurlencode( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id ), 'dt_skip' ) ), esc_html__( 'Skip', 'distributor' ) ),
 				];
 			}
 		} elseif ( 'skipped' === $_GET['status'] ) { // @codingStandardsIgnoreLine Nonce not needed.
@@ -345,8 +354,10 @@ class PullListTable extends \WP_List_Table {
 			}
 
 			$actions = [
-				'pull'   => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=syndicate&_wp_http_referer=' . rawurlencode( $_SERVER['REQUEST_URI'] ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id . '&pull_post_type=' . $item->post_type . '&dt_as_draft=' . $draft ), 'bulk-distributor_page_pull' ) ), $draft ? esc_html__( 'Pull as draft', 'distributor' ) : esc_html__( 'Pull', 'distributor' ) ),
-				'unskip' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=unskip&_wp_http_referer=' . rawurlencode( $_SERVER['REQUEST_URI'] ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id ), 'dt_unskip' ) ), esc_html__( 'Unskip', 'distributor' ) ),
+				//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- see `wp_fix_server_vars()`.
+				'pull'   => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=syndicate&_wp_http_referer=' . rawurlencode( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id . '&pull_post_type=' . $item->post_type . '&dt_as_draft=' . $draft ), 'bulk-distributor_page_pull' ) ), $draft ? esc_html__( 'Pull as draft', 'distributor' ) : esc_html__( 'Pull', 'distributor' ) ),
+				//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated -- see `wp_fix_server_vars()`.
+				'unskip' => sprintf( '<a href="%s">%s</a>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=pull&action=unskip&_wp_http_referer=' . rawurlencode( esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) . '&post=' . $item->ID . '&connection_type=' . $connection_type . '&connection_id=' . $connection_id ), 'dt_unskip' ) ), esc_html__( 'Unskip', 'distributor' ) ),
 				'view'   => '<a href="' . esc_url( $item->link ) . '">' . esc_html__( 'View', 'distributor' ) . '</a>',
 			];
 		} elseif ( 'pulled' === $_GET['status'] ) { // @codingStandardsIgnoreLine Nonce not needed
@@ -389,8 +400,12 @@ class PullListTable extends \WP_List_Table {
 		/**
 		 * Filters the class used on the table row on the pull list table.
 		 *
-		 * @param string $class The class name.
-		 * @param \WP_Post $item The current post object.
+		 * @hook dt_pull_list_table_tr_class
+		 *
+		 * @param {string}  $class The class name.
+		 * @param {WP_Post} $item  The current post object.
+		 *
+		 * @return {string} The class name.
 		 */
 		$class = sanitize_html_class( apply_filters( 'dt_pull_list_table_tr_class', 'dt-table-row', $item ) );
 
@@ -441,8 +456,7 @@ class PullListTable extends \WP_List_Table {
 			'posts_per_page' => $per_page,
 			'paged'          => $current_page,
 			'post_type'      => $post_type,
-			'orderby'        => 'ID', // this is because of include/exclude truncation
-			'order'          => 'DESC', // default but specifying to be safe
+			'dt_pull_list'   => true, // custom argument used to only run code on this screen
 		];
 
 		if ( ! empty( $_GET['s'] ) ) { // @codingStandardsIgnoreLine Nonce isn't required.
@@ -478,16 +492,13 @@ class PullListTable extends \WP_List_Table {
 		}
 
 		if ( empty( $_GET['status'] ) || 'new' === $_GET['status'] ) { // @codingStandardsIgnoreLine Nonce not required.
-			// Sort from highest ID (newest) to low so the slice only affects later pagination.
-			rsort( $skipped, SORT_NUMERIC );
-			rsort( $syndicated, SORT_NUMERIC );
+			$post_ids = array_merge( $skipped, $syndicated );
 
-			// This is somewhat arbitrarily set to 200 and should probably be made filterable eventually.
-			// IDs can get rather large and 400 easily exceeds typical header size limits.
-			$post_ids = array_slice( array_merge( $skipped, $syndicated ), 0, 200, true );
+			if ( ! empty( $post_ids ) ) {
+				$remote_get_args['post__not_in'] = $post_ids;
+			}
 
-			$remote_get_args['post__not_in'] = $post_ids;
-
+			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- meta_key is indexed.
 			$remote_get_args['meta_query'] = [
 				[
 					'key'     => 'dt_syndicate_time',
@@ -519,7 +530,7 @@ class PullListTable extends \WP_List_Table {
 		$remote_get = $connection_now->remote_get( $remote_get_args );
 
 		if ( is_wp_error( $remote_get ) ) {
-			$this->pull_error = true;
+			$this->pull_error = $remote_get->get_error_messages();
 
 			return;
 		}
@@ -621,6 +632,7 @@ class PullListTable extends \WP_List_Table {
 				<input type="submit" name="filter_action" id="pull_post_type_submit" class="button" value="<?php esc_attr_e( 'Filter', 'distributor' ); ?>">
 
 				<?php
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nonce is not required.
 				if ( empty( $_GET['status'] ) || 'pulled' !== $_GET['status'] ) :
 					// Filter documented above.
 					$as_draft = apply_filters( 'dt_pull_as_draft', true, $connection_now );

@@ -147,3 +147,7 @@
 .wp-block-acf-two-column-block .wp-block-acf-column-sidebar .wp-block-acf-column-sidebar{
 	width:100%;
 }
+
+.wp-core-ui .button.edit-attachment{
+	display:none;
+}

@@ -111,7 +111,8 @@ class NetworkSiteConnection extends Connection {
 
 		add_filter( 'wp_insert_post_data', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'maybe_set_modified_date' ), 10, 2 );
 		// Filter documented in includes/classes/ExternalConnections/WordPressExternalConnection.php
-		$new_post_id = wp_insert_post( apply_filters( 'dt_push_post_args', $new_post_args, $post, $args, $this ) );
+		$new_post_args = Utils\post_args_allow_list( apply_filters( 'dt_push_post_args', $new_post_args, $post, $args, $this ) );
+		$new_post_id   = wp_insert_post( wp_slash( $new_post_args ) );
 
 		remove_filter( 'wp_insert_post_data', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'maybe_set_modified_date' ), 10, 2 );
 
@@ -127,8 +128,41 @@ class NetworkSiteConnection extends Connection {
 				update_post_meta( $new_post_id, 'dt_original_post_parent', (int) $post->post_parent );
 			}
 
-			Utils\set_meta( $new_post_id, $post->meta );
-			Utils\set_taxonomy_terms( $new_post_id, $post->terms );
+			/**
+			 * Allow bypassing of all meta processing.
+			 *
+			 * @hook dt_push_post_meta
+			 *
+			 * @param {bool}       true           If Distributor should push the post meta.
+			 * @param {int}        $new_post_id   The newly created post ID.
+			 * @param {array}      $terms         Meta attached to the post, formatted by {@link \Distributor\Utils\prepare_meta()}.
+			 * @param {int}        $post_id       The original post ID.
+			 * @param {array}      $args          The arguments passed into wp_insert_post.
+			 * @param {Connection} $this          The distributor connection being pushed to.
+			 *
+			 * @return {bool} If Distributor should push the post meta.
+			 */
+			if ( apply_filters( 'dt_push_post_meta', true, $new_post_id, $post->meta, $post_id, $args, $this ) ) {
+				Utils\set_meta( $new_post_id, $post->meta );
+			}
+
+			/**
+			 * Allow bypassing of all term processing.
+			 *
+			 * @hook dt_push_post_terms
+			 *
+			 * @param {bool}       true           If Distributor should push the post terms.
+			 * @param {int}        $new_post_id   The newly created post ID.
+			 * @param {array}      $terms         Terms attached to the post, formatted by {@link \Distributor\Utils\prepare_taxonomy_terms()}.
+			 * @param {int}        $post_id       The original post ID.
+			 * @param {array}      $args          The arguments passed into wp_insert_post.
+			 * @param {Connection} $this          The distributor connection being pushed to.
+			 *
+			 * @return {bool} If Distributor should push the post terms.
+			 */
+			if ( apply_filters( 'dt_push_post_terms', true, $new_post_id, $post->terms, $post_id, $args, $this ) ) {
+				Utils\set_taxonomy_terms( $new_post_id, $post->terms );
+			}
 
 			/**
 			 * Allow bypassing of all media processing.
@@ -234,7 +268,8 @@ class NetworkSiteConnection extends Connection {
 			add_filter( 'wp_insert_post_data', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'maybe_set_modified_date' ), 10, 2 );
 
 			// Filter documented in includes/classes/ExternalConnections/WordPressExternalConnection.php
-			$new_post_id = wp_insert_post( apply_filters( 'dt_pull_post_args', $post_array, $item_array['remote_post_id'], $post, $this ) );
+			$new_post_args = Utils\post_args_allow_list( apply_filters( 'dt_pull_post_args', $post_array, $item_array['remote_post_id'], $post, $this ) );
+			$new_post_id   = wp_insert_post( wp_slash( $new_post_args ) );
 
 			remove_filter( 'wp_insert_post_data', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'maybe_set_modified_date' ), 10, 2 );
 
@@ -248,8 +283,41 @@ class NetworkSiteConnection extends Connection {
 					update_post_meta( $new_post_id, 'dt_original_post_parent', (int) $post->post_parent );
 				}
 
-				\Distributor\Utils\set_meta( $new_post_id, $post->meta );
-				\Distributor\Utils\set_taxonomy_terms( $new_post_id, $post->terms );
+				/**
+				 * Allow bypassing of all meta processing.
+				 *
+				 * @hook dt_pull_post_meta
+				 *
+				 * @param {bool}                  true            If Distributor should set the post meta.
+				 * @param {int}                   $new_post_id    The newly created post ID.
+				 * @param {array}                 $post->meta     List of meta items attached to the post, formatted by {@link \Distributor\Utils\prepare_meta()}.
+				 * @param {int}                   $remote_post_id The original post ID.
+				 * @param {array}                 $post_array     The arguments passed into wp_insert_post.
+				 * @param {NetworkSiteConnection} $this           The Distributor connection being pulled from.
+				 *
+				 * @return {bool} If Distributor should set the post meta.
+				 */
+				if ( apply_filters( 'dt_pull_post_meta', true, $new_post_id, $post->meta, $item_array['remote_post_id'], $post_array, $this ) ) {
+					\Distributor\Utils\set_meta( $new_post_id, $post->meta );
+				}
+
+				/**
+				 * Allow bypassing of all terms processing.
+				 *
+				 * @hook dt_pull_post_terms
+				 *
+				 * @param {bool}                  true            If Distributor should set the post terms.
+				 * @param {int}                   $new_post_id    The newly created post ID.
+				 * @param {array}                 $post->terms    List of terms items attached to the post, formatted by {@link \Distributor\Utils\prepare_taxonomy_terms()}.
+				 * @param {int}                   $remote_post_id The original post ID.
+				 * @param {array}                 $post_array     The arguments passed into wp_insert_post.
+				 * @param {NetworkSiteConnection} $this           The Distributor connection being pulled from.
+				 *
+				 * @return {bool} If Distributor should set the post terms.
+				 */
+				if ( apply_filters( 'dt_pull_post_terms', true, $new_post_id, $post->terms, $item_array['remote_post_id'], $post_array, $this ) ) {
+					\Distributor\Utils\set_taxonomy_terms( $new_post_id, $post->terms );
+				}
 
 				/**
 				 * Allow bypassing of all media processing.
@@ -297,12 +365,14 @@ class NetworkSiteConnection extends Connection {
 			/**
 			 * Allow the sync'ed post to be updated via a REST request get the rendered content.
 			 *
-			 * @since ?
 			 * @hook dt_pull_post_apply_rendered_content
 			 *
-			 * @param bool  false        Apply rendered content after a pull? Defaults to false.
-			 * @param int   $new_post_id The new post ID.
-			 * @param array $post_array  The post array used to create the new post.
+			 * @param {bool}        false          Apply rendered content after a pull? Defaults to false.
+			 * @param {int}         $new_post_id   The new post ID.
+			 * @param {Connection}  $this          The Distributor connection pulling the post.
+			 * @param {array}       $post_array    The post array used to create the new post.
+			 *
+			 * @return {bool} Whether to apply rendered content after a pull.
 			 */
 			if ( apply_filters( 'dt_pull_post_apply_rendered_content', false, $new_post_id, $this, $post_array ) ) {
 				$this->update_content_via_rest( $new_post_id );
@@ -394,7 +464,7 @@ class NetworkSiteConnection extends Connection {
 	 */
 	public function get_post_types() {
 		switch_to_blog( $this->site->blog_id );
-		$post_types = get_post_types( [ 'public' => true ], 'objects' );
+		$post_types = Utils\distributable_post_types( 'objects' );
 		restore_current_blog();
 
 		return $post_types;
@@ -446,6 +516,7 @@ class NetworkSiteConnection extends Connection {
 			$query_args['paged']          = ( empty( $args['paged'] ) ) ? 1 : $args['paged'];
 
 			if ( isset( $args['meta_query'] ) ) {
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 				$query_args['meta_query'] = $args['meta_query'];
 			}
 
@@ -508,15 +579,15 @@ class NetworkSiteConnection extends Connection {
 	 */
 	public static function bootstrap() {
 		add_action( 'template_redirect', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'canonicalize_front_end' ) );
-		add_action( 'save_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'update_syndicated' ) );
+		add_action( 'save_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'update_syndicated' ), 99 );
 		add_action( 'before_delete_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'separate_syndicated_on_delete' ) );
 		add_action( 'before_delete_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'remove_distributor_post_from_original' ) );
 		add_action( 'wp_trash_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'separate_syndicated_on_delete' ) );
 		add_action( 'untrash_post', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'connect_syndicated_on_untrash' ) );
 		add_action( 'clean_site_cache', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'set_sites_last_changed_time' ) );
 		add_action( 'wp_insert_site', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'set_sites_last_changed_time' ) );
-		add_action( 'add_user_to_blog', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'rebuild_user_authorized_sites_cache' ) );
-		add_action( 'remove_user_from_blog', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'rebuild_user_authorized_sites_cache' ) );
+		add_action( 'add_user_to_blog', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'clear_authorized_sites_cache' ) );
+		add_action( 'remove_user_from_blog', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'clear_authorized_sites_cache' ) );
 	}
 
 	/**
@@ -571,7 +642,12 @@ class NetworkSiteConnection extends Connection {
 		}
 
 		foreach ( $connection_map['internal'] as $blog_id => $post_array ) {
-			$connection = new self( get_site( $blog_id ) );
+			$site = get_site( $blog_id );
+			if ( ! $site || ! is_a( $site, '\WP_Site' ) ) {
+				continue;
+			}
+
+			$connection = new self( $site );
 
 			switch_to_blog( $blog_id );
 
@@ -714,8 +790,7 @@ class NetworkSiteConnection extends Connection {
 		 * @see \Distributor\InternalConnections\NetworkSiteConnection::get_available_authorized_sites()
 		 *
 		 * @param {array}  $authorized_sites Array of `WP_Site` object and post type objects the user can edit.
-		 * }
-		 * @param {string} $context The context of the authorization.
+		 * @param {string} $context          The context of the authorization.
 		 *
 		 * @return {array} Array of `WP_Site` object and post type objects.
 		 */
@@ -734,8 +809,7 @@ class NetworkSiteConnection extends Connection {
 		 * @hook dt_authorized_sites
 		 *
 		 * @param {array}  $authorized_sites An array of `WP_Site` objects and the post type objects the user can edit.
-		 * }
-		 * @param {string} $context The context of the authorization.
+		 * @param {string} $context          The context of the authorization.
 		 *
 		 * @return {array} An array of `WP_Site` objects and the post type objects.
 		 */
@@ -756,8 +830,7 @@ class NetworkSiteConnection extends Connection {
 		$last_changed = get_site_option( 'last_changed_sites' );
 
 		if ( ! $last_changed ) {
-			$last_changed = microtime();
-			self::set_sites_last_changed_time();
+			$last_changed = self::set_sites_last_changed_time();
 		}
 
 		$cache_key        = "authorized_sites:$user_id:$context:$last_changed";
@@ -824,22 +897,29 @@ class NetworkSiteConnection extends Connection {
 	 * will have caching enabled, so we also store it
 	 * in a site option.
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public static function set_sites_last_changed_time() {
-		update_site_option( 'last_changed_sites', microtime() );
+		$time = microtime();
+		update_site_option( 'last_changed_sites', $time );
+
+		return $time;
 	}
 
 	/**
-	 * Rebuild the authorized sites cache for a specific user.
+	 * Clear the authorized sites cache for a specific user.
 	 *
 	 * @param int $user_id Current user ID.
-	 *
-	 * @return void
 	 */
-	public static function rebuild_user_authorized_sites_cache( $user_id ) {
-		self::build_available_authorized_sites( $user_id, 'push', true );
-		self::build_available_authorized_sites( $user_id, 'pull', true );
+	public static function clear_authorized_sites_cache( $user_id = false ) {
+		$last_changed = get_site_option( 'last_changed_sites' );
+
+		if ( ! $last_changed ) {
+			self::set_sites_last_changed_time();
+		} else {
+			delete_transient( "authorized_sites:$user_id:push:$last_changed" );
+			delete_transient( "authorized_sites:$user_id:pull:$last_changed" );
+		}
 	}
 
 	/**
@@ -852,6 +932,7 @@ class NetworkSiteConnection extends Connection {
 		add_filter( 'wpseo_canonical', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'wpseo_canonical_url' ) );
 		add_filter( 'wpseo_opengraph_url', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'wpseo_og_url' ) );
 		add_filter( 'the_author', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'the_author_distributed' ) );
+		add_filter( 'get_the_author_display_name', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'the_author_distributed' ) );
 		add_filter( 'author_link', array( '\Distributor\InternalConnections\NetworkSiteConnection', 'author_posts_url_distributed' ), 10, 3 );
 	}
 
@@ -1025,30 +1106,17 @@ class NetworkSiteConnection extends Connection {
 		 * Allow filtering of the HTTP request args before updating content
 		 * via a REST API call.
 		 *
-		 * @since ?
+		 * @hook dt_update_content_via_request_args
 		 *
-		 * @param array                 list            List of request args.
-		 * @param int                   $new_post_id    The new post ID.
-		 * @param array                 $post_array     The post array used to create the new post.
-		 * @param NetworkSiteConnection $this           The distributor connection being pulled from.
+		 * @param {array}                 list            List of request args.
+		 * @param {int}                   $new_post_id    The new post ID.
+		 * @param {NetworkSiteConnection} $this           The distributor connection being pulled from.
+		 *
+		 * @return {array} List of filtered request args.
 		 */
 		$request = apply_filters( 'dt_update_content_via_request_args', [], $new_post_id, $this );
 
-		if ( function_exists( 'vip_safe_wp_remote_get' ) && \Distributor\Utils\is_vip_com() ) {
-			$response = vip_safe_wp_remote_get(
-				$rest_url,
-				false,
-				3,
-				3,
-				10,
-				$request
-			);
-		} else {
-			$response = wp_remote_get(
-				$rest_url,
-				$request
-			);
-		}
+		$response = Utils\remote_http_request( $rest_url, $request );
 
 		$body = false;
 		$code = wp_remote_retrieve_response_code( $response );

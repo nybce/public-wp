@@ -431,8 +431,10 @@ header {
 		background: $color-gray-100;
 		left: 0;
 		opacity: 0;
+		/*
 		padding: 4.75em 0;
 		padding-bottom: 13rem;
+		*/
 		position: fixed;
 		right: 0;
 		top: 0;
@@ -543,6 +545,109 @@ header {
 		li + li {
 			margin-top: 0.71em;
 		}
+	}
+}
+
+.dropdown-v2{
+	display:flex;
+	//padding: 4.75em 3em 13rem 3em;
+	justify-content: space-between;
+	height:100%;
+	.dropdown-info{
+		display:flex;
+		align-items:center;
+		padding:4.75em 0 13rem 3em;
+	}
+	.has-children{
+		a::after{
+			content: ">";
+		    cursor: pointer;
+		    margin-left: 6px;
+		    font-size: 21px;
+		    position: absolute;
+		    font-weight: 100;
+		}
+		&.active{
+			color:$color-primary-base1-10;
+		}
+	}
+	&-list-ctn	{
+
+		display:flex;
+		width:50%;
+		.dropdown-list{
+			//add padding when ready to add hover state
+			padding:4.75em 0 13rem 0;
+			transition:all .3s ease;
+			flex:1;
+		}
+		.sub-dropdown-ctn{
+			width:50%;
+			overflow:hidden;
+		}
+		.sub-dropdown{
+			display:flex;
+			justify-content: center;
+			visibility:hidden;
+			flex:0;
+			background: #E2F0FF;
+			padding:0;
+			transition:all .3s ease, height 0s, padding 0s, visibility .05s ease;
+			height:0;
+			a{
+				font-size:0;
+			}
+			&.active{
+				visibility:initial;
+				flex:auto;
+				padding:4.75em 3em 13rem;
+				height:100%;
+				a{
+					font-size:100%;
+				}
+			}
+		}
+	}
+	&-sublist{
+		display:none;
+	}
+
+	@media (max-width: 1024px){
+	flex-direction:column;
+	justify-content: initial;
+	.dropdown-info{
+		padding-top:2em;
+		padding-bottom:2em;
+	}
+	&-list-ctn{
+		width:100%;
+		padding-left:3em;
+		.dropdown-list{
+			width:100%;
+			padding:0;
+			.dropdown-list-menu li{
+				text-align:left;
+			}
+		}
+		.sup-dropdown-ctn{
+			display:none;
+		}
+	}
+	&-sublist{
+		display:block;
+		margin-left:15px;
+		li{
+			text-align:left;
+			a{
+				&:after{
+					display:none;
+				}
+			}
+		}
+	}
+
+
+
 	}
 }
 
@@ -676,6 +781,7 @@ header {
 
 		.dropdown-info {
 			margin-bottom: 1em;
+			align-items:flex-start;
 		}
 
 		.dropdown-list {
