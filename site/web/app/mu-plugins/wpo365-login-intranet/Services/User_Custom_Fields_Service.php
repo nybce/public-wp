@@ -5,17 +5,18 @@ namespace Wpo\Services;
 // Prevent public access to this script
 defined('ABSPATH') or die();
 
-use \Wpo\Core\User;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 use \Wpo\Services\Graph_Service;
+use \Wpo\Services\Saml2_Service;
 use \Wpo\Services\User_Service;
+use \Wpo\Services\User_Details_Service;
 
 if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
     class User_Custom_Fields_Service
     {
-
         /**
          * @since 11.0
          */
@@ -34,7 +35,7 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
             // Iterate over the configured graph fields and identify any supported expandable properties
             array_map(function ($kv_pair) use (&$expanded_fields) {
-                if (false !== stripos($kv_pair['key'], 'manager')) {
+                if (false !== WordPress_Helpers::stripos($kv_pair['key'], 'manager')) {
                     $expanded_fields[] = 'manager';
                 }
             }, $extra_user_fields);
@@ -54,6 +55,10 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
             }
 
             self::process_extra_user_fields(function ($name, $title) use (&$wpo_usr, &$wp_usr_id) {
+
+                $parsed_user_field_key = User_Details_Service::parse_user_field_key($name);
+                $name = $parsed_user_field_key[0];
+                $wp_user_meta_key = $parsed_user_field_key[1];
 
                 $name_arr = explode('.', $name);
                 $current = $wpo_usr->graph_resource;
@@ -110,7 +115,51 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
                 update_user_meta(
                     $wp_usr_id,
-                    $name,
+                    $wp_user_meta_key,
+                    $value
+                );
+
+                if (function_exists('xprofile_set_field_data') && true === Options_Service::get_global_boolean_var('use_bp_extended')) {
+                    xprofile_set_field_data($title, $wp_usr_id, $value);
+                }
+            });
+        }
+
+        /**
+         * Processes the extra user fields and tries to read them from the SAML attributes 
+         * and if found saves their value as WordPress user meta.
+         * 
+         * @since   20.0
+         * 
+         * @param   mixed   $wp_usr_id 
+         * @param   mixed   $wpo_usr 
+         * @return  void 
+         */
+        public static function update_custom_fields_from_saml_attributes($wp_usr_id, $wpo_usr)
+        {
+            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+
+            if (empty($wpo_usr->saml_attributes)) {
+                Log_Service::write_log('DEBUG', __METHOD__ . ' -> Cannot update custom user fields because the SAML attributes are not found');
+                return;
+            }
+
+            self::process_extra_user_fields(function ($name, $title) use (&$wpo_usr, &$wp_usr_id) {
+
+                $parsed_user_field_key = User_Details_Service::parse_user_field_key($name);
+                $claim = $parsed_user_field_key[0];
+                $wp_user_meta_key = $parsed_user_field_key[1];
+
+                if (strcmp($claim, $wp_user_meta_key) === 0 && WordPress_Helpers::stripos($wp_user_meta_key, '/') > 0) {
+                    $key_exploded = explode('/', $wp_user_meta_key);
+                    $wp_user_meta_key = sprintf('saml_%s', array_pop($key_exploded));
+                }
+
+                $value = Saml2_Service::get_attribute($claim, $wpo_usr->saml_attributes);
+
+                update_user_meta(
+                    $wp_usr_id,
+                    $wp_user_meta_key,
                     $value
                 );
 
@@ -128,7 +177,6 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
          */
         public static function process_extra_user_fields($callback)
         {
-
             $extra_user_fields = Options_Service::get_global_list_var('extra_user_fields');
 
             if (sizeof($extra_user_fields) == 0)
@@ -148,7 +196,6 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
          */
         public static function show_extra_user_fields($user)
         {
-
             if (false === Options_Service::get_global_boolean_var('graph_user_details')) {
                 Log_Service::write_log('DEBUG', __METHOD__ . ' -> Extra user fields disabled as per configuration');
                 return;
@@ -162,9 +209,19 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
                 self::process_extra_user_fields(function ($name, $title) use (&$user) {
 
-                    $value = get_user_meta($user->ID, $name, true);
+                    $parsed_user_field_key = User_Details_Service::parse_user_field_key($name);
+                    $name = $parsed_user_field_key[0];
+                    $wp_user_meta_key = $parsed_user_field_key[1];
 
-                    echo ('<tr><th><label for="' . esc_attr($name) . '">' . esc_html($title) . '</label></th>');
+                    // The following may be true for SAML based custom attributes
+                    if (strcmp($name, $wp_user_meta_key) === 0 && WordPress_Helpers::stripos($wp_user_meta_key, '/') > 0) {
+                        $key_exploded = explode('/', $wp_user_meta_key);
+                        $wp_user_meta_key = sprintf('saml_%s', array_pop($key_exploded));
+                    }
+
+                    $value = get_user_meta($user->ID, $wp_user_meta_key, true);
+
+                    echo ('<tr><th><label for="' . esc_attr($wp_user_meta_key) . '">' . esc_html($title) . '</label></th>');
 
                     if (is_array($value)) {
 
@@ -176,13 +233,13 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
                                 continue;
                             }
 
-                            echo '<input type="text" name="' . esc_attr($name) . '__##__' . esc_attr($idx) . '" id="' . esc_attr($name) . esc_attr($idx) . '" value="' . esc_attr($val) . '" class="regular-text" /><br />';
+                            echo '<input type="text" name="' . esc_attr($wp_user_meta_key) . '__##__' . esc_attr($idx) . '" id="' . esc_attr($wp_user_meta_key) . esc_attr($idx) . '" value="' . esc_attr($val) . '" class="regular-text" /><br />';
                         }
 
                         echo ("</td>");
                     } else {
 
-                        echo ('<td><input type="text" name="' . esc_attr($name) . '" id="' . esc_attr($name) . '" value="' . esc_attr($value) . '" class="regular-text" /><br/></td>');
+                        echo ('<td><input type="text" name="' . esc_attr($wp_user_meta_key) . '" id="' . esc_attr($wp_user_meta_key) . '" value="' . esc_attr($value) . '" class="regular-text" /><br/></td>');
                     }
 
                     echo ("</tr>");
@@ -201,19 +258,29 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
          */
         public static function save_user_details($user_id)
         {
-
             if (!current_user_can('edit_user', $user_id)) {
                 return false;
             }
 
             self::process_extra_user_fields(function ($name, $title) use (&$user_id) {
-                $lookup = str_replace('.', '_', $name); // '.' is changed to '_' when sent in a request
+
+                $parsed_user_field_key = User_Details_Service::parse_user_field_key($name);
+                $name = $parsed_user_field_key[0];
+                $wp_user_meta_key = $parsed_user_field_key[1];
+
+                // The following may be true for SAML based custom attributes
+                if (strcmp($name, $wp_user_meta_key) === 0 && WordPress_Helpers::stripos($wp_user_meta_key, '/') > 0) {
+                    $key_exploded = explode('/', $wp_user_meta_key);
+                    $wp_user_meta_key = sprintf('saml_%s', array_pop($key_exploded));
+                }
+
+                $lookup = str_replace('.', '_', $wp_user_meta_key); // '.' is changed to '_' when sent in a request
 
                 if (isset($_POST[$lookup])) {
 
                     update_user_meta(
                         $user_id,
-                        $name,
+                        $wp_user_meta_key,
                         sanitize_text_field($_POST[$lookup])
                     );
                     return;
@@ -223,7 +290,7 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
                 foreach ($_POST as $key => $value) {
 
-                    if (false !== strpos($key, $lookup . "__##__")) {
+                    if (false !== WordPress_Helpers::strpos($key, $lookup . "__##__")) {
                         $array_of_user_meta[$key] = $value;
                     }
                 }
@@ -234,7 +301,7 @@ if (!class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
 
                     update_user_meta(
                         $user_id,
-                        $name,
+                        $wp_user_meta_key,
                         $array_of_user_meta_values
                     );
                     return;
