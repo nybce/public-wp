@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cade1e800a67ee7df1256b387f73c39a",
+    "content-hash": "597a57cf4dae80bd4a5870b0c61453d2",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -2336,15 +2336,15 @@
         },
         {
             "name": "wpackagist-plugin/wpo365-login",
-            "version": "17.4",
+            "version": "21.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wpo365-login/",
-                "reference": "tags/17.4"
+                "reference": "tags/21.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wpo365-login.17.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/wpo365-login.21.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

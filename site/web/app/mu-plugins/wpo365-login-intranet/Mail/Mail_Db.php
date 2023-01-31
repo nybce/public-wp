@@ -3,6 +3,7 @@
 namespace Wpo\Mail;
 
 use \Wpo\Mail\Mailer;
+use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 use Wpo\Services\Request_Service;
 
@@ -60,8 +61,8 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
             );
 
             if ($rows_inserted !== 1) {
-                Mailer::mailer_log('ERROR', __METHOD__ . ' -> Could not write mail log entry to the database (Check next line for the raw data that has not been inserted)');
-                Mailer::mailer_log('DEBUG', $data);
+                Log_Service::write_log('ERROR', __METHOD__ . ' -> Could not write mail log entry to the database (Check next line for the raw data that has not been inserted)');
+                Log_Service::write_log('DEBUG', $data);
             } else {
                 // Memoize the ID of the row inserted so we can update it to report success or errors
                 $request_service = Request_Service::get_instance();
@@ -139,7 +140,7 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
             $table_name = self::get_mail_table_name();
 
             if (!self::mail_table_exists()) {
-                Mailer::mailer_log('WARN', __METHOD__ . " -> Trying to get the mail log but database table $table_name not found");
+                Log_Service::write_log('WARN', __METHOD__ . " -> Trying to get the mail log but database table $table_name not found");
                 return array();
             }
 
@@ -154,7 +155,7 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
                 );
 
                 if (empty($next_id)) {
-                    Mailer::mailer_log('DEBUG', __METHOD__ . " -> Cannot retrieve rows from the mail log table because the next ID is not initialized [$next_id]");
+                    Log_Service::write_log('DEBUG', __METHOD__ . " -> Cannot retrieve rows from the mail log table because the next ID is not initialized [$next_id]");
                     return array();
                 }
 
@@ -185,7 +186,7 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
         {
 
             if (!\is_int($id)) {
-                Mailer::mailer_log('WARN', __METHOD__ . " -> Trying to send mail again but the id $id provided is not valid");
+                Log_Service::write_log('WARN', __METHOD__ . " -> Trying to send mail again but the id $id provided is not valid");
                 return false;
             }
 
@@ -194,7 +195,7 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
             $table_name = self::get_mail_table_name();
 
             if (!self::mail_table_exists()) {
-                Mailer::mailer_log('WARN', __METHOD__ . " -> Trying to send mail again but database table $table_name not found");
+                Log_Service::write_log('WARN', __METHOD__ . " -> Trying to send mail again but database table $table_name not found");
                 return false;
             }
 
@@ -204,7 +205,7 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
             ));
 
             if (!\is_array($rows) || count($rows) != 1) {
-                Mailer::mailer_log('WARN', __METHOD__ . " -> Trying to send mail again but could not find a matching database record for id $id");
+                Log_Service::write_log('WARN', __METHOD__ . " -> Trying to send mail again but could not find a matching database record for id $id");
                 return false;
             }
 
@@ -232,11 +233,11 @@ if (!class_exists('\Wpo\Mail\Mail_Db')) {
             if (self::mail_table_exists()) {
                 $table_name = self::get_mail_table_name();
                 $wpdb->query("TRUNCATE TABLE $table_name");
-                Mailer::mailer_log('DEBUG', __METHOD__ . " -> Truncated the wpo365_mail table successfully");
+                Log_Service::write_log('DEBUG', __METHOD__ . " -> Truncated the wpo365_mail table successfully");
                 return true;
             }
 
-            Mailer::mailer_log('WARN', __METHOD__ . " -> Trying to truncate the mail log but the wpo365_mail table does not exist");
+            Log_Service::write_log('WARN', __METHOD__ . " -> Trying to truncate the mail log but the wpo365_mail table does not exist");
 
             return false;
         }

@@ -3,6 +3,7 @@
 namespace Wpo\Services;
 
 use \Wpo\Core\Url_Helpers;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Options_Service;
 
 if (!class_exists('\Wpo\Services\Dual_Login_Service')) {
@@ -25,7 +26,7 @@ if (!class_exists('\Wpo\Services\Dual_Login_Service')) {
 
                 if (!empty($dual_login)) {
                     $redirect_url = Options_Service::get_aad_option('redirect_url');
-                    $referer = (stripos($redirect_url, 'https') !== false ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    $referer = (WordPress_Helpers::stripos($redirect_url, 'https') !== false ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                     $login_url = Url_Helpers::get_preferred_login_url();
                     $login_url = add_query_arg('login_errors', $dual_login, $login_url);
                     $login_url = add_query_arg('redirect_to', rawurlencode($referer), $login_url);

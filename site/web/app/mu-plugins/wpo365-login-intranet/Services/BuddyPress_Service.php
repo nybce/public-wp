@@ -2,8 +2,10 @@
 
 namespace Wpo\Services;
 
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
+use \Wpo\Services\User_Details_Service;
 
 // Prevent public access to this script
 defined('ABSPATH') or die();
@@ -40,8 +42,11 @@ if (!class_exists('\Wpo\Services\BuddyPress_Service')) {
                 echo ('<table class="profile-fields bp-tables-user"><tbody>');
 
                 \Wpo\Services\User_Custom_Fields_Service::process_extra_user_fields(function ($name, $title) use (&$user) {
+                    $parsed_user_field_key = User_Details_Service::parse_user_field_key($name);
+                    $name = $parsed_user_field_key[0];
+                    $wp_user_meta_key = $parsed_user_field_key[1];
 
-                    $value = get_user_meta(\bp_displayed_user_id(), $name, true);
+                    $value = get_user_meta(\bp_displayed_user_id(), $wp_user_meta_key, true);
                     echo ('<tr class="field_1 field_name required-field visibility-public field_type_textbox"><td class="label">' . esc_html($title) . '</td>');
 
                     if (is_array($value)) {
@@ -90,7 +95,7 @@ if (!class_exists('\Wpo\Services\BuddyPress_Service')) {
              * 
              * Don't return avatar if objec is not a user (e.g. but a group)
              */
-            if (is_array($params) && isset($params['object']) && false === stripos($params['object'], 'user')) {
+            if (is_array($params) && isset($params['object']) && false === WordPress_Helpers::stripos($params['object'], 'user')) {
                 return $bp_avatar;
             }
 

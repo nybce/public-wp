@@ -2,8 +2,8 @@
 Contributors: wpo365
 Tags: office 365, O365, Microsoft 365, azure active directory, Azure AD, AAD, authentication, single sign-on, sso, SAML, SAML 2.0, OpenID Connect, OIDC, login, oauth, microsoft, microsoft graph, teams, microsoft teams, sharepoint online, sharepoint, spo, onedrive, SCIM, User synchronization, yammer, powerbi, power bi,
 Requires at least: 4.8.1
-Tested up to: 6.0
-Stable tag: 18.0
+Tested up to: 6.1
+Stable tag: 21.1
 Requires PHP: 5.6.40
 
 == Description ==
@@ -79,7 +79,7 @@ Now all editions of the plugin include four new modern Microsoft (Office) 365 ap
 - Microsoft **Power BI** [more](https://www.wpo365.com/power-bi-for-wordpress/)
 - **Yammer** feed(s) [more](https://www.wpo365.com/yammer-for-wordpress/)
 
-https://youtu.be/aIdbkmbdDog
+https://youtu.be/6ti71O4nh0s
 
 = Prerequisites =
 

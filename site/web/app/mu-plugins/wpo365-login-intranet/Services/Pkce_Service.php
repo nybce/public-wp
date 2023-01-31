@@ -198,7 +198,7 @@ if (!class_exists('\Wpo\Services\Pkce_Service')) {
             $request = $request_service->get_request($GLOBALS['WPO_CONFIG']['request_id']);
             $state = $request->get_item('state');
 
-            if (false !== stripos($state, '_____')) {
+            if (false !== WordPress_Helpers::stripos($state, '_____')) {
                 $state_info = explode('_____', $state);
                 $pkce_code_challenge_id = $state_info[1];
                 $pkce_code_verifier = \Wpo\Services\Pkce_Service::find_personal_pkce_code_verifier($pkce_code_challenge_id);

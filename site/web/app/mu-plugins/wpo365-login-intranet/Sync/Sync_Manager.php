@@ -8,6 +8,7 @@ defined('ABSPATH') or die();
 use \Wpo\Core\Domain_Helpers;
 use \Wpo\Core\Extensions_Helpers;
 use \Wpo\Core\Permissions_Helpers;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Graph_Service;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
@@ -216,7 +217,7 @@ if (!class_exists('\Wpo\Sync\Sync_Manager')) {
             $settings['sync_user_id'] = get_current_user_id();
 
             // Since v9.1 admins can define their own sync query
-            $query = ltrim(Options_Service::get_global_string_var('user_sync_query'), '/');
+            $query = WordPress_Helpers::ltrim(Options_Service::get_global_string_var('user_sync_query'), '/');
 
             if (empty($query)) {
                 $query = 'myorganization/users?$filter=accountEnabled+eq+true+and+userType+eq+%27member%27&$top=10';
@@ -299,7 +300,7 @@ if (!class_exists('\Wpo\Sync\Sync_Manager')) {
             $settings['sync_user_id'] = get_current_user_id();
 
             // Since v9.1 admins can define their own sync query
-            $query = ltrim(Options_Service::get_global_string_var('user_sync_query'), '/');
+            $query = WordPress_Helpers::ltrim(Options_Service::get_global_string_var('user_sync_query'), '/');
 
             if (empty($query)) {
                 $query = 'myorganization/users?$filter=accountEnabled+eq+true+and+userType+eq+%27member%27&$top=10';
@@ -372,7 +373,7 @@ if (!class_exists('\Wpo\Sync\Sync_Manager')) {
                     continue;
                 }
 
-                if (true === $settings['only_internal_users'] && false !== stripos($wpo_usr->upn, '#ext#')) {
+                if (true === $settings['only_internal_users'] && false !== WordPress_Helpers::stripos($wpo_usr->upn, '#ext#')) {
                     Log_Service::write_log('DEBUG', __METHOD__ . ' -> User is not an internal user: ' . $wpo_usr->preferred_username);
                     continue;
                 }

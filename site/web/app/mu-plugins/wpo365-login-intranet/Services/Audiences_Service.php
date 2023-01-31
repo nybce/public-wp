@@ -2,6 +2,8 @@
 
 namespace Wpo\Services;
 
+use WP_Post;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 
@@ -24,12 +26,7 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
         {
             Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
 
-            // Do nothing if audiences has not been enabled
-            if (empty(Options_Service::get_global_boolean_var('enable_audiences'))) {
-                return;
-            }
-
-            $post_types = $post_types = get_post_types();
+            $post_types = get_post_types();
             $excluded_post_types = Options_Service::get_global_list_var('audiences_excluded_post_types');
 
             foreach ($post_types as $post_type) {
@@ -69,11 +66,6 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
         public static function post_updated($post_id, $post_after, $post_before)
         {
             Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
-
-            // Do nothing if audiences has not been enabled
-            if (empty(Options_Service::get_global_boolean_var('enable_audiences'))) {
-                return;
-            }
 
             if (!has_block('wpo365/aud', $post_id)) {
                 $audiences = \get_post_meta($post_id, 'wpo365_audiences', false);
@@ -404,7 +396,6 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
          */
         public static function rest_prepare_post($response, $post, $request)
         {
-
             $wp_usr = \wp_get_current_user();
 
             if (self::skip_audiences($wp_usr)) {
@@ -439,11 +430,6 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
          */
         public static function register_users_audiences_column($columns)
         {
-
-            if (empty(Options_Service::get_global_boolean_var('enable_audiences'))) {
-                return $columns;
-            }
-
             $columns['wpo365_audiences'] = 'Audiences';
 
             return $columns;
@@ -462,11 +448,6 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
          */
         public static function render_users_audiences_column($output, $column_name, $user_id)
         {
-
-            if (empty(Options_Service::get_global_boolean_var('enable_audiences'))) {
-                return $output;
-            }
-
             if ('wpo365_audiences' == $column_name) {
                 $audiences = Options_Service::get_global_list_var('audiences');
                 $user_audiences = \get_user_meta($user_id, 'wpo365_audiences', true);
@@ -501,6 +482,176 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
         }
 
         /**
+         * Hooks into the add_meta_boxes action to render the custom Audiences meta box.
+         * 
+         * @since   19.0
+         * 
+         * @param   mixed   $post_type 
+         * @param   mixed   $post 
+         * @return  void 
+         */
+        public static function audiences_add_meta_box($post_type, $post)
+        {
+            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+
+            // Do nothing if the current user cannot edit the post
+            if (!is_admin() || !current_user_can('edit_post', $post->ID)) {
+                return;
+            }
+
+            $excluded_post_types = Options_Service::get_global_list_var('audiences_excluded_post_types');
+
+            // Do nothing if $post_type is excluded from audiences
+            if (\in_array($post_type, $excluded_post_types)) {
+                return;
+            }
+
+            add_meta_box('audiences_meta_box', __('WPO365 Audiences', 'wpo365_login'), '\Wpo\Services\Audiences_Service::audiences_render_meta_box', $post_type, 'side', 'low');
+        }
+
+        /**
+         * Renders the custom (HTML for the) meta box for Audiences.
+         * 
+         * @since   19.0
+         * 
+         * @return  void 
+         */
+        public static function audiences_render_meta_box($post)
+        {
+            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+
+            wp_nonce_field(basename(__FILE__), 'audiences_meta_box_nonce');
+            $audiences = Options_Service::get_global_list_var('audiences');
+            array_multisort(array_column($audiences, 'title'), SORT_ASC, $audiences);
+            $current_audiences = get_post_meta($post->ID, 'wpo365_audiences', false);
+            $currently_private = !empty(get_post_meta($post->ID, 'wpo365_private', true));
+
+            if (empty($current_audiences)) {
+                $current_audiences = array();
+            }
+
+            // Log_Service::write_log('DEBUG', sprintf('%s -> Current audiences: %s', __METHOD__, print_r($current_audiences, true)));
+
+            $auth_scenario = Options_Service::get_global_string_var('auth_scenario');
+
+            if (false !== WordPress_Helpers::stripos($auth_scenario, 'internet') || $currently_private) {
+                echo '<p>You can make this content exclusively available for users that logged into your website (e.g. with Microsoft) by checking the box below.</p>';
+                echo sprintf(
+                    '<input id="wpo365Private" type="checkbox" onclick="javascript:if(document.getElementById(\'wpo365Private\').checked){document.getElementById(\'wpo365Audiences\').style.display = \'none\'}else{document.getElementById(\'wpo365Audiences\').style.display = \'initial\'}" name="wpo365_private" %s />%s<br />',
+                    true === $currently_private ? 'checked' : '',
+                    'Make private'
+                );
+                echo '<p>&nbsp;</p>';
+            }
+
+            echo sprintf(
+                '<div id="wpo365Audiences" style="display: %s">',
+                $currently_private ? 'none' : 'initial'
+            );
+
+            echo sprintf(
+                '<p>%s can make this content exclusively available for users that are a member of one of the Audiences checked below.</p>',
+                false !== WordPress_Helpers::stripos($auth_scenario, 'internet') ? 'Alternatively, you' : 'You'
+            );
+
+            foreach ($audiences as $audience) {
+                echo sprintf(
+                    '<input type="checkbox" name="wpo365_audiences[]" value="%s" %s />%s<br />',
+                    $audience['key'],
+                    in_array($audience['key'], $current_audiences) ? 'checked' : '',
+                    $audience['title']
+                );
+            }
+
+            echo '</div><div></div>';
+        }
+
+        /**
+         * Helper to save the audiences related post meta.
+         * 
+         * @since   19.0
+         * 
+         * @param   mixed   $post_id 
+         * @param   mixed   $post 
+         * @param   mixed   $update 
+         * @return  void 
+         */
+        public static function audiences_save_post($post_id, $post, $update)
+        {
+            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+
+            // Do nothing if the current user cannot edit the post
+            if (!is_admin() || !current_user_can('edit_post', $post->ID)) {
+                return;
+            }
+
+            // Verify meta box nonce
+            if (!isset($_POST['audiences_meta_box_nonce']) || !wp_verify_nonce($_POST['audiences_meta_box_nonce'], basename(__FILE__))) {
+                return;
+            }
+
+            // Always delete the post meta first
+            delete_post_meta($post_id, 'wpo365_audiences');
+            delete_post_meta($post_id, 'wpo365_private');
+
+            if (isset($_POST['wpo365_audiences'])) {
+                $configured_audiences = $_POST['wpo365_audiences'];
+                $configured_audiences = array_map('sanitize_text_field', $configured_audiences);
+
+                foreach ($configured_audiences as $configured_audience) {
+                    add_post_meta($post_id, 'wpo365_audiences', $configured_audience, false);
+                }
+            }
+
+            if (isset($_POST['wpo365_private']) && false !== WordPress_Helpers::stripos($_POST['wpo365_private'], 'on')) {
+                add_post_meta($post_id, 'wpo365_private', true, true);
+            }
+        }
+
+        /**
+         * Hooks into the map_meta_cap function to prevent a user to directly edit a post or page
+         * if he / she is not entitled to do so in the context of audiences.
+         * 
+         * @since   19.4
+         * 
+         * @param   mixed   $caps 
+         * @param   mixed   $cap 
+         * @param   mixed   $user_id 
+         * @param   mixed   $args 
+         * @return  mixed 
+         */
+        public static function map_meta_cap($caps, $cap, $user_id, $args)
+        {
+            $current_user = wp_get_current_user();
+
+            if (self::skip_audiences($current_user)) {
+                return $caps;
+            }
+
+            if (!empty($GLOBALS['post']) && $GLOBALS['post'] instanceof WP_Post && !empty($args[0])) {
+
+                if (WordPress_Helpers::stripos($cap, 'edit_') === 0 || WordPress_Helpers::stripos($cap, 'delete_') === 0) {
+                    $post_id = null;
+
+                    if (is_numeric($args[0])) {
+                        $post_id = $args[0];
+                    } elseif ($args[0] instanceof WP_Post) {
+                        $post_id = $args[0]->ID;
+                    }
+
+                    if ($post_id && $GLOBALS['post']->ID === $post_id) {
+
+                        if (!self::user_can_read($post_id, $user_id)) {
+                            $caps[] = 'do_not_allow';
+                        }
+                    }
+                }
+            }
+
+            return $caps;
+        }
+
+        /**
          * Helper to check if the current user can read a specific post. A user can read a specific content item when:
          * 
          * 1. No audiences are defined and the page is not marked as private
@@ -516,7 +667,11 @@ if (!class_exists('\Wpo\Services\Audiences_Service')) {
          */
         private static function user_can_read($post_id, $wp_usr_id)
         {
-            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+            $current_user = wp_get_current_user();
+
+            if (self::skip_audiences($current_user)) {
+                return true;
+            }
 
             $is_private = \get_post_meta($post_id, 'wpo365_private', true);
             $audiences = \get_post_meta($post_id, 'wpo365_audiences', false);
