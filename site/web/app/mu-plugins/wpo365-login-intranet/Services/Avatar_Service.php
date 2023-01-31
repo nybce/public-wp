@@ -2,6 +2,7 @@
 
 namespace Wpo\Services;
 
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Access_Token_Service;
 use \Wpo\Services\Graph_Service;
 use \Wpo\Services\Log_Service;
@@ -256,7 +257,7 @@ if (!class_exists('\Wpo\Services\Avatar_Service')) {
 
                 $gravatar_url = \html_entity_decode($gravatar_url);
 
-                if (stripos($gravatar_url, '//') === 0) {
+                if (WordPress_Helpers::stripos($gravatar_url, '//') === 0) {
                     $gravatar_url = "https:$gravatar_url";
                 }
 
@@ -324,6 +325,278 @@ if (!class_exists('\Wpo\Services\Avatar_Service')) {
             }
 
             return $profile_image_url;
+        }
+
+        public static function pre_get_avatar_data($args, $id_or_email)
+        {
+            Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
+
+            // Check if O365 avatar is enabled
+            if (false === Options_Service::get_global_boolean_var('use_avatar') || (\function_exists('get_current_screen') && !empty($screen = get_current_screen()) && $screen->id == 'options-discussion')) {
+                return $args;
+            }
+
+            /**
+             * @since   20.x
+             * 
+             * Removing all other get_avatar filters to avoid conflicts and the add the WPO365 filter back again.
+             */
+            remove_all_filters('get_avatar');
+
+            $wp_usr = null;
+
+            $id_or_email = is_object($id_or_email) ? $id_or_email->comment_author_email : $id_or_email;
+
+            // If provided an email and a corresponding WP_User cannot be found, return default avatar
+            if (is_email($id_or_email)) {
+
+                if (!email_exists($id_or_email)) {
+                    Log_Service::write_log('DEBUG', __METHOD__ . ' -> Email not found therefore falling back to default avatar for ' . $id_or_email);
+                    return $args; // Avatar for "email" user requested but user "unknown"
+                } else {
+                    $wp_usr = \get_user_by('email', $id_or_email); // Avatar for "known" user by "email"
+                }
+            } else {
+                $wp_usr = \get_user_by('ID', $id_or_email); // Assume we have received a user ID
+            }
+
+            // Can not resolve a WP_User return default avatar
+
+            if (empty($wp_usr)) {
+                Log_Service::write_log('DEBUG', __METHOD__ . ' -> User with ID or email ' . $id_or_email . ' not found therefore falling back to default avatar');
+                return $args;
+            }
+
+            // Ensure we can use the WP_Filesystem
+
+            $files = Files_Service::get_instance();
+
+            if (!$files->configure_wpo365_profile_images()) {
+                Log_Service::write_log('ERROR', __METHOD__ . ' -> Could not configure Files service and therefore returning default WP avatar');
+                return $args;
+            }
+
+            // Ensure the profile images directory can be determined
+
+            $profile_images_dir = $files->get_wpo365_profile_images_dir();
+            $profile_images_url = $files->get_wpo365_profile_images_url();
+
+            $profile_image_file_name = $wp_usr->ID . '.png';
+            $profile_image_path = $profile_images_dir . $profile_image_file_name;
+            $profile_image_url =  $profile_images_url . $profile_image_file_name;
+
+            // Change it to a protocol-relative URL
+            $profile_image_url = str_replace('https:', '', $profile_image_url);
+            $profile_image_url = str_replace('http:', '', $profile_image_url);
+
+            // Set avatar URL to WPO365 avatar
+            $args['url'] = $profile_image_url;
+
+            $profile_image_exists = file_exists($profile_image_path);
+
+            Log_Service::write_log('DEBUG', __METHOD__ . ' -> Plugin will look for the following O365 avatar -> ' . $profile_image_path);
+
+            // Check if avatar requires updating
+
+            $last_updated = $profile_image_exists
+                ? filemtime($profile_image_path)
+                : 0;
+
+            $avatar_refresh = Options_Service::get_global_numeric_var('avatar_updated');
+            $avatar_refresh = empty($avatar_refresh) ? 1296000 : $avatar_refresh;
+            $avatar_expired = time() - $last_updated > $avatar_refresh;
+
+            if (!$avatar_expired) {
+                Log_Service::write_log('DEBUG', 'Returning cached O365 avatar');
+                return $args;
+            }
+
+            $current_user_id = \get_current_user_id();
+            $use_app_only = Options_Service::get_global_boolean_var('use_app_only_token');
+            $user_has_delegated_access = Access_Token_Service::user_has_delegated_access($current_user_id);
+
+            if (!$user_has_delegated_access && !$use_app_only) {
+                Log_Service::write_log('DEBUG', 'Returning cached O365 avatar because current user does not have delegated access and the administrator has not configured an app-only token');
+                return $args;
+            }
+
+            $avatar_for_current_user = $current_user_id === $wp_usr->ID;
+
+            if (Options_Service::get_global_boolean_var('multi_tenanted')) {
+                $tenant_id = Options_Service::get_aad_option('tenant_id');
+                $user_tenant_id = get_user_meta($current_user_id, 'aadTenantId', true);
+
+                if (!$avatar_for_current_user && (empty($user_tenant_id) || strcasecmp($tenant_id, $user_tenant_id) !== 0)) {
+                    Log_Service::write_log('DEBUG', 'Returning cached O365 avatar because multitenancy has been enabled and the current user does not belong to home tenant');
+                    return $args;
+                }
+            }
+
+            // At this point requested avatar 
+            // 1. Either does not exist
+            // 2. Or should be refreshed
+
+            $scope = 'https://graph.microsoft.com/User.Read';
+
+            $oid = User_Service::try_get_user_object_id($wp_usr->ID);
+
+            if (empty($oid)) {
+                $oid = User_Service::try_get_user_principal_name($wp_usr->ID);
+
+                if (empty($oid)) {
+                    Log_Service::write_log('WARN', 'Cannot determine a resource identifier to obtain a user photo from Microsoft Graph for user with ID ' . $wp_usr->user_login);
+                    $args['url'] = null;
+                    return $args;
+                }
+            }
+
+            if (!$avatar_for_current_user) {
+
+                /*
+                 * If the administrator is not currently sycnhronizing users (on the fly, on demand, SCIM)
+                 * and the administrator does not want avatars for others to be refreshed
+                 */
+
+                $request_service = Request_Service::get_instance();
+                $request = $request_service->get_request($GLOBALS['WPO_CONFIG']['request_id']);
+
+                if (empty($request->get_item('user_sync'))) {
+
+                    // Administrator configured to skip refreshing avatars for other users
+                    if (Options_Service::get_global_boolean_var('skip_avatar_for_others')) {
+
+                        if ($profile_image_exists) {
+                            return $args;
+                        }
+
+                        $args['url'] = null;
+                        return $args;
+                    }
+
+                    // Apply some throttling when not synchronizing
+                    $nr_of_avatars_refreshed = $request->get_item('nr_of_avatars_refreshed');
+                    $nr_of_avatars_refreshed = empty($nr_of_avatars_refreshed) ? 1 : $nr_of_avatars_refreshed + 1;
+                    $request->set_item('nr_of_avatars_refreshed', $nr_of_avatars_refreshed);
+
+                    if ($nr_of_avatars_refreshed > 5) {
+
+                        if ($profile_image_exists) {
+                            return $args;
+                        }
+
+                        $args['url'] = null;
+                        return $args;
+                    }
+                }
+
+                /**
+                 * When getting the avatar for an other user ensure the access token has the
+                 * scope for doing so.
+                 */
+
+                $scope = 'https://graph.microsoft.com/User.Read.All';
+            }
+
+            /** 
+             * The beta endpoint will return the profile picture from Exchange OR AAD 
+             * whereas the v1.0 only takes the profile picture from Exchange.
+             */
+
+            $graph_version = Options_Service::get_global_string_var('graph_version');
+
+            if ($graph_version != 'beta') {
+                $GLOBALS['WPO_CONFIG']['options']['graph_version'] = 'beta';
+            }
+
+            $graph_endpoint = '/users/' . $oid;
+            $raw = Graph_Service::fetch($graph_endpoint . '/photo/$value', 'GET', true, array('Accept: application/json;odata.metadata=minimal'), false, false, '', $scope);
+
+            $GLOBALS['WPO_CONFIG']['options']['graph_version'] = $graph_version;
+
+            // Take the default WordPress avatar because something went wrong
+            if (
+                is_wp_error($raw)
+                || $raw === false
+                || $raw['response_code'] != 200
+            ) {
+
+                if (is_wp_error($raw)) {
+                    // Something wrong with the acces token
+                    $error_level = $raw->get_error_code() == '1025' ? 'WARN' : 'ERROR';
+                    Log_Service::write_log($error_level, __METHOD__ . ' -> Could not retrieve O365 avatar therefore returning default avatar [Error: ' . $raw->get_error_message() . ']');
+                } else {
+                    // Most likely no profile picture available - therefore not an error
+                    Log_Service::write_log('WARN', __METHOD__ . ' -> Could not retrieve O365 avatar therefore returning default avatar [See log for details]');
+                    Log_Service::write_log('WARN', $raw);
+                }
+
+                // The refresh was not successful, most likely due to missing permissions.
+                // Wait for the next time the user logs on and keep using the expired avatar.
+                if ($profile_image_exists && $avatar_expired) {
+                    return $args;
+                }
+
+                // Most likely the user does not have a picture
+                $avatar_hook_priority = Options_Service::get_global_numeric_var('avatar_hook_priority', false);
+                $avatar_hook_priority = $avatar_hook_priority > 0 ? $avatar_hook_priority : 1;
+                remove_filter('pre_get_avatar_data', '\Wpo\Services\Avatar_Service::pre_get_avatar_data', $avatar_hook_priority);
+                $gravatar_url = \get_avatar_url($wp_usr->ID);
+                add_filter('pre_get_avatar_data', '\Wpo\Services\Avatar_Service::pre_get_avatar_data', $avatar_hook_priority, 2);
+
+                if ($gravatar_url === false) {
+                    Log_Service::write_log('WARN', __METHOD__ . ' -> Could not retrieve default gravatar URL');
+                    $args['url'] = null;
+                    return $args;
+                }
+
+                $gravatar_url = \html_entity_decode($gravatar_url);
+
+                if (WordPress_Helpers::stripos($gravatar_url, '//') === 0) {
+                    $gravatar_url = "https:$gravatar_url";
+                }
+
+                $skip_ssl_verify = !Options_Service::get_global_boolean_var('skip_host_verification');
+
+                $response = wp_remote_get(
+                    $gravatar_url,
+                    array(
+                        'method' => 'GET',
+                        'timeout' => 15,
+                        'sslverify' => $skip_ssl_verify,
+                    )
+                );
+
+                if (is_wp_error($response)) {
+                    $warning = 'Could not retrieve default gravatar from URL ' . $gravatar_url . ' (' . $response->get_error_message() . ')';
+                    Log_Service::write_log('WARN', __METHOD__ . " -> $warning");
+                    $args['url'] = null;
+                    return $args;
+                }
+
+                $gravatar = wp_remote_retrieve_body($response);
+
+                if ($files->save_wpo365_profile_image($profile_image_path, $gravatar) === false) {
+                    Log_Service::write_log('WARN', __METHOD__ . ' -> Could not write gravatar image to the file system');
+                    $args['url'] = null;
+                    return $args;
+                }
+
+                // Default gravatar saved for next time
+                $args['url'] = null;
+                return $args;
+            }
+
+            if (!$files->save_wpo365_profile_image($profile_image_path, $raw['payload'])) {
+                Log_Service::write_log('WARN', __METHOD__ . ' -> Could not write profile image to the file system');
+                $args['url'] = null;
+                return $args;
+            }
+
+            // Return the default wp avatar when the file couldn't be saved
+
+            Log_Service::write_log('DEBUG', __METHOD__ . ' -> O365 avatar saved successfully');
+
+            return $args;
         }
     }
 }

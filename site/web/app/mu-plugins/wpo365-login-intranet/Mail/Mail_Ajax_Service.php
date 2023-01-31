@@ -6,6 +6,7 @@ use \Wpo\Core\Permissions_Helpers;
 use \Wpo\Mail\Mail_Db;
 use \Wpo\Mail\Mailer;
 use \Wpo\Services\Ajax_Service;
+use \Wpo\Services\Log_Service;
 
 // Prevent public access to this script
 defined('ABSPATH') or die();
@@ -28,7 +29,7 @@ if (!class_exists('\Wpo\Mail\Mail_Ajax_Service')) {
             $current_user = Ajax_Service::verify_ajax_request('to get a portion of the wpo365 mail log');
 
             if (false === Permissions_Helpers::user_is_admin($current_user)) {
-                Mailer::mailer_log('ERROR', __METHOD__ . ' -> User has no permission to get a portion of the wpo365 mail log from AJAX service');
+                Log_Service::write_log('ERROR', __METHOD__ . ' -> User has no permission to get a portion of the wpo365 mail log from AJAX service');
                 wp_die();
             }
 
@@ -54,7 +55,7 @@ if (!class_exists('\Wpo\Mail\Mail_Ajax_Service')) {
             $current_user = Ajax_Service::verify_ajax_request('to send mail again');
 
             if (false === Permissions_Helpers::user_is_admin($current_user)) {
-                Mailer::mailer_log('ERROR', __METHOD__ . ' -> User has no permission to send mail again from AJAX service');
+                Log_Service::write_log('ERROR', __METHOD__ . ' -> User has no permission to send mail again from AJAX service');
                 wp_die();
             }
 
@@ -62,7 +63,7 @@ if (!class_exists('\Wpo\Mail\Mail_Ajax_Service')) {
 
             if (!ctype_digit($_POST['id'])) {
                 $message = sprintf('Cannot convert parameter id to integer when trying to send mail again [%s]', $_POST['id']);
-                Mailer::mailer_log('ERROR', __METHOD__ . " -> $message");
+                Log_Service::write_log('ERROR', __METHOD__ . " -> $message");
                 Ajax_Service::AJAX_response('NOK', '', $message, null);
                 wp_die();
             }
@@ -85,7 +86,7 @@ if (!class_exists('\Wpo\Mail\Mail_Ajax_Service')) {
             $current_user = Ajax_Service::verify_ajax_request('to truncate the wpo365_mail table');
 
             if (false === Permissions_Helpers::user_is_admin($current_user)) {
-                Mailer::mailer_log('ERROR', __METHOD__ . ' -> User has no permission to truncate the wpo365_mail table from AJAX service');
+                Log_Service::write_log('ERROR', __METHOD__ . ' -> User has no permission to truncate the wpo365_mail table from AJAX service');
                 wp_die();
             }
 

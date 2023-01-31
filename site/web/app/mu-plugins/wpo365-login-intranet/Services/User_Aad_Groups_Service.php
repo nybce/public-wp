@@ -6,6 +6,7 @@ namespace Wpo\Services;
 defined('ABSPATH') or die();
 
 use \Wpo\Core\User;
+use Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 use \Wpo\Services\Graph_Service;
@@ -74,9 +75,16 @@ if (!class_exists('\Wpo\Services\User_Aad_Groups_Service')) {
             if (Graph_Service::is_fetch_result_ok($fetch_result, 'Could not retrieve Azure AD group memberships (scopes tested: GroupMember.Read.All)', 'WARN')) {
                 $wpo_usr->groups = array_flip($fetch_result['payload']['value']);
             } else {
-                $error_message = is_wp_error($fetch_result) ? $fetch_result->get_error_message() : '';
 
-                if (false !== stripos($error_message, 'AADSTS65001')) {
+                if (is_wp_error($fetch_result)) {
+                    $error_message = $fetch_result->get_error_message();
+                    $error_code = $fetch_result->get_error_code();
+                } else {
+                    $error_message = '';
+                    $error_code = '';
+                }
+
+                if (false !== WordPress_Helpers::stripos($error_message, 'AADSTS65001') || $error_code == '1041') {
                     $fetch_result = Graph_Service::fetch($query . '/getMemberGroups', 'POST', false, $headers, $use_delegated, true, $data, 'https://graph.microsoft.com/Group.Read.All');
 
                     if (Graph_Service::is_fetch_result_ok($fetch_result, 'Could not retrieve Azure AD group memberships (scopes tested: GroupMember.Read.All, Group.Read.All)')) {

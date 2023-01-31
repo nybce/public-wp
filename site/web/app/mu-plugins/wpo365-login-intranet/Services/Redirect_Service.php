@@ -3,6 +3,7 @@
 namespace Wpo\Services;
 
 use \Wpo\Core\Url_Helpers;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 
@@ -59,7 +60,7 @@ if (!class_exists('\Wpo\Services\Redirect_Service')) {
                 $error_page_url = Options_Service::get_global_string_var('error_page_url');
 
                 if (!empty($error_page_url) && !empty($compare_with_url)) {
-                    return false !== stripos($compare_with_url, $error_page_url);
+                    return false !== WordPress_Helpers::stripos($compare_with_url, $error_page_url);
                 }
 
                 return false;

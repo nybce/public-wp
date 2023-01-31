@@ -3,6 +3,7 @@
 namespace Wpo\Services;
 
 use \Wpo\Core\Url_Helpers;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 
@@ -29,7 +30,7 @@ if (!class_exists('\Wpo\Services\Auth_Only_Service')) {
             $_admin_url = Url_Helpers::remove_protocol_and_www($admin_url);
             $_url = Url_Helpers::remove_protocol_and_www($url);
 
-            if (stripos($_url, $_admin_url) === 0) {
+            if (WordPress_Helpers::stripos($_url, $_admin_url) === 0) {
                 return false;
             }
 
