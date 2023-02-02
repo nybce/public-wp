@@ -180,8 +180,13 @@ if (!class_exists('\Wpo\Services\User_Create_Update_Service')) {
             }
 
             // Update custom fields
-            if (class_exists('\Wpo\Services\User_Custom_Fields_Service') && method_exists('\Wpo\Services\User_Custom_Fields_Service', 'update_custom_fields')) {
-                \Wpo\Services\User_Custom_Fields_Service::update_custom_fields($wp_usr_id, $wpo_usr);
+            if (class_exists('\Wpo\Services\User_Custom_Fields_Service')) {
+
+                if (Options_Service::get_global_boolean_var('use_saml') && Options_Service::get_global_string_var('extra_user_fields_source') == 'samlResponse') {
+                    \Wpo\Services\User_Custom_Fields_Service::update_custom_fields_from_saml_attributes($wp_usr_id, $wpo_usr);
+                } else {
+                    \Wpo\Services\User_Custom_Fields_Service::update_custom_fields($wp_usr_id, $wpo_usr);
+                }
             }
 
             // Update default WordPress user fields

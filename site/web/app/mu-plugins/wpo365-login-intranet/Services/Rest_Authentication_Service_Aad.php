@@ -7,6 +7,7 @@ defined('ABSPATH') or die();
 
 use \WP_Error;
 use \Wpo\Core\User;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Options_Service;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Jwt_Token_Service;
@@ -57,13 +58,13 @@ if (!class_exists('\Wpo\Services\Rest_Authentication_Service_Aad')) {
                 }
 
                 // 1. REQUEST TYPE
-                if (empty($_SERVER['REQUEST_METHOD']) || false === stripos($wp_rest_aad_protected_endpoint['strB'], $_SERVER['REQUEST_METHOD'])) {
+                if (empty($_SERVER['REQUEST_METHOD']) || false === WordPress_Helpers::stripos($wp_rest_aad_protected_endpoint['strB'], $_SERVER['REQUEST_METHOD'])) {
                     Log_Service::write_log('DEBUG', __METHOD__ . '-> The type of the current request (' . $_SERVER['REQUEST_METHOD'] . ') does not match with the request type of the current rule (' . $wp_rest_aad_protected_endpoint['strB'] . ')');
                     continue;
                 }
 
                 // 2. PATH
-                if (stripos($GLOBALS['WPO_CONFIG']['url_info']['request_uri'], $wp_rest_aad_protected_endpoint['strA']) !== false) {
+                if (WordPress_Helpers::stripos($GLOBALS['WPO_CONFIG']['url_info']['request_uri'], $wp_rest_aad_protected_endpoint['strA']) !== false) {
                     Log_Service::write_log('DEBUG', __METHOD__ . '-> The following WordPress REST API AAD endpoint configuration will be applied [' . print_r($wp_rest_aad_protected_endpoint, true) . ']');
 
                     // Check if authorization header is present
@@ -78,7 +79,7 @@ if (!class_exists('\Wpo\Services\Rest_Authentication_Service_Aad')) {
                     }
 
                     // Prepare header and validate signature
-                    $bearer = trim(str_ireplace('bearer', '', $headers['authorization']));
+                    $bearer = WordPress_Helpers::trim(str_ireplace('bearer', '', $headers['authorization']));
                     $claims = Jwt_Token_Service::validate_signature($bearer);
 
                     if (is_wp_error($claims)) {

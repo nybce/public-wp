@@ -18,15 +18,24 @@ $block_id = 'custombutton-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
 	$block_id = $block['anchor'];
 }
-$class_name = '';
-if ( ! empty( $block['className'] ) ) {
-	$class_name .= $block['className'];
-}
 
 $link     = get_field( 'link' );
 $url	  = $link['url'];
 $title	  = $link['title'];
 $target   = $link['target'];
+
+$align    = get_field( 'alignment' );
+
+
+$class_name = '';
+if ( ! empty( $block['className'] ) ) {
+    $class_name .= $block['className'];
+}
+if( $align == 'Center' ){
+    $class_name .= ' text-center';
+}else if( $align == 'Right' ){
+    $class_name .= ' text-right';
+}
 
 ?>
 <div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
