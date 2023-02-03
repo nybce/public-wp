@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f3cfd4c3ce3cf421365783c6765d56d",
+    "content-hash": "e304d6126e5954d9a4150ae07622cb80",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -2336,379 +2336,21 @@
         },
         {
             "name": "wpackagist-plugin/wps-hide-login",
-            "version": "1.9.8",
+            "version": "1.9.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wps-hide-login/",
-                "reference": "tags/1.9.8"
+                "reference": "tags/1.9.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wps-hide-login.1.9.8.zip"
+                "url": "https://downloads.wordpress.org/plugin/wps-hide-login.1.9.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wps-hide-login/"
-        },
-        {
-            "name": "yoast/whip",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Yoast/whip.git",
-                "reference": "49a6120d89a53874391d1451be8ef279feec0eae"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/whip/yoast-whip-49a6120d89a53874391d1451be8ef279feec0eae-zip-24b285.zip",
-                "reference": "49a6120d89a53874391d1451be8ef279feec0eae",
-                "shasum": "69c5f359c799b817a17df2f6e4a3f578ffd60bce"
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "php-parallel-lint/php-console-highlighter": "^0.5",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpunit/phpunit": "^4.5 || ^5.7 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "roave/security-advisories": "dev-master",
-                "yoast/yoastcs": "^2.1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/facades/wordpress.php"
-                ],
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "autoload-dev": {
-                "classmap": [
-                    "tests/"
-                ]
-            },
-            "scripts": {
-                "lint": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude .git"
-                ],
-                "config-yoastcs": [
-                    "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set default_standard Yoast"
-                ],
-                "check-cs": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.3-"
-                ],
-                "fix-cs": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-                ],
-                "test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit"
-                ]
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com"
-                }
-            ],
-            "description": "A WordPress package to nudge users to upgrade their software versions (starting with PHP)",
-            "homepage": "https://github.com/Yoast/whip",
-            "support": {
-                "issues": "https://github.com/Yoast/whip/issues",
-                "source": "https://github.com/Yoast/whip"
-            },
-            "time": "2021-07-20T11:22:45+00:00"
-        },
-        {
-            "name": "yoast/wordpress-seo",
-            "version": "19.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Yoast-dist/wordpress-seo.git",
-                "reference": "f41fc36d97a3bad66c41177ea4e61c3cad9bc91b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo/yoast-wordpress-seo-f41fc36d97a3bad66c41177ea4e61c3cad9bc91b-zip-b77c75.zip",
-                "reference": "f41fc36d97a3bad66c41177ea4e61c3cad9bc91b",
-                "shasum": "8da18437e656752aa19d89a2b6ea1f3f360d582f"
-            },
-            "require": {
-                "composer/installers": "^1.12 || ^2.0",
-                "php": "^5.6.20 || ^7.0 || ^8.0",
-                "yoast/whip": "^1.2"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "6.5.8",
-                "humbug/php-scoper": "^0.13.4",
-                "league/oauth2-client": "2.6.1",
-                "phpunit/phpunit": "^5.7",
-                "psr/container": "1.0.0",
-                "psr/log": "^1.0",
-                "symfony/config": "^3.4",
-                "symfony/dependency-injection": "^3.4",
-                "symfony/polyfill-intl-idn": "1.19.0",
-                "symfony/polyfill-intl-normalizer": "1.19.0",
-                "symfony/polyfill-php70": "1.19.0",
-                "symfony/polyfill-php72": "1.19.0",
-                "wordproof/wordpress-sdk": "1.3.2",
-                "yoast/wp-test-utils": "^1.1.1",
-                "yoast/yoastcs": "^2.2.1"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "classmap": [
-                    "admin/",
-                    "inc/",
-                    "vendor_prefixed/",
-                    "src/",
-                    "lib/"
-                ]
-            },
-            "autoload-dev": {
-                "classmap": [
-                    "tests/",
-                    "config/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit"
-                ],
-                "integration-test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
-                ],
-                "lint": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
-                ],
-                "lint-files": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint -e php --show-deprecated"
-                ],
-                "lint-branch": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::lint_branch"
-                ],
-                "lint-staged": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::lint_staged"
-                ],
-                "cs": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::check_coding_standards"
-                ],
-                "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=135",
-                    "@putenv YOASTCS_THRESHOLD_WARNINGS=204",
-                    "Yoast\\WP\\SEO\\Composer\\Actions::check_cs_thresholds"
-                ],
-                "check-cs": [
-                    "@check-cs-warnings -n"
-                ],
-                "check-cs-errors": [
-                    "echo You can now just use check-cs, running that command now.",
-                    "composer check-cs"
-                ],
-                "check-cs-warnings": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
-                ],
-                "check-staged-cs": [
-                    "@check-cs-warnings --filter=GitStaged"
-                ],
-                "check-branch-cs": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::check_branch_cs"
-                ],
-                "fix-cs": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-                ],
-                "prefix-dependencies": [
-                    "composer prefix-oauth2-client",
-                    "composer prefix-symfony",
-                    "composer prefix-wordproof"
-                ],
-                "prefix-oauth2-client": [
-                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/league/oauth2-client --config=config/php-scoper/oauth2-client.inc.php --force --quiet",
-                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/guzzlehttp --config=config/php-scoper/guzzlehttp.inc.php --force --quiet",
-                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/psr --config=config/php-scoper/psr.inc.php --force --quiet"
-                ],
-                "prefix-symfony": [
-                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/symfony/dependency-injection --config=config/php-scoper/dependency-injection.inc.php --force --quiet"
-                ],
-                "prefix-wordproof": [
-                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/wordproof/wordpress-sdk --config=config/php-scoper/wordproof.inc.php --force --quiet"
-                ],
-                "compile-di": [
-                    "rm -f ./src/generated/container.php",
-                    "rm -f ./src/generated/container.php.meta",
-                    "composer du --no-scripts",
-                    "Yoast\\WP\\SEO\\Composer\\Actions::compile_dependency_injection_container"
-                ],
-                "post-autoload-dump": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::prefix_dependencies",
-                    "composer compile-di"
-                ],
-                "generate-migration": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::generate_migration"
-                ],
-                "generate-unit-test": [
-                    "Yoast\\WP\\SEO\\Composer\\Actions::generate_unit_test"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com",
-                    "homepage": "https://yoa.st/1--"
-                }
-            ],
-            "description": "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.",
-            "homepage": "https://yoa.st/1ui",
-            "keywords": [
-                "seo",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/Yoast/wordpress-seo/issues",
-                "forum": "https://wordpress.org/support/plugin/wordpress-seo",
-                "wiki": "https://github.com/Yoast/wordpress-seo/wiki",
-                "source": "https://github.com/Yoast/wordpress-seo"
-            },
-            "time": "2023-01-10T09:56:16+00:00"
-        },
-        {
-            "name": "yoast/wordpress-seo-premium",
-            "version": "19.5.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:Yoast-dist/wordpress-seo-premium.git",
-                "reference": "ab6beefe252cb03b473fdbdb9e9539dccd0364e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo-premium/yoast-wordpress-seo-premium-ab6beefe252cb03b473fdbdb9e9539dccd0364e1-zip-7c278a.zip",
-                "reference": "ab6beefe252cb03b473fdbdb9e9539dccd0364e1",
-                "shasum": "93fa74d961e75bba55f628e53248db934531b807"
-            },
-            "require": {
-                "php": "^5.6.20 || ^7.0 || ^8.0",
-                "yoast/wordpress-seo": "^19.10"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7",
-                "yoast/wp-test-utils": "^1.0.0",
-                "yoast/yoastcs": "^2.2.1"
-            },
-            "type": "wordpress-plugin",
-            "extra": {
-                "installer-paths": {
-                    "vendor/{$vendor}/{$name}": [
-                        "type:wordpress-plugin"
-                    ]
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "classes/",
-                    "cli/",
-                    "src/",
-                    "premium.php"
-                ],
-                "exclude-from-classmap": [
-                    "/**/node_modules/",
-                    "vendor/composer/installers",
-                    "vendor/yoast/wordpress-seo",
-                    "vendor/yoast/i18n-module"
-                ]
-            },
-            "autoload-dev": {
-                "classmap": [
-                    "config/",
-                    "tests/"
-                ]
-            },
-            "scripts": {
-                "test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit"
-                ],
-                "integration-test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
-                ],
-                "compile-di": [
-                    "rm -f ./src/generated/container.php",
-                    "rm -f ./src/generated/container.php.meta",
-                    "composer du --no-scripts",
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::compile_dependency_injection_container"
-                ],
-                "cs": [
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_coding_standards"
-                ],
-                "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=62",
-                    "@putenv YOASTCS_THRESHOLD_WARNINGS=45",
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_cs_thresholds"
-                ],
-                "lint": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
-                ],
-                "check-cs": [
-                    "@check-cs-warnings -n"
-                ],
-                "check-cs-errors": [
-                    "echo You can now just use check-cs, running that command now.",
-                    "composer check-cs"
-                ],
-                "check-cs-warnings": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
-                ],
-                "check-staged-cs": [
-                    "@check-cs-warnings --filter=GitStaged"
-                ],
-                "fix-cs": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-                ],
-                "lint-files": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint --show-deprecated"
-                ],
-                "lint-branch": [
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::lint_branch"
-                ],
-                "lint-staged": [
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::lint_staged"
-                ],
-                "check-branch-cs": [
-                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_branch_cs"
-                ],
-                "post-install-cmd": [
-                    "cd vendor/yoast/wordpress-seo && composer install --ignore-platform-reqs --no-interaction && cd ../..",
-                    "composer compile-di"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com",
-                    "homepage": "https://yoa.st/1--"
-                }
-            ],
-            "description": "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.",
-            "homepage": "https://yoa.st/1ui",
-            "keywords": [
-                "seo",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/Yoast/wordpress-seo-premium/issues",
-                "source": "https://github.com/Yoast/wordpress-seo-premium"
-            },
-            "time": "2022-11-08T10:06:10+00:00"
         }
     ],
     "packages-dev": [
@@ -2793,12 +2435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "92f4424ad5419a427f950f7d1df1aae30b02687d"
+                "reference": "e397489eeab71e2748b0f258f80a651acb8eca04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/92f4424ad5419a427f950f7d1df1aae30b02687d",
-                "reference": "92f4424ad5419a427f950f7d1df1aae30b02687d",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e397489eeab71e2748b0f258f80a651acb8eca04",
+                "reference": "e397489eeab71e2748b0f258f80a651acb8eca04",
                 "shasum": ""
             },
             "conflict": {
@@ -2832,7 +2474,6 @@
                 "barryvdh/laravel-translation-manager": "<0.6.2",
                 "barzahlen/barzahlen-php": "<2.0.1",
                 "baserproject/basercms": "<4.7.2",
-                "bassjobsen/bootstrap-3-typeahead": ">4.0.2",
                 "billz/raspap-webgui": "<=2.6.6",
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
                 "bmarshall511/wordpress_zero_spam": "<5.2.13",
@@ -2889,7 +2530,7 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|>=16.0.1,<16.0.3|= 12.0.5|>= 3.3.beta1, < 13.0.2",
-                "dompdf/dompdf": "<2.0.2",
+                "dompdf/dompdf": "<2.0.1",
                 "drupal/core": ">=7,<7.91|>=8,<9.3.19|>=9.4,<9.4.3",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
@@ -3037,7 +2678,7 @@
                 "melisplatform/melis-front": "<5.0.1",
                 "mezzio/mezzio-swoole": "<3.7|>=4,<4.3",
                 "mgallegos/laravel-jqgrid": "<=1.3",
-                "microweber/microweber": "<1.3.2",
+                "microweber/microweber": "<=1.3.1",
                 "miniorange/miniorange-saml": "<1.4.3",
                 "mittwald/typo3_forum": "<1.2.1",
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
@@ -3103,7 +2744,7 @@
                 "phpxmlrpc/extras": "<0.6.1",
                 "phpxmlrpc/phpxmlrpc": "<4.9.2",
                 "pimcore/data-hub": "<1.2.4",
-                "pimcore/pimcore": "<10.5.16",
+                "pimcore/pimcore": "<10.5.14",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<4.12.5|>= 4.0.0-BETA5, < 4.4.2",
                 "pressbooks/pressbooks": "<5.18",
@@ -3204,7 +2845,7 @@
                 "symfony/form": ">=2.3,<2.3.35|>=2.4,<2.6.12|>=2.7,<2.7.50|>=2.8,<2.8.49|>=3,<3.4.20|>=4,<4.0.15|>=4.1,<4.1.9|>=4.2,<4.2.1",
                 "symfony/framework-bundle": ">=2,<2.3.18|>=2.4,<2.4.8|>=2.5,<2.5.2|>=2.7,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7|>=5.3.14,<=5.3.14|>=5.4.3,<=5.4.3|>=6.0.3,<=6.0.3|= 6.0.3|= 5.4.3|= 5.3.14",
                 "symfony/http-foundation": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.3.8|>=4.4,<4.4.7|>=5,<5.0.7",
-                "symfony/http-kernel": ">=2,<4.4.50|>=5,<5.4.20|>=6,<6.0.20|>=6.1,<6.1.12|>=6.2,<6.2.6",
+                "symfony/http-kernel": ">=2,<2.8.52|>=3,<3.4.35|>=4,<4.2.12|>=4.3,<4.4.13|>=5,<5.1.5|>=5.2,<5.3.12",
                 "symfony/intl": ">=2.7,<2.7.38|>=2.8,<2.8.31|>=3,<3.2.14|>=3.3,<3.3.13",
                 "symfony/maker-bundle": ">=1.27,<1.29.2|>=1.30,<1.31.1",
                 "symfony/mime": ">=4.3,<4.3.8",
@@ -3214,13 +2855,13 @@
                 "symfony/proxy-manager-bridge": ">=2.7,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.1.12|>=4.2,<4.2.7",
                 "symfony/routing": ">=2,<2.0.19",
                 "symfony/security": ">=2,<2.7.51|>=2.8,<3.4.49|>=4,<4.4.24|>=5,<5.2.8",
-                "symfony/security-bundle": ">=2,<4.4.50|>=5,<5.4.20|>=6,<6.0.20|>=6.1,<6.1.12|>=6.2,<6.2.6",
+                "symfony/security-bundle": ">=2,<2.7.48|>=2.8,<2.8.41|>=3,<3.3.17|>=3.4,<3.4.11|>=4,<4.0.11|>=5.3,<5.3.12",
                 "symfony/security-core": ">=2.4,<2.6.13|>=2.7,<2.7.9|>=2.7.30,<2.7.32|>=2.8,<3.4.49|>=4,<4.4.24|>=5,<5.2.9",
                 "symfony/security-csrf": ">=2.4,<2.7.48|>=2.8,<2.8.41|>=3,<3.3.17|>=3.4,<3.4.11|>=4,<4.0.11",
                 "symfony/security-guard": ">=2.8,<3.4.48|>=4,<4.4.23|>=5,<5.2.8",
                 "symfony/security-http": ">=2.3,<2.3.41|>=2.4,<2.7.51|>=2.8,<2.8.50|>=3,<3.4.26|>=4,<4.2.12|>=4.3,<4.3.8|>=4.4,<4.4.7|>=5,<5.0.7|>=5.1,<5.2.8|>=5.3,<5.3.2",
                 "symfony/serializer": ">=2,<2.0.11|>=4.1,<4.4.35|>=5,<5.3.12",
-                "symfony/symfony": ">=2,<4.4.50|>=5,<5.4.20|>=6,<6.0.20|>=6.1,<6.1.12|>=6.2,<6.2.6",
+                "symfony/symfony": ">=2,<3.4.49|>=4,<4.4.35|>=5,<5.3.12|>=5.3.14,<=5.3.14|>=5.4.3,<=5.4.3|>=6.0.3,<=6.0.3",
                 "symfony/translation": ">=2,<2.0.17",
                 "symfony/validator": ">=2,<2.0.24|>=2.1,<2.1.12|>=2.2,<2.2.5|>=2.3,<2.3.3",
                 "symfony/var-exporter": ">=4.2,<4.2.12|>=4.3,<4.3.8",
@@ -3265,7 +2906,6 @@
                 "vova07/yii2-fileapi-widget": "<0.1.9",
                 "vrana/adminer": "<4.8.1",
                 "wallabag/tcpdf": "<6.2.22",
-                "wallabag/wallabag": ">=2-alpha.1,<2.5.3",
                 "wanglelecc/laracms": "<=1.0.3",
                 "web-auth/webauthn-framework": ">=3.3,<3.3.4",
                 "webcoast/deferred-image-processing": "<1.0.2",
@@ -3277,7 +2917,7 @@
                 "wp-cli/wp-cli": "<2.5",
                 "wp-graphql/wp-graphql": "<0.3.5",
                 "wpanel/wpanel4-cms": "<=4.3.1",
-                "wwbn/avideo": "<12.4",
+                "wwbn/avideo": "<=11.6",
                 "xataface/xataface": "<3",
                 "yeswiki/yeswiki": "<4.1",
                 "yetiforce/yetiforce-crm": "<=6.4",
@@ -3354,7 +2994,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-03T01:33:09+00:00"
+            "time": "2023-02-01T00:16:41+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -3472,8 +3112,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4"
+        "php": ">=7.4 <8"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
