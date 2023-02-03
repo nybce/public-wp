@@ -17,25 +17,37 @@
         }
     ],
     "keywords": [
-        "bedrock", "composer", "roots", "wordpress", "wp", "wp-config"
+        "bedrock",
+        "composer",
+        "roots",
+        "wordpress",
+        "wp",
+        "wp-config"
     ],
     "support": {
         "issues": "https://github.com/roots/bedrock/issues",
         "forum": "https://discourse.roots.io/category/bedrock"
     },
-    "repositories": [
-        {
+    "repositories": {
+        "my-yoast": {
+            "type": "composer",
+            "url": "https://my.yoast.com/packages/"
+        },
+        "0": {
             "type": "composer",
             "url": "https://wpackagist.org",
-            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
         },
-        {
+        "1": {
             "type": "composer",
             "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-muplugin/"
         }
-    ],
+    },
     "require": {
-        "php": ">=7.4 <8",
+        "php": ">=7.4",
         "composer/installers": "^1.10",
         "vlucas/phpdotenv": "^5.3",
         "oscarotero/env": "^2.1",
@@ -61,8 +73,8 @@
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
-        "wpackagist-plugin/wpo365-login":"21.5",
-        "bueltge/multisite-global-media": "^0.2.0"
+        "wpackagist-plugin/wpo365-login": "21.5",
+        "yoast/wordpress-seo-premium": "19.5"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -83,23 +95,26 @@
             "roave/security-advisories": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "squizlabs/php_codesniffer": true,
-            "wp-coding-standards/wpcs": true,
-            "bueltge/multisite-global-media": true
+            "wp-coding-standards/wpcs": true
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "installer-paths": {
-            "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin",
+            "web/app/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin",
                 "advanced-custom-fields/advanced-custom-fields-pro",
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
-                "wpackagist-plugin/wpo365-login",
-                "bueltge/multisite-global-media"
+                "wpackagist-plugin/wpo365-login"
             ],
-            "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-            "web/app/themes/{$name}/": ["type:wordpress-theme"]
+            "web/app/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "web/app/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
         },
         "wordpress-install-dir": "web/wp"
     },
