@@ -23,8 +23,6 @@ define( 'NYBC_IMG_URI', NYBC_THEME_URI . '/img' );
 define( 'NYBC_THEME_DIR', get_template_directory() );
 define( 'NYBC_SCRIPT_VER', '1.0.0' );
 
-define( 'CONCATENATE_SCRIPTS', false );
-
 function acf_filter_rest_api_preload_paths( $preload_paths ) {
     global $post;
     $rest_path    = rest_get_route_for_post( $post );
