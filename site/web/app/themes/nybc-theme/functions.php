@@ -23,6 +23,7 @@ define( 'NYBC_IMG_URI', NYBC_THEME_URI . '/img' );
 define( 'NYBC_THEME_DIR', get_template_directory() );
 define( 'NYBC_SCRIPT_VER', '1.0.0' );
 
+define('CONCATENATE_SCRIPTS', false); 
 
 /**
  * Init Requirements
