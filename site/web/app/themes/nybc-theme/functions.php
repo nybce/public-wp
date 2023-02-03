@@ -23,25 +23,6 @@ define( 'NYBC_IMG_URI', NYBC_THEME_URI . '/img' );
 define( 'NYBC_THEME_DIR', get_template_directory() );
 define( 'NYBC_SCRIPT_VER', '1.0.0' );
 
-define( 'CONCATENATE_SCRIPTS', false );
-
-function acf_filter_rest_api_preload_paths( $preload_paths ) {
-    global $post;
-    $rest_path    = rest_get_route_for_post( $post );
-    $remove_paths = array(
-        add_query_arg( 'context', 'edit', $rest_path ),
-        sprintf( '%s/autosaves?context=edit', $rest_path ),
-    );
-
-    return array_filter(
-        $preload_paths,
-        function( $url ) use ( $remove_paths ) {
-            return ! in_array( $url, $remove_paths, true );
-        }
-    );
-}
-add_filter( 'block_editor_rest_api_preload_paths', 'acf_filter_rest_api_preload_paths', 10, 1 );
-
 /**
  * Init Requirements
  */
