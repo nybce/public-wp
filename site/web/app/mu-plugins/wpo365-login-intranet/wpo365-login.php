@@ -4,7 +4,7 @@
  *  Plugin Name: WPO365 | INTRANET
  *  Plugin URI: https://www.wpo365.com/downloads/wordpress-office-365-login-intranet/
  *  Description: Extends WPO365 | LOGIN and offers the deepest integration with the Microsoft Office 365 / Azure cloud, incl. apps for Power BI, SharePoint Online, Microsoft Graph and Yammer and support for Azure AD user provisioning (SCIM).
- *  Version: 18.0
+ *  Version: 21.1
  *  Author: support@wpo365.com
  *  Author URI: https://www.wpo365.com
  *  License: See license.txt
@@ -27,6 +27,8 @@ if (!class_exists('\Wpo\Intranet')) {
             // Show admin notification when BASIC edition is not installed
             add_action('admin_notices', array($this, 'ensure_wpo365_login'), 10, 0);
             add_action('network_admin_notices', array($this, 'ensure_wpo365_login'), 10, 0);
+            add_action('plugins_loaded', array($this, 'ensure_wpo365_login'), 10, 0);
+
             add_action('plugins_loaded', function () {
                 $this->load_gutenberg_blocks();
             });
@@ -34,8 +36,23 @@ if (!class_exists('\Wpo\Intranet')) {
 
         public function ensure_wpo365_login()
         {
+            $version_exists = \class_exists('\Wpo\Core\Version') && isset(\Wpo\Core\Version::$current) && \Wpo\Core\Version::$current >= 20;
+
+            if (current_action() == 'plugins_loaded') {
+
+                if (!$version_exists) {
+
+                    if (false === function_exists('deactivate_plugins')) {
+                        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+                    }
+
+                    deactivate_plugins(plugin_basename(__FILE__));
+                }
+
+                return;
+            }
+
             $plugin_exists = \file_exists(dirname(__DIR__) . '/wpo365-login');
-            $version_exists = \class_exists('\Wpo\Core\Version') && isset(\Wpo\Core\Version::$current) && \Wpo\Core\Version::$current >= 13;
 
             // Required version installed and activated
             if ($version_exists) {
@@ -104,7 +121,7 @@ if (!class_exists('\Wpo\Intranet')) {
                 )
             );
 
-            if (class_exists('\Wpo\Services\Options_Service') && \Wpo\Services\Options_Service::get_global_boolean_var('enable_audiences')) {
+            if (class_exists('\Wpo\Services\Options_Service') && \Wpo\Services\Options_Service::get_global_boolean_var('enable_audiences') && !\Wpo\Services\Options_Service::get_global_boolean_var('enable_audiences_meta_box')) {
                 $apps['aud'] = array(
                     'edition' => 'premium',
                     'load_front_end_assets' => false,

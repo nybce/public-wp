@@ -6,6 +6,7 @@ namespace Wpo\Services;
 defined('ABSPATH') or die();
 
 use \Wpo\Core\User;
+use \Wpo\Core\WordPress_Helpers;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
 use \Wpo\Services\Graph_Service;
@@ -23,11 +24,6 @@ if (!class_exists('\Wpo\Services\User_Details_Service')) {
         {
             Log_Service::write_log('DEBUG', '##### -> ' . __METHOD__);
 
-            if (empty($wpo_usr->graph_resource)) {
-                Log_Service::write_log('DEBUG', __METHOD__ . ' -> Cannot improve user fields because the graph resource has not been retrieved');
-                return;
-            }
-
             if (isset($wpo_usr->graph_resource['userPrincipalName'])) {
                 $wpo_usr->upn = $wpo_usr->graph_resource['userPrincipalName'];
             }
@@ -44,19 +40,23 @@ if (!class_exists('\Wpo\Services\User_Details_Service')) {
                 $wpo_usr->last_name = $wpo_usr->graph_resource['surname'];
             }
 
-            $graph_display_name_format = Options_Service::get_global_string_var('graph_display_name_format');
-
-            if (!empty($wpo_usr->first_name) && !empty($wpo_usr->last_name)) {
-
-                if ($graph_display_name_format == 'givenNameSurname') {
-                    $wpo_usr->full_name = sprintf('%s %s', $wpo_usr->first_name, $wpo_usr->last_name);
-                } elseif ($graph_display_name_format == 'surnameGivenName') {
-                    $wpo_usr->full_name = sprintf('%s, %s', $wpo_usr->last_name, $wpo_usr->first_name);
-                }
+            if (isset($wpo_usr->graph_resource['displayName'])) {
+                $wpo_usr->full_name = $wpo_usr->graph_resource['displayName'];
             }
 
-            if ((empty($graph_display_name_format) || $graph_display_name_format == 'displayName') && isset($wpo_usr->graph_resource['displayName'])) {
-                $wpo_usr->full_name = $wpo_usr->graph_resource['displayName'];
+            $graph_display_name_format = Options_Service::get_global_string_var('graph_display_name_format');
+
+            if ($graph_display_name_format == 'skip') {
+                $wpo_usr->full_name = '';
+            } else {
+                if (!empty($wpo_usr->first_name) && !empty($wpo_usr->last_name)) {
+
+                    if ($graph_display_name_format == 'givenNameSurname') {
+                        $wpo_usr->full_name = sprintf('%s %s', $wpo_usr->first_name, $wpo_usr->last_name);
+                    } elseif ($graph_display_name_format == 'surnameGivenName') {
+                        $wpo_usr->full_name = sprintf('%s, %s', $wpo_usr->last_name, $wpo_usr->first_name);
+                    }
+                }
             }
         }
 
@@ -120,7 +120,7 @@ if (!class_exists('\Wpo\Services\User_Details_Service')) {
          * @param object    $id_token 
          * @return void
          */
-        public static function get_wpo_usr_from_id_token(&$wpo_usr, $id_token)
+        public static function update_wpo_usr_from_id_token(&$wpo_usr, $id_token)
         {
             $extra_user_fields = Options_Service::get_global_list_var('extra_user_fields');
             $wpo_usr->graph_resource = array();
@@ -148,17 +148,67 @@ if (!class_exists('\Wpo\Services\User_Details_Service')) {
                         continue;
                     }
 
-                    $value = array_key_exists($keyValuePair['key'], $id_token_props)
-                        ? $id_token_props[$keyValuePair['key']]
+                    $parsed_user_field_key = self::parse_user_field_key($keyValuePair['key']);
+                    $name = $parsed_user_field_key[0];
+
+                    $value = array_key_exists($name, $id_token_props)
+                        ? $id_token_props[$name]
                         : false;
 
                     if (empty($value)) {
                         continue;
                     }
 
-                    $wpo_usr->graph_resource[$keyValuePair['key']] = $value;
+                    $wpo_usr->graph_resource[$name] = $value;
                 }
             }
+        }
+
+        /**
+         * This helper will create a new member graph_resource on the wpo_usr parameter, 
+         * populates it with fields from the SAML response instead and eventually returns the 
+         * wpo_usr.
+         * 
+         * @since   20.0
+         * 
+         * @param mixed $wpo_usr 
+         * @param mixed $saml_attributes 
+         * @return void 
+         */
+        public static function update_wpo_usr_from_saml_attributes(&$wpo_usr, $saml_attributes)
+        {
+            if (is_array($saml_attributes)) {
+                $wpo_usr->saml_attributes = $saml_attributes;
+            }
+        }
+
+        /**
+         * Parses the extra_user_fields key that since v19.5 may be a compound field that contains
+         * the name for the usermeta field in WordPress for the user attribute retrieved from Microsoft
+         * Graph.
+         * 
+         * @since   20.0
+         * 
+         * @param   mixed   $name   The name of the Microsoft Graph property possibly combined with a proposed name for the key for the usermeta e.g. mobilePhone;#msGraphMobilePhone
+         * @return  array   The name of the Microsoft Graph property and the proposed name for the key for the usermeta. 
+         */
+        public static function parse_user_field_key($name)
+        {
+            if (false !== WordPress_Helpers::stripos($name, ';#')) {
+                $name_arr = explode(';#', $name);
+                $name = $name_arr[0];
+
+                if (sizeof($name_arr) > 1) {
+                    $wp_user_meta_key = $name_arr[1];
+                }
+            }
+
+            $wp_user_meta_key = empty($wp_user_meta_key) ? $name : $wp_user_meta_key;
+
+            return array(
+                $name,
+                $wp_user_meta_key
+            );
         }
 
         /**

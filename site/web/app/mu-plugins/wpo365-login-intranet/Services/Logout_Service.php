@@ -33,10 +33,39 @@ if (!class_exists('\Wpo\Services\Logout_Service')) {
                 $request_service = Request_Service::get_instance();
                 $request = $request_service->get_request($GLOBALS['WPO_CONFIG']['request_id']);
                 $wpo_auth_value = $request->get_item('wpo_auth_value');
+                $logout_url = $post_logout_redirect_uri;
 
-                $logout_url = !empty($wpo_auth_value)
-                    ? "https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=$post_logout_redirect_uri"
-                    : $post_logout_redirect_uri;
+                if (!empty($wpo_auth_value)) {
+                    if (Options_Service::get_global_boolean_var('use_b2c')) {
+                        $domain_name = Options_Service::get_global_string_var('b2c_domain_name');
+                        $policy = Options_Service::get_global_string_var('b2c_policy_name');
+
+                        /**
+                         * @since   20.x    Support for custom b2c login domain e.g. login.contoso.com
+                         */
+
+                        $b2c_domain = Options_Service::get_global_string_var('b2c_custom_domain');
+
+                        if (empty($b2c_domain)) {
+                            $b2c_domain = sprintf('https://%s.b2clogin.com/', $domain_name);
+                        } else {
+                            $b2c_domain = sprintf('https://%s', trailingslashit($b2c_domain));
+                        }
+
+                        $logout_url = sprintf(
+                            "%s%s.onmicrosoft.com/%s/oauth2/v2.0/logout?post_logout_redirect_uri=%s",
+                            $b2c_domain,
+                            $domain_name,
+                            $policy,
+                            $post_logout_redirect_uri
+                        );
+                    } else {
+                        $logout_url = sprintf(
+                            "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=%s",
+                            $post_logout_redirect_uri
+                        );
+                    }
+                }
 
                 Url_Helpers::force_redirect($logout_url);
             }

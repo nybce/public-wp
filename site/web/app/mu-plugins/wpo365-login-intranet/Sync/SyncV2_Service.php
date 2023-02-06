@@ -2,9 +2,13 @@
 
 namespace Wpo\Sync;
 
+use WP_Error;
 use \Wpo\Core\Domain_Helpers;
 use \Wpo\Core\Extensions_Helpers;
 use \Wpo\Core\Permissions_Helpers;
+use \Wpo\Core\Url_Helpers;
+use \Wpo\Core\WordPress_Helpers;
+use Wpo\Core\Wpmu_Helpers;
 use \Wpo\Services\Graph_Service;
 use \Wpo\Services\Log_Service;
 use \Wpo\Services\Options_Service;
@@ -123,15 +127,30 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             $validated = self::user_sync_job_is_valid($job);
 
             if (is_wp_error($validated)) {
+                Log_Service::write_log('ERROR', $validated->get_error_message());
                 return $validated;
             }
-
-            Log_Service::write_log('DEBUG', __METHOD__ . ' -> A new user synchronization job is starting and the old job data will be deleted');
 
             // Delete all scheduled jobs
             if ($job['trigger'] != 'schedule') {
                 self::get_scheduled_events($job_id, true);
             }
+
+            // Check if there is an instance of this job still running
+            $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+            $job_info = Wpmu_Helpers::mu_get_transient($job_info_name);
+
+            if (!empty($job_info)) {
+                $message = sprintf(
+                    '%s -> Could not start a new instance of user synchronization job with ID %s because another instance did not yet finish (please stop the job in progress before starting a new one)',
+                    __METHOD__,
+                    $job_id
+                );
+                Log_Service::write_log('ERROR', $message);
+                return new \WP_Error('NotFinished', $message);
+            }
+
+            Log_Service::write_log('DEBUG', __METHOD__ . ' -> A new user synchronization job is starting and the old job data will be deleted');
 
             // Verify that the table has been created
             Sync_Db::user_sync_table_exists(true);
@@ -167,13 +186,53 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
          * @param   string  $job_id         ID of the job
          * @return  boolean|WP_Error        True if no errors occured otherwise an error will be returned
          */
-        public static function fetch_users($job_id, $graph_query)
+        public static function fetch_users($job_id, $graph_query = null)
         {
-
             $job = self::get_user_sync_job_by_id($job_id);
 
+            $stop = function ($error) use ($job, $job_id) {
+                // Remove memoized job info
+                $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+                Wpmu_Helpers::mu_delete_transient($job_info_name);
+
+                // Send mail
+                SyncV2_Service::sync_completed_notification($job_id);
+
+                // Cancel any scheduled job
+                SyncV2_Service::get_scheduled_events($job_id, true);
+
+                if (!is_wp_error($job)) {
+                    // Update job.last
+                    $job['last']['error'] = $error->get_error_message();
+                    $job['last']['stopped'] = true;
+                    SyncV2_Service::update_user_sync_job($job);
+
+                    // Trigger hook
+                    do_action('wpo365/sync/error', $job);
+                }
+            };
+
             if (is_wp_error($job)) {
-                return $job;
+                $stop($job);
+                return;
+            }
+
+            /**
+             * @since   21.0    Job information is stored as a transient.
+             */
+
+            if (empty($graph_query)) {
+                $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+                $graph_query = Wpmu_Helpers::mu_get_transient($job_info_name);
+
+                if (empty($graph_query)) {
+                    $stop(new \WP_Error('NextLinkExpired', sprintf(
+                        '%s -> User sync job with ID %s cannot continue because the next-link has expired',
+                        __METHOD__,
+                        $job_id
+                    )));
+                    return;
+                }
             }
 
             // Trigger hook
@@ -182,22 +241,8 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             $fetch_result = self::process_fetch_result(Graph_Service::fetch($graph_query, 'GET', false, array('Accept: application/json;odata.metadata=minimal')), $job_id);
 
             if (is_wp_error($fetch_result)) {
-                // Update job.last
-                $job['last']['error'] = $fetch_result->get_error_message();
-                $job['last']['stopped'] = true;
-                self::update_user_sync_job($job);
-
-                // Send mail
-                self::sync_completed_notification($job_id);
-
-                // Cancel any scheduled job
-                self::get_scheduled_events($job_id, true);
-
-                // Trigger hook
-                do_action('wpo365/sync/error', $job);
+                $stop($fetch_result);
             }
-
-            return $fetch_result;
         }
 
         /**
@@ -213,7 +258,6 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
          */
         private static function process_fetch_result($response, $job_id)
         {
-
             $job = self::get_user_sync_job_by_id($job_id);
 
             if (is_wp_error($job)) {
@@ -226,7 +270,7 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             if (false !== $unscheduled_job_id) {
 
                 if (!empty($job['last']) && !empty($job['last']['id']) && $unscheduled_job_id == $job['last']['id']) {
-                    // \delete_option( 'wpo_sync_v2_users_unscheduled' );
+                    delete_option('wpo_sync_v2_users_unscheduled');
                     return new \WP_Error('UserSyncStopped', __METHOD__ . ' -> Administrator requested user synchronization to stop');
                 }
             }
@@ -245,13 +289,16 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             }
 
             if (!empty($job['last'])) {
+                $job['last']['processed'] = intval($job['last']['processed']) + sizeof($response['payload']['value']);
+                $job['last']['date'] = time();
 
-                if (!empty($response['payload']['@odata.count'])) {
+                if (Options_Service::get_global_boolean_var('use_b2c')) {
+                    // For B2C the $count parameter is not supported at the moment 
+                    $job['last']['total'] = ($job['last']['processed'] + 1);
+                } elseif (!empty($response['payload']['@odata.count'])) {
                     $job['last']['total'] = $response['payload']['@odata.count'];
                 }
 
-                $job['last']['processed'] = intval($job['last']['processed']) + sizeof($response['payload']['value']);
-                $job['last']['date'] = time();
                 $updated = self::update_user_sync_job($job);
 
                 if (is_wp_error($updated)) {
@@ -261,7 +308,7 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
 
             foreach ($response['payload']['value'] as $o365_user) {
                 // make sure the object is a user
-                if (!empty($o365_user['@odata.type']) && \stripos($o365_user['@odata.type'], 'user') === false) {
+                if (!empty($o365_user['@odata.type']) && WordPress_Helpers::stripos($o365_user['@odata.type'], 'user') === false) {
                     Log_Service::write_log('WARN', __METHOD__ . ' -> Not processing a directory object that is not a user');
                     continue;
                 }
@@ -280,19 +327,24 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                 }
 
                 // Azure AD guest user can only be processed if explicitely requested
-                if ($job['membersOnly'] && false !== stripos($wpo_usr->upn, '#ext#')) {
+                if ($job['membersOnly'] && false !== WordPress_Helpers::stripos($wpo_usr->upn, '#ext#')) {
                     self::write_log($job['last']['id'], 'unknown', 'skipped', $wpo_usr, __METHOD__ . ' -> User is not an internal user: ' . $wpo_usr->preferred_username, -1);
                     Log_Service::write_log('WARN', __METHOD__ . ' -> User is not an internal user: ' . $wpo_usr->preferred_username);
                     continue;
                 }
 
-                // Azure AD user can only be processed if the upn's domain has been listed as custom domain (on the user registration configuration tab)
-                $domain = Domain_Helpers::get_smtp_domain_from_email_address($wpo_usr->upn);
+                /**
+                 * @since   21.0    Domain check has become optional.
+                 */
 
-                if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
-                    self::write_log($job['last']['id'], 'unknown', 'skipped', $wpo_usr, __METHOD__ . ' -> User\'s UPN domain is not listed as custom domain: ' . $wpo_usr->preferred_username, -1);
-                    Log_Service::write_log('DEBUG', __METHOD__ . ' -> User\'s UPN domain is not listed as custom domain: ' . $wpo_usr->preferred_username);
-                    continue;
+                if (empty($job['skipDomainCheck'])) {
+                    $domain = Domain_Helpers::get_smtp_domain_from_email_address($wpo_usr->upn);
+
+                    if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
+                        self::write_log($job['last']['id'], 'unknown', 'skipped', $wpo_usr, __METHOD__ . ' -> User\'s UPN domain is not listed as custom domain: ' . $wpo_usr->preferred_username, -1);
+                        Log_Service::write_log('WARN', __METHOD__ . ' -> User\'s UPN domain is not listed as custom domain: ' . $wpo_usr->preferred_username);
+                        continue;
+                    }
                 }
 
                 $wp_user = User_Service::try_get_user_by($wpo_usr);
@@ -347,6 +399,7 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                 // tag wp user with sync job ID
                 if (!empty($wp_user)) {
                     update_user_meta($wp_user->ID, 'wpo_sync_users_job_id', $job['last']['id']);
+                    update_user_meta($wp_user->ID, 'wpo_sync_users_last_sync', $job['last']['date']);
                 }
 
                 // User not created / updated therefore logged instead
@@ -364,9 +417,15 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                 $graph_version = empty($graph_version) || $graph_version == 'current' ? 'v1.0' : $graph_version;
                 $graph_url = 'https://graph.microsoft.com/' . $graph_version;
                 $next_link = str_replace($graph_url, '', $response['payload']['@odata.nextLink']);
-                $result = wp_schedule_single_event(time() - 60, 'wpo_sync_v2_users_next', [$job['id'], $next_link]);
+                $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+                Wpmu_Helpers::mu_set_transient($job_info_name, $next_link, 3600); // Next link remains valid for one hour
+                $result = wp_schedule_single_event(time() - 60, 'wpo_sync_v2_users_next', [$job_id]);
                 Log_Service::write_log('DEBUG', __METHOD__ . ' -> Next event for hook "wpo_sync_users_next" has been scheduled');
             } else {
+                // Remove memoized job info
+                $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+                Wpmu_Helpers::mu_delete_transient($job_info_name);
+
                 $untagged_users_result = self::handle_untagged_users($job_id);
 
                 if (is_wp_error($untagged_users_result)) {
@@ -391,6 +450,7 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                 // Mark job as stopped
                 $job['last']['stopped'] = true;
                 $job['last']['date'] = time();
+                $job['last']['total'] = $job['last']['processed'];
                 self::update_user_sync_job($job);
 
                 // Trigger hook
@@ -413,7 +473,6 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             $job = self::get_user_sync_job_by_id($job_id);
 
             if (is_wp_error($job)) {
-                Log_Service::write_log('WARN', __METHOD__ . ' -> Could not find the user synchronization job whilst trying to stop the job');
                 return $job;
             }
 
@@ -434,6 +493,16 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
 
             // Delete all scheduled jobs
             self::get_scheduled_events($job_id, true);
+
+            // Delete memoized job info
+            $job_info_name = sprintf('%s_wpo365_sync_next', $job_id);
+            Wpmu_Helpers::mu_delete_transient($job_info_name);
+
+            // Send email
+            self::sync_completed_notification($job_id);
+
+            // Trigger hook
+            do_action('wpo365/sync/error', $job);
 
             return true;
         }
@@ -632,7 +701,13 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                     )
                 );
             } else {
-                Log_Service::write_log('ERROR', __METHOD__ . ' -> Trying to create a duplicate log entry');
+                $message = sprintf(
+                    '%s -> Trying to create a duplicate log entry for %s [%s]',
+                    __METHOD__,
+                    $wpo_usr->preferred_username,
+                    $sync_job_last_id
+                );
+                Log_Service::write_log('ERROR', $message);
             }
         }
 
@@ -680,8 +755,8 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
         private static function add_query_count_param($query)
         {
 
-            if (\stripos($query, '$count=') === false) {
-                return \stripos($query, '?') !== false
+            if (WordPress_Helpers::stripos($query, '$count=') === false) {
+                return WordPress_Helpers::stripos($query, '?') !== false
                     ? $query . '&$count=true'
                     : $query . '?$count=true';
             }
@@ -829,16 +904,30 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
                     $skip_delete = true;
                 }
 
-                $domain = Domain_Helpers::get_smtp_domain_from_email_address($wp_user->user_login);
+                /**
+                 * @since   21.0    Domain check has become optional.
+                 */
 
-                if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
-                    $domain = Domain_Helpers::get_smtp_domain_from_email_address($wp_user->user_email);
-                }
+                if (empty($job['skipDomainCheck'])) {
+                    $domain = Domain_Helpers::get_smtp_domain_from_email_address($wp_user->user_login);
 
-                if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
-                    $notes = __METHOD__ . ' -> Cannot delete user with ID ' . $wp_user->user_login . ' because this user is not an Azure AD user';
-                    Log_Service::write_log('WARN', $notes);
-                    $skip_delete = true;
+                    if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
+                        $domain = Domain_Helpers::get_smtp_domain_from_email_address($wp_user->user_email);
+                    }
+
+                    if (empty($domain) || !Domain_Helpers::is_tenant_domain($domain)) {
+                        $notes = __METHOD__ . ' -> Cannot delete user with ID ' . $wp_user->user_login . ' because this user is not an Azure AD user';
+                        Log_Service::write_log('WARN', $notes);
+                        $skip_delete = true;
+                    }
+                } else {
+                    $aad_object_id = get_user_meta($wp_user->ID, 'aadObjectId', true);
+
+                    if (empty($aad_object_id)) {
+                        $notes = __METHOD__ . ' -> Cannot delete user with ID ' . $wp_user->user_login . ' because this user is not maintained by the WPO365 plugin';
+                        Log_Service::write_log('DEBUG', $notes);
+                        $skip_delete = true;
+                    }
                 }
 
                 // Finally commit deletion of WP users if requested
@@ -882,6 +971,81 @@ if (!class_exists('\Wpo\Sync\SyncV2_Service')) {
             }
 
             return true;
+        }
+
+        /**
+         * Helper to register custom columns to show a couple of WPO365 User synchronization related fields 
+         * on the default WordPress Users screen.
+         * 
+         * @since   21.0
+         * 
+         * @param   Array   Array of columns
+         * 
+         * @return  Arry    Array of colums with a couple of Azure AD related columns added.
+         */
+        public static function register_users_sync_columns($columns)
+        {
+            $columns['wpo365_synchronized'] = __('Last sync', 'wpo365-login');
+            $columns['wpo365_deactivated'] = __('De-activated', 'wpo365-login');;
+            return $columns;
+        }
+
+        /**
+         * Helper to render a couple of custom WPO365 User sync columns that are added to the default WordPress Users screen.
+         * 
+         * @since   21.0
+         * 
+         * @param   string  $output         Rendered HTML
+         * @param   string  $column_name    Name of the column being rendered
+         * @param   string  $user_id        ID of the user the column's cell is being rendered for
+         * 
+         * @return  string  Rendered HTML.
+         */
+        public static function render_users_sync_columns($output, $column_name, $user_id)
+        {
+            if ('wpo365_synchronized' == $column_name) {
+                $last_sync = get_user_meta($user_id, 'wpo_sync_users_last_sync', true);
+
+                if (empty($last_sync)) {
+                    return $output;
+                }
+
+                $formatted = date('Y-m-d H:i', $last_sync);
+
+                return sprintf('<div><span>%s</span></div>', $formatted);
+            }
+
+            if ('wpo365_deactivated' == $column_name) {
+                $deactivated = get_user_meta($user_id, 'wpo365_active', true);
+
+                if ($deactivated == 'deactivated') {
+                    $url = add_query_arg('wpo365_reactivate_user', $user_id);
+                    return sprintf('<div><span><button type="button" onclick="window.location.href = \'%s\'">Reactivate</button></span></div>', $url);
+                }
+            }
+
+            return $output;
+        }
+
+        /**
+         * Helper to reactivate a user from the WP users list.
+         * 
+         * @since 21.0
+         * 
+         * @return void
+         */
+        public static function reactivate_user()
+        {
+            if (isset($_GET['wpo365_reactivate_user'])) {
+                $wp_user_id = (int) sanitize_text_field($_GET['wpo365_reactivate_user']);
+                $wp_user = get_user_by('ID', $wp_user_id);
+
+                if (!is_wp_error($wp_user)) {
+                    delete_user_meta($wp_user->ID, 'wpo365_active');
+                }
+
+                Url_Helpers::force_redirect(remove_query_arg('wpo365_reactivate_user'));
+            }
         }
 
         /**

@@ -52,7 +52,6 @@
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
-        "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/nitropack": "^1.5.7",
@@ -62,7 +61,7 @@
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
-        "wpackagist-plugin/wpo365-login":"17.4",
+        "wpackagist-plugin/wpo365-login":"21.5",
         "bueltge/multisite-global-media": "^0.2.0"
     },
     "require-dev": {
@@ -95,7 +94,6 @@
             "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin",
                 "advanced-custom-fields/advanced-custom-fields-pro",
                 "wpackagist-plugin/acf-extended",
-                "wpackagist-plugin/easy-wp-smtp",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
                 "wpackagist-plugin/wpo365-login",
                 "bueltge/multisite-global-media"
