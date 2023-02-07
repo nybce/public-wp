@@ -157,7 +157,7 @@ if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . '/wp/');
 }
 
-Config::define( 'WPO_SAML2_ADVANCED_SETTINGS', 
+define( 'WPO_SAML2_ADVANCED_SETTINGS', 
 	array(
 		'security' => array(
 			'requestedAuthnContext' => false 
