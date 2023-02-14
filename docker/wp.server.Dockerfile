@@ -104,8 +104,7 @@ RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load && \
     mkdir -p /var/www/html/app/uploads && \
-    chown -R www-data: /var/www/html/app/uploads
-
+    chown -R www-data: /site/web
 WORKDIR /var/www/html
 
 EXPOSE 80
