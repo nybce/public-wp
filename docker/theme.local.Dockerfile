@@ -16,7 +16,7 @@ RUN apk add --no-cache bash \
   libwebp \
   libwebp-dev \
   nasm \
-  python2 \
+  python3 \
   zlib \
   zlib-dev \
   lcms2-dev
