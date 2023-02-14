@@ -39,6 +39,11 @@ services:
     build:
       dockerfile: docker/wp.local.Dockerfile
       context: "."
+      args:
+        ACF_PRO_KEY: "b3JkZXJfaWQ9MTA5NTM0fHR5cGU9ZGV2ZWxvcGVyfGRhdGU9MjAxNy0wNi0zMCAxNzoxMTozMQ=="
+        YOAST_SEO_KEY: "f9b05fc0d3be4626bda6f72b5451edb5d92b01cb53e55a251f90e429c26ce1fa"
+        ENVIRONMENT: "local"
+
     # mounting local volume for hot-reload
     volumes:
       - ./site:/site
@@ -48,7 +53,7 @@ services:
     depends_on:
       - db
     ports:
-      - "80:8080"
+      - "8888:8080"
     networks:
       - dbg-net
   # theme
