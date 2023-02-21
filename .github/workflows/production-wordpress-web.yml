@@ -74,6 +74,7 @@ jobs:
         cache-to: type=inline
         build-args: |
           ACF_PRO_KEY=${{ secrets.ACF_PRO_KEY }}
+          YOAST_SEO_KEY=${{ secrets.YOAST_SEO_KEY }}
           ENVIRONMENT=${{ github.ref_name }}
         secrets: |
           "vaultpass=${{ secrets.VAULTPASS }}"
