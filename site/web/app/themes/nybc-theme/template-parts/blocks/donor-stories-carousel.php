@@ -53,7 +53,13 @@ if ( empty( $slides ) ) {
 								<div class="employees-info">
 
 									<div class="h6 title fw-900 tagline">
-										<?php echo esc_html( $slide['label'] ); ?>
+									<?php 
+									if( !empty($slide['label']) ){
+										echo esc_html_e( $slide['label'] ); 
+									} else {
+										echo 'Donor Stories';
+									}
+									?>
 									</div>
 
 									<div class="spacer-48 spacer-xs-16"></div>
