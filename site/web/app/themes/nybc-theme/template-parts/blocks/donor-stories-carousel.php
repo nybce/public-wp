@@ -52,10 +52,9 @@ if ( empty( $slides ) ) {
 							<div class="col-lg-7 align-self-stretch pe-md-0 order-2 order-lg-0">
 								<div class="employees-info">
 
-									<div class="h6 title fw-900 tagline"><?php if(!empty($slide['label'])){
-										esc_html_e( $slide['label'] )
-									};
-								?></div>
+									<div class="h6 title fw-900 tagline">
+										<?php echo esc_html( $slide['label'] ); ?>
+									</div>
 
 									<div class="spacer-48 spacer-xs-16"></div>
 
