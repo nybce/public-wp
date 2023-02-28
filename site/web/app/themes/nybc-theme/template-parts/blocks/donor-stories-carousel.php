@@ -56,8 +56,6 @@ if ( empty( $slides ) ) {
 									<?php 
 									if( !empty($slide['label']) ){
 										echo esc_html_e( $slide['label'] ); 
-									} else {
-										echo 'Donor Stories';
 									}
 									?>
 									</div>
