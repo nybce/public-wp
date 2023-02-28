@@ -30,7 +30,7 @@ if ( empty( $slides ) ) {
 }
 ?>
 
-<div class="section employees <?php echo esc_html( $class_name ); ?>" id="<?php echo esc_html( $block_id ); ?>">
+<div class="section <?php echo esc_html( $class_name ); ?>" id="<?php echo esc_html( $block_id ); ?>">
 
 	<div class="swiper-entry employees-swiper">
 
@@ -47,17 +47,23 @@ if ( empty( $slides ) ) {
 					$image = $slide['image'];
 					?>
 					<div class="swiper-slide">
-					<div class="employees-wrapper">
+					<div class="container">
 						<div class="row">
 							<div class="col-lg-7 align-self-stretch pe-md-0 order-2 order-lg-0">
 								<div class="employees-info">
 
-									<div class="h6 title fw-900 tagline"><?php esc_html_e( 'Donor Stories', 'nybc' ); ?></div>
+									<div class="h6 title fw-900 tagline">
+									<?php 
+									if( !empty($slide['label']) ){
+										echo esc_html_e( $slide['label'] ); 
+									}
+									?>
+									</div>
 
 									<div class="spacer-48 spacer-xs-16"></div>
 
 									<div class="text light">
-										“<?php echo esc_html( $slide['quote'] ); ?>”
+										<?php echo esc_html( $slide['quote'] ); ?>
 									</div>
 
 									<div class="spacer-24 spacer-xs-16"></div>

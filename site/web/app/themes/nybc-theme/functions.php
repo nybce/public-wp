@@ -56,6 +56,21 @@ require_once __DIR__ . '/inc/class-nybc-articulate.php';
 //require_once __DIR__ . '/inc/class-nybc-table.php';
 require_once __DIR__ . '/inc/class-nybc-distributor.php';
 
+add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_toolbars'  );
+function my_toolbars( $toolbars )
+{
+
+    // Edit the "Full" toolbar and remove 'forecolor'
+    // - delet from array code from http://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key
+    if( ($key = array_search('forecolor' , $toolbars['Full' ][2])) !== false )
+    {
+        unset( $toolbars['Full' ][2][$key] );
+    }
+
+    // return $toolbars - IMPORTANT!
+    return $toolbars;
+}
+
 
 
 
