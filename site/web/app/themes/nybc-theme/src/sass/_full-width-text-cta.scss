@@ -1,0 +1,54 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**------------------------*/
+
+/**     FULL-WIDTH TEXT CTA     */
+
+/**------------------------*/
+.full-width-text-cta {
+	background-color: $color-primary-base2-30;
+	position: relative;
+	display: flex;
+	gap: 24px;
+	padding: 48px;
+	margin-bottom: 32px;
+	border-radius: 4px 4px 0px 0px;
+
+	&::after {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+	}
+
+	&-title {
+		width: 30%;
+		padding-right: 16px;
+	}
+
+	&-content {
+		flex: 1;
+
+		.btn {
+			margin-top: 24px;
+		}
+	}
+}
+@media (max-width: 767px) {
+	.full-width-text-cta {
+		flex-direction: column;
+		gap: 8px;
+		padding: 24px;
+		padding-bottom: 48px;
+
+		&-title {
+			width: unset;
+			padding-right: unset;
+		}
+	}
+}
