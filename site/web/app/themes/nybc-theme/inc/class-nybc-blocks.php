@@ -58,6 +58,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/accordion',
 					'acf/horizontal-line',
 					'acf/text',
+					'acf/full-width-text-cta',
 					'acf/numbered-list',
 				),
 				true
@@ -199,6 +200,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/resource-cards',
 				'acf/carousel-video',
 				'acf/horizontal-line',
+				'acf/full-width-text-cta',
 				'gravityforms/form',
 			);
 
@@ -280,6 +282,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::resource_cards();// N2RDEV-130.
 			self::carousel_video();// N2RDEV-129.
 			self::news();// N2RDEV-102.
+			self::full_width_text_cta();
 			self::numbered_list();
 		}
 
@@ -1208,6 +1211,28 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				get_template_part( 'inc/acf/blocks/custom-button' );
 			}
 		}
+
+		/**
+		 *  Full-Width Text CTA Block
+		 */
+		public static function full_width_text_cta() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'full_width_text_cta',
+						'title'           => esc_html__( 'Full-Width Text CTA', 'nybc' ),
+						'description'     => esc_html__( 'Full-Width Text CTA Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/full-width-text-cta.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/full-width-text-cta' );
+			}
+		}
+
 		/**
 		 *  Horizontal Line Block
 		 */
