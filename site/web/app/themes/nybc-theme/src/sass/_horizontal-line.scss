@@ -1,0 +1,15 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**------------------------*/
+
+/* CUSTOM HORIZONTAL LINE */
+
+/**------------------------*/
+.custom-horizontal-line {
+	display: block;
+	background-color: var(--hr-color);
+	height: var(--hr-thickness);
+	margin-top: var(--hr-top-spacing);
+	margin-bottom: var(--hr-bottom-spacing);
+}
