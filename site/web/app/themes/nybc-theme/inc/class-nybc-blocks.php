@@ -57,6 +57,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/accordion',
 					'acf/horizontal-line',
 					'acf/text',
+					'acf/numbered-list',
 				),
 				true
 			) ) {
@@ -179,6 +180,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/vertical-card-row',
 				'acf/spacer',
 				'acf/news',
+				'acf/numbered-list',
 				'acf/text',
 				'acf/child-page-hero',
 				'acf/donor-stories-carousel',
@@ -269,6 +271,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::resource_cards();// N2RDEV-130.
 			self::carousel_video();// N2RDEV-129.
 			self::news();// N2RDEV-102.
+			self::numbered_list();
 		}
 
 		/**
@@ -1231,6 +1234,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						),
 					)
 				);
+			}
+		}
+
+		/**
+		 *  Numbered List Block
+		 */
+		public static function numbered_list() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'numbered_list',
+						'title'           => esc_html__( 'Numbered List', 'nybc' ),
+						'description'     => esc_html__( 'Numbered List', 'nybc' ),
+						'render_template' => 'template-parts/blocks/numbered-list.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/numbered-list' );
 			}
 		}
 	}
