@@ -58,6 +58,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/accordion',
 					'acf/horizontal-line',
 					'acf/text',
+					'acf/two-column-text-cta',
 					'acf/full-width-text-cta',
 					'acf/numbered-list',
 				),
@@ -200,6 +201,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/resource-cards',
 				'acf/carousel-video',
 				'acf/horizontal-line',
+				'acf/two-column-text-cta',
 				'acf/full-width-text-cta',
 				'gravityforms/form',
 			);
@@ -282,6 +284,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::resource_cards();// N2RDEV-130.
 			self::carousel_video();// N2RDEV-129.
 			self::news();// N2RDEV-102.
+			self::two_column_text_cta();
 			self::full_width_text_cta();
 			self::numbered_list();
 		}
@@ -1212,6 +1215,26 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			}
 		}
 
+		/**
+		 *  Two-Column Text CTA Block
+		 */
+		public static function two_column_text_cta() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'two_column_text_cta',
+						'title'           => esc_html__( 'Two-Column Text CTA', 'nybc' ),
+						'description'     => esc_html__( 'Two-Column Text CTA Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/two-column-text-cta.php',
+            
+					)
+				);
+        /**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/two-column-text-cta' );
+        }
+      }
 		/**
 		 *  Full-Width Text CTA Block
 		 */
