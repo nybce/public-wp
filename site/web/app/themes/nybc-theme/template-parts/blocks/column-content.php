@@ -37,6 +37,7 @@ $allowed_blocks = array(
 	'acf/vertical-cta-card',
 	'acf/spacer',
 	'acf/news',
+	'acf/numbered-list',
 	'acf/article-byline',
 	'acf/download-card-container',
 	'acf/graphic-download-card',
