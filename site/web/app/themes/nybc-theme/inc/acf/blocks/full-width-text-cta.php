@@ -55,7 +55,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'key' => 'field_6400177c6dd24',
 				'label' => 'Link',
 				'name' => 'link',
-				'type' => 'acfe_advanced_link',
+				'type' => 'link',
 				'instructions' => '',
 				'required' => 0,
 				'conditional_logic' => 0,
@@ -64,8 +64,7 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'post_type' => '',
-				'taxonomy' => '',
+				'return_format' => 'array',
 			),
 		),
 		'location' => array(

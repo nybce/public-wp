@@ -27,7 +27,7 @@ if( function_exists('acf_add_local_field_group') ):
 				),
 				'acfe_repeater_stylised_button' => 0,
 				'collapsed' => '',
-				'min' => 0,
+				'min' => 1,
 				'max' => 0,
 				'layout' => 'block',
 				'button_label' => '',
