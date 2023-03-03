@@ -32,6 +32,7 @@ if ( ! empty( $block['className'] ) ) {
 }
 
 ?>
+<div class="container">
 <div class="full-width-text-cta <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
     <?php if ($title) { ?>
         <div class="full-width-text-cta-title h4 title text-40"><?php echo $title ?></div>
@@ -44,4 +45,5 @@ if ( ! empty( $block['className'] ) ) {
             <a class="btn btn-secondary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $text ?></a>
         <?php } ?>
     </div>
+</div>
 </div>
