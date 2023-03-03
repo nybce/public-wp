@@ -28,6 +28,7 @@ if ( ! empty( $block['className'] ) ) {
 
 ?>
 <?php if ($column) { ?>
+    <div class="container">
     <div class="two-column-text-cta-grid <?php if (count($column) < 2){ echo "full-width"; } ?> <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
         <?php foreach ($column as $item) {
             $title    = $item['title'];
@@ -51,5 +52,6 @@ if ( ! empty( $block['className'] ) ) {
                 <?php } ?>
             </div>
         <?php } ?>
+    </div>
     </div>
 <?php } ?>
