@@ -58,9 +58,6 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					'acf/accordion',
 					'acf/horizontal-line',
 					'acf/text',
-					'acf/two-column-text-cta',
-					'acf/full-width-text-cta',
-					'acf/numbered-list',
 				),
 				true
 			) ) {
