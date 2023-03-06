@@ -187,6 +187,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/vertical-card-row',
 				'acf/spacer',
 				'acf/news',
+				'acf/numbered-list',
 				'acf/text',
 				'acf/child-page-hero',
 				'acf/donor-stories-carousel',
