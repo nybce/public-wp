@@ -39,6 +39,11 @@
 		}
 	}
 }
+
+.two-column-block .full-width-text-cta-container {
+	padding: 0;
+}
+
 @media (max-width: 767px) {
 	.full-width-text-cta {
 		flex-direction: column;

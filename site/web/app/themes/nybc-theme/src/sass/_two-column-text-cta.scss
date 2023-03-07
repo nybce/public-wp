@@ -44,6 +44,10 @@
 	}
 }
 
+.two-column-block .two-column-text-cta-container {
+	padding: 0;
+}
+
 @media (max-width: 767px) {
 	.two-column-text-cta {
 		flex-direction: column;
