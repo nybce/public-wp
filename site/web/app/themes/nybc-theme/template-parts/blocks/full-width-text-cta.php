@@ -32,18 +32,18 @@ if ( ! empty( $block['className'] ) ) {
 }
 
 ?>
-<div class="container">
-<div class="full-width-text-cta <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
-    <?php if ($title) { ?>
-        <div class="full-width-text-cta-title h4 title text-40"><?php echo $title ?></div>
-    <?php } ?>    
-    <div class="full-width-text-cta-content">
-        <?php if ($content) { ?>
-            <p class="text text-30"><?php echo $content ?></p>
+<div class="full-width-text-cta-container container">
+    <div class="full-width-text-cta <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+        <?php if ($title) { ?>
+            <div class="full-width-text-cta-title h4 title text-40"><?php echo $title ?></div>
         <?php } ?>
-        <?php if ($link) { ?>
-            <a class="btn btn-secondary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $text ?></a>
-        <?php } ?>
+        <div class="full-width-text-cta-content">
+            <?php if ($content) { ?>
+                <p class="text text-30"><?php echo $content ?></p>
+            <?php } ?>
+            <?php if ($link) { ?>
+                <a class="btn btn-secondary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $text ?></a>
+            <?php } ?>
+        </div>
     </div>
-</div>
 </div>

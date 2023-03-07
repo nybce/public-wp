@@ -45,13 +45,15 @@ $allowed_blocks = array(
 	'acf/resource-cards',
 	'acf/carousel-video',
 	'acf/horizontal-line',
+	'acf/full-width-text-cta',
+	'acf/two-column-text-cta',
 	'gravityforms/form',
 );
 
 $class_name .= ' col-lg-8';
 ?>
 
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="two-column-block <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php NYBC_Helpers::sidebar_nav( true ); ?>
 	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" templateLock="false"/>
 </div>
