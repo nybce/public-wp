@@ -136,10 +136,10 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				}
 				.custom-horizontal-line {
 					display: block;
-					background-color: var(--hr-color);
-					height: var(--hr-thickness);
-					margin-top: var(--hr-top-spacing);
-					margin-bottom: var(--hr-bottom-spacing);
+					background-color: var(--hr-color, #C8D8E8);
+					height: var(--hr-thickness, 3px);
+					margin-top: var(--hr-top-spacing, 24px);
+					margin-bottom: var(--hr-bottom-spacing, 24px);
 				}
 			</style>
 			<?php

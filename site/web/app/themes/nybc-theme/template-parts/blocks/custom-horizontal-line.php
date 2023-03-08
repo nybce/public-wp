@@ -31,9 +31,9 @@ if ( ! empty( $block['className'] ) ) {
 
 ?>
 <div class="custom-horizontal-line <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" style="
-    --hr-thickness:<?php echo $thickness; ?>px;
-    --hr-color:<?php echo $color; ?>;
-    --hr-top-spacing:<?php echo $top_spacing; ?>px;
-    --hr-bottom-spacing:<?php echo $bottom_spacing; ?>px;
+    <?php if ($thickness) { ?>--hr-thickness:<?php echo $thickness; ?>px;<?php } ?>
+    <?php if ($color) { ?>--hr-color:<?php echo $color; ?>;<?php } ?>
+    <?php if ($top_spacing) { ?>--hr-top-spacing:<?php echo $top_spacing; ?>px;<?php } ?>
+    <?php if ($bottom_spacing) { ?>--hr-bottom-spacing:<?php echo $bottom_spacing; ?>px;<?php } ?>
 ">
 </div>
