@@ -60,7 +60,7 @@ if ( empty( $slides ) ) {
 									?>
 									</div>
 
-									<div class="spacer-48 spacer-xs-16"></div>
+									<div class="spacer-24 spacer-xs-16"></div>
 
 									<div class="text light">
 										<?php echo esc_html( $slide['quote'] ); ?>
@@ -71,7 +71,7 @@ if ( empty( $slides ) ) {
 									<div class="text-xl text-30"><?php echo esc_html( $slide['text'] ); ?></div>
 
 									<?php if ( ! empty( $slide['link'] ) ) { ?>
-										<div class="spacer-48 spacer-xs-16"></div>
+										<div class="spacer-24 spacer-xs-16"></div>
 										<a class="btn-link btn-link-secondary right" target="<?php echo esc_attr( $slide['link']['target'] ); ?>" href="<?php echo esc_url( $slide['link']['url'] ); ?>"><?php echo esc_html( $slide['link']['title'] ); ?></a>
 									<?php } ?>
 
