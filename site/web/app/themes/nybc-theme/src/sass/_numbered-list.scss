@@ -46,4 +46,14 @@
 		font-size: 2rem;
 		line-height: 1.4em;
 	}
+
+	&.custom-icon li::before {
+		content: "";
+		background-image: var(--custom-list-icon);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		background-color: unset;
+		border-radius: unset;
+	}
 }
