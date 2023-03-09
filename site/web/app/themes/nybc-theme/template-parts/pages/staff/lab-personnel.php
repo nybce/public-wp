@@ -121,8 +121,6 @@ if ( empty( $staffs ) ) {
 							</script>
 						<?php } ?>
 					</div>
-
-					<div class="spacer-48 spacer-xs-64"></div>
 				</div>
 			</div>
 		</div>
