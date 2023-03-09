@@ -115,10 +115,9 @@ $positions = get_field( 'positions' );
 		</div>
 	</div>
 
-	<div class="spacer-96"></div>
-
 </div>
 
 <?php get_template_part( 'template-parts/pages/staff/lab-personnel' ); ?>
 
-<div class="spacer-64"></div>
+
+<div class="spacer-48 spacer-xs-24"></div>
