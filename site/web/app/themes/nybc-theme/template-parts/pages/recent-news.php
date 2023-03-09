@@ -23,7 +23,7 @@ if ( empty( $news ) ) {
 $news_page = get_field( 'news_page', 'options' );
 $blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 ?>
-<div class="spacer-64 spacer-xs-48"></div>
+<div class="spacer-120 spacer-xs-64"></div>
 <div class="section news">
 
 	<div class="container">
@@ -101,5 +101,5 @@ $blog_link = ! empty( $news_page ) ? get_the_permalink( $news_page ) : '';
 
 		</div>
 	</div>
-	<div class="spacer-64 spacer-xs-48"></div>
+	<div class="spacer-120 spacer-xs-64"></div>
 </div>
