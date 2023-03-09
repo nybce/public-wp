@@ -118,6 +118,3 @@ $positions = get_field( 'positions' );
 </div>
 
 <?php get_template_part( 'template-parts/pages/staff/lab-personnel' ); ?>
-
-
-<div class="spacer-48 spacer-xs-24"></div>

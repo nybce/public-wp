@@ -65,6 +65,6 @@ $image_url  = ! empty( $image ) ? $image['sizes']['1915x'] : get_the_post_thumbn
 			<div class="bg" style="background-color: <?php echo esc_attr( $color ); ?>"></div>
 		<?php } ?>
 	</div>
-	<div class="spacer-64 spacer-xs-32"></div>
+	<div class="spacer-48 spacer-xs-32"></div>
 
 </div>
