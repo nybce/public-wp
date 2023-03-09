@@ -72,6 +72,6 @@ $template = array(
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="all"/>
 		</div>
 	</div>
-	<div class="spacer-120"></div>
+	<div class="spacer-64"></div>
 </div>
 
