@@ -16,6 +16,7 @@
 		position: relative;
 		padding-left: 72px;
 		padding-bottom: 24px;
+		padding-right: 8px;
 		margin-bottom: 24px;
 		border-bottom: 1px solid $color-secondary-90;
 
@@ -34,6 +35,16 @@
 			top: 0;
 			left: 0;
 		}
+
+		&.custom-icon::before {
+			content: "";
+			background-image: var(--custom-list-icon);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			background-color: unset;
+			border-radius: unset;
+		}
 	}
 
 	h1,	h2, h3,
@@ -45,15 +56,5 @@
 		color: $color-text-20;
 		font-size: 2rem;
 		line-height: 1.4em;
-	}
-
-	&.custom-icon li::before {
-		content: "";
-		background-image: var(--custom-list-icon);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-color: unset;
-		border-radius: unset;
 	}
 }
