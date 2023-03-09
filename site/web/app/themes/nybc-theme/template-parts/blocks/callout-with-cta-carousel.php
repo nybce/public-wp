@@ -112,6 +112,6 @@ if ( empty( $slides ) ) {
 			</div>
 		</div>
 	</div>
-	<div class="spacer-64"></div>
+	<div class="spacer-48"></div>
 
 </div>

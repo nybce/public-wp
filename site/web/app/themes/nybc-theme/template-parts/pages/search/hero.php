@@ -52,6 +52,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div>
 
-	<div class="spacer-120 spacer-xs-64"></div>
+	<div class="spacer-48 spacer-xs-48"></div>
 
 </div>
