@@ -1,0 +1,60 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**------------------------*/
+
+/* NUMBERED LIST */
+
+/**------------------------*/
+.numbered-list {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 56px;
+	counter-reset: numbered-list;
+
+	li {
+		position: relative;
+		padding-left: 72px;
+		padding-bottom: 24px;
+		padding-right: 8px;
+		margin-bottom: 24px;
+		border-bottom: 1px solid $color-secondary-90;
+
+		&::before {
+			counter-increment: numbered-list;
+			content: counter(numbered-list);
+			background-color: $color-primary-base2-10;
+			color: $color-white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&.custom-icon::before {
+			content: "";
+			background-image: var(--custom-list-icon);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			background-color: unset;
+			border-radius: unset;
+		}
+	}
+
+	h1,	h2, h3,
+	h4, h5, h6 {
+		margin-bottom: 8px;
+	}
+
+	&-item {
+		color: $color-text-20;
+		font-size: 2rem;
+		line-height: 1.4em;
+	}
+}

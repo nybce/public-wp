@@ -1,0 +1,60 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**------------------------*/
+
+/**     TWO-COLUMN TEXT CTA     */
+
+/**------------------------*/
+.two-column-text-cta {
+	background-color: $color-primary-base2-30;
+	position: relative;
+	padding: 24px;
+	padding-bottom: 48px;
+	border-radius: 4px 4px 0px 0px;
+
+	&::after {
+		background: $gradient;
+		bottom: 0;
+		content: "";
+		height: 0.25em;
+		left: 0;
+		position: absolute;
+		transition: $transition;
+		width: 100%;
+	}
+
+	&-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+		margin-bottom: 32px;
+
+		&.full-width {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	&-title + .two-column-text-cta-content{
+		margin-top: 8px;
+	}
+
+	.btn {
+		margin-top: 24px;
+	}
+}
+
+.two-column-block .two-column-text-cta-container {
+	padding: 0;
+}
+
+@media (max-width: 767px) {
+	.two-column-text-cta {
+		flex-direction: column;
+		gap: 8px;
+
+		&-grid {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}

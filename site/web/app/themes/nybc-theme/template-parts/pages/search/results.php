@@ -66,23 +66,9 @@ $posts_query = $wp_query->posts;
 						?>
 
 					<a href="<?php echo esc_url( $lnk ); ?>" class="search-card">
-						<?php if ( ! empty( $image_url ) ) { ?>
-							<div class="search-card-img">
-								<?php NYBC_Helpers::picture( $image ); ?>
-							</div>
-						<?php } ?>
-
 						<div class="search-card-info">
-							<?php if ( $first_tag ) { ?>
-								<div class="h6 tagline"><?php echo esc_html( $first_tag ); ?></div>
-								<div class="spacer-16"></div>
-							<?php } ?>
-
 							<div class="h4 title fw-800"><?php echo esc_html( $block_title ); ?></div>
-
-							<div class="spacer-16"></div>
-
-							<div class="text-xl text-20"><?php echo esc_html( get_the_excerpt( $pst ) ); ?></div>
+							<div class="excerpt text-20"><?php echo esc_html( get_the_excerpt( $pst ) ); ?></div>
 						</div>
 					</a>
 						<?php

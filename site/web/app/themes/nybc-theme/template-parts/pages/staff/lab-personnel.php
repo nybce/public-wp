@@ -15,6 +15,8 @@ if ( empty( $lab_personnel ) ) {
 	return;
 }
 
+if (!empty($lab_personnel['title']) && !empty($lab_personnel['staff'])):
+
 $block_title = $lab_personnel['title'];
 $description = $lab_personnel['description'];
 $staffs      = $lab_personnel['staff'];
@@ -121,11 +123,10 @@ if ( empty( $staffs ) ) {
 							</script>
 						<?php } ?>
 					</div>
-
-					<div class="spacer-48 spacer-xs-64"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 </div>
+<?php endif; ?>
