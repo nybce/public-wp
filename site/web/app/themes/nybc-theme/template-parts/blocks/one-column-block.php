@@ -40,7 +40,7 @@ $template = array(
 	<div class="container container-lg">
 		<div class="row justify-content-center">
 
-			<?php if ( $breadcrumbs ): ?>
+			<?php if ( !$breadcrumbs ): ?>
 			<div class="breadcrumb-nav">
 				<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
 					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

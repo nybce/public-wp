@@ -34,10 +34,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'field_64120ff12b401',
-					'label' => 'Breadcrumbs',
+					'label' => 'Hide Breadcrumbs?',
 					'name' => 'breadcrumbs',
 					'type' => 'true_false',
-					'instructions' => 'Enable breadcrumbs',
+					'instructions' => 'Check to hide breadcrumbs',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -46,7 +46,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id' => '',
 					),
 					'message' => '',
-					'default_value' => 1,
+					'default_value' => 0,
 					'ui' => 0,
 					'ui_on_text' => '',
 					'ui_off_text' => '',
