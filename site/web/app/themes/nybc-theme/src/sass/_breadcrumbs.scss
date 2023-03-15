@@ -66,6 +66,10 @@
 	}
 }
 
+.single-post .breadcrumb-nav{
+	display:none;
+}
+
 @media (min-width: 1200px) {
 	.breadcrumbs li a:hover {
 		color: $color-primary-base2-10;
