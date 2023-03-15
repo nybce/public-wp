@@ -32,6 +32,25 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'ui_on_text'        => '',
 					'ui_off_text'       => '',
 				),
+				array(
+					'key' => 'field_64120ff12b401',
+					'label' => 'Breadcrumbs',
+					'name' => 'breadcrumbs',
+					'type' => 'true_false',
+					'instructions' => 'Enable breadcrumbs',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 1,
+					'ui' => 0,
+					'ui_on_text' => '',
+					'ui_off_text' => '',
+				),
 			),
 			'location'              => array(
 				array(

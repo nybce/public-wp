@@ -24,6 +24,8 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
+$breadcrumbs = get_field( 'hide_breadcrumbs' );
+
 $allowed_blocks = array(
 	'acf/column-content',
 );
@@ -37,6 +39,8 @@ $template = array(
 <div class="section <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<div class="container container-lg">
 		<div class="row justify-content-center">
+
+			<?php if ( $breadcrumbs ): ?>
 			<div class="breadcrumb-nav">
 				<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
 					<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -74,6 +78,7 @@ $template = array(
 					</li>
 				</ul>
 			</div>
+			<?php endif; ?>
 
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="all"/>
 		</div>
