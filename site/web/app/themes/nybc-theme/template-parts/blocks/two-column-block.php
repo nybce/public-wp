@@ -25,7 +25,7 @@ if ( ! empty( $block['className'] ) ) {
 }
 
 $decor = get_field( 'decor' );
-$breadcrumbs = get_field( 'hide_breadcrumbs' );
+$breadcrumbs = get_field( 'breadcrumbs' );
 
 $allowed_blocks = array(
 	'acf/column-sidebar',
