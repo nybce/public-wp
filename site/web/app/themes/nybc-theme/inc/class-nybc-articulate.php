@@ -80,6 +80,7 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 			add_action( 'init', array( 'NYBC_Articulate', 'taxonomy_post_type' ) );
 			add_action( 'admin_init', array( 'NYBC_Articulate', 'add_load_metabox' ) );
 			add_action( 'wp_ajax_import_articulate_course', array( 'NYBC_Articulate', 'import_articulate_course' ) );
+			add_action( 'admin_head', array( 'NYBC_Articulate', 'manage_articulate_admin_menu' ) );
 
 			add_filter( 'manage_articulate_posts_columns', array( 'NYBC_Articulate', 'manage_articulate_posts_columns' ) );
 			add_action( 'manage_articulate_posts_custom_column', array( 'NYBC_Articulate', 'manage_articulate_posts_custom_column' ), 10, 2 );
@@ -428,6 +429,16 @@ if ( ! class_exists( 'NYBC_Articulate' ) ) {
 			}
 
 			return $result;
+		}
+
+		public static function manage_articulate_admin_menu() {
+			$azure_storage_account_name = self::$azure_storage_account_name;
+			$azure_storage_account_key  = self::$azure_storage_account_key;
+			$azure_storage_container    = self::$azure_storage_container;
+
+			if ( empty( $azure_storage_account_name ) || empty( $azure_storage_account_key ) || empty( $azure_storage_container ) ) {
+				echo '<style>#menu-posts-articulate,#wp-admin-bar-new-articulate{display:none}</style>';
+			}
 		}
 
 	}
