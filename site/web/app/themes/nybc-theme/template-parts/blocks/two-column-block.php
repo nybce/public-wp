@@ -45,7 +45,7 @@ $template = array(
 	<?php } ?>
 	<div class="container container-lg">
 		<div class="row">
-			<?php if ( $breadcrumbs ): ?>
+			<?php if ( !$breadcrumbs ): ?>
 			<div class="breadcrumb-nav">
 
 				<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
