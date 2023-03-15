@@ -72,17 +72,5 @@ function my_toolbars( $toolbars )
 }
 
 
-add_action('admin_head', 'articulate_course_admin_menu');
-function articulate_course_admin_menu() {
-    if ( function_exists( 'get_field' ) ) {
-        $azure_storage_account_name = get_field( 'azure_storage_account_name', 'options' );
-        $azure_storage_account_key  = get_field( 'azure_storage_account_key', 'options' );
-        $azure_storage_container    = get_field( 'azure_storage_storage_container', 'options' );
-        
-        if (!$azure_storage_account_name || !$azure_storage_account_key || !$azure_storage_container) {
-            echo '<style>#menu-posts-articulate,#wp-admin-bar-new-articulate{display:none}</style>';
-        }
-    }
-}
 
 
