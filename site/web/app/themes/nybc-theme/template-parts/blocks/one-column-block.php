@@ -24,7 +24,7 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
-$breadcrumbs = get_field( 'hide_breadcrumbs' );
+$breadcrumbs = get_field( 'breadcrumbs' );
 
 $allowed_blocks = array(
 	'acf/column-content',
