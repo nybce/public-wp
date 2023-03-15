@@ -66,7 +66,7 @@ $image_url  = ! empty( $image ) ? $image['sizes']['1915x'] : get_the_post_thumbn
 
 	</div>
 
-	<div class="spacer-120 spacer-xs-64"></div>
+	<div class="spacer-64 spacer-xs-48"></div>
 
 </div>
 
