@@ -47,6 +47,7 @@ $allowed_blocks = array(
 	'acf/horizontal-line',
 	'acf/full-width-text-cta',
 	'acf/two-column-text-cta',
+	'acf/image-slideshow',
 	'gravityforms/form',
 );
 
