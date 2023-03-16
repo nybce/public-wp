@@ -200,6 +200,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				'acf/horizontal-line',
 				'acf/two-column-text-cta',
 				'acf/full-width-text-cta',
+				'acf/image-slideshow',
 				'gravityforms/form',
 			);
 
@@ -284,6 +285,7 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 			self::two_column_text_cta();
 			self::full_width_text_cta();
 			self::numbered_list();
+			self::image_slideshow();
 		}
 
 		/**
@@ -1330,6 +1332,27 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 				 *  Add block fields
 				 */
 				get_template_part( 'inc/acf/blocks/numbered-list' );
+			}
+		}
+
+		/**
+		 *  Image Slideshow Block
+		 */
+		public static function image_slideshow() {
+			if ( function_exists( 'acf_register_block_type' ) ) {
+				acf_register_block_type(
+					array(
+						'name'            => 'image_slideshow',
+						'title'           => esc_html__( 'Image Slideshow', 'nybc' ),
+						'description'     => esc_html__( 'Image Slideshow Block', 'nybc' ),
+						'render_template' => 'template-parts/blocks/image-slideshow.php',
+					)
+				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/image-slideshow' );
 			}
 		}
 	}

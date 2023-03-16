@@ -1,0 +1,146 @@
+//VARIABLES
+@import "variables-mixins";
+
+/**------------------------*/
+
+/**     IMAGE SLIDESHOW     */
+
+/**------------------------*/
+.image-slideshow {
+	margin-bottom: 4.8rem;
+	
+	.swiper-entry {
+		position: relative;
+	}
+
+	.swiper-container {
+		overflow: hidden;
+		position: unset;
+		margin-left: 100px;
+		margin-right: 100px;
+	}
+
+	.swiper-main {
+		.swiper-slide {
+			position: relative;
+
+			&-image {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+
+				img {
+					position: absolute;
+					opacity: 0;
+				}
+
+				&::after {
+					content: "";
+					display: block;
+					padding-top: 56%;
+				}
+			}
+		}
+
+		.caption {
+			background-color: $color-secondary-100;
+			color: $color-white;
+			display: block;
+			font-size: 1.4rem;
+			font-weight: 400;
+			line-height: 2.4rem;
+			padding: 1.6rem;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.swiper-thumbs {
+		margin-top: 2.4rem;
+
+		.swiper-slide {
+			width: 17%;
+	
+			&:not(.swiper-slide-thumb-active) {
+				opacity: 0.3;
+			}
+	
+			&-thumb {
+				display: block;
+				padding-top: 56%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+		}
+
+		.swiper-button-wrapper {
+			display: none;
+		}
+	}
+}
+
+.two-column-block .image-slideshow-container {
+	padding: 0;
+
+	.swiper-container {
+		margin-left: 7.2rem;
+		margin-right: 7.2rem;
+	}
+}
+
+@media (max-width: 991px) {
+	.image-slideshow .swiper-container,
+	.two-column-block .image-slideshow-container .swiper-container {
+		margin-left: 6.4rem;
+		margin-right: 6.4rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.image-slideshow {
+
+		.swiper-container {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.swiper-main {
+			.swiper-button-wrapper {
+				display: none;
+			}
+
+			.caption {
+				position: unset;
+			}
+		}
+
+		.swiper-thumbs {
+			&.swiper-container {
+				margin-left: 4.8rem;
+				margin-right: 4.8rem;
+			}
+
+			.swiper-slide {
+				width: 27%;
+			}
+
+			.swiper-button-wrapper {
+				display: block;
+			}
+		}
+			
+	}
+
+	.two-column-block .image-slideshow-container .swiper-container {
+		margin-left: 0;
+		margin-right: 0;
+
+		&.swiper-thumbs {
+			margin-left: 4.8rem;
+			margin-right: 4.8rem;
+		}
+	}
+}
