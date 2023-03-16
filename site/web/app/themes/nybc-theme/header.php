@@ -43,8 +43,8 @@ echo "<!-- No Google Tag in Use -->";
 ?>
 
 	<?php wp_head(); ?>
-	
-<?php if($site_type == "Divisions") : ?>
+
+<?php if($site_type == "Division") : ?>
 <link rel="stylesheet" id="nybc-division-style-css" href="<?php echo esc_url( NYBC_ASSETS_URI ); ?>/divisions.css" type="text/css" media="all">
 <?php endif;?>
 </head>
