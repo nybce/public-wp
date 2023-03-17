@@ -36,7 +36,7 @@ if ( empty( $images ) ) {
 
 			<div class="swiper-container swiper-main" data-options='{"slidesPerView": 1, "spaceBetween": 24, 
 				"thumbs": {"swiper":{
-					"el": ".swiper-thumbs", 
+					"el": "#<?php echo esc_attr( $block_id ); ?> .swiper-thumbs", 
 					"slidesPerView": "auto", 
 					"spaceBetween": 16,
 					"breakpoints":{"678":{
