@@ -1,0 +1,22 @@
+.text h2, 
+.text-xl h2,
+.text-lg h2,
+.text-sm h2,
+.text h3, 
+.text-xl h3,
+.text-lg h3,
+.text-sm h3,
+.text h4, 
+.text-xl h4,
+.text-lg h4,
+.text-sm h4,
+.text h5, 
+.text-xl h5,
+.text-lg h5,
+.text-sm h5,
+.text h6, 
+.text-xl h6,
+.text-lg h6,
+.text-sm h6{
+	color: #0c2d83;
+}

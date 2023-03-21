@@ -25,6 +25,7 @@ if ( ! empty( $block['className'] ) ) {
 }
 
 $decor = get_field( 'decor' );
+$breadcrumbs = get_field( 'breadcrumbs' );
 
 $allowed_blocks = array(
 	'acf/column-sidebar',
@@ -44,7 +45,7 @@ $template = array(
 	<?php } ?>
 	<div class="container container-lg">
 		<div class="row">
-
+			<?php if ( !$breadcrumbs ): ?>
 			<div class="breadcrumb-nav">
 
 				<ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -68,6 +69,7 @@ $template = array(
 					</li>
 				</ul>
 			</div>
+			<?php endif; ?>
 
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" templateLock="all"/>
 		</div>
