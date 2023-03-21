@@ -652,7 +652,8 @@ header {
 }
 
 @media (min-width: 1300px) {
-	.dropdown-item:hover {
+	.dropdown-item:hover,
+	.dropdown-item.active {
 		>a {
 			color: $color-primary-base1-10;
 
