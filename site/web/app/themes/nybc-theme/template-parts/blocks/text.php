@@ -23,6 +23,16 @@ $class_name = '';
 if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
+
+$style 		= get_field( 'style' );
+$styles 	= explode('/', $style);
+$background	= $styles[0];
+$color 		= $styles[1];
+
+if ($background) {
+	$class_name .= ' text-block-bg ';
+}
+
 $allowed_blocks = array(
 	'core/heading',
 	'core/list',
@@ -37,7 +47,7 @@ $allowed_blocks = array(
 $class_name .= ' text-block mb-48 ';
 ?>
 
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" style="--text-block-bg:<?php echo $background; ?>; --text-block-color:<?php echo $color; ?>">
 	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" templateLock="false"/>
 </div>
 
