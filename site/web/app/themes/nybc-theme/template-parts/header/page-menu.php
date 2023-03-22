@@ -25,7 +25,7 @@ if ( isset( $locations['page_menu'] ) ) {
 	<li class="dropdown-item <?php echo esc_html( $queried_object_id === $item->object_id ? 'current-menu-item' : '' ); ?>">
 		<a href="<?php echo esc_html( $item->url ); ?>"><?php echo esc_html( $item->title ); ?></a>
 		<?php if ( ( isset( $item->children ) && ! empty( $item->children ) ) || ! empty( $text ) ) { ?>
-		<div class="dropdown-btn"></div>
+		<div class="dropdown-btn" tabindex="0"></div>
 		<div class="dropdown">
 			<div class="dropdown-close"><i></i><span><?php esc_html_e( 'Back', 'nybc' ); ?></span></div>
 
