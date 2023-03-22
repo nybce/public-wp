@@ -204,9 +204,9 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 							<input type="hidden" name="terms" value="">
 							<input type="hidden" name="bydate" value="<?php echo esc_attr( $bydate ); ?>">
 							<ul>
-								<li class="tag all" ><?php esc_html_e( 'View All', 'nybc' ); ?><i></i></li>
+								<li class="tag all" tabindex="0"><?php esc_html_e( 'View All', 'nybc' ); ?><i></i></li>
 								<?php foreach ( $cats as $cat ) { ?>
-								<li class="tag <?php echo esc_attr( in_array( '' . $cat->term_id, $selected, true ) ? 'active' : '' ); ?>" data-id="<?php echo esc_attr( $cat->term_id ); ?>">
+								<li class="tag <?php echo esc_attr( in_array( '' . $cat->term_id, $selected, true ) ? 'active' : '' ); ?>" data-id="<?php echo esc_attr( $cat->term_id ); ?>" tabindex="0">
 									<?php echo esc_html( $cat->name ); ?>
 									<i></i>
 								</li>

@@ -52,8 +52,17 @@ html.overflow-menu body {
 	opacity: 0;
 }
 
-html.keyboard-focus :focus {
-	outline: auto;
+html.keyboard-focus {
+	:focus {
+		outline: auto;
+	}
+
+	.btn-secondary:focus {
+		color: $color-white;
+		background-color: transparent;
+		border-color: transparent;
+		outline: 2px solid $color-info-inverse;
+	}
 }
 
 .clearfix {

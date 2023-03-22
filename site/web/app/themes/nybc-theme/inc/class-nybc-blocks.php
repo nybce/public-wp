@@ -141,6 +141,14 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 					margin-top: var(--hr-top-spacing, 24px);
 					margin-bottom: var(--hr-bottom-spacing, 24px);
 				}
+				.text-block-bg {
+					padding: 30px;
+					background-color: var(--text-block-bg, #000);
+					color: var(--text-block-color, #fff);
+				}
+				.text-block-bg > * {
+					color: var(--text-block-color, #fff);
+				}
 			</style>
 			<?php
 		}
@@ -1311,6 +1319,11 @@ if ( ! class_exists( 'NYBC_Blocks' ) ) {
 						),
 					)
 				);
+
+				/**
+				 *  Add block fields
+				 */
+				get_template_part( 'inc/acf/blocks/text-block' );
 			}
 		}
 
