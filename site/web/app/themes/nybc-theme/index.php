@@ -134,7 +134,7 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 								<div class="select-item ml-auto">
 									<div class="calendar">
 										<div class="date_pick">
-											<div class="input-calendar">
+											<div class="input-calendar" tabindex="0">
 												<?php if ( empty( $bydate ) ) { ?>
 													<p><?php esc_html_e( 'Filter By Date', 'nybc' ); ?></p>
 												<?php } else { ?>
@@ -147,9 +147,9 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 												<input type="hidden" name="terms" value="<?php echo esc_attr( $selected_terms ); ?>">
 												<div class="date_selector">
 													<div class="years">
-														<a class="picker-left picker-select-arrow"></a>
+														<a class="picker-left picker-select-arrow" tabindex="0"></a>
 														<input class="year-selected" maxlength="4" name="bydate" readonly>
-														<a class="picker-right picker-select-arrow"></a>
+														<a class="picker-right picker-select-arrow" tabindex="0"></a>
 													</div>
 													<div class="months">
 													</div>
