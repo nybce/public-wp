@@ -1,6 +1,6 @@
 <?php
 /**
- * NYBC Two-Column Text CTA
+ * NYBC Text Block
  *
  * @file
  * @package NYBC
