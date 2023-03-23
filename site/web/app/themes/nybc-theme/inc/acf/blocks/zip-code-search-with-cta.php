@@ -15,10 +15,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			'fields'                => array(
 				array(
 					'key'               => 'field_61bcb0642e82d',
-					'label'             => 'Title',
+					'label'             => 'Zip Code Title',
 					'name'              => 'title',
 					'type'              => 'text',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -34,10 +34,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642ec0d',
-					'label'             => 'Input Label',
+					'label'             => 'Zip Code Subtitle',
 					'name'              => 'input_label',
 					'type'              => 'text',
-					'instructions'      => '',
+					'instructions'      => 'Subtitle beneath Zipcode Title',
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -53,10 +53,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642efef',
-					'label'             => 'Link',
+					'label'             => 'Zip Code Search Link',
 					'name'              => 'link',
 					'type'              => 'link',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required and should link to an external donation page ready to receive a Zip Code, eg. https://donate.nybc.org/donor/schedules/zip/',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -68,10 +68,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642f3db',
-					'label'             => 'Description Title',
+					'label'             => 'Did You Know Title',
 					'name'              => 'description_title',
 					'type'              => 'text',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required. Title for additional "Did You Know" text under the Zip Code Search.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -87,7 +87,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642f7bd',
-					'label'             => 'Description',
+					'label'             => 'Did You Know Description',
 					'name'              => 'description',
 					'type'              => 'text',
 					'instructions'      => 'This field is required',
@@ -106,10 +106,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0fa40a9b',
-					'label'             => 'Title CTA',
+					'label'             => 'CTA Title',
 					'name'              => 'title_cta',
 					'type'              => 'text',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required. Title for additional CTA block that displays at the side of the Zip Code Search.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -125,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb10040a9c',
-					'label'             => 'Description	CTA',
+					'label'             => 'CTA Description',
 					'name'              => 'description_cta',
 					'type'              => 'wysiwyg',
 					'instructions'      => 'This field is required',
@@ -144,7 +144,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0f640a9a',
-					'label'             => 'Link CTA',
+					'label'             => 'CTA Link',
 					'name'              => 'link_cta',
 					'type'              => 'link',
 					'instructions'      => 'This field is required',
