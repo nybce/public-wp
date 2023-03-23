@@ -63,6 +63,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 echo "<!-- No Google Tag in Use -->";
 }
 ?>	
+<a href="#content" class="skip-link screen-reader-text">Skip to the content</a>
 
 <div id="loader-wrapper"></div>
 	<div id="content-block">
