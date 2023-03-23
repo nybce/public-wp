@@ -63,4 +63,4 @@ echo "<!-- No Google Tag in Use -->";
 ?>  
   <?php wp_body_open(); ?>
   <?php get_template_part('template-parts/global/header', null, null); ?>
-  <main>
+  <main id="content">
