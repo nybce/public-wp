@@ -68,10 +68,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642f3db',
-					'label'             => 'Did You Know Title',
+					'label'             => 'Post-Search Title',
 					'name'              => 'description_title',
 					'type'              => 'text',
-					'instructions'      => 'This field is required. Title for additional "Did You Know" text under the Zip Code Search.',
+					'instructions'      => 'This field is required. Title for additional text under the Zip Code Search.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -87,10 +87,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_61bcb0642f7bd',
-					'label'             => 'Did You Know Description',
+					'label'             => 'Post-Search Description',
 					'name'              => 'description',
 					'type'              => 'text',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required. Description for additional text under the Zip Code Search.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
