@@ -12,8 +12,6 @@ RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
 RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
 RewriteRule . index.php [L]
 
-<FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
-  <IfModule mod_headers.c>
+<IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
-  </IfModule>
-</FilesMatch>
+</IfModule>
