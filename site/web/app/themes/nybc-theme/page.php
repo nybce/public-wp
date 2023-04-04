@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<main>
+<main id="content">
 
 <?php the_content(); ?>
 

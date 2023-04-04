@@ -31,8 +31,8 @@ wp_nav_menu( $menu_args);
 ?>
 </div>
 <div class="footer-menu--right">
-    <a href="https://twitter.com/VenturesNYBC" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-    <a href="https://www.linkedin.com/company/nybc-ventures/about/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://twitter.com/VenturesNYBC" target="_blank" aria-label="twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/company/nybc-ventures/about/" target="_blank" aria-label="linkedin"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
 </div>
             </div>
         </div>

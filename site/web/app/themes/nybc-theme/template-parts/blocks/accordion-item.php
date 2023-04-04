@@ -41,9 +41,9 @@ $allowed_blocks = array(
 ?>
 
 <div class="accordion-item <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
-	<div class="accordion-title"><?php echo esc_attr( $block_title ); ?></div>
+	<div class="accordion-title" role="button" tabindex="0" aria-controls="content-<?php echo esc_attr( $id_title ); ?>" aria-expanded="false" id="title-<?php echo esc_attr( $id_title ); ?>"><?php echo esc_attr( $block_title ); ?></div>
 	<div class="accordion-inner">
-		<div class="text-lg">
+		<div class="text-lg" role="region" tabindex="-1" aria-labelledby="title-<?php echo esc_attr( $id_title ); ?>" id="content-<?php echo esc_attr( $id_title ); ?>">
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>"/>
 		</div>
 	</div>
