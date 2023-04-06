@@ -71,5 +71,14 @@ function my_toolbars( $toolbars )
     return $toolbars;
 }
 
+add_action('admin_head', 'azure_custom-styling');
+
+function my_custom_fonts() {
+  echo '<style>
+  #windows-azure-storage-media-button{display:none};
+  .wp-media-buttons{color:transparent;font-size:0;}
+  </style>';
+}
+
 
 
