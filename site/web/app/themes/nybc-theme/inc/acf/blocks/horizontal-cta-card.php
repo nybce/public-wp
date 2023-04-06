@@ -42,7 +42,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'label'             => 'Title',
 					'name'              => 'title',
 					'type'              => 'text',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required. Max length is 140 characters.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -54,14 +54,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'placeholder'       => '',
 					'prepend'           => '',
 					'append'            => '',
-					'maxlength'         => '',
+					'maxlength'         => '140',
 				),
 				array(
 					'key'               => 'field_61b8c4ba64db7',
 					'label'             => 'Content',
 					'name'              => 'content',
 					'type'              => 'wysiwyg',
-					'instructions'      => 'This field is required',
+					'instructions'      => 'This field is required.',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
