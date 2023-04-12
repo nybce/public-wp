@@ -40,7 +40,7 @@ $lnk         = get_field( 'link' );
 
 			<div class="spacer-16 spacer-xs-8"></div>
 
-			<div class="text-xl text-20">
+			<div class="text-lg text-20">
 				<?php echo wp_kses_post( $content ); ?>
 			</div>
 		</div>

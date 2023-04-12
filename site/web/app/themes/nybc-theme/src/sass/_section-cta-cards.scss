@@ -74,12 +74,6 @@
 			padding-bottom: 54.4%;
 		}
 
-		.cta-card-info {
-			.text-xl {
-				-webkit-line-clamp: unset;
-			}
-		}
-
 		&:nth-child(2n) {
 			margin-right: 0;
 		}
@@ -121,21 +115,6 @@
 	position: relative;
 	transition: $transition;
 
-	.title {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	.text-xl {
-		-webkit-box-orient: vertical;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
 }
 
 @media (min-width: 1200px) {
@@ -248,11 +227,6 @@
 		}
 	}
 
-	.cta-card-info {
-		.text-xl {
-			-webkit-line-clamp: 3;
-		}
-	}
 }
 
 /**------------------------*/
