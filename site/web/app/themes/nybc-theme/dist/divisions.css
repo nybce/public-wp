@@ -20,3 +20,14 @@
 .text-sm h6{
 	color: #0c2d83;
 }
+
+.btn-primary:hover, .btn-search:hover {
+	color: #0c2d83;
+	border-color: #0c2d83;
+}
+@media screen (min-width:1200px){
+	.btn-primary:hover, .btn-search:hover {
+		color: #0c2d83;
+		border-color: #0c2d83;
+	}
+}
