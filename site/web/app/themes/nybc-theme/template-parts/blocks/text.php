@@ -31,11 +31,12 @@ if(get_field('style')){
 	$background	= $styles[0];
 	$color 		= $styles[1];
 	$custom_color = true;
+	
+	if ($background) {
+		$class_name .= ' text-block-bg ';
+	}
 }
 
-if ($background) {
-	$class_name .= ' text-block-bg ';
-}
 
 $allowed_blocks = array(
 	'core/heading',
