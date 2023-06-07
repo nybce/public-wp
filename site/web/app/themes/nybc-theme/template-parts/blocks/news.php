@@ -78,6 +78,7 @@ $query = new WP_Query( $args );
 		<div class="select-item ml-auto">
 			<a class="btn btn-small btn-primary" href="<?php echo home_url( $wp->request );?>">Reset Filter</a>
 		</div>
+		<?php if($posts_type != 'story'): ?>
 		<div class="select-item ml-auto">
 			<div class="calendar">
 				<div class="date_pick">
@@ -113,6 +114,7 @@ $query = new WP_Query( $args );
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 		</div>
 	</div>
 
@@ -160,7 +162,9 @@ $query = new WP_Query( $args );
 
 						<div class="spacer-16"></div>
 
+						<?php if($posts_type != 'story'): ?>
 						<div class="date"><?php echo esc_html( $date ); ?></div>
+						<?php endif;?>
 					</div>
 				</a>
 				<?php
