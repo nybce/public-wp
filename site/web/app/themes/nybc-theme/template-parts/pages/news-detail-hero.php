@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$post_type	= get_post_type();
 $image_url  = get_the_post_thumbnail_url( null, '800x' );
 $post_title = get_the_title();
 $date       = get_the_time( 'F j, Y' );
@@ -48,7 +49,9 @@ $tags       = get_the_tags();
 
 							<div class="spacer-48 spacer-xs-32"></div>
 
+							<?php if($post_type != 'story'): ?>
 							<div class="h5 title fw-800"><?php echo esc_html( $date ); ?></div>
+							<?php endif; ?>
 
 							<div class="spacer-24"></div>
 
