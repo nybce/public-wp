@@ -24,14 +24,19 @@ if ( ! empty( $block['className'] ) ) {
 	$class_name .= $block['className'];
 }
 
-$style 		= get_field( 'style' );
-$styles 	= explode('/', $style);
-$background	= $styles[0];
-$color 		= $styles[1];
-
-if ($background) {
-	$class_name .= ' text-block-bg ';
+$custom_color = false;
+if(get_field('style')){
+	$style 		= get_field( 'style' );
+	$styles 	= explode('/', $style);
+	$background	= $styles[0];
+	$color 		= $styles[1];
+	$custom_color = true;
+	
+	if ($background) {
+		$class_name .= ' text-block-bg ';
+	}
 }
+
 
 $allowed_blocks = array(
 	'core/heading',
@@ -47,7 +52,7 @@ $allowed_blocks = array(
 $class_name .= ' text-block mb-48 ';
 ?>
 
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" style="--text-block-bg:<?php echo $background; ?>; --text-block-color:<?php echo $color; ?>">
+<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" <?php if($custom_color): ?>style="--text-block-bg:<?php echo $background; ?>; --text-block-color:<?php echo $color; ?>" <?php endif; ?>>
 	<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed_blocks ) ); ?>" templateLock="false"/>
 </div>
 
