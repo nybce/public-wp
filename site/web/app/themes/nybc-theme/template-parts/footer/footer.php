@@ -18,7 +18,7 @@ $two_line_logos = array(
 	array(
 		'img_url' => NYBC_IMG_URI . '/community.svg',
 		'link'    => 'https://savealifenow.org/',
-		'label'   => 'savealifenow.org',
+		'label'   => 'savealifenow',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/connecticut.svg',
@@ -97,7 +97,7 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 						foreach ( $two_line_logos as $logo ) {
 							if ( ! empty( $logo ) ) {
 								?>
-						<a href="<?php echo esc_url( $logo['link'] ); ?>" target="_blank" class="logo-img" aria-label=<?php echo $logo['label']; ?>>
+						<a href="<?php echo esc_url( $logo['link'] ); ?>" target="_blank" class="logo-img" aria-label=<?php echo $logo['label']; ?> <?php if($logo['label'] == 'savealifenow'){ echo 'style="margin-top:-12px;"' }?>>
 							<img src="<?php echo esc_url( $logo['img_url'] ); ?>" alt="" loading="lazy">
 						</a>
 								<?php

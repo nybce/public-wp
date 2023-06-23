@@ -79,13 +79,14 @@ footer {
 	display:flex;
 	flex-wrap:wrap;
 	justify-content: space-between;
+	column-gap: 10px;
+	row-gap: 20px;
 }
 
 .logo-img {
 	height: 70px;
-	max-width: 16rem;
 	position: relative;
-	width: 25%;
+	width: calc(25% - 7.5px);
 	display:flex;
 	align-items:flex-start;
 
@@ -94,10 +95,10 @@ footer {
 		width: auto;
 	}
 	@media (max-width:991px) {
-		width:33%;
+		width:calc(33% - 7.5px);
 	}
 	@media (max-width:767px) {
-		width:50%;
+		width:calc(50% - 7.5px);
 	}
 }
 
