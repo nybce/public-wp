@@ -21,6 +21,11 @@ $two_line_logos = array(
 		'label'   => 'savealifenow.org',
 	),
 	array(
+		'img_url' => NYBC_IMG_URI . '/connecticut.svg',
+		'link'    => 'https://www.ctblood.org/',
+		'label'   => 'connecticut blood center',
+	),
+	array(
 		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
 		'link'    => 'https://www.delmarvablood.org/',
 		'label'   => 'delmarva',
@@ -34,6 +39,11 @@ $two_line_logos = array(
 		'img_url' => NYBC_IMG_URI . '/nebraska.svg',
 		'link'    => 'https://www.ncbb.org/',
 		'label'   => 'ncbb',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/new_jersey.svg',
+		'link'    => 'https://www.nybc.org/',
+		'label'   => 'new jersey blood services',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/rhode_island.svg',
@@ -55,6 +65,7 @@ $facebook_link = get_field( 'facebook_link', 'options' );
 $twitter_link  = get_field( 'twitter_link', 'options' );
 $linkedin_link = get_field( 'linkedin_link', 'options' );
 $youtube_link  = get_field( 'youtube_link', 'options' );
+$instagram_link  = get_field( 'instagram_link', 'options' );
 
 $copyright_text     = get_field( 'copyright_text', 'options' );
 $bottom_menu_link_1 = get_field( 'bottom_menu_link_1', 'options' );
@@ -199,6 +210,25 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 								</a>
 							</li>
 							<?php } ?>
+							<?php if ( ! empty( $instagram_link ) ) { ?>
+							<li>
+								<a href="<?php echo esc_url( $instagram_link ); ?>" target="_blank" aria-label="instagram">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" fill="white"
+	 viewBox="0 0 24 24" xml:space="preserve" aria-hidden="true">
+<path class="st0" d="M12,2.16c3.2,0,3.58,0.01,4.85,0.07c3.25,0.15,4.77,1.69,4.92,4.92c0.06,1.27,0.07,1.65,0.07,4.85
+	c0,3.2-0.01,3.58-0.07,4.85c-0.15,3.23-1.66,4.77-4.92,4.92c-1.27,0.06-1.64,0.07-4.85,0.07c-3.2,0-3.58-0.01-4.85-0.07
+	c-3.26-0.15-4.77-1.7-4.92-4.92C2.17,15.58,2.16,15.21,2.16,12c0-3.2,0.01-3.58,0.07-4.85C2.38,3.92,3.9,2.38,7.15,2.23
+	C8.42,2.18,8.8,2.16,12,2.16z M12,0C8.74,0,8.33,0.01,7.05,0.07C2.7,0.27,0.27,2.69,0.07,7.05C0.01,8.33,0,8.74,0,12
+	s0.01,3.67,0.07,4.95c0.2,4.36,2.62,6.78,6.98,6.98C8.33,23.99,8.74,24,12,24s3.67-0.01,4.95-0.07c4.35-0.2,6.78-2.62,6.98-6.98
+	C23.99,15.67,24,15.26,24,12s-0.01-3.67-0.07-4.95c-0.2-4.35-2.62-6.78-6.98-6.98C15.67,0.01,15.26,0,12,0z M12,5.84
+	C8.6,5.84,5.84,8.6,5.84,12S8.6,18.16,12,18.16s6.16-2.76,6.16-6.16C18.16,8.6,15.4,5.84,12,5.84z M12,16c-2.21,0-4-1.79-4-4
+	c0-2.21,1.79-4,4-4s4,1.79,4,4C16,14.21,14.21,16,12,16z M18.41,4.15c-0.8,0-1.44,0.64-1.44,1.44s0.65,1.44,1.44,1.44
+	c0.8,0,1.44-0.64,1.44-1.44S19.2,4.15,18.41,4.15z"/>
+</svg>
+
+								</a>
+							</li>
+							<?php } ?>
 						</ul>
 					</div>
 				</div>
@@ -214,14 +244,14 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="copyright">
 						<div class="text-sm text-40"><?php echo esc_html( $copyright_text ); ?></div>
 					</div>
 
 					<div class="spacer-xs-16"></div>
 				</div>
-				<div class="col-lg-4 text-center">
+				<div class="col-lg-6">
 					<ul class="footer-nav-list">
 						<?php if ( ! empty( $bottom_menu_link_1 ) ) { ?>
 							<li><a href="<?php echo esc_url( $bottom_menu_link_1['url'] ); ?>"><?php echo esc_html( $bottom_menu_link_1['title'] ); ?></a></li>
@@ -230,16 +260,6 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 							<li><a href="<?php echo esc_url( $bottom_menu_link_2['url'] ); ?>"><?php echo esc_html( $bottom_menu_link_2['title'] ); ?></a></li>
 						<?php } ?>
 					</ul>
-
-					<div class="spacer-xs-16"></div>
-				</div>
-				<div class="col-lg-4">
-					<div class="developer">
-						<a href="https://www.blenderbox.com" aria-label="blenderbox">
-							<span><?php echo esc_html__( 'Designed and built by', 'nybc' ); ?></span>
-							<img src="<?php echo esc_html( NYBC_IMG_URI ); ?>/blenderbox-logo.svg" alt="" loading="lazy">
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>

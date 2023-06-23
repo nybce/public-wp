@@ -450,6 +450,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'placeholder'       => '',
 				),
 				array(
+					'key'               => 'field_619e725eabde2',
+					'label'             => 'Instagram Link',
+					'name'              => 'instagram_link',
+					'type'              => 'url',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'default_value'     => '',
+					'placeholder'       => '',
+				),
+				array(
 					'key'               => 'field_61af2b07c9ba2',
 					'label'             => 'End Page Link 1',
 					'name'              => 'bottom_menu_link_1',
