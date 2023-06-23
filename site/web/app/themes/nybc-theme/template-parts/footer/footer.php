@@ -107,7 +107,7 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 					</div>
 				</div>
 
-				<div class="spacer-96 spacer-xs-48"></div>
+				<div class="spacer-48 spacer-xs-24"></div>
 			</div>
 
 			<div class="row">
