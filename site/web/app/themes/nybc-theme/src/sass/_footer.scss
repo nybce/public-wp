@@ -88,7 +88,8 @@ footer {
 	position: relative;
 	width: calc(25% - 7.5px);
 	display:flex;
-	align-items:flex-start;
+	align-items:center;
+	justify-content: center;
 
 	img {
 		height: auto;
