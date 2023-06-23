@@ -97,7 +97,7 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 						foreach ( $two_line_logos as $logo ) {
 							if ( ! empty( $logo ) ) {
 								?>
-						<a href="<?php echo esc_url( $logo['link'] ); ?>" target="_blank" class="logo-img" aria-label=<?php echo esc_url( $logo['label'] ); ?>>
+						<a href="<?php echo esc_url( $logo['link'] ); ?>" target="_blank" class="logo-img" aria-label=<?php echo $logo['label']; ?>>
 							<img src="<?php echo esc_url( $logo['img_url'] ); ?>" alt="" loading="lazy">
 						</a>
 								<?php

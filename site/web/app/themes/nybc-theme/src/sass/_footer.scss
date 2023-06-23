@@ -85,33 +85,19 @@ footer {
 	height: 70px;
 	max-width: 16rem;
 	position: relative;
-	width: auto;
+	width: 25%;
 	display:flex;
 	align-items:flex-start;
-	margin-right:100px;
-	margin-bottom:30px;
 
 	img {
 		height: auto;
-		width: 100%;
-	}
-	@media (min-width:992px){
-		&:nth-child(4n) {
-			margin-right:0;
-		}	
-	}
-	@media (min-width:768px) and (max-width:991px) {
-		&:nth-child(3n) {
-			margin-right:0;
-		}
+		width: auto;
 	}
 	@media (max-width:991px) {
-
-		margin-right:50px;
+		width:33%;
 	}
 	@media (max-width:767px) {
-		margin-left:30px;
-		margin-right:30px;
+		width:50%;
 	}
 }
 
