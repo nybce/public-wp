@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $two_line_logos = array(
 	array(
-		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
-		'link'    => 'https://www.nybloodcenter.org/',
-		'label'   => 'nyblood center',
+		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
+		'link'    => 'https://www.delmarvablood.org/',
+		'label'   => 'delmarva',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/community.svg',
@@ -24,11 +24,6 @@ $two_line_logos = array(
 		'img_url' => NYBC_IMG_URI . '/connecticut.svg',
 		'link'    => 'https://www.ctblood.org/',
 		'label'   => 'connecticut blood center',
-	),
-	array(
-		'img_url' => NYBC_IMG_URI . '/delmarva.svg',
-		'link'    => 'https://www.delmarvablood.org/',
-		'label'   => 'delmarva',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/memorial.svg',
@@ -44,6 +39,11 @@ $two_line_logos = array(
 		'img_url' => NYBC_IMG_URI . '/new_jersey.svg',
 		'link'    => 'https://www.nybc.org/njbs',
 		'label'   => 'new jersey blood services',
+	),
+	array(
+		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
+		'link'    => 'https://www.nybloodcenter.org/',
+		'label'   => 'nyblood center',
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/rhode_island.svg',
@@ -91,7 +91,7 @@ $bottom_menu_link_2 = get_field( 'bottom_menu_link_2', 'options' );
 
 				<div class="spacer-48 spacer-xs-24"></div>
 
-				<div class="col-xl-10">
+				<div class="col-lg-8">
 					<div class="logo-wrapper">
 						<?php
 						foreach ( $two_line_logos as $logo ) {
