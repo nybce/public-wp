@@ -29,6 +29,10 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
     127.0.0.1  ncbp2.local.org
     127.0.0.1  nybc-enterprise.local.org
     127.0.0.1  ribc.local.org
+    127.0.0.1  nybc.local.org
+    127.0.0.1  nybcventures.local.org
+    127.0.0.1  sharedmedia.local.org
+    127.0.0.1  projectachieve.local.org
    ```
 1. Configure `git flow`. See [Version Control Guidelines](https://blenderbox.atlassian.net/wiki/spaces/N2RDEV/pages/2169372744/Version+Control+Guidelines)
    ```
@@ -52,15 +56,13 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
     1. `cp .githooks/commit-msg .git/hooks/commit-msg`
     1. `chmod +x .git/hooks/*`
 
-### BBX
-- Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli
-- Setup the project with bbx: run `bbx init`
-  - You will be able to find the vaultpass in 1password.
 
 ### Docker
-- Build your docker containers -- run `docker-compose build`
-- Spin up docker containers -- run `docker-compose up -d`
-- Load a database. If no remote environments are available you can run `bash scripts/loadSeedDb.sh seed.sql` for a baseline site.
+- Ensure the `docker-compose.override.yml` file has been placed at the root of your repo
+- Ensure the `.vaultpass` file has been placed at the root of your repo
+- Build your docker containers -- run `docker compose build`
+- Spin up docker containers -- run `docker compose up -d`
+- Load a database -- run `docker compose exec -u root wp /scripts/fetchDb.sh production`
 
 ## Version Control
 

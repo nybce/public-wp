@@ -5,7 +5,7 @@ services:
   db:
     image: mariadb:latest
     env_file:
-      - .env/local.env
+      - ./env/local.env
     volumes:
       - dbg-sql-data:/var/lib/mysql
     ports:
@@ -31,7 +31,7 @@ services:
   # wordpress
   wp:
     env_file:
-      - .env/local.env
+      - ./env/local.env
     container_name: wp
     environment:
       WORDPRESS_DB_HOST: db
