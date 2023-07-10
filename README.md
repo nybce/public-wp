@@ -63,6 +63,7 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
 - Build your docker containers -- run `docker compose build`
 - Spin up docker containers -- run `docker compose up -d`
 - Load a database -- run `docker compose exec -u root wp /scripts/fetchDb.sh production`
+  - Once complete, this will print a second command to run. This second command will load the database and rewrite the domains across all sites in the network to their local versions.
 
 ## Version Control
 
