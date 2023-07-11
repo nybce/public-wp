@@ -11,7 +11,7 @@ unset DB_USER
 unset DB_PASSWORD
 unset DB_HOST
 unset DB_NAME
-unset DB_DOMAIN
+unset DATABASE_URL
 
 echo "Done!"
 echo

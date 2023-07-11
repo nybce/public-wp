@@ -6,9 +6,8 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
 ## Requirements
 1. Docker >= 17.09.0
 1. Python 3
-1. BBX-cli
 1. Access to GitHub
-1. Access to Vaultpass credential in 1password
+1. Access to nybc_secrets.zip
 
 ## Initial Setup
 
@@ -58,12 +57,19 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
 
 
 ### Docker
-- Ensure the `docker-compose.override.yml` file has been placed at the root of your repo
+- Ensure the `docker-compose.override.yml` file has been placed at the root of your repo [link](https://blenderfile-storage-c4af.s3.amazonaws.com/nybc_secrets.zip)
+- Ensure a copy of the production database has been added to a directory called `db_dumps/` in your repo [link](https://blenderfile-storage-c4af.s3.amazonaws.com/nybc_production_sql.zip)
 - Ensure the `.vaultpass` file has been placed at the root of your repo
 - Build your docker containers -- run `docker compose build`
 - Spin up docker containers -- run `docker compose up -d`
-- Load a database -- run `docker compose exec -u root wp /scripts/fetchDb.sh production`
-  - Once complete, this will print a second command to run. This second command will load the database and rewrite the domains across all sites in the network to their local versions.
+- Load the database backup -- run `docker compose exec -u root wp bash /scripts/loadDb.sh production-2023-07-11.sql production`
+
+## Fetching New Database Backups
+- Access `wordpress-web-db-production` in the Azure Portal
+- On the left-hand panel, under "Settings", click "Connection Security"
+- Click "Add current client IP address" to add your IP to the Firewall's allow list
+- Ensure that your docker compose environment is running (`docker compose up -d`)
+- Run `docker compose exec -u root wp bash /scripts/fetchDb.sh production`
 
 ## Version Control
 
@@ -207,9 +213,6 @@ If your using docker for local development decompress this file and bring your c
 ## Dockerhub
 GitHub Actions will build the WordPress container and push the image to Docker Hub with an environment tag.
 
-## Watchtower
-Watchtower will be running on all servers. It will look for updates to Docker images with a specified environment tag and pull them down/deploy whenever a new release is pushed.
-'
 # MISC
 ## wp cli
 ### Search and replace
