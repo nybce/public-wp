@@ -41,17 +41,17 @@ cat <<EOF
 www.nybce.org
 www.ribc.org
 www.ctblood.org
-delmarvablood.production.nybc-wordpress.bbox.ly
-ncbb.production.nybc-wordpress.bbox.ly
+www.delmarvablood.org
+www.ncbb.org
 ncbgg.production.nybc-wordpress.bbox.ly
-cbc.production.nybc-wordpress.bbox.ly
+www.savealifenow.org
 innovativebloodresources.production.nybc-wordpress.bbox.ly
-mbc.production.nybc-wordpress.bbox.ly
+www.mbc.org
 ncbp2.production.nybc-wordpress.bbox.ly
-nybloodcenter.production.nybc-wordpress.bbox.ly
+www.nybc.org
 www.nybcventures.org
 sharedmedia.production.nybc-wordpress.bbox.ly
-projectachieve.production.nybc-wordpress.bbox.ly
+www.projectachieve.org
 EOF
 ))
 
