@@ -112,6 +112,7 @@ EXPOSE 80
 
 RUN rm /etc/apache2/sites-enabled/*
 COPY docker/apacheconfig/redirects/${ENVIRONMENT}.txt /etc/apache2/redirects.txt
+COPY docker/apacheconfig/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
 COPY docker/apacheconfig/vhosts/* /etc/apache2/sites-enabled/
 COPY docker/apacheconfig/authusers /etc/apache2/authusers
 
