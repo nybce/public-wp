@@ -6,9 +6,8 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
 ## Requirements
 1. Docker >= 17.09.0
 1. Python 3
-1. BBX-cli
 1. Access to GitHub
-1. Access to Vaultpass credential in 1password
+1. Access to nybc_secrets.zip
 
 ## Initial Setup
 
@@ -29,6 +28,10 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
     127.0.0.1  ncbp2.local.org
     127.0.0.1  nybc-enterprise.local.org
     127.0.0.1  ribc.local.org
+    127.0.0.1  nybc.local.org
+    127.0.0.1  nybcventures.local.org
+    127.0.0.1  sharedmedia.local.org
+    127.0.0.1  projectachieve.local.org
    ```
 1. Configure `git flow`. See [Version Control Guidelines](https://blenderbox.atlassian.net/wiki/spaces/N2RDEV/pages/2169372744/Version+Control+Guidelines)
    ```
@@ -52,15 +55,21 @@ The NYBC project is a [WordPress Multisite Network](https://wordpress.org/suppor
     1. `cp .githooks/commit-msg .git/hooks/commit-msg`
     1. `chmod +x .git/hooks/*`
 
-### BBX
-- Install the bbox tool if not already installed on your system. See https://bitbucket.org/blenderbox/bbox-cli
-- Setup the project with bbx: run `bbx init`
-  - You will be able to find the vaultpass in 1password.
 
 ### Docker
-- Build your docker containers -- run `docker-compose build`
-- Spin up docker containers -- run `docker-compose up -d`
-- Load a database. If no remote environments are available you can run `bash scripts/loadSeedDb.sh seed.sql` for a baseline site.
+- Ensure the `docker-compose.override.yml` file has been placed at the root of your repo [link](https://blenderfile-storage-c4af.s3.amazonaws.com/nybc_secrets.zip)
+- Ensure a copy of the production database has been added to a directory called `db_dumps/` in your repo [link](https://blenderfile-storage-c4af.s3.amazonaws.com/nybc_production_sql.zip)
+- Ensure the `.vaultpass` file has been placed at the root of your repo
+- Build your docker containers -- run `docker compose build`
+- Spin up docker containers -- run `docker compose up -d`
+- Load the database backup -- run `docker compose exec -u root wp bash /scripts/loadDb.sh production-2023-07-11.sql production`
+
+## Fetching New Database Backups
+- Access `wordpress-web-db-production` in the Azure Portal
+- On the left-hand panel, under "Settings", click "Connection Security"
+- Click "Add current client IP address" to add your IP to the Firewall's allow list
+- Ensure that your docker compose environment is running (`docker compose up -d`)
+- Run `docker compose exec -u root wp bash /scripts/fetchDb.sh production`
 
 ## Version Control
 
@@ -204,9 +213,6 @@ If your using docker for local development decompress this file and bring your c
 ## Dockerhub
 GitHub Actions will build the WordPress container and push the image to Docker Hub with an environment tag.
 
-## Watchtower
-Watchtower will be running on all servers. It will look for updates to Docker images with a specified environment tag and pull them down/deploy whenever a new release is pushed.
-'
 # MISC
 ## wp cli
 ### Search and replace
