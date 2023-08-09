@@ -176,3 +176,4 @@ site/uploads/
 node_modules/*
 cypress-axe/cypress/screenshots/
 cypress-axe/node_modules/
+docker-compose.override.yml

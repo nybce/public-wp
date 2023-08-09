@@ -66,10 +66,10 @@ RUN mkdir /scripts
 COPY ./scripts/docker/ /scripts
 RUN ls -al
 RUN mkdir /db_dumps
-COPY ./.env/dev.env /site/.env
-COPY ./.env/dev.env /.env
+COPY ./env/dev.env /site/.env
+COPY ./env/dev.env /.env
 RUN mkdir /envs
-COPY ./.env/* /envs/
+COPY ./env/* /envs/
 COPY ./uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 # Update composer dependencies at runtime
 RUN apt-get install -y libpng-dev unzip
@@ -93,7 +93,7 @@ ARG COMPOSER_ALLOW_SUPERUSR=1
 ENV COMPOSER_ALLOW_SUPERUSR 1
 RUN mv /site/.env /site/envbak
 RUN composer config -g http-basic.my.yoast.com token $YOAST_SEO_KEY; composer install
-COPY .env/${ENVIRONMENT}.env /site/.env
+COPY ./env/${ENVIRONMENT}.env /site/.env
 RUN rm -r /var/www/html
 RUN ln -snf /site/web /var/www/html
 RUN --mount=type=secret,id=vaultpass \
@@ -102,7 +102,10 @@ RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
+# install rewrite module
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load && \
+    # Load production php configs
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" &&\
     mkdir -p /var/www/html/app/uploads && \
     chown -R www-data: /site/web
 WORKDIR /var/www/html
