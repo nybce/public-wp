@@ -102,7 +102,10 @@ RUN chmod 666 /.vaultpass
 COPY docker/bin/wp-server-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 RUN /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["docker-php-entrypoint"]
+# install rewrite module
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load && \
+    # Load production php configs
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" &&\
     mkdir -p /var/www/html/app/uploads && \
     chown -R www-data: /site/web
 WORKDIR /var/www/html
