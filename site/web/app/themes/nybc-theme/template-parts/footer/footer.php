@@ -42,7 +42,7 @@ $two_line_logos = array(
 	),
 	array(
 		'img_url' => NYBC_IMG_URI . '/nyblood.svg',
-		'link'    => 'https://www.nybloodcenter.org/',
+		'link'    => 'https://www.nybc.org/',
 		'label'   => 'nyblood center',
 	),
 	array(

@@ -1,78 +1,62 @@
 FROM php:7.4-fpm-alpine
 
 
-RUN apk upgrade && \
-  apk add --no-cache bash \
+ENV COMPOSER_HOME=/var/cache/composer
+ARG YOAST_SEO_KEY
+
+COPY ./.vaultpass /envs/.vaultpass
+COPY ./env/* /envs/
+COPY ./env/local.env /.env
+COPY ./env/local.env /site/.env
+COPY ./scripts/docker/ /scripts
+COPY ./site/composer.json /site
+COPY ./docker/bin/composer-install.sh /site/composer-install.sh
+
+RUN apk upgrade \
+# Install deps
+  && apk add --no-cache \
+  ansible \
+  bash \
   ca-certificates \
   curl \
+  libc6-compat \
+  libpng \
+  libpng-dev \
   mysql-client \
-  nano
-
-
-# Install XDebug
-#RUN pecl config-set php_ini /etc/php7/php.ini
-#RUN pecl install xdebug
-#RUN echo 'zend_extension=/usr/lib/php7/modules/xdebug.so' >> /etc/php7/php.ini
-#RUN touch /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_enable = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_autostart = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_connect_back = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_handler = dbgp' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.profiler_enable = 1' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.profiler_output_dir = "/data/web"' >> /etc/php7/conf.d/xdebug.ini
-#RUN echo 'xdebug.remote_port = 9000' >> /etc/php7/conf.d/xdebug.ini
-
-# Remove unused dependencies
-RUN rm -rf /var/cache/apk/*
-
-RUN mkdir /var/cache/composer
-ENV COMPOSER_HOME=/var/cache/composer
-
-
+  nano \
+  openssh \
+  tar \
+  wget \
+  && rm -rf /var/cache/apk/* \
+# Get azcopy
+  && wget -O /tmp/azcopy.tar https://aka.ms/downloadazcopy-v10-linux \
+  && tar -C /tmp -xf /tmp/azcopy.tar --transform 's!^[^/]*!azcopy!' \
+  && mv /tmp/azcopy/azcopy /usr/bin/azcopy \
+  && rm -r /tmp/azcopy && rm -r /tmp/azcopy.tar \
+  && mkdir /var/cache/composer \
 # WORDPRESS CLI
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN php ./wp-cli.phar --info
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
+  && wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && chmod +x /usr/local/bin/wp \
+# PHP extensions
+  && docker-php-ext-install mysqli && docker-php-ext-enable mysqli \
+  && docker-php-ext-install gd && docker-php-ext-enable gd \
+# Install Composer
+  && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
+  && alias composer='php /usr/bin/composer'
+
+RUN mkdir -p /db_dumps \
+  && chmod +x /scripts/fetchDb.sh \
+  && chmod +x /scripts/fetchMedia.sh \
+  && chmod -R 777 /var/cache/composer \
+  && chown www-data:www-data /site
 
 WORKDIR /site
-RUN apk add ansible
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
-
-RUN mkdir /scripts
-COPY ./scripts/docker/ /scripts
-RUN mkdir /db_dumps
-RUN apk add openssh
-RUN ["chmod", "+x", "/scripts/fetchDb.sh"]
-RUN ["chmod", "+x", "/scripts/fetchMedia.sh"]
-COPY ./.env/local.env /site/.env
-COPY ./.env/local.env /.env
-RUN mkdir /envs
-COPY ./.env/* /envs/
-COPY .vaultpass /envs
-RUN apk --update add --virtual build-dependencies --no-cache wget tar
-RUN apk --update add libc6-compat ca-certificates
-
-RUN wget -O azcopyv10.tar https://aka.ms/downloadazcopy-v10-linux && \
-    tar -xf azcopyv10.tar && \
-    apk del build-dependencies
-
-RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
-
-COPY ./site/composer.json /site
-
-# Installing Composer
-RUN chown www-data:www-data /site
-RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
-RUN alias composer='php /usr/bin/composer'
 
 # Set the user
 USER www-data
 
 # PHP Composer
-COPY docker/bin/composer-install.sh /site/composer-install.sh
-RUN /site/composer-install.sh && rm /site/composer-install.sh
-
+RUN composer config -g http-basic.my.yoast.com token ${YOAST_SEO_KEY} && /site/composer-install.sh && rm /site/composer-install.sh
 
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["wp-entrypoint.sh"]
