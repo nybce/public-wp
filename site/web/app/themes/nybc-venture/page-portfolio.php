@@ -36,7 +36,7 @@ if( have_rows('portfolio') ):
 						<div class="portfolio-grid--square--logo">
 							<?php if($logo): ?>
 							<img src="<?php echo $logo['sizes']['large'] ?>" alt="<?php echo $logo['alt'] ?>" />
-							<? else: ?>
+							<?php else: ?>
 							<h2><?php echo $company_title ?></h2>
 							<?php endif;?>
 						</div>
