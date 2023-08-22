@@ -28,22 +28,22 @@ get_header();
 							$description = get_sub_field('description');
 							$link = get_sub_field('company_link');
 					?>
-							<div class="portfolio-grid--square">
-								<div class="portfolio-grid--square--logo">
-									<?php if ($logo) : ?>
-										<img src="<?php echo $logo['sizes']['large'] ?>" alt="<?php echo $logo['alt'] ?>" />
-									<?php else : ?>
-										<h2><?php echo $company_title ?></h2>
-									<?php endif; ?>
-								</div>
-								<div class="portfolio-grid--square--intro">
-									<h4><?php echo $company_title ?></h4>
-									<p><?php echo $description ?></p>
-									<?php if ($link) : ?>
-										<a href="<?php echo $link['url'] ?>" target="_blank"><?php echo $link['title'] ?></a>
-									<?php endif; ?>
-								</div>
-							</div>
+					<div class="portfolio-grid--square">
+						<div class="portfolio-grid--square--logo">
+							<?php if ($logo) : ?>
+							<img src="<?php echo $logo['sizes']['large'] ?>" alt="<?php echo $logo['alt'] ?>" />
+							<?php else : ?>
+							<h2><?php echo $company_title ?></h2>
+							<?php endif; ?>
+						</div>
+						<div class="portfolio-grid--square--intro">
+							<h4><?php echo $company_title ?></h4>
+							<p><?php echo $description ?></p>
+							<?php if ($link) : ?>
+							<a href="<?php echo $link['url'] ?>" target="_blank"><?php echo $link['title'] ?></a>
+							<?php endif; ?>
+						</div>
+					</div>
 					<?php
 						endwhile;
 
