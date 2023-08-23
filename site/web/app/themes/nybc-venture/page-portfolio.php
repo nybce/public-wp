@@ -11,15 +11,18 @@ get_header();
 ?>
 <div class="page-wrapper portfolio-page">
 	<div class="nybcv-wrapper">
+
 		<div class="container">
 			<div class="nybcv-block">
 				<div class="nybcv-block--intro">
-					<h3><?php echo get_field('title') ?></h3>
+					<h3><?php echo get_field('title')?></h3>
 					<?php echo get_field('introduction_text') ?>
 				</div>
+
 				<div class="portfolio-grid">
 					<?php
-					if( have_rows('portfolio') ):
+
+if( have_rows('portfolio') ):
 
   while( have_rows('portfolio') ) : the_row();
 
