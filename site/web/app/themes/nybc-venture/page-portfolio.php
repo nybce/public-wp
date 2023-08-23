@@ -10,7 +10,6 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 <div class="page-wrapper portfolio-page">
-
 	<div class="nybcv-wrapper">
 
 		<div class="container">
