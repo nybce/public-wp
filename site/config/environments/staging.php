@@ -16,7 +16,7 @@ use function Env\env;
 
 // Enable plugin and theme updates and installation from the admin
 Config::define( 'FS_METHOD', 'direct' );
-Config::define('DISALLOW_FILE_MODS', true);
+Config::define('DISALLOW_FILE_MODS', false);
 
 define('MICROSOFT_AZURE_ACCOUNT_NAME', env('MICROSOFT_AZURE_ACCOUNT_NAME'));
 define('MICROSOFT_AZURE_ACCOUNT_KEY', env('MICROSOFT_AZURE_ACCOUNT_KEY'));
