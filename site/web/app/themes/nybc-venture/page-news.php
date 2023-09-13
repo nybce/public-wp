@@ -1,57 +1,122 @@
 <?php
-
 /*
-  Template Name: News
-  */
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly
-}
+Template Name: News Page
+*/
 
-get_header();
-?>
+get_header(); ?>
+
 <div class="page-wrapper portfolio-page">
 	<div class="nybcv-wrapper">
-
 		<div class="container">
 			<div class="nybcv-block">
 				<div class="nybcv-block--intro">
-					<h3><?php echo get_field('title') ?></h3>
-					<?php echo get_field('introduction_text') ?>
+					<h3>News</h3>
 				</div>
 
-				<div class="portfolio-grid">
+				<!-- Start of News Grid -->
+				<div class="news-grid">
 					<?php
-					if (have_posts()) :
-						while (have_posts()) : the_post();
+					$args = array(
+						// 'post_type' => 'news', // Replace with your custom post type if necessary
+						'posts_per_page' => -1, // Display all news articles
+						'orderby' => 'date',
+						'order' => 'DESC',
+					);
 
+					$news_query = new WP_Query($args);
 
+					if ($news_query->have_posts()) :
+						while ($news_query->have_posts()) : $news_query->the_post();
 					?>
-					<?php echo '<pre>';
-							print_r($wp_query->post);
-							echo '</pre>'; ?>
-
-					<article>
-						<h2><?php the_title(); ?></h2>
-						<div class="post-content">
-							<?php the_content(); ?>
-						</div>
+					<a href="<?php the_permalink(); ?>" class="news-item">
 						<?php if (has_post_thumbnail()) : ?>
-						<div class="post-thumbnail">
+						<div class="news-thumbnail">
 							<?php the_post_thumbnail(); ?>
+							<div class="image-caption">
+								<h2 class="news-title"><?php the_title(); ?></h2>
+								<div class="news-meta"><?php echo get_the_date(); ?></div>
+							</div>
 						</div>
 						<?php endif; ?>
-					</article>
+					</a>
 					<?php
 						endwhile;
+						wp_reset_postdata(); // Restore global post data
 					else :
-						echo 'No News Articles found.';
+						echo 'No news articles found.';
 					endif;
 					?>
 				</div>
+				<!-- End of News Grid -->
 			</div>
 		</div>
 	</div>
-
-
 </div>
-<?php get_footer();
+
+<style>
+/* CSS for the news grid layout */
+.news-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	/* 2 columns */
+	grid-gap: 20px;
+	/* Adjust the gap between grid items as needed */
+}
+
+.news-item {
+	text-decoration: none;
+	color: #333;
+	transition: transform 0.2s;
+	overflow: hidden;
+}
+
+.news-thumbnail {
+	position: relative;
+	overflow: hidden;
+}
+
+.news-thumbnail img {
+	max-width: 100%;
+	height: auto;
+}
+
+.image-caption {
+	position: absolute;
+	bottom: 7px;
+	left: 0;
+	right: 0;
+	background: rgba(255, 255, 255, 0.4);
+	backdrop-filter: blur(7px);
+	/* Adjust the background color and opacity as needed */
+	color: black;
+	padding: 20px 10px;
+	text-align: center;
+	transition-duration: .5s;
+	box-shadow: 0px 0px 40px 0px transparent;
+}
+
+.news-item:hover .image-caption {
+	background: rgba(255, 255, 255, .9);
+}
+
+.news-title,
+.news-meta {
+	margin: 0;
+}
+
+.news-title {
+	font-size: 18px;
+}
+
+.news-meta {
+	font-size: 14px;
+}
+
+@media only screen and (max-width: 700px) {
+	.news-grid {
+		grid-template-columns: 1fr;
+	}
+}
+</style>
+
+<?php get_footer(); ?>
