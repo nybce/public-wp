@@ -34,7 +34,7 @@ get_header(); ?>
 							<?php the_post_thumbnail(); ?>
 							<div class="image-caption">
 								<h2 class="news-title"><?php the_title(); ?></h2>
-								<div class="news-meta"><?php echo get_the_date(); ?></div>
+								<div class="news-date"><?php echo get_the_date(); ?></div>
 							</div>
 						</div>
 						<?php endif; ?>
@@ -92,7 +92,6 @@ get_header(); ?>
 	padding: 20px 10px;
 	text-align: center;
 	transition-duration: .5s;
-	box-shadow: 0px 0px 40px 0px transparent;
 }
 
 .news-item:hover .image-caption {
@@ -100,17 +99,15 @@ get_header(); ?>
 }
 
 .news-title,
-.news-meta {
+.news-date {
 	margin: 0;
-}
-
-.news-title {
 	font-size: 18px;
 }
 
-.news-meta {
-	font-size: 14px;
+.news-title {
+	font-size: 20px;
 }
+
 
 @media only screen and (max-width: 700px) {
 	.news-grid {
