@@ -34,7 +34,8 @@ $stories_page = get_field( 'stories_page', 'options' );
 ?>
 <div class="promo-wrapper mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<?php if ( $news_page && ! is_page( $news_page ) && $stories_page && ! is_page( $stories_page ) ) { ?>
-		<div class="decor-promo mobile" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
+	<div class="decor-promo mobile" data-rellax-speed="-1"
+		style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
 	<?php } ?>
 	<div class="promo-item">
 		<form action="<?php echo esc_url( ! empty( $lnk ) ? $lnk['url'] : '' ); ?>" target="_blank">
@@ -45,15 +46,15 @@ $stories_page = get_field( 'stories_page', 'options' );
 			<input type="text" name="zipcode" class="input" required placeholder="">
 			<div class="spacer-16"></div>
 			<button type="submit"
-					class="btn btn-primary"><?php echo esc_html( ! empty( $lnk ) ? $lnk['title'] : '' ); ?></button>
+				class="btn btn-primary"><?php echo esc_html( ! empty( $lnk ) ? $lnk['title'] : '' ); ?></button>
 		</form>
 	</div>
 	<?php if ( ! empty( $description_title ) || ! empty( $description ) ) { ?>
-		<div class="spacer-48"></div>
-		<div class="promo-item">
-			<div class="h5 title fw-800"><?php echo esc_html( $description_title ); ?></div>
-			<div class="spacer-16"></div>
-			<div class="text text-20"><?php echo esc_html( $description ); ?></div>
-		</div>
+	<div class="spacer-48"></div>
+	<div class="promo-item">
+		<div class="h5 title fw-800"><?php echo esc_html( $description_title ); ?></div>
+		<div class="spacer-16"></div>
+		<div class="text text-20"><?php echo esc_html( $description ); ?></div>
+	</div>
 	<?php } ?>
 </div>
