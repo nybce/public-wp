@@ -45,9 +45,10 @@ $description_cta   = get_field( 'description_cta' );
 							<div class="text text-30"><?php echo esc_html( $input_label ); ?></div>
 							<div class="spacer-16"></div>
 							<input type="text" class="input" name="zipcode" required placeholder="">
-							<button type="submit" class="btn btn-small btn-secondary"><?php echo esc_html( ! empty( $lnk ) ? $lnk['title'] : '' ); ?></button>
+							<button type="submit"
+								class="btn btn-small btn-secondary"><?php echo esc_html( ! empty( $lnk ) ? $lnk['title'] : '' ); ?></button>
 						</div>
-					<?php if ( ! empty( $description_title ) || ! empty( $description ) ) { ?>
+						<?php if ( ! empty( $description_title ) || ! empty( $description ) ) { ?>
 						<div class="promo-item">
 							<div class="h5 title fw-800 light"><?php echo esc_html( $description_title ); ?></div>
 							<div class="spacer-8"></div>
@@ -63,8 +64,9 @@ $description_cta   = get_field( 'description_cta' );
 					<div class="spacer-8"></div>
 					<div class="text-lg text-30"><?php echo wp_kses_post( $description_cta ); ?></div>
 					<?php if ( ! empty( $lnk_cta ) ) { ?>
-						<div class="spacer-24"></div>
-						<a class="btn btn-small btn-secondary" target="<?php echo esc_attr( $lnk_cta['target'] ); ?>" href="<?php echo esc_url( $lnk_cta['url'] ); ?>"><?php echo esc_html( $lnk_cta['title'] ); ?></a>
+					<div class="spacer-24"></div>
+					<a class="btn btn-small btn-secondary" target="<?php echo esc_attr( $lnk_cta['target'] ); ?>"
+						href="<?php echo esc_url( $lnk_cta['url'] ); ?>"><?php echo esc_html( $lnk_cta['title'] ); ?></a>
 					<?php } ?>
 				</div>
 
