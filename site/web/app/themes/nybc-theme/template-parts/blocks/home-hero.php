@@ -36,14 +36,15 @@ $button     = get_field( 'button' );
 $simple_banner = get_field( 'simple_banner', 'options' );
 
 ?>
-<styles>
+<style>
 .simple-banner {
     background-color: red;
     color: white;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
+    padding: 10px 20px;
 }
-</syles>
+</style>
 
 <?php if ( ! empty( $simple_banner ) ) { ?>
 	<div class="simple-banner"><?php echo esc_html( $simple_banner ); ?></div>
