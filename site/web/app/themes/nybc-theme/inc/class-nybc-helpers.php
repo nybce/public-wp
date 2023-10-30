@@ -123,46 +123,49 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 			}
 			$current   = (int) $current;
 			$max_pages = (int) $max_pages;
-
+		
 			if ( $max_pages < 2 ) {
 				return;
 			}
+		
+			$midpoint = ceil( $max_pages / 2 );
+			$show_pages = array( $current, $current + 1, $current + 2, $midpoint, $max_pages - 2, $max_pages - 1, $max_pages );
+			$show_pages = array_filter( $show_pages, function( $page ) use ( $max_pages ) {
+				return $page <= $max_pages && $page >= 1;
+			});
+			$show_pages = array_unique( $show_pages );
+			sort( $show_pages );
+		
 			?>
-<div class="pagination">
-	<ul>
-			<?php if ( $current > 1 ) { ?>
-			<li><a class="pagination-arrow left" href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>"><i></i></a></li>
-		<?php } ?>
-		<li class="<?php echo esc_attr( 1 === $current ? 'active' : '' ); ?>">
-			<a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">1</a>
-		</li>
-
-			<?php if ( $max_pages > 6 ) { ?>
-		<li class="dots">...
-			<ul class="dots-select">
-				<?php for ( $i = 2; $i <= $max_pages - 1; $i++ ) { ?>
-					<li class="dots-select-link <?php echo esc_attr( $i === $current ? 'active' : '' ); ?>"><a href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>"><?php echo esc_html( $i ); ?></a></li>
-				<?php } ?>
-			</ul>
-		</li>
-		<?php } elseif ( $max_pages > 2 ) { ?>
-				<?php for ( $i = 2; $i <= $max_pages - 1; $i++ ) { ?>
-					<li class="<?php echo esc_attr( $i === $current ? 'active' : '' ); ?>">
-						<a href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>"><?php echo esc_html( $i ); ?></a>
-					</li>
-				<?php } ?>
-			<?php } ?>
-
-		<li class="<?php echo esc_attr( $max_pages === $current ? 'active' : '' ); ?>">
-			<a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>"><?php echo esc_html( $max_pages ); ?></a>
-		</li>
-			<?php if ( $current < $max_pages ) { ?>
-			<li><a class="pagination-arrow right" href="<?php echo esc_url( get_pagenum_link( $current + 1 ) ); ?>"><i></i></a></li>
-		<?php } ?>
-	</ul>
-</div>
+			<div class="pagination">
+				<ul>
+					<?php if ( $current > 1 ) { ?>
+					<li><a class="pagination-arrow left" href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>"><i></i></a></li>
+					<?php } ?>
+					
+					<?php 
+					$prev_page = 0;
+					foreach ( $show_pages as $page ) {
+						if ( $prev_page + 1 != $page ) {
+							echo '<li class="dots">...</li>';
+						}
+						?>
+						<li class="<?php echo esc_attr( $page === $current ? 'active' : '' ); ?>">
+							<a href="<?php echo esc_url( get_pagenum_link( $page ) ); ?>"><?php echo esc_html( $page ); ?></a>
+						</li>
+						<?php
+						$prev_page = $page;
+					}
+					?>
+		
+					<?php if ( $current < $max_pages ) { ?>
+					<li><a class="pagination-arrow right" href="<?php echo esc_url( get_pagenum_link( $current + 1 ) ); ?>"><i></i></a></li>
+					<?php } ?>
+				</ul>
+			</div>
 			<?php
 		}
+		
 
 		/**
 		 *  Sidebar tags
