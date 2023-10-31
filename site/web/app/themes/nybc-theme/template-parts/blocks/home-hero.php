@@ -34,6 +34,7 @@ if ( empty( $image ) && empty( $video ) ) {
 $title_text = get_field( 'title' );
 $button     = get_field( 'button' );
 $simple_banner = get_field( 'simple_banner', 'options' );
+$banner_url = get_field( 'banner_link', 'options' );
 
 ?>
 <style>
@@ -44,10 +45,14 @@ $simple_banner = get_field( 'simple_banner', 'options' );
     font-weight: 700;
     padding: 10px 20px;
 }
+.full-w {
+	width:100%;
+}
 </style>
 
 <?php if ( ! empty( $simple_banner ) ) { ?>
-	<div class="simple-banner"><?php echo esc_html( $simple_banner ); ?></div>
+	<a class="full-w" href ="<?php echo esc_url( $banner_url['url'] ); ?>">
+	<div class="simple-banner"><?php echo esc_html( $simple_banner ); ?></div></a>
 <?php } ?>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
