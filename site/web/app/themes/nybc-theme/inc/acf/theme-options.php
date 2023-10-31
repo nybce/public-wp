@@ -236,6 +236,21 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'maxlength'         => '',
 				),
 				array(
+					'key'               => 'field_619e6020bace1',
+					'label'             => 'Banner Link',
+					'name'              => 'banner_link',
+					'type'              => 'link',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'return_format'     => 'array',
+				),
+				array(
 					'key'               => 'field_619e600bbace8',
 					'label'             => 'Footer',
 					'name'              => '',
