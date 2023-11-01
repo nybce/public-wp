@@ -223,12 +223,16 @@ if ( ! class_exists( 'NYBC_Init' ) ) {
 		public static function init() {
 			global $wp_roles;
 
+			/**
+			 * Removed because would not allow any roles other than the one defined below
+			 */
+			/*
 			foreach ( $wp_roles->roles as $role => $data ) {
 				if ( ! in_array( $role, self::$roles, true ) ) {
 					unset( $wp_roles->roles[ $role ] );
 				}
 			}
-
+			*/
 			if ( isset( $wp_roles->roles['author'] ) ) {
 				$wp_roles->roles['author']['name'] = esc_html__( 'Content Editor', 'nybc' );
 			}
