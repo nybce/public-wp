@@ -34,6 +34,8 @@ if ( empty( $image ) && empty( $video ) ) {
 $title_text = get_field( 'title' );
 $button     = get_field( 'button' );
 $simple_banner = get_field( 'simple_banner', 'options' );
+$banner_enable = get_field( 'banner_enable', 'options' );
+$banner_open= get_field( 'banner_tab', 'options' );
 $banner_url = get_field( 'banner_link', 'options' );
 $banner_anchor ='#';
 if ( ! empty( $banner_url ) && ! empty( $banner_url['url'] ) ) {
@@ -53,8 +55,8 @@ if ( ! empty( $banner_url ) && ! empty( $banner_url['url'] ) ) {
 }
 </style>
 
-<?php if ( ! empty( $simple_banner ) ) { ?>
-	<a class="full-w" href ="<?php echo esc_url( $banner_anchor ); ?>">
+<?php if ( ! empty( $simple_banner ) && $banner_enable ) { ?>
+	<a class="full-w" href ="<?php echo esc_url( $banner_anchor ); ?>" <?php if ( $banner_open ) { echo ' target="_blank" rel="noopener noreferrer"'; } ?>>
 	<div class="simple-banner"><?php echo esc_html( $simple_banner ); ?></div></a>
 <?php } ?>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
