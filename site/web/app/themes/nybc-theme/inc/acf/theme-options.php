@@ -217,6 +217,25 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'maxlength'         => '',
 				),
 				array(
+					'key'               => 'field_619e6020babbb',
+					'label'             => 'Enable Banner',
+					'name'              => 'banner_enable',
+					'type'              => 'true_false',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'message'           => 'Enable or disable the Banner.',
+					'default_value'     => 0,
+					'ui'                => 1, // Enable UI for toggle
+					'ui_on_text'        => 'Enabled', // Text for the 'on' state
+					'ui_off_text'       => 'Disabled', // Text for the 'off' state
+				),
+				array(
 					'key'               => 'field_619e6020baccc',
 					'label'             => 'Banner',
 					'name'              => 'simple_banner',
@@ -249,6 +268,25 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'return_format'     => 'array',
+				),
+				array(
+					'key'               => 'field_619e6020bacff',
+					'label'             => 'Open Banner In New Tab',
+					'name'              => 'banner_tab',
+					'type'              => 'true_false',
+					'instructions'      => 'Check To Open Banner Link In New Tab',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'message'           => '',
+					'default_value'     => 0,
+					'ui'                => 0,
+					'ui_on_text'        => '',
+					'ui_off_text'       => '',
 				),
 				array(
 					'key'               => 'field_619e600bbace8',
