@@ -39,7 +39,7 @@ $template = array(
 
 ?>
 
-<div class="section <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<div class="section <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>" style="margin-top:15px;">
 	<?php if ( $decor ) { ?>
 		<div class="decor-news" data-rellax-speed="-1" style="background-image: url('<?php echo esc_url( NYBC_IMG_URI ); ?>/wave.svg');"></div>
 	<?php } ?>
