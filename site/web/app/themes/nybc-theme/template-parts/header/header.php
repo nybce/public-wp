@@ -124,6 +124,7 @@ if ( ! empty( $banner_url ) && ! empty( $banner_url['url'] ) ) {
     text-align: center;
     font-weight: 500;
     padding: 10px 20px;
+	font-size:2rem;
 }
 .full-w {
 	width:100%;
