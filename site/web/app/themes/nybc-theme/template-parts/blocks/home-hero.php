@@ -33,7 +33,6 @@ if ( empty( $image ) && empty( $video ) ) {
 }
 $title_text = get_field( 'title' );
 $button     = get_field( 'button' );
-
 ?>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
