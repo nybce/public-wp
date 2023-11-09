@@ -137,11 +137,18 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 						border-radius:0!important;
 						width:3em!important;
 					}
-					.no-circle-dash{ 
+					.no-circle-dash { 
 						background:none!important;
 						border:none!important;
 						border-radius:0!important;
 						width:1em!important;
+					}
+					li.no-circle:hover a { 
+						color: red!important;;
+					}
+
+					li.no-circle-dash:hover a{ 
+						color: red!important;;
 					}
 					</style>
 				<ul>
