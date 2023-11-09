@@ -135,11 +135,21 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 						background:none!important;
 						border:none!important;
 						border-radius:0!important;
-						width:5em!important;
+						width:3em!important;
+					}
+					.no-circle-dash{ 
+						background:none!important;
+						border:none!important;
+						border-radius:0!important;
+						width:1em!important;
 					}
 					</style>
 				<ul>
-						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">&laquo; First &laquo;</a></li>
+						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">&laquo; First</a></li>
+						<?php if ( $current > 1 ) { ?>
+						<li class="no-circle-dash"><a href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>">&lsaquo;</a></li>
+					<?php } ?>
+
 		
 					<?php 
 					// Calculate pages around the current
@@ -164,7 +174,8 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 					}
 		
 					if ( $current < $max_pages ) { ?>
-						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>">&raquo; Last &raquo;</a></li>
+						<li class="no-circle-dash"><a href="<?php echo esc_url( get_pagenum_link( $current + 1) ); ?>">&rsaquo;</a></li>
+						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>">Last &raquo;</a></li>
 					<?php } ?>
 				</ul>
 			</div>	
