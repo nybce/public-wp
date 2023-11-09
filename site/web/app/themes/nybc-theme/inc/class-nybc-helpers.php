@@ -128,41 +128,46 @@ if ( ! class_exists( 'NYBC_Helpers' ) ) {
 				return;
 			}
 		
-			$midpoint = ceil( $max_pages / 2 );
-			$show_pages = array( $current, $current + 1, $current + 2, $midpoint, $max_pages - 2, $max_pages - 1, $max_pages );
-			$show_pages = array_filter( $show_pages, function( $page ) use ( $max_pages ) {
-				return $page <= $max_pages && $page >= 1;
-			});
-			$show_pages = array_unique( $show_pages );
-			sort( $show_pages );
-		
 			?>
 			<div class="pagination">
-				<ul>
-					<?php if ( $current > 1 ) { ?>
-					<li><a class="pagination-arrow left" href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>"><i></i></a></li>
-					<?php } ?>
-					
-					<?php 
-					$prev_page = 0;
-					foreach ( $show_pages as $page ) {
-						if ( $prev_page + 1 != $page ) {
-							echo '<li class="dots">...</li>';
-						}
-						?>
-						<li class="<?php echo esc_attr( $page === $current ? 'active' : '' ); ?>">
-							<a href="<?php echo esc_url( get_pagenum_link( $page ) ); ?>"><?php echo esc_html( $page ); ?></a>
-						</li>
-						<?php
-						$prev_page = $page;
+				<style>
+					.no-circle{ 
+						background:none!important;
+						border:none!important;
+						border-radius:0!important;
+						width:5em!important;
 					}
-					?>
+					</style>
+				<ul>
+						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>">&laquo; First &laquo;</a></li>
 		
-					<?php if ( $current < $max_pages ) { ?>
-					<li><a class="pagination-arrow right" href="<?php echo esc_url( get_pagenum_link( $current + 1 ) ); ?>"><i></i></a></li>
+					<?php 
+					// Calculate pages around the current
+					$start = max(1, $current - 1);
+					$end = min($max_pages, $current + 4);
+		
+					// Adjust the range in case we're at the beginning or end of the page range
+					if ($current == 1) {
+						$end = min($max_pages, 6);
+					}
+					if ($current == $max_pages) {
+						$start = max(1, $max_pages - 5);
+					}
+		
+					for ($i = $start; $i <= $end; $i++) {
+						echo '<li' . ($current === $i ? ' class="active"' : '') . '><a href="' . esc_url(get_pagenum_link($i)) . '">' . $i . '</a></li>';
+					}
+		
+					if ($end < $max_pages) {
+						echo '<li class="dots">...</li>';
+						echo '<li' . ($current === $max_pages ? ' class="active"' : '') . '><a href="' . esc_url(get_pagenum_link($max_pages)) . '">' . $max_pages . '</a></li>';
+					}
+		
+					if ( $current < $max_pages ) { ?>
+						<li class="no-circle"><a href="<?php echo esc_url( get_pagenum_link( $max_pages ) ); ?>">&raquo; Last &raquo;</a></li>
 					<?php } ?>
 				</ul>
-			</div>
+			</div>	
 			<?php
 		}
 		
