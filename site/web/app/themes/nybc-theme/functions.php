@@ -58,6 +58,7 @@ require_once __DIR__ . '/inc/class-nybc-articulate.php';
 //require_once __DIR__ . '/inc/class-nybc-table.php';
 require_once __DIR__ . '/inc/class-nybc-distributor.php';
 
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 add_filter('acf/fields/wysiwyg/toolbars', 'my_toolbars');
 function my_toolbars($toolbars)
 {

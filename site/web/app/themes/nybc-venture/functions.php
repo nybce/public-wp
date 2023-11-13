@@ -60,6 +60,7 @@ function nybcv_document_title_separator( $sep ) {
 $sep = esc_html( '|' );
 return $sep;
 }
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 add_filter( 'the_title', 'nybcv_title' );
 function nybcv_title( $title ) {
 if ( $title == '' ) {
