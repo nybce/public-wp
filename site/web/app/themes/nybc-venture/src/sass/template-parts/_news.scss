@@ -1,0 +1,28 @@
+/* CSS for the grid layout */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the column width as needed */
+  grid-gap: 20px; /* Adjust the gap between grid items as needed */
+}
+
+.news-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.news-title {
+  font-size: 20px; /* Adjust the title font size as needed */
+}
+
+.news-meta {
+  color: #888;
+}
+
+.news-excerpt {
+  margin-top: 10px;
+}
+
+.read-more-link {
+  color: #0073e6;
+}

@@ -12,6 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 $one_line_logo         = get_field( 'one_line_logo', 'options' );
 $top_right_menu_link_1 = get_field( 'top_right_menu_link_1', 'options' );
 $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
+$simple_banner = get_field( 'simple_banner', 'options' );
+$banner_enable = get_field( 'banner_enable', 'options' );
+$banner_open= get_field( 'banner_tab', 'options' );
+$banner_url = get_field( 'banner_link', 'options' );
+$banner_anchor ='#';
+if ( ! empty( $banner_url ) && ! empty( $banner_url['url'] ) ) {
+	$banner_anchor = $banner_url['url'];
+}
 
 ?>
 <div class="header-inner">
@@ -109,4 +117,21 @@ $top_right_menu_link_2 = get_field( 'top_right_menu_link_2', 'options' );
 
 		</div>
 	</div>
+	<style>
+.simple-banner {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    padding: 10px 20px;
+	font-size:2rem;
+}
+.full-w {
+	width:100%;
+}
+</style>
+<?php if ( ! empty( $simple_banner ) && $banner_enable ) { ?>
+	<a class="full-w" href ="<?php echo esc_url( $banner_anchor ); ?>" <?php if ( $banner_open ) { echo ' target="_blank" rel="noopener noreferrer"'; } ?>>
+	<div class="simple-banner"><?php echo wp_kses( $simple_banner , array('br' => array(), 'i' => array(), 'b' => array(), 'u' => array(), 'strong' => array())); ?></div></a>
+<?php } ?>
 </div>
