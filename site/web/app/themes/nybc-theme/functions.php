@@ -78,3 +78,18 @@ function azure_media_styling()
 {
 	echo '<style>#windows-azure-storage-media-button{display:none}.wp-media-buttons{color:transparent;font-size:0;};</style>';
 }
+
+add_action('admin_menu', 'remove_built_in_roles');
+
+function remove_built_in_roles()
+{
+	global $wp_roles;
+
+	$roles_to_remove = array('editor');
+
+	foreach ($roles_to_remove as $role) {
+		if (isset($wp_roles->roles[$role])) {
+			$wp_roles->remove_role($role);
+		}
+	}
+}
