@@ -32,8 +32,14 @@ if ( empty( $image ) && empty( $video ) ) {
 	$image_url = get_the_post_thumbnail_url( $post_id, '1915x' );
 }
 $title_text = get_field( 'title' );
+$subtitle_text = get_field( 'subtitle' );
 $button     = get_field( 'button' );
 ?>
+<style>
+.banner-content h2, .banner-content h3, .banner-content h4, .banner-content p{
+	color:white;
+}
+</style>
 <div class="section banner <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 
 	<div class="banner-inner">
@@ -54,6 +60,8 @@ $button     = get_field( 'button' );
 							<h1 class="h1 title fw-800 light">
 								<?php echo esc_html( $title_text ); ?>
 							</h1>
+							<?php echo wp_kses_post( $subtitle_text ); ?>
+
 							<div class="spacer-48 spacer-xs-24"></div>
 							<?php if ( ! empty( $button ) ) { ?>
 								<a class="btn btn-primary" target="<?php echo esc_attr( $button['target'] ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['title'] ); ?></a>
