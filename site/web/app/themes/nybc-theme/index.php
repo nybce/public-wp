@@ -91,30 +91,35 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 			<div class="container container-lg">
 				<div class="row">
 					<div class=" col-lg-4 order-lg-0 order-2" >
-						<?php NYBC_Helpers::sidebar_nav(); ?>
-						<div class="promo-wrapper" >
-							<div class="promo-item">
-								<form action="<?php echo esc_url( ! empty( $archive_zip_search_lnk ) ? $archive_zip_search_lnk['url'] : '' ); ?>" target="_blank">
-									<div class="h5 title fw-800"><?php echo esc_html( $archive_zip_search_title ); ?></div>
-									<div class="spacer-16"></div>
-									<div class="text text-20"><?php echo esc_html( $archive_zip_search_label ); ?></div>
-									<div class="spacer-16"></div>
-									<input type="text" name="zipcode" class="input" required placeholder="">
-									<div class="spacer-16"></div>
-									<button type="submit"
-											class="btn btn-primary"><?php echo esc_html( ! empty( $archive_zip_search_lnk ) ? $archive_zip_search_lnk['title'] : '' ); ?></button>
-								</form>
-							</div>
-							<?php if ( ! empty( $archive_zip_search_description_title ) || ! empty( $archive_zip_search_description ) ) { ?>
-								<div class="spacer-48"></div>
+						<?php NYBC_Helpers::sidebar_nav(); 
+						if ( ! empty( $archive_zip_search_lnk ) ) { ?>
+							<div class="promo-wrapper" >
 								<div class="promo-item">
-									<div class="h5 title fw-800"><?php echo esc_html( $archive_zip_search_description_title ); ?></div>
-									<div class="spacer-16"></div>
-									<div class="text text-20"><?php echo esc_html( $archive_zip_search_description ); ?></div>
+									<form action="<?php echo esc_url( ! empty( $archive_zip_search_lnk ) ? $archive_zip_search_lnk['url'] : '' ); ?>" target="_blank">
+										<div class="h5 title fw-800"><?php echo esc_html( $archive_zip_search_title ); ?></div>
+										<div class="spacer-16"></div>
+										<div class="text text-20"><?php echo esc_html( $archive_zip_search_label ); ?></div>
+										<div class="spacer-16"></div>
+										<input type="text" name="zipcode" class="input" required placeholder="">
+										<div class="spacer-16"></div>
+										<button type="submit"
+												class="btn btn-primary"><?php echo esc_html( ! empty( $archive_zip_search_lnk ) ? $archive_zip_search_lnk['title'] : '' ); ?></button>
+									</form>
 								</div>
-							<?php } ?>
-						</div>
+								<?php if ( ! empty( $archive_zip_search_description_title ) || ! empty( $archive_zip_search_description ) ) { ?>
+									<div class="spacer-48"></div>
+									<div class="promo-item">
+										<div class="h5 title fw-800"><?php echo esc_html( $archive_zip_search_description_title ); ?></div>
+										<div class="spacer-16"></div>
+										<div class="text text-20"><?php echo esc_html( $archive_zip_search_description ); ?></div>
+									</div>
+								<?php } ?>
+							</div>
+						<?php } ?>
+						
 						<div class="spacer-24"></div>
+
+						<?php if ( ! empty( $archive_cta_lnk ) ) { ?>
 						<div class="promo-cta">
 							<div class="h4 title fw-800 light"><?php echo esc_html( $archive_cta_title ); ?></div>
 							<div class="spacer-8"></div>
@@ -124,6 +129,7 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 								<a class="btn btn-small btn-secondary" target="<?php echo esc_attr( $archive_cta_lnk['target'] ); ?>" href="<?php echo esc_url( $archive_cta_lnk['url'] ); ?>"><?php echo esc_html( $archive_cta_lnk['title'] ); ?></a>
 							<?php } ?>
 						</div>
+						<?php } ?>
 					</div>
 					<div class=" col-lg-8">
 							<?php NYBC_Helpers::sidebar_nav( true ); ?>
