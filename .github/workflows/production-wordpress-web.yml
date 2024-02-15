@@ -24,6 +24,8 @@ jobs:
       sha_tag: '${{ steps.clip-sha-tag.outputs.sha_tag }}'
     steps:
     - uses: actions/checkout@v2
+    - name: setup docker buildkit
+      run: echo "DOCKER_BUILDKIT=1" >> $GITHUB_ENV
     - uses: Azure/login@v1
       with:
         creds: '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ secrets.PRODUCTION_CLIENT_SECRET }}","subscriptionId":"${{ env.SUBSCRIPTION_ID }}","tenantId":"${{ env.TENANT_ID }}"}'
