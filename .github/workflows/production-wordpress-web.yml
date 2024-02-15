@@ -63,7 +63,7 @@ jobs:
         compact: true
 
     - name: Debug YOAST_SEO_KEY
-        run: echo "Yoast SEO key: ${{ secrets.YOAST_SEO_KEY }}"
+      run: echo "Yoast SEO key ${{ secrets.YOAST_SEO_KEY }}"
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
