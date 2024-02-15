@@ -1263,15 +1263,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.11.2",
+            "version": "7.11.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.11.2"
+                "reference": "tags/7.11.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.11.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.11.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
