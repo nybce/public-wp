@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78cd840dc291d535cf18e1a230366593",
+    "content-hash": "7f3bf1b08c0f76608e85e7fbca5e1399",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -2188,24 +2188,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/limit-login-attempts-reloaded/"
-        },
-        {
-            "name": "wpackagist-plugin/ninja-tables",
-            "version": "5.0.7",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/ninja-tables/",
-                "reference": "tags/5.0.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ninja-tables.5.0.7.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/ninja-tables/"
         },
         {
             "name": "wpackagist-plugin/nitropack",
