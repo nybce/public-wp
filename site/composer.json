@@ -56,7 +56,7 @@
         "microsoft/azure-storage-queue": "*",
         "microsoft/azure-storage-file": "*",
         "roots/bedrock-autoloader": "^1.0",
-        "roots/wordpress": "^6.4",
+        "roots/wordpress": "^6.1",
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.0.0",
         "roots/multisite-url-fixer": "^1.1",
@@ -74,7 +74,9 @@
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
         "wpackagist-plugin/wpo365-login": "21.5",
-        "bueltge/multisite-global-media": "^0.2.0"
+        "bueltge/multisite-global-media": "^0.2.0",
+        "yoast/wordpress-seo-premium": "^20.1",
+        "yoast/wordpress-seo": "^20.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
