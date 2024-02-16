@@ -3,11 +3,7 @@
         'name' => 'roots/bedrock',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-<<<<<<< HEAD
         'reference' => '7a3c7e3ae9d3d5f23e5177fd3a43a0e81138e186',
-=======
-        'reference' => '27cdc61df3585663599a255c046e5882a725766f',
->>>>>>> 8e8a021226a33a2f3d36a3c74982bc4cde3d5fd2
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -77,11 +73,7 @@
         'roots/bedrock' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-<<<<<<< HEAD
             'reference' => '7a3c7e3ae9d3d5f23e5177fd3a43a0e81138e186',
-=======
-            'reference' => '27cdc61df3585663599a255c046e5882a725766f',
->>>>>>> 8e8a021226a33a2f3d36a3c74982bc4cde3d5fd2
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
