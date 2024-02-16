@@ -74,9 +74,7 @@
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
         "wpackagist-plugin/tablepress": "^1.14",
         "wpackagist-plugin/wpo365-login": "21.5",
-        "bueltge/multisite-global-media": "^0.2.0",
-        "yoast/wordpress-seo-premium": "^20.1",
-        "yoast/wordpress-seo": "^20.1"
+        "bueltge/multisite-global-media": "^0.2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
