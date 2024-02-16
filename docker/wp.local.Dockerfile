@@ -56,8 +56,7 @@ WORKDIR /site
 USER www-data
 
 # PHP Composer
-# RUN composer config -g http-basic.my.yoast.com token ${YOAST_SEO_KEY} && /site/composer-install.sh && rm /site/composer-install.sh
-RUN /site/composer-install.sh && rm /site/composer-install.sh
+RUN composer config -g http-basic.my.yoast.com token ${YOAST_SEO_KEY} && /site/composer-install.sh && rm /site/composer-install.sh
 
 COPY docker/bin/wp-entrypoint.sh /usr/local/bin/wp-entrypoint.sh
 ENTRYPOINT ["wp-entrypoint.sh"]
