@@ -2190,6 +2190,24 @@
             "homepage": "https://wordpress.org/plugins/limit-login-attempts-reloaded/"
         },
         {
+            "name": "wpackagist-plugin/ninja-tables",
+            "version": "5.0.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ninja-tables/",
+                "reference": "tags/5.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-tables.5.0.7.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ninja-tables/"
+        },
+        {
             "name": "wpackagist-plugin/nitropack",
             "version": "1.11.0",
             "source": {
