@@ -4,8 +4,122 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b89b4a656afced5c638f0c67ee23782",
+    "content-hash": "40fd98737aa5880ebe1b9204192ffcd6",
     "packages": [
+        {
+            "name": "advanced-custom-fields/advanced-custom-fields-pro",
+            "version": "5.10.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&t=5.10.2"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0",
+                "pivvenit/acf-pro-installer": "^2.4.0 || ^3.0"
+            },
+            "type": "wordpress-muplugin",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elliot Condon",
+                    "homepage": "http://www.elliotcondon.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "PivvenIT",
+                    "homepage": "https://pivvenit.nl",
+                    "role": "Composer Repository maintainer"
+                }
+            ],
+            "description": "Advanced Custom Fields PRO",
+            "homepage": "https://www.advancedcustomfields.com/",
+            "support": {
+                "docs": "https://www.advancedcustomfields.com/resources/",
+                "forum": "https://support.advancedcustomfields.com/topics/"
+            }
+        },
+        {
+            "name": "bueltge/multisite-global-media",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bueltge/multisite-global-media.git",
+                "reference": "df7b2f7ab6671068f9c45695ddab9f815cb0f694"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bueltge/multisite-global-media/zipball/df7b2f7ab6671068f9c45695ddab9f815cb0f694",
+                "reference": "df7b2f7ab6671068f9c45695ddab9f815cb0f694",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "^1.2",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.2",
+                "inpsyde/php-coding-standards": "^1",
+                "johnpbloch/wordpress-core": " ^5.0",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^3",
+                "woocommerce/woocommerce": "^3.0|^4.0"
+            },
+            "type": "wordpress-muplugin",
+            "extra": {
+                "installer-disable": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "MultisiteGlobalMedia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Dominik Schilling",
+                    "homepage": "https://dominikschilling.de/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Frank Bültge",
+                    "email": "f.bueltge@inpsyde.com",
+                    "homepage": "https://bueltge.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Guido Scialfa",
+                    "email": "g.scialfa@inspyde.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Multisite Global Media is a WordPress plugin which shares media across the Multisite network.",
+            "homepage": "https://github.com/bueltge/Multisite-Global-Media",
+            "keywords": [
+                "multisite",
+                "muplugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/bueltge/multisite-global-media/issues",
+                "source": "https://github.com/bueltge/multisite-global-media/tree/0.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://bueltge.de/impressum/#hinweis",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/bueltge",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-21T19:44:09+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "v1.12.0",
@@ -220,6 +334,571 @@
             "time": "2023-11-12T22:16:48+00:00"
         },
         {
+            "name": "guzzlehttp/guzzle",
+            "version": "7.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/41042bc7ab002487b876a0683fc8dce04ddce104",
+                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/promises": "^1.5.3 || ^2.0.1",
+                "guzzlehttp/psr7": "^1.9.1 || ^2.5.1",
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-client": "^1.0",
+                "symfony/deprecation-contracts": "^2.2 || ^3.0"
+            },
+            "provide": {
+                "psr/http-client-implementation": "1.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "ext-curl": "*",
+                "php-http/client-integration-tests": "dev-master#2c025848417c1135031fdf9c728ee53d0a7ceaee as 3.0.999",
+                "php-http/message-factory": "^1.1",
+                "phpunit/phpunit": "^8.5.36 || ^9.6.15",
+                "psr/log": "^1.1 || ^2.0 || ^3.0"
+            },
+            "suggest": {
+                "ext-curl": "Required for CURL handler support",
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "psr-18",
+                "psr-7",
+                "rest",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/7.8.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/guzzle",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-12-03T20:35:24+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "bbff78d96034045e58e13dedd6ad91b5d1253223"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/bbff78d96034045e58e13dedd6ad91b5d1253223",
+                "reference": "bbff78d96034045e58e13dedd6ad91b5d1253223",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "phpunit/phpunit": "^8.5.36 || ^9.6.15"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/2.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/promises",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-12-03T20:19:20+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "2.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "45b30f99ac27b5ca93cb4831afe16285f57b8221"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/45b30f99ac27b5ca93cb4831afe16285f57b8221",
+                "reference": "45b30f99ac27b5ca93cb4831afe16285f57b8221",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0",
+                "ralouphie/getallheaders": "^3.0"
+            },
+            "provide": {
+                "psr/http-factory-implementation": "1.0",
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "http-interop/http-factory-tests": "^0.9",
+                "phpunit/phpunit": "^8.5.36 || ^9.6.15"
+            },
+            "suggest": {
+                "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://sagikazarmark.hu"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "psr-7",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/2.6.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-12-03T20:05:35+00:00"
+        },
+        {
+            "name": "microsoft/azure-storage-blob",
+            "version": "1.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Azure/azure-storage-blob-php.git",
+                "reference": "1023ce1dbf062351a32ca5ec72ad1fd4a504f1bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Azure/azure-storage-blob-php/zipball/1023ce1dbf062351a32ca5ec72ad1fd4a504f1bf",
+                "reference": "1023ce1dbf062351a32ca5ec72ad1fd4a504f1bf",
+                "shasum": ""
+            },
+            "require": {
+                "microsoft/azure-storage-common": "~1.5",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MicrosoftAzure\\Storage\\Blob\\": "src/Blob"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Azure Storage PHP Client Library",
+                    "email": "dmsh@microsoft.com"
+                }
+            ],
+            "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure Storage Blob APIs.",
+            "keywords": [
+                "azure",
+                "blob",
+                "php",
+                "sdk",
+                "storage"
+            ],
+            "support": {
+                "issues": "https://github.com/Azure/azure-storage-blob-php/issues",
+                "source": "https://github.com/Azure/azure-storage-blob-php/tree/v1.5.4"
+            },
+            "time": "2022-09-02T02:13:06+00:00"
+        },
+        {
+            "name": "microsoft/azure-storage-common",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Azure/azure-storage-common-php.git",
+                "reference": "8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Azure/azure-storage-common-php/zipball/8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0",
+                "reference": "8ca7b1bf4c9ca7c663e75a02a0035b05b37196a0",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0|^7.0",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MicrosoftAzure\\Storage\\Common\\": "src/Common"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Azure Storage PHP Client Library",
+                    "email": "dmsh@microsoft.com"
+                }
+            ],
+            "description": "This project provides a set of common code shared by Azure Storage Blob, Table, Queue and File PHP client libraries.",
+            "keywords": [
+                "azure",
+                "common",
+                "php",
+                "sdk",
+                "storage"
+            ],
+            "support": {
+                "issues": "https://github.com/Azure/azure-storage-common-php/issues",
+                "source": "https://github.com/Azure/azure-storage-common-php/tree/v1.5.2"
+            },
+            "time": "2021-10-09T03:03:47+00:00"
+        },
+        {
+            "name": "microsoft/azure-storage-file",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Azure/azure-storage-file-php.git",
+                "reference": "75432805ba5849ad81e455a449273ab544ff8212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Azure/azure-storage-file-php/zipball/75432805ba5849ad81e455a449273ab544ff8212",
+                "reference": "75432805ba5849ad81e455a449273ab544ff8212",
+                "shasum": ""
+            },
+            "require": {
+                "microsoft/azure-storage-common": "~1.5",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MicrosoftAzure\\Storage\\File\\": "src/File"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Azure Storage PHP Client Library",
+                    "email": "dmsh@microsoft.com"
+                }
+            ],
+            "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure Storage File APIs.",
+            "keywords": [
+                "azure",
+                "file",
+                "php",
+                "sdk",
+                "storage"
+            ],
+            "support": {
+                "issues": "https://github.com/Azure/azure-storage-file-php/issues",
+                "source": "https://github.com/Azure/azure-storage-file-php/tree/v1.2.5"
+            },
+            "time": "2021-10-09T03:30:00+00:00"
+        },
+        {
+            "name": "microsoft/azure-storage-queue",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Azure/azure-storage-queue-php.git",
+                "reference": "750974f7a888bb7a93cacb873b3280c45e970a23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Azure/azure-storage-queue-php/zipball/750974f7a888bb7a93cacb873b3280c45e970a23",
+                "reference": "750974f7a888bb7a93cacb873b3280c45e970a23",
+                "shasum": ""
+            },
+            "require": {
+                "microsoft/azure-storage-common": "~1.5",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MicrosoftAzure\\Storage\\Queue\\": "src/Queue"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Azure Storage PHP Client Library",
+                    "email": "dmsh@microsoft.com"
+                }
+            ],
+            "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure Storage Queue APIs.",
+            "keywords": [
+                "azure",
+                "php",
+                "queue",
+                "sdk",
+                "storage"
+            ],
+            "support": {
+                "issues": "https://github.com/Azure/azure-storage-queue-php/issues",
+                "source": "https://github.com/Azure/azure-storage-queue-php/tree/v1.3.4"
+            },
+            "time": "2021-10-09T03:29:05+00:00"
+        },
+        {
+            "name": "microsoft/azure-storage-table",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Azure/azure-storage-table-php.git",
+                "reference": "6e3361c36a3f3ce0603faac58d27ab7c066539e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Azure/azure-storage-table-php/zipball/6e3361c36a3f3ce0603faac58d27ab7c066539e1",
+                "reference": "6e3361c36a3f3ce0603faac58d27ab7c066539e1",
+                "shasum": ""
+            },
+            "require": {
+                "microsoft/azure-storage-common": "~1.5",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MicrosoftAzure\\Storage\\Table\\": "src/Table"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Azure Storage PHP Client Library",
+                    "email": "dmsh@microsoft.com"
+                }
+            ],
+            "description": "This project provides a set of PHP client libraries that make it easy to access Microsoft Azure Storage Table APIs.",
+            "keywords": [
+                "azure",
+                "php",
+                "sdk",
+                "storage",
+                "table"
+            ],
+            "support": {
+                "issues": "https://github.com/Azure/azure-storage-table-php/issues",
+                "source": "https://github.com/Azure/azure-storage-table-php/tree/v1.1.6"
+            },
+            "time": "2022-09-02T02:14:16+00:00"
+        },
+        {
             "name": "oscarotero/env",
             "version": "v2.1.0",
             "source": {
@@ -350,6 +1029,278 @@
             "time": "2023-11-12T21:59:55+00:00"
         },
         {
+            "name": "pivvenit/acf-pro-installer",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pivvenit/acf-pro-installer.git",
+                "reference": "e14e56c23f5596573c01dd87edd4ca890ef2a56a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pivvenit/acf-pro-installer/zipball/e14e56c23f5596573c01dd87edd4ca890ef2a56a",
+                "reference": "e14e56c23f5596573c01dd87edd4ca890ef2a56a",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1||^2.0",
+                "ext-json": "*",
+                "php": "^7.3||^8.0",
+                "vlucas/phpdotenv": "^2.0 || ^3.0 || ^4.0 || ^5.0"
+            },
+            "replace": {
+                "philippbaschke/acf-pro-installer": "1.0.2"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0|| ^2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2.0",
+                "phpstan/phpstan": "^1.1.2",
+                "phpunit/phpunit": "^9.0",
+                "rregeer/phpunit-coverage-check": "^0.3.1",
+                "squizlabs/php_codesniffer": "^3.4",
+                "symfony/process": "^5.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PivvenIT\\Composer\\Installers\\ACFPro\\ACFProInstallerPlugin",
+                "plugin-modifies-downloads": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "PivvenIT\\Composer\\Installers\\ACFPro\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PivvenIT",
+                    "homepage": "https://pivvenit.nl"
+                }
+            ],
+            "description": "A modern maintained install helper for Advanced Custom Fields PRO",
+            "keywords": [
+                "acf",
+                "composer",
+                "env",
+                "plugin",
+                "pro",
+                "wordpress",
+                "wp"
+            ],
+            "support": {
+                "issues": "https://github.com/pivvenit/acf-pro-installer/issues",
+                "source": "https://github.com/pivvenit/acf-pro-installer/tree/3.2.0"
+            },
+            "time": "2022-08-26T07:12:57+00:00"
+        },
+        {
+            "name": "psr/http-client",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client"
+            },
+            "time": "2023-09-23T14:17:50+00:00"
+        },
+        {
+            "name": "psr/http-factory",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "keywords": [
+                "factory",
+                "http",
+                "message",
+                "psr",
+                "psr-17",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+            },
+            "time": "2023-04-10T20:10:41+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/2.0"
+            },
+            "time": "2023-04-04T09:54:51+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
             "name": "roots/bedrock-autoloader",
             "version": "1.0.4",
             "source": {
@@ -468,7 +1419,7 @@
         },
         {
             "name": "roots/wordpress",
-            "version": "5.9.9",
+            "version": "6.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/wordpress.git",
@@ -582,22 +1533,22 @@
         },
         {
             "name": "roots/wordpress-no-content",
-            "version": "5.9.9",
+            "version": "6.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress.git",
-                "reference": "5.9.9"
+                "reference": "6.4.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/release/wordpress-5.9.9-no-content.zip",
-                "shasum": "f466cd6a14dc0f8c0643a4bf83f137087ba2a7e1"
+                "url": "https://downloads.wordpress.org/release/wordpress-6.4.3-no-content.zip",
+                "shasum": "4138c6337bf524159b406d5b27916deebb0f78df"
             },
             "require": {
-                "php": ">= 5.6.20"
+                "php": ">= 7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "5.9.9"
+                "wordpress/core-implementation": "6.4.3"
             },
             "suggest": {
                 "ext-curl": "Performs remote request operations.",
@@ -648,7 +1599,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-01-30T21:22:16+00:00"
+            "time": "2024-01-30T19:32:01+00:00"
         },
         {
             "name": "roots/wp-config",
@@ -757,6 +1708,73 @@
                 "source": "https://github.com/roots/wp-password-bcrypt/tree/master"
             },
             "time": "2016-03-01T16:27:06+00:00"
+        },
+        {
+            "name": "symfony/deprecation-contracts",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.4-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "function.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A generic function and convention to trigger deprecation notices",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-05-23T14:45:45+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1136,42 +2154,6 @@
             "homepage": "https://wordpress.org/plugins/broken-link-checker/"
         },
         {
-            "name": "wpackagist-plugin/duplicate-post",
-            "version": "4.5",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/duplicate-post/",
-                "reference": "tags/4.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/duplicate-post.4.5.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/duplicate-post/"
-        },
-        {
-            "name": "wpackagist-plugin/easy-wp-smtp",
-            "version": "1.5.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/easy-wp-smtp/",
-                "reference": "tags/1.5.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/easy-wp-smtp.1.5.3.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/easy-wp-smtp/"
-        },
-        {
             "name": "wpackagist-plugin/gravity-forms-custom-post-types",
             "version": "3.1.29",
             "source": {
@@ -1226,22 +2208,40 @@
             "homepage": "https://wordpress.org/plugins/nitropack/"
         },
         {
-            "name": "wpackagist-plugin/redirection",
-            "version": "5.4.2",
+            "name": "wpackagist-plugin/svg-support",
+            "version": "2.5.5",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/redirection/",
-                "reference": "tags/5.4.2"
+                "url": "https://plugins.svn.wordpress.org/svg-support/",
+                "reference": "tags/2.5.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redirection.5.4.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/svg-support.2.5.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/redirection/"
+            "homepage": "https://wordpress.org/plugins/svg-support/"
+        },
+        {
+            "name": "wpackagist-plugin/tablepress",
+            "version": "1.14",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/tablepress/",
+                "reference": "tags/1.14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/tablepress.1.14.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/tablepress/"
         },
         {
             "name": "wpackagist-plugin/user-role-editor",
@@ -1280,24 +2280,6 @@
             "homepage": "https://wordpress.org/plugins/wordfence/"
         },
         {
-            "name": "wpackagist-plugin/wp-all-import",
-            "version": "3.7.3",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-all-import/",
-                "reference": "tags/3.7.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-all-import.3.7.3.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-all-import/"
-        },
-        {
             "name": "wpackagist-plugin/wp-security-audit-log",
             "version": "4.6.4",
             "source": {
@@ -1316,6 +2298,24 @@
             "homepage": "https://wordpress.org/plugins/wp-security-audit-log/"
         },
         {
+            "name": "wpackagist-plugin/wpo365-login",
+            "version": "21.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wpo365-login/",
+                "reference": "tags/21.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wpo365-login.21.5.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wpo365-login/"
+        },
+        {
             "name": "wpackagist-plugin/wps-hide-login",
             "version": "1.9.13.2",
             "source": {
@@ -1332,6 +2332,295 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wps-hide-login/"
+        },
+        {
+            "name": "yoast/wordpress-seo",
+            "version": "20.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yoast-dist/wordpress-seo.git",
+                "reference": "721956362ebbf823d2608dbc62a3fa76e11ca763"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo/yoast-wordpress-seo-721956362ebbf823d2608dbc62a3fa76e11ca763-zip-844bdf.zip",
+                "reference": "721956362ebbf823d2608dbc62a3fa76e11ca763",
+                "shasum": "8ee3ec32e3789bdc24f1c83bb322e3c2324e22f7"
+            },
+            "require": {
+                "composer/installers": "^1.12 || ^2.0",
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "6.5.8",
+                "humbug/php-scoper": "^0.13.4",
+                "league/oauth2-client": "2.6.1",
+                "psr/container": "1.0.0",
+                "psr/log": "^1.0",
+                "symfony/config": "^3.4",
+                "symfony/dependency-injection": "^3.4",
+                "wordproof/wordpress-sdk": "1.3.2",
+                "yoast/wp-test-utils": "^1.1.1",
+                "yoast/yoastcs": "^2.3.1"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "classmap": [
+                    "admin/",
+                    "inc/",
+                    "vendor_prefixed/",
+                    "src/",
+                    "lib/"
+                ]
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/",
+                    "config/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
+                ],
+                "coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit"
+                ],
+                "integration-test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
+                ],
+                "integration-coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
+                ],
+                "lint": [
+                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
+                ],
+                "lint-files": [
+                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint -e php --show-deprecated"
+                ],
+                "lint-branch": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::lint_branch"
+                ],
+                "lint-staged": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::lint_staged"
+                ],
+                "cs": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::check_coding_standards"
+                ],
+                "check-cs-thresholds": [
+                    "@putenv YOASTCS_THRESHOLD_ERRORS=130",
+                    "@putenv YOASTCS_THRESHOLD_WARNINGS=202",
+                    "Yoast\\WP\\SEO\\Composer\\Actions::check_cs_thresholds"
+                ],
+                "check-cs": [
+                    "@check-cs-warnings -n"
+                ],
+                "check-cs-errors": [
+                    "echo You can now just use check-cs, running that command now.",
+                    "composer check-cs"
+                ],
+                "check-cs-warnings": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+                ],
+                "check-staged-cs": [
+                    "@check-cs-warnings --filter=GitStaged"
+                ],
+                "check-branch-cs": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::check_branch_cs"
+                ],
+                "fix-cs": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+                ],
+                "prefix-dependencies": [
+                    "composer prefix-oauth2-client",
+                    "composer prefix-symfony",
+                    "composer prefix-wordproof"
+                ],
+                "prefix-oauth2-client": [
+                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/league/oauth2-client --config=config/php-scoper/oauth2-client.inc.php --force --quiet",
+                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/guzzlehttp --config=config/php-scoper/guzzlehttp.inc.php --force --quiet",
+                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/psr --config=config/php-scoper/psr.inc.php --force --quiet"
+                ],
+                "prefix-symfony": [
+                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/symfony/dependency-injection --config=config/php-scoper/dependency-injection.inc.php --force --quiet"
+                ],
+                "prefix-wordproof": [
+                    "@php ./vendor/humbug/php-scoper/bin/php-scoper add-prefix --prefix=YoastSEO_Vendor --output-dir=./vendor_prefixed/wordproof/wordpress-sdk --config=config/php-scoper/wordproof.inc.php --force --quiet"
+                ],
+                "compile-di": [
+                    "rm -f ./src/generated/container.php",
+                    "rm -f ./src/generated/container.php.meta",
+                    "composer du --no-scripts",
+                    "Yoast\\WP\\SEO\\Composer\\Actions::compile_dependency_injection_container"
+                ],
+                "post-autoload-dump": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::prefix_dependencies",
+                    "composer compile-di"
+                ],
+                "generate-migration": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::generate_migration"
+                ],
+                "generate-unit-test": [
+                    "Yoast\\WP\\SEO\\Composer\\Actions::generate_unit_test"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Team Yoast",
+                    "email": "support@yoast.com",
+                    "homepage": "https://yoa.st/1--"
+                }
+            ],
+            "description": "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.",
+            "homepage": "https://yoa.st/1ui",
+            "keywords": [
+                "seo",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/Yoast/wordpress-seo/issues",
+                "forum": "https://wordpress.org/support/plugin/wordpress-seo",
+                "wiki": "https://github.com/Yoast/wordpress-seo/wiki",
+                "source": "https://github.com/Yoast/wordpress-seo"
+            },
+            "time": "2023-08-08T08:11:09+00:00"
+        },
+        {
+            "name": "yoast/wordpress-seo-premium",
+            "version": "20.13",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Yoast-dist/wordpress-seo-premium.git",
+                "reference": "e77d03283d5b121a94c1945e06f55422446c66f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo-premium/yoast-wordpress-seo-premium-e77d03283d5b121a94c1945e06f55422446c66f6-zip-7ef5a7.zip",
+                "reference": "e77d03283d5b121a94c1945e06f55422446c66f6",
+                "shasum": "79581bed8fd94d8aaf75ddd51fc9fc307981b981"
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0",
+                "yoast/wordpress-seo": "^20.13"
+            },
+            "require-dev": {
+                "yoast/wp-test-utils": "^1.1.1",
+                "yoast/yoastcs": "^2.3.1"
+            },
+            "type": "wordpress-plugin",
+            "extra": {
+                "installer-paths": {
+                    "vendor/{$vendor}/{$name}": [
+                        "type:wordpress-plugin"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "classes/",
+                    "cli/",
+                    "src/",
+                    "premium.php"
+                ],
+                "exclude-from-classmap": [
+                    "/**/node_modules/",
+                    "vendor/composer/installers",
+                    "vendor/yoast/wordpress-seo"
+                ]
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "config/",
+                    "tests/"
+                ]
+            },
+            "scripts": {
+                "test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
+                ],
+                "coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit"
+                ],
+                "integration-test": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist --no-coverage"
+                ],
+                "integration-coverage": [
+                    "@php ./vendor/phpunit/phpunit/phpunit -c phpunit-integration.xml.dist"
+                ],
+                "compile-di": [
+                    "rm -f ./src/generated/container.php",
+                    "rm -f ./src/generated/container.php.meta",
+                    "composer du --no-scripts",
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::compile_dependency_injection_container"
+                ],
+                "cs": [
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_coding_standards"
+                ],
+                "check-cs-thresholds": [
+                    "@putenv YOASTCS_THRESHOLD_ERRORS=60",
+                    "@putenv YOASTCS_THRESHOLD_WARNINGS=43",
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_cs_thresholds"
+                ],
+                "lint": [
+                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git --exclude wp-content"
+                ],
+                "check-cs": [
+                    "@check-cs-warnings -n"
+                ],
+                "check-cs-errors": [
+                    "echo You can now just use check-cs, running that command now.",
+                    "composer check-cs"
+                ],
+                "check-cs-warnings": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+                ],
+                "check-staged-cs": [
+                    "@check-cs-warnings --filter=GitStaged"
+                ],
+                "fix-cs": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+                ],
+                "lint-files": [
+                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint --show-deprecated"
+                ],
+                "lint-branch": [
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::lint_branch"
+                ],
+                "lint-staged": [
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::lint_staged"
+                ],
+                "check-branch-cs": [
+                    "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_branch_cs"
+                ],
+                "post-install-cmd": [
+                    "cd vendor/yoast/wordpress-seo && composer install --no-interaction && cd ../..",
+                    "composer compile-di"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Team Yoast",
+                    "email": "support@yoast.com",
+                    "homepage": "https://yoa.st/1--"
+                }
+            ],
+            "description": "Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.",
+            "homepage": "https://yoa.st/1ui",
+            "keywords": [
+                "seo",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/Yoast/wordpress-seo-premium/issues",
+                "source": "https://github.com/Yoast/wordpress-seo-premium"
+            },
+            "time": "2023-08-08T08:42:58+00:00"
         }
     ],
     "packages-dev": [
@@ -2286,7 +3575,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.3"
+        "php": ">=7.4 <8"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
