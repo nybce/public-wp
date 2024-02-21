@@ -104,15 +104,28 @@ class PgCache_ContentGrabber {
 	private $output_size = 0;
 
 	/**
-	 *
-	 *
 	 * @var bool If cached page should be displayed after init
 	 */
 	var $_late_init = false;
 
+	/**
+	 * @var bool late caching
+	 */
+	var $_late_caching = false;
+
 	var $_cached_data = null;
 
 	var $_old_exists = false;
+
+	/**
+	 * @var bool Nginx memcached flag
+	 */
+	var $_nginx_memcached = false;
+
+	/**
+	 * @var string
+	 */
+	var $_page_group;
 
 	/**
 	 * PHP5 Constructor
@@ -864,7 +877,8 @@ class PgCache_ContentGrabber {
 					'aws_autodiscovery' => $this->_config->get_boolean( 'pgcache.memcached.aws_autodiscovery' ),
 					'username' => $this->_config->get_string( 'pgcache.memcached.username' ),
 					'password' => $this->_config->get_string( 'pgcache.memcached.password' ),
-					'binary_protocol' => $this->_config->get_boolean( 'pgcache.memcached.binary_protocol' )
+					'binary_protocol' => $this->_config->get_boolean( 'pgcache.memcached.binary_protocol' ),
+					'host' => Util_Environment::host(),
 				);
 				break;
 
@@ -932,9 +946,9 @@ class PgCache_ContentGrabber {
 			}
 
 			$engineConfig['use_expired_data'] = true;
-			$engineConfig['module'] = 'pgcache';
-			$engineConfig['host'] = '';   // host is always put to a key
-			$engineConfig['instance_id'] = Util_Environment::instance_id();
+			$engineConfig['module']           = 'pgcache';
+			$engineConfig['host']             = '';
+			$engineConfig['instance_id']      = Util_Environment::instance_id();
 
 			$caches[$group] = Cache::instance( $engine, $engineConfig );
 		}
@@ -2020,7 +2034,6 @@ class PgCache_ContentGrabber {
 
 	private function _normalize_querystring( $querystring ) {
 		$ignore_qs = $this->_config->get_array( 'pgcache.accept.qs' );
-		$ignore_qs = array_merge( $ignore_qs, PgCache_QsExempts::get_qs_exempts() );
 		$ignore_qs = w3tc_apply_filters( 'pagecache_extract_accept_qs', $ignore_qs );
 		Util_Rule::array_trim( $ignore_qs );
 

@@ -48,7 +48,7 @@ class Generic_AdminActions_Default {
 	 *
 	 * @return void
 	 */
-	function w3tc_default_save_licence_key() {
+	function w3tc_default_save_license_key() {
 		$license = Util_Request::get_string( 'license_key' );
 		try {
 			$old_config = new Config();
@@ -235,13 +235,6 @@ class Generic_AdminActions_Default {
 		$config = new Config();
 		$this->read_request( $config );
 
-		if ( 'w3tc_dashboard' === $this->_page ) {
-			if ( Util_Request::get_boolean( 'maxcdn' ) ) {
-				$config->set( 'cdn.enabled', true );
-				$config->set( 'cdn.engine', 'maxcdn' );
-			}
-		}
-
 		/**
 		 * General tab
 		 */
@@ -278,6 +271,17 @@ class Generic_AdminActions_Default {
 				$config->set( 'pgcache.enabled', false );
 				$data['response_errors'][] = 'fancy_permalinks_disabled_pgcache';
 			}
+
+			/**
+			 * Check for Image Service extension status changes.
+			 */
+			if ( $config->get_boolean( 'extension.imageservice' ) !== $this->_config->get_boolean( 'extension.imageservice' ) ) {
+				if ( $config->get_boolean( 'extension.imageservice' ) ) {
+					Extensions_Util::activate_extension( 'imageservice', $config );
+				} else {
+					Extensions_Util::deactivate_extension( 'imageservice', $config );
+				}
+			}
 		}
 
 		/**
@@ -286,7 +290,6 @@ class Generic_AdminActions_Default {
 		if ( 'w3tc_minify' === $this->_page ) {
 			if ( ( $this->_config->get_boolean( 'minify.js.http2push' ) && ! $config->get_boolean( 'minify.js.http2push' ) ) ||
 			( $this->_config->get_boolean( 'minify.css.http2push' ) && ! $config->get_boolean( 'minify.css.http2push' ) ) ) {
-
 				if ( 'file_generic' === $config->get_string( 'pgcache.engine' ) ) {
 					$cache_dir = Util_Environment::cache_blog_dir( 'page_enhanced' );
 					$this->_delete_all_htaccess_files( $cache_dir );
@@ -349,27 +352,6 @@ class Generic_AdminActions_Default {
 
 				$config->set( 'browsercache.no404wp', false );
 				$data['response_errors'][] = 'fancy_permalinks_disabled_browsercache';
-			}
-
-			// todo: move to cdn module.
-			$engine = $this->_config->get_string( 'cdn.engine' );
-			if ( 'maxcdn' === $engine ) {
-				require_once W3TC_LIB_NETDNA_DIR . '/NetDNA.php';
-				$keys = explode( '+', $this->_config->get_string( 'cdn.' . $engine . '.authorization_key' ) );
-				if ( count( $keys ) === 3 ) {
-					list( $alias, $consumerkey, $consumersecret ) = $keys;
-					try {
-						$api                   = new \NetDNA( $alias, $consumerkey, $consumersecret );
-						$disable_cooker_header = $config->get_boolean( 'browsercache.other.nocookies' ) ||
-							$config->get_boolean( 'browsercache.cssjs.nocookies' );
-						$api->update_pull_zone(
-							$this->_config->get_string( 'cdn.' . $engine . '.zone_id' ),
-							array( 'ignore_setcookie_header' => $disable_cooker_header )
-						);
-					} catch ( \Exception $ex ) {
-						// missing exception handle?
-					}
-				}
 			}
 		}
 
@@ -446,17 +428,6 @@ class Generic_AdminActions_Default {
 
 				case 'mirror':
 					$config->set( 'cdn.mirror.domain', $cdn_domains );
-					break;
-
-				case 'maxcdn':
-					$v = $config->get( 'cdn.maxcdn.domain' );
-					if ( isset( $v['http_default'] ) ) {
-						$cdn_domains['http_default'] = $v['http_default'];
-					}
-					if ( isset( $v['https_default'] ) ) {
-						$cdn_domains['https_default'] = $v['https_default'];
-					}
-					$config->set( 'cdn.maxcdn.domain', $cdn_domains );
 					break;
 
 				case 'rackspace_cdn':
@@ -577,8 +548,7 @@ class Generic_AdminActions_Default {
 			return;
 		}
 
-		$file = readdir( $handle );
-		while ( false !== $file ) {
+		while ( false !== ( $file = readdir( $handle ) ) ) {
 			if ( '.' === $file || '..' === $file ) {
 				continue;
 			}
@@ -587,7 +557,7 @@ class Generic_AdminActions_Default {
 				$this->_delete_all_htaccess_files( $file );
 				continue;
 			} elseif ( '.htaccess' === $file ) {
-				@unlink( $file );
+				@unlink( $dir . '/' . $file );
 			}
 		}
 
@@ -599,7 +569,9 @@ class Generic_AdminActions_Default {
 	 *
 	 * @return bool
 	 */
-	function enable_cookie_domain() {
+	public function enable_cookie_domain() {
+		WP_Filesystem();
+
 		global $wp_filesystem;
 
 		$config_path = Util_Environment::wp_config_path();
@@ -642,7 +614,9 @@ class Generic_AdminActions_Default {
 	 *
 	 * @return bool
 	 */
-	function disable_cookie_domain() {
+	public function disable_cookie_domain() {
+		WP_Filesystem();
+
 		global $wp_filesystem;
 
 		$config_path = Util_Environment::wp_config_path();
@@ -706,10 +680,6 @@ class Generic_AdminActions_Default {
 				array_map( 'stripslashes_deep', $request_value );
 			} else {
 				$request_value = stripslashes( $request_value );
-
-				if ( strpos( $request_key, 'memcached__servers' ) || strpos( $request_key, 'redis__servers' ) ) {
-					$request_value = explode( ',', $request_value );
-				}
 			}
 
 			if ( 'extension__' === substr( $request_key, 0, 11 ) ) {
@@ -722,26 +692,40 @@ class Generic_AdminActions_Default {
 				}
 			}
 
-			$key = Util_Ui::config_key_from_http_name( $request_key );
-			if ( is_array( $key ) ) {
-				$config->set( $key, $request_value );
-			} elseif ( array_key_exists( $key, $keys ) ) {
-				$descriptor = $keys[ $key ];
-				if ( isset( $descriptor['type'] ) ) {
-					if ( 'array' === $descriptor['type'] ) {
-						if ( is_array( $request_value ) ) {
-							$request_value = implode( "\n", $request_value );
-						}
-						$request_value = explode( "\n", str_replace( "\r\n", "\n", $request_value ) );
-					} elseif ( 'boolean' === $descriptor['type'] ) {
-						$request_value = ( '1' === $request_value );
-					} elseif ( 'integer' === $descriptor['type'] ) {
-						$request_value = (int) $request_value;
-					}
-				}
+			$key        = Util_Ui::config_key_from_http_name( $request_key );
+			$descriptor = null;
 
-				$config->set( $key, $request_value );
+			if ( ! is_array( $key ) && array_key_exists( $key, $keys ) ) {
+				$descriptor = $keys[ $key ];
 			}
+
+			/**
+			 * This filter is needed for compound keys to set the appropirate data type to save as.
+			 * Mainly used by extensions with textarea fields that don't feature a ConfigKeys entry.
+			 * If no filter exists to define such fields it will save as a string, requiring post-processing.
+			 *
+			 * @since 2.4.2
+			 *
+			 * @param mixed $descriptor Array containing correct data type or null if not matched.
+			 * @param array $key        Key to match on.
+			*/
+			$descriptor = apply_filters( 'w3tc_config_key_descriptor', $descriptor, $key );
+
+			if ( isset( $descriptor['type'] ) ) {
+				if ( 'array' === $descriptor['type'] ) {
+					if ( is_array( $request_value ) ) {
+						// This is needed for radio inputs.
+						$request_value = implode( "\n", $request_value );
+					}
+					$request_value = Util_Environment::textarea_to_array( $request_value );
+				} elseif ( 'boolean' === $descriptor['type'] ) {
+					$request_value = ( '1' === $request_value );
+				} elseif ( 'integer' === $descriptor['type'] ) {
+					$request_value = (int) $request_value;
+				}
+			}
+
+			$config->set( $key, $request_value );
 		}
 	}
 }
