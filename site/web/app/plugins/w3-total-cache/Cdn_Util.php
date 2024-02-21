@@ -33,7 +33,6 @@ class Cdn_Util {
 				'google_drive',
 				'highwinds',
 				'limelight',
-				'maxcdn',
 				'mirror',
 				'rscf',
 				'rackspace_cdn',
@@ -47,9 +46,10 @@ class Cdn_Util {
 	}
 
 	/**
-	 * Returns true if CDN engine is mirror
+	 * Returns true if CDN engine is mirror.
 	 *
 	 * @param string $engine CDN engine.
+	 * @static
 	 *
 	 * @return bool
 	 */
@@ -58,7 +58,6 @@ class Cdn_Util {
 			$engine,
 			array(
 				'mirror',
-				'maxcdn',
 				'cotendo',
 				'cf2',
 				'akamai',
@@ -69,6 +68,7 @@ class Cdn_Util {
 				'rackspace_cdn',
 				'stackpath',
 				'stackpath2',
+				'bunnycdn',
 			),
 			true
 		);
@@ -97,12 +97,12 @@ class Cdn_Util {
 			$engine,
 			array(
 				'att',
+				'bunnycdn',
 				'cf2',
 				'cotendo',
 				'edgecast',
 				'highwinds',
 				'limelight',
-				'maxcdn',
 				'stackpath',
 				'stackpath2',
 			),
@@ -131,7 +131,6 @@ class Cdn_Util {
 				'ftp',
 				'highwinds',
 				'limelight',
-				'maxcdn',
 				'rscf',
 				's3',
 				's3_compatible',
