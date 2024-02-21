@@ -55,7 +55,7 @@
         "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/user-role-editor": "^4.60.2",
-        "wpackagist-plugin/duplicate-post": "^4.4",
+        "wpackagist-plugin/duplicate-post": "^4.5",
         "wpackagist-plugin/redirection": "^5.2.3",
         "wpackagist-plugin/wp-all-import": "^3.6.7"
     },
