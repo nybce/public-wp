@@ -31,7 +31,6 @@ class Extensions_Plugin_Admin {
 	public function run() {
 		// Attach w3tc-bundled extensions.
 		add_filter( 'w3tc_extensions', array( '\W3TC\Extension_CloudFlare_Plugin_Admin', 'w3tc_extensions' ), 10, 2 );
-		add_filter( 'w3tc_extensions', array( '\W3TC\Extension_FeedBurner_Plugin_Admin', 'w3tc_extensions' ), 10, 2 );
 		add_filter( 'w3tc_extensions', array( '\W3TC\Extension_FragmentCache_Plugin_Admin', 'w3tc_extensions' ), 10, 2 );
 		add_filter( 'w3tc_extensions', array( '\W3TC\Extension_Genesis_Plugin_Admin', 'w3tc_extensions' ), 10, 2 );
 		add_filter( 'w3tc_extensions_hooks', array( '\W3TC\Extension_Genesis_Plugin_Admin', 'w3tc_extensions_hooks' ) );
@@ -232,7 +231,7 @@ class Extensions_Plugin_Admin {
 
 			if ( isset( $info['notice'] ) && get_transient( $transient_name ) ) {
 				?>
-				<div class="notice notice-warning is-dismissible">
+				<div class="notice notice-warning inline is-dismissible">
 					<p>
 				<?php
 				echo wp_kses(

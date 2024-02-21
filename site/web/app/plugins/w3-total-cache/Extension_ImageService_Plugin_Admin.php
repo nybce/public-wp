@@ -99,7 +99,7 @@ class Extension_ImageService_Plugin_Admin {
 		$library_url  = esc_url( Util_Ui::admin_url( 'upload.php?mode=list' ) );
 
 		$extensions['imageservice'] = array(
-			'name'             => 'Image Service',
+			'name'             => 'WebP Converter',
 			'author'           => 'BoldGrid',
 			'description'      => esc_html( $description ),
 			'author_uri'       => 'https://www.boldgrid.com/',
@@ -114,7 +114,7 @@ class Extension_ImageService_Plugin_Admin {
 			'notice'           => sprintf(
 				// translators: 1: HTML anchor open tag, 2: HTML anchor close tag, 3: HTML anchor open tag, 4: HTML anchor open tag.
 				__(
-					'Total Cache Image Service has been activated. Now, you can %1$sadjust the settings%2$s or go to the %3$sMedia Library%2$s to convert images to WebP.  %4$sLearn more%2$s.',
+					'Total Cache WebP Converter has been activated. Now, you can %1$sadjust the settings%2$s or go to the %3$sMedia Library%2$s to convert images to WebP.  %4$sLearn more%2$s.',
 					'w3-total-cache'
 				),
 				'<a class="edit" href="' . $settings_url . '">',
@@ -489,8 +489,8 @@ class Extension_ImageService_Plugin_Admin {
 		// Add settings submenu to Media top-level menu.
 		add_submenu_page(
 			'upload.php',
-			esc_html__( 'Total Cache Image Service', 'w3-total-cache' ),
-			esc_html__( 'Total Cache Image Service', 'w3-total-cache' ),
+			esc_html__( 'Total Cache WebP Converter', 'w3-total-cache' ),
+			esc_html__( 'Total Cache WebP Converter', 'w3-total-cache' ),
 			'edit_posts',
 			'w3tc_extension_page_imageservice',
 			array( $this, 'settings_page' )
@@ -515,6 +515,8 @@ class Extension_ImageService_Plugin_Admin {
 
 		if ( $is_settings_page ) {
 			wp_enqueue_style( 'w3tc-options' );
+			wp_enqueue_style( 'w3tc-bootstrap-css' );
+			wp_enqueue_script( 'w3tc-options' );
 		}
 
 		if ( $is_settings_page || $is_media_page ) {
@@ -540,30 +542,30 @@ class Extension_ImageService_Plugin_Admin {
 						'revert'   => wp_create_nonce( 'w3tc_imageservice_revert' ),
 					),
 					'lang'        => array(
-						'convert'          => __( 'Convert', 'w3-total_cache' ),
-						'sending'          => __( 'Sending...', 'w3-total_cache' ),
-						'submitted'        => __( 'Submitted', 'w3-total_cache' ),
-						'processing'       => __( 'Processing...', 'w3-total_cache' ),
-						'converted'        => __( 'Converted', 'w3-total_cache' ),
-						'notConverted'     => __( 'Not converted', 'w3-total_cache' ),
-						'reverting'        => __( 'Reverting...', 'w3-total_cache' ),
-						'reverted'         => __( 'Reverted', 'w3-total_cache' ),
-						'revert'           => __( 'Revert', 'w3-total_cache' ),
-						'error'            => __( 'Error', 'w3-total_cache' ),
-						'ajaxFail'         => __( 'Failed to retrieve a response.  Please reload the page to try again.', 'w3-total_cache' ),
-						'apiError'         => __( 'API error.  Please reload the page to try again,', 'w3-total_cache' ),
-						'refresh'          => __( 'Refresh', 'w3-total_cache' ),
-						'refreshing'       => __( 'Refreshing...', 'w3-total_cache' ),
-						'settings'         => __( 'Settings', 'w3-total_cache' ),
+						'convert'          => __( 'Convert', 'w3-total-cache' ),
+						'sending'          => __( 'Sending...', 'w3-total-cache' ),
+						'submitted'        => __( 'Submitted', 'w3-total-cache' ),
+						'processing'       => __( 'Processing...', 'w3-total-cache' ),
+						'converted'        => __( 'Converted', 'w3-total-cache' ),
+						'notConverted'     => __( 'Not converted', 'w3-total-cache' ),
+						'reverting'        => __( 'Reverting...', 'w3-total-cache' ),
+						'reverted'         => __( 'Reverted', 'w3-total-cache' ),
+						'revert'           => __( 'Revert', 'w3-total-cache' ),
+						'error'            => __( 'Error', 'w3-total-cache' ),
+						'ajaxFail'         => __( 'Failed to retrieve a response.  Please reload the page to try again.', 'w3-total-cache' ),
+						'apiError'         => __( 'API error.  Please reload the page to try again,', 'w3-total-cache' ),
+						'refresh'          => __( 'Refresh', 'w3-total-cache' ),
+						'refreshing'       => __( 'Refreshing...', 'w3-total-cache' ),
+						'settings'         => __( 'Settings', 'w3-total-cache' ),
 						'submittedAllDesc' => sprintf(
 							// translators: 1: HTML anchor open tag, 2: HTML anchor close tag.
-							__( 'Images queued for conversion.  Progress can be seen in the %1$sMedia Library%2$s.', 'w3-total_cache' ),
+							__( 'Images queued for conversion.  Progress can be seen in the %1$sMedia Library%2$s.', 'w3-total-cache' ),
 							'<a href="' . esc_url( Util_Ui::admin_url( 'upload.php?mode=list' ) ) . '">',
 							'</a>'
 						),
 						'notConvertedDesc' => sprintf(
 							// translators: 1: HTML anchor open tag, 2: HTML anchor close tag.
-							__( 'The converted image would be larger than the original; conversion canceled.  %1$sLearn more%2$s.', 'w3-total_cache' ),
+							__( 'The converted image would be larger than the original; conversion canceled.  %1$sLearn more%2$s.', 'w3-total-cache' ),
 							'<a target="_blank" href="' . esc_url(
 								'https://www.boldgrid.com/support/w3-total-cache/image-service#conversion-canceled/?utm_source=w3tc&utm_medium=conversion_canceled&utm_campaign=imageservice'
 							) . '">',
@@ -572,7 +574,7 @@ class Extension_ImageService_Plugin_Admin {
 					),
 					'tos_choice'  => Licensing_Core::get_tos_choice(),
 					'track_usage' => $this->config->get_boolean( 'common.track_usage' ),
-					'ga_profile'  => ( defined( 'W3TC_DEBUG' ) && W3TC_DEBUG ) ? 'UA-2264433-7' : 'UA-2264433-8',
+					'ga_profile'  => ( defined( 'W3TC_DEVELOPER' ) && W3TC_DEVELOPER ) ? 'G-Q3CHQJWERM' : 'G-5TFS8M5TTY',
 					'settings'    => $this->config->get_array( 'imageservice' ),
 					'settingsUrl' => esc_url( Util_Ui::admin_url( 'upload.php?page=w3tc_extension_page_imageservice' ) ),
 				)
@@ -605,7 +607,7 @@ class Extension_ImageService_Plugin_Admin {
 		// Delete transient for displaying activation notice.
 		delete_transient( 'w3tc_activation_imageservice' );
 
-		$posts_columns['imageservice'] = '<span class="w3tc-convert"></span> ' . esc_html__( 'Image Service', 'w3-total-cache' );
+		$posts_columns['imageservice'] = '<span class="w3tc-convert"></span> ' . esc_html__( 'WebP Converter', 'w3-total-cache' );
 
 		return $posts_columns;
 	}
@@ -681,7 +683,7 @@ class Extension_ImageService_Plugin_Admin {
 					<?php
 					printf(
 						// translators: 1: HTML anchor open tag, 2: HTML anchor close tag.
-						esc_html__( 'The converted image would be larger than the original; conversion canceled.  %1$sLearn more%2$s.', 'w3-total_cache' ),
+						esc_html__( 'The converted image would be larger than the original; conversion canceled.  %1$sLearn more%2$s.', 'w3-total-cache' ),
 						'<a target="_blank" href="' . esc_url(
 							'https://www.boldgrid.com/support/w3-total-cache/image-service#conversion-canceled/?utm_source=w3tc&utm_medium=conversion_canceled&utm_campaign=imageservice'
 						) . '">',
@@ -855,7 +857,7 @@ class Extension_ImageService_Plugin_Admin {
 			<script>history.pushState( null, '', location.href.split( '?' )[0] );</script>
 
 			<div class="updated notice notice-success is-dismissible">
-				<p>Total Cache Image Service</p>
+				<p>Total Cache WebP Converter</p>
 				<p>
 			<?php
 
@@ -900,7 +902,7 @@ class Extension_ImageService_Plugin_Admin {
 			?>
 			<script>history.pushState( null, '', location.href.split( '?' )[0] );</script>
 
-			<div class="updated notice notice-success is-dismissible"><p>Total Cache Image Service</p>
+			<div class="updated notice notice-success is-dismissible"><p>Total Cache WebP Converter</p>
 				<p><?php esc_html_e( 'All selected optimizations have been reverted.', 'w3-total-cache' ); ?></p>
 			</div>
 			<?php
@@ -912,7 +914,7 @@ class Extension_ImageService_Plugin_Admin {
 			// If not in list mode, then print a notice to switch to it.
 			if ( 'list' !== $mode ) {
 				?>
-				<div class="notice notice-warning is-dismissible"><p>Total Cache Image Service -
+				<div class="notice notice-warning is-dismissible"><p>Total Cache WebP Converter -
 				<?php
 						printf(
 							// translators: 1: HTML anchor open tag, 2: HTML anchor close tag.

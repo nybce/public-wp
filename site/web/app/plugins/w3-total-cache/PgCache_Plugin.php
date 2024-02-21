@@ -33,7 +33,7 @@ class PgCache_Plugin {
 	public function run() {
 		add_action( 'w3tc_flush_all', array( $this, 'w3tc_flush_posts' ), 1100, 1 );
 		add_action( 'w3tc_flush_group', array( $this, 'w3tc_flush_group' ), 1100, 2 );
-		add_action( 'w3tc_flush_post', array( $this, 'w3tc_flush_post' ), 1100, 1 );
+		add_action( 'w3tc_flush_post', array( $this, 'w3tc_flush_post' ), 1100, 2 );
 		add_action( 'w3tc_flushable_posts', '__return_true', 1100 );
 		add_action( 'w3tc_flush_posts', array( $this, 'w3tc_flush_posts' ), 1100 );
 		add_action( 'w3tc_flush_url', array( $this, 'w3tc_flush_url' ), 1100, 1 );
@@ -327,7 +327,7 @@ class PgCache_Plugin {
 		$menu_items['20110.pagecache'] = array(
 			'id'     => 'w3tc_flush_pgcache',
 			'parent' => 'w3tc_flush',
-			'title'  => __( 'Page Cache: All', 'w3-total-cache' ),
+			'title'  => __( 'Page Cache', 'w3-total-cache' ),
 			'href'   => wp_nonce_url( admin_url( 'admin.php?page=w3tc_dashboard&amp;w3tc_flush_pgcache' ), 'w3tc' ),
 		);
 
@@ -339,7 +339,7 @@ class PgCache_Plugin {
 				'href'   => wp_nonce_url(
 					admin_url(
 						'admin.php?page=w3tc_dashboard&amp;w3tc_flush_post&amp;post_id=' .
-							Util_Environment::detect_post_id()
+							Util_Environment::detect_post_id() . '&amp;force=true'
 					),
 					'w3tc'
 				),
@@ -388,12 +388,13 @@ class PgCache_Plugin {
 	 * Flushes post cache
 	 *
 	 * @param integer $post_id Post ID.
+	 * @param boolean $force   Force flag (optional).
 	 *
 	 * @return boolean
 	 */
-	public function w3tc_flush_post( $post_id ) {
+	public function w3tc_flush_post( $post_id, $force = false ) {
 		$pgcacheflush = Dispatcher::component( 'PgCache_Flush' );
-		$v            = $pgcacheflush->flush_post( $post_id );
+		$v            = $pgcacheflush->flush_post( $post_id, $force );
 
 		return $v;
 	}
