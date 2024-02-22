@@ -418,6 +418,9 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		}
 
 		$payment_feed = $this->current_feed;
+		if ( empty( $payment_feed ) ) {
+			$payment_feed = $this->get_single_submission_feed( $entry, $form );
+		}
 
 		return (bool) rgars( $payment_feed, 'meta/delay_' . $slug );
 	}
@@ -541,17 +544,11 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 
 		$form            = $validation_result['form'];
 		$is_last_page    = GFFormDisplay::is_last_page( $form );
-		$failed_honeypot = false;
-
-		if ( $is_last_page && rgar( $form, 'enableHoneypot' ) ) {
-			$honeypot_id     = GFFormDisplay::get_max_field_id( $form ) + 1;
-			$failed_honeypot = ! rgempty( "input_{$honeypot_id}" );
-		}
 
 		// Validation called by partial entries feature via the heartbeat API.
 		$is_heartbeat = rgpost('action') == 'heartbeat';
 
-		if ( ! $is_last_page || $failed_honeypot || $is_heartbeat ) {
+		if ( ! $is_last_page || $is_heartbeat ) {
 			return $validation_result;
 		}
 
@@ -589,19 +586,19 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return $validation_result;
 		}
 
-		$form  = $validation_result['form'];
-		$entry = GFFormsModel::create_lead( $form );
-		$feed  = $this->get_payment_feed( $entry, $form );
-
-		if ( ! $feed ) {
-			return $validation_result;
-		}
-
 		global $gf_payment_gateway;
 
 		if ( $gf_payment_gateway && $gf_payment_gateway !== $this->get_slug() ) {
 			$this->log_debug( __METHOD__ . '() Aborting. Submission already processed by ' . $gf_payment_gateway );
 
+			return $validation_result;
+		}
+
+		$form  = $validation_result['form'];
+		$entry = GFFormsModel::get_current_lead( $form );
+		$feed  = $this->get_payment_feed( $entry, $form );
+
+		if ( ! $feed ) {
 			return $validation_result;
 		}
 
@@ -613,15 +610,15 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return $validation_result;
 		}
 
+		$gf_payment_gateway       = $this->get_slug();
+		$this->is_payment_gateway = true;
+
 		if ( GFCommon::is_spam_entry( $entry, $form ) ) {
 			$this->log_debug( __METHOD__ . '() Aborting. Submission flagged as spam.' );
 
 			return $validation_result;
 		}
 
-		$gf_payment_gateway = $this->get_slug();
-
-		$this->is_payment_gateway      = true;
 		$this->current_feed            = $this->_single_submission_feed = $feed;
 		$this->current_submission_data = $submission_data;
 
@@ -925,6 +922,10 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		// Saving which gateway was used to process this entry.
 		gform_update_meta( $entry['id'], 'payment_gateway', $this->_slug );
 
+		if ( empty( $this->current_feed ) || empty( $this->current_submission_data ) ) {
+			return $entry;
+		}
+
 		$feed = $this->current_feed;
 
 		if ( ! empty( $this->authorization ) ) {
@@ -1177,7 +1178,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$submission_feed = false;
 
 		// Only occurs if entry has already been processed and feed has been stored in entry meta.
-		if ( $entry['id'] ) {
+		if ( ! empty( $entry['id'] ) ) {
 			$feeds           = $this->get_feeds_by_entry( $entry['id'] );
 			$submission_feed = empty( $feeds ) ? false : $this->get_feed( $feeds[0] );
 		} elseif ( $form ) {
@@ -1215,6 +1216,11 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	public function is_payment_gateway( $entry_id ) {
 
 		if ( $this->is_payment_gateway ) {
+			return true;
+		}
+
+		global $gf_payment_gateway;
+		if ( is_array( $gf_payment_gateway ) && $this->get_slug() === rgar( $gf_payment_gateway, $entry_id ) ) {
 			return true;
 		}
 
@@ -1367,7 +1373,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$trial_amount = 0;
 		foreach ( $products['products'] as $field_id => $product ) {
 
-			$quantity      = $product['quantity'] ? $product['quantity'] : 1;
+			$quantity      = isset( $product['quantity'] ) ? (int) $product['quantity'] : 1;
 			$product_price = GFCommon::to_number( $product['price'], $entry['currency'] );
 
 			$options = array();
