@@ -65,7 +65,6 @@
         "wpackagist-plugin/akismet": "^4.2.1",
         "wpackagist-plugin/broken-link-checker": "^1.11.16",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
-        "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/nitropack": "^1.5.7",
         "wpackagist-plugin/svg-support": "^2.3",
         "wpackagist-plugin/user-role-editor": "^4.60.2",
