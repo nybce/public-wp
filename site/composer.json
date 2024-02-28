@@ -73,7 +73,8 @@
         "yoast/wordpress-seo": "^22.1",
         "wpackagist-plugin/duplicate-post": "^4.5",
         "wpackagist-plugin/w3-total-cache":"2.7.0",
-        "wpackagist-plugin/redirection": "^5.2.3"
+        "wpackagist-plugin/redirection": "^5.2.3",
+        "wpackagist-plugin/wp-security-audit-log":"4.6.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
