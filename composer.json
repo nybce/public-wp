@@ -45,19 +45,14 @@
         "roots/wp-password-bcrypt": "1.0.0",
         "roots/multisite-url-fixer": "^1.1",
         "wpackagist-plugin/acf-extended": "0.8.8.6",
-        "wpackagist-plugin/broken-link-checker": "^1.11.16",
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/nitropack": "^1.5.7",
         "wpackagist-plugin/wordfence": "^7.5.6",
         "wpackagist-plugin/wps-hide-login": "^1.9.1",
-        "wpackagist-plugin/akismet": "^4.2.1",
-        "wpackagist-plugin/limit-login-attempts-reloaded": "^2.23.2",
         "wpackagist-plugin/wp-security-audit-log": "^4.3.3.1",
         "wpackagist-plugin/user-role-editor": "^4.60.2",
-        "wpackagist-plugin/duplicate-post": "^4.5",
-        "wpackagist-plugin/redirection": "^5.2.3",
-        "wpackagist-plugin/wp-all-import": "^3.6.7"
+        "wpackagist-plugin/duplicate-post": "^4.5"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
