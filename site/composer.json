@@ -40,10 +40,6 @@
                 "wpackagist-plugin/*",
                 "wpackagist-theme/*"
             ]
-        },
-        "1": {
-            "type": "composer",
-            "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-muplugin/"
         }
     },
     "require": {
@@ -60,7 +56,6 @@
         "roots/wp-config": "1.0.0",
         "roots/wp-password-bcrypt": "1.0.0",
         "roots/multisite-url-fixer": "^1.1",
-        "advanced-custom-fields/advanced-custom-fields-pro": ">=5.9 <5.11",
         "wpackagist-plugin/acf-extended": "0.8.8.6",
         "wpackagist-plugin/gravity-forms-custom-post-types": "^3.1.25",
         "wpackagist-plugin/svg-support": "^2.3",
@@ -90,14 +85,13 @@
             "roots/*": true,
             "oscarotero/env": true,
             "composer/installers": true,
-            "pivvenit/acf-pro-installer": true,
-            "advanced-custom-fields/advanced-custom-fields-pro": true,
             "roave/security-advisories": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "squizlabs/php_codesniffer": true,
             "wp-coding-standards/wpcs": true,
             "bueltge/multisite-global-media": true,
-            "yoast/*": true
+            "yoast/*": true,
+            "pivvenit/acf-pro-installer": true
         }
     },
     "minimum-stability": "dev",
@@ -106,7 +100,6 @@
         "installer-paths": {
             "web/app/mu-plugins/{$name}/": [
                 "type:wordpress-muplugin",
-                "advanced-custom-fields/advanced-custom-fields-pro",
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/gravity-forms-custom-post-types",
                 "wpackagist-plugin/wpo365-login",
