@@ -177,4 +177,3 @@ node_modules/*
 cypress-axe/cypress/screenshots/
 cypress-axe/node_modules/
 docker-compose.override.yml
-docker-compose.override_bk.yml
