@@ -20,6 +20,8 @@ use function Env\env;
  Config::define('WP_DEBUG_LOG', true);
  Config::define('SCRIPT_DEBUG', true);
 
+ ini_set('display_errors', 1);
+
 // Enable plugin and theme updates and installation from the admin
 Config::define( 'FS_METHOD', 'direct' );
 Config::define('DISALLOW_FILE_MODS', false);
