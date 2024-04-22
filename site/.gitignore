@@ -13,7 +13,6 @@ web/app/plugins/*
 !web/app/plugins/gravityforms
 !web/app/plugins/publishpress-pro
 !web/app/plugins/seo-by-rank-math-pro
-!web/app/plugins/advanced-custom-fields-pro
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
