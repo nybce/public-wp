@@ -66,7 +66,7 @@
             "roots/*": true,
             "oscarotero/env": true,
             "composer/installers": true,
-            "advanced-custom-fields/advanced-custom-fields-pro": true,
+            "wpengine/advanced-custom-fields-pro": true,
             "roave/security-advisories": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "squizlabs/php_codesniffer": true,
@@ -78,7 +78,7 @@
     "extra": {
         "installer-paths": {
             "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin",
-                "advanced-custom-fields/advanced-custom-fields-pro",
+                "wpengine/advanced-custom-fields-pro",
                 "wpackagist-plugin/acf-extended",
                 "wpackagist-plugin/broken-link-checker",
                 "wpackagist-plugin/easy-wp-smtp",
