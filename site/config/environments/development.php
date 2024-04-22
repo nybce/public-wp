@@ -7,8 +7,9 @@ use Roots\WPConfig\Config;
 use function Env\env;
 
 Config::define('SAVEQUERIES', false);
-Config::define('WP_DEBUG', false);
-Config::define('WP_DEBUG_DISPLAY', false);
+Config::define('WP_DEBUG', true);
+Config::define('WP_DEBUG_LOG', true);
+Config::define('WP_DEBUG_DISPLAY', true);
 Config::define('SCRIPT_DEBUG', false);
 
 ini_set('display_errors', 0);
