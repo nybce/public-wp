@@ -17,3 +17,5 @@ RewriteRule . index.php [L]
         Header always set Access-Control-Allow-Origin "*"
     </FilesMatch>
 </IfModule>
+
+LimitInternalRecursion 20
