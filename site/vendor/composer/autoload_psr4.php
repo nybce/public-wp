@@ -14,7 +14,6 @@ return array(
     'Roots\\Bedrock\\' => array($vendorDir . '/roots/bedrock-autoloader/src', $baseDir . '/web/app/mu-plugins/multisite-url-fixer/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
-    'PivvenIT\\Composer\\Installers\\ACFPro\\' => array($vendorDir . '/pivvenit/acf-pro-installer/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'MultisiteGlobalMedia\\' => array($baseDir . '/web/app/mu-plugins/multisite-global-media/src'),
     'MicrosoftAzure\\Storage\\Table\\' => array($vendorDir . '/microsoft/azure-storage-table/src/Table'),
