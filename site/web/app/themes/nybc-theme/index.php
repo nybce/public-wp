@@ -246,3 +246,4 @@ if ( isset( $_GET['terms'] ) && ! empty( $_GET['terms'] ) && isset( $_GET['nonce
 
 <?php
 get_footer();
+
