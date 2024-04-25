@@ -1,0 +1,8 @@
+.icon-slack {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../img/icon-slack.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
