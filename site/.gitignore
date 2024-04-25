@@ -19,7 +19,7 @@ web/app/uploads/*
 web/app/themes/boilerplate-theme/dist
 web/app/themes/boilerplate-theme/dist/*
 # WordPress
-web/wp
+# web/wp
 !web/.htaccess
 # Dotenv
 .env
