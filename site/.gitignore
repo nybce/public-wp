@@ -26,7 +26,7 @@ web/app/themes/boilerplate-theme/dist/*
 .env.*
 !.env.example
 # Composer
-# /vendor
+/vendor
 # WP-CLI
 wp-cli.local.yml
 web/app/db.php
