@@ -3,6 +3,7 @@ FROM php:7.4-fpm-alpine
 
 ENV COMPOSER_HOME=/var/cache/composer
 ARG YOAST_SEO_KEY
+ARG ACF_PRO_KEY
 
 COPY ./.vaultpass /envs/.vaultpass
 COPY ./env/* /envs/
@@ -54,6 +55,9 @@ WORKDIR /site
 
 # Set the user
 USER www-data
+
+# Set the COMPOSER_AUTH environment variable
+ENV COMPOSER_AUTH="{\"http-basic\": {\"connect.advancedcustomfields.com\": {\"username\": \"${ACF_PRO_KEY}\", \"password\": \"https://www.nybce.org/\"}}}"
 
 # PHP Composer
 RUN composer config -g http-basic.my.yoast.com token ${YOAST_SEO_KEY} && /site/composer-install.sh && rm /site/composer-install.sh
