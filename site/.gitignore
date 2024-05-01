@@ -1,13 +1,13 @@
 # Application
 !web/app/mu-plugins/.gitkeep
 !web/app/plugins/.gitkeep
-# web/app/mu-plugins/*
+web/app/mu-plugins/*
 !web/app/mu-plugins/bedrock-autoloader.php
 !web/app/mu-plugins/disallow-indexing.php
 !web/app/mu-plugins/register-theme-directory.php
 !web/app/mu-plugins/wpo365-login-intranet
 !web/app/mu-plugins/mgm-set-site-id.php
-# web/app/plugins/*
+web/app/plugins/*
 !web/app/plugins/windows-azure-storage
 !web/app/plugins/distributor
 !web/app/plugins/gravityforms
