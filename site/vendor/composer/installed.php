@@ -3,7 +3,7 @@
         'name' => 'roots/bedrock',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '04c762b6d05d0179fa76178e26ea4725bdee549d',
+        'reference' => 'af04b42b0dd5874f094e384b5a9bf004421d8f8e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -199,7 +199,7 @@
         'roave/security-advisories' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'a6cc84fe50abd91fdbfa06fa0e7b93386aa2193c',
+            'reference' => '99ba3993d1441627081b78b6a844776fc9ef264f',
             'type' => 'metapackage',
             'install_path' => null,
             'aliases' => array(),
@@ -208,7 +208,7 @@
         'roots/bedrock' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '04c762b6d05d0179fa76178e26ea4725bdee549d',
+            'reference' => 'af04b42b0dd5874f094e384b5a9bf004421d8f8e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -233,8 +233,8 @@
             'dev_requirement' => false,
         ),
         'roots/wordpress' => array(
-            'pretty_version' => '6.5.2',
-            'version' => '6.5.2.0',
+            'pretty_version' => '6.5.3',
+            'version' => '6.5.3.0',
             'reference' => '41ff6e23ccbc3a1691406d69fe8c211a225514e2',
             'type' => 'metapackage',
             'install_path' => null,
@@ -251,9 +251,9 @@
             'dev_requirement' => false,
         ),
         'roots/wordpress-no-content' => array(
-            'pretty_version' => '6.5.2',
-            'version' => '6.5.2.0',
-            'reference' => '6.5.2',
+            'pretty_version' => '6.5.3',
+            'version' => '6.5.3.0',
+            'reference' => '6.5.3',
             'type' => 'wordpress-core',
             'install_path' => __DIR__ . '/../../web/wp',
             'aliases' => array(),
@@ -346,7 +346,7 @@
         'wordpress/core-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '6.5.2',
+                0 => '6.5.3',
             ),
         ),
         'wp-coding-standards/wpcs' => array(
@@ -410,9 +410,9 @@
             'dev_requirement' => false,
         ),
         'wpackagist-plugin/tablepress' => array(
-            'pretty_version' => '2.3',
-            'version' => '2.3.0.0',
-            'reference' => 'tags/2.3',
+            'pretty_version' => '2.3.1',
+            'version' => '2.3.1.0',
+            'reference' => 'tags/2.3.1',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../web/app/plugins/tablepress',
             'aliases' => array(),
@@ -428,9 +428,9 @@
             'dev_requirement' => false,
         ),
         'wpackagist-plugin/w3-total-cache' => array(
-            'pretty_version' => '2.7.0',
-            'version' => '2.7.0.0',
-            'reference' => 'tags/2.7.0',
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'reference' => 'tags/2.7.2',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../web/app/plugins/w3-total-cache',
             'aliases' => array(),
