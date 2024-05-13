@@ -10,7 +10,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        '81db02b30f563b92907e271b66bd7559' => __DIR__ . '/..' . '/yoast/whip/src/Facades/wordpress.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -19,10 +18,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
     );
 
     public static $prefixLengthsPsr4 = array (
-        'Y' => 
-        array (
-            'Yoast\\WHIPv2\\' => 13,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -73,10 +68,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
     );
 
     public static $prefixDirsPsr4 = array (
-        'Yoast\\WHIPv2\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yoast/whip/src',
-        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
@@ -104,8 +95,8 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -1159,31 +1150,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
         'YoastSEO_Vendor\\WordProof\\SDK\\Translations\\DefaultTranslations' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/vendor_prefixed/wordproof/wordpress-sdk/app/Translations/DefaultTranslations.php',
         'YoastSEO_Vendor\\WordProof\\SDK\\Translations\\TranslationsInterface' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/vendor_prefixed/wordproof/wordpress-sdk/app/Translations/TranslationsInterface.php',
         'YoastSEO_Vendor\\WordProof\\SDK\\WordPressSDK' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/vendor_prefixed/wordproof/wordpress-sdk/app/WordPressSDK.php',
-        'Yoast\\WHIPv2\\Configuration' => __DIR__ . '/..' . '/yoast/whip/src/Configuration.php',
-        'Yoast\\WHIPv2\\Exceptions\\EmptyProperty' => __DIR__ . '/..' . '/yoast/whip/src/Exceptions/EmptyProperty.php',
-        'Yoast\\WHIPv2\\Exceptions\\InvalidOperatorType' => __DIR__ . '/..' . '/yoast/whip/src/Exceptions/InvalidOperatorType.php',
-        'Yoast\\WHIPv2\\Exceptions\\InvalidType' => __DIR__ . '/..' . '/yoast/whip/src/Exceptions/InvalidType.php',
-        'Yoast\\WHIPv2\\Exceptions\\InvalidVersionComparisonString' => __DIR__ . '/..' . '/yoast/whip/src/Exceptions/InvalidVersionComparisonString.php',
-        'Yoast\\WHIPv2\\Host' => __DIR__ . '/..' . '/yoast/whip/src/Host.php',
-        'Yoast\\WHIPv2\\Interfaces\\DismissStorage' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/DismissStorage.php',
-        'Yoast\\WHIPv2\\Interfaces\\Listener' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/Listener.php',
-        'Yoast\\WHIPv2\\Interfaces\\Message' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/Message.php',
-        'Yoast\\WHIPv2\\Interfaces\\MessagePresenter' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/MessagePresenter.php',
-        'Yoast\\WHIPv2\\Interfaces\\Requirement' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/Requirement.php',
-        'Yoast\\WHIPv2\\Interfaces\\VersionDetector' => __DIR__ . '/..' . '/yoast/whip/src/Interfaces/VersionDetector.php',
-        'Yoast\\WHIPv2\\MessageDismisser' => __DIR__ . '/..' . '/yoast/whip/src/MessageDismisser.php',
-        'Yoast\\WHIPv2\\MessageFormatter' => __DIR__ . '/..' . '/yoast/whip/src/MessageFormatter.php',
-        'Yoast\\WHIPv2\\MessagesManager' => __DIR__ . '/..' . '/yoast/whip/src/MessagesManager.php',
-        'Yoast\\WHIPv2\\Messages\\BasicMessage' => __DIR__ . '/..' . '/yoast/whip/src/Messages/BasicMessage.php',
-        'Yoast\\WHIPv2\\Messages\\HostMessage' => __DIR__ . '/..' . '/yoast/whip/src/Messages/HostMessage.php',
-        'Yoast\\WHIPv2\\Messages\\InvalidVersionRequirementMessage' => __DIR__ . '/..' . '/yoast/whip/src/Messages/InvalidVersionRequirementMessage.php',
-        'Yoast\\WHIPv2\\Messages\\NullMessage' => __DIR__ . '/..' . '/yoast/whip/src/Messages/NullMessage.php',
-        'Yoast\\WHIPv2\\Messages\\UpgradePhpMessage' => __DIR__ . '/..' . '/yoast/whip/src/Messages/UpgradePhpMessage.php',
-        'Yoast\\WHIPv2\\Presenters\\WPMessagePresenter' => __DIR__ . '/..' . '/yoast/whip/src/Presenters/WPMessagePresenter.php',
-        'Yoast\\WHIPv2\\RequirementsChecker' => __DIR__ . '/..' . '/yoast/whip/src/RequirementsChecker.php',
-        'Yoast\\WHIPv2\\VersionRequirement' => __DIR__ . '/..' . '/yoast/whip/src/VersionRequirement.php',
-        'Yoast\\WHIPv2\\WPDismissOption' => __DIR__ . '/..' . '/yoast/whip/src/WPDismissOption.php',
-        'Yoast\\WHIPv2\\WPMessageDismissListener' => __DIR__ . '/..' . '/yoast/whip/src/WPMessageDismissListener.php',
         'Yoast\\WP\\Lib\\Abstract_Main' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/lib/abstract-main.php',
         'Yoast\\WP\\Lib\\Dependency_Injection\\Container_Registry' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/lib/dependency-injection/container-registry.php',
         'Yoast\\WP\\Lib\\Migrations\\Adapter' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/lib/migrations/adapter.php',
@@ -1361,16 +1327,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
         'Yoast\\WP\\SEO\\Content_Type_Visibility\\Application\\Content_Type_Visibility_Watcher_Actions' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/content-type-visibility/application/content-type-visibility-watcher-actions.php',
         'Yoast\\WP\\SEO\\Content_Type_Visibility\\User_Interface\\Content_Type_Visibility_Dismiss_New_Route' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/content-type-visibility/user-interface/content-type-visibility-dismiss-new-route.php',
         'Yoast\\WP\\SEO\\Context\\Meta_Tags_Context' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/context/meta-tags-context.php',
-        'Yoast\\WP\\SEO\\Editors\\Application\\Analysis_Features\\Enabled_Analysis_Features_Repository' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/application/analysis-features/enabled-analysis-features-repository.php',
-        'Yoast\\WP\\SEO\\Editors\\Domain\\Analysis_Features\\Analysis_Feature' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/domain/analysis-features/analysis-feature.php',
-        'Yoast\\WP\\SEO\\Editors\\Domain\\Analysis_Features\\Analysis_Features_List' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/domain/analysis-features/analysis-features-list.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Analysis_Feature_Interface' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/analysis-feature-interface.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Cornerstone_Content' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/cornerstone-content.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Inclusive_Language_Analysis' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/inclusive-language-analysis.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Keyphrase_Analysis' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/keyphrase-analysis.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Previously_Used_Keyphrase' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/previously-used-keyphrase.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Readability_Analysis' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/readability-analysis.php',
-        'Yoast\\WP\\SEO\\Editors\\Framework\\Word_Form_Recognition' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/editors/framework/word-form-recognition.php',
         'Yoast\\WP\\SEO\\Exceptions\\Addon_Installation\\Addon_Activation_Error_Exception' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/exceptions/addon-installation/addon-activation-error-exception.php',
         'Yoast\\WP\\SEO\\Exceptions\\Addon_Installation\\Addon_Already_Installed_Exception' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/exceptions/addon-installation/addon-already-installed-exception.php',
         'Yoast\\WP\\SEO\\Exceptions\\Addon_Installation\\Addon_Installation_Error_Exception' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/exceptions/addon-installation/addon-installation-error-exception.php',
@@ -1885,7 +1841,6 @@ class ComposerStaticInit0c5982e77bd45146bfa537ad2f88b546
         'Yoast\\WP\\SEO\\Values\\Robots\\Directive' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/values/robots/directive.php',
         'Yoast\\WP\\SEO\\Values\\Robots\\User_Agent' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/values/robots/user-agent.php',
         'Yoast\\WP\\SEO\\Values\\Robots\\User_Agent_List' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/values/robots/user-agent-list.php',
-        'Yoast\\WP\\SEO\\Values\\Twitter\\Images' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/values/twitter/images.php',
         'Yoast\\WP\\SEO\\WordPress\\Wrapper' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/wordpress/wrapper.php',
         'Yoast\\WP\\SEO\\Wrappers\\WP_Query_Wrapper' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/wrappers/wp-query-wrapper.php',
         'Yoast\\WP\\SEO\\Wrappers\\WP_Remote_Handler' => __DIR__ . '/../..' . '/web/app/plugins/wordpress-seo/src/wrappers/wp-remote-handler.php',

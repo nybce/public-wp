@@ -47,7 +47,6 @@ class DateParts
 
 		// Execute function
 		$PHPDateObject = SharedDateHelper::excelToDateTimeObject($dateValue);
-		SharedDateHelper::roundMicroseconds($PHPDateObject);
 
 		return (int) $PHPDateObject->format('j');
 	}
@@ -86,7 +85,6 @@ class DateParts
 
 		// Execute function
 		$PHPDateObject = SharedDateHelper::excelToDateTimeObject($dateValue);
-		SharedDateHelper::roundMicroseconds($PHPDateObject);
 
 		return (int) $PHPDateObject->format('n');
 	}
@@ -125,7 +123,6 @@ class DateParts
 		}
 		// Execute function
 		$PHPDateObject = SharedDateHelper::excelToDateTimeObject($dateValue);
-		SharedDateHelper::roundMicroseconds($PHPDateObject);
 
 		return (int) $PHPDateObject->format('Y');
 	}

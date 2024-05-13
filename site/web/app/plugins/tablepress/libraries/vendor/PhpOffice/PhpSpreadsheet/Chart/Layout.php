@@ -8,128 +8,131 @@ class Layout
 {
 	/**
 	 * layoutTarget.
-	 * @var string|null
+	 *
+	 * @var ?string
 	 */
 	private $layoutTarget;
 
 	/**
 	 * X Mode.
-	 * @var string|null
+	 *
+	 * @var ?string
 	 */
 	private $xMode;
 
 	/**
 	 * Y Mode.
-	 * @var string|null
+	 *
+	 * @var ?string
 	 */
 	private $yMode;
 
 	/**
 	 * X-Position.
-	 * @var float|null
+	 *
+	 * @var ?float
 	 */
 	private $xPos;
 
 	/**
 	 * Y-Position.
-	 * @var float|null
+	 *
+	 * @var ?float
 	 */
 	private $yPos;
 
 	/**
 	 * width.
-	 * @var float|null
+	 *
+	 * @var ?float
 	 */
 	private $width;
 
 	/**
 	 * height.
-	 * @var float|null
+	 *
+	 * @var ?float
 	 */
 	private $height;
 
 	/**
 	 * Position - t=top.
+	 *
 	 * @var string
 	 */
 	private $dLblPos = '';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $numFmtCode = '';
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $numFmtLinked = false;
 
 	/**
 	 * show legend key
 	 * Specifies that legend keys should be shown in data labels.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showLegendKey;
 
 	/**
 	 * show value
 	 * Specifies that the value should be shown in a data label.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showVal;
 
 	/**
 	 * show category name
 	 * Specifies that the category name should be shown in the data label.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showCatName;
 
 	/**
 	 * show data series name
 	 * Specifies that the series name should be shown in the data label.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showSerName;
 
 	/**
 	 * show percentage
 	 * Specifies that the percentage should be shown in the data label.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showPercent;
 
 	/**
 	 * show bubble size.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showBubbleSize;
 
 	/**
 	 * show leader lines
 	 * Specifies that leader lines should be shown for the data label.
-	 * @var bool|null
+	 *
+	 * @var ?bool
 	 */
 	private $showLeaderLines;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Chart\ChartColor|null
-	 */
+	/** @var ?ChartColor */
 	private $labelFillColor;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Chart\ChartColor|null
-	 */
+	/** @var ?ChartColor */
 	private $labelBorderColor;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Font|null
-	 */
+	/** @var ?Font */
 	private $labelFont;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Chart\Properties|null
-	 */
+	/** @var Properties */
 	private $labelEffects;
 
 	/**
@@ -204,8 +207,10 @@ class Layout
 
 	/**
 	 * Get Layout Target.
+	 *
+	 * @return ?string
 	 */
-	public function getLayoutTarget(): ?string
+	public function getLayoutTarget()
 	{
 		return $this->layoutTarget;
 	}
@@ -213,9 +218,11 @@ class Layout
 	/**
 	 * Set Layout Target.
 	 *
+	 * @param ?string $target
+	 *
 	 * @return $this
 	 */
-	public function setLayoutTarget(?string $target)
+	public function setLayoutTarget($target)
 	{
 		$this->layoutTarget = $target;
 
@@ -224,8 +231,10 @@ class Layout
 
 	/**
 	 * Get X-Mode.
+	 *
+	 * @return ?string
 	 */
-	public function getXMode(): ?string
+	public function getXMode()
 	{
 		return $this->xMode;
 	}
@@ -233,9 +242,11 @@ class Layout
 	/**
 	 * Set X-Mode.
 	 *
+	 * @param ?string $mode
+	 *
 	 * @return $this
 	 */
-	public function setXMode(?string $mode)
+	public function setXMode($mode)
 	{
 		$this->xMode = (string) $mode;
 
@@ -244,8 +255,10 @@ class Layout
 
 	/**
 	 * Get Y-Mode.
+	 *
+	 * @return ?string
 	 */
-	public function getYMode(): ?string
+	public function getYMode()
 	{
 		return $this->yMode;
 	}
@@ -253,9 +266,11 @@ class Layout
 	/**
 	 * Set Y-Mode.
 	 *
+	 * @param ?string $mode
+	 *
 	 * @return $this
 	 */
-	public function setYMode(?string $mode)
+	public function setYMode($mode)
 	{
 		$this->yMode = (string) $mode;
 
@@ -264,6 +279,7 @@ class Layout
 
 	/**
 	 * Get X-Position.
+	 *
 	 * @return null|float|int
 	 */
 	public function getXPosition()
@@ -274,19 +290,23 @@ class Layout
 	/**
 	 * Set X-Position.
 	 *
+	 * @param ?float $position
+	 *
 	 * @return $this
 	 */
-	public function setXPosition(float $position)
+	public function setXPosition($position)
 	{
-		$this->xPos = $position;
+		$this->xPos = (float) $position;
 
 		return $this;
 	}
 
 	/**
 	 * Get Y-Position.
+	 *
+	 * @return null|float
 	 */
-	public function getYPosition(): ?float
+	public function getYPosition()
 	{
 		return $this->yPos;
 	}
@@ -294,19 +314,23 @@ class Layout
 	/**
 	 * Set Y-Position.
 	 *
+	 * @param ?float $position
+	 *
 	 * @return $this
 	 */
-	public function setYPosition(float $position)
+	public function setYPosition($position)
 	{
-		$this->yPos = $position;
+		$this->yPos = (float) $position;
 
 		return $this;
 	}
 
 	/**
 	 * Get Width.
+	 *
+	 * @return ?float
 	 */
-	public function getWidth(): ?float
+	public function getWidth()
 	{
 		return $this->width;
 	}
@@ -314,9 +338,11 @@ class Layout
 	/**
 	 * Set Width.
 	 *
+	 * @param ?float $width
+	 *
 	 * @return $this
 	 */
-	public function setWidth(?float $width)
+	public function setWidth($width)
 	{
 		$this->width = $width;
 
@@ -325,8 +351,10 @@ class Layout
 
 	/**
 	 * Get Height.
+	 *
+	 * @return null|float
 	 */
-	public function getHeight(): ?float
+	public function getHeight()
 	{
 		return $this->height;
 	}
@@ -334,9 +362,11 @@ class Layout
 	/**
 	 * Set Height.
 	 *
+	 * @param ?float $height
+	 *
 	 * @return $this
 	 */
-	public function setHeight(?float $height)
+	public function setHeight($height)
 	{
 		$this->height = $height;
 
@@ -543,16 +573,5 @@ class Layout
 		$this->numFmtLinked = $numFmtLinked;
 
 		return $this;
-	}
-
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone()
-	{
-		$this->labelFillColor = ($this->labelFillColor === null) ? null : clone $this->labelFillColor;
-		$this->labelBorderColor = ($this->labelBorderColor === null) ? null : clone $this->labelBorderColor;
-		$this->labelFont = ($this->labelFont === null) ? null : clone $this->labelFont;
-		$this->labelEffects = ($this->labelEffects === null) ? null : clone $this->labelEffects;
 	}
 }

@@ -11,7 +11,7 @@ use SimpleXMLElement;
 class PageSetup
 {
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Spreadsheet
+	 * @var Spreadsheet
 	 */
 	private $spreadsheet;
 

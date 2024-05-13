@@ -12,24 +12,28 @@ class RowIterator implements NativeIterator
 {
 	/**
 	 * Worksheet to iterate.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+	 *
+	 * @var Worksheet
 	 */
 	private $subject;
 
 	/**
 	 * Current iterator position.
+	 *
 	 * @var int
 	 */
 	private $position = 1;
 
 	/**
 	 * Start position.
+	 *
 	 * @var int
 	 */
 	private $startRow = 1;
 
 	/**
 	 * End position.
+	 *
 	 * @var int
 	 */
 	private $endRow = 1;
@@ -39,9 +43,9 @@ class RowIterator implements NativeIterator
 	 *
 	 * @param Worksheet $subject The worksheet to iterate over
 	 * @param int $startRow The row number at which to start iterating
-	 * @param ?int $endRow Optionally, the row number at which to stop iterating
+	 * @param int $endRow Optionally, the row number at which to stop iterating
 	 */
-	public function __construct(Worksheet $subject, int $startRow = 1, ?int $endRow = null)
+	public function __construct(Worksheet $subject, $startRow = 1, $endRow = null)
 	{
 		// Set subject
 		$this->subject = $subject;
@@ -51,7 +55,7 @@ class RowIterator implements NativeIterator
 
 	public function __destruct()
 	{
-		unset($this->subject);
+		$this->subject = null; // @phpstan-ignore-line
 	}
 
 	/**
@@ -81,11 +85,11 @@ class RowIterator implements NativeIterator
 	/**
 	 * (Re)Set the end row.
 	 *
-	 * @param ?int $endRow The row number at which to stop iterating
+	 * @param int $endRow The row number at which to stop iterating
 	 *
 	 * @return $this
 	 */
-	public function resetEnd(?int $endRow = null)
+	public function resetEnd($endRow = null)
 	{
 		$this->endRow = $endRow ?: $this->subject->getHighestRow();
 

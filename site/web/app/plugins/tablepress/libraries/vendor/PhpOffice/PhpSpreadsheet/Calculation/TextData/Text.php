@@ -17,7 +17,8 @@ class Text
 	 * @param mixed $value String Value
 	 *                         Or can be an array of values
 	 *
-	 * @return array|int If an array of values is passed for the argument, then the returned result
+	 * @return array|int
+	 *         If an array of values is passed for the argument, then the returned result
 	 *            will also be an array with matching dimensions
 	 */
 	public static function length($value = '')
@@ -41,7 +42,8 @@ class Text
 	 * @param mixed $value2 String Value
 	 *                         Or can be an array of values
 	 *
-	 * @return array|bool If an array of values is passed for either of the arguments, then the returned result
+	 * @return array|bool
+	 *         If an array of values is passed for either of the arguments, then the returned result
 	 *            will also be an array with matching dimensions
 	 */
 	public static function exact($value1, $value2)
@@ -62,7 +64,8 @@ class Text
 	 * @param mixed $testValue Value to check
 	 *                         Or can be an array of values
 	 *
-	 * @return array|string If an array of values is passed for the argument, then the returned result
+	 * @return array|string
+	 *         If an array of values is passed for the argument, then the returned result
 	 *            will also be an array with matching dimensions
 	 */
 	public static function test($testValue = '')
@@ -99,7 +102,7 @@ class Text
 	 *
 	 * @return array the array built from the text, split by the row and column delimiters
 	 */
-	public static function split($text, $columnDelimiter = null, $rowDelimiter = null, bool $ignoreEmpty = false, bool $matchMode = true, $padding = '#N/A'): array
+	public static function split($text, $columnDelimiter = null, $rowDelimiter = null, bool $ignoreEmpty = false, bool $matchMode = true, $padding = '#N/A')
 	{
 		$text = Functions::flattenSingleValue($text);
 
@@ -118,7 +121,7 @@ class Text
 		if ($ignoreEmpty === true) {
 			$rows = array_values(array_filter(
 				$rows,
-				function ($row) : bool {
+				function ($row) {
 					return $row !== '';
 				}
 			));
@@ -136,7 +139,7 @@ class Text
 					if ($ignoreEmpty === true) {
 						$row = array_values(array_filter(
 							$row,
-							function ($value) : bool {
+							function ($value) {
 								return $value !== '';
 							}
 						));
@@ -146,7 +149,7 @@ class Text
 			if ($ignoreEmpty === true) {
 				$rows = array_values(array_filter(
 					$rows,
-					function ($row) : bool {
+					function ($row) {
 						return $row !== [] && $row !== [''];
 					}
 				));
@@ -163,7 +166,7 @@ class Text
 	{
 		$columnCount = array_reduce(
 			$rows,
-			function (int $counter, array $row) : int {
+			function (int $counter, array $row): int {
 				return max($counter, count($row));
 			},
 			0
@@ -189,7 +192,7 @@ class Text
 
 		if (is_array($delimiter) && count($valueSet) > 1) {
 			$quotedDelimiters = array_map(
-				function ($delimiter) : string {
+				function ($delimiter) {
 					return preg_quote($delimiter ?? '', '/');
 				},
 				$valueSet
@@ -199,7 +202,7 @@ class Text
 			return '(' . $delimiters . ')';
 		}
 
-		return '(' . preg_quote(Functions::flattenSingleValue($delimiter), '/') . ')';
+		return '(' . preg_quote(/** @scrutinizer ignore-type */ Functions::flattenSingleValue($delimiter), '/') . ')';
 	}
 
 	private static function matchFlags(bool $matchMode): string

@@ -23,12 +23,11 @@
 	"require": {
 		"php": "^7.2.5 || ^8.0",
 		"ext-filter": "*",
-		"yoast/wordpress-seo": "^22.6"
+		"yoast/wordpress-seo": "^22.2"
 	},
 	"require-dev": {
 		"yoast/wp-test-utils": "^1.2",
-		"yoast/yoastcs": "^3.1.0",
-		"wp-cli/i18n-command": "^2.6"
+		"yoast/yoastcs": "^3.0"
 	},
 	"repositories": {
 		"wordpress-seo": {
@@ -96,7 +95,7 @@
 			"Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_coding_standards"
 		],
 		"check-cs-thresholds": [
-			"@putenv YOASTCS_THRESHOLD_ERRORS=701",
+			"@putenv YOASTCS_THRESHOLD_ERRORS=703",
 			"@putenv YOASTCS_THRESHOLD_WARNINGS=76",
 			"Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_cs_thresholds"
 		],
@@ -146,18 +145,6 @@
 		"post-install-cmd": [
 			"cd vendor/yoast/wordpress-seo && composer install --no-interaction && cd ../..",
 			"composer compile-di"
-		],
-		"i18n-free-js": [
-			"wp i18n make-pot . languages/yoastseo.pot --include=\"node_modules/yoastseo/src\" --allow-root",
-			"wp i18n make-pot . languages/free-js.pot --include=\"node_modules/@yoast/social-metadata-previews/src\" --domain=\"wordpress-seo\" --merge=\"languages/yoastseo.pot\" --allow-root",
-			"rm languages/yoastseo.pot"
-		],
-		"i18n-js": [
-			"wp i18n make-pot . languages/wordpress-seo-premiumjs.pot --skip-php --exclude=\"assets/js/dist\" --merge=\"languages/free-js.pot\" --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/yoast/wordpress-seo-premium/issues\"}' --allow-root",
-			"rm languages/free-js.pot"
-		],
-		"i18n-php": [
-			"wp i18n make-pot . languages/wordpress-seo-premium.pot --skip-js --merge=\"languages/wordpress-seo-premiumjs.pot\" --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/yoast/wordpress-seo-premium/issues\"}' --allow-root"
 		]
 	},
 	"scripts-descriptions": {

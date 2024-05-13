@@ -20,32 +20,44 @@ class Escher
 
 	/**
 	 * Get Drawing Group Container.
+	 *
+	 * @return ?Escher\DggContainer
 	 */
-	public function getDggContainer(): ?Escher\DggContainer
+	public function getDggContainer()
 	{
 		return $this->dggContainer;
 	}
 
 	/**
 	 * Set Drawing Group Container.
+	 *
+	 * @param Escher\DggContainer $dggContainer
+	 *
+	 * @return Escher\DggContainer
 	 */
-	public function setDggContainer(Escher\DggContainer $dggContainer): Escher\DggContainer
+	public function setDggContainer($dggContainer)
 	{
 		return $this->dggContainer = $dggContainer;
 	}
 
 	/**
 	 * Get Drawing Container.
+	 *
+	 * @return ?Escher\DgContainer
 	 */
-	public function getDgContainer(): ?Escher\DgContainer
+	public function getDgContainer()
 	{
 		return $this->dgContainer;
 	}
 
 	/**
 	 * Set Drawing Container.
+	 *
+	 * @param Escher\DgContainer $dgContainer
+	 *
+	 * @return Escher\DgContainer
 	 */
-	public function setDgContainer(Escher\DgContainer $dgContainer): Escher\DgContainer
+	public function setDgContainer($dgContainer)
 	{
 		return $this->dgContainer = $dgContainer;
 	}

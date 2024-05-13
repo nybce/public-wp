@@ -22,7 +22,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the absolute value
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string         If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMABS($complexNumber)
@@ -33,7 +34,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -52,7 +53,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the argument theta
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMARGUMENT($complexNumber)
@@ -63,7 +65,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -85,7 +87,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the conjugate
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCONJUGATE($complexNumber)
@@ -96,7 +99,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -114,7 +117,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the cosine
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCOS($complexNumber)
@@ -125,7 +129,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -143,7 +147,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the hyperbolic cosine
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCOSH($complexNumber)
@@ -154,7 +159,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -172,7 +177,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the cotangent
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCOT($complexNumber)
@@ -183,7 +189,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -201,7 +207,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the cosecant
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCSC($complexNumber)
@@ -212,7 +219,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -230,7 +237,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the hyperbolic cosecant
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMCSCH($complexNumber)
@@ -241,7 +249,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -259,7 +267,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the sine
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMSIN($complexNumber)
@@ -270,7 +279,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -288,7 +297,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the hyperbolic sine
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMSINH($complexNumber)
@@ -299,7 +309,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -317,7 +327,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the secant
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMSEC($complexNumber)
@@ -328,7 +339,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -346,7 +357,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the hyperbolic secant
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMSECH($complexNumber)
@@ -357,7 +369,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -375,7 +387,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the tangent
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMTAN($complexNumber)
@@ -386,7 +399,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -404,7 +417,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the square root
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMSQRT($complexNumber)
@@ -415,7 +429,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -438,7 +452,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the natural logarithm
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMLN($complexNumber)
@@ -449,7 +464,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -471,7 +486,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the common logarithm
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMLOG10($complexNumber)
@@ -482,7 +498,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -504,7 +520,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the base-2 logarithm
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMLOG2($complexNumber)
@@ -515,7 +532,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -537,7 +554,8 @@ class ComplexFunctions
 	 * @param array|string $complexNumber the complex number for which you want the exponential
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMEXP($complexNumber)
@@ -548,7 +566,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 
@@ -568,7 +586,8 @@ class ComplexFunctions
 	 * @param array|float|int|string $realNumber the power to which you want to raise the complex number
 	 *                      Or can be an array of values
 	 *
-	 * @return array|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function IMPOWER($complexNumber, $realNumber)
@@ -579,7 +598,7 @@ class ComplexFunctions
 
 		try {
 			$complex = new ComplexObject($complexNumber);
-		} catch (ComplexException $exception) {
+		} catch (ComplexException $e) {
 			return ExcelError::NAN();
 		}
 

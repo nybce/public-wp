@@ -2,7 +2,8 @@
 /**
  * File: Cdn_Plugin_Admin.php
  *
- * @since   0.9.5.4
+ * @since X.X.X
+ *
  * @package W3TC
  */
 

@@ -60,7 +60,7 @@ const ManageTablesLink = function() {
  * @param {Function} params.setAttributes Function to set block attributes.
  * @return {Element} Element to render.
  */
-const TablePressTableEdit = ( { attributes, setAttributes } ) => {
+export default function TablePressTableEdit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 
 	let blockMarkup;
@@ -166,6 +166,4 @@ const TablePressTableEdit = ( { attributes, setAttributes } ) => {
 			{ sidebarMarkup}
 		</>
 	);
-};
-
-export default TablePressTableEdit;
+}

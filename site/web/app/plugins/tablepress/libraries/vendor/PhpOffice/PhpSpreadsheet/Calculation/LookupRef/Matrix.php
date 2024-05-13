@@ -23,16 +23,18 @@ class Matrix
 	 */
 	public static function isRowVector(array $values): bool
 	{
-		return count($values, COUNT_RECURSIVE) > 1
-			&& (count($values, COUNT_NORMAL) === 1 || count($values, COUNT_RECURSIVE) === count($values, COUNT_NORMAL));
+		return count($values, COUNT_RECURSIVE) > 1 &&
+			(count($values, COUNT_NORMAL) === 1 || count($values, COUNT_RECURSIVE) === count($values, COUNT_NORMAL));
 	}
 
 	/**
 	 * TRANSPOSE.
 	 *
 	 * @param array|mixed $matrixData A matrix of values
+	 *
+	 * @return array
 	 */
-	public static function transpose($matrixData): array
+	public static function transpose($matrixData)
 	{
 		$returnMatrix = [];
 		if (!is_array($matrixData)) {
@@ -112,7 +114,7 @@ class Matrix
 		$columnNum = $columnKeys[--$columnNum];
 		if ($rowNum === 0) {
 			return array_map(
-				function ($value) : array {
+				function ($value) {
 					return [$value];
 				},
 				array_column($matrix, $columnNum)
@@ -123,9 +125,7 @@ class Matrix
 		return $matrix[$rowNum][$columnNum];
 	}
 
-	/**
-	 * @return mixed
-	 */
+	/** @return mixed */
 	private static function extractRowValue(array $matrix, array $rowKeys, int $rowNum)
 	{
 		if ($rowNum === 0) {

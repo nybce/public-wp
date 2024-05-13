@@ -2,9 +2,6 @@
 
 namespace TablePress\PhpOffice\PhpSpreadsheet\Cell;
 
-/**
- * @template T
- */
 interface AddressRange
 {
 	public const MAX_ROW = 1048576;
@@ -14,12 +11,12 @@ interface AddressRange
 	public const MAX_COLUMN_INT = 16384;
 
 	/**
-	 * @return T
+	 * @return mixed
 	 */
 	public function from();
 
 	/**
-	 * @return T
+	 * @return mixed
 	 */
 	public function to();
 

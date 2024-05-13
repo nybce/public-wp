@@ -9,17 +9,19 @@ class BranchPruner
 	/**
 	 * @var bool
 	 */
-	protected $branchPruningEnabled;
+	protected $branchPruningEnabled = true;
 
 	/**
 	 * Used to generate unique store keys.
+	 *
 	 * @var int
 	 */
 	private $branchStoreKeyCounter = 0;
 
 	/**
 	 * currently pending storeKey (last item of the storeKeysStack.
-	 * @var string|null
+	 *
+	 * @var ?string
 	 */
 	protected $pendingStoreKey;
 
@@ -49,22 +51,22 @@ class BranchPruner
 	protected $braceDepthMap = [];
 
 	/**
-	 * @var string|null
+	 * @var null|string
 	 */
 	protected $currentCondition;
 
 	/**
-	 * @var string|null
+	 * @var null|string
 	 */
 	protected $currentOnlyIf;
 
 	/**
-	 * @var string|null
+	 * @var null|string
 	 */
 	protected $currentOnlyIfNot;
 
 	/**
-	 * @var string|null
+	 * @var null|string
 	 */
 	protected $previousStoreKey;
 

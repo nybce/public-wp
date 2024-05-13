@@ -7,7 +7,8 @@ class Extension_CloudFlare_Plugin_Admin {
 
 	public static function w3tc_extensions( $extensions, $config ) {
 		$current_user            = wp_get_current_user();
-		$message                 = array( 'Cloudflare' );
+		$message                 = array();
+		$message[]               = 'CloudFlare';
 		$cloudflare_signup_email = '';
 		$cloudflare_signup_user  = '';
 
@@ -22,16 +23,16 @@ class Extension_CloudFlare_Plugin_Admin {
 		}
 
 		$extensions['cloudflare'] = array(
-			'name'            => 'Cloudflare',
+			'name'            => 'CloudFlare',
 			'author'          => 'W3 EDGE',
 			'description'     => wp_kses(
 				sprintf(
-					// translators:	1 opening HTML a tag to Cloudflare signup page with affiliate association, 2 closing HTML a tag,
+					// translators:	1 opening HTML a tag to CloudFlare signup page with affiliate association, 2 closing HTML a tag,
 					// translators: 3 opening HTML abbr tag, 4 closing HTML abbr tag,
-					// translators: 5 opening HTML a tag to Cloudflare account page, 6 closing HTML a tag,
-					// translators: 7 opening HTML a tag to Cloudflare help page, 8 closing HTML a tag.
+					// translators: 5 opening HTML a tag to CloudFlare account page, 6 closing HTML a tag,
+					// translators: 7 opening HTML a tag to CloudFlare help page, 8 closing HTML a tag.
 					__(
-						'Cloudflare protects and accelerates websites. %1$sSign up now for free%2$s to get started, or if you have an account simply log in to obtain your %3$sAPI%4$s token / global key from the %5$saccount page%6$s to enter it on the General Settings box that appears after plugin activation. Contact the Cloudflare %7$ssupport team%8$s with any questions.',
+						'CloudFlare protects and accelerates websites. %1$sSign up now for free%2$s to get started, or if you have an account simply log in to obtain your %3$sAPI%4$s token / global key from the %5$saccount page%6$s to enter it on the General Settings box that appears after plugin activation. Contact the CloudFlare %7$ssupport team%8$s with any questions.',
 						'w3-total-cache'
 					),
 					'<a href="' . esc_url( 'https://www.cloudflare.com/sign-up.html?affiliate=w3edge&amp;seed_domain=' . Util_Environment::host() . '&amp;email=' . $cloudflare_signup_email . '&amp;username=' . $cloudflare_signup_user ) . '" target="_blank">',
@@ -77,8 +78,6 @@ class Extension_CloudFlare_Plugin_Admin {
 			)
 		);
 		$this->_config = $c;
-
-		add_action( 'w3tc_config_ui_save-w3tc_extensions', array( $this, 'w3tc_save_options' ), 10, 0 );
 
 		add_filter( 'w3tc_dashboard_actions', array( $this, 'w3tc_dashboard_actions' ) );
 
@@ -133,7 +132,7 @@ class Extension_CloudFlare_Plugin_Admin {
 					// translators: 2 HTML button with lable "Hide this message" that will hide the error message,
 					// translators: 3 closing HTML p tag followed by closing HTML div tag.
 					__(
-						'%1$sCloudflare plugin detected. We recommend removing the plugin as it offers no additional capabilities when W3 Total Cache is installed. This message will disappear when Cloudflare is removed. %2$s%3$s',
+						'%1$sCloudFlare plugin detected. We recommend removing the plugin as it offers no additional capabilities when W3 Total Cache is installed. This message will disappear when CloudFlare is removed. %2$s%3$s',
 						'w3-total-cache'
 					),
 					'<div class="error"><p>',
@@ -160,7 +159,7 @@ class Extension_CloudFlare_Plugin_Admin {
 		$menu_items['20810.cloudflare'] = array(
 			'id'     => 'w3tc_flush_cloudflare',
 			'parent' => 'w3tc_flush',
-			'title'  => __( 'Cloudflare', 'w3-total-cache' ),
+			'title'  => __( 'CloudFlare', 'w3-total-cache' ),
 			'href'   => wp_nonce_url( admin_url( 'admin.php?page=w3tc_dashboard&amp;w3tc_cloudflare_flush' ), 'w3tc' ),
 		);
 
@@ -168,7 +167,7 @@ class Extension_CloudFlare_Plugin_Admin {
 	}
 
 	/**
-	 * Check if last check has expired.  If so update Cloudflare IPs.
+	 * Check if last check has expired. If so update CloudFlare ips
 	 */
 	function check_ip_versions() {
 		$state = Dispatcher::config_state_master();
@@ -197,7 +196,7 @@ class Extension_CloudFlare_Plugin_Admin {
 	}
 
 	/**
-	 * Send Cloudflare API request.
+	 * Send CloudFlare API request
 	 *
 	 * @return void
 	 */
@@ -250,7 +249,7 @@ class Extension_CloudFlare_Plugin_Admin {
 					$error = $response->msg;
 				}
 			} else {
-				$error = 'Unable to make Cloudflare API request.';
+				$error = 'Unable to make CloudFlare API request.';
 			}
 		}
 
@@ -297,7 +296,7 @@ class Extension_CloudFlare_Plugin_Admin {
 
 		$actions[] = sprintf(
 			'<input type="submit" class="dropdown-item" name="w3tc_cloudflare_flush_all_except_cf" value="%1$s"%2$s>',
-			esc_attr__( 'Empty All Caches Except Cloudflare', 'w3-total-cache' ),
+			esc_attr__( 'Empty All Caches Except CloudFlare', 'w3-total-cache' ),
 			( ! $can_empty_memcache && ! $can_empty_opcode && ! $can_empty_file && ! $can_empty_varnish )
 				? ' disabled="disabled"' : ''
 		);
@@ -327,7 +326,7 @@ class Extension_CloudFlare_Plugin_Admin {
 		}
 
 		if ( isset( $a['selectbox_values']['cloudflare'] ) ) {
-			$a['selectbox_values']['cloudflare']['label']    = 'Cloudflare';
+			$a['selectbox_values']['cloudflare']['label']    = 'CloudFlare';
 			$a['selectbox_values']['cloudflare']['disabled'] = null;
 		}
 
@@ -337,7 +336,7 @@ class Extension_CloudFlare_Plugin_Admin {
 	public function w3tc_settings_general_anchors( $anchors ) {
 		$anchors[] = array(
 			'id'   => 'cloudflare',
-			'text' => 'Cloudflare',
+			'text' => 'CloudFlare',
 		);
 		return $anchors;
 	}
@@ -345,34 +344,5 @@ class Extension_CloudFlare_Plugin_Admin {
 	public function w3tc_settings_general_boxarea_cloudflare() {
 		$config = $this->_config;
 		include W3TC_DIR . '/Extension_CloudFlare_GeneralPage_View.php';
-	}
-
-	/**
-	 * Applies Cloudflare API settings.
-	 */
-	public function w3tc_save_options() {
-		if( 'cloudflare' === Util_Request::get_string( 'extension' ) ) {
-			$api = Extension_CloudFlare_SettingsForUi::api();
-			$errors = Extension_CloudFlare_SettingsForUi::settings_set( $api );
-
-			if ( empty( $errors ) ) {
-				Util_Admin::redirect_with_custom_messages2(
-					array(
-						'notes' => array(
-							'cloudflare_save_done' => __( 'Cloudflare settings are successfully updated.', 'w3-total-cache' ),
-						),
-					)
-				);
-			} else {
-				Util_Admin::redirect_with_custom_messages2(
-					array(
-						'errors' => array(
-							'cloudflare_save_error' => __( 'Failed to update Cloudflare settings:', 'w3-total-cache' ) .
-								"<br />\n" . implode( "<br />\n", $errors ),
-						),
-					)
-				);
-			}
-		}
 	}
 }

@@ -14,6 +14,7 @@ abstract class BaseReader implements IReader
 	 * Read data only?
 	 * Identifies whether the Reader should only read data values for cells, and ignore any formatting information;
 	 *        or whether it should read both data and formatting.
+	 *
 	 * @var bool
 	 */
 	protected $readDataOnly = false;
@@ -22,6 +23,7 @@ abstract class BaseReader implements IReader
 	 * Read empty cells?
 	 * Identifies whether the Reader should read data values for cells all cells, or should ignore cells containing
 	 *         null value or empty string.
+	 *
 	 * @var bool
 	 */
 	protected $readEmptyCells = true;
@@ -29,6 +31,7 @@ abstract class BaseReader implements IReader
 	/**
 	 * Read charts that are defined in the workbook?
 	 * Identifies whether the Reader should read the definitions for any charts that exist in the workbook;.
+	 *
 	 * @var bool
 	 */
 	protected $includeCharts = false;
@@ -36,7 +39,6 @@ abstract class BaseReader implements IReader
 	/**
 	 * Restrict which sheets should be loaded?
 	 * This property holds an array of worksheet names to be loaded. If null, then all worksheets will be loaded.
-	 * This property is ignored for Csv, Html, and Slk.
 	 *
 	 * @var null|string[]
 	 */
@@ -44,7 +46,8 @@ abstract class BaseReader implements IReader
 
 	/**
 	 * IReadFilter instance.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReadFilter
+	 *
+	 * @var IReadFilter
 	 */
 	protected $readFilter;
 
@@ -52,7 +55,7 @@ abstract class BaseReader implements IReader
 	protected $fileHandle;
 
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Reader\Security\XmlScanner|null
+	 * @var ?XmlScanner
 	 */
 	protected $securityScanner;
 
@@ -61,61 +64,48 @@ abstract class BaseReader implements IReader
 		$this->readFilter = new DefaultReadFilter();
 	}
 
-	public function getReadDataOnly(): bool
+	public function getReadDataOnly()
 	{
 		return $this->readDataOnly;
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function setReadDataOnly(bool $readCellValuesOnly): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setReadDataOnly($readCellValuesOnly)
 	{
-		$this->readDataOnly = $readCellValuesOnly;
+		$this->readDataOnly = (bool) $readCellValuesOnly;
 
 		return $this;
 	}
 
-	public function getReadEmptyCells(): bool
+	public function getReadEmptyCells()
 	{
 		return $this->readEmptyCells;
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function setReadEmptyCells(bool $readEmptyCells): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setReadEmptyCells($readEmptyCells)
 	{
-		$this->readEmptyCells = $readEmptyCells;
+		$this->readEmptyCells = (bool) $readEmptyCells;
 
 		return $this;
 	}
 
-	public function getIncludeCharts(): bool
+	public function getIncludeCharts()
 	{
 		return $this->includeCharts;
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function setIncludeCharts(bool $includeCharts): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setIncludeCharts($includeCharts)
 	{
-		$this->includeCharts = $includeCharts;
+		$this->includeCharts = (bool) $includeCharts;
 
 		return $this;
 	}
 
-	public function getLoadSheetsOnly(): ?array
+	public function getLoadSheetsOnly()
 	{
 		return $this->loadSheetsOnly;
 	}
 
-	/**
-	 * @param string|mixed[]|null $sheetList
-	 * @return $this
-	 */
-	public function setLoadSheetsOnly($sheetList): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setLoadSheetsOnly($sheetList)
 	{
 		if ($sheetList === null) {
 			return $this->setLoadAllSheets();
@@ -126,25 +116,19 @@ abstract class BaseReader implements IReader
 		return $this;
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function setLoadAllSheets(): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setLoadAllSheets()
 	{
 		$this->loadSheetsOnly = null;
 
 		return $this;
 	}
 
-	public function getReadFilter(): IReadFilter
+	public function getReadFilter()
 	{
 		return $this->readFilter;
 	}
 
-	/**
-	 * @return $this
-	 */
-	public function setReadFilter(IReadFilter $readFilter): \TablePress\PhpOffice\PhpSpreadsheet\Reader\IReader
+	public function setReadFilter(IReadFilter $readFilter)
 	{
 		$this->readFilter = $readFilter;
 
@@ -218,32 +202,5 @@ abstract class BaseReader implements IReader
 		}
 
 		$this->fileHandle = $fileHandle;
-	}
-
-	/**
-	 * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns).
-	 */
-	public function listWorksheetInfo(string $filename): array
-	{
-		throw new PhpSpreadsheetException('Reader classes must implement their own listWorksheetInfo() method');
-	}
-
-	/**
-	 * Returns names of the worksheets from a file,
-	 * possibly without parsing the whole file to a Spreadsheet object.
-	 * Readers will often have a more efficient method with which
-	 * they can override this method.
-	 */
-	public function listWorksheetNames(string $filename): array
-	{
-		$returnArray = [];
-		$info = $this->listWorksheetInfo($filename);
-		foreach ($info as $infoArray) {
-			if (isset($infoArray['worksheetName'])) {
-				$returnArray[] = $infoArray['worksheetName'];
-			}
-		}
-
-		return $returnArray;
 	}
 }

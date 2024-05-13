@@ -37,12 +37,9 @@ class Ceiling
 			return self::evaluateArrayArguments([self::class, __FUNCTION__], $number, $significance);
 		}
 
-		/*
-		// Allow one argument only, for compatibility with Google Sheets, when importing an Excel file.
 		if ($significance === null) {
 			self::floorCheck1Arg();
 		}
-		*/
 
 		try {
 			$number = Helpers::validateNumericNullBool($number);
@@ -140,11 +137,12 @@ class Ceiling
 	 */
 	private static function ceilingMathTest(float $significance, float $number, int $mode): bool
 	{
-		return ($significance < 0) || ($number < 0 && !empty($mode));
+		return ((float) $significance < 0) || ((float) $number < 0 && !empty($mode));
 	}
 
 	/**
 	 * Avoid Scrutinizer problems concerning complexity.
+	 *
 	 * @return float|string
 	 */
 	private static function argumentsOk(float $number, float $significance)

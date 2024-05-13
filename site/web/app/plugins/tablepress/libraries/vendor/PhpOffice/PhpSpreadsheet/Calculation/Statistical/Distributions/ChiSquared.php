@@ -23,7 +23,8 @@ class ChiSquared
 	 * @param mixed $degrees Integer degrees of freedom
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|int|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function distributionRightTail($value, $degrees)
@@ -65,7 +66,8 @@ class ChiSquared
 	 * @param mixed $cumulative Boolean value indicating if we want the cdf (true) or the pdf (false)
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|int|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function distributionLeftTail($value, $degrees, $cumulative)
@@ -94,13 +96,11 @@ class ChiSquared
 		}
 
 		if ($cumulative === true) {
-			$temp = self::distributionRightTail($value, $degrees);
-
-			return 1 - (is_numeric($temp) ? $temp : 0);
+			return 1 - self::distributionRightTail($value, $degrees);
 		}
 
-		return ($value ** (($degrees / 2) - 1) * exp(-$value / 2))
-			/ ((2 ** ($degrees / 2)) * Gamma::gammaValue($degrees / 2));
+		return ($value ** (($degrees / 2) - 1) * exp(-$value / 2)) /
+			((2 ** ($degrees / 2)) * Gamma::gammaValue($degrees / 2));
 	}
 
 	/**
@@ -113,7 +113,8 @@ class ChiSquared
 	 * @param mixed $degrees Integer degrees of freedom
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function inverseRightTail($probability, $degrees)
@@ -133,7 +134,7 @@ class ChiSquared
 			return ExcelError::NAN();
 		}
 
-		$callback = function ($value) use ($degrees): float {
+		$callback = function ($value) use ($degrees) {
 			return 1 - (Gamma::incompleteGamma($degrees / 2, $value / 2)
 					/ Gamma::gammaValue($degrees / 2));
 		};
@@ -153,7 +154,8 @@ class ChiSquared
 	 * @param mixed $degrees Integer degrees of freedom
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function inverseLeftTail($probability, $degrees)
@@ -185,6 +187,7 @@ class ChiSquared
 	 *
 	 * @param mixed $actual an array of observed frequencies
 	 * @param mixed $expected an array of expected frequencies
+	 *
 	 * @return float|string
 	 */
 	public static function test($actual, $expected)
@@ -276,7 +279,7 @@ class ChiSquared
 	// Relative error controlled by the eps parameter
 	private static function gser(int $n, float $x): float
 	{
-		/** @var float $gln */
+		/** @var float */
 		$gln = Gamma::ln($n / 2);
 		$a = 0.5 * $n;
 		$ap = $a;
@@ -300,7 +303,7 @@ class ChiSquared
 	// Relative error controlled by the eps parameter
 	private static function gcf(int $n, float $x): float
 	{
-		/** @var float $gln */
+		/** @var float */
 		$gln = Gamma::ln($n / 2);
 		$a = 0.5 * $n;
 		$b = $x + 1 - $a;

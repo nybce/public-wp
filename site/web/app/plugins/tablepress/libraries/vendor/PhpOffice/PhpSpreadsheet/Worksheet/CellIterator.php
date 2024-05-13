@@ -23,18 +23,21 @@ abstract class CellIterator implements NativeIterator
 
 	/**
 	 * Worksheet to iterate.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+	 *
+	 * @var Worksheet
 	 */
 	protected $worksheet;
 
 	/**
 	 * Cell Collection to iterate.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Collection\Cells
+	 *
+	 * @var Cells
 	 */
 	protected $cellCollection;
 
 	/**
 	 * Iterate only existing cells.
+	 *
 	 * @var bool
 	 */
 	protected $onlyExistingCells = false;
@@ -42,6 +45,7 @@ abstract class CellIterator implements NativeIterator
 	/**
 	 * If iterating all cells, and a cell doesn't exist, identifies whether a new cell should be created,
 	 *    or if the iterator should return a null value.
+	 *
 	 * @var bool
 	 */
 	protected $ifNotExists = self::IF_NOT_EXISTS_CREATE_NEW;
@@ -51,7 +55,8 @@ abstract class CellIterator implements NativeIterator
 	 */
 	public function __destruct()
 	{
-		unset($this->worksheet, $this->cellCollection);
+		// @phpstan-ignore-next-line
+		$this->worksheet = $this->cellCollection = null;
 	}
 
 	public function getIfNotExists(): bool

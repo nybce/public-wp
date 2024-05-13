@@ -2,7 +2,8 @@
 /**
  * File: Generic_WidgetStats.php
  *
- * @since   2.7.0
+ * @since X.X.X
+ *
  * @package W3TC
  */
 
@@ -15,7 +16,7 @@ class Generic_WidgetStats {
 	/**
 	 * Dashboard setup action
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -31,7 +32,7 @@ class Generic_WidgetStats {
 	/**
 	 * W3TC dashboard Stats widgets.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -64,7 +65,7 @@ class Generic_WidgetStats {
 	/**
 	 * Web Requests widget content.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -83,7 +84,7 @@ class Generic_WidgetStats {
 	/**
 	 * Object Cache widget content.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -102,7 +103,7 @@ class Generic_WidgetStats {
 	/**
 	 * Database widget content.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -121,7 +122,7 @@ class Generic_WidgetStats {
 	/**
 	 * Get button link allowed tags.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @param array $chart_config Chart configuration array.
 	 *
@@ -147,7 +148,7 @@ class Generic_WidgetStats {
 	/**
 	 * Get button link allowed tags.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return array
 	 */

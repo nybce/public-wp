@@ -5,7 +5,6 @@ namespace TablePress\PhpOffice\PhpSpreadsheet\RichText;
 use TablePress\PhpOffice\PhpSpreadsheet\Cell\Cell;
 use TablePress\PhpOffice\PhpSpreadsheet\Cell\DataType;
 use TablePress\PhpOffice\PhpSpreadsheet\IComparable;
-use Stringable;
 
 class RichText implements IComparable
 {
@@ -56,8 +55,10 @@ class RichText implements IComparable
 	 * Create text.
 	 *
 	 * @param string $text Text
+	 *
+	 * @return TextElement
 	 */
-	public function createText(string $text): TextElement
+	public function createText($text)
 	{
 		$objText = new TextElement($text);
 		$this->addText($objText);
@@ -69,8 +70,10 @@ class RichText implements IComparable
 	 * Create text run.
 	 *
 	 * @param string $text Text
+	 *
+	 * @return Run
 	 */
-	public function createTextRun(string $text): Run
+	public function createTextRun($text)
 	{
 		$objText = new Run($text);
 		$this->addText($objText);
@@ -80,8 +83,10 @@ class RichText implements IComparable
 
 	/**
 	 * Get plain text.
+	 *
+	 * @return string
 	 */
-	public function getPlainText(): string
+	public function getPlainText()
 	{
 		// Return value
 		$returnValue = '';
@@ -96,8 +101,10 @@ class RichText implements IComparable
 
 	/**
 	 * Convert to string.
+	 *
+	 * @return string
 	 */
-	public function __toString(): string
+	public function __toString()
 	{
 		return $this->getPlainText();
 	}
@@ -107,7 +114,7 @@ class RichText implements IComparable
 	 *
 	 * @return ITextElement[]
 	 */
-	public function getRichTextElements(): array
+	public function getRichTextElements()
 	{
 		return $this->richTextElements;
 	}
@@ -131,7 +138,7 @@ class RichText implements IComparable
 	 *
 	 * @return string Hash code
 	 */
-	public function getHashCode(): string
+	public function getHashCode()
 	{
 		$hashElements = '';
 		foreach ($this->richTextElements as $element) {
@@ -139,8 +146,8 @@ class RichText implements IComparable
 		}
 
 		return md5(
-			$hashElements
-			. __CLASS__
+			$hashElements .
+			__CLASS__
 		);
 	}
 

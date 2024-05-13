@@ -7,14 +7,10 @@ use SimpleXMLElement;
 
 class SheetViewOptions extends BaseParserClass
 {
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
-	 */
+	/** @var Worksheet */
 	private $worksheet;
 
-	/**
-	 * @var \SimpleXMLElement|null
-	 */
+	/** @var ?SimpleXMLElement */
 	private $worksheetXml;
 
 	public function __construct(Worksheet $workSheet, ?SimpleXMLElement $worksheetXml = null)
@@ -66,8 +62,8 @@ class SheetViewOptions extends BaseParserClass
 		if (isset($sheetPr->outlinePr)) {
 			$attr = $sheetPr->outlinePr->attributes() ?? [];
 			if (
-				isset($attr['summaryRight'])
-				&& !self::boolean((string) $attr['summaryRight'])
+				isset($attr['summaryRight']) &&
+				!self::boolean((string) $attr['summaryRight'])
 			) {
 				$this->worksheet->setShowSummaryRight(false);
 			} else {
@@ -75,8 +71,8 @@ class SheetViewOptions extends BaseParserClass
 			}
 
 			if (
-				isset($attr['summaryBelow'])
-				&& !self::boolean((string) $attr['summaryBelow'])
+				isset($attr['summaryBelow']) &&
+				!self::boolean((string) $attr['summaryBelow'])
 			) {
 				$this->worksheet->setShowSummaryBelow(false);
 			} else {
@@ -90,8 +86,8 @@ class SheetViewOptions extends BaseParserClass
 		if (isset($sheetPr->pageSetUpPr)) {
 			$attr = $sheetPr->pageSetUpPr->attributes() ?? [];
 			if (
-				isset($attr['fitToPage'])
-				&& !self::boolean((string) $attr['fitToPage'])
+				isset($attr['fitToPage']) &&
+				!self::boolean((string) $attr['fitToPage'])
 			) {
 				$this->worksheet->getPageSetup()->setFitToPage(false);
 			} else {
@@ -104,9 +100,9 @@ class SheetViewOptions extends BaseParserClass
 	{
 		$sheetFormatPr = $sheetFormatPrx->attributes() ?? [];
 		if (
-			isset($sheetFormatPr['customHeight'])
-			&& self::boolean((string) $sheetFormatPr['customHeight'])
-			&& isset($sheetFormatPr['defaultRowHeight'])
+			isset($sheetFormatPr['customHeight']) &&
+			self::boolean((string) $sheetFormatPr['customHeight']) &&
+			isset($sheetFormatPr['defaultRowHeight'])
 		) {
 			$this->worksheet->getDefaultRowDimension()
 				->setRowHeight((float) $sheetFormatPr['defaultRowHeight']);
@@ -118,8 +114,8 @@ class SheetViewOptions extends BaseParserClass
 		}
 
 		if (
-			isset($sheetFormatPr['zeroHeight'])
-			&& ((string) $sheetFormatPr['zeroHeight'] === '1')
+			isset($sheetFormatPr['zeroHeight']) &&
+			((string) $sheetFormatPr['zeroHeight'] === '1')
 		) {
 			$this->worksheet->getDefaultRowDimension()->setZeroHeight(true);
 		}

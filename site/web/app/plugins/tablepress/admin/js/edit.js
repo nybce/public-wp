@@ -22,6 +22,7 @@ import { buildQueryString } from '@wordpress/url';
  */
 import { $ } from './common/functions';
 import contextMenu from './edit/contextmenu';
+import naturalSort from './edit/naturalsort';
 
 // Ensure the global `tp` object exists.
 window.tp = window.tp || {};
@@ -390,11 +391,7 @@ tp.helpers.editor.sorting = function( direction ) {
 	direction = direction ? -1 : 1;
 	return function( a, b ) {
 		// The actual value is stored in the second array element, the first contains the row index.
-		const sortResult = a[1].localeCompare( b[1], undefined, {
-			numeric: true,
-			sensitivity: 'base'
-		} );
-		return direction * sortResult;
+		return direction * naturalSort( a[1], b[1] );
 	};
 };
 

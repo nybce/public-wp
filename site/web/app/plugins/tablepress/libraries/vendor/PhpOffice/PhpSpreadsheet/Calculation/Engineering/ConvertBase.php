@@ -11,9 +11,7 @@ abstract class ConvertBase
 {
 	use ArrayEnabled;
 
-	/**
-	 * @param mixed $value
-	 */
+	/** @param mixed $value */
 	protected static function validateValue($value): string
 	{
 		if (is_bool($value)) {
@@ -32,9 +30,7 @@ abstract class ConvertBase
 		return strtoupper((string) $value);
 	}
 
-	/**
-	 * @param mixed $places
-	 */
+	/** @param mixed $places */
 	protected static function validatePlaces($places = null): ?int
 	{
 		if ($places === null) {

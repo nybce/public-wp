@@ -503,7 +503,7 @@ class Cdn_AdminActions {
 	/**
 	 * Redirect to the Bunny CDN signup page.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */

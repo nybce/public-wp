@@ -4,24 +4,16 @@ namespace TablePress\PhpOffice\PhpSpreadsheet\Cell;
 
 class IgnoredErrors
 {
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $numberStoredAsText = false;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $formula = false;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $twoDigitTextYear = false;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $evalError = false;
 
 	public function setNumberStoredAsText(bool $value): self

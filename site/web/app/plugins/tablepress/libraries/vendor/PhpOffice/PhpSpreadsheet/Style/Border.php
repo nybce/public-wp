@@ -22,20 +22,23 @@ class Border extends Supervisor
 	const BORDER_THICK = 'thick';
 	const BORDER_THIN = 'thin';
 	const BORDER_OMIT = 'omit'; // should be used only for Conditional
+
 	/**
 	 * Border style.
+	 *
 	 * @var string
 	 */
 	protected $borderStyle = self::BORDER_NONE;
 
 	/**
 	 * Border color.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Color
+	 *
+	 * @var Color
 	 */
 	protected $color;
 
 	/**
-	 * @var int|null
+	 * @var null|int
 	 */
 	public $colorIndex;
 
@@ -46,7 +49,7 @@ class Border extends Supervisor
 	 *                                    Leave this value at default unless you understand exactly what
 	 *                                        its ramifications are
 	 */
-	public function __construct(bool $isSupervisor = false, bool $isConditional = false)
+	public function __construct($isSupervisor = false, bool $isConditional = false)
 	{
 		// Supervisor?
 		parent::__construct($isSupervisor);
@@ -66,15 +69,16 @@ class Border extends Supervisor
 	/**
 	 * Get the shared style component for the currently active cell in currently active sheet.
 	 * Only used for style supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getSharedComponent(): self
+	public function getSharedComponent()
 	{
-		/** @var Style $parent */
+		/** @var Style */
 		$parent = $this->parent;
 
 		/** @var Borders $sharedComponent */
 		$sharedComponent = $parent->getSharedComponent();
-
 		switch ($this->parentPropertyName) {
 			case 'bottom':
 				return $sharedComponent->getBottom();
@@ -86,20 +90,24 @@ class Border extends Supervisor
 				return $sharedComponent->getRight();
 			case 'top':
 				return $sharedComponent->getTop();
-			default:
-				throw new PhpSpreadsheetException('Cannot get shared component for a pseudo-border.');
 		}
+
+		throw new PhpSpreadsheetException('Cannot get shared component for a pseudo-border.');
 	}
 
 	/**
 	 * Build style array from subcomponents.
+	 *
+	 * @param array $array
+	 *
+	 * @return array
 	 */
-	public function getStyleArray(array $array): array
+	public function getStyleArray($array)
 	{
-		/** @var Style $parent */
+		/** @var Style */
 		$parent = $this->parent;
 
-		return $parent->getStyleArray([$this->parentPropertyName => $array]);
+		return $parent->/** @scrutinizer ignore-call */ getStyleArray([$this->parentPropertyName => $array]);
 	}
 
 	/**
@@ -138,8 +146,10 @@ class Border extends Supervisor
 
 	/**
 	 * Get Border style.
+	 *
+	 * @return string
 	 */
-	public function getBorderStyle(): string
+	public function getBorderStyle()
 	{
 		if ($this->isSupervisor) {
 			return $this->getSharedComponent()->getBorderStyle();
@@ -151,7 +161,8 @@ class Border extends Supervisor
 	/**
 	 * Set Border style.
 	 *
-	 * @param bool|string $style When passing a boolean, FALSE equates Border::BORDER_NONE
+	 * @param bool|string $style
+	 *                            When passing a boolean, FALSE equates Border::BORDER_NONE
 	 *                                and TRUE to Border::BORDER_MEDIUM
 	 *
 	 * @return $this
@@ -176,8 +187,10 @@ class Border extends Supervisor
 
 	/**
 	 * Get Border Color.
+	 *
+	 * @return Color
 	 */
-	public function getColor(): Color
+	public function getColor()
 	{
 		return $this->color;
 	}
@@ -207,16 +220,16 @@ class Border extends Supervisor
 	 *
 	 * @return string Hash code
 	 */
-	public function getHashCode(): string
+	public function getHashCode()
 	{
 		if ($this->isSupervisor) {
 			return $this->getSharedComponent()->getHashCode();
 		}
 
 		return md5(
-			$this->borderStyle
-			. $this->color->getHashCode()
-			. __CLASS__
+			$this->borderStyle .
+			$this->color->getHashCode() .
+			__CLASS__
 		);
 	}
 

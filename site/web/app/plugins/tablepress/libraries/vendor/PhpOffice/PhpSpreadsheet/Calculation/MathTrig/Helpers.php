@@ -20,8 +20,10 @@ class Helpers
 
 	/**
 	 * Many functions accept null/false/true argument treated as 0/0/1.
-	 * @return int|float
+	 *
 	 * @param mixed $number
+	 *
+	 * @return float|int
 	 */
 	public static function validateNumericNullBool($number)
 	{
@@ -41,9 +43,11 @@ class Helpers
 
 	/**
 	 * Validate numeric, but allow substitute for null.
-	 * @param null|float|int $substitute
-	 * @return float|int
+	 *
 	 * @param mixed $number
+	 * @param null|float|int $substitute
+	 *
+	 * @return float|int
 	 */
 	public static function validateNumericNullSubstitution($number, $substitute)
 	{
@@ -60,6 +64,7 @@ class Helpers
 
 	/**
 	 * Confirm number >= 0.
+	 *
 	 * @param float|int $number
 	 */
 	public static function validateNotNegative($number, ?string $except = null): void
@@ -73,6 +78,7 @@ class Helpers
 
 	/**
 	 * Confirm number > 0.
+	 *
 	 * @param float|int $number
 	 */
 	public static function validatePositive($number, ?string $except = null): void
@@ -86,6 +92,7 @@ class Helpers
 
 	/**
 	 * Confirm number != 0.
+	 *
 	 * @param float|int $number
 	 */
 	public static function validateNotZero($number): void
@@ -111,9 +118,12 @@ class Helpers
 
 	/**
 	 * Return NAN or value depending on argument.
+	 *
+	 * @param float $result Number
+	 *
 	 * @return float|string
 	 */
-	public static function numberOrNan(float $result)
+	public static function numberOrNan($result)
 	{
 		return is_nan($result) ? ExcelError::NAN() : $result;
 	}

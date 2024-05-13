@@ -29,9 +29,10 @@ class NonPeriodic
 	 *                                The first payment date indicates the beginning of the schedule of payments
 	 *                                All other dates must be later than this date, but they may occur in any order
 	 * @param mixed $guess        An optional guess at the expected answer
+	 *
 	 * @return float|string
 	 */
-	public static function rate(array $values, array $dates, $guess = self::DEFAULT_GUESS)
+	public static function rate($values, $dates, $guess = self::DEFAULT_GUESS)
 	{
 		$rslt = self::xirrPart1($values, $dates);
 		if ($rslt !== '') {
@@ -107,7 +108,7 @@ class NonPeriodic
 	 * Excel Function:
 	 *        =XNPV(rate,values,dates)
 	 *
-	 * @param array|float $rate the discount rate to apply to the cash flows
+	 * @param float $rate the discount rate to apply to the cash flows
 	 * @param float[] $values A series of cash flows that corresponds to a schedule of payments in dates.
 	 *                          The first payment is optional and corresponds to a cost or payment that occurs
 	 *                              at the beginning of the investment.
@@ -117,9 +118,10 @@ class NonPeriodic
 	 * @param mixed[] $dates A schedule of payment dates that corresponds to the cash flow payments.
 	 *                         The first payment date indicates the beginning of the schedule of payments.
 	 *                         All other dates must be later than this date, but they may occur in any order.
+	 *
 	 * @return float|string
 	 */
-	public static function presentValue($rate, array $values, array $dates)
+	public static function presentValue($rate, $values, $dates)
 	{
 		return self::xnpvOrdered($rate, $values, $dates, true);
 	}
@@ -213,7 +215,7 @@ class NonPeriodic
 	}
 
 	/**
-	 * @return string|float
+	 * @return float|string
 	 */
 	private static function xirrBisection(array $values, array $dates, float $x1, float $x2)
 	{
@@ -252,10 +254,11 @@ class NonPeriodic
 	}
 
 	/**
-	 * @return float|string
 	 * @param mixed $rate
 	 * @param mixed $values
 	 * @param mixed $dates
+	 *
+	 * @return float|string
 	 */
 	private static function xnpvOrdered($rate, $values, $dates, bool $ordered = true, bool $capAtNegative1 = false)
 	{

@@ -17,7 +17,8 @@ class Minimum extends MaxMinBase
 	 *        MIN(value1[,value2[, ...]])
 	 *
 	 * @param mixed ...$args Data values
-	 * @return float|int|string
+	 *
+	 * @return float
 	 */
 	public static function min(...$args)
 	{
@@ -55,7 +56,8 @@ class Minimum extends MaxMinBase
 	 *        MINA(value1[,value2[, ...]])
 	 *
 	 * @param mixed ...$args Data values
-	 * @return float|int|string
+	 *
+	 * @return float
 	 */
 	public static function minA(...$args)
 	{

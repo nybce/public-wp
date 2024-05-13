@@ -5,7 +5,7 @@
  * Assists with configuring Bunny CDN as an object storage CDN.
  * A pull zone selection is presented along with a form to add a new pull zone.
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  *
  * @param string           $account_api_key Account PI key.

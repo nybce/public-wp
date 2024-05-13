@@ -4,7 +4,7 @@
  *
  * Assists to deauthorize Bunny CDN as a full-site delivery CDN and optionally delete the pull zone.
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  *
  * @param Config  $config              W3TC configuration.

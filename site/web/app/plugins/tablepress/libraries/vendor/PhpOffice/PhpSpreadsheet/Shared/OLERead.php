@@ -6,9 +6,7 @@ use TablePress\PhpOffice\PhpSpreadsheet\Reader\Exception as ReaderException;
 
 class OLERead
 {
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $data = '';
 
 	// Size of a sector = 512 bytes
@@ -24,12 +22,12 @@ class OLERead
 	const SMALL_BLOCK_THRESHOLD = 0x1000;
 
 	// header offsets
-	const NUM_BIG_BLOCK_DEPOT_BLOCKS_POS = 0x2C;
+	const NUM_BIG_BLOCK_DEPOT_BLOCKS_POS = 0x2c;
 	const ROOT_START_BLOCK_POS = 0x30;
-	const SMALL_BLOCK_DEPOT_BLOCK_POS = 0x3C;
+	const SMALL_BLOCK_DEPOT_BLOCK_POS = 0x3c;
 	const EXTENSION_BLOCK_POS = 0x44;
 	const NUM_EXTENSION_BLOCK_POS = 0x48;
-	const BIG_BLOCK_DEPOT_BLOCKS_POS = 0x4C;
+	const BIG_BLOCK_DEPOT_BLOCKS_POS = 0x4c;
 
 	// property storage offsets (directory offsets)
 	const SIZE_OF_NAME_POS = 0x40;
@@ -37,19 +35,13 @@ class OLERead
 	const START_BLOCK_POS = 0x74;
 	const SIZE_POS = 0x78;
 
-	/**
-	 * @var int|null
-	 */
+	/** @var int */
 	public $wrkbook;
 
-	/**
-	 * @var int|null
-	 */
+	/** @var int */
 	public $summaryInformation;
 
-	/**
-	 * @var int|null
-	 */
+	/** @var int */
 	public $documentSummaryInformation;
 
 	/**
@@ -98,7 +90,7 @@ class OLERead
 	private $rootentry;
 
 	/**
-	 * @var mixed[]
+	 * @var array
 	 */
 	private $props = [];
 
@@ -114,7 +106,7 @@ class OLERead
 		$this->data = (string) file_get_contents($filename, false, null, 0, 8);
 
 		// Check OLE identifier
-		$identifierOle = pack('CCCCCCCC', 0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1);
+		$identifierOle = pack('CCCCCCCC', 0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1);
 		if ($this->data != $identifierOle) {
 			throw new ReaderException('The filename ' . $filename . ' is not recognised as an OLE file');
 		}
@@ -196,8 +188,12 @@ class OLERead
 
 	/**
 	 * Extract binary stream data.
+	 *
+	 * @param ?int $stream
+	 *
+	 * @return null|string
 	 */
-	public function getStream(?int $stream): ?string
+	public function getStream($stream)
 	{
 		if ($stream === null) {
 			return null;
@@ -246,7 +242,7 @@ class OLERead
 	 *
 	 * @return string Data for standard stream
 	 */
-	private function readData(int $block): string
+	private function readData($block)
 	{
 		$data = '';
 
@@ -320,8 +316,13 @@ class OLERead
 
 	/**
 	 * Read 4 bytes of data at specified position.
+	 *
+	 * @param string $data
+	 * @param int $pos
+	 *
+	 * @return int
 	 */
-	private static function getInt4d(string $data, int $pos): int
+	private static function getInt4d($data, $pos)
 	{
 		if ($pos < 0) {
 			// Invalid position
