@@ -16,12 +16,14 @@ class Drawing extends BaseDrawing
 
 	/**
 	 * Path.
+	 *
 	 * @var string
 	 */
 	private $path;
 
 	/**
 	 * Whether or not we are dealing with a URL.
+	 *
 	 * @var bool
 	 */
 	private $isUrl;
@@ -41,8 +43,10 @@ class Drawing extends BaseDrawing
 
 	/**
 	 * Get Filename.
+	 *
+	 * @return string
 	 */
-	public function getFilename(): string
+	public function getFilename()
 	{
 		return basename($this->path);
 	}
@@ -57,8 +61,10 @@ class Drawing extends BaseDrawing
 
 	/**
 	 * Get Extension.
+	 *
+	 * @return string
 	 */
-	public function getExtension(): string
+	public function getExtension()
 	{
 		$exploded = explode('.', basename($this->path));
 
@@ -67,8 +73,10 @@ class Drawing extends BaseDrawing
 
 	/**
 	 * Get full filepath to store drawing in zip archive.
+	 *
+	 * @return string
 	 */
-	public function getMediaFilename(): string
+	public function getMediaFilename()
 	{
 		if (!array_key_exists($this->type, self::IMAGE_TYPES_CONVERTION_MAP)) {
 			throw new PhpSpreadsheetException('Unsupported image type in comment background. Supported types: PNG, JPEG, BMP, GIF.');
@@ -79,8 +87,10 @@ class Drawing extends BaseDrawing
 
 	/**
 	 * Get Path.
+	 *
+	 * @return string
 	 */
-	public function getPath(): string
+	public function getPath()
 	{
 		return $this->path;
 	}
@@ -90,11 +100,11 @@ class Drawing extends BaseDrawing
 	 *
 	 * @param string $path File path
 	 * @param bool $verifyFile Verify file
-	 * @param ?ZipArchive $zip Zip archive instance
+	 * @param ZipArchive $zip Zip archive instance
 	 *
 	 * @return $this
 	 */
-	public function setPath(string $path, bool $verifyFile = true, ?ZipArchive $zip = null)
+	public function setPath($path, $verifyFile = true, $zip = null)
 	{
 		if ($verifyFile && preg_match('~^data:image/[a-z]+;base64,~', $path) !== 1) {
 			// Check if a URL has been passed. https://stackoverflow.com/a/2058596/1252979
@@ -155,12 +165,12 @@ class Drawing extends BaseDrawing
 	 *
 	 * @return string Hash code
 	 */
-	public function getHashCode(): string
+	public function getHashCode()
 	{
 		return md5(
-			$this->path
-			. parent::getHashCode()
-			. __CLASS__
+			$this->path .
+			parent::getHashCode() .
+			__CLASS__
 		);
 	}
 

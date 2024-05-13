@@ -9,67 +9,76 @@ use TablePress\PhpOffice\PhpSpreadsheet\Shared\Drawing as SharedDrawing;
 use TablePress\PhpOffice\PhpSpreadsheet\Style\Alignment;
 use TablePress\PhpOffice\PhpSpreadsheet\Style\Color;
 use TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
-use Stringable;
 
 class Comment implements IComparable
 {
 	/**
 	 * Author.
+	 *
 	 * @var string
 	 */
 	private $author;
 
 	/**
 	 * Rich text comment.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\RichText\RichText
+	 *
+	 * @var RichText
 	 */
 	private $text;
 
 	/**
 	 * Comment width (CSS style, i.e. XXpx or YYpt).
+	 *
 	 * @var string
 	 */
 	private $width = '96pt';
 
 	/**
 	 * Left margin (CSS style, i.e. XXpx or YYpt).
+	 *
 	 * @var string
 	 */
 	private $marginLeft = '59.25pt';
 
 	/**
 	 * Top margin (CSS style, i.e. XXpx or YYpt).
+	 *
 	 * @var string
 	 */
 	private $marginTop = '1.5pt';
 
 	/**
 	 * Visible.
+	 *
 	 * @var bool
 	 */
 	private $visible = false;
 
 	/**
 	 * Comment height (CSS style, i.e. XXpx or YYpt).
+	 *
 	 * @var string
 	 */
 	private $height = '55.5pt';
 
 	/**
 	 * Comment fill color.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Color
+	 *
+	 * @var Color
 	 */
 	private $fillColor;
 
 	/**
 	 * Alignment.
+	 *
 	 * @var string
 	 */
 	private $alignment;
 
 	/**
 	 * Background image in comment.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Drawing
+	 *
+	 * @var Drawing
 	 */
 	private $backgroundImage;
 
@@ -266,17 +275,17 @@ class Comment implements IComparable
 	public function getHashCode(): string
 	{
 		return md5(
-			$this->author
-			. $this->text->getHashCode()
-			. $this->width
-			. $this->height
-			. $this->marginLeft
-			. $this->marginTop
-			. ($this->visible ? 1 : 0)
-			. $this->fillColor->getHashCode()
-			. $this->alignment
-			. ($this->hasBackgroundImage() ? $this->backgroundImage->getHashCode() : '')
-			. __CLASS__
+			$this->author .
+			$this->text->getHashCode() .
+			$this->width .
+			$this->height .
+			$this->marginLeft .
+			$this->marginTop .
+			($this->visible ? 1 : 0) .
+			$this->fillColor->getHashCode() .
+			$this->alignment .
+			($this->hasBackgroundImage() ? $this->backgroundImage->getHashCode() : '') .
+			__CLASS__
 		);
 	}
 

@@ -12,43 +12,50 @@ class Column
 {
 	/**
 	 * Table Column Index.
+	 *
 	 * @var string
 	 */
-	private $columnIndex;
+	private $columnIndex = '';
 
 	/**
 	 * Show Filter Button.
+	 *
 	 * @var bool
 	 */
 	private $showFilterButton = true;
 
 	/**
 	 * Total Row Label.
-	 * @var string|null
+	 *
+	 * @var string
 	 */
 	private $totalsRowLabel;
 
 	/**
 	 * Total Row Function.
-	 * @var string|null
+	 *
+	 * @var string
 	 */
 	private $totalsRowFunction;
 
 	/**
 	 * Total Row Formula.
-	 * @var string|null
+	 *
+	 * @var string
 	 */
 	private $totalsRowFormula;
 
 	/**
 	 * Column Formula.
-	 * @var string|null
+	 *
+	 * @var string
 	 */
 	private $columnFormula;
 
 	/**
 	 * Table.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Table|null
+	 *
+	 * @var null|Table
 	 */
 	private $table;
 
@@ -56,9 +63,9 @@ class Column
 	 * Create a new Column.
 	 *
 	 * @param string $column Column (e.g. A)
-	 * @param ?Table $table Table for this column
+	 * @param Table $table Table for this column
 	 */
-	public function __construct(string $column, ?Table $table = null)
+	public function __construct($column, ?Table $table = null)
 	{
 		$this->columnIndex = $column;
 		$this->table = $table;
@@ -77,7 +84,7 @@ class Column
 	 *
 	 * @param string $column Column (e.g. A)
 	 */
-	public function setColumnIndex(string $column): self
+	public function setColumnIndex($column): self
 	{
 		// Uppercase coordinate
 		$column = strtoupper($column);

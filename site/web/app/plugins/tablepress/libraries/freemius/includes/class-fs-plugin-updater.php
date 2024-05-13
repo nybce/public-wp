@@ -37,8 +37,6 @@
 
 		private static $_upgrade_basename = null;
 
-		const UPDATES_CHECK_CACHE_EXPIRATION = ( WP_FS__TIME_24_HOURS_IN_SEC / 24 );
-
 		#--------------------------------------------------------------------------------
 		#region Singleton
 		#--------------------------------------------------------------------------------
@@ -532,7 +530,7 @@
 				$new_version = $this->_fs->get_update(
 					false,
 					fs_request_get_bool( 'force-check' ),
-					FS_Plugin_Updater::UPDATES_CHECK_CACHE_EXPIRATION,
+					WP_FS__TIME_24_HOURS_IN_SEC / 24,
 					$current_plugin_version
 				);
 
@@ -1190,7 +1188,7 @@ if ( !isset($info->error) ) {
 		 * @return object
 		 */
 		private function get_latest_download_details( $addon_id = false, $newer_than = false, $fetch_readme = true ) {
-			return $this->_fs->_fetch_latest_version( $addon_id, true, FS_Plugin_Updater::UPDATES_CHECK_CACHE_EXPIRATION, $newer_than, $fetch_readme );
+			return $this->_fs->_fetch_latest_version( $addon_id, true, WP_FS__TIME_24_HOURS_IN_SEC, $newer_than, $fetch_readme );
 		}
 
 		/**

@@ -325,8 +325,6 @@ class Extension_FragmentCache_WpObjectCache {
 			$cache = $this->_get_cache( $descriptor['global'] );
 			$cache->flush( $group );
 		}
-
-		return true;
 	}
 
 	/**

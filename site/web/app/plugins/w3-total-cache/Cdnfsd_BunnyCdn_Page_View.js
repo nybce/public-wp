@@ -1,7 +1,7 @@
 /**
  * File: Cdnfsd_BunnyCdn_Page_View.js
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  */
 

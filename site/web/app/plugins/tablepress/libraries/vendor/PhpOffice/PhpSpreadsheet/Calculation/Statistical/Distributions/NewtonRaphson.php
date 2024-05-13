@@ -17,9 +17,7 @@ class NewtonRaphson
 		$this->callback = $callback;
 	}
 
-	/**
-	 * @return string|int|float
-	 */
+	/** @return float|string */
 	public function execute(float $probability)
 	{
 		$xLo = 100;

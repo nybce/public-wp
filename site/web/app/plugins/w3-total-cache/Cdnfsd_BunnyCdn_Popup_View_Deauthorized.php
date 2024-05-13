@@ -2,7 +2,7 @@
 /**
  * File: Cdnfsd_BunnyCdn_Popup_View_Deauthorized.php
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  *
  * @param Config $config               W3TC configuration.

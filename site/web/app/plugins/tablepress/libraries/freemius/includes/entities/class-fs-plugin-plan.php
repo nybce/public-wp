@@ -88,10 +88,6 @@
 		 * @var bool Is featured plan.
 		 */
 		public $is_featured;
-		/**
-		 * @var bool Is hidden plan.
-		 */
-		public $is_hidden;
 
 		#endregion Properties
 

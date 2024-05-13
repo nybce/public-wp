@@ -8,7 +8,7 @@ use TablePress\PhpOffice\PhpSpreadsheet\Spreadsheet;
 abstract class BaseLoader
 {
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Spreadsheet
+	 * @var Spreadsheet
 	 */
 	protected $spreadsheet;
 

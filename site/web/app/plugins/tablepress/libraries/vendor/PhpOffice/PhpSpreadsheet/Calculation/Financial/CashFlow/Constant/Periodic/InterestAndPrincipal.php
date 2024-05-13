@@ -6,14 +6,10 @@ use TablePress\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as Finan
 
 class InterestAndPrincipal
 {
-	/**
-	 * @var float
-	 */
+	/** @var float */
 	protected $interest;
 
-	/**
-	 * @var float
-	 */
+	/** @var float */
 	protected $principal;
 
 	public function __construct(

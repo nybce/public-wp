@@ -39,9 +39,9 @@ class Offset
 	 * @param mixed $width The width, in number of columns, that you want the returned reference to be.
 	 *                         Width must be a positive number.
 	 *
-	 * @return array|string An array containing a cell or range of cells, or a string on error
+	 * @return array|int|string An array containing a cell or range of cells, or a string on error
 	 */
-	public static function OFFSET(?string $cellAddress = null, $rows = 0, $columns = 0, $height = null, $width = null, ?Cell $cell = null)
+	public static function OFFSET($cellAddress = null, $rows = 0, $columns = 0, $height = null, $width = null, ?Cell $cell = null)
 	{
 		$rows = Functions::flattenSingleValue($rows);
 		$columns = Functions::flattenSingleValue($columns);
@@ -91,7 +91,8 @@ class Offset
 		return self::extractRequiredCells($worksheet, $cellAddress);
 	}
 
-	private static function extractRequiredCells(?Worksheet $worksheet, string $cellAddress): array
+	/** @return mixed */
+	private static function extractRequiredCells(?Worksheet $worksheet, string $cellAddress)
 	{
 		return Calculation::getInstance($worksheet !== null ? $worksheet->getParent() : null)
 			->extractCellRange($cellAddress, $worksheet, false);
@@ -102,7 +103,7 @@ class Offset
 		$cellAddress = self::assessCellAddress($cellAddress ?? '', $cell);
 
 		$sheetName = '';
-		if (str_contains($cellAddress, '!')) {
+		if (strpos($cellAddress, '!') !== false) {
 			[$sheetName, $cellAddress] = Worksheet::extractSheetTitle($cellAddress, true);
 			$sheetName = trim($sheetName, "'");
 		}

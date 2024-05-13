@@ -23,12 +23,10 @@ class CdnEngine_CloudFront extends CdnEngine_Base {
 	}
 
 	/**
-	 * Initialize.
-	 *
-	 * @see Cdn_Core::get_region_id()
+	 * Initialize
 	 */
-	public function _init() {
-		if ( ! is_null( $this->api ) ) {
+	function _init() {
+		if ( !is_null( $this->api ) ) {
 			return;
 		}
 
@@ -37,15 +35,13 @@ class CdnEngine_CloudFront extends CdnEngine_Base {
 		} else {
 			$credentials = new \Aws\Credentials\Credentials(
 				$this->_config['key'],
-				$this->_config['secret']
-			);
+				$this->_config['secret'] );
 		}
 
-		$this->api = new \Aws\CloudFront\CloudFrontClient(
-			array(
+		$this->api = new \Aws\CloudFront\CloudFrontClient( array(
 				'credentials' => $credentials,
-				'region'      => Cdn_Core::get_region_id( $this->_config['bucket_location'] ),
-				'version'     => '2018-11-05',
+				'region' => $this->_config['bucket_location'],
+				'version' => '2018-11-05'
 			)
 		);
 
@@ -148,37 +144,15 @@ class CdnEngine_CloudFront extends CdnEngine_Base {
 	}
 
 	/**
-	 * Get the S3 bucket region id used for the hostname.
-	 *
-	 * @since 2.7.2
-	 *
-	 * @return string
+	 * Returns origin
 	 */
-	public function get_region() {
-		switch ( $this->_config['bucket_location'] ) {
-			case 'us-east-1':
-				$region = '';
-				break;
-			case 'us-east-1-e':
-				$region = 'us-east-1.';
-				break;
-			default:
-				$region = $this->_config['bucket_location'] . '.';
-				break;
+	function _get_origin() {
+		if ( $this->_config['bucket_location'] === 'us-east-1' ) {
+			$region = "";
+		} else {
+			$region = $this->_config['bucket_location'] . '.';
 		}
-
-		return $region;
-	}
-
-	/**
-	 * Get the S3 bucket origin hostname.
-	 *
-	 * @see self::get_region()
-	 *
-	 * @return string
-	 */
-	public function _get_origin() {
-		return sprintf( '%1$s.s3.%2$samazonaws.com', $this->_config['bucket'], $this->get_region() );
+		return sprintf( '%s.s3.%samazonaws.com', $this->_config['bucket'], $region );
 	}
 
 	/**
@@ -230,7 +204,7 @@ class CdnEngine_CloudFront extends CdnEngine_Base {
 		}
 
 		if ( !$dist['Enabled'] ) {
-			$error = sprintf( 'Distribution for origin "%s" is disabled.', $this->_get_origin() );
+			$error = sprintf( 'Distribution for origin "%s" is disabled.', $origin );
 			return false;
 		}
 

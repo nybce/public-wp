@@ -4,14 +4,10 @@ namespace TablePress\PhpOffice\PhpSpreadsheet;
 
 class Theme
 {
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $themeColorName = 'Office';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $themeFontName = 'Office';
 
 	public const COLOR_SCHEME_2013_PLUS_NAME = 'Office 2013+';
@@ -49,34 +45,22 @@ class Theme
 	/** @var string[] */
 	private $themeColors = self::COLOR_SCHEME_2007_2010;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $majorFontLatin = 'Cambria';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $majorFontEastAsian = '';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $majorFontComplexScript = '';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $minorFontLatin = 'Calibri';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $minorFontEastAsian = '';
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $minorFontComplexScript = '';
 
 	/**
@@ -211,7 +195,8 @@ class Theme
 		return $this->majorFontSubstitutions;
 	}
 
-	public function setMajorFontValues(?string $latin, ?string $eastAsian, ?string $complexScript, ?array $substitutions): self
+	/** @param null|array $substitutions */
+	public function setMajorFontValues(?string $latin, ?string $eastAsian, ?string $complexScript, $substitutions): self
 	{
 		if (!empty($latin)) {
 			$this->majorFontLatin = $latin;
@@ -249,7 +234,8 @@ class Theme
 		return $this->minorFontSubstitutions;
 	}
 
-	public function setMinorFontValues(?string $latin, ?string $eastAsian, ?string $complexScript, ?array $substitutions): self
+	/** @param null|array $substitutions */
+	public function setMinorFontValues(?string $latin, ?string $eastAsian, ?string $complexScript, $substitutions): self
 	{
 		if (!empty($latin)) {
 			$this->minorFontLatin = $latin;

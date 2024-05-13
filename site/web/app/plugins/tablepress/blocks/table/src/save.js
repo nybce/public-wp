@@ -23,7 +23,7 @@ import { RawHTML } from '@wordpress/element';
  * @param {string} params.attributes.parameters Table render attributes.
  * @return {Element} Element to render.
  */
-const save = ( { attributes: { id = '', parameters = '' } } ) => {
+export default function save( { attributes: { id = '', parameters = '' } } ) {
 	if ( '' === id ) {
 		return '';
 	}
@@ -33,6 +33,4 @@ const save = ( { attributes: { id = '', parameters = '' } } ) => {
 		parameters += ' ';
 	}
 	return <RawHTML>{ `[${ tp.table.shortcode } id=${ id } ${ parameters }/]` }</RawHTML>;
-};
-
-export default save;
+}

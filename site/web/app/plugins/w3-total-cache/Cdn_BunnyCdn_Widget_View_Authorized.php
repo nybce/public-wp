@@ -2,7 +2,7 @@
 /**
  * File: Cdn_BunnyCdn_Widget_View_Authorized.php
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  */
 

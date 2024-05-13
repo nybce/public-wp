@@ -35,31 +35,36 @@ class Escher
 
 	/**
 	 * Escher stream data (binary).
+	 *
 	 * @var string
 	 */
 	private $data;
 
 	/**
 	 * Size in bytes of the Escher stream data.
+	 *
 	 * @var int
 	 */
 	private $dataSize;
 
 	/**
 	 * Current position of stream pointer in Escher stream data.
+	 *
 	 * @var int
 	 */
 	private $pos;
 
 	/**
 	 * The object to be returned by the reader. Modified during load.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer\SpContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer
+	 *
+	 * @var BSE|BstoreContainer|DgContainer|DggContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher|SpContainer|SpgrContainer
 	 */
 	private $object;
 
 	/**
 	 * Create a new Escher instance.
-	 * @param \TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer\SpContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer $object
+	 *
+	 * @param mixed $object
 	 */
 	public function __construct($object)
 	{
@@ -89,9 +94,12 @@ class Escher
 
 	/**
 	 * Load Escher stream data. May be a partial Escher stream.
-	 * @return \TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer\SpContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer
+	 *
+	 * @param string $data
+	 *
+	 * @return BSE|BstoreContainer|DgContainer|DggContainer|\TablePress\PhpOffice\PhpSpreadsheet\Shared\Escher|SpContainer|SpgrContainer
 	 */
-	public function load(string $data)
+	public function load($data)
 	{
 		$this->data = $data;
 
@@ -573,7 +581,7 @@ class Escher
 	 * @param string $data Binary data
 	 * @param int $n Number of properties
 	 */
-	private function readOfficeArtRGFOPTE(string $data, int $n): void
+	private function readOfficeArtRGFOPTE($data, $n): void
 	{
 		$splicedComplexData = substr($data, 6 * $n);
 

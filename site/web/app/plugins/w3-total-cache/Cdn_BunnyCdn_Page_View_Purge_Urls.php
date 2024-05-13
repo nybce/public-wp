@@ -4,7 +4,7 @@
  *
  * Bunny CDN settings purge URLs view.
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  *
  * @param array $config W3TC configuration.

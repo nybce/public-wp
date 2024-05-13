@@ -3,15 +3,11 @@
 namespace TablePress\PhpOffice\PhpSpreadsheet\Cell;
 
 use TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use Stringable;
 
-/**
- * @implements AddressRange<string>
- */
 class ColumnRange implements AddressRange
 {
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet|null
+	 * @var ?Worksheet
 	 */
 	protected $worksheet;
 
@@ -32,11 +28,6 @@ class ColumnRange implements AddressRange
 			Coordinate::columnIndexFromString($to ?? $from)
 		);
 		$this->worksheet = $worksheet;
-	}
-
-	public function __destruct()
-	{
-		$this->worksheet = null;
 	}
 
 	public static function fromColumnIndexes(int $from, int $to, ?Worksheet $worksheet = null): self

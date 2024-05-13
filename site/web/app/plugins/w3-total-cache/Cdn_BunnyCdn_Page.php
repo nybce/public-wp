@@ -2,7 +2,7 @@
 /**
  * File: Cdn_BunnyCdn_Page.php
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  */
 
@@ -11,13 +11,13 @@ namespace W3TC;
 /**
  * Class: Cdn_BunnyCdn_Page
  *
- * @since 2.6.0
+ * @since X.X.X
  */
 class Cdn_BunnyCdn_Page {
 	/**
 	 * W3TC AJAX.
 	 *
-	 * @since  2.6.0
+	 * @since  X.X.X
 	 * @static
 	 *
 	 * @return void
@@ -34,7 +34,7 @@ class Cdn_BunnyCdn_Page {
 	/**
 	 * Determine if CDN or CDNFSD is active.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 * @static
 	 *
 	 * @return bool
@@ -60,7 +60,7 @@ class Cdn_BunnyCdn_Page {
 	/**
 	 * Add Dashboard actions.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 * @static
 	 *
 	 * @see self::in_active()
@@ -91,7 +91,7 @@ class Cdn_BunnyCdn_Page {
 	 *
 	 * Called from plugin-admin.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 * @static
 	 *
 	 * @return void
@@ -128,7 +128,7 @@ class Cdn_BunnyCdn_Page {
 	/**
 	 * CDN settings.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 * @static
 	 *
 	 * @return void
@@ -142,7 +142,7 @@ class Cdn_BunnyCdn_Page {
 	/**
 	 * Display purge URLs page.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 * @static
 	 */
 	public static function w3tc_purge_urls_box() {
@@ -159,7 +159,7 @@ class Cdn_BunnyCdn_Page {
 	 * You can also purge folders or wildcard files using * inside of the URL path.
 	 * Wildcard values are not supported if using Perma-Cache.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 */
 	public function w3tc_ajax_cdn_bunnycdn_purge_url() {
 		$url = Util_Request::get_string( 'url' );
@@ -195,7 +195,7 @@ class Cdn_BunnyCdn_Page {
 	/**
 	 * Flush all caches except Bunny CDN.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 */
 	public function w3tc_bunnycdn_flush_all_except_bunnycdn() {
 		Dispatcher::component( 'CacheFlush' )->flush_all( array( 'bunnycdn' => 'skip' ) );

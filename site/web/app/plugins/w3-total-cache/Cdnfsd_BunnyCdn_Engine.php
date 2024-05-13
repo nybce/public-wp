@@ -2,7 +2,7 @@
 /**
  * File: Cdnfsd_BunnyCdn_Engine.php
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  */
 
@@ -11,13 +11,13 @@ namespace W3TC;
 /**
  * Class: Cdnfsd_Bunny_Cdn_Engine
  *
- * @since 2.6.0
+ * @since X.X.X
  */
 class Cdnfsd_BunnyCdn_Engine {
 	/**
 	 * CDN configuration.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @var array
 	 */
@@ -26,7 +26,7 @@ class Cdnfsd_BunnyCdn_Engine {
 	/**
 	 * Constructor.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @param array $config CDN configuration.
 	 */
@@ -37,7 +37,7 @@ class Cdnfsd_BunnyCdn_Engine {
 	/**
 	 * Flush URLs.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @param  array $urls URLs.
 	 * @throws \Exception Exception.
@@ -72,7 +72,7 @@ class Cdnfsd_BunnyCdn_Engine {
 	/**
 	 * Flushes CDN completely.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @throws \Exception Exception.
 	 */

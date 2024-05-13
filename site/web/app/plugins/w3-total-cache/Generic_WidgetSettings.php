@@ -2,8 +2,9 @@
 /**
  * File: Generic_WidgetSettings.php
  *
- * @since   2.7.0
  * @package W3TC
+ *
+ * @since X.X.X
  */
 
 namespace W3TC;
@@ -15,7 +16,7 @@ class Generic_WidgetSettings {
 	/**
 	 * Dashboard setup action
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -28,7 +29,7 @@ class Generic_WidgetSettings {
 	/**
 	 * W3TC dashboard Premium Services widget.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -45,7 +46,7 @@ class Generic_WidgetSettings {
 	/**
 	 * Premium Services widget content.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */

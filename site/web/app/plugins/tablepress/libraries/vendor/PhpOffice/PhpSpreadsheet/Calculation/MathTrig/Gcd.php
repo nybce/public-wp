@@ -17,8 +17,10 @@ class Gcd
 	 *
 	 * Excel Function:
 	 *        GCD(number1[,number2[, ...]])
+	 *
 	 * @param float|int $a
 	 * @param float|int $b
+	 *
 	 * @return float|int
 	 */
 	private static function evaluateGCD($a, $b)

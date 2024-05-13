@@ -56,8 +56,6 @@ class wfScanner {
 	const SUMMARY_SCANNED_USERS = 'scannedUsers';
 	const SUMMARY_SCANNED_URLS = 'scannedURLs';
 	
-	const CENTRAL_STAGE_UPDATE_THRESHOLD = 5;
-	
 	private $_scanType = false;
 	
 	private $_summary = false;
@@ -689,13 +687,6 @@ class wfScanner {
 		wfConfig::set_ser('scanStageStatuses', $this->_defaultStageStatuses(), false, wfConfig::DONT_AUTOLOAD);
 	}
 	
-	private function _shouldForceUpdate($stageID) {
-		if ($stageID == wfScanner::STAGE_MALWARE_SCAN) {
-			return true;
-		}
-		return false;
-	}
-	
 	/**
 	 * Increments the stage started counter and marks it as running if not already in that state.
 	 * 
@@ -713,7 +704,7 @@ class wfScanner {
 		
 		$runningStatus[$stageID]['started'] += 1;
 		wfConfig::set_ser('scanStageStatuses', $runningStatus, false, wfConfig::DONT_AUTOLOAD);
-		if (wfCentral::isConnected() && ($this->_shouldForceUpdate($stageID) || (time() - wfConfig::getInt('lastScanStageStatusUpdate', 0)) > self::CENTRAL_STAGE_UPDATE_THRESHOLD)) {
+		if (wfCentral::isConnected()) {
 			wfCentral::updateScanStatus($runningStatus);
 		}
 	}
@@ -747,17 +738,7 @@ class wfScanner {
 		
 		wfConfig::set_ser('scanStageStatuses', $runningStatus, false, wfConfig::DONT_AUTOLOAD);
 		if (wfCentral::isConnected()) {
-			$forceSend = true; //Force sending the last stage completion update even if the timing would otherwise prevent it
-			foreach ($runningStatus as $stageID => $stage) {
-				if ($runningStatus[$stageID]['finished'] < $runningStatus[$stageID]['expected']) {
-					$forceSend = false;
-					break;
-				}
-			}
-			
-			if ($forceSend || (time() - wfConfig::getInt('lastScanStageStatusUpdate', 0)) > self::CENTRAL_STAGE_UPDATE_THRESHOLD) {
-				wfCentral::updateScanStatus($runningStatus);
-			}
+			wfCentral::updateScanStatus($runningStatus);
 		}
 
 	}

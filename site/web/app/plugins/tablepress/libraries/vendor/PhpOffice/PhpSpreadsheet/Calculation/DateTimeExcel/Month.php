@@ -2,7 +2,6 @@
 
 namespace TablePress\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 
-use DateTime;
 use TablePress\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use TablePress\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 
@@ -29,7 +28,7 @@ class Month
 	 *                                        a negative value yields a past date.
 	 *                         Or can be an array of adjustment values
 	 *
-	 * @return array|DateTime|float|int|string Excel date/time serial value, PHP date/time serial value or PHP date/time object,
+	 * @return array|mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
 	 *                        depending on the value of the ReturnDateType flag
 	 *         If an array of values is passed as the argument, then the returned result will also be an array
 	 *            with the same dimensions
@@ -73,7 +72,7 @@ class Month
 	 *                                        a negative value yields a past date.
 	 *                         Or can be an array of adjustment values
 	 *
-	 * @return array|DateTime|float|int|string Excel date/time serial value, PHP date/time serial value or PHP date/time object,
+	 * @return array|mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
 	 *                        depending on the value of the ReturnDateType flag
 	 *         If an array of values is passed as the argument, then the returned result will also be an array
 	 *            with the same dimensions

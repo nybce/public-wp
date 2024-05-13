@@ -25,7 +25,7 @@ class BstoreContainer
 	 *
 	 * @return BstoreContainer\BSE[]
 	 */
-	public function getBSECollection(): array
+	public function getBSECollection()
 	{
 		return $this->BSECollection;
 	}

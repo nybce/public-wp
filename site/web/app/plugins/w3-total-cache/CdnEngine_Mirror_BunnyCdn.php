@@ -2,7 +2,7 @@
 /**
  * File: CdnEngine_Mirror_BunnyCdn.php
  *
- * @since   2.6.0
+ * @since   X.X.X
  * @package W3TC
  */
 
@@ -11,7 +11,7 @@ namespace W3TC;
 /**
  * Class: CdnEngine_Mirror_BunnyCdn
  *
- * @since 2.6.0
+ * @since X.X.X
  *
  * @extends CdnEngine_Mirror
  */
@@ -47,7 +47,7 @@ class CdnEngine_Mirror_BunnyCdn extends CdnEngine_Mirror {
 	/**
 	 * Purge remote files.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @param  array $files   Local and remote file paths.
 	 * @param  array $results Results.
@@ -95,7 +95,7 @@ class CdnEngine_Mirror_BunnyCdn extends CdnEngine_Mirror {
 	/**
 	 * Purge CDN completely.
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @param  array $results Results.
 	 * @return bool
@@ -148,7 +148,7 @@ class CdnEngine_Mirror_BunnyCdn extends CdnEngine_Mirror {
 	 *
 	 * If set to "auto", then add URLs for both "http" and "https".
 	 *
-	 * @since 2.6.0
+	 * @since X.X.X
 	 *
 	 * @return array
 	 */

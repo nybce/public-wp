@@ -6,14 +6,10 @@ use TablePress\PhpOffice\PhpSpreadsheet\Style\Font;
 
 class AxisText extends Properties
 {
-	/**
-	 * @var int|null
-	 */
+	/** @var ?int */
 	private $rotation;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Font
-	 */
+	/** @var Font */
 	private $font;
 
 	public function __construct()
@@ -56,14 +52,5 @@ class AxisText extends Properties
 		$this->font = $font;
 
 		return $this;
-	}
-
-	/**
-	 * Implement PHP __clone to create a deep clone, not just a shallow copy.
-	 */
-	public function __clone()
-	{
-		parent::__clone();
-		$this->font = clone $this->font;
 	}
 }

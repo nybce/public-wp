@@ -2,8 +2,9 @@
 /**
  * File: Generic_WidgetSettings_View.php
  *
- * @since   2.7.0
  * @package W3TC
+ *
+ * @since X.X.X
  */
 
 namespace W3TC;
