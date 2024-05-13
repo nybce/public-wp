@@ -2,7 +2,8 @@
 /**
  * File: Generic_WidgetPartners_View.php
  *
- * @since   2.7.0
+ * @since X.X.X
+ *
  * @package W3TC
  */
 

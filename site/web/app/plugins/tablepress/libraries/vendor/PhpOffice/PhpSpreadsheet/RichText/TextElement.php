@@ -2,12 +2,11 @@
 
 namespace TablePress\PhpOffice\PhpSpreadsheet\RichText;
 
-use TablePress\PhpOffice\PhpSpreadsheet\Style\Font;
-
 class TextElement implements ITextElement
 {
 	/**
 	 * Text.
+	 *
 	 * @var string
 	 */
 	private $text;
@@ -17,7 +16,7 @@ class TextElement implements ITextElement
 	 *
 	 * @param string $text Text
 	 */
-	public function __construct(string $text = '')
+	public function __construct($text = '')
 	{
 		// Initialise variables
 		$this->text = $text;
@@ -28,7 +27,7 @@ class TextElement implements ITextElement
 	 *
 	 * @return string Text
 	 */
-	public function getText(): string
+	public function getText()
 	{
 		return $this->text;
 	}
@@ -40,7 +39,7 @@ class TextElement implements ITextElement
 	 *
 	 * @return $this
 	 */
-	public function setText(string $text): \TablePress\PhpOffice\PhpSpreadsheet\RichText\ITextElement
+	public function setText($text)
 	{
 		$this->text = $text;
 
@@ -49,8 +48,10 @@ class TextElement implements ITextElement
 
 	/**
 	 * Get font. For this class, the return value is always null.
+	 *
+	 * @return null|\TablePress\PhpOffice\PhpSpreadsheet\Style\Font
 	 */
-	public function getFont(): ?Font
+	public function getFont()
 	{
 		return null;
 	}
@@ -60,11 +61,11 @@ class TextElement implements ITextElement
 	 *
 	 * @return string Hash code
 	 */
-	public function getHashCode(): string
+	public function getHashCode()
 	{
 		return md5(
-			$this->text
-			. __CLASS__
+			$this->text .
+			__CLASS__
 		);
 	}
 }

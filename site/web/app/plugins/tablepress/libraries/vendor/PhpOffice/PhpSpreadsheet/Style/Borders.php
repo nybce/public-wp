@@ -14,67 +14,78 @@ class Borders extends Supervisor
 
 	/**
 	 * Left.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $left;
 
 	/**
 	 * Right.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $right;
 
 	/**
 	 * Top.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $top;
 
 	/**
 	 * Bottom.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $bottom;
 
 	/**
 	 * Diagonal.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $diagonal;
 
 	/**
 	 * DiagonalDirection.
+	 *
 	 * @var int
 	 */
 	protected $diagonalDirection;
 
 	/**
 	 * All borders pseudo-border. Only applies to supervisor.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $allBorders;
 
 	/**
 	 * Outline pseudo-border. Only applies to supervisor.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $outline;
 
 	/**
 	 * Inside pseudo-border. Only applies to supervisor.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $inside;
 
 	/**
 	 * Vertical pseudo-border. Only applies to supervisor.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $vertical;
 
 	/**
 	 * Horizontal pseudo-border. Only applies to supervisor.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\Border
+	 *
+	 * @var Border
 	 */
 	protected $horizontal;
 
@@ -85,7 +96,7 @@ class Borders extends Supervisor
 	 *                                    Leave this value at default unless you understand exactly what
 	 *                                        its ramifications are
 	 */
-	public function __construct(bool $isSupervisor = false, bool $isConditional = false)
+	public function __construct($isSupervisor = false, bool $isConditional = false)
 	{
 		// Supervisor?
 		parent::__construct($isSupervisor);
@@ -124,10 +135,12 @@ class Borders extends Supervisor
 	/**
 	 * Get the shared style component for the currently active cell in currently active sheet.
 	 * Only used for style supervisor.
+	 *
+	 * @return Borders
 	 */
-	public function getSharedComponent(): self
+	public function getSharedComponent()
 	{
-		/** @var Style $parent */
+		/** @var Style */
 		$parent = $this->parent;
 
 		return $parent->getSharedComponent()->getBorders();
@@ -135,8 +148,12 @@ class Borders extends Supervisor
 
 	/**
 	 * Build style array from subcomponents.
+	 *
+	 * @param array $array
+	 *
+	 * @return array
 	 */
-	public function getStyleArray(array $array): array
+	public function getStyleArray($array)
 	{
 		return ['borders' => $array];
 	}
@@ -216,48 +233,60 @@ class Borders extends Supervisor
 
 	/**
 	 * Get Left.
+	 *
+	 * @return Border
 	 */
-	public function getLeft(): Border
+	public function getLeft()
 	{
 		return $this->left;
 	}
 
 	/**
 	 * Get Right.
+	 *
+	 * @return Border
 	 */
-	public function getRight(): Border
+	public function getRight()
 	{
 		return $this->right;
 	}
 
 	/**
 	 * Get Top.
+	 *
+	 * @return Border
 	 */
-	public function getTop(): Border
+	public function getTop()
 	{
 		return $this->top;
 	}
 
 	/**
 	 * Get Bottom.
+	 *
+	 * @return Border
 	 */
-	public function getBottom(): Border
+	public function getBottom()
 	{
 		return $this->bottom;
 	}
 
 	/**
 	 * Get Diagonal.
+	 *
+	 * @return Border
 	 */
-	public function getDiagonal(): Border
+	public function getDiagonal()
 	{
 		return $this->diagonal;
 	}
 
 	/**
 	 * Get AllBorders (pseudo-border). Only applies to supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getAllBorders(): Border
+	public function getAllBorders()
 	{
 		if (!$this->isSupervisor) {
 			throw new PhpSpreadsheetException('Can only get pseudo-border for supervisor.');
@@ -268,8 +297,10 @@ class Borders extends Supervisor
 
 	/**
 	 * Get Outline (pseudo-border). Only applies to supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getOutline(): Border
+	public function getOutline()
 	{
 		if (!$this->isSupervisor) {
 			throw new PhpSpreadsheetException('Can only get pseudo-border for supervisor.');
@@ -280,8 +311,10 @@ class Borders extends Supervisor
 
 	/**
 	 * Get Inside (pseudo-border). Only applies to supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getInside(): Border
+	public function getInside()
 	{
 		if (!$this->isSupervisor) {
 			throw new PhpSpreadsheetException('Can only get pseudo-border for supervisor.');
@@ -292,8 +325,10 @@ class Borders extends Supervisor
 
 	/**
 	 * Get Vertical (pseudo-border). Only applies to supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getVertical(): Border
+	public function getVertical()
 	{
 		if (!$this->isSupervisor) {
 			throw new PhpSpreadsheetException('Can only get pseudo-border for supervisor.');
@@ -304,8 +339,10 @@ class Borders extends Supervisor
 
 	/**
 	 * Get Horizontal (pseudo-border). Only applies to supervisor.
+	 *
+	 * @return Border
 	 */
-	public function getHorizontal(): Border
+	public function getHorizontal()
 	{
 		if (!$this->isSupervisor) {
 			throw new PhpSpreadsheetException('Can only get pseudo-border for supervisor.');
@@ -316,8 +353,10 @@ class Borders extends Supervisor
 
 	/**
 	 * Get DiagonalDirection.
+	 *
+	 * @return int
 	 */
-	public function getDiagonalDirection(): int
+	public function getDiagonalDirection()
 	{
 		if ($this->isSupervisor) {
 			return $this->getSharedComponent()->getDiagonalDirection();
@@ -333,7 +372,7 @@ class Borders extends Supervisor
 	 *
 	 * @return $this
 	 */
-	public function setDiagonalDirection(int $direction)
+	public function setDiagonalDirection($direction)
 	{
 		if ($direction == '') {
 			$direction = self::DIAGONAL_NONE;
@@ -353,20 +392,20 @@ class Borders extends Supervisor
 	 *
 	 * @return string Hash code
 	 */
-	public function getHashCode(): string
+	public function getHashCode()
 	{
 		if ($this->isSupervisor) {
 			return $this->getSharedComponent()->getHashcode();
 		}
 
 		return md5(
-			$this->getLeft()->getHashCode()
-			. $this->getRight()->getHashCode()
-			. $this->getTop()->getHashCode()
-			. $this->getBottom()->getHashCode()
-			. $this->getDiagonal()->getHashCode()
-			. $this->getDiagonalDirection()
-			. __CLASS__
+			$this->getLeft()->getHashCode() .
+			$this->getRight()->getHashCode() .
+			$this->getTop()->getHashCode() .
+			$this->getBottom()->getHashCode() .
+			$this->getDiagonal()->getHashCode() .
+			$this->getDiagonalDirection() .
+			__CLASS__
 		);
 	}
 

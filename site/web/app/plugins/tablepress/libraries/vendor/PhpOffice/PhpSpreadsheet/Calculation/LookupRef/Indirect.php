@@ -34,7 +34,8 @@ class Indirect
 
 	/**
 	 * Convert cellAddress to string, verify not null string.
-	 * @param mixed[]|string|null $cellAddress
+	 *
+	 * @param array|string $cellAddress
 	 */
 	private static function validateAddress($cellAddress): string
 	{
@@ -83,13 +84,13 @@ class Indirect
 
 		try {
 			[$cellAddress1, $cellAddress2, $cellAddress] = Helpers::extractCellAddresses($cellAddress, $a1, $cell->getWorkSheet(), $sheetName, $baseRow, $baseCol);
-		} catch (Exception $exception) {
+		} catch (Exception $e) {
 			return ExcelError::REF();
 		}
 
 		if (
-			(!preg_match('/^' . Calculation::CALCULATION_REGEXP_CELLREF . '$/miu', $cellAddress1, $matches))
-			|| (($cellAddress2 !== null) && (!preg_match('/^' . Calculation::CALCULATION_REGEXP_CELLREF . '$/miu', $cellAddress2, $matches)))
+			(!preg_match('/^' . Calculation::CALCULATION_REGEXP_CELLREF . '$/miu', $cellAddress1, $matches)) ||
+			(($cellAddress2 !== null) && (!preg_match('/^' . Calculation::CALCULATION_REGEXP_CELLREF . '$/miu', $cellAddress2, $matches)))
 		) {
 			return ExcelError::REF();
 		}
@@ -100,10 +101,10 @@ class Indirect
 	/**
 	 * Extract range values.
 	 *
-	 * @return array Array of values in range if range contains more than one element.
+	 * @return mixed Array of values in range if range contains more than one element.
 	 *                  Otherwise, a single value is returned.
 	 */
-	private static function extractRequiredCells(?Worksheet $worksheet, string $cellAddress): array
+	private static function extractRequiredCells(?Worksheet $worksheet, string $cellAddress)
 	{
 		return Calculation::getInstance($worksheet !== null ? $worksheet->getParent() : null)
 			->extractCellRange($cellAddress, $worksheet, false);

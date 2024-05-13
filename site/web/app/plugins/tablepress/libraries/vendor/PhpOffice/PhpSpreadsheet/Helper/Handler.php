@@ -4,9 +4,7 @@ namespace TablePress\PhpOffice\PhpSpreadsheet\Helper;
 
 class Handler
 {
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private static $invalidHex = 'Y';
 
 	// A bunch of methods to show that we continue

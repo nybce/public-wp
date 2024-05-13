@@ -41,7 +41,7 @@ class DataType
 	 *
 	 * @return array<string, int>
 	 */
-	public static function getErrorCodes(): array
+	public static function getErrorCodes()
 	{
 		return self::$errorCodes;
 	}
@@ -76,7 +76,7 @@ class DataType
 	 *
 	 * @return string Sanitized value
 	 */
-	public static function checkErrorCode($value): string
+	public static function checkErrorCode($value)
 	{
 		$value = (string) $value;
 

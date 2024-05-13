@@ -4,69 +4,47 @@ namespace TablePress\PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting;
 
 class ConditionalDataBarExtension
 {
-	/** <dataBar> attributes
-	 * @var int */
+	/** <dataBar> attributes */
+
+	/** @var int */
 	private $minLength;
 
-	/**
-	 * @var int
-	 */
+	/** @var int */
 	private $maxLength;
 
-	/**
-	 * @var bool|null
-	 */
+	/** @var null|bool */
 	private $border;
 
-	/**
-	 * @var bool|null
-	 */
+	/** @var null|bool */
 	private $gradient;
 
-	/**
-	 * @var string|null
-	 */
+	/** @var string */
 	private $direction;
 
-	/**
-	 * @var bool|null
-	 */
+	/** @var null|bool */
 	private $negativeBarBorderColorSameAsPositive;
 
-	/**
-	 * @var string|null
-	 */
+	/** @var string */
 	private $axisPosition;
 
 	// <dataBar> children
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting\ConditionalFormatValueObject
-	 */
+
+	/** @var ConditionalFormatValueObject */
 	private $maximumConditionalFormatValueObject;
 
-	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting\ConditionalFormatValueObject
-	 */
+	/** @var ConditionalFormatValueObject */
 	private $minimumConditionalFormatValueObject;
 
-	/**
-	 * @var string|null
-	 */
+	/** @var string */
 	private $borderColor;
 
-	/**
-	 * @var string|null
-	 */
+	/** @var string */
 	private $negativeFillColor;
 
-	/**
-	 * @var string|null
-	 */
+	/** @var string */
 	private $negativeBorderColor;
 
-	/**
-	 * @var mixed[]
-	 */
+	/** @var array */
 	private $axisColor = [
 		'rgb' => null,
 		'theme' => null,
@@ -109,7 +87,10 @@ class ConditionalDataBarExtension
 		return $ret;
 	}
 
-	public function getMinLength(): int
+	/**
+	 * @return int
+	 */
+	public function getMinLength()
 	{
 		return $this->minLength;
 	}
@@ -121,7 +102,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getMaxLength(): int
+	/**
+	 * @return int
+	 */
+	public function getMaxLength()
 	{
 		return $this->maxLength;
 	}
@@ -133,7 +117,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getBorder(): ?bool
+	/**
+	 * @return null|bool
+	 */
+	public function getBorder()
 	{
 		return $this->border;
 	}
@@ -145,7 +132,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getGradient(): ?bool
+	/**
+	 * @return null|bool
+	 */
+	public function getGradient()
 	{
 		return $this->gradient;
 	}
@@ -157,7 +147,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getDirection(): ?string
+	/**
+	 * @return string
+	 */
+	public function getDirection()
 	{
 		return $this->direction;
 	}
@@ -169,7 +162,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getNegativeBarBorderColorSameAsPositive(): ?bool
+	/**
+	 * @return null|bool
+	 */
+	public function getNegativeBarBorderColorSameAsPositive()
 	{
 		return $this->negativeBarBorderColorSameAsPositive;
 	}
@@ -181,7 +177,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getAxisPosition(): ?string
+	/**
+	 * @return string
+	 */
+	public function getAxisPosition()
 	{
 		return $this->axisPosition;
 	}
@@ -193,7 +192,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getMaximumConditionalFormatValueObject(): ConditionalFormatValueObject
+	/**
+	 * @return ConditionalFormatValueObject
+	 */
+	public function getMaximumConditionalFormatValueObject()
 	{
 		return $this->maximumConditionalFormatValueObject;
 	}
@@ -205,7 +207,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getMinimumConditionalFormatValueObject(): ConditionalFormatValueObject
+	/**
+	 * @return ConditionalFormatValueObject
+	 */
+	public function getMinimumConditionalFormatValueObject()
 	{
 		return $this->minimumConditionalFormatValueObject;
 	}
@@ -217,7 +222,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getBorderColor(): ?string
+	/**
+	 * @return string
+	 */
+	public function getBorderColor()
 	{
 		return $this->borderColor;
 	}
@@ -229,7 +237,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getNegativeFillColor(): ?string
+	/**
+	 * @return string
+	 */
+	public function getNegativeFillColor()
 	{
 		return $this->negativeFillColor;
 	}
@@ -241,7 +252,10 @@ class ConditionalDataBarExtension
 		return $this;
 	}
 
-	public function getNegativeBorderColor(): ?string
+	/**
+	 * @return string
+	 */
+	public function getNegativeBorderColor()
 	{
 		return $this->negativeBorderColor;
 	}
@@ -260,8 +274,8 @@ class ConditionalDataBarExtension
 
 	/**
 	 * @param mixed $rgb
-	 * @param mixed $theme
-	 * @param mixed $tint
+	 * @param null|mixed $theme
+	 * @param null|mixed $tint
 	 */
 	public function setAxisColor($rgb, $theme = null, $tint = null): self
 	{

@@ -33,7 +33,8 @@ class Beta
 	 * @param mixed $rMax as an float
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function distribution($value, $alpha, $beta, $rMin = 0.0, $rMax = 1.0)
@@ -86,7 +87,8 @@ class Beta
 	 * @param mixed $rMax Maximum value as a float
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function inverse($probability, $alpha, $beta, $rMin = 0.0, $rMax = 1.0)
@@ -121,7 +123,7 @@ class Beta
 	}
 
 	/**
-	 * @return string|float
+	 * @return float|string
 	 */
 	private static function calculateInverse(float $probability, float $alpha, float $beta, float $rMin, float $rMax)
 	{
@@ -182,19 +184,13 @@ class Beta
 	}
 
 	// Function cache for logBeta function
-	/**
-	 * @var float
-	 */
+	/** @var float */
 	private static $logBetaCacheP = 0.0;
 
-	/**
-	 * @var float
-	 */
+	/** @var float */
 	private static $logBetaCacheQ = 0.0;
 
-	/**
-	 * @var float
-	 */
+	/** @var float */
 	private static $logBetaCacheResult = 0.0;
 
 	/**

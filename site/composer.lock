@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95bb77a60e360c5856446a9206a78dc7",
+    "content-hash": "3f78c4d2703c44ab0010722284234b86",
     "packages": [
         {
             "name": "bueltge/multisite-global-media",
@@ -2089,15 +2089,15 @@
         },
         {
             "name": "wpackagist-plugin/tablepress",
-            "version": "2.3.1",
+            "version": "2.2.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tablepress/",
-                "reference": "tags/2.3.1"
+                "reference": "tags/2.2.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tablepress.2.3.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/tablepress.2.2.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2125,15 +2125,15 @@
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
-            "version": "2.7.2",
+            "version": "2.7.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
-                "reference": "tags/2.7.2"
+                "reference": "tags/2.7.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.7.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.2.7.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2143,15 +2143,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.11.5",
+            "version": "7.11.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.11.5"
+                "reference": "tags/7.11.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.11.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.11.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2211,117 +2211,23 @@
             "type": "wordpress-plugin"
         },
         {
-            "name": "yoast/whip",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Yoast/whip.git",
-                "reference": "5cfd9c3b433774548ec231fe896d5e85d17ed0d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/whip/yoast-whip-5cfd9c3b433774548ec231fe896d5e85d17ed0d1-zip-ec6749.zip",
-                "reference": "5cfd9c3b433774548ec231fe896d5e85d17ed0d1",
-                "shasum": "5bfd48dcd8017539953e7dc77af70359c279068a"
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "php-parallel-lint/php-console-highlighter": "^1.0.0",
-                "php-parallel-lint/php-parallel-lint": "^1.3.2",
-                "phpunit/phpunit": "^4.8.36 || ^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "roave/security-advisories": "dev-master",
-                "yoast/yoastcs": "^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Yoast\\WHIPv2\\": "src/"
-                },
-                "files": [
-                    "src/Facades/wordpress.php"
-                ]
-            },
-            "autoload-dev": {
-                "classmap": [
-                    "config/"
-                ],
-                "psr-4": {
-                    "Yoast\\WHIP\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "lint": [
-                    "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
-                ],
-                "cs": [
-                    "Yoast\\WHIP\\Config\\Composer\\Actions::check_coding_standards"
-                ],
-                "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=0",
-                    "@putenv YOASTCS_THRESHOLD_WARNINGS=0",
-                    "Yoast\\WHIP\\Config\\Composer\\Actions::check_cs_thresholds"
-                ],
-                "check-cs": [
-                    "@check-cs-warnings -n"
-                ],
-                "check-cs-warnings": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 5.3-"
-                ],
-                "check-staged-cs": [
-                    "@check-cs-warnings --filter=GitStaged"
-                ],
-                "check-branch-cs": [
-                    "Yoast\\WHIP\\Config\\Composer\\Actions::check_branch_cs"
-                ],
-                "fix-cs": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 5.3-"
-                ],
-                "test": [
-                    "@php ./vendor/phpunit/phpunit/phpunit --no-coverage"
-                ],
-                "coverage": [
-                    "@php ./vendor/phpunit/phpunit/phpunit"
-                ]
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com"
-                }
-            ],
-            "description": "A WordPress package to nudge users to upgrade their software versions (starting with PHP)",
-            "homepage": "https://github.com/Yoast/whip",
-            "support": {
-                "issues": "https://github.com/Yoast/whip/issues",
-                "source": "https://github.com/Yoast/whip",
-                "security": "https://yoast.com/security-program/"
-            },
-            "time": "2023-12-27T11:39:30+00:00"
-        },
-        {
             "name": "yoast/wordpress-seo",
-            "version": "22.6",
+            "version": "22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast-dist/wordpress-seo.git",
-                "reference": "a800ab7c084c1caab9624a62c06e44b3a9bcdb83"
+                "reference": "9702b0674264b432c14fc24e0c5c15baa05fbecf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo/yoast-wordpress-seo-a800ab7c084c1caab9624a62c06e44b3a9bcdb83-zip-c8988a.zip",
-                "reference": "a800ab7c084c1caab9624a62c06e44b3a9bcdb83",
-                "shasum": "b7cf1d3f61b2ed5642c4a00ddf57442dc935bd11"
+                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo/yoast-wordpress-seo-9702b0674264b432c14fc24e0c5c15baa05fbecf-zip-3363c4.zip",
+                "reference": "9702b0674264b432c14fc24e0c5c15baa05fbecf",
+                "shasum": "688b3a552b2c6cf76529f1ef0ada59e622452a1f"
             },
             "require": {
                 "composer/installers": "^1.12 || ^2.0",
                 "ext-filter": "*",
-                "php": "^7.2.5 || ^8.0",
-                "yoast/whip": "^2.0"
+                "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "7.8.1",
@@ -2333,7 +2239,7 @@
                 "symfony/dependency-injection": "^3.4",
                 "wordproof/wordpress-sdk": "1.3.5",
                 "yoast/wp-test-utils": "^1.2",
-                "yoast/yoastcs": "^3.1.0"
+                "yoast/yoastcs": "^3.0"
             },
             "suggest": {
                 "ext-bcmath": "For more accurate calculations",
@@ -2376,8 +2282,8 @@
                     "Yoast\\WP\\SEO\\Composer\\Actions::check_coding_standards"
                 ],
                 "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=2555",
-                    "@putenv YOASTCS_THRESHOLD_WARNINGS=267",
+                    "@putenv YOASTCS_THRESHOLD_ERRORS=2620",
+                    "@putenv YOASTCS_THRESHOLD_WARNINGS=294",
                     "Yoast\\WP\\SEO\\Composer\\Actions::check_cs_thresholds"
                 ],
                 "check-cs": [
@@ -2474,31 +2380,30 @@
                 "source": "https://github.com/Yoast/wordpress-seo",
                 "security": "https://yoast.com/security-program/"
             },
-            "time": "2024-04-30T07:59:16+00:00"
+            "time": "2024-03-05T09:06:40+00:00"
         },
         {
             "name": "yoast/wordpress-seo-premium",
-            "version": "22.6",
+            "version": "22.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:Yoast-dist/wordpress-seo-premium.git",
-                "reference": "1d1e5e9671052037b9053eac035aa4dcba1bca21"
+                "reference": "12f4d5bf3392fcd62a118b78b10229c1a7e7036a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo-premium/yoast-wordpress-seo-premium-1d1e5e9671052037b9053eac035aa4dcba1bca21-zip-a6588c.zip",
-                "reference": "1d1e5e9671052037b9053eac035aa4dcba1bca21",
-                "shasum": "362429a48ab0100ae1e687a61db7e51fc287228f"
+                "url": "https://my.yoast.com/packages/dist/yoast/wordpress-seo-premium/yoast-wordpress-seo-premium-12f4d5bf3392fcd62a118b78b10229c1a7e7036a-zip-b32dce.zip",
+                "reference": "12f4d5bf3392fcd62a118b78b10229c1a7e7036a",
+                "shasum": "c7f9cca816d490129fe2e7849d4a3b7eadbdf91b"
             },
             "require": {
                 "ext-filter": "*",
                 "php": "^7.2.5 || ^8.0",
-                "yoast/wordpress-seo": "^22.6"
+                "yoast/wordpress-seo": "^22.2"
             },
             "require-dev": {
-                "wp-cli/i18n-command": "^2.6",
                 "yoast/wp-test-utils": "^1.2",
-                "yoast/yoastcs": "^3.1.0"
+                "yoast/yoastcs": "^3.0"
             },
             "type": "wordpress-plugin",
             "extra": {
@@ -2546,7 +2451,7 @@
                     "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_coding_standards"
                 ],
                 "check-cs-thresholds": [
-                    "@putenv YOASTCS_THRESHOLD_ERRORS=701",
+                    "@putenv YOASTCS_THRESHOLD_ERRORS=703",
                     "@putenv YOASTCS_THRESHOLD_WARNINGS=76",
                     "Yoast\\WP\\SEO\\Premium\\Config\\Composer\\Actions::check_cs_thresholds"
                 ],
@@ -2596,18 +2501,6 @@
                 "post-install-cmd": [
                     "cd vendor/yoast/wordpress-seo && composer install --no-interaction && cd ../..",
                     "composer compile-di"
-                ],
-                "i18n-free-js": [
-                    "wp i18n make-pot . languages/yoastseo.pot --include=\"node_modules/yoastseo/src\" --allow-root",
-                    "wp i18n make-pot . languages/free-js.pot --include=\"node_modules/@yoast/social-metadata-previews/src\" --domain=\"wordpress-seo\" --merge=\"languages/yoastseo.pot\" --allow-root",
-                    "rm languages/yoastseo.pot"
-                ],
-                "i18n-js": [
-                    "wp i18n make-pot . languages/wordpress-seo-premiumjs.pot --skip-php --exclude=\"assets/js/dist\" --merge=\"languages/free-js.pot\" --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/yoast/wordpress-seo-premium/issues\"}' --allow-root",
-                    "rm languages/free-js.pot"
-                ],
-                "i18n-php": [
-                    "wp i18n make-pot . languages/wordpress-seo-premium.pot --skip-js --merge=\"languages/wordpress-seo-premiumjs.pot\" --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/yoast/wordpress-seo-premium/issues\"}' --allow-root"
                 ]
             },
             "license": [
@@ -2631,7 +2524,7 @@
                 "source": "https://github.com/Yoast/wordpress-seo-premium",
                 "security": "https://yoast.com/security-program/"
             },
-            "time": "2024-04-30T08:20:16+00:00"
+            "time": "2024-03-05T10:21:40+00:00"
         }
     ],
     "packages-dev": [

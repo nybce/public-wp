@@ -89,7 +89,7 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	 *
 	 * @param Meta_Tags_Context $context The meta tags context.
 	 *
-	 * @return array<array<int,string>> An array of associative arrays that each have a 'text' and a 'url'.
+	 * @return array An array of associative arrays that each have a 'text' and a 'url'.
 	 */
 	public function generate( Meta_Tags_Context $context ) {
 		$static_ancestors = [];
@@ -136,11 +136,9 @@ class Breadcrumbs_Generator implements Generator_Interface {
 				}
 			}
 		}
-		$indexables = [];
-		if ( ! \in_array( $this->current_page_helper->get_page_type(), [ 'Home_Page', 'Static_Home_Page' ], true ) ) {
-			// Get all ancestors of the indexable and append itself to get all indexables in the full crumb.
-			$indexables = $this->repository->get_ancestors( $context->indexable );
-		}
+
+		// Get all ancestors of the indexable and append itself to get all indexables in the full crumb.
+		$indexables   = $this->repository->get_ancestors( $context->indexable );
 		$indexables[] = $context->indexable;
 
 		if ( ! empty( $static_ancestors ) ) {
@@ -156,7 +154,34 @@ class Breadcrumbs_Generator implements Generator_Interface {
 			}
 		);
 
-		$crumbs = \array_map( [ $this, 'get_post_type_crumb' ], $indexables );
+		$callback = function ( Indexable $ancestor ) {
+			$crumb = [
+				'url'  => $ancestor->permalink,
+				'text' => $ancestor->breadcrumb_title,
+			];
+			switch ( $ancestor->object_type ) {
+				case 'post':
+					$crumb = $this->get_post_crumb( $crumb, $ancestor );
+					break;
+				case 'post-type-archive':
+					$crumb = $this->get_post_type_archive_crumb( $crumb, $ancestor );
+					break;
+				case 'term':
+					$crumb = $this->get_term_crumb( $crumb, $ancestor );
+					break;
+				case 'system-page':
+					$crumb = $this->get_system_page_crumb( $crumb, $ancestor );
+					break;
+				case 'user':
+					$crumb = $this->get_user_crumb( $crumb, $ancestor );
+					break;
+				case 'date-archive':
+					$crumb = $this->get_date_archive_crumb( $crumb );
+					break;
+			}
+			return $crumb;
+		};
+		$crumbs   = \array_map( $callback, $indexables );
 
 		if ( $breadcrumbs_home !== '' ) {
 			$crumbs[0]['text'] = $breadcrumbs_home;
@@ -199,10 +224,10 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Returns the modified post crumb.
 	 *
-	 * @param string[]  $crumb    The crumb.
+	 * @param array     $crumb    The crumb.
 	 * @param Indexable $ancestor The indexable.
 	 *
-	 * @return array<int,string> The crumb.
+	 * @return array The crumb.
 	 */
 	private function get_post_crumb( $crumb, $ancestor ) {
 		$crumb['id'] = $ancestor->object_id;
@@ -211,52 +236,12 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	}
 
 	/**
-	 * Adds the correct ID to the crumb array based on the ancestor provided.
-	 *
-	 * @param Indexable $ancestor The ancestor indexable.
-	 *
-	 * @return string[]
-	 */
-	private function get_post_type_crumb( Indexable $ancestor ) {
-		$crumb = [
-			'url'  => $ancestor->permalink,
-			'text' => $ancestor->breadcrumb_title,
-		];
-
-		switch ( $ancestor->object_type ) {
-			case 'post':
-				$crumb = $this->get_post_crumb( $crumb, $ancestor );
-				break;
-			case 'post-type-archive':
-				$crumb = $this->get_post_type_archive_crumb( $crumb, $ancestor );
-				break;
-			case 'term':
-				$crumb = $this->get_term_crumb( $crumb, $ancestor );
-				break;
-			case 'system-page':
-				$crumb = $this->get_system_page_crumb( $crumb, $ancestor );
-				break;
-			case 'user':
-				$crumb = $this->get_user_crumb( $crumb, $ancestor );
-				break;
-			case 'date-archive':
-				$crumb = $this->get_date_archive_crumb( $crumb );
-				break;
-			default:
-				// Handle unknown object types (optional).
-				break;
-		}
-
-		return $crumb;
-	}
-
-	/**
 	 * Returns the modified post type crumb.
 	 *
-	 * @param string[]  $crumb    The crumb.
+	 * @param array     $crumb    The crumb.
 	 * @param Indexable $ancestor The indexable.
 	 *
-	 * @return string[] The crumb.
+	 * @return array The crumb.
 	 */
 	private function get_post_type_archive_crumb( $crumb, $ancestor ) {
 		$crumb['ptarchive'] = $ancestor->object_sub_type;
@@ -267,10 +252,10 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Returns the modified term crumb.
 	 *
-	 * @param string[]  $crumb    The crumb.
+	 * @param array     $crumb    The crumb.
 	 * @param Indexable $ancestor The indexable.
 	 *
-	 * @return array<int,string> The crumb.
+	 * @return array The crumb.
 	 */
 	private function get_term_crumb( $crumb, $ancestor ) {
 		$crumb['term_id']  = $ancestor->object_id;
@@ -282,10 +267,10 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Returns the modified system page crumb.
 	 *
-	 * @param string[]  $crumb    The crumb.
+	 * @param array     $crumb    The crumb.
 	 * @param Indexable $ancestor The indexable.
 	 *
-	 * @return string[] The crumb.
+	 * @return array The crumb.
 	 */
 	private function get_system_page_crumb( $crumb, $ancestor ) {
 		if ( $ancestor->object_sub_type === 'search-result' ) {
@@ -302,10 +287,10 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Returns the modified user crumb.
 	 *
-	 * @param string[]  $crumb    The crumb.
+	 * @param array     $crumb    The crumb.
 	 * @param Indexable $ancestor The indexable.
 	 *
-	 * @return string[] The crumb.
+	 * @return array The crumb.
 	 */
 	private function get_user_crumb( $crumb, $ancestor ) {
 		$display_name  = \get_the_author_meta( 'display_name', $ancestor->object_id );
@@ -317,9 +302,9 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Returns the modified date archive crumb.
 	 *
-	 * @param string[] $crumb The crumb.
+	 * @param array $crumb The crumb.
 	 *
-	 * @return string[] The crumb.
+	 * @return array The crumb.
 	 */
 	protected function get_date_archive_crumb( $crumb ) {
 		$home_url = $this->url_helper->home();
@@ -395,10 +380,10 @@ class Breadcrumbs_Generator implements Generator_Interface {
 	/**
 	 * Adds a crumb for the current page, if we're on an archive page or paginated post.
 	 *
-	 * @param string[]  $crumbs            The array of breadcrumbs.
+	 * @param array     $crumbs            The array of breadcrumbs.
 	 * @param Indexable $current_indexable The current indexable.
 	 *
-	 * @return string[] The breadcrumbs.
+	 * @return array The breadcrumbs.
 	 */
 	protected function add_paged_crumb( array $crumbs, $current_indexable ) {
 		$is_simple_page = $this->current_page_helper->is_simple_page();

@@ -5,9 +5,6 @@
  * @package WPSEO\Plugin_Availability
  */
 
-use Yoast\WP\SEO\Conditionals\Conditional;
-use Yoast\WP\SEO\Conditionals\WooCommerce_Conditional;
-
 /**
  * Class WPSEO_Plugin_Availability
  */
@@ -91,8 +88,7 @@ class WPSEO_Plugin_Availability {
 				),
 				'_dependencies' => [
 					'WooCommerce' => [
-						'slug'        => 'woocommerce/woocommerce.php', // Kept for backwards compatibility, in case external code uses get_dependencies(). Deprecated in 22.4.
-						'conditional' => new WooCommerce_Conditional(),
+						'slug' => 'woocommerce/woocommerce.php',
 					],
 				],
 				'installed'     => false,
@@ -212,10 +208,10 @@ class WPSEO_Plugin_Availability {
 			return true;
 		}
 
-		$dependencies        = $this->get_dependencies( $plugin );
-		$active_dependencies = array_filter( $dependencies, [ $this, 'is_dependency_active' ] );
+		$dependencies           = $this->get_dependencies( $plugin );
+		$installed_dependencies = array_filter( $dependencies, [ $this, 'is_dependency_available' ] );
 
-		return count( $active_dependencies ) === count( $dependencies );
+		return count( $installed_dependencies ) === count( $dependencies );
 	}
 
 	/**
@@ -262,29 +258,13 @@ class WPSEO_Plugin_Availability {
 	}
 
 	/**
-	 * Checks whether a dependency is active.
-	 *
-	 * @param array<string, Conditional> $dependency The information about the dependency to look for.
-	 *
-	 * @return bool Whether or not the dependency is active.
-	 */
-	public function is_dependency_active( $dependency ) {
-		return $dependency['conditional']->is_met();
-	}
-
-	/**
 	 * Checks whether a dependency is available.
-	 *
-	 * @deprecated 22.4
-	 * @codeCoverageIgnore
 	 *
 	 * @param array $dependency The information about the dependency to look for.
 	 *
 	 * @return bool Whether or not the dependency is available.
 	 */
 	public function is_dependency_available( $dependency ) {
-		_deprecated_function( __METHOD__, 'Yoast SEO 22.4' );
-
 		return isset( get_plugins()[ $dependency['slug'] ] );
 	}
 

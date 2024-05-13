@@ -46,7 +46,6 @@ class TimeParts
 		// Execute function
 		$timeValue = fmod($timeValue, 1);
 		$timeValue = SharedDateHelper::excelToDateTimeObject($timeValue);
-		SharedDateHelper::roundMicroseconds($timeValue);
 
 		return (int) $timeValue->format('H');
 	}
@@ -87,7 +86,6 @@ class TimeParts
 		// Execute function
 		$timeValue = fmod($timeValue, 1);
 		$timeValue = SharedDateHelper::excelToDateTimeObject($timeValue);
-		SharedDateHelper::roundMicroseconds($timeValue);
 
 		return (int) $timeValue->format('i');
 	}
@@ -128,7 +126,6 @@ class TimeParts
 		// Execute function
 		$timeValue = fmod($timeValue, 1);
 		$timeValue = SharedDateHelper::excelToDateTimeObject($timeValue);
-		SharedDateHelper::roundMicroseconds($timeValue);
 
 		return (int) $timeValue->format('s');
 	}

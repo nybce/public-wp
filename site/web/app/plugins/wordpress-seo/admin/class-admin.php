@@ -59,6 +59,8 @@ class WPSEO_Admin {
 		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_global_style' ] );
 
+		add_filter( 'user_contactmethods', [ $this, 'update_contactmethods' ], 10, 1 );
+
 		add_action( 'after_switch_theme', [ $this, 'switch_theme' ] );
 		add_action( 'switch_theme', [ $this, 'switch_theme' ] );
 
@@ -302,16 +304,11 @@ class WPSEO_Admin {
 	 *
 	 * These are used with the Facebook author, rel="author" and Twitter cards implementation.
 	 *
-	 * @deprecated 22.6
-	 * @codeCoverageIgnore
+	 * @param array $contactmethods Currently set contactmethods.
 	 *
-	 * @param array<string, string> $contactmethods Currently set contactmethods.
-	 *
-	 * @return array<string, string> Contactmethods with added contactmethods.
+	 * @return array Contactmethods with added contactmethods.
 	 */
 	public function update_contactmethods( $contactmethods ) {
-		_deprecated_function( __METHOD__, 'Yoast SEO 22.6' );
-
 		$contactmethods['facebook']   = __( 'Facebook profile URL', 'wordpress-seo' );
 		$contactmethods['instagram']  = __( 'Instagram profile URL', 'wordpress-seo' );
 		$contactmethods['linkedin']   = __( 'LinkedIn profile URL', 'wordpress-seo' );
@@ -319,7 +316,7 @@ class WPSEO_Admin {
 		$contactmethods['pinterest']  = __( 'Pinterest profile URL', 'wordpress-seo' );
 		$contactmethods['soundcloud'] = __( 'SoundCloud profile URL', 'wordpress-seo' );
 		$contactmethods['tumblr']     = __( 'Tumblr profile URL', 'wordpress-seo' );
-		$contactmethods['twitter']    = __( 'X username (without @)', 'wordpress-seo' );
+		$contactmethods['twitter']    = __( 'Twitter username (without @)', 'wordpress-seo' );
 		$contactmethods['youtube']    = __( 'YouTube profile URL', 'wordpress-seo' );
 		$contactmethods['wikipedia']  = __( 'Wikipedia page about you', 'wordpress-seo' ) . '<br/><small>' . __( '(if one exists)', 'wordpress-seo' ) . '</small>';
 

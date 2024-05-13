@@ -7,20 +7,20 @@ class TextGrid
 	/**
 	 * @var bool
 	 */
-	private $isCli;
+	private $isCli = true;
 
 	/**
-	 * @var mixed[]
+	 * @var array
 	 */
 	protected $matrix;
 
 	/**
-	 * @var mixed[]
+	 * @var array
 	 */
 	protected $rows;
 
 	/**
-	 * @var mixed[]
+	 * @var array
 	 */
 	protected $columns;
 

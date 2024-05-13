@@ -9,7 +9,8 @@ class Style
 {
 	/**
 	 * Formats.
-	 * @var mixed[]
+	 *
+	 * @var array
 	 */
 	protected $styles = [];
 

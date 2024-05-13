@@ -14,24 +14,28 @@ class ColumnIterator implements NativeIterator
 {
 	/**
 	 * Worksheet to iterate.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+	 *
+	 * @var Worksheet
 	 */
 	private $worksheet;
 
 	/**
 	 * Current iterator position.
+	 *
 	 * @var int
 	 */
 	private $currentColumnIndex = 1;
 
 	/**
 	 * Start position.
+	 *
 	 * @var int
 	 */
 	private $startColumnIndex = 1;
 
 	/**
 	 * End position.
+	 *
 	 * @var int
 	 */
 	private $endColumnIndex = 1;
@@ -41,9 +45,9 @@ class ColumnIterator implements NativeIterator
 	 *
 	 * @param Worksheet $worksheet The worksheet to iterate over
 	 * @param string $startColumn The column address at which to start iterating
-	 * @param ?string $endColumn Optionally, the column address at which to stop iterating
+	 * @param string $endColumn Optionally, the column address at which to stop iterating
 	 */
-	public function __construct(Worksheet $worksheet, string $startColumn = 'A', ?string $endColumn = null)
+	public function __construct(Worksheet $worksheet, $startColumn = 'A', $endColumn = null)
 	{
 		// Set subject
 		$this->worksheet = $worksheet;
@@ -56,7 +60,8 @@ class ColumnIterator implements NativeIterator
 	 */
 	public function __destruct()
 	{
-		unset($this->worksheet);
+		// @phpstan-ignore-next-line
+		$this->worksheet = null;
 	}
 
 	/**
@@ -87,11 +92,11 @@ class ColumnIterator implements NativeIterator
 	/**
 	 * (Re)Set the end column.
 	 *
-	 * @param ?string $endColumn The column address at which to stop iterating
+	 * @param string $endColumn The column address at which to stop iterating
 	 *
 	 * @return $this
 	 */
-	public function resetEnd(?string $endColumn = null)
+	public function resetEnd($endColumn = null)
 	{
 		$endColumn = $endColumn ?: $this->worksheet->getHighestColumn();
 		$this->endColumnIndex = Coordinate::columnIndexFromString($endColumn);

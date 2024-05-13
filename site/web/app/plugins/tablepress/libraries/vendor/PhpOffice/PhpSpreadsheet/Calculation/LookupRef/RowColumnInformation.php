@@ -22,7 +22,7 @@ class RowColumnInformation
 
 	private static function cellColumn(?Cell $cell): int
 	{
-		return ($cell !== null) ? Coordinate::columnIndexFromString($cell->getColumn()) : 1;
+		return ($cell !== null) ? (int) Coordinate::columnIndexFromString($cell->getColumn()) : 1;
 	}
 
 	/**
@@ -52,7 +52,7 @@ class RowColumnInformation
 			foreach ($cellAddress as $columnKey => $value) {
 				$columnKey = (string) preg_replace('/[^a-z]/i', '', $columnKey);
 
-				return Coordinate::columnIndexFromString($columnKey);
+				return (int) Coordinate::columnIndexFromString($columnKey);
 			}
 
 			return self::cellColumn($cell);
@@ -64,22 +64,20 @@ class RowColumnInformation
 			[,, $cellAddress] = Helpers::extractCellAddresses($cellAddress, true, $cell->getWorksheet(), $sheetName);
 		}
 		[, $cellAddress] = Worksheet::extractSheetTitle($cellAddress, true);
-		$cellAddress = $cellAddress ?? '';
-
-		if (str_contains($cellAddress, ':')) {
+		if (strpos($cellAddress, ':') !== false) {
 			[$startAddress, $endAddress] = explode(':', $cellAddress);
 			$startAddress = (string) preg_replace('/[^a-z]/i', '', $startAddress);
 			$endAddress = (string) preg_replace('/[^a-z]/i', '', $endAddress);
 
 			return range(
-				Coordinate::columnIndexFromString($startAddress),
-				Coordinate::columnIndexFromString($endAddress)
+				(int) Coordinate::columnIndexFromString($startAddress),
+				(int) Coordinate::columnIndexFromString($endAddress)
 			);
 		}
 
 		$cellAddress = (string) preg_replace('/[^a-z]/i', '', $cellAddress);
 
-		return Coordinate::columnIndexFromString($cellAddress);
+		return (int) Coordinate::columnIndexFromString($cellAddress);
 	}
 
 	/**
@@ -135,7 +133,7 @@ class RowColumnInformation
 	 *
 	 * @param null|array|string $cellAddress A reference to a range of cells for which you want the row numbers
 	 *
-	 * @return int|mixed[]
+	 * @return int|mixed[]|string
 	 */
 	public static function ROW($cellAddress = null, ?Cell $cell = null)
 	{
@@ -159,14 +157,13 @@ class RowColumnInformation
 			[,, $cellAddress] = Helpers::extractCellAddresses($cellAddress, true, $cell->getWorksheet(), $sheetName);
 		}
 		[, $cellAddress] = Worksheet::extractSheetTitle($cellAddress, true);
-		$cellAddress = $cellAddress ?? '';
-		if (str_contains($cellAddress, ':')) {
+		if (strpos($cellAddress, ':') !== false) {
 			[$startAddress, $endAddress] = explode(':', $cellAddress);
-			$startAddress = (int) (string) preg_replace('/\D/', '', $startAddress);
-			$endAddress = (int) (string) preg_replace('/\D/', '', $endAddress);
+			$startAddress = (string) preg_replace('/\D/', '', $startAddress);
+			$endAddress = (string) preg_replace('/\D/', '', $endAddress);
 
 			return array_map(
-				function ($value) : array {
+				function ($value) {
 					return [$value];
 				},
 				range($startAddress, $endAddress)

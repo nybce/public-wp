@@ -22,7 +22,8 @@ class Mean
 	 *        GEOMEAN(value1[,value2[, ...]])
 	 *
 	 * @param mixed ...$args Data values
-	 * @return float|int|string
+	 *
+	 * @return float|string
 	 */
 	public static function geometric(...$args)
 	{
@@ -49,7 +50,8 @@ class Mean
 	 *        HARMEAN(value1[,value2[, ...]])
 	 *
 	 * @param mixed ...$args Data values
-	 * @return string|float|int
+	 *
+	 * @return float|string
 	 */
 	public static function harmonic(...$args)
 	{
@@ -91,6 +93,7 @@ class Mean
 	 *        TRIMEAN(value1[,value2[, ...]], $discard)
 	 *
 	 * @param mixed $args Data values
+	 *
 	 * @return float|string
 	 */
 	public static function trim(...$args)

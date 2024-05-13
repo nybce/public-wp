@@ -14,15 +14,13 @@ class CdnEngine_S3 extends CdnEngine_Base {
 	/**
 	 * Regions list.
 	 *
-	 * @see  Cdn_Core::get_region_id()
 	 * @link https://docs.aws.amazon.com/general/latest/gr/rande.html
 	 *
 	 * @return array
 	 */
-	public static function regions_list() {
+	static public function regions_list() {
 		return array(
-			'us-east-1'      => __( 'US East (N. Virginia) (default)', 'w3-total-cache' ), // Default; region not included in hostnmae.
-			'us-east-1-e'    => __( 'US East (N. Virginia) (long hostname)', 'w3-total-cache' ), // Explicitly included in hostname.
+			'us-east-1'      => __( 'US East (N. Virginia)', 'w3-total-cache' ),
 			'us-east-2'      => __( 'US East (Ohio)', 'w3-total-cache' ),
 			'us-west-1'      => __( 'US West (N. California)', 'w3-total-cache' ),
 			'us-west-2'      => __( 'US West (Oregon)', 'w3-total-cache' ),
@@ -57,8 +55,6 @@ class CdnEngine_S3 extends CdnEngine_Base {
 				'cname' => array(),
 			), $config );
 
-		$config['bucket_location'] = Cdn_Core::get_region_id( $config['bucket_location'] );
-
 		parent::__construct( $config );
 	}
 
@@ -84,13 +80,11 @@ class CdnEngine_S3 extends CdnEngine_Base {
 	/**
 	 * Inits S3 object
 	 *
-	 * @see Cdn_Core::get_region_id()
-	 *
-	 * @return bool
-	 * @throws \Exception Exception.
+	 * @param string  $error
+	 * @return boolean
 	 */
 	public function _init() {
-		if ( ! is_null( $this->api ) ) {
+		if ( !is_null( $this->api ) ) {
 			return;
 		}
 
@@ -111,19 +105,17 @@ class CdnEngine_S3 extends CdnEngine_Base {
 
 			$credentials = new \Aws\Credentials\Credentials(
 				$this->_config['key'],
-				$this->_config['secret']
-			);
+				$this->_config['secret'] );
 		}
 
 		if ( isset( $this->_config['public_objects'] ) && 'enabled' === $this->_config['public_objects'] ) {
 			$this->_config['s3_acl'] = 'public-read';
 		}
 
-		$this->api = new \Aws\S3\S3Client(
-			array(
-				'credentials'    => $credentials,
-				'region'         => Cdn_Core::get_region_id( $this->_config['bucket_location'] ),
-				'version'        => '2006-03-01',
+		$this->api = new \Aws\S3\S3Client( array(
+				'credentials' => $credentials,
+				'region' => $this->_config['bucket_location'],
+				'version' => '2006-03-01',
 				'use_arn_region' => true,
 			)
 		);

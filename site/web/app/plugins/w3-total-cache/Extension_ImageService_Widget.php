@@ -4,7 +4,7 @@
  *
  * @package W3TC
  *
- * @since 2.7.0
+ * @since X.X.X
  */
 
 namespace W3TC;
@@ -12,13 +12,13 @@ namespace W3TC;
 /**
  * Class Extension_ImageService_Widget
  *
- * @since 2.7.0
+ * @since X.X.X
  */
 class Extension_ImageService_Widget {
 	/**
 	 * Dashboard setup action
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -91,7 +91,7 @@ class Extension_ImageService_Widget {
 	/**
 	 * W3TC dashboard Premium Services widget.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */
@@ -108,7 +108,7 @@ class Extension_ImageService_Widget {
 	/**
 	 * Premium Services widget content.
 	 *
-	 * @since 2.7.0
+	 * @since X.X.X
 	 *
 	 * @return void
 	 */

@@ -2,8 +2,6 @@
 
 namespace TablePress\PhpOffice\PhpSpreadsheet\Style\NumberFormat\Wizard;
 
-use Stringable;
-
 abstract class DateTimeWizard implements Wizard
 {
 	protected const NO_ESCAPING_NEEDED = "$+-/():!^&'~{}<>= ";
@@ -17,7 +15,7 @@ abstract class DateTimeWizard implements Wizard
 
 	protected function escapeSingleCharacter(string $value): string
 	{
-		if (str_contains(self::NO_ESCAPING_NEEDED, $value)) {
+		if (strpos(self::NO_ESCAPING_NEEDED, $value) !== false) {
 			return $value;
 		}
 

@@ -70,37 +70,43 @@ class TableStyle
 
 	/**
 	 * Theme.
+	 *
 	 * @var string
 	 */
 	private $theme;
 
 	/**
 	 * Show First Column.
+	 *
 	 * @var bool
 	 */
 	private $showFirstColumn = false;
 
 	/**
 	 * Show Last Column.
+	 *
 	 * @var bool
 	 */
 	private $showLastColumn = false;
 
 	/**
 	 * Show Row Stripes.
+	 *
 	 * @var bool
 	 */
 	private $showRowStripes = false;
 
 	/**
 	 * Show Column Stripes.
+	 *
 	 * @var bool
 	 */
 	private $showColumnStripes = false;
 
 	/**
 	 * Table.
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Table|null
+	 *
+	 * @var null|Table
 	 */
 	private $table;
 

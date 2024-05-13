@@ -29,7 +29,7 @@ class DateTime extends DateTimeWizard
 	}
 
 	/**
-	 * @param \TablePress\PhpOffice\PhpSpreadsheet\Style\NumberFormat\Wizard\DateTimeWizard|string $value
+	 * @param DateTimeWizard|string $value
 	 */
 	private function mapFormatBlocks($value): string
 	{

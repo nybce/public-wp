@@ -30,7 +30,8 @@ class Binomial
 	 * @param mixed $cumulative Boolean value indicating if we want the cdf (true) or the pdf (false)
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function distribution($value, $trials, $probability, $cumulative)
@@ -55,7 +56,7 @@ class Binomial
 		if ($cumulative) {
 			return self::calculateCumulativeBinomial($value, $trials, $probability);
 		}
-		/** @var float $comb */
+		/** @var float */
 		$comb = Combinations::withoutRepetition($trials, $value);
 
 		return $comb * $probability ** $value
@@ -78,7 +79,8 @@ class Binomial
 	 *                           If null, then this will indicate the same as the number of Successes
 	 *                      Or can be an array of values
 	 *
-	 * @return array|float|int|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|float|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function range($trials, $probability, $successes, $limit = null)
@@ -107,7 +109,7 @@ class Binomial
 
 		$summer = 0;
 		for ($i = $successes; $i <= $limit; ++$i) {
-			/** @var float $comb */
+			/** @var float */
 			$comb = Combinations::withoutRepetition($trials, $i);
 			$summer += $comb * $probability ** $i
 				* (1 - $probability) ** ($trials - $i);
@@ -161,7 +163,7 @@ class Binomial
 				return ExcelError::NAN();
 			}
 		}
-		/** @var float $comb */
+		/** @var float */
 		$comb = Combinations::withoutRepetition($failures + $successes - 1, $successes - 1);
 
 		return $comb
@@ -181,7 +183,8 @@ class Binomial
 	 * @param mixed $alpha criterion value as a float
 	 *                      Or can be an array of values
 	 *
-	 * @return array|int|string If an array of numbers is passed as an argument, then the returned result will also be an array
+	 * @return array|int|string
+	 *         If an array of numbers is passed as an argument, then the returned result will also be an array
 	 *            with the same dimensions
 	 */
 	public static function inverse($trials, $probability, $alpha)
@@ -223,7 +226,7 @@ class Binomial
 	{
 		$summer = 0;
 		for ($i = 0; $i <= $value; ++$i) {
-			/** @var float $comb */
+			/** @var float */
 			$comb = Combinations::withoutRepetition($trials, $i);
 			$summer += $comb * $probability ** $i
 				* (1 - $probability) ** ($trials - $i);

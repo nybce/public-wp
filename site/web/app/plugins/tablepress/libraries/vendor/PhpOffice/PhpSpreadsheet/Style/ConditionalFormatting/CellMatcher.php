@@ -31,7 +31,7 @@ class CellMatcher
 	];
 
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Cell\Cell
+	 * @var Cell
 	 */
 	protected $cell;
 
@@ -41,7 +41,7 @@ class CellMatcher
 	protected $cellRow;
 
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet
+	 * @var Worksheet
 	 */
 	protected $worksheet;
 
@@ -71,7 +71,7 @@ class CellMatcher
 	protected $referenceColumn;
 
 	/**
-	 * @var \TablePress\PhpOffice\PhpSpreadsheet\Calculation\Calculation
+	 * @var Calculation
 	 */
 	protected $engine;
 
@@ -118,24 +118,38 @@ class CellMatcher
 			case Conditional::CONDITION_UNIQUE:
 				return $this->processDuplicatesComparison($conditional);
 			case Conditional::CONDITION_CONTAINSTEXT:
+				// Expression is NOT(ISERROR(SEARCH("<TEXT>",<Cell Reference>)))
 			case Conditional::CONDITION_NOTCONTAINSTEXT:
+				// Expression is ISERROR(SEARCH("<TEXT>",<Cell Reference>))
 			case Conditional::CONDITION_BEGINSWITH:
+				// Expression is LEFT(<Cell Reference>,LEN("<TEXT>"))="<TEXT>"
 			case Conditional::CONDITION_ENDSWITH:
+				// Expression is RIGHT(<Cell Reference>,LEN("<TEXT>"))="<TEXT>"
 			case Conditional::CONDITION_CONTAINSBLANKS:
+				// Expression is LEN(TRIM(<Cell Reference>))=0
 			case Conditional::CONDITION_NOTCONTAINSBLANKS:
+				// Expression is LEN(TRIM(<Cell Reference>))>0
 			case Conditional::CONDITION_CONTAINSERRORS:
+				// Expression is ISERROR(<Cell Reference>)
 			case Conditional::CONDITION_NOTCONTAINSERRORS:
+				// Expression is NOT(ISERROR(<Cell Reference>))
 			case Conditional::CONDITION_TIMEPERIOD:
+				// Expression varies, depending on specified timePeriod value, e.g.
+				// Yesterday FLOOR(<Cell Reference>,1)=TODAY()-1
+				// Today FLOOR(<Cell Reference>,1)=TODAY()
+				// Tomorrow FLOOR(<Cell Reference>,1)=TODAY()+1
+				// Last 7 Days AND(TODAY()-FLOOR(<Cell Reference>,1)<=6,FLOOR(<Cell Reference>,1)<=TODAY())
 			case Conditional::CONDITION_EXPRESSION:
 				return $this->processExpression($conditional);
-			default:
-				return false;
 		}
+
+		return false;
 	}
 
 	/**
-	 * @return float|int|string
 	 * @param mixed $value
+	 *
+	 * @return float|int|string
 	 */
 	protected function wrapValue($value)
 	{
@@ -168,13 +182,13 @@ class CellMatcher
 		$column = $matches[6];
 		$row = $matches[7];
 
-		if (!str_contains($column, '$')) {
+		if (strpos($column, '$') === false) {
 			$column = Coordinate::columnIndexFromString($column);
 			$column += $this->cellColumn - $this->referenceColumn;
 			$column = Coordinate::stringFromColumnIndex($column);
 		}
 
-		if (!str_contains($row, '$')) {
+		if (strpos($row, '$') === false) {
 			$row += $this->cellRow - $this->referenceRow;
 		}
 
@@ -214,7 +228,6 @@ class CellMatcher
 			}
 		}
 		unset($value);
-
 		//    Then rebuild the condition string to return it
 		return implode(Calculation::FORMULA_STRING_QUOTE, $splitCondition);
 	}
@@ -291,7 +304,7 @@ class CellMatcher
 		try {
 			$this->engine->flushInstance();
 			$result = (bool) $this->engine->calculateFormula($expression);
-		} catch (Exception $exception) {
+		} catch (Exception $e) {
 			return false;
 		}
 
