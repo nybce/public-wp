@@ -3,7 +3,7 @@
         'name' => 'roots/bedrock',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => 'af04b42b0dd5874f094e384b5a9bf004421d8f8e',
+        'reference' => '7238c40ed8f4c66e7ae205faaf65f83b88ba5cbd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -158,9 +158,9 @@
             ),
         ),
         'psr/http-factory' => array(
-            'pretty_version' => '1.0.2',
-            'version' => '1.0.2.0',
-            'reference' => 'e616d01114759c4c489f93b099585439f795fe35',
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => '2b4765fddfe3b508ac62f829e852b1501d3f6e8a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-factory',
             'aliases' => array(),
@@ -199,7 +199,7 @@
         'roave/security-advisories' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '99ba3993d1441627081b78b6a844776fc9ef264f',
+            'reference' => '60e42fbc5481d71199ae7734b7faf28b16b9b2a3',
             'type' => 'metapackage',
             'install_path' => null,
             'aliases' => array(),
@@ -208,7 +208,7 @@
         'roots/bedrock' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => 'af04b42b0dd5874f094e384b5a9bf004421d8f8e',
+            'reference' => '7238c40ed8f4c66e7ae205faaf65f83b88ba5cbd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -233,8 +233,8 @@
             'dev_requirement' => false,
         ),
         'roots/wordpress' => array(
-            'pretty_version' => '6.5.3',
-            'version' => '6.5.3.0',
+            'pretty_version' => '6.4.3',
+            'version' => '6.4.3.0',
             'reference' => '41ff6e23ccbc3a1691406d69fe8c211a225514e2',
             'type' => 'metapackage',
             'install_path' => null,
@@ -251,9 +251,9 @@
             'dev_requirement' => false,
         ),
         'roots/wordpress-no-content' => array(
-            'pretty_version' => '6.5.3',
-            'version' => '6.5.3.0',
-            'reference' => '6.5.3',
+            'pretty_version' => '6.4.3',
+            'version' => '6.4.3.0',
+            'reference' => '6.4.3',
             'type' => 'wordpress-core',
             'install_path' => __DIR__ . '/../../web/wp',
             'aliases' => array(),
@@ -346,7 +346,7 @@
         'wordpress/core-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '6.5.3',
+                0 => '6.4.3',
             ),
         ),
         'wp-coding-standards/wpcs' => array(

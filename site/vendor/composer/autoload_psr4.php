@@ -13,7 +13,7 @@ return array(
     'Roots\\WPConfig\\' => array($vendorDir . '/roots/wp-config/src'),
     'Roots\\Composer\\' => array($vendorDir . '/roots/wordpress-core-installer/src'),
     'Roots\\Bedrock\\' => array($vendorDir . '/roots/bedrock-autoloader/src', $baseDir . '/web/app/mu-plugins/multisite-url-fixer/src'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'MultisiteGlobalMedia\\' => array($baseDir . '/web/app/mu-plugins/multisite-global-media/src'),
