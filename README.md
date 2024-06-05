@@ -217,3 +217,6 @@ GitHub Actions will build the WordPress container and push the image to Docker H
 ## wp cli
 ### Search and replace
 --network flag needed to run for all sites on the network. E.g. `wp search-replace ctblood.nybc-enterprise.local.org ctblood.local.org --network --allow-root`.
+`wp search-replace --allow-root old new" --url="old`
+`wp search-replace --allow-root "https://new" "http://new" --url=new`
+
