@@ -38,6 +38,10 @@ if( $align == 'Center' ){
 }
 
 ?>
-<div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+<!-- <div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<a class="btn btn-custom" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
+</div> -->
+
+<div class="mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+	<a class="btn btn-small btn-primary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
 </div>
