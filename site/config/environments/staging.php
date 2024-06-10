@@ -14,11 +14,11 @@ use function Env\env;
  * Example: `Config::define('DISALLOW_FILE_MODS', false);`
  */
 
- Config::define('SAVEQUERIES', true);
- Config::define('WP_DEBUG', true);
- Config::define('WP_DEBUG_DISPLAY', true);
- Config::define('WP_DEBUG_LOG', true);
- Config::define('SCRIPT_DEBUG', true);
+ Config::define('SAVEQUERIES', false);
+ Config::define('WP_DEBUG', false);
+ Config::define('WP_DEBUG_DISPLAY', false);
+ Config::define('WP_DEBUG_LOG', false);
+ Config::define('SCRIPT_DEBUG', false);
 
  ini_set('display_errors', 1);
 
