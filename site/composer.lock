@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f78c4d2703c44ab0010722284234b86",
+    "content-hash": "f3a9ab16377b69fde73027f5f83199ad",
     "packages": [
         {
             "name": "bueltge/multisite-global-media",
@@ -2050,6 +2050,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/gravity-forms-custom-post-types/"
+        },
+        {
+            "name": "wpackagist-plugin/ninja-tables",
+            "version": "5.0.10",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ninja-tables/",
+                "reference": "tags/5.0.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-tables.5.0.10.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ninja-tables/"
         },
         {
             "name": "wpackagist-plugin/redirection",
