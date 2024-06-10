@@ -3160,6 +3160,27 @@
             "install-path": "../../web/app/mu-plugins/gravity-forms-custom-post-types"
         },
         {
+            "name": "wpackagist-plugin/ninja-tables",
+            "version": "5.0.10",
+            "version_normalized": "5.0.10.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ninja-tables/",
+                "reference": "tags/5.0.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-tables.5.0.10.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "installation-source": "dist",
+            "homepage": "https://wordpress.org/plugins/ninja-tables/",
+            "install-path": "../../web/app/plugins/ninja-tables"
+        },
+        {
             "name": "wpackagist-plugin/redirection",
             "version": "5.4.2",
             "version_normalized": "5.4.2.0",
