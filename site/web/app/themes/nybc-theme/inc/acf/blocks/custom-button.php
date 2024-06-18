@@ -48,6 +48,27 @@ acf_add_local_field_group(array(
 			'return_format'     => 'value',
 			'ajax'              => 0,
 			'placeholder'       => '',
+		),
+		array(
+			'key'               => 'field_63c1b90e7e77d',
+			'label'             => 'Button Type',
+			'name'              => 'type',
+			'type'              => 'select',
+			'instructions'      => 'This field is required',
+			'required'          => 1,
+			'conditional_logic' => 0,
+			'choices'           => array(
+				'big-blue' 		=> 'big blue button',
+				'small-white' 	=> 'small white button'
+				
+			),
+			'default_value'     => false,
+			'allow_null'        => 0,
+			'multiple'          => 0,
+			'ui'                => 0,
+			'return_format'     => 'value',
+			'ajax'              => 0,
+			'placeholder'       => '',
 		)
 	),
 	'location'              => array(
