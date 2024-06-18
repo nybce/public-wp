@@ -26,6 +26,8 @@ $target   = $link['target'];
 
 $align    = get_field( 'alignment' );
 
+$button_type    = get_field( 'type' );
+
 
 $class_name = '';
 if ( ! empty( $block['className'] ) ) {
@@ -37,11 +39,23 @@ if( $align == 'Center' ){
     $class_name .= ' text-right';
 }
 
+$class_name_type = '';
+$class_name_font_size ='';
+if( $button_type == 'small-white' ){
+    $class_name_type .= 'btn-small btn-primary';
+}else if( $button_type == 'big-blue'){
+	$class_name_type .= 'btn-custom';
+    $class_name_font_size .= 'text';
+}
+
+
 ?>
 <!-- <div class="text mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
 	<a class="btn btn-custom" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
 </div> -->
 
-<div class="mb-24 <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
-	<a class="btn btn-small btn-primary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
+<div class="mb-24 <?php echo esc_attr($class_name_font_size); ?> <?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $block_id ); ?>">
+	<!-- <a class="btn btn-small btn-primary" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a> -->
+
+	<a class="btn <?php echo esc_attr( $class_name_type ); ?>" href="<?php echo $url ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
 </div>
